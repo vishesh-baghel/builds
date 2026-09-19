@@ -8,9 +8,9 @@
     "test": "vitest run",
     "score": "tsx --env-file=.env.local scripts/score.ts",
     "smoke": "tsx --env-file=.env.local scripts/smoke.ts",
-    "dev": "next dev --port 3002",
+    "dev": "next dev --port 3011",
     "build": "next build",
-    "start": "next start --port 3002",
+    "start": "next start --port 3011",
     "snapshot": "tsx scripts/snapshot.ts"
   },
   "dependencies": {
