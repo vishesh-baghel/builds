@@ -1,6 +1,6 @@
 # Reckon — labelled fixture set
 
-The measurement instrument for build 01. Built **before** the build, on purpose: a fixture set
+The measurement instrument for this build. Built **before** the build, on purpose: a fixture set
 authored afterwards gets unconsciously shaped by what the system already does, and the accuracy
 number stops meaning anything.
 
@@ -11,8 +11,8 @@ presented as evidence of client work.
 ## Files
 
 - `ar-aging.csv` — 15 open invoices, $245,960 total, in the column shape of a QuickBooks Online
-  **A/R Aging Detail** export. HVAC contractor flavour, matching the scene written up in
-  `wiki/research/build-catalog-52-worked-examples.md` (build #1).
+  **A/R Aging Detail** export. HVAC contractor flavour, matching a scene worked out in a
+  private research note.
 - `replies.jsonl` — 72 hand-labelled debtor replies, each keyed to an invoice in the CSV.
 
 ## Reply record shape
@@ -71,7 +71,11 @@ Report, at minimum:
 
 ## Known gap
 
-One `noise` message is an unsubscribe request (*"Please remove me from this distribution list"*).
-It carries no payment signal but is operationally actionable and legally awkward to ignore. The
-seven classes have nowhere to put it. Recorded rather than papered over; resolve when the Jev
-question set is specified.
+One `noise` message (`r072`) is an unsubscribe request (*"Please remove me from this
+distribution list"*). It carries no payment signal but is operationally actionable and legally
+awkward to ignore, and the seven classes have nowhere to put it.
+
+**Resolved without touching the taxonomy:** the label stays `noise` and the system runs a
+deterministic suppression check in code that raises a stop-contacting item regardless of the
+class returned. The gap is real; the fix belongs in code, not in a class that would have one
+example and an unscoreable per-class number.
