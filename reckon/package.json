@@ -4,9 +4,15 @@
   "private": true,
   "type": "module",
   "scripts": {
-    "typecheck": "tsc --noEmit"
+    "typecheck": "tsc --noEmit",
+    "test": "vitest run"
   },
   "dependencies": {
     "@builds/shared": "workspace:*"
+  },
+  "devDependencies": {
+    "@rolldown/binding-linux-x64-gnu": "^1.2.9",
+    "tsx": "^4.23.13",
+    "vitest": "^5.0.1"
   }
 }

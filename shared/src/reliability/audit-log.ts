@@ -5,7 +5,7 @@
 export interface AuditEntry {
   readonly at: Date;
   readonly inputId: string;
-  readonly stage: "extract" | "classify" | "decide" | "act" | "escalate";
+  readonly stage: "extract" | "classify" | "decide" | "act" | "escalate" | "log";
   readonly summary: string;
   readonly data?: Record<string, unknown>;
 }
