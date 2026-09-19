@@ -1,0 +1,41 @@
+name: CI
+
+# The same gate CLAUDE.md names and /validate-local runs locally. If these three commands
+# pass here and fail on a laptop, the laptop is wrong.
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      # No version pin here: action-setup reads packageManager from package.json,
+      # so CI and a laptop cannot drift apart on pnpm.
+      - uses: pnpm/action-setup@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: pnpm
+
+      - run: pnpm install --frozen-lockfile
+
+      - name: typecheck
+        run: pnpm -r typecheck
+
+      # --if-present: no package defines these yet. They are real gates the moment
+      # one does, and silent no-ops until then — see the note in CLAUDE.md.
+      - name: test
+        run: pnpm -r --if-present test
+
+      - name: build
+        run: pnpm -r --if-present build

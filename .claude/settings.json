@@ -1,0 +1,25 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(scripts/loop/task-loop.sh:*)",
+      "Bash(scripts/loop/spec-review.sh:*)",
+      "Bash(pnpm install:*)",
+      "Bash(pnpm -r typecheck:*)",
+      "Bash(pnpm -r test:*)",
+      "Bash(pnpm -r build:*)",
+      "Bash(pnpm --filter:*)",
+      "Bash(gh auth status:*)",
+      "Bash(gh pr view:*)",
+      "Bash(gh pr list:*)",
+      "Bash(gh pr diff:*)",
+      "Bash(gh pr checks:*)",
+      "Bash(gh pr comment:*)",
+      "Bash(gh pr review:*)",
+      "Bash(gh pr create:*)",
+      "Bash(gh run list:*)",
+      "Bash(gh run view:*)",
+      "Bash(git push:*)",
+      "Bash(mkdir:*)"
+    ]
+  }
+}

@@ -1,0 +1,4 @@
+packages:
+  # Every build is a top-level directory with its own package.json, alongside `shared`.
+  # pnpm skips directories that have none, so new builds need no edit here.
+  - "*"

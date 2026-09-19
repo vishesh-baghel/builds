@@ -1,0 +1,16 @@
+Invoice No,Customer,Contact Email,Invoice Date,Due Date,Terms,Amount,Open Balance,Days Past Due,Aging Bucket
+4417,Mercer Facilities Group,ap@mercerfacilities.com,2026-07-21,2026-08-20,Net 30,18400.00,18400.00,52,31-60
+4388,Halvorsen General Contracting,accounts@halvorsengc.com,2026-06-30,2026-07-30,Net 30,41250.00,41250.00,73,61-90
+4402,Vance Property Group,payables@vancepg.com,2026-07-10,2026-08-24,Net 45,22750.00,22750.00,48,31-60
+4431,Arbor Ridge Senior Living,finance@arborridge.org,2026-08-02,2026-09-01,Net 30,9840.00,9840.00,40,31-60
+4356,Kestrel Business Park LLC,ap@kestrelbp.com,2026-06-12,2026-07-12,Net 30,15600.00,7800.00,91,90+
+4444,Dunmore Logistics,ar.team@dunmorelog.com,2026-08-08,2026-09-07,Net 30,6320.00,6320.00,34,31-60
+4409,Southgate Retail Trust,invoices@southgatetrust.com,2026-07-14,2026-08-28,Net 45,28900.00,28900.00,44,31-60
+4373,Pinewood Medical Partners,billing@pinewoodmed.com,2026-06-24,2026-07-24,Net 30,12480.00,12480.00,79,61-90
+4452,Coyle Manufacturing,ap@coylemfg.com,2026-08-14,2026-09-13,Net 30,7150.00,7150.00,28,0-30
+4340,Redbrook Hospitality,ap@redbrookhosp.com,2026-05-29,2026-06-28,Net 30,33200.00,33200.00,105,90+
+4425,Thalia Dental Group,office@thaliadental.com,2026-07-28,2026-08-27,Net 30,4680.00,4680.00,45,31-60
+4396,Ironside Storage Co,accounting@ironsidestorage.com,2026-07-03,2026-08-17,Net 45,11900.00,11900.00,55,31-60
+4461,Lakeshore Church Trust,treasurer@lakeshorect.org,2026-08-20,2026-09-19,Net 30,5240.00,5240.00,21,0-30
+4364,Whitlock Auto Group,ap@whitlockauto.com,2026-06-18,2026-07-18,Net 30,19750.00,19750.00,85,61-90
+4438,Orenda Biotech,ap@orendabio.com,2026-08-05,2026-09-19,Net 45,16300.00,16300.00,21,0-30
