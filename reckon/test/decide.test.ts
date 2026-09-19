@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { CHASE_ACTIONS, REPLY_CLASSES } from "../src/types.js";
-import { DEFAULT_THRESHOLDS } from "../src/policy.js";
-import { fixtures, replyById, runOne, scores } from "./helpers.js";
+import { CHASE_ACTIONS, REPLY_CLASSES } from "../src/types";
+import { DEFAULT_THRESHOLDS } from "../src/policy";
+import { fixtures, replyById, runOne, scores } from "./helpers";
 
 /**
  * Per-class behaviour, asserted over injected probabilities.

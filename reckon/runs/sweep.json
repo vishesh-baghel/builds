@@ -1,0 +1,2421 @@
+{
+  "note": "Swept on the 51 ordinary replies only. `selection` is macro-F1 over classes with support — a selection criterion for choosing thresholds, deliberately not published as a result.",
+  "chosen": {
+    "base": 0.65,
+    "risky": 0.8,
+    "review": 0.5,
+    "selection": 0.9788359788359788,
+    "escalatedShare": 0.43137254901960786,
+    "perClassRecall": {
+      "dispute": 1,
+      "claimed_payment": 1,
+      "promise_to_pay": 1,
+      "partial": 1,
+      "question": 1,
+      "wrong_contact": 0.8,
+      "noise": 1
+    }
+  },
+  "points": [
+    {
+      "base": 0.5,
+      "risky": 0.8,
+      "review": 0.3,
+      "selection": 0.9645144607550623,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.5,
+      "risky": 0.8,
+      "review": 0.4,
+      "selection": 0.9645144607550623,
+      "escalatedShare": 0.47058823529411764,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.5,
+      "risky": 0.85,
+      "review": 0.3,
+      "selection": 0.9645144607550623,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.5,
+      "risky": 0.85,
+      "review": 0.4,
+      "selection": 0.9645144607550623,
+      "escalatedShare": 0.47058823529411764,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.5,
+      "risky": 0.88,
+      "review": 0.3,
+      "selection": 0.9359430321836337,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.6666666666666666,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.5,
+      "risky": 0.88,
+      "review": 0.4,
+      "selection": 0.9359430321836337,
+      "escalatedShare": 0.49019607843137253,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.6666666666666666,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.5,
+      "risky": 0.9,
+      "review": 0.3,
+      "selection": 0.9168954131360146,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.5,
+      "risky": 0.9,
+      "review": 0.4,
+      "selection": 0.9168954131360146,
+      "escalatedShare": 0.49019607843137253,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.5,
+      "risky": 0.95,
+      "review": 0.3,
+      "selection": 0.8948381053644212,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.5,
+      "risky": 0.95,
+      "review": 0.4,
+      "selection": 0.8948381053644212,
+      "escalatedShare": 0.49019607843137253,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.5,
+      "risky": 0.99,
+      "review": 0.3,
+      "selection": 0.6570314675577834,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.5,
+      "risky": 0.99,
+      "review": 0.4,
+      "selection": 0.6570314675577834,
+      "escalatedShare": 0.5294117647058824,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.55,
+      "risky": 0.8,
+      "review": 0.3,
+      "selection": 0.9645144607550623,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.55,
+      "risky": 0.8,
+      "review": 0.4,
+      "selection": 0.9645144607550623,
+      "escalatedShare": 0.47058823529411764,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.55,
+      "risky": 0.8,
+      "review": 0.5,
+      "selection": 0.9645144607550623,
+      "escalatedShare": 0.43137254901960786,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.55,
+      "risky": 0.85,
+      "review": 0.3,
+      "selection": 0.9645144607550623,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.55,
+      "risky": 0.85,
+      "review": 0.4,
+      "selection": 0.9645144607550623,
+      "escalatedShare": 0.47058823529411764,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.55,
+      "risky": 0.85,
+      "review": 0.5,
+      "selection": 0.9645144607550623,
+      "escalatedShare": 0.43137254901960786,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.55,
+      "risky": 0.88,
+      "review": 0.3,
+      "selection": 0.9359430321836337,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.6666666666666666,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.55,
+      "risky": 0.88,
+      "review": 0.4,
+      "selection": 0.9359430321836337,
+      "escalatedShare": 0.49019607843137253,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.6666666666666666,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.55,
+      "risky": 0.88,
+      "review": 0.5,
+      "selection": 0.9359430321836337,
+      "escalatedShare": 0.47058823529411764,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.6666666666666666,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.55,
+      "risky": 0.9,
+      "review": 0.3,
+      "selection": 0.9168954131360146,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.55,
+      "risky": 0.9,
+      "review": 0.4,
+      "selection": 0.9168954131360146,
+      "escalatedShare": 0.49019607843137253,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.55,
+      "risky": 0.9,
+      "review": 0.5,
+      "selection": 0.9168954131360146,
+      "escalatedShare": 0.47058823529411764,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.55,
+      "risky": 0.95,
+      "review": 0.3,
+      "selection": 0.8948381053644212,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.55,
+      "risky": 0.95,
+      "review": 0.4,
+      "selection": 0.8948381053644212,
+      "escalatedShare": 0.49019607843137253,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.55,
+      "risky": 0.95,
+      "review": 0.5,
+      "selection": 0.8948381053644212,
+      "escalatedShare": 0.47058823529411764,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.55,
+      "risky": 0.99,
+      "review": 0.3,
+      "selection": 0.6617933723196882,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.55,
+      "risky": 0.99,
+      "review": 0.4,
+      "selection": 0.6617933723196882,
+      "escalatedShare": 0.5294117647058824,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.55,
+      "risky": 0.99,
+      "review": 0.5,
+      "selection": 0.6617933723196882,
+      "escalatedShare": 0.5294117647058824,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.6,
+      "risky": 0.8,
+      "review": 0.3,
+      "selection": 0.9645144607550623,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.6,
+      "risky": 0.8,
+      "review": 0.4,
+      "selection": 0.9645144607550623,
+      "escalatedShare": 0.47058823529411764,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.6,
+      "risky": 0.8,
+      "review": 0.5,
+      "selection": 0.9645144607550623,
+      "escalatedShare": 0.43137254901960786,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.6,
+      "risky": 0.85,
+      "review": 0.3,
+      "selection": 0.9645144607550623,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.6,
+      "risky": 0.85,
+      "review": 0.4,
+      "selection": 0.9645144607550623,
+      "escalatedShare": 0.47058823529411764,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.6,
+      "risky": 0.85,
+      "review": 0.5,
+      "selection": 0.9645144607550623,
+      "escalatedShare": 0.43137254901960786,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.6,
+      "risky": 0.88,
+      "review": 0.3,
+      "selection": 0.9359430321836337,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.6666666666666666,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.6,
+      "risky": 0.88,
+      "review": 0.4,
+      "selection": 0.9359430321836337,
+      "escalatedShare": 0.49019607843137253,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.6666666666666666,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.6,
+      "risky": 0.88,
+      "review": 0.5,
+      "selection": 0.9359430321836337,
+      "escalatedShare": 0.47058823529411764,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.6666666666666666,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.6,
+      "risky": 0.9,
+      "review": 0.3,
+      "selection": 0.9168954131360146,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.6,
+      "risky": 0.9,
+      "review": 0.4,
+      "selection": 0.9168954131360146,
+      "escalatedShare": 0.49019607843137253,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.6,
+      "risky": 0.9,
+      "review": 0.5,
+      "selection": 0.9168954131360146,
+      "escalatedShare": 0.47058823529411764,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.6,
+      "risky": 0.95,
+      "review": 0.3,
+      "selection": 0.9010223972629988,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.6,
+      "risky": 0.95,
+      "review": 0.4,
+      "selection": 0.9010223972629988,
+      "escalatedShare": 0.49019607843137253,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.6,
+      "risky": 0.95,
+      "review": 0.5,
+      "selection": 0.9010223972629988,
+      "escalatedShare": 0.47058823529411764,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.6,
+      "risky": 0.99,
+      "review": 0.3,
+      "selection": 0.6726158831421989,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.6,
+      "risky": 0.99,
+      "review": 0.4,
+      "selection": 0.6726158831421989,
+      "escalatedShare": 0.5294117647058824,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.6,
+      "risky": 0.99,
+      "review": 0.5,
+      "selection": 0.6726158831421989,
+      "escalatedShare": 0.5294117647058824,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 0.9,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.65,
+      "risky": 0.8,
+      "review": 0.3,
+      "selection": 0.9788359788359788,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.65,
+      "risky": 0.8,
+      "review": 0.4,
+      "selection": 0.9788359788359788,
+      "escalatedShare": 0.47058823529411764,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.65,
+      "risky": 0.8,
+      "review": 0.5,
+      "selection": 0.9788359788359788,
+      "escalatedShare": 0.43137254901960786,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.65,
+      "risky": 0.85,
+      "review": 0.3,
+      "selection": 0.9788359788359788,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.65,
+      "risky": 0.85,
+      "review": 0.4,
+      "selection": 0.9788359788359788,
+      "escalatedShare": 0.47058823529411764,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.65,
+      "risky": 0.85,
+      "review": 0.5,
+      "selection": 0.9788359788359788,
+      "escalatedShare": 0.43137254901960786,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.65,
+      "risky": 0.88,
+      "review": 0.3,
+      "selection": 0.9502645502645503,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.6666666666666666,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.65,
+      "risky": 0.88,
+      "review": 0.4,
+      "selection": 0.9502645502645503,
+      "escalatedShare": 0.49019607843137253,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.6666666666666666,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.65,
+      "risky": 0.88,
+      "review": 0.5,
+      "selection": 0.9502645502645503,
+      "escalatedShare": 0.47058823529411764,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.6666666666666666,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.65,
+      "risky": 0.9,
+      "review": 0.3,
+      "selection": 0.9312169312169312,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.65,
+      "risky": 0.9,
+      "review": 0.4,
+      "selection": 0.9312169312169312,
+      "escalatedShare": 0.49019607843137253,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.65,
+      "risky": 0.9,
+      "review": 0.5,
+      "selection": 0.9312169312169312,
+      "escalatedShare": 0.47058823529411764,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.65,
+      "risky": 0.95,
+      "review": 0.3,
+      "selection": 0.9153439153439153,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.65,
+      "risky": 0.95,
+      "review": 0.4,
+      "selection": 0.9153439153439153,
+      "escalatedShare": 0.49019607843137253,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.65,
+      "risky": 0.95,
+      "review": 0.5,
+      "selection": 0.9153439153439153,
+      "escalatedShare": 0.47058823529411764,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.65,
+      "risky": 0.99,
+      "review": 0.3,
+      "selection": 0.6863189720332578,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.65,
+      "risky": 0.99,
+      "review": 0.4,
+      "selection": 0.6863189720332578,
+      "escalatedShare": 0.5294117647058824,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.65,
+      "risky": 0.99,
+      "review": 0.5,
+      "selection": 0.6863189720332578,
+      "escalatedShare": 0.5294117647058824,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.7,
+      "risky": 0.8,
+      "review": 0.3,
+      "selection": 0.9788359788359788,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.7,
+      "risky": 0.8,
+      "review": 0.4,
+      "selection": 0.9788359788359788,
+      "escalatedShare": 0.47058823529411764,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.7,
+      "risky": 0.8,
+      "review": 0.5,
+      "selection": 0.9788359788359788,
+      "escalatedShare": 0.43137254901960786,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.7,
+      "risky": 0.85,
+      "review": 0.3,
+      "selection": 0.9788359788359788,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.7,
+      "risky": 0.85,
+      "review": 0.4,
+      "selection": 0.9788359788359788,
+      "escalatedShare": 0.47058823529411764,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.7,
+      "risky": 0.85,
+      "review": 0.5,
+      "selection": 0.9788359788359788,
+      "escalatedShare": 0.43137254901960786,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.7,
+      "risky": 0.88,
+      "review": 0.3,
+      "selection": 0.9502645502645503,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.6666666666666666,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.7,
+      "risky": 0.88,
+      "review": 0.4,
+      "selection": 0.9502645502645503,
+      "escalatedShare": 0.49019607843137253,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.6666666666666666,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.7,
+      "risky": 0.88,
+      "review": 0.5,
+      "selection": 0.9502645502645503,
+      "escalatedShare": 0.47058823529411764,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.6666666666666666,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.7,
+      "risky": 0.9,
+      "review": 0.3,
+      "selection": 0.9312169312169312,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.7,
+      "risky": 0.9,
+      "review": 0.4,
+      "selection": 0.9312169312169312,
+      "escalatedShare": 0.49019607843137253,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.7,
+      "risky": 0.9,
+      "review": 0.5,
+      "selection": 0.9312169312169312,
+      "escalatedShare": 0.47058823529411764,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.7,
+      "risky": 0.95,
+      "review": 0.3,
+      "selection": 0.9153439153439153,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.7,
+      "risky": 0.95,
+      "review": 0.4,
+      "selection": 0.9153439153439153,
+      "escalatedShare": 0.49019607843137253,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.7,
+      "risky": 0.95,
+      "review": 0.5,
+      "selection": 0.9153439153439153,
+      "escalatedShare": 0.47058823529411764,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.7,
+      "risky": 0.99,
+      "review": 0.3,
+      "selection": 0.6863189720332578,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.7,
+      "risky": 0.99,
+      "review": 0.4,
+      "selection": 0.6863189720332578,
+      "escalatedShare": 0.5294117647058824,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.7,
+      "risky": 0.99,
+      "review": 0.5,
+      "selection": 0.6863189720332578,
+      "escalatedShare": 0.5294117647058824,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 1,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.75,
+      "risky": 0.8,
+      "review": 0.3,
+      "selection": 0.962962962962963,
+      "escalatedShare": 0.5882352941176471,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.8,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.75,
+      "risky": 0.8,
+      "review": 0.4,
+      "selection": 0.962962962962963,
+      "escalatedShare": 0.5098039215686274,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.8,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.75,
+      "risky": 0.8,
+      "review": 0.5,
+      "selection": 0.962962962962963,
+      "escalatedShare": 0.47058823529411764,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.8,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.75,
+      "risky": 0.85,
+      "review": 0.3,
+      "selection": 0.962962962962963,
+      "escalatedShare": 0.5882352941176471,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.8,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.75,
+      "risky": 0.85,
+      "review": 0.4,
+      "selection": 0.962962962962963,
+      "escalatedShare": 0.5098039215686274,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.8,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.75,
+      "risky": 0.85,
+      "review": 0.5,
+      "selection": 0.962962962962963,
+      "escalatedShare": 0.47058823529411764,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.8,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.75,
+      "risky": 0.88,
+      "review": 0.3,
+      "selection": 0.9343915343915344,
+      "escalatedShare": 0.5882352941176471,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.6666666666666666,
+        "promise_to_pay": 0.8,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.75,
+      "risky": 0.88,
+      "review": 0.4,
+      "selection": 0.9343915343915344,
+      "escalatedShare": 0.5294117647058824,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.6666666666666666,
+        "promise_to_pay": 0.8,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.75,
+      "risky": 0.88,
+      "review": 0.5,
+      "selection": 0.9343915343915344,
+      "escalatedShare": 0.5098039215686274,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.6666666666666666,
+        "promise_to_pay": 0.8,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.75,
+      "risky": 0.9,
+      "review": 0.3,
+      "selection": 0.9153439153439153,
+      "escalatedShare": 0.5882352941176471,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.8,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.75,
+      "risky": 0.9,
+      "review": 0.4,
+      "selection": 0.9153439153439153,
+      "escalatedShare": 0.5294117647058824,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.8,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.75,
+      "risky": 0.9,
+      "review": 0.5,
+      "selection": 0.9153439153439153,
+      "escalatedShare": 0.5098039215686274,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.8,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.75,
+      "risky": 0.95,
+      "review": 0.3,
+      "selection": 0.8994708994708995,
+      "escalatedShare": 0.5882352941176471,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.8,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.75,
+      "risky": 0.95,
+      "review": 0.4,
+      "selection": 0.8994708994708995,
+      "escalatedShare": 0.5294117647058824,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.8,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.75,
+      "risky": 0.95,
+      "review": 0.5,
+      "selection": 0.8994708994708995,
+      "escalatedShare": 0.5098039215686274,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.8,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.75,
+      "risky": 0.99,
+      "review": 0.3,
+      "selection": 0.6704459561602418,
+      "escalatedShare": 0.5882352941176471,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 0.8,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.75,
+      "risky": 0.99,
+      "review": 0.4,
+      "selection": 0.6704459561602418,
+      "escalatedShare": 0.5686274509803921,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 0.8,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.75,
+      "risky": 0.99,
+      "review": 0.5,
+      "selection": 0.6704459561602418,
+      "escalatedShare": 0.5686274509803921,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 0.8,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.8,
+      "risky": 0.8,
+      "review": 0.3,
+      "selection": 0.9536258948023654,
+      "escalatedShare": 0.6274509803921569,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.7,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.8,
+      "risky": 0.8,
+      "review": 0.4,
+      "selection": 0.9536258948023654,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.7,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.8,
+      "risky": 0.8,
+      "review": 0.5,
+      "selection": 0.9536258948023654,
+      "escalatedShare": 0.5098039215686274,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.7,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.8,
+      "risky": 0.85,
+      "review": 0.3,
+      "selection": 0.9536258948023654,
+      "escalatedShare": 0.6274509803921569,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.7,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.8,
+      "risky": 0.85,
+      "review": 0.4,
+      "selection": 0.9536258948023654,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.7,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.8,
+      "risky": 0.85,
+      "review": 0.5,
+      "selection": 0.9536258948023654,
+      "escalatedShare": 0.5098039215686274,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.7,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.8,
+      "risky": 0.88,
+      "review": 0.3,
+      "selection": 0.9250544662309368,
+      "escalatedShare": 0.6274509803921569,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.6666666666666666,
+        "promise_to_pay": 0.7,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.8,
+      "risky": 0.88,
+      "review": 0.4,
+      "selection": 0.9250544662309368,
+      "escalatedShare": 0.5686274509803921,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.6666666666666666,
+        "promise_to_pay": 0.7,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.8,
+      "risky": 0.88,
+      "review": 0.5,
+      "selection": 0.9250544662309368,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.6666666666666666,
+        "promise_to_pay": 0.7,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.8,
+      "risky": 0.9,
+      "review": 0.3,
+      "selection": 0.9060068471833178,
+      "escalatedShare": 0.6274509803921569,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.7,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.8,
+      "risky": 0.9,
+      "review": 0.4,
+      "selection": 0.9060068471833178,
+      "escalatedShare": 0.5686274509803921,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.7,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.8,
+      "risky": 0.9,
+      "review": 0.5,
+      "selection": 0.9060068471833178,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.7,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.8,
+      "risky": 0.95,
+      "review": 0.3,
+      "selection": 0.890133831310302,
+      "escalatedShare": 0.6274509803921569,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.7,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.8,
+      "risky": 0.95,
+      "review": 0.4,
+      "selection": 0.890133831310302,
+      "escalatedShare": 0.5686274509803921,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.7,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.8,
+      "risky": 0.95,
+      "review": 0.5,
+      "selection": 0.890133831310302,
+      "escalatedShare": 0.5490196078431373,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.7,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.8,
+      "risky": 0.99,
+      "review": 0.3,
+      "selection": 0.6611088879996443,
+      "escalatedShare": 0.6274509803921569,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 0.7,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.8,
+      "risky": 0.99,
+      "review": 0.4,
+      "selection": 0.6611088879996443,
+      "escalatedShare": 0.6078431372549019,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 0.7,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.8,
+      "risky": 0.99,
+      "review": 0.5,
+      "selection": 0.6611088879996443,
+      "escalatedShare": 0.6078431372549019,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 0.7,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.85,
+      "risky": 0.85,
+      "review": 0.3,
+      "selection": 0.9431216931216931,
+      "escalatedShare": 0.6470588235294118,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.6,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.85,
+      "risky": 0.85,
+      "review": 0.4,
+      "selection": 0.9431216931216931,
+      "escalatedShare": 0.5686274509803921,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.6,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.85,
+      "risky": 0.85,
+      "review": 0.5,
+      "selection": 0.9431216931216931,
+      "escalatedShare": 0.5294117647058824,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 1,
+        "promise_to_pay": 0.6,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.85,
+      "risky": 0.88,
+      "review": 0.3,
+      "selection": 0.9145502645502646,
+      "escalatedShare": 0.6470588235294118,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.6666666666666666,
+        "promise_to_pay": 0.6,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.85,
+      "risky": 0.88,
+      "review": 0.4,
+      "selection": 0.9145502645502646,
+      "escalatedShare": 0.5882352941176471,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.6666666666666666,
+        "promise_to_pay": 0.6,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.85,
+      "risky": 0.88,
+      "review": 0.5,
+      "selection": 0.9145502645502646,
+      "escalatedShare": 0.5686274509803921,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.6666666666666666,
+        "promise_to_pay": 0.6,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.85,
+      "risky": 0.9,
+      "review": 0.3,
+      "selection": 0.8955026455026455,
+      "escalatedShare": 0.6470588235294118,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.6,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.85,
+      "risky": 0.9,
+      "review": 0.4,
+      "selection": 0.8955026455026455,
+      "escalatedShare": 0.5882352941176471,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.6,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.85,
+      "risky": 0.9,
+      "review": 0.5,
+      "selection": 0.8955026455026455,
+      "escalatedShare": 0.5686274509803921,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.6,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.85,
+      "risky": 0.95,
+      "review": 0.3,
+      "selection": 0.8796296296296297,
+      "escalatedShare": 0.6470588235294118,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.6,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.85,
+      "risky": 0.95,
+      "review": 0.4,
+      "selection": 0.8796296296296297,
+      "escalatedShare": 0.5882352941176471,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.6,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.85,
+      "risky": 0.95,
+      "review": 0.5,
+      "selection": 0.8796296296296297,
+      "escalatedShare": 0.5686274509803921,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.6,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.85,
+      "risky": 0.99,
+      "review": 0.3,
+      "selection": 0.6506046863189721,
+      "escalatedShare": 0.6470588235294118,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 0.6,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.85,
+      "risky": 0.99,
+      "review": 0.4,
+      "selection": 0.6506046863189721,
+      "escalatedShare": 0.6274509803921569,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 0.6,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.85,
+      "risky": 0.99,
+      "review": 0.5,
+      "selection": 0.6506046863189721,
+      "escalatedShare": 0.6274509803921569,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 0.6,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.8,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.9,
+      "risky": 0.9,
+      "review": 0.3,
+      "selection": 0.8756613756613756,
+      "escalatedShare": 0.6470588235294118,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.6,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.6,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.9,
+      "risky": 0.9,
+      "review": 0.4,
+      "selection": 0.8756613756613756,
+      "escalatedShare": 0.5882352941176471,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.6,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.6,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.9,
+      "risky": 0.9,
+      "review": 0.5,
+      "selection": 0.8756613756613756,
+      "escalatedShare": 0.5686274509803921,
+      "perClassRecall": {
+        "dispute": 1,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.6,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.6,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.9,
+      "risky": 0.95,
+      "review": 0.3,
+      "selection": 0.8597883597883598,
+      "escalatedShare": 0.6470588235294118,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.6,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.6,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.9,
+      "risky": 0.95,
+      "review": 0.4,
+      "selection": 0.8597883597883598,
+      "escalatedShare": 0.5882352941176471,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.6,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.6,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.9,
+      "risky": 0.95,
+      "review": 0.5,
+      "selection": 0.8597883597883598,
+      "escalatedShare": 0.5686274509803921,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.6,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.6,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.9,
+      "risky": 0.99,
+      "review": 0.3,
+      "selection": 0.6375661375661376,
+      "escalatedShare": 0.6470588235294118,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 0.6,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.6,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.9,
+      "risky": 0.99,
+      "review": 0.4,
+      "selection": 0.6375661375661376,
+      "escalatedShare": 0.6274509803921569,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 0.6,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.6,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.9,
+      "risky": 0.99,
+      "review": 0.5,
+      "selection": 0.6375661375661376,
+      "escalatedShare": 0.6274509803921569,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 0.6,
+        "partial": 1,
+        "question": 1,
+        "wrong_contact": 0.6,
+        "noise": 1
+      }
+    },
+    {
+      "base": 0.95,
+      "risky": 0.95,
+      "review": 0.3,
+      "selection": 0.6785801500087214,
+      "escalatedShare": 0.803921568627451,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.3,
+        "partial": 1,
+        "question": 0.3,
+        "wrong_contact": 0.4,
+        "noise": 0.5384615384615384
+      }
+    },
+    {
+      "base": 0.95,
+      "risky": 0.95,
+      "review": 0.4,
+      "selection": 0.6785801500087214,
+      "escalatedShare": 0.7647058823529411,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.3,
+        "partial": 1,
+        "question": 0.3,
+        "wrong_contact": 0.4,
+        "noise": 0.5384615384615384
+      }
+    },
+    {
+      "base": 0.95,
+      "risky": 0.95,
+      "review": 0.5,
+      "selection": 0.6785801500087214,
+      "escalatedShare": 0.7450980392156863,
+      "perClassRecall": {
+        "dispute": 0.8,
+        "claimed_payment": 0.5,
+        "promise_to_pay": 0.3,
+        "partial": 1,
+        "question": 0.3,
+        "wrong_contact": 0.4,
+        "noise": 0.5384615384615384
+      }
+    },
+    {
+      "base": 0.95,
+      "risky": 0.99,
+      "review": 0.3,
+      "selection": 0.45635792778649925,
+      "escalatedShare": 0.803921568627451,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 0.3,
+        "partial": 1,
+        "question": 0.3,
+        "wrong_contact": 0.4,
+        "noise": 0.5384615384615384
+      }
+    },
+    {
+      "base": 0.95,
+      "risky": 0.99,
+      "review": 0.4,
+      "selection": 0.45635792778649925,
+      "escalatedShare": 0.803921568627451,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 0.3,
+        "partial": 1,
+        "question": 0.3,
+        "wrong_contact": 0.4,
+        "noise": 0.5384615384615384
+      }
+    },
+    {
+      "base": 0.95,
+      "risky": 0.99,
+      "review": 0.5,
+      "selection": 0.45635792778649925,
+      "escalatedShare": 0.803921568627451,
+      "perClassRecall": {
+        "dispute": 0,
+        "claimed_payment": 0,
+        "promise_to_pay": 0.3,
+        "partial": 1,
+        "question": 0.3,
+        "wrong_contact": 0.4,
+        "noise": 0.5384615384615384
+      }
+    }
+  ]
+}

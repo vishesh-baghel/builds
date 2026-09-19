@@ -3,14 +3,14 @@ import {
   type ActionResult, type Classified, type Decision, type Escalation,
   type Extracted, type IdempotencyStore, type Pipeline, type RawInput,
 } from "@builds/shared";
-import { LEDGER_AS_OF } from "./clock.js";
-import type { FixtureSet } from "./fixtures/load.js";
-import type { Judgment } from "./jev.js";
-import { DEFAULT_THRESHOLDS, type ClassScores, type Thresholds } from "./policy.js";
-import type { JudgmentState } from "./questions.js";
-import { decidePlan, type Plan } from "./stages/decide.js";
-import { ChaseStore, ITEM_FOR_ACTION } from "./state.js";
-import { REPLY_CLASSES, type ChaseAction, type Invoice, type Reply, type ReplyClass } from "./types.js";
+import { LEDGER_AS_OF } from "./clock";
+import type { FixtureSet } from "./fixtures/load";
+import type { Judgment } from "./jev";
+import { DEFAULT_THRESHOLDS, type ClassScores, type Thresholds } from "./policy";
+import type { JudgmentState } from "./questions";
+import { decidePlan, type Plan } from "./stages/decide";
+import { ChaseStore, ITEM_FOR_ACTION } from "./state";
+import { REPLY_CLASSES, type ChaseAction, type Invoice, type Reply, type ReplyClass } from "./types";
 
 /**
  * The six stages, wired.

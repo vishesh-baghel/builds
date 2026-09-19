@@ -2,15 +2,15 @@ import {
   InMemoryAuditLog, InMemoryIdempotencyStore, InMemorySpendCounter, SpendCap, runPipeline,
   type AuditEntry, type AuditLog, type IdempotencyStore, type PipelineOutcome, type SpendCounter,
 } from "@builds/shared";
-import { LEDGER_AS_OF, parseDay } from "./clock.js";
-import { loadFixtures, type FixtureSet } from "./fixtures/load.js";
-import { judge as callJev, jevClient, type Judgment } from "./jev.js";
-import type { Thresholds } from "./policy.js";
-import type { JudgmentState } from "./questions.js";
-import { ReckonPipeline, type Judge } from "./pipeline.js";
-import type { Plan } from "./stages/decide.js";
-import { ChaseStore } from "./state.js";
-import type { Reply } from "./types.js";
+import { LEDGER_AS_OF, parseDay } from "./clock";
+import { loadFixtures, type FixtureSet } from "./fixtures/load";
+import { judge as callJev, jevClient, type Judgment } from "./jev";
+import type { Thresholds } from "./policy";
+import type { JudgmentState } from "./questions";
+import { ReckonPipeline, type Judge } from "./pipeline";
+import type { Plan } from "./stages/decide";
+import { ChaseStore } from "./state";
+import type { Reply } from "./types";
 
 /**
  * The assembled build. One entry point, two callers: the scorecard harness and the sandbox's

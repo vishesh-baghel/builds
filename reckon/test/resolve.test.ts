@@ -1,7 +1,7 @@
 import { describe, expect, it } from "vitest";
-import { LEDGER_AS_OF } from "../src/clock.js";
-import { parseStatedFigure, resolvePartialAmount } from "../src/resolve/amount.js";
-import { resolvePromiseDate, type DateComponents } from "../src/resolve/date.js";
+import { LEDGER_AS_OF } from "../src/clock";
+import { parseStatedFigure, resolvePartialAmount } from "../src/resolve/amount";
+import { resolvePromiseDate, type DateComponents } from "../src/resolve/date";
 
 /**
  * The ledger date, 2026-10-11, is a Sunday. That is load-bearing for several of these: a

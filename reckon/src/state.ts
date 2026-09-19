@@ -1,4 +1,4 @@
-import type { ChaseAction } from "./types.js";
+import type { ChaseAction } from "./types";
 
 /**
  * Chase state and the work a person is left with.

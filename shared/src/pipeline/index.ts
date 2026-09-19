@@ -1,7 +1,7 @@
 import type {
   ActionResult, Classified, Decision, Escalation, Extracted, RawInput,
-} from "../types.js";
-import type { AuditLog } from "../reliability/audit-log.js";
+} from "../types";
+import type { AuditLog } from "../reliability/audit-log";
 
 /**
  * The six stages. A build supplies an implementation of the five that do work; `runPipeline`

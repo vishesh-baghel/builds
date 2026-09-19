@@ -1,4 +1,4 @@
-import { REPLY_CLASSES, type ReplyClass } from "./types.js";
+import { REPLY_CLASSES, type ReplyClass } from "./types";
 
 /**
  * The policy, in one file, so it reads without reading the pipeline.
@@ -30,19 +30,23 @@ export interface Thresholds {
  *
  * `partial` is **declared, not swept**. The ordinary subset holds only n = 2 `partial` replies,
  * and a threshold fitted to two examples is a number with a decimal point rather than a
- * measurement. It takes the base value and the scorecard says so.
+ * measurement. It is declared equal to the base value the sweep chose for the classes that did
+ * have support, and the scorecard says so rather than letting it pass as swept.
+ *
+ * These are the values the sweep chose on the ordinary 51, committed here. The full sweep is
+ * committed beside them in `runs/sweep.json`.
  */
 export const DEFAULT_THRESHOLDS: Thresholds = {
   act: {
-    dispute: 0.88,
-    claimed_payment: 0.88,
-    promise_to_pay: 0.80,
-    partial: 0.80,
-    question: 0.80,
-    wrong_contact: 0.80,
-    noise: 0.80,
+    dispute: 0.80,
+    claimed_payment: 0.80,
+    promise_to_pay: 0.65,
+    partial: 0.65,
+    question: 0.65,
+    wrong_contact: 0.65,
+    noise: 0.65,
   },
-  review: 0.40,
+  review: 0.50,
 };
 
 /** `partial`'s threshold was not swept. Named so the scorecard can state it rather than imply it. */

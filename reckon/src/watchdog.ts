@@ -1,6 +1,6 @@
-import type { Clock } from "./clock.js";
-import { formatDay } from "./clock.js";
-import { ChaseStore, type WorkItem } from "./state.js";
+import type { Clock } from "./clock";
+import { formatDay } from "./clock";
+import { ChaseStore, type WorkItem } from "./state";
 
 /**
  * The promise watchdog.

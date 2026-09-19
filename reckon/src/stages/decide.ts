@@ -1,11 +1,11 @@
 import {
   assertedFrom, derivePrimary, reviewBandFrom, wantsNoContact,
   type ClassScores, type Thresholds, type TieBreak,
-} from "../policy.js";
-import { resolvePartialAmount, type AmountComponents } from "../resolve/amount.js";
-import { resolvePromiseDate, type DateComponents } from "../resolve/date.js";
-import type { ChaseStatus } from "../state.js";
-import type { ChaseAction, Invoice, ReplyClass } from "../types.js";
+} from "../policy";
+import { resolvePartialAmount, type AmountComponents } from "../resolve/amount";
+import { resolvePromiseDate, type DateComponents } from "../resolve/date";
+import type { ChaseStatus } from "../state";
+import type { ChaseAction, Invoice, ReplyClass } from "../types";
 
 /**
  * The decision: plain TypeScript over the probabilities, the components and the thresholds.

@@ -1,10 +1,10 @@
 import { TypeSafeClient, type SystemOneResult, type Usage } from "@typesafe-ai/sdk";
 import { SpendCap, withRetry, type SpendCounter } from "@builds/shared";
-import { QUESTIONS, type JudgmentState } from "./questions.js";
-import type { ClassScores } from "./policy.js";
-import { REPLY_CLASSES } from "./types.js";
-import type { AmountComponents, AmountFraction, AmountShape } from "./resolve/amount.js";
-import type { DateComponents, PromiseAnchor, PromisePeriod, Weekday } from "./resolve/date.js";
+import { QUESTIONS, type JudgmentState } from "./questions";
+import type { ClassScores } from "./policy";
+import { REPLY_CLASSES } from "./types";
+import type { AmountComponents, AmountFraction, AmountShape } from "./resolve/amount";
+import type { DateComponents, PromiseAnchor, PromisePeriod, Weekday } from "./resolve/date";
 
 /**
  * The one vendor call this build makes.

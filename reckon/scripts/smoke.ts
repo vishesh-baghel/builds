@@ -9,9 +9,9 @@
  */
 import { writeFileSync } from "node:fs";
 import { TypeSafeClient } from "@typesafe-ai/sdk";
-import { loadFixtures } from "../src/fixtures/load.js";
-import { MODEL, costCents } from "../src/jev.js";
-import { QUESTIONS } from "../src/questions.js";
+import { loadFixtures } from "../src/fixtures/load";
+import { MODEL, costCents } from "../src/jev";
+import { QUESTIONS } from "../src/questions";
 
 const RECORD = ["r043", "r011", "r072"];
 

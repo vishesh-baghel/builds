@@ -1,8 +1,8 @@
 import { describe, expect, it, vi } from "vitest";
-import { daysBetween, LEDGER_AS_OF } from "../src/clock.js";
-import { buildFixtureSet, loadFixtures, parseAgingCsv, parseRepliesJsonl } from "../src/fixtures/load.js";
-import { FixtureError } from "../src/fixtures/schema.js";
-import { REPLY_CLASSES } from "../src/types.js";
+import { daysBetween, LEDGER_AS_OF } from "../src/clock";
+import { buildFixtureSet, loadFixtures, parseAgingCsv, parseRepliesJsonl } from "../src/fixtures/load";
+import { FixtureError } from "../src/fixtures/schema";
+import { REPLY_CLASSES } from "../src/types";
 
 const fixtures = loadFixtures();
 

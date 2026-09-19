@@ -1,5 +1,5 @@
 import { choice, noul } from "@typesafe-ai/sdk";
-import { REPLY_CLASSES, type ReplyClass } from "./types.js";
+import { REPLY_CLASSES, type ReplyClass } from "./types";
 
 /**
  * The judgment, in one request per reply.

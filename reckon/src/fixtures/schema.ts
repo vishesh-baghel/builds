@@ -1,5 +1,5 @@
-import { daysBetween, LEDGER_AS_OF, parseDay } from "../clock.js";
-import { isReplyClass, type Invoice, type Reply, type ReplyClass } from "../types.js";
+import { daysBetween, LEDGER_AS_OF, parseDay } from "../clock";
+import { isReplyClass, type Invoice, type Reply, type ReplyClass } from "../types";
 
 /**
  * Validation at the trust boundary between the committed fixtures and everything downstream.

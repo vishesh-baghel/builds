@@ -1,4 +1,4 @@
-import { addDays, formatDay, LEDGER_AS_OF, parseDay } from "../clock.js";
+import { addDays, formatDay, LEDGER_AS_OF, parseDay } from "../clock";
 
 /**
  * Turning what the model saw into a date, in code.

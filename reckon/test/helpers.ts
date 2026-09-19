@@ -1,11 +1,11 @@
 import { InMemoryIdempotencyStore, type IdempotencyStore } from "@builds/shared";
-import { loadFixtures } from "../src/fixtures/load.js";
-import type { Judgment } from "../src/jev.js";
-import type { ClassScores, Thresholds } from "../src/policy.js";
-import { judgmentFromScores } from "../src/pipeline.js";
-import { createReckon, type Reckon } from "../src/run.js";
-import { ChaseStore } from "../src/state.js";
-import { REPLY_CLASSES, type Reply } from "../src/types.js";
+import { loadFixtures } from "../src/fixtures/load";
+import type { Judgment } from "../src/jev";
+import type { ClassScores, Thresholds } from "../src/policy";
+import { judgmentFromScores } from "../src/pipeline";
+import { createReckon, type Reckon } from "../src/run";
+import { ChaseStore } from "../src/state";
+import { REPLY_CLASSES, type Reply } from "../src/types";
 
 /**
  * Test scaffolding for injected probabilities.

@@ -3,9 +3,9 @@ import {
   DEFAULT_THRESHOLDS, TIE_BREAKS, assertedFrom, bandFor, derivePrimary,
   renderHumanTimeEstimate, reviewBandFrom, wantsNoContact, HUMAN_MINUTES_PER_REPLY,
   SECONDARY_CREDIT_EXCLUDES,
-} from "../src/policy.js";
-import { REPLY_CLASSES } from "../src/types.js";
-import { scores } from "./helpers.js";
+} from "../src/policy";
+import { REPLY_CLASSES } from "../src/types";
+import { scores } from "./helpers";
 
 const T = DEFAULT_THRESHOLDS;
 
