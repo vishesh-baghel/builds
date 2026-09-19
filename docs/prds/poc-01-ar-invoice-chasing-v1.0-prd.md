@@ -25,9 +25,9 @@
 > control, reliability primitives — are **not** superseded and remain the reference.
 
 
-> **Scope note.** This PRD covers one build in the `builds` repo. Business truth — offer,
-> prices, ICP, voice, laws — is canonical in a private vault and is deliberately **not**
-> restated here. This repo is public; the PRD carries functional and technical spec only.
+> **Scope note.** This PRD covers one build in the `builds` repo. This repo is public; the
+> PRD carries functional and technical spec only. Anything about the practice rather than the
+> software is canonical in the private research and is not restated here.
 
 ## Requirements Description
 

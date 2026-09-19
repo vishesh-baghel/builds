@@ -59,11 +59,10 @@ The PRD is the tracking surface for this repo: there is no backlog here. Write i
 Acceptance criteria must be **verifiable by a command**, not by opinion. They are the stop
 condition of the whole loop, and an evaluator can only judge what a transcript shows.
 
-**Scope guard, and it is load-bearing: this repo is PUBLIC.** The PRD carries functional and
-technical spec only. Business context — revenue state, client counts, pricing, outreach plans,
-internal priorities, anything about the practice rather than the software — lives in the
-private second-brain vault's backlog task and must not be restated here. When the founder hands
-you a task, take its requirements and leave its business reasoning where it came from.
+**Scope guard, and it is load-bearing: this repo is public.** The PRD carries functional and
+technical spec only. Anything about the practice rather than the software stays in the private
+research and must not be restated here — see `CLAUDE.md` for where the line falls. When the
+founder hands you a task, take its requirements and leave its reasoning where it came from.
 
 Good: "`pnpm --filter reckon test` passes and the audit-log fixture shows
 one entry per decision."

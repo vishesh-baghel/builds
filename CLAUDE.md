@@ -7,35 +7,24 @@ These are the rules the loop skills (`/spec-intake`, `/task-plan`, `/review-pr`,
 against. They describe this repo's engineering spine only. Scope decisions — which workflow
 is worth building, who it is for, what the business claim is — are not settled here.
 
-## This repo is PUBLIC. Write accordingly.
+## This repo is public. Write accordingly.
 
-Peers, AI-product vendors and prospective clients read this repo. Business truth lives in a
-separate private vault and is deliberately not restated here. **Never write any of the
-following into this repo** — not in a PRD, a README, a commit message, a code comment, a
-fixture, or a task note:
+Peers, vendors and prospective clients read this repo. It documents engineering, and only
+engineering. Commercial matters — positioning, pricing, who the work is sold to, how it is
+sold, and any internal planning or targets — live in a separate private vault and are not
+restated here in any form: not in a PRD, a README, a commit message, a code comment, a
+fixture, or a task note. Do not cite the vault by path; say "the private research".
 
-- **Commercial position** — revenue state, client counts, runway, whether the practice is
-  pre-revenue.
-- **Prices, rates, or the offer ladder.**
-- **ICP definitions, target lists, or named prospects.**
-- **Outreach or campaign plans, funnel numbers, reply rates.**
-- **Dated business targets** — revenue dates, cash tests, quarter goals.
-- **Internal operating rules and priorities** — which work outranks which, what is slipping
-  and why.
-- **The site's history of unsourced or fabricated proof.**
-- **Paths into the private vault.** Cite "a private vault" or "the private research", never a
-  filename or directory.
-
-What legitimately belongs here: the workflow being automated, its functional requirements,
-publicly-citable evidence for why it matters (a named survey, a vendor's own published page),
-the measured number and how it was measured, the claim constraints, and all engineering.
+What belongs here: the workflow being automated, its functional requirements,
+publicly-citable evidence for why that workflow matters (a named survey, a vendor's own
+published page), the measured number and how it was measured, the claim constraints, and all
+engineering.
 
 The test before writing anything is not "is this true" — it is **"would I be content for a
-prospective client to read this?"** If a business fact is needed to justify a requirement,
-state the requirement and leave the justification in the vault.
+prospective client to read this?"** If a commercial fact would be needed to justify a
+requirement, state the requirement and leave the justification in the vault.
 
-Git history counts. A passage removed from HEAD but present in an earlier commit is still
-public.
+Git history counts: what is written is written. Keep it out in the first place.
 
 ## Layout
 
@@ -85,6 +74,7 @@ This repo is public and its numbers are the whole point, so:
   build's README.
 - **No client data, client names, or client results** appear here — ever — unless the client
   has consented in writing and is named as the source.
+- Every figure published anywhere carries a source, or it does not get published.
 - A number quoted without a **pre-baselined** counterpart is a demo, not a result. Baseline
   before building, not after. `docs/POC-TEMPLATE.md` has the table.
 - Where reality diverged from the plan, it goes in `docs/VARIANCE-LOG.md`. A build whose

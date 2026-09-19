@@ -80,12 +80,12 @@ failure as no review.
    commands; anything outside it stalls the run silently. If a fresh run reports denials, that
    file is the first place to look.
 4. **The PRD is the tracking surface.** There is no backlog in this repo — it moved to the
-   private second-brain vault, because this repo is public and planning should not be.
+   private research, because this repo is public and planning should not be.
    `/spec-intake` writes `docs/prds/<build-name>-v<n>-prd.md` with `- [ ] #N` acceptance
    criteria; every later stage reads it and `/task-implement` ticks it in place. The PRD sits
    inside the worktree, so it commits with the code that satisfied it.
-5. **Public repo.** The PRD carries functional and technical spec only. Business context lives
-   in the private vault's task and must not be restated here.
+5. **Public repo.** The PRD carries functional and technical spec only. Anything about the
+   practice rather than the software stays in the private research — see `CLAUDE.md`.
 
 ## Running it
 
