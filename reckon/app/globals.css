@@ -154,14 +154,19 @@ p{margin:0}
 /* - policy: horizontal, so there is no third column ------------------ */
 /* The dials stay reachable while you read. They are the one control the whole page turns on,
    and having to scroll back up to reach them is the reason a pinned reply pane looked
-   tempting; pinning 66px of strip is the cheaper answer and leaves one scroll region.
-   `top` matches the bar's height so the two sit flush. */
+   tempting; pinning the strip is the cheaper answer and leaves one scroll region.
+   `top` matches the bar's height so the two sit flush.
+
+   The heights come from `--bar-h` and `--policy-h`, which Sandbox measures and sets. The
+   fallbacks are what those rows were when this was written; anything that has to clear the
+   pinned rows derives from the variables, because the strip is content-sized and its copy
+   rewraps with the viewport, so there is no one number that stays right. */
 .policy{border-bottom:var(--rule) solid var(--color-rule);background:var(--color-paper)}
-/* Pinned only where the strip is a single 66px row. Below 46rem the two dials stack to 119px,
-   which pinned against a 57px bar would hold 39% of a phone screen for controls you are not
-   touching while you read. There you scroll past them like any other page. */
+/* Pinned only above 46rem. Below that the two dials stack, and pinning them against the bar
+   would hold better than a third of a phone screen for controls you are not touching while
+   you read. There you scroll past them like any other page. */
 @media(min-width:46rem){
-  .policy{position:sticky;top:56px;z-index:30;
+  .policy{position:sticky;top:var(--bar-h,56px);z-index:30;
     background:color-mix(in oklch,var(--color-paper) 94%,transparent);
     backdrop-filter:blur(10px)}
 }
@@ -174,6 +179,13 @@ p{margin:0}
   font-variant-numeric:tabular-nums}
 input[type=range]{width:100%;margin-top:2px;accent-color:var(--color-accent);
   background:transparent;cursor:pointer;display:block}
+.dial__help{margin-top:var(--space-2xs);font-size:var(--text-xs);color:var(--color-ink-3);
+  line-height:1.5;text-wrap:pretty}
+.dial__help b{color:var(--color-ink-2);font-weight:500}
+.dial__help .num{font-family:var(--font-mono);color:var(--color-accent)}
+.bands{list-style:none;margin:0;padding:0;font-size:var(--text-xs);color:var(--color-ink-3)}
+.bands li{display:flex;gap:var(--space-xs);align-items:baseline;line-height:1.6}
+.bands .num{flex:none;min-width:7.5rem;font-family:var(--font-mono);color:var(--color-ink-2)}
 .policy__free{font-size:var(--text-sm);color:var(--color-ink-3);white-space:nowrap}
 .policy__free b{font-family:var(--font-mono);font-size:var(--text-xs);letter-spacing:.06em;
   text-transform:uppercase;color:var(--color-pos);font-weight:500}
@@ -185,7 +197,9 @@ input[type=range]{width:100%;margin-top:2px;accent-color:var(--color-accent);
 
 /* rail: the only bordered thing on the page */
 .rail{min-width:0}
-@media(min-width:58rem){.rail{position:sticky;top:calc(56px + 66px + var(--space-md))}}
+@media(min-width:58rem){
+  .rail{position:sticky;top:calc(var(--bar-h,56px) + var(--policy-h,66px) + var(--space-md))}
+}
 .rail__head{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-sm);
   padding-bottom:var(--space-xs);border-bottom:var(--rule) solid var(--color-rule-2);
   color:var(--color-ink-3)}
@@ -197,7 +211,9 @@ input[type=range]{width:100%;margin-top:2px;accent-color:var(--color-accent);
   font-family:var(--font-body);font-size:var(--text-sm)}
 .list{list-style:none;margin:0;padding:0;overflow-y:auto;max-height:15rem;
   border-top:var(--rule) solid var(--color-rule)}
-@media(min-width:58rem){.list{max-height:calc(100vh - 21rem)}}
+@media(min-width:58rem){
+  .list{max-height:calc(100vh - var(--bar-h,56px) - var(--policy-h,66px) - 16.25rem)}
+}
 .list li+li{border-top:var(--rule) solid var(--color-rule)}
 .item{display:block;width:100%;text-align:left;border:0;background:transparent;cursor:pointer;
   padding:var(--space-xs) var(--space-sm) var(--space-xs) var(--space-xs);
@@ -310,6 +326,18 @@ dialog::backdrop{background:var(--color-scrim)}
 .mbody li+li{margin-top:var(--space-2xs)}
 .mbody code{font-family:var(--font-mono);font-size:.86em;background:var(--color-paper-3);
   border-radius:3px;padding:.1em .34em;color:var(--color-ink)}
+.acc{margin-top:var(--space-md)}
+.acc__cap{margin-top:0;font-size:var(--text-sm);color:var(--color-ink-2)}
+.acc__t{width:100%;margin-top:var(--space-xs);border-collapse:collapse;font-size:var(--text-sm)}
+.acc__t th,.acc__t td{text-align:right;padding:var(--space-2xs) var(--space-xs);
+  border-bottom:var(--rule) solid var(--color-rule)}
+.acc__t th:first-child,.acc__t td:first-child{text-align:left;padding-left:0}
+.acc__t th:last-child,.acc__t td:last-child{padding-right:0}
+.acc__t th{font-weight:500;color:var(--color-ink-3);font-size:var(--text-xs);
+  line-height:1.3;vertical-align:bottom}
+.acc__t td.num{font-family:var(--font-mono);font-size:var(--text-xs);color:var(--color-ink-2)}
+.acc__foot{font-size:var(--text-xs);color:var(--color-ink-3);line-height:1.5;text-wrap:pretty}
+.acc__foot b{color:var(--color-ink-2);font-weight:500}
 .mcall{margin-top:var(--space-sm);border-left:2px solid var(--color-accent);
   background:var(--color-accent-soft);border-radius:0 var(--radius-md) var(--radius-md) 0;
   padding:var(--space-sm) var(--space-md)}

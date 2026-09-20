@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { MAX_REPLY_CHARS } from "../lib/limits";
-import { HUMAN_MINUTES_PER_REPLY, type ClassScores, type Thresholds } from "../src/policy";
+import { HUMAN_MINUTES_PER_REPLY, TIE_BREAKS, type ClassScores, type Thresholds } from "../src/policy";
 import type { AmountComponents } from "../src/resolve/amount";
 import type { DateComponents } from "../src/resolve/date";
 import { decidePlan, PLAIN } from "../src/stages/decide";
@@ -23,6 +23,23 @@ import { ReadView } from "./ReadView";
 
 type Judgment = { scores: ClassScores; date: DateComponents; amount: AmountComponents; model: string };
 
+/** One class, as measured on the frozen set at the thresholds this shipped with. */
+export interface AccuracyClass {
+  label: ReplyClass;
+  n: number;
+  precision: number | null;
+  recall: number | null;
+}
+
+export interface AccuracySubset {
+  n: number;
+  classes: AccuracyClass[];
+  errors: number;
+  errorsCaught: number;
+  automated: number;
+  escalated: number;
+}
+
 export interface SandboxProps {
   asOf: string;
   runDate: string;
@@ -30,6 +47,8 @@ export interface SandboxProps {
   invoices: Invoice[];
   replies: Reply[];
   recorded: Record<string, Judgment>;
+  /** Measured by `scoreRun` at build time, never typed by hand into the copy. */
+  accuracy: { ordinary: AccuracySubset; hard: AccuracySubset };
 }
 
 /**
@@ -39,6 +58,38 @@ export interface SandboxProps {
  */
 const RISKY_PREMIUM = 0.15;
 const RISKY: readonly ReplyClass[] = ["dispute", "claimed_payment"];
+
+/**
+ * One dial, both lines.
+ *
+ * Two dials read as the same control twice, and worse than twice: raising the acting line
+ * sends you more work, raising the mention line sends you less, so the same gesture meant
+ * opposite things on two controls that looked identical. What a reader has an opinion about
+ * is the single axis of how much it should do without them, so that is the only thing on
+ * offer, and both lines are derived from it.
+ *
+ * The path bends at `SHIPPED_AT` so that one position reproduces the swept defaults exactly.
+ * That matters: the measured table in the panel is scored at those two numbers, so a dial
+ * that could not land on them would leave the figures describing a setting you cannot pick.
+ */
+const SHIPPED_AT = 0.6;
+
+/** Full caution and full autonomy, found by walking the dial and watching the figures move. */
+const MOST_CAUTIOUS = { act: 0.99, review: 0.10 };
+const MOST_AUTONOMOUS = { act: 0.60, review: 0.60 };
+
+const round2 = (n: number): number => Math.round(n * 100) / 100;
+
+const linesFor = (dial: number, shipped: { act: number; review: number }) => {
+  const below = dial <= SHIPPED_AT;
+  const from = below ? MOST_CAUTIOUS : shipped;
+  const to = below ? shipped : MOST_AUTONOMOUS;
+  const t = below ? dial / SHIPPED_AT : (dial - SHIPPED_AT) / (1 - SHIPPED_AT);
+  return {
+    act: round2(from.act + (to.act - from.act) * t),
+    review: round2(from.review + (to.review - from.review) * t),
+  };
+};
 
 const thresholdsFor = (act: number, review: number): Thresholds => ({
   review,
@@ -52,6 +103,7 @@ const MIN_MINUTES = 1;
 const MAX_MINUTES = 60;
 
 const money = (n: number): string => `$${Math.round(n).toLocaleString("en-US")}`;
+const pct = (value: number | null): string => (value === null ? "-" : `${Math.round(value * 100)}%`);
 const hhmm = (minutes: number): string => {
   const h = Math.floor(minutes / 60);
   const m = minutes % 60;
@@ -66,10 +118,14 @@ const BLANK: Judgment = {
 };
 
 export function Sandbox(props: SandboxProps) {
-  const { asOf, replies, invoices, recorded, runDate } = props;
+  const { asOf, replies, invoices, recorded, runDate, accuracy } = props;
 
-  const [act, setAct] = useState(props.defaults.act);
-  const [review, setReview] = useState(props.defaults.review);
+  const { act: shippedAct, review: shippedReview } = props.defaults;
+  const [dial, setDial] = useState(SHIPPED_AT);
+  const { act, review } = useMemo(
+    () => linesFor(dial, { act: shippedAct, review: shippedReview }),
+    [dial, shippedAct, shippedReview],
+  );
   const [minutes, setMinutes] = useState(HUMAN_MINUTES_PER_REPLY);
   const [filterClass, setFilterClass] = useState("all");
   const [selected, setSelected] = useState("r043");
@@ -82,6 +138,41 @@ export function Sandbox(props: SandboxProps) {
   const [menuOpen, setMenuOpen] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
   const composer = useRef<HTMLTextAreaElement>(null);
+  const bar = useRef<HTMLElement>(null);
+  const strip = useRef<HTMLElement>(null);
+
+  /**
+   * Publish the real height of the two pinned rows, so everything that has to clear them can
+   * be written against a measurement instead of a guess. The rail and the list used to carry
+   * the strip's height as a literal, which meant any edit to the dial copy silently slid the
+   * rail underneath it. The strip is content-sized and rewraps with the viewport, so there is
+   * no number to hardcode correctly.
+   */
+  useEffect(() => {
+    const barEl = bar.current;
+    const stripEl = strip.current;
+    if (!barEl || !stripEl) return;
+
+    const sync = () => {
+      const root = document.documentElement.style;
+      root.setProperty("--bar-h", `${Math.round(barEl.getBoundingClientRect().height)}px`);
+      root.setProperty("--policy-h", `${Math.round(stripEl.getBoundingClientRect().height)}px`);
+    };
+
+    sync();
+
+    // Two signals, because a stale value here does not degrade, it hides the rail behind the
+    // strip. ResizeObserver is the right primitive and catches the copy rewrapping on its own;
+    // the resize listener covers the viewport changing without the element being re-observed.
+    const observer = new ResizeObserver(sync);
+    observer.observe(barEl);
+    observer.observe(stripEl);
+    window.addEventListener("resize", sync);
+    return () => {
+      observer.disconnect();
+      window.removeEventListener("resize", sync);
+    };
+  }, []);
 
   useEffect(() => {
     if (!menuOpen) return;
@@ -128,6 +219,7 @@ export function Sandbox(props: SandboxProps) {
 
     return {
       handled, reachYou, total: handled + reachYou,
+      riskInvoices: atRisk.size,
       risk: [...atRisk].reduce((sum, no) => sum + (byInvoice.get(no)?.openBalance ?? 0), 0),
     };
   }, [replies, plans, byInvoice]);
@@ -223,7 +315,7 @@ export function Sandbox(props: SandboxProps) {
 
         return (
           <>
-            <header className="bar">
+            <header className="bar" ref={bar}>
               <div className="wrap bar__in">
                 <span className="bar__mark">reckon</span>
                 <span className="bar__tag">reads what the customer writes back</span>
@@ -262,8 +354,8 @@ export function Sandbox(props: SandboxProps) {
           <div className="pitch__in">
             <div className="pitch__say">
               <p className="pitch__lead">
-                <b>{figures.handled} of {figures.total}</b> replies are finished without you.
-                The other <b>{figures.reachYou}</b> reach you, already sorted by what they say.
+                <b>{figures.handled} of {figures.total}</b> replies never reach you.
+                The other <b>{figures.reachYou}</b> do, already sorted by what they say.
               </p>
               <p className="pitch__sub">
                 These stand in for the replies that land in your finance inbox after a chasing
@@ -299,7 +391,9 @@ export function Sandbox(props: SandboxProps) {
             </div>
             <div className="fig fig--saved">
               <div className="fig__n">{hhmm(figures.handled * minutes)}</div>
-              <p className="fig__l">of that is <b>handled for you</b>, on replies you never open</p>
+              <p className="fig__l">
+                of that is <b>time you get back</b>, on the {figures.handled} that never reach you
+              </p>
             </div>
             <div className="fig">
               <div className="fig__n">{hhmm(figures.reachYou * minutes)}</div>
@@ -307,34 +401,47 @@ export function Sandbox(props: SandboxProps) {
             </div>
             <div className="fig fig--risk">
               <div className="fig__n">{money(figures.risk)}</div>
-              <p className="fig__l">is owed on replies that <b>argue about the bill or say it was already paid</b></p>
+              <p className="fig__l">
+                is open on the <b>{figures.riskInvoices} of {invoices.length} invoices</b> where
+                somebody is arguing or says they already paid
+              </p>
             </div>
           </div>
         </div>
       </section>
 
-      <section className="policy" aria-label="Policy">
+      <section className="policy" aria-label="Policy" ref={strip}>
         <div className="wrap policy__in">
           <div>
             <div className="dial__top">
-              <label className="dial__name" htmlFor="actRange">How sure it must be to act on its own</label>
-              <span className="dial__val num">{act.toFixed(2)}</span>
+              <label className="dial__name" htmlFor="dialRange">How much it does without you</label>
+              <span className="dial__val num">
+                {dial <= 0.01 ? "nothing" : dial >= 0.99 ? "most it can" : `${Math.round(dial * 100)}%`}
+              </span>
             </div>
             <input
-              id="actRange" type="range" min={0.5} max={0.99} step={0.01} value={act}
-              onChange={(event) => setAct(Number(event.target.value))}
+              id="dialRange" type="range" min={0} max={1} step={0.02} value={dial}
+              onChange={(event) => setDial(Number(event.target.value))}
             />
+            <p className="dial__help">
+              <b>Left:</b> it checks nearly everything with you.{" "}
+              <b>Right:</b> it acts more often and raises fewer maybes.
+            </p>
           </div>
-          <div>
-            <div className="dial__top">
-              <label className="dial__name" htmlFor="revRange">Low enough to flag for you</label>
-              <span className="dial__val num">{review.toFixed(2)}</span>
-            </div>
-            <input
-              id="revRange" type="range" min={0.1} max={0.7} step={0.01} value={review}
-              onChange={(event) => setReview(Number(event.target.value))}
-            />
-          </div>
+          <ul className="bands">
+            <li>
+              <span className="num">{act.toFixed(2)} and up</span>
+              it acts on its own
+            </li>
+            <li>
+              <span className="num">{review.toFixed(2)} to {act.toFixed(2)}</span>
+              it tells you, and does nothing
+            </li>
+            <li>
+              <span className="num">under {review.toFixed(2)}</span>
+              you never hear about it
+            </li>
+          </ul>
         </div>
       </section>
 
@@ -445,7 +552,7 @@ export function Sandbox(props: SandboxProps) {
                     scores={own.judgment.scores}
                     thresholds={thresholds}
                     money={money}
-                    provenance={`read just now by ${own.judgment.model}`}
+                    provenance={`read just now by ${own.judgment.model}, the model that scores the seven questions`}
                     banner={
                       <p className="yours">
                         <b>Your words, read just now.</b> Same seven questions, same settings and
@@ -465,7 +572,10 @@ export function Sandbox(props: SandboxProps) {
                 thresholds={thresholds}
                 money={money}
                 {...(reply.note ? { note: reply.note } : {})}
-                provenance={`read once on ${runDate} by ${judgment.model}, and saved`}
+                provenance={
+                  `read once on ${runDate} by ${judgment.model}, the model that scores the seven `
+                  + "questions, and saved so it is never read twice"
+                }
               />
             ) : null}
           </article>
@@ -500,10 +610,10 @@ export function Sandbox(props: SandboxProps) {
               to send.
             </p>
             <p>
-              <b>That response is the difference.</b> What this produces is not a message. It is a
-              decision: the chasing pauses or stops, a payment query is opened, a part payment is
-              recorded, a promised date is worked out. It writes nothing and it sends nothing.
-              There is no email in it at all.
+              <b>That polite response is exactly what this does not produce.</b> What comes out
+              here is not a message. It is a decision: the chasing pauses or stops, a payment
+              query is opened, a part payment is recorded, a promised date is worked out. It
+              writes nothing and it sends nothing. There is no email in it at all.
             </p>
           </div>
 
@@ -519,13 +629,16 @@ export function Sandbox(props: SandboxProps) {
               question, because a single reply can genuinely be two things at once.
             </li>
             <li>
-              <b>Move the first slider.</b> That is you deciding how certain it has to be before
-              it does anything on its own. Anything below your line comes to you instead.
+              <b>Move the dial.</b> Left, and it checks nearly everything with you. Right, and
+              it handles more alone. It sets two lines as it moves: the score a reading needs
+              before it acts, and the lower score it needs before it will even mention the
+              possibility. Under that second line, nothing is said.
             </li>
           </ol>
           <p>
             Try the ones marked <code>2 things</code>. Those pay part of the bill and argue about
-            the rest. Anything forced to pick a single answer would have thrown one of them away.
+            the rest. A tool that has to pick one answer would have recorded the part payment and
+            lost the argument, or spotted the argument and lost the money.
           </p>
 
           <h3>How to read the seven scores</h3>
@@ -546,14 +659,28 @@ export function Sandbox(props: SandboxProps) {
           <p>
             Two of the seven sit at a higher line than the rest: a reply that argues about the
             bill, and one that claims it was already paid. Those are the two where acting wrongly
-            costs the most, so they have to be more certain before they act on their own.
+            costs the most, so they carry a line{" "}
+            <b>{RISKY_PREMIUM.toFixed(2)} above the other five</b>, wherever the dial sits, and
+            never past 0.99. It shipped with the acting line at {shippedAct.toFixed(2)}, which
+            puts those two at <b>{Math.min(0.99, shippedAct + RISKY_PREMIUM).toFixed(2)}</b>.
           </p>
           <p>
-            Drag the first slider and watch the row of numbers at the top move. Right, and almost
-            everything comes to you. Left, and more is handled without you, with more chance of
+            Drag the dial and watch the row of numbers at the top move. Left, and almost
+            everything comes to you. Right, and more is handled without you, with more chance of
             something being handled wrongly. There is no correct setting. It is your call, and
             the point of showing it is that it is a dial rather than someone else's decision.
           </p>
+
+          <h3>When a reply is two things at once, which one leads</h3>
+          <p>
+            Both still happen: nothing is discarded. But one of them has to lead, and five rules
+            decide which, written while the replies were being labelled rather than afterwards.
+          </p>
+          <ul>
+            {TIE_BREAKS.map((rule) => (
+              <li key={rule.rule}><b>{rule.name}.</b> {rule.because}.</li>
+            ))}
+          </ul>
 
           <h3>Is this just a canned demo?</h3>
           <p>
@@ -585,14 +712,60 @@ export function Sandbox(props: SandboxProps) {
               <b>It does what the text says, not what the text asks.</b> A reply telling it to
               ignore its rules is read as data, like any other reply.
             </li>
+            <li>
+              <b>It never keeps chasing someone who asked it to stop.</b>{" "}
+              <code>remove me</code>, <code>unsubscribe</code>, <code>stop emailing</code>: those
+              are caught by a plain rule in the code, not by the model, so it does not depend on
+              a score being high enough.
+            </li>
           </ul>
 
-          <h3>Where the numbers come from</h3>
+          <h3>What it actually got right</h3>
           <p>
-            The accuracy figures come from running all {replies.length} replies and comparing the
-            answer to the label written beforehand, reported one class at a time. The reading
-            time above is your own estimate, which is why you can change it. It is an estimate,
-            not a measurement, and it is never mixed in with the measured figures.
+            Every one of the {replies.length} replies was read at the settings this shipped with,
+            and the answer compared to the label written beforehand. It is reported one class at
+            a time, with the count beside it: the mix here is lopsided on purpose, so a single
+            overall figure would say more about the mix than about the system. Moving the dial
+            changes what happens on this page. It does not change these.
+          </p>
+          {[
+            { title: "The ordinary replies", subset: accuracy.ordinary },
+            { title: "The deliberately awkward ones", subset: accuracy.hard },
+          ].map(({ title, subset }) => (
+            <div className="acc" key={title}>
+              <p className="acc__cap"><b>{title}</b>, {subset.n} of them</p>
+              <table className="acc__t">
+                <thead>
+                  <tr>
+                    <th>reply type</th>
+                    <th>how many</th>
+                    <th>how many it found</th>
+                    <th>when it said so, right</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {subset.classes.map((c) => (
+                    <tr key={c.label}>
+                      <td>{PLAIN[c.label]}</td>
+                      <td className="num">{c.n}</td>
+                      <td className="num">{pct(c.recall)}</td>
+                      <td className="num">{pct(c.precision)}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+              <p className="acc__foot">
+                It got the leading answer wrong on <b>{subset.errors} of {subset.n}</b>, and of
+                those {subset.errors}, <b>{subset.errorsCaught}</b> were caught by the gate and
+                handed to a person anyway. {subset.automated} closed without a person,{" "}
+                {subset.escalated} reached one. Both are printed because a system that escalated
+                everything would read as perfectly safe and do nothing.
+              </p>
+            </div>
+          ))}
+          <p>
+            The reading time at the top is your own estimate, which is why you can change it. It
+            is an estimate, not a measurement, and it is never mixed in with the figures above.
           </p>
         </div>
       </dialog>
