@@ -272,7 +272,10 @@ dialog::backdrop{background:var(--color-scrim)}
 .mcall p{margin-top:0}
 .mcall p+p{margin-top:var(--space-xs)}
 
-main.wrap{flex:1 1 auto;display:flex;flex-direction:column}
+/* `width:100%` is load-bearing: body is a flex column for the sticky footer, and an auto
+   inline margin on a flex item suppresses the cross-axis stretch, so this box would otherwise
+   shrink to fit its content and sit centred a few pixels in from everything above it. */
+main.wrap{flex:1 1 auto;width:100%;display:flex;flex-direction:column}
 main.wrap>.zones{flex:1 1 auto}
 .foot{margin-top:auto;border-top:var(--rule) solid var(--color-rule);
   padding-block:var(--space-md) var(--space-xl);
