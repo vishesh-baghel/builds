@@ -134,16 +134,19 @@ green as validated; `/validate-local` Step 4 exists for exactly this gap.
 
 ## Deploys
 
-`vercel.json` at the repo root builds one build: it installs the whole workspace and then
-builds that package. It has to run from the root because each build depends on `@builds/shared`
-through `workspace:*`, which an install inside the build's own directory cannot resolve.
+Each build gets its own Vercel project, configured with **Root Directory** set to the build's
+directory and "include source files outside the root directory" left on. That combination is
+what makes a workspace build work: framework detection reads the build's own `package.json`,
+while the install still sees the repo root, which is the only place `workspace:*` can resolve.
 
-When a second build needs its own deploy, this file stops being enough. At that point give each
-build its own Vercel project with a Root Directory and "include files outside the root
-directory", rather than growing this file into a router.
+A `vercel.json` at the repo root does not work for this and was tried: with a Root Directory
+set, Vercel reads `vercel.json` from inside it, and without one the framework detection looks
+at the root `package.json`, finds no framework, and refuses.
 
 Deploy variables are prefixed with the build's name, so one account hosting several builds
-never has them reading each other's keys.
+never has them reading each other's keys. Each build reads its own environment through a single
+module that prefers the prefixed name and falls back to the unprefixed one, so a local clone
+keeps whatever names its vendor SDKs already expect.
 
 ## The loop
 
