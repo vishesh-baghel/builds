@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useMemo, useRef, useState } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { MAX_REPLY_CHARS } from "../lib/limits";
 import { HUMAN_MINUTES_PER_REPLY, type ClassScores, type Thresholds } from "../src/policy";
 import type { AmountComponents } from "../src/resolve/amount";
@@ -79,8 +79,16 @@ export function Sandbox(props: SandboxProps) {
   const [own, setOwn] = useState<{ judgment: Judgment; invoice: string; body: string } | null>(null);
   const [ownError, setOwnError] = useState<string | null>(null);
   const [classifying, setClassifying] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
   const composer = useRef<HTMLTextAreaElement>(null);
+
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (event: KeyboardEvent) => { if (event.key === "Escape") setMenuOpen(false); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
 
   const byInvoice = useMemo(
     () => new Map(invoices.map((invoice) => [invoice.invoiceNo, invoice])),
@@ -193,21 +201,61 @@ export function Sandbox(props: SandboxProps) {
 
   return (
     <>
-      <header className="bar">
-        <div className="wrap bar__in">
-          <span className="bar__mark">reckon</span>
-          <span className="bar__tag">reads what the customer writes back</span>
-          <div className="bar__right">
+      {/* One definition, rendered in the bar on a wide screen and in the drawer on a narrow
+          one. The drawer cannot live inside <header> because the bar carries a backdrop-filter,
+          and that makes it a containing block for position:fixed children: a drawer nested
+          there is laid out inside a 56px bar rather than against the viewport. */}
+      {(() => {
+        const actions = (done?: () => void) => (
+          <>
             <a
               className="btn btn--ghost" href="https://cal.com/vishesh-baghel/15min"
-              target="_blank" rel="noopener noreferrer"
+              target="_blank" rel="noopener noreferrer" onClick={done}
             >Want this on your inbox?</a>
-            <button className="btn btn--primary" type="button" onClick={() => dialog.current?.showModal()}>
+            <button
+              className="btn btn--primary" type="button"
+              onClick={() => { done?.(); dialog.current?.showModal(); }}
+            >
               How it works
             </button>
-          </div>
-        </div>
-      </header>
+          </>
+        );
+
+        return (
+          <>
+            <header className="bar">
+              <div className="wrap bar__in">
+                <span className="bar__mark">reckon</span>
+                <span className="bar__tag">reads what the customer writes back</span>
+                <button
+                  className="burger" type="button" aria-label="Menu" aria-expanded={menuOpen}
+                  aria-controls="barActions" onClick={() => setMenuOpen((open) => !open)}
+                >
+                  <svg width="18" height="14" viewBox="0 0 18 14" aria-hidden="true" focusable="false">
+                    <path d="M1 1h16M1 7h16M1 13h16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+                  </svg>
+                </button>
+                <div className="bar__right">{actions()}</div>
+              </div>
+            </header>
+
+            <div
+              className={`navscrim${menuOpen ? " is-open" : ""}`} aria-hidden="true"
+              onClick={() => setMenuOpen(false)}
+            />
+
+            <nav className={`drawer${menuOpen ? " is-open" : ""}`} id="barActions" aria-label="Menu">
+              <div className="drawer__head">
+                <span className="mono">Menu</span>
+                <button className="btn btn--ghost" type="button" onClick={() => setMenuOpen(false)}>
+                  Close
+                </button>
+              </div>
+              {actions(() => setMenuOpen(false))}
+            </nav>
+          </>
+        );
+      })()}
 
       <section className="pitch" aria-label="What this setting does across every reply">
         <div className="wrap">

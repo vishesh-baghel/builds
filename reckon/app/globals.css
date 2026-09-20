@@ -77,17 +77,34 @@ p{margin:0}
 .btn:active{transform:translateY(1px)}
 
 /* - bar ------------------------------------------------------------- */
+.burger {
+  display: none; margin-left: auto; align-items: center; justify-content: center;
+  width: 40px; height: 40px; padding: 0; flex: none;
+  border: var(--rule) solid var(--color-rule-2); border-radius: var(--radius-md);
+  background: var(--color-paper); color: var(--color-ink-2); cursor: pointer;
+  transition: border-color var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+.burger:hover { border-color: var(--color-accent); color: var(--color-accent); }
+
+.navscrim {
+  position: fixed; inset: 0; z-index: 50; background: var(--color-scrim);
+  opacity: 0; pointer-events: none; transition: opacity var(--dur-fast) var(--ease-out);
+}
+.navscrim.is-open { opacity: 1; pointer-events: auto; }
+
+/* The drawer is a sibling of the bar, not a child, so it anchors to the viewport. */
+.drawer { display: none; }
+
 .bar{position:sticky;top:0;z-index:40;border-bottom:var(--rule) solid var(--color-rule);
   background:color-mix(in oklch,var(--color-paper) 92%,transparent);backdrop-filter:blur(10px)}
-.bar__in{display:flex;align-items:center;gap:var(--space-sm);min-height:56px;flex-wrap:wrap}
+.bar__in{display:flex;align-items:center;gap:var(--space-sm);min-height:56px;flex-wrap:wrap;position:relative}
 .bar__mark{font-family:var(--font-display);font-weight:600;font-size:var(--text-base);
   color:var(--color-ink);letter-spacing:-.02em;white-space:nowrap}
 .bar__tag{font-size:var(--text-sm);color:var(--color-ink-3);white-space:nowrap;
   padding-left:var(--space-sm);border-left:var(--rule) solid var(--color-rule-2)}
 @media(max-width:34rem){.bar__tag{display:none}}
 .bar__right{margin-left:auto;display:flex;align-items:center;gap:var(--space-xs);flex-wrap:wrap}
-@media(max-width:30rem){.bar__right{width:100%;margin-left:0;padding-bottom:var(--space-xs)}
-  .bar__right .btn{flex:1 1 0;min-width:0}}
+
 .spend{display:none;align-items:baseline;gap:var(--space-2xs);color:var(--color-ink-3);
   font-family:var(--font-mono);font-size:var(--text-xs);letter-spacing:.06em;white-space:nowrap}
 @media(min-width:48rem){.spend{display:flex}}
@@ -108,7 +125,7 @@ p{margin:0}
    free field invites typing a number and wondering why nothing moved until blur. */
 .stepper{display:inline-flex;align-items:stretch;border:var(--rule) solid var(--color-rule-2);
   border-radius:var(--radius-sm);background:var(--color-paper);overflow:hidden}
-.stepper__btn{width:28px;min-height:32px;padding:0;border:0;background:transparent;
+.stepper__btn{width:30px;min-height:30px;padding:0;border:0;background:transparent;
   color:var(--color-ink-3);font-family:var(--font-body);font-size:var(--text-base);
   line-height:1;cursor:pointer;
   transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
@@ -118,7 +135,6 @@ p{margin:0}
 .stepper__val{min-width:2.5ch;display:inline-flex;align-items:center;justify-content:center;
   padding-inline:var(--space-2xs);font-family:var(--font-mono);font-size:var(--text-sm);
   color:var(--color-ink);border-inline:var(--rule) solid var(--color-rule-2)}
-@media(max-width:40rem){.stepper__btn{width:36px;min-height:40px}}
 .tagline{font-family:var(--font-mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;
   color:var(--color-warn);border:var(--rule) solid currentColor;border-radius:3px;padding:0 3px;
   white-space:nowrap}
@@ -390,4 +406,71 @@ select option { color: var(--color-ink); background: var(--color-paper); }
 .rail__note {
   padding: var(--space-sm) 0; color: var(--color-ink-3); font-size: var(--text-sm);
   border-top: var(--rule) solid var(--color-rule);
+}
+
+
+/* ─── narrow screens ──────────────────────────────────────────────────
+ * Ported properly this time. The prototype carried a mobile block and only a fragment of it
+ * came across, which is why the sliders were 16px tall on a phone: the one control the whole
+ * page turns on, and it could not be grabbed.
+ */
+@media (max-width: 34rem) {
+  /* The bar keeps one row by moving its actions behind a disclosure rather than by
+     shortening what they say. Two full-width buttons stacked under the mark cost 79px of
+     sticky chrome and read as a second header. */
+  .bar__in { flex-wrap: nowrap; }
+  .burger { display: inline-flex; }
+
+  /* A drawer off the right edge rather than a panel dropped under the bar. The bar keeps its
+     one row and its height, and the actions keep their full wording. */
+  .bar__right { display: none; }
+
+  .drawer {
+    position: fixed; top: 0; right: 0; bottom: 0; z-index: 60;
+    width: min(17rem, 82vw);
+    display: flex; flex-direction: column; align-items: stretch; justify-content: flex-start;
+    gap: var(--space-sm); margin: 0;
+    padding: var(--space-md);
+    background: var(--color-paper);
+    border-left: var(--rule) solid var(--color-rule);
+    box-shadow: var(--shadow-overlay);
+    transform: translateX(100%); visibility: hidden;
+    transition: transform var(--dur-mid) var(--ease-out), visibility var(--dur-mid);
+  }
+  .drawer.is-open { transform: none; visibility: visible; }
+  .drawer .btn { width: 100%; justify-content: center; min-height: 44px; }
+
+  .drawer__head {
+    display: flex; align-items: center; justify-content: space-between;
+    gap: var(--space-sm); padding-bottom: var(--space-sm);
+    border-bottom: var(--rule) solid var(--color-rule); color: var(--color-ink-3);
+  }
+  .drawer__head .btn { width: auto; min-height: 36px; }
+
+  /* The estimate belongs under the sentence it qualifies, not pushed to the far edge. */
+  .pitch__est { margin-left: 0; width: 100%; padding-top: var(--space-xs); }
+
+  /* Four stacked figures pushed the instrument most of a screen down. */
+  .figures { gap: var(--space-sm) var(--space-md);
+    grid-template-columns: repeat(auto-fit, minmax(min(100%, 9rem), 1fr)); }
+  .fig__n { font-size: var(--text-xl); }
+  .fig { padding-left: var(--space-sm); }
+
+  .compose__row .btn { flex: 1 1 auto; }
+  .read__meta { gap: var(--space-2xs) var(--space-sm); }
+}
+
+/* Tap sizing keys off the pointer, not the width. A tablet at 768px is still a thumb, and a
+   narrow desktop window is still a mouse; guessing from width gets both wrong. */
+@media (pointer: coarse) {
+  .btn, .mode, .item { min-height: 44px; }
+  .rail__find select, .compose__row select, select { min-height: 44px; }
+  .bar__right .btn { min-height: 40px; }
+  /* `.mhead .btn` pins 36px to keep the modal header tight; a thumb still needs the room. */
+  .mhead .btn { min-height: 44px; }
+  /* The sliders are the one control the whole page turns on. 16px was the intrinsic height. */
+  input[type="range"] { height: 44px; }
+  /* Wide enough for a thumb, short enough to sit inside a line of 13px text rather than
+     towering over it. It nudges a number by one; it is not a primary action. */
+  .stepper__btn { width: 38px; min-height: 32px; }
 }
