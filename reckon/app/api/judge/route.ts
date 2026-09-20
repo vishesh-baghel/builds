@@ -96,6 +96,11 @@ export async function POST(request: Request): Promise<NextResponse> {
     if (error instanceof SpendCapExceededError) {
       return replay("This month's demo budget is spent. Showing the recorded run instead.", await store.counter.spentCents());
     }
+    // Degrading to the recorded run is the right thing for the visitor and the wrong thing to
+    // do silently: a handler that turns every vendor failure into a clean 200 with no trace
+    // leaves nobody able to tell a cap from an outage from a bad key. The visitor still sees a
+    // notice rather than an error; the operator gets the cause.
+    console.error(`[judge] ${id} fell back to the recorded run:`, error);
     return replay("The vendor did not answer, so this is the recorded judgment.", await store.counter.spentCents());
   }
 }

@@ -111,10 +111,24 @@ green gate proved only that the repo typechecked. reckon ships the repo's first 
 and first `build` script. Its `typecheck` spans both the engine sources and the app's `.tsx`,
 so the root `pnpm -r typecheck` cannot silently skip the UI.
 
-**Note for anyone cloning on macOS or ARM:** vitest 5 runs on rolldown, whose platform binding
-is an optional dependency that pnpm resolves but does not link. `@rolldown/binding-linux-x64-gnu`
-is named directly in `package.json` because CI and Vercel are both linux-x64; on another
-platform, add the binding for yours.
+### Two environment notes
+
+**Cloning on macOS or ARM:** vitest 5 runs on rolldown, whose platform binding is an optional
+dependency that pnpm resolves but does not link. `@rolldown/binding-linux-x64-gnu` is named
+directly in `package.json` because CI and Vercel are both linux-x64; on another platform, add
+the binding for yours.
+
+**The `NODE_OPTIONS` on `dev`, `score` and `smoke`** are not superstition. Node's `fetch`
+(undici) runs Happy Eyeballs by default. On a network whose resolver synthesizes NAT64
+addresses (`64:ff9b::/96`) for A-only hosts while offering no IPv6 route — a VPN will do this —
+it races a dead IPv6 connection against the working IPv4 one and stalls until the request times
+out. `curl` and Node's own `https` module with `family: 4` are both unaffected; only `fetch`
+is. Turning the race off costs nothing on a dual-stack network. Local scripts only: the
+deployed runtime never sees these flags.
+
+When it does happen, the sandbox degrades exactly as designed — recorded judgments behind a
+visible notice, never an error page — and the route logs the cause server-side so an outage,
+a spent cap and a bad key stay distinguishable.
 
 ## Environment
 

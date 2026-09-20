@@ -6,9 +6,9 @@
   "scripts": {
     "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.app.json",
     "test": "vitest run",
-    "score": "tsx --env-file=.env.local scripts/score.ts",
-    "smoke": "tsx --env-file=.env.local scripts/smoke.ts",
-    "dev": "next dev --port 3011",
+    "score": "NODE_OPTIONS='--dns-result-order=ipv4first --no-network-family-autoselection' tsx --env-file=.env.local scripts/score.ts",
+    "smoke": "NODE_OPTIONS='--dns-result-order=ipv4first --no-network-family-autoselection' tsx --env-file=.env.local scripts/smoke.ts",
+    "dev": "NODE_OPTIONS='--dns-result-order=ipv4first --no-network-family-autoselection' next dev --port 3011",
     "build": "next build",
     "start": "next start --port 3011",
     "snapshot": "tsx scripts/snapshot.ts"
