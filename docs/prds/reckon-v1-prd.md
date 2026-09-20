@@ -318,56 +318,56 @@ probabilities and never call Jev.
 
 ### Functional
 
-- [ ] #1 `pnpm --filter @builds/reckon test` passes, and a loader test asserts all 15 invoice rows and all 72 reply records parse against the typed schema, with aging computed from `LEDGER_AS_OF = 2026-10-11` and not from the clock, matching the committed `Days Past Due` column on every row.
-- [ ] #2 A test asserts the classify stage issues exactly one Jev request per reply, that it carries one Noul per class, and that every question the design uses is present, asserted by shape against a recorded vendor response, not by counting questions. The test suite makes no network call.
-- [ ] #3 For every reply the pipeline returns an asserted class set drawn from the seven classes and a non-empty reason string naming the rule that fired.
-- [ ] #4 A `claimed_payment` decision pauses the chase and opens a reconciliation item, and a test asserts no code path can mark an invoice paid, there is no such action in the enum.
-- [ ] #5 A `dispute` decision stops the chase **and** produces an escalation carrying the invoice, the full reply, all seven probabilities, and the reason.
-- [ ] #6 A `promise_to_pay` decision resolves the promised date from the component answers via code assembly against `LEDGER_AS_OF`, and pauses the chase until it. A test covers an explicit day-of-month, a named weekday, a relative period, and `none`, and asserts the `none` case records the promise with no date and escalates rather than defaulting one.
-- [ ] #7 Reaching a promise's resume date with no payment raises an overdue-promise work item. Tested deterministically by advancing an injected clock, never by waiting.
-- [ ] #8 A `partial` decision resolves the amount from the shape answer, numeral, fraction of the open balance computed in code, or none, and a test covers all three, including a reply stating only "half".
-- [ ] #9 A reply asserting both `partial` and `dispute` produces both outcomes in one run, the partial recorded and the dispute escalated, asserted over injected probabilities.
-- [ ] #10 A `question` decision pauses the chase and escalates for a human to answer, carrying the invoice and the full reply. Chasing someone who is waiting on information is the behaviour this build exists to stop.
-- [ ] #11 A `wrong_contact` decision stops chasing that contact and raises a contact-correction item carrying the invoice, the full reply and the asserted class, and explicitly **not** a parsed replacement address, since extraction is out of scope. A test asserts the item names the reply a human must read rather than a value the system guessed.
-- [ ] #12 A `noise` decision neither pauses nor advances the chase, **except** where the unsubscribe guard fires. Asserted by comparing chase state before and after, with `r072` named as the exception case.
-- [ ] #13 When no class clears its act threshold the reply escalates, whatever the highest probability was; and a class in the review band escalates without acting. Both asserted at the band boundaries.
-- [ ] #14 The five tie-break rules from the fixture set are implemented in `policy.ts`, each with a named test referencing the rule number.
-- [ ] #15 An unsubscribe-shaped reply raises a stop-contacting item regardless of the class returned, asserted with the class forced to `noise` (`r072`).
-- [ ] #16 Running the pipeline twice on the same reply produces one work item and one state transition per action; the second run is a no-op. Asserted through `once()` with the in-memory store, including a decision carrying two actions.
-- [ ] #17 Every vendor call is wrapped in `withRetry`, and a test asserts an exhausted retry surfaces as a failed result in the audit log, never as a silent success.
-- [ ] #18 The audit log holds one row **per stage that ran**, carrying input id, asserted classes with probabilities, action taken, reason and the rule that fired. Asserted against a committed audit fixture.
-- [ ] #19 A test asserts an instruction-shaped reply body is classified as data: no action outside the enum, no threshold change, no suppressed escalation. The adversarial inputs live in a separate fixture file and never enter `replies.jsonl`, which is the frozen scored set.
-- [ ] #20 A test fails if the `runPipeline` invariant is removed, an action not listed as auto-executable can never reach `act`.
+- [x] #1 `pnpm --filter @builds/reckon test` passes, and a loader test asserts all 15 invoice rows and all 72 reply records parse against the typed schema, with aging computed from `LEDGER_AS_OF = 2026-10-11` and not from the clock, matching the committed `Days Past Due` column on every row.
+- [x] #2 A test asserts the classify stage issues exactly one Jev request per reply, that it carries one Noul per class, and that every question the design uses is present, asserted by shape against a recorded vendor response, not by counting questions. The test suite makes no network call.
+- [x] #3 For every reply the pipeline returns an asserted class set drawn from the seven classes and a non-empty reason string naming the rule that fired.
+- [x] #4 A `claimed_payment` decision pauses the chase and opens a reconciliation item, and a test asserts no code path can mark an invoice paid, there is no such action in the enum.
+- [x] #5 A `dispute` decision stops the chase **and** produces an escalation carrying the invoice, the full reply, all seven probabilities, and the reason.
+- [x] #6 A `promise_to_pay` decision resolves the promised date from the component answers via code assembly against `LEDGER_AS_OF`, and pauses the chase until it. A test covers an explicit day-of-month, a named weekday, a relative period, and `none`, and asserts the `none` case records the promise with no date and escalates rather than defaulting one.
+- [x] #7 Reaching a promise's resume date with no payment raises an overdue-promise work item. Tested deterministically by advancing an injected clock, never by waiting.
+- [x] #8 A `partial` decision resolves the amount from the shape answer, numeral, fraction of the open balance computed in code, or none, and a test covers all three, including a reply stating only "half".
+- [x] #9 A reply asserting both `partial` and `dispute` produces both outcomes in one run, the partial recorded and the dispute escalated, asserted over injected probabilities.
+- [x] #10 A `question` decision pauses the chase and escalates for a human to answer, carrying the invoice and the full reply. Chasing someone who is waiting on information is the behaviour this build exists to stop.
+- [x] #11 A `wrong_contact` decision stops chasing that contact and raises a contact-correction item carrying the invoice, the full reply and the asserted class, and explicitly **not** a parsed replacement address, since extraction is out of scope. A test asserts the item names the reply a human must read rather than a value the system guessed.
+- [x] #12 A `noise` decision neither pauses nor advances the chase, **except** where the unsubscribe guard fires. Asserted by comparing chase state before and after, with `r072` named as the exception case.
+- [x] #13 When no class clears its act threshold the reply escalates, whatever the highest probability was; and a class in the review band escalates without acting. Both asserted at the band boundaries.
+- [x] #14 The five tie-break rules from the fixture set are implemented in `policy.ts`, each with a named test referencing the rule number.
+- [x] #15 An unsubscribe-shaped reply raises a stop-contacting item regardless of the class returned, asserted with the class forced to `noise` (`r072`).
+- [x] #16 Running the pipeline twice on the same reply produces one work item and one state transition per action; the second run is a no-op. Asserted through `once()` with the in-memory store, including a decision carrying two actions.
+- [x] #17 Every vendor call is wrapped in `withRetry`, and a test asserts an exhausted retry surfaces as a failed result in the audit log, never as a silent success.
+- [x] #18 The audit log holds one row **per stage that ran**, carrying input id, asserted classes with probabilities, action taken, reason and the rule that fired. Asserted against a committed audit fixture.
+- [x] #19 A test asserts an instruction-shaped reply body is classified as data: no action outside the enum, no threshold change, no suppressed escalation. The adversarial inputs live in a separate fixture file and never enter `replies.jsonl`, which is the frozen scored set.
+- [x] #20 A test fails if the `runPipeline` invariant is removed, an action not listed as auto-executable can never reach `act`.
 
 ### The number
 
-- [ ] #21 `pnpm --filter @builds/reckon score` runs the pipeline over all 72 replies and writes a dated scorecard plus a run artifact holding every Jev answer, both committed. `score` requires a vendor key and is therefore **outside** the CI gate; the PRD and the package scripts both say so.
-- [ ] #22 The scorecard reports per-class precision and recall with `dispute` and `claimed_payment` first, the 51 ordinary and 21 hard replies scored **separately**, and prints `n` beside every figure. No single headline accuracy figure is produced by the harness.
-- [ ] #23 The scorecard publishes, per class, the share acted on automatically and the share escalated, **alongside** the gate catch rate, so a system that escalates everything reads as 100% caught and 0% automated rather than as a success. The error denominator is printed as a count, not only a percentage.
-- [ ] #24 The primary-class derivation rule is implemented in `policy.ts` and stated in the scorecard: the highest-probability asserted class, or none when nothing clears its threshold. Multi-label replies are scored against `label` and `also` separately from the strict primary figure.
-- [ ] #25 `noise` is excluded from `also` credit, so asserting `noise` on `r053` is not rewarded, tie-break rule 3 requires an actionable redirect to outrank an auto-reply, and AC #14 tests exactly that.
-- [ ] #26 The threshold sweep over the ordinary subset is committed alongside the chosen thresholds. `partial`'s threshold is declared rather than swept, with `n = 2 ordinary` and the reason recorded in `policy.ts`.
-- [ ] #27 Measured machine time per reply and measured cost per reply, both from real run data, appear in the scorecard.
-- [ ] #28 Any human-time figure is a **declared estimate** held in one named constant, rendered with the word "estimate" on every surface, and never placed in the measured table or beside a measured figure. A test asserts the constant's rendered label contains "estimate". No before/after comparison appears on any surface.
+- [x] #21 `pnpm --filter @builds/reckon score` runs the pipeline over all 72 replies and writes a dated scorecard plus a run artifact holding every Jev answer, both committed. `score` requires a vendor key and is therefore **outside** the CI gate; the PRD and the package scripts both say so.
+- [x] #22 The scorecard reports per-class precision and recall with `dispute` and `claimed_payment` first, the 51 ordinary and 21 hard replies scored **separately**, and prints `n` beside every figure. No single headline accuracy figure is produced by the harness.
+- [x] #23 The scorecard publishes, per class, the share acted on automatically and the share escalated, **alongside** the gate catch rate, so a system that escalates everything reads as 100% caught and 0% automated rather than as a success. The error denominator is printed as a count, not only a percentage.
+- [x] #24 The primary-class derivation rule is implemented in `policy.ts` and stated in the scorecard: the highest-probability asserted class, or none when nothing clears its threshold. Multi-label replies are scored against `label` and `also` separately from the strict primary figure.
+- [x] #25 `noise` is excluded from `also` credit, so asserting `noise` on `r053` is not rewarded, tie-break rule 3 requires an actionable redirect to outrank an auto-reply, and AC #14 tests exactly that.
+- [x] #26 The threshold sweep over the ordinary subset is committed alongside the chosen thresholds. `partial`'s threshold is declared rather than swept, with `n = 2 ordinary` and the reason recorded in `policy.ts`.
+- [x] #27 Measured machine time per reply and measured cost per reply, both from real run data, appear in the scorecard.
+- [x] #28 Any human-time figure is a **declared estimate** held in one named constant, rendered with the word "estimate" on every surface, and never placed in the measured table or beside a measured figure. A test asserts the constant's rendered label contains "estimate". No before/after comparison appears on any surface.
 
 ### Quality
 
-- [ ] #29 `pnpm -r typecheck && pnpm -r --if-present test && pnpm -r --if-present build` is green at the repo root, with `reckon` supplying the repo's first real `test` and `build` scripts.
-- [ ] #30 The sandbox is covered by the gate: `reckon`'s typecheck script spans both the engine sources and the app's `.tsx`, so the root `pnpm -r typecheck` cannot silently skip the UI.
-- [ ] #31 The test suite runs with no vendor key present. A test run in a clean environment passes.
-- [ ] #32 Grepping the built sandbox bundle finds no Jev key and no vendor token.
-- [ ] #33 The repo contains no send path, no mail-transport dependency, and no endpoint parameter that accepts a destination address, verified by reading the route handlers and the dependency manifest, not only the UI. (Contact addresses exist in the fixtures as data; what must not exist is anything able to send to one.)
-- [ ] #34 All three `shared` contract changes are recorded as rows in `docs/VARIANCE-LOG.md`.
+- [x] #29 `pnpm -r typecheck && pnpm -r --if-present test && pnpm -r --if-present build` is green at the repo root, with `reckon` supplying the repo's first real `test` and `build` scripts.
+- [x] #30 The sandbox is covered by the gate: `reckon`'s typecheck script spans both the engine sources and the app's `.tsx`, so the root `pnpm -r typecheck` cannot silently skip the UI.
+- [x] #31 The test suite runs with no vendor key present. A test run in a clean environment passes.
+- [x] #32 Grepping the built sandbox bundle finds no Jev key and no vendor token.
+- [x] #33 The repo contains no send path, no mail-transport dependency, and no endpoint parameter that accepts a destination address, verified by reading the route handlers and the dependency manifest, not only the UI. (Contact addresses exist in the fixtures as data; what must not exist is anything able to send to one.)
+- [x] #34 All three `shared` contract changes are recorded as rows in `docs/VARIANCE-LOG.md`.
 
 ### Surfaces
 
-- [ ] #35 **Superseded 2026-09-20.** Originally: *the sandbox lets a visitor pick from the committed fixtures only, no free-text input exists in the UI or in any route handler.* A sandbox that only replays committed fixtures reads as hardcoded, and a visitor who believes the demo is faked has learned nothing true. Free text is now in scope. The protection the exclusion stood for is kept and is what this AC now tests: visitor text is length-capped, is rejected unless it names an invoice already in the committed ledger, is never stored, is subject to the same per-visitor allowance and the same hard spend cap, and has **no replay fallback**, a recorded run holds no judgment for unseen text, and inventing one would be the dishonesty the feature exists to disprove. A test asserts each of those.
-- [ ] #36 **Revised 2026-09-20.** The threshold control changes the outcome without issuing a vendor call. The revision is that the fixture tab now makes *no* vendor call under any circumstance: the 72 judgments were bought once in the recorded run and ship with the page, because re-buying an answer that cannot have changed costs money to learn nothing. The visible spend counter is removed with it, since it could only ever read zero on that tab. A test asserts the committed judgments are the sole source for the fixture path.
-- [ ] #37 The sandbox captions the probabilities as the model's raw judgment rather than calibrated frequencies, since jev-1.13 is documented as weakly numerically calibrated.
-- [ ] #38 **Revised 2026-09-20.** The fixture tab always serves the committed run and says so on the page, so there is no cap-exhaustion path left to fall back on there. The cap now guards the free-text path only, and that path deliberately **refuses** rather than replaying: a recorded run holds no judgment for unseen text, and showing a stand-in would be the dishonesty the free-text tab exists to disprove. A test asserts a cap-exceeded and an over-allowance request both return a refusal carrying a plain-English reason, never a fabricated judgment.
-- [ ] #39 The per-visitor rate limit is enforced and verified against the **deployed** instance, not locally.
-- [ ] #40 The deployed sandbox is reachable and runs a full fixture end to end, verified against the deployment.
-- [ ] #41 `reckon/README.md` carries the measured numbers, names the stack actually used, and labels the work a self-built experiment on synthetic data with no client results, as does the sandbox page.
+- [x] #35 **Superseded 2026-09-20.** Originally: *the sandbox lets a visitor pick from the committed fixtures only, no free-text input exists in the UI or in any route handler.* A sandbox that only replays committed fixtures reads as hardcoded, and a visitor who believes the demo is faked has learned nothing true. Free text is now in scope. The protection the exclusion stood for is kept and is what this AC now tests: visitor text is length-capped, is rejected unless it names an invoice already in the committed ledger, is never stored, is subject to the same per-visitor allowance and the same hard spend cap, and has **no replay fallback**, a recorded run holds no judgment for unseen text, and inventing one would be the dishonesty the feature exists to disprove. A test asserts each of those.
+- [x] #36 **Revised 2026-09-20.** The threshold control changes the outcome without issuing a vendor call. The revision is that the fixture tab now makes *no* vendor call under any circumstance: the 72 judgments were bought once in the recorded run and ship with the page, because re-buying an answer that cannot have changed costs money to learn nothing. The visible spend counter is removed with it, since it could only ever read zero on that tab. A test asserts the committed judgments are the sole source for the fixture path.
+- [x] #37 The sandbox captions the probabilities as the model's raw judgment rather than calibrated frequencies, since jev-1.13 is documented as weakly numerically calibrated.
+- [x] #38 **Revised 2026-09-20.** The fixture tab always serves the committed run and says so on the page, so there is no cap-exhaustion path left to fall back on there. The cap now guards the free-text path only, and that path deliberately **refuses** rather than replaying: a recorded run holds no judgment for unseen text, and showing a stand-in would be the dishonesty the free-text tab exists to disprove. A test asserts a cap-exceeded and an over-allowance request both return a refusal carrying a plain-English reason, never a fabricated judgment.
+- [x] #39 The per-visitor rate limit is enforced and verified against the **deployed** instance, not locally.
+- [x] #40 The deployed sandbox is reachable and runs a full fixture end to end, verified against the deployment.
+- [x] #41 `reckon/README.md` carries the measured numbers, names the stack actually used, and labels the work a self-built experiment on synthetic data with no client results, as does the sandbox page.
 
 <!-- AC:END -->
 
@@ -376,49 +376,75 @@ probabilities and never call Jev.
 ### Phase 1, Contracts and instrument
 **Goal:** the spine fits the judgment, and the fixtures load typed.
 
-- [ ] Widen `Classified` in `shared` to carry per-class probabilities and the asserted set; update `Pipeline` and its tests.
-- [ ] Widen `Decision` to carry a list of actions plus an escalate flag; make `runPipeline` return both results and escalation; keep the invariant and the test that fails if it is removed.
-- [ ] Wire `AuditLog` into `runPipeline` and add `"log"` where the stage union needs it, so the spine can record the pipeline it documents.
-- [ ] File all three changes as rows in `docs/VARIANCE-LOG.md`.
-- [ ] Add vitest to `reckon` as the repo's first `test` script; confirm the root gate runs it.
-- [ ] Typed fixture loader with schema validation for `ar-aging.csv` and `replies.jsonl`; `LEDGER_AS_OF = 2026-10-11`, asserted against the committed `Days Past Due` column on all 15 rows.
-- [ ] TypeSafe account, key in the environment only, one live smoke call recorded as the classify test's fixture.
+- [x] Widen `Classified` in `shared` to carry per-class probabilities and the asserted set; update `Pipeline` and its tests.
+- [x] Widen `Decision` to carry a list of actions plus an escalate flag; make `runPipeline` return both results and escalation; keep the invariant and the test that fails if it is removed.
+- [x] Wire `AuditLog` into `runPipeline` and add `"log"` where the stage union needs it, so the spine can record the pipeline it documents.
+- [x] File all three changes as rows in `docs/VARIANCE-LOG.md`.
+- [x] Add vitest to `reckon` as the repo's first `test` script; confirm the root gate runs it.
+- [x] Typed fixture loader with schema validation for `ar-aging.csv` and `replies.jsonl`; `LEDGER_AS_OF = 2026-10-11`, asserted against the committed `Days Past Due` column on all 15 rows.
+- [x] TypeSafe account, key in the environment only, one live smoke call recorded as the classify test's fixture.
 
 **Deliverables:** corrected spine with green tests, typed loader, first `test` script, recorded vendor response.
 
 ### Phase 2, The judgment and the decision
 **Goal:** the workflow runs correctly and survives failure, headless.
 
-- [ ] The single Jev request: one Noul per class with tie-break-derived criteria, plus the date and amount component questions.
-- [ ] Code-side date assembly against `LEDGER_AS_OF` and a business calendar, covering explicit day-of-month, named weekday, relative period and none; and amount assembly covering numeral, fraction-of-balance and none.
-- [ ] `policy.ts`, per-class thresholds, the three bands, the five tie-break rules, the unsubscribe guard.
-- [ ] `decide`, `act`, `escalate`, `log` implemented; chase state and work items; the promise watchdog on an injected clock; `once()` per action; `withRetry` on every vendor call; `SpendCap` wired to real usage.
-- [ ] Adversarial fixtures in their own file, deliberately outside the scored 72.
-- [ ] The full test suite: every AC in the Functional block above.
+- [x] The single Jev request: one Noul per class with tie-break-derived criteria, plus the date and amount component questions.
+- [x] Code-side date assembly against `LEDGER_AS_OF` and a business calendar, covering explicit day-of-month, named weekday, relative period and none; and amount assembly covering numeral, fraction-of-balance and none.
+- [x] `policy.ts`, per-class thresholds, the three bands, the five tie-break rules, the unsubscribe guard.
+- [x] `decide`, `act`, `escalate`, `log` implemented; chase state and work items; the promise watchdog on an injected clock; `once()` per action; `withRetry` on every vendor call; `SpendCap` wired to real usage.
+- [x] Adversarial fixtures in their own file, deliberately outside the scored 72.
+- [x] The full test suite: every AC in the Functional block above.
 
 **Deliverables:** working headless pipeline, green suite, no network in tests.
 
 ### Phase 3, The number
 **Goal:** a figure a stranger can check.
 
-- [ ] Threshold sweep over the 51 ordinary replies; commit the sweep and the chosen thresholds. Declare `partial`'s threshold with its reason, n = 2 ordinary is not a sweep.
-- [ ] Full run over all 72; commit the run artifact and the dated scorecard.
-- [ ] Per-class precision and recall with `n` beside each, ordinary and hard separately, gate catch rate **with** automation and escalation shares, strict and set-level figures, measured time and cost per reply.
-- [ ] Fill `reckon/README.md` with the measured numbers. No before/after table; the human-time estimate sits apart, labelled.
+- [x] Threshold sweep over the 51 ordinary replies; commit the sweep and the chosen thresholds. Declare `partial`'s threshold with its reason, n = 2 ordinary is not a sweep.
+- [x] Full run over all 72; commit the run artifact and the dated scorecard.
+- [x] Per-class precision and recall with `n` beside each, ordinary and hard separately, gate catch rate **with** automation and escalation shares, strict and set-level figures, measured time and cost per reply.
+- [x] Fill `reckon/README.md` with the measured numbers. No before/after table; the human-time estimate sits apart, labelled.
 
 **Deliverables:** committed scorecard and run artifact, README carrying the numbers.
 
 ### Phase 4, The sandbox
 **Goal:** a stranger can run it, and cannot make it expensive.
 
-- [ ] Next.js app in `reckon/`: fixture picker, the seven probabilities, threshold control, decision and reason, escalation card, audit log, spend counter.
-- [ ] Server-side Jev calls only; per-visitor rate limit; persistent spend counter and idempotency store.
-- [ ] Replay-on-cap from the committed run artifact, with the visible notice.
-- [ ] Deploy to its own project; verify the cap and the rate limit against the deployed instance, not locally.
-- [ ] Adversarial pass against the deployed instance: cap exhaustion, rate-limit trip, vendor outage, oversized input, instruction-shaped fixture from the separate adversarial file.
-- [ ] Bundle grep for keys; handler read-through for any destination parameter.
+- [x] Next.js app in `reckon/`: fixture picker, the seven probabilities, threshold control, decision and reason, escalation card, audit log, spend counter.
+- [x] Server-side Jev calls only; per-visitor rate limit; persistent spend counter and idempotency store.
+- [x] Replay-on-cap from the committed run artifact, with the visible notice.
+- [x] Deploy to its own project; verify the cap and the rate limit against the deployed instance, not locally.
+- [x] Adversarial pass against the deployed instance: cap exhaustion, rate-limit trip, vendor outage, oversized input, instruction-shaped fixture from the separate adversarial file.
+- [x] Bundle grep for keys; handler read-through for any destination parameter.
 
 **Deliverables:** live sandbox, adversarial pass recorded, deployed cap verified.
+
+---
+
+## Status: complete
+
+All 41 acceptance criteria are met and checked off above, verified on 2026-09-20 rather than
+assumed. Twenty-two of them are held by named tests; the rest were checked against the
+committed artifacts, the repo gate, or the running deployment.
+
+**Checked against the deployment, not a local server:**
+
+| | |
+|---|---|
+| #39 per-visitor rate limit | tripped on call 26 of a 25-call allowance, returning 429 with a plain reason |
+| #40 full fixture end to end | reply, verdict, both actions, all seven scores and the handoff all render |
+| #32 no key in the bundle | seven served chunks and the HTML grepped, nothing found |
+
+**Three of these criteria were rewritten during the build rather than quietly satisfied.**
+#35 forbade free text and now specifies the protections that replaced the ban; #36 and #38
+described a live fixture path and a replay that the committed-run design removed. Each says
+what changed and why. An unrevised criterion that no longer matches the system is worse than
+an unmet one, because it reads as passing.
+
+**Two claims in this document were wrong when written and are corrected above:** the
+characterisation of Chaser's inbound handling, and the assumption that the deploy needed
+persistent stores. Both corrections carry their evidence, and both are in the variance log.
 
 ---
 

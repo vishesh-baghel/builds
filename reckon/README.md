@@ -37,6 +37,11 @@ is no mail dependency, no send path, and no endpoint anywhere that accepts a des
 A self-built experiment on **synthetic data**. The firm, the customers, the fifteen invoices and
 all seventy-two replies are invented. **No client data, no client names, no client results.**
 
+**The stack**, so nothing has to be guessed from the lockfile: TypeScript on Node 20 in a pnpm
+workspace; judgment from TypeSafe's `jev-1.13` through `@typesafe-ai/sdk`; the sandbox is
+Next.js 16 and React 19 on Vercel; tests are vitest; optional persistence is Turso through
+`@tursodatabase/serverless`. No Tailwind, no component library, no ORM, no mail vendor.
+
 A debtor reply arrives. The six stages from `@builds/shared` run: the reply is joined to its
 invoice, judged across seven classes, decided on deterministically, applied as chase-state
 changes and work items, handed to a person where a person is needed, and written to an audit
