@@ -132,6 +132,19 @@ ships a test script, those two steps pass without proving anything, a green gate
 "it typechecks", no more. The first build to ship tests should say so in its PR. Do not read
 green as validated; `/validate-local` Step 4 exists for exactly this gap.
 
+## Deploys
+
+`vercel.json` at the repo root builds one build: it installs the whole workspace and then
+builds that package. It has to run from the root because each build depends on `@builds/shared`
+through `workspace:*`, which an install inside the build's own directory cannot resolve.
+
+When a second build needs its own deploy, this file stops being enough. At that point give each
+build its own Vercel project with a Root Directory and "include files outside the root
+directory", rather than growing this file into a router.
+
+Deploy variables are prefixed with the build's name, so one account hosting several builds
+never has them reading each other's keys.
+
 ## The loop
 
 `docs/LOOP-RUNBOOK.md` explains how a request becomes a reviewed PR without a human driving
