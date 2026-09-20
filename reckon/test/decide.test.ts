@@ -216,7 +216,7 @@ describe("the gate degrades toward a person, AC #13", () => {
     expect(plan.asserted).toEqual(["noise"]);
     expect(plan.review).toContain("dispute");
     expect(outcome.results).toEqual([]);
-    expect(outcome.escalation?.reason).toContain("review band");
+    expect(outcome.escalation?.reason).toContain("between the two lines");
   });
 
   it("acts at exactly the act threshold and only escalates a hair below it", async () => {

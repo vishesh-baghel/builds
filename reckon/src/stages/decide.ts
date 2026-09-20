@@ -196,7 +196,11 @@ export function decidePlan(input: DecideInput): Plan {
     handoffs.push("Nothing cleared its threshold, so a person reads this one.");
   }
   for (const label of review) {
-    handoffs.push(`It might be a reply that ${PLAIN[label]}, but only at ${scores[label].toFixed(2)}.`);
+    handoffs.push(
+      `It might also be a reply that ${PLAIN[label]}. That reading got ${scores[label].toFixed(2)} `
+      + `and needs ${thresholds.act[label].toFixed(2)} to be acted on, so it is flagged for you `
+      + "rather than acted on.",
+    );
   }
 
   return {
@@ -222,9 +226,13 @@ export function composeReason(
 
   if (tieBreak) parts.push(`led by rule ${tieBreak.rule} (${tieBreak.name})`);
   if (review.length > 0) {
-    parts.push(`with ${review.length} more possibilit${review.length === 1 ? "y" : "ies"} in the review band`);
+    parts.push(
+      `with ${review.length} more reading${review.length === 1 ? "" : "s"} between the two lines, `
+      + "close enough to mention and not close enough to act on");
   }
-  if (guardFired) parts.push("and a stop-contacting request caught by the code guard");
+  if (guardFired) {
+    parts.push("and a request not to be contacted, caught by a rule in the code rather than by a score");
+  }
 
   return `${parts.join(", ")}.`;
 }

@@ -48,7 +48,7 @@ export function ReadView(props: ReadViewProps) {
           ? <>Not sure enough about this one, so <b>a person gets it</b>.</>
           : <>Read as {plan.asserted.map((label, index) => (
               <span key={label}>{index > 0 ? " and " : ""}<b>{PLAIN[label]}</b></span>
-            ))}{plan.tieBreak ? `, led by ${plan.tieBreak.name}` : ""}.</>}
+            ))}{plan.tieBreak ? `, led by the rule that ${plan.tieBreak.name}` : ""}.</>}
       </p>
 
       {plan.effects.length > 0 && (
@@ -70,8 +70,8 @@ export function ReadView(props: ReadViewProps) {
           <h3>Handed to a person</h3>
           <ul>{plan.handoffs.map((line) => <li key={line}>{line}</li>)}</ul>
           <p>
-            Invoice {invoice.invoiceNo}, the full message and every score go with it, so nobody
-            re-reads the mailbox.
+            Invoice {invoice.invoiceNo}, the full message and every score go with it, so the
+            person picking this up never has to go back to the inbox to work out what happened.
           </p>
         </div>
       )}
@@ -118,7 +118,7 @@ export function ReadView(props: ReadViewProps) {
           ))}
           {plan.handoffs.length > 0 && (
             <li><span className="mono">escalate</span><span>
-              {plan.handoffs.length} reason(s), full reply attached
+              {plan.handoffs.length} {plan.handoffs.length === 1 ? "reason" : "reasons"}, full reply attached
             </span></li>
           )}
           <li><span className="mono">source</span><span>{props.provenance}</span></li>

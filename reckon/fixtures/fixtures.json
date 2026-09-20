@@ -659,7 +659,7 @@
         "dispute"
       ],
       "hard": true,
-      "note": "Pays part and contests the rest. Partial by the tie-break; the dispute must still route to a human."
+      "note": "Pays part and contests the rest. Paying leads because it scored highest, and the dispute still routes to a human."
     },
     {
       "id": "r044",
