@@ -1,3 +1,5 @@
+import { Analytics } from "@vercel/analytics/next";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 import type { Metadata } from "next";
 import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
@@ -15,7 +17,15 @@ export const metadata: Metadata = {
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en" className={`${display.variable} ${body.variable} ${mono.variable}`}>
-      <body>{children}</body>
+      <body>
+        {children}
+        {/* Vercel's own analytics: cookieless, no cross-site identifier, page-level counts
+            only. Enabled on the project already; without these two it was collecting
+            nothing, which is the failure mode worth naming, since a dashboard that is on but
+            empty reads as "nobody visited" rather than "not wired up". */}
+        <Analytics />
+        <SpeedInsights />
+      </body>
     </html>
   );
 }
