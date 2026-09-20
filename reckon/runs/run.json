@@ -1,0 +1,1949 @@
+{
+  "date": "2026-09-19",
+  "judgments": {
+    "r001": {
+      "scores": {
+        "claimed_payment": 0.87,
+        "promise_to_pay": 0.07,
+        "partial": 0.32,
+        "dispute": 0.13,
+        "question": 0.3,
+        "wrong_contact": 0.37,
+        "noise": 0.1
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 2000,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008400000000000001,
+      "elapsedMs": 3599.064585
+    },
+    "r002": {
+      "scores": {
+        "claimed_payment": 0.89,
+        "promise_to_pay": 0.11,
+        "partial": 0.5,
+        "dispute": 0.05,
+        "question": 0.08,
+        "wrong_contact": 0.02,
+        "noise": 0.08
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "friday",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 2006,
+        "output_tokens": 429
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0084252,
+      "elapsedMs": 2466.082802
+    },
+    "r003": {
+      "scores": {
+        "claimed_payment": 0.89,
+        "promise_to_pay": 0.06,
+        "partial": 0.18,
+        "dispute": 0.32,
+        "question": 0.31,
+        "wrong_contact": 0.05,
+        "noise": 0.05
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1995,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008379,
+      "elapsedMs": 470.0659089999999
+    },
+    "r004": {
+      "scores": {
+        "claimed_payment": 0.98,
+        "promise_to_pay": 0.02,
+        "partial": 0.47,
+        "dispute": 0.03,
+        "question": 0.1,
+        "wrong_contact": 0.02,
+        "noise": 0.03
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1993,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083706,
+      "elapsedMs": 513.0281800000002
+    },
+    "r005": {
+      "scores": {
+        "claimed_payment": 0.29,
+        "promise_to_pay": 0.19,
+        "partial": 0.08,
+        "dispute": 0.09,
+        "question": 0.21,
+        "wrong_contact": 0.04,
+        "noise": 0.41
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1987,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008345400000000001,
+      "elapsedMs": 652.2712569999994
+    },
+    "r006": {
+      "scores": {
+        "claimed_payment": 0.49,
+        "promise_to_pay": 0.05,
+        "partial": 0.19,
+        "dispute": 0.1,
+        "question": 0.11,
+        "wrong_contact": 0.08,
+        "noise": 0.31
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1982,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083244,
+      "elapsedMs": 741.3698200000008
+    },
+    "r007": {
+      "scores": {
+        "claimed_payment": 0.97,
+        "promise_to_pay": 0.03,
+        "partial": 0.25,
+        "dispute": 0.35,
+        "question": 0.13,
+        "wrong_contact": 0.03,
+        "noise": 0.04
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 2004,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0084168,
+      "elapsedMs": 649.8717459999989
+    },
+    "r008": {
+      "scores": {
+        "claimed_payment": 0.87,
+        "promise_to_pay": 0.12,
+        "partial": 0.48,
+        "dispute": 0.13,
+        "question": 0.17,
+        "wrong_contact": 0.06,
+        "noise": 0.12
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "next_payment_run"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1988,
+        "output_tokens": 430
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083496,
+      "elapsedMs": 708.1681799999988
+    },
+    "r009": {
+      "scores": {
+        "claimed_payment": 0.98,
+        "promise_to_pay": 0.02,
+        "partial": 0.34,
+        "dispute": 0.03,
+        "question": 0.07,
+        "wrong_contact": 0.02,
+        "noise": 0.03
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1993,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083706,
+      "elapsedMs": 755.1227280000003
+    },
+    "r010": {
+      "scores": {
+        "claimed_payment": 0.94,
+        "promise_to_pay": 0.11,
+        "partial": 0.33,
+        "dispute": 0.08,
+        "question": 0.61,
+        "wrong_contact": 0.02,
+        "noise": 0.06
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 2005,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008421,
+      "elapsedMs": 586.5967330000003
+    },
+    "r011": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.97,
+        "partial": 0.9,
+        "dispute": 0.25,
+        "question": 0.37,
+        "wrong_contact": 0.02,
+        "noise": 0.03
+      },
+      "date": {
+        "anchor": "relative_period",
+        "weekday": "none",
+        "period": "end_of_next_month"
+      },
+      "amount": {
+        "shape": "fraction_of_balance",
+        "fraction": "half"
+      },
+      "usage": {
+        "input_tokens": 1998,
+        "output_tokens": 434
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083916,
+      "elapsedMs": 554.1044770000008
+    },
+    "r012": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.92,
+        "partial": 0.07,
+        "dispute": 0.04,
+        "question": 0.1,
+        "wrong_contact": 0.02,
+        "noise": 0.07
+      },
+      "date": {
+        "anchor": "day_of_month",
+        "weekday": "none",
+        "period": "next_payment_run"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1996,
+        "output_tokens": 432
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083832,
+      "elapsedMs": 795.2703459999993
+    },
+    "r013": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.97,
+        "partial": 0.07,
+        "dispute": 0.03,
+        "question": 0.11,
+        "wrong_contact": 0.02,
+        "noise": 0.05
+      },
+      "date": {
+        "anchor": "weekday",
+        "weekday": "friday",
+        "period": "this_week"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1990,
+        "output_tokens": 430
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008358,
+      "elapsedMs": 2283.679189999999
+    },
+    "r014": {
+      "scores": {
+        "claimed_payment": 0.01,
+        "promise_to_pay": 0.94,
+        "partial": 0.04,
+        "dispute": 0.05,
+        "question": 0.63,
+        "wrong_contact": 0.02,
+        "noise": 0.03
+      },
+      "date": {
+        "anchor": "day_of_month",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 2006,
+        "output_tokens": 430
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0084252,
+      "elapsedMs": 1329.7760450000005
+    },
+    "r015": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.95,
+        "partial": 0.11,
+        "dispute": 0.03,
+        "question": 0.11,
+        "wrong_contact": 0.02,
+        "noise": 0.06
+      },
+      "date": {
+        "anchor": "relative_period",
+        "weekday": "none",
+        "period": "next_payment_run"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1994,
+        "output_tokens": 431
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008374800000000002,
+      "elapsedMs": 855.86391
+    },
+    "r016": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.9,
+        "partial": 0.07,
+        "dispute": 0.05,
+        "question": 0.17,
+        "wrong_contact": 0.02,
+        "noise": 0.06
+      },
+      "date": {
+        "anchor": "weekday",
+        "weekday": "monday",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1991,
+        "output_tokens": 429
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083622,
+      "elapsedMs": 1173.6571110000004
+    },
+    "r017": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.59,
+        "partial": 0.07,
+        "dispute": 0.04,
+        "question": 0.18,
+        "wrong_contact": 0.03,
+        "noise": 0.17
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1985,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008336999999999999,
+      "elapsedMs": 967.9607550000001
+    },
+    "r018": {
+      "scores": {
+        "claimed_payment": 0.03,
+        "promise_to_pay": 0.97,
+        "partial": 0.24,
+        "dispute": 0.03,
+        "question": 0.12,
+        "wrong_contact": 0.02,
+        "noise": 0.04
+      },
+      "date": {
+        "anchor": "relative_period",
+        "weekday": "none",
+        "period": "tomorrow"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1980,
+        "output_tokens": 431
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008316,
+      "elapsedMs": 455.6687479999964
+    },
+    "r019": {
+      "scores": {
+        "claimed_payment": 0.03,
+        "promise_to_pay": 0.74,
+        "partial": 0.08,
+        "dispute": 0.05,
+        "question": 0.16,
+        "wrong_contact": 0.03,
+        "noise": 0.18
+      },
+      "date": {
+        "anchor": "day_of_month",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1987,
+        "output_tokens": 430
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008345400000000001,
+      "elapsedMs": 502.5747870000014
+    },
+    "r020": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.83,
+        "partial": 0.04,
+        "dispute": 0.08,
+        "question": 0.59,
+        "wrong_contact": 0.04,
+        "noise": 0.1
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1999,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083958,
+      "elapsedMs": 644.9939570000024
+    },
+    "r021": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.8,
+        "partial": 0.12,
+        "dispute": 0.04,
+        "question": 0.15,
+        "wrong_contact": 0.02,
+        "noise": 0.06
+      },
+      "date": {
+        "anchor": "relative_period",
+        "weekday": "none",
+        "period": "this_week"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1992,
+        "output_tokens": 430
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083664,
+      "elapsedMs": 824.5176519999986
+    },
+    "r022": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.77,
+        "partial": 0.07,
+        "dispute": 0.06,
+        "question": 0.27,
+        "wrong_contact": 0.03,
+        "noise": 0.1
+      },
+      "date": {
+        "anchor": "day_of_month",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1992,
+        "output_tokens": 430
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083664,
+      "elapsedMs": 879.3931019999982
+    },
+    "r023": {
+      "scores": {
+        "claimed_payment": 0.01,
+        "promise_to_pay": 0.7,
+        "partial": 0.06,
+        "dispute": 0.03,
+        "question": 0.19,
+        "wrong_contact": 0.02,
+        "noise": 0.09
+      },
+      "date": {
+        "anchor": "relative_period",
+        "weekday": "none",
+        "period": "end_of_this_month"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1996,
+        "output_tokens": 432
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083832,
+      "elapsedMs": 1077.3853869999984
+    },
+    "r024": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.07,
+        "partial": 0.02,
+        "dispute": 0.06,
+        "question": 0.64,
+        "wrong_contact": 0.3,
+        "noise": 0.25
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "thursday",
+        "period": "this_week"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1995,
+        "output_tokens": 431
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008379,
+      "elapsedMs": 911.0889099999986
+    },
+    "r025": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.16,
+        "partial": 0.02,
+        "dispute": 0.06,
+        "question": 0.96,
+        "wrong_contact": 0.02,
+        "noise": 0.05
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1999,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083958,
+      "elapsedMs": 777.1279340000001
+    },
+    "r026": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.04,
+        "partial": 0.02,
+        "dispute": 0.05,
+        "question": 0.93,
+        "wrong_contact": 0.03,
+        "noise": 0.16
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 2004,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0084168,
+      "elapsedMs": 709.1345000000001
+    },
+    "r027": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.04,
+        "partial": 0.02,
+        "dispute": 0.12,
+        "question": 0.94,
+        "wrong_contact": 0.04,
+        "noise": 0.16
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1996,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083832,
+      "elapsedMs": 510.09549600000173
+    },
+    "r028": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.04,
+        "partial": 0.03,
+        "dispute": 0.04,
+        "question": 0.93,
+        "wrong_contact": 0.02,
+        "noise": 0.11
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1993,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083706,
+      "elapsedMs": 665.8923790000008
+    },
+    "r029": {
+      "scores": {
+        "claimed_payment": 0.01,
+        "promise_to_pay": 0.08,
+        "partial": 0.03,
+        "dispute": 0.04,
+        "question": 0.93,
+        "wrong_contact": 0.02,
+        "noise": 0.09
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1993,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083706,
+      "elapsedMs": 546.6921020000009
+    },
+    "r030": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.1,
+        "partial": 0.02,
+        "dispute": 0.09,
+        "question": 0.94,
+        "wrong_contact": 0.23,
+        "noise": 0.07
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1997,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008387400000000001,
+      "elapsedMs": 579.0486920000003
+    },
+    "r031": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.03,
+        "partial": 0.03,
+        "dispute": 0.1,
+        "question": 0.91,
+        "wrong_contact": 0.03,
+        "noise": 0.31
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1996,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083832,
+      "elapsedMs": 684.0855909999991
+    },
+    "r032": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.04,
+        "partial": 0.02,
+        "dispute": 0.05,
+        "question": 0.93,
+        "wrong_contact": 0.03,
+        "noise": 0.1
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1988,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083496,
+      "elapsedMs": 726.4248090000001
+    },
+    "r033": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.03,
+        "partial": 0.02,
+        "dispute": 0.06,
+        "question": 0.88,
+        "wrong_contact": 0.02,
+        "noise": 0.15
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1991,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083622,
+      "elapsedMs": 685.3163559999994
+    },
+    "r034": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.07,
+        "partial": 0.03,
+        "dispute": 0.03,
+        "question": 0.96,
+        "wrong_contact": 0.05,
+        "noise": 0.15
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1999,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083958,
+      "elapsedMs": 954.5454129999998
+    },
+    "r035": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.03,
+        "partial": 0.02,
+        "dispute": 0.03,
+        "question": 0.96,
+        "wrong_contact": 0.02,
+        "noise": 0.18
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1993,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083706,
+      "elapsedMs": 612.4744360000004
+    },
+    "r036": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.03,
+        "partial": 0.02,
+        "dispute": 0.96,
+        "question": 0.55,
+        "wrong_contact": 0.03,
+        "noise": 0.05
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 2001,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0084042,
+      "elapsedMs": 569.2611490000018
+    },
+    "r037": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.1,
+        "partial": 0.09,
+        "dispute": 0.97,
+        "question": 0.87,
+        "wrong_contact": 0.02,
+        "noise": 0.04
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 2003,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008412600000000001,
+      "elapsedMs": 829.4131339999985
+    },
+    "r038": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.03,
+        "partial": 0.02,
+        "dispute": 0.96,
+        "question": 0.31,
+        "wrong_contact": 0.02,
+        "noise": 0.03
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 2004,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0084168,
+      "elapsedMs": 715.2338739999977
+    },
+    "r039": {
+      "scores": {
+        "claimed_payment": 0.14,
+        "promise_to_pay": 0.05,
+        "partial": 0.03,
+        "dispute": 0.97,
+        "question": 0.53,
+        "wrong_contact": 0.02,
+        "noise": 0.04
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 2009,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0084378,
+      "elapsedMs": 846.4286690000008
+    },
+    "r040": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.06,
+        "partial": 0.02,
+        "dispute": 0.97,
+        "question": 0.26,
+        "wrong_contact": 0.02,
+        "noise": 0.04
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 2003,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008412600000000001,
+      "elapsedMs": 806.6851549999992
+    },
+    "r041": {
+      "scores": {
+        "claimed_payment": 0.06,
+        "promise_to_pay": 0.06,
+        "partial": 0.02,
+        "dispute": 0.93,
+        "question": 0.55,
+        "wrong_contact": 0.03,
+        "noise": 0.05
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1990,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008358,
+      "elapsedMs": 857.4899000000005
+    },
+    "r042": {
+      "scores": {
+        "claimed_payment": 0.71,
+        "promise_to_pay": 0.49,
+        "partial": 0.92,
+        "dispute": 0.07,
+        "question": 0.45,
+        "wrong_contact": 0.02,
+        "noise": 0.05
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "stated_figure",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 2003,
+        "output_tokens": 432
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008412600000000001,
+      "elapsedMs": 728.6353839999938
+    },
+    "r043": {
+      "scores": {
+        "claimed_payment": 0.1,
+        "promise_to_pay": 0.58,
+        "partial": 0.97,
+        "dispute": 0.95,
+        "question": 0.29,
+        "wrong_contact": 0.02,
+        "noise": 0.02
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "stated_figure",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 2006,
+        "output_tokens": 432
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0084252,
+      "elapsedMs": 765.2379329999967
+    },
+    "r044": {
+      "scores": {
+        "claimed_payment": 0.66,
+        "promise_to_pay": 0.87,
+        "partial": 0.97,
+        "dispute": 0.06,
+        "question": 0.15,
+        "wrong_contact": 0.02,
+        "noise": 0.03
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "stated_figure",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1995,
+        "output_tokens": 432
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008379,
+      "elapsedMs": 549.899212999997
+    },
+    "r045": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.78,
+        "partial": 0.75,
+        "dispute": 0.09,
+        "question": 0.25,
+        "wrong_contact": 0.03,
+        "noise": 0.05
+      },
+      "date": {
+        "anchor": "relative_period",
+        "weekday": "none",
+        "period": "end_of_this_month"
+      },
+      "amount": {
+        "shape": "fraction_of_balance",
+        "fraction": "half"
+      },
+      "usage": {
+        "input_tokens": 1990,
+        "output_tokens": 434
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008358,
+      "elapsedMs": 576.358223999996
+    },
+    "r046": {
+      "scores": {
+        "claimed_payment": 0.41,
+        "promise_to_pay": 0.92,
+        "partial": 0.94,
+        "dispute": 0.25,
+        "question": 0.36,
+        "wrong_contact": 0.02,
+        "noise": 0.03
+      },
+      "date": {
+        "anchor": "relative_period",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "stated_figure",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 2007,
+        "output_tokens": 433
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0084294,
+      "elapsedMs": 489.5926150000014
+    },
+    "r047": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.02,
+        "partial": 0.02,
+        "dispute": 0.03,
+        "question": 0.15,
+        "wrong_contact": 0.98,
+        "noise": 0.05
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 2003,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008412600000000001,
+      "elapsedMs": 635.5631799999974
+    },
+    "r048": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.02,
+        "partial": 0.02,
+        "dispute": 0.03,
+        "question": 0.24,
+        "wrong_contact": 0.22,
+        "noise": 0.91
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 2004,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0084168,
+      "elapsedMs": 658.3492609999957
+    },
+    "r049": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.02,
+        "partial": 0.01,
+        "dispute": 0.39,
+        "question": 0.18,
+        "wrong_contact": 0.93,
+        "noise": 0.06
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1991,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083622,
+      "elapsedMs": 420.3171319999965
+    },
+    "r050": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.03,
+        "partial": 0.02,
+        "dispute": 0.03,
+        "question": 0.22,
+        "wrong_contact": 0.97,
+        "noise": 0.07
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1998,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083916,
+      "elapsedMs": 687.1260370000018
+    },
+    "r051": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.04,
+        "partial": 0.02,
+        "dispute": 0.16,
+        "question": 0.56,
+        "wrong_contact": 0.86,
+        "noise": 0.08
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1991,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083622,
+      "elapsedMs": 649.6636500000022
+    },
+    "r052": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.02,
+        "partial": 0.02,
+        "dispute": 0.83,
+        "question": 0.42,
+        "wrong_contact": 0.79,
+        "noise": 0.09
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 2001,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0084042,
+      "elapsedMs": 714.4117570000017
+    },
+    "r053": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.04,
+        "partial": 0.02,
+        "dispute": 0.03,
+        "question": 0.18,
+        "wrong_contact": 0.96,
+        "noise": 0.13
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 2003,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008412600000000001,
+      "elapsedMs": 768.0781560000032
+    },
+    "r054": {
+      "scores": {
+        "claimed_payment": 0.01,
+        "promise_to_pay": 0.03,
+        "partial": 0.02,
+        "dispute": 0.04,
+        "question": 0.47,
+        "wrong_contact": 0.74,
+        "noise": 0.13
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1988,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083496,
+      "elapsedMs": 502.3344530000031
+    },
+    "r055": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.03,
+        "partial": 0.02,
+        "dispute": 0.02,
+        "question": 0.28,
+        "wrong_contact": 0.05,
+        "noise": 0.94
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 2001,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0084042,
+      "elapsedMs": 693.0096140000023
+    },
+    "r056": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.03,
+        "partial": 0.03,
+        "dispute": 0.04,
+        "question": 0.21,
+        "wrong_contact": 0.02,
+        "noise": 0.96
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1984,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008332800000000001,
+      "elapsedMs": 532.0225460000001
+    },
+    "r057": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.05,
+        "partial": 0.03,
+        "dispute": 0.03,
+        "question": 0.22,
+        "wrong_contact": 0.02,
+        "noise": 0.96
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1989,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083538,
+      "elapsedMs": 726.9926089999935
+    },
+    "r058": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.03,
+        "partial": 0.02,
+        "dispute": 0.03,
+        "question": 0.25,
+        "wrong_contact": 0.07,
+        "noise": 0.94
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1994,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008374800000000002,
+      "elapsedMs": 624.7733640000006
+    },
+    "r059": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.05,
+        "partial": 0.03,
+        "dispute": 0.05,
+        "question": 0.23,
+        "wrong_contact": 0.03,
+        "noise": 0.95
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1985,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008336999999999999,
+      "elapsedMs": 651.9585259999949
+    },
+    "r060": {
+      "scores": {
+        "claimed_payment": 0.01,
+        "promise_to_pay": 0.03,
+        "partial": 0.02,
+        "dispute": 0.03,
+        "question": 0.17,
+        "wrong_contact": 0.09,
+        "noise": 0.92
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1984,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008332800000000001,
+      "elapsedMs": 793.8310039999997
+    },
+    "r061": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.07,
+        "partial": 0.03,
+        "dispute": 0.05,
+        "question": 0.31,
+        "wrong_contact": 0.03,
+        "noise": 0.93
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1983,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083286,
+      "elapsedMs": 586.9696610000028
+    },
+    "r062": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.03,
+        "partial": 0.02,
+        "dispute": 0.03,
+        "question": 0.19,
+        "wrong_contact": 0.05,
+        "noise": 0.93
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1997,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008387400000000001,
+      "elapsedMs": 647.3524569999936
+    },
+    "r063": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.06,
+        "partial": 0.03,
+        "dispute": 0.1,
+        "question": 0.55,
+        "wrong_contact": 0.03,
+        "noise": 0.76
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1984,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008332800000000001,
+      "elapsedMs": 410.026423000003
+    },
+    "r064": {
+      "scores": {
+        "claimed_payment": 0.03,
+        "promise_to_pay": 0.06,
+        "partial": 0.04,
+        "dispute": 0.12,
+        "question": 0.22,
+        "wrong_contact": 0.09,
+        "noise": 0.9
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1984,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008332800000000001,
+      "elapsedMs": 659.7219059999989
+    },
+    "r065": {
+      "scores": {
+        "claimed_payment": 0.01,
+        "promise_to_pay": 0.03,
+        "partial": 0.02,
+        "dispute": 0.03,
+        "question": 0.13,
+        "wrong_contact": 0.05,
+        "noise": 0.92
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1991,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083622,
+      "elapsedMs": 760.721083000004
+    },
+    "r066": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.06,
+        "partial": 0.03,
+        "dispute": 0.03,
+        "question": 0.21,
+        "wrong_contact": 0.02,
+        "noise": 0.95
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1988,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083496,
+      "elapsedMs": 550.6267880000014
+    },
+    "r067": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.05,
+        "partial": 0.02,
+        "dispute": 0.04,
+        "question": 0.24,
+        "wrong_contact": 0.03,
+        "noise": 0.96
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1987,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008345400000000001,
+      "elapsedMs": 637.0768619999944
+    },
+    "r068": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.04,
+        "partial": 0.02,
+        "dispute": 0.03,
+        "question": 0.15,
+        "wrong_contact": 0.03,
+        "noise": 0.95
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 2004,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0084168,
+      "elapsedMs": 720.0523810000013
+    },
+    "r069": {
+      "scores": {
+        "claimed_payment": 0.03,
+        "promise_to_pay": 0.06,
+        "partial": 0.04,
+        "dispute": 0.12,
+        "question": 0.43,
+        "wrong_contact": 0.11,
+        "noise": 0.8
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1985,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008336999999999999,
+      "elapsedMs": 834.8015930000038
+    },
+    "r070": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.04,
+        "partial": 0.03,
+        "dispute": 0.03,
+        "question": 0.21,
+        "wrong_contact": 0.06,
+        "noise": 0.95
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1987,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.008345400000000001,
+      "elapsedMs": 419.72631099999853
+    },
+    "r071": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.06,
+        "partial": 0.02,
+        "dispute": 0.04,
+        "question": 0.22,
+        "wrong_contact": 0.02,
+        "noise": 0.96
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1986,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083412,
+      "elapsedMs": 448.7191879999955
+    },
+    "r072": {
+      "scores": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.02,
+        "partial": 0.02,
+        "dispute": 0.04,
+        "question": 0.16,
+        "wrong_contact": 0.41,
+        "noise": 0.47
+      },
+      "date": {
+        "anchor": "none",
+        "weekday": "none",
+        "period": "none"
+      },
+      "amount": {
+        "shape": "none",
+        "fraction": "none"
+      },
+      "usage": {
+        "input_tokens": 1989,
+        "output_tokens": 428
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0083538,
+      "elapsedMs": 483.41261400000076
+    }
+  }
+}

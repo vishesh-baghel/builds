@@ -1,11 +1,11 @@
 /**
  * Every decision the system made, and why. This is what makes an automation reviewable by the
- * owner whose business it runs in — and what a demo shows to prove it is not a black box.
+ * owner whose business it runs in, and what a demo shows to prove it is not a black box.
  */
 export interface AuditEntry {
   readonly at: Date;
   readonly inputId: string;
-  readonly stage: "extract" | "classify" | "decide" | "act" | "escalate";
+  readonly stage: "extract" | "classify" | "decide" | "act" | "escalate" | "log";
   readonly summary: string;
   readonly data?: Record<string, unknown>;
 }

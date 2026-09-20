@@ -1,4 +1,4 @@
-# Reckon — labelled fixture set
+# Reckon, labelled fixture set
 
 The measurement instrument for this build. Built **before** the build, on purpose: a fixture set
 authored afterwards gets unconsciously shaped by what the system already does, and the accuracy
@@ -10,10 +10,10 @@ presented as evidence of client work.
 
 ## Files
 
-- `ar-aging.csv` — 15 open invoices, $245,960 total, in the column shape of a QuickBooks Online
+- `ar-aging.csv`, 15 open invoices, $245,960 total, in the column shape of a QuickBooks Online
   **A/R Aging Detail** export. HVAC contractor flavour, matching a scene worked out in a
   private research note.
-- `replies.jsonl` — 72 hand-labelled debtor replies, each keyed to an invoice in the CSV.
+- `replies.jsonl`, 72 hand-labelled debtor replies, each keyed to an invoice in the CSV.
 
 ## Reply record shape
 
@@ -22,7 +22,7 @@ presented as evidence of client work.
 | `id` | stable identifier, `r001`… |
 | `invoice` | invoice number in `ar-aging.csv` |
 | `from`, `subject`, `body` | the message as it would arrive |
-| `label` | the **primary** class — the one the system is scored against |
+| `label` | the **primary** class, the one the system is scored against |
 | `also` | secondary classes that genuinely also apply (6 messages) |
 | `hard` | boundary case, deliberately included (21 messages) |
 | `note` | why this label, and what makes it hard |
@@ -63,10 +63,10 @@ headline accuracy number would flatter performance on the rare, expensive classe
 
 Report, at minimum:
 
-- per-class precision and recall, `dispute` and `claimed_payment` first — those two drive the
+- per-class precision and recall, `dispute` and `claimed_payment` first, those two drive the
   wrong action if missed (chasing someone who paid; ignoring someone who is arguing);
 - overall accuracy on the 51 non-hard cases and on the 21 `hard` cases **separately**;
-- the share of its own errors the confidence gate caught — the reliability claim rests on this,
+- the share of its own errors the confidence gate caught, the reliability claim rests on this,
   not on raw accuracy.
 
 ## Known gap

@@ -11,7 +11,7 @@ number attached.
 ## Layout
 
 ```
-shared/   the spine every build plugs into — pipeline stages, reliability primitives
+shared/   the spine every build plugs into, pipeline stages, reliability primitives
 <build-name>/   one top-level directory per build, named for the build
 docs/     the variance log, the build template, the loop runbook
 ```
@@ -29,18 +29,18 @@ Every build composes the same six stages from `shared`:
 
 `extract` → `classify` → `decide` → `act` → `escalate` → `log`
 
-and every build that touches the outside world uses the reliability primitives — idempotency on
+and every build that touches the outside world uses the reliability primitives, idempotency on
 side-effecting actions, retry with backoff on vendor API failure, an audit log of every decision,
 and a hard spend cap. A demo that only shows the happy path is not finished.
 
 ## Stack
 
-TypeScript throughout. Deploy target varies per build (Vercel, Cloudflare Workers) — see each
+TypeScript throughout. Deploy target varies per build (Vercel, Cloudflare Workers), see each
 build's README. No no-code tooling: the glue is code.
 
 ## How the work gets done
 
 Intake, planning, implementation, validation and review run as Claude Code loops committed to
-this repo — `.claude/skills/` for the stages, `scripts/loop/` for the drivers that chain them
+this repo, `.claude/skills/` for the stages, `scripts/loop/` for the drivers that chain them
 headlessly. `docs/LOOP-RUNBOOK.md` explains the whole chain and why each stage is shaped the
 way it is.

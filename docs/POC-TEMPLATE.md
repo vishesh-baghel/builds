@@ -11,7 +11,7 @@ What the tedious version looks like, in the words of someone who does it.
 
 ## Why this one
 
-The evidence that this workflow is worth automating — a source, not an assertion.
+The evidence that this workflow is worth automating, a source, not an assertion.
 
 ## Baseline (measured BEFORE the build)
 

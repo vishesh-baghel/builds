@@ -1,5 +1,5 @@
 /**
- * Stops a side effect from happening twice — the invoice reminder sent once, not on every
+ * Stops a side effect from happening twice, the invoice reminder sent once, not on every
  * retry or redeploy. Backend is per-build (KV, Durable Object, Postgres); the contract is not.
  */
 export interface IdempotencyStore {
@@ -12,13 +12,12 @@ export async function once<T>(
   store: IdempotencyStore,
   key: string,
   fn: () => Promise<T>,
-  ttlSeconds = 86_400,
-): Promise<T | { skipped: true }> {
+  ttlSeconds = 86_400): Promise<T | { skipped: true }> {
   if (!(await store.reserve(key, ttlSeconds))) return { skipped: true };
   try {
     return await fn();
   } catch (error) {
-    // The effect did not land — let a later attempt try again.
+    // The effect did not land, let a later attempt try again.
     await store.release(key);
     throw error;
   }

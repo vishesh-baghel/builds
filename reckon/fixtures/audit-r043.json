@@ -1,0 +1,100 @@
+[
+  {
+    "inputId": "r043",
+    "stage": "extract",
+    "summary": "extracted 3 fields",
+    "data": {
+      "confidence": 1
+    }
+  },
+  {
+    "inputId": "r043",
+    "stage": "classify",
+    "summary": "partial",
+    "data": {
+      "asserted": [
+        "partial",
+        "dispute"
+      ],
+      "probabilities": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.02,
+        "partial": 0.97,
+        "dispute": 0.94,
+        "question": 0.02,
+        "wrong_contact": 0.02,
+        "noise": 0.02
+      }
+    }
+  },
+  {
+    "inputId": "r043",
+    "stage": "decide",
+    "summary": "Read as a reply that pays part of it, and argues with the bill.",
+    "data": {
+      "actions": [
+        "record_partial",
+        "stop_chase"
+      ],
+      "escalate": true
+    }
+  },
+  {
+    "inputId": "r043",
+    "stage": "act",
+    "summary": "record_partial: done",
+    "data": {
+      "detail": "$21,000 recorded against 4340, $12,200 still outstanding"
+    }
+  },
+  {
+    "inputId": "r043",
+    "stage": "act",
+    "summary": "stop_chase: done",
+    "data": {
+      "detail": "Chasing 4340 stops while the bill is in dispute"
+    }
+  },
+  {
+    "inputId": "r043",
+    "stage": "escalate",
+    "summary": "Read as a reply that pays part of it, and argues with the bill.",
+    "data": {
+      "invoice": {
+        "number": "4340",
+        "customer": "Redbrook Hospitality",
+        "openBalance": 33200,
+        "daysPastDue": 105
+      },
+      "reply": {
+        "id": "r043",
+        "subject": "RE: 4340",
+        "body": "Paying the undisputed portion now - 21,000 - and holding the rest pending review."
+      },
+      "probabilities": {
+        "claimed_payment": 0.02,
+        "promise_to_pay": 0.02,
+        "partial": 0.97,
+        "dispute": 0.94,
+        "question": 0.02,
+        "wrong_contact": 0.02,
+        "noise": 0.02
+      },
+      "asserted": [
+        "partial",
+        "dispute"
+      ],
+      "reviewBand": [],
+      "handoffs": [
+        "Somebody is arguing with the bill. A person owns that."
+      ],
+      "ruleFired": null
+    }
+  },
+  {
+    "inputId": "r043",
+    "stage": "log",
+    "summary": "2 action(s), escalated",
+    "data": null
+  }
+]
