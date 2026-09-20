@@ -1,5 +1,6 @@
 import { TypeSafeClient, type SystemOneResult, type Usage } from "@typesafe-ai/sdk";
 import { SpendCap, withRetry, type SpendCounter } from "@builds/shared";
+import { typesafeApiKey } from "./env";
 import { QUESTIONS, type JudgmentState } from "./questions";
 import type { ClassScores } from "./policy";
 import { REPLY_CLASSES } from "./types";
@@ -112,7 +113,12 @@ export function jevClient(): TypeSafeClient {
   // The SDK retries internally by default. Turned off here because `withRetry` from the shared
   // spine is the retry this repo requires on every vendor call, and two retry loops stacked on
   // each other multiply the worst case rather than improving it.
-  return new TypeSafeClient({ defaultModel: MODEL, retry: { maxRetries: 0 } });
+  const apiKey = typesafeApiKey();
+  return new TypeSafeClient({
+    defaultModel: MODEL,
+    retry: { maxRetries: 0 },
+    ...(apiKey ? { apiKey } : {}),
+  });
 }
 
 /**

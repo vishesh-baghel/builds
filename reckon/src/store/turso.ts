@@ -3,6 +3,7 @@ import {
   InMemoryIdempotencyStore, InMemorySpendCounter,
   type IdempotencyStore, type SpendCounter,
 } from "@builds/shared";
+import { tursoToken, tursoUrl } from "../env";
 
 /**
  * Persistence for the two things that must survive a request.
@@ -22,8 +23,7 @@ export type Db = Awaited<ReturnType<typeof connect>>;
 let cached: Db | null = null;
 let attempted = false;
 
-export const tursoConfigured = (): boolean =>
-  Boolean(process.env["TURSO_DATABASE_URL"] && process.env["TURSO_AUTH_TOKEN"]);
+export const tursoConfigured = (): boolean => Boolean(tursoUrl() && tursoToken());
 
 /** Never throws. Null means per-instance fallbacks and a visible notice. */
 export async function tryDb(): Promise<Db | null> {
@@ -33,10 +33,7 @@ export async function tryDb(): Promise<Db | null> {
   if (!tursoConfigured()) return null;
 
   try {
-    const db = connect({
-      url: process.env["TURSO_DATABASE_URL"] as string,
-      authToken: process.env["TURSO_AUTH_TOKEN"] as string,
-    });
+    const db = connect({ url: tursoUrl() as string, authToken: tursoToken() as string });
     for (const statement of SCHEMA) await db.run(statement);
     cached = db;
     return db;

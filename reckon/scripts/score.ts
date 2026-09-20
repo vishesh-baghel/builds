@@ -11,6 +11,7 @@
 import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { InMemorySpendCounter } from "@builds/shared";
+import { hasTypesafeKey } from "../src/env";
 import { loadFixtures } from "../src/fixtures/load";
 import type { Judgment } from "../src/jev";
 import { DEFAULT_THRESHOLDS } from "../src/policy";
@@ -47,9 +48,9 @@ if (replay) {
   runDate = artifact.date;
   console.log(`replaying ${Object.keys(judgments).length} judgments recorded on ${runDate}`);
 } else {
-  if (!process.env["TYPESAFE_API_KEY"]) {
-    console.error("TYPESAFE_API_KEY is not set. `score` buys judgments; it cannot run without one.");
-    console.error("Put it in reckon/.env.local, or run with --replay to recompute from the committed artifact.");
+  if (!hasTypesafeKey()) {
+    console.error("No TypeSafe key found. `score` buys judgments; it cannot run without one.");
+    console.error("Set RECKON_TYPESAFE_API_KEY or TYPESAFE_API_KEY in reckon/.env.local, or run with --replay.");
     process.exit(1);
   }
 

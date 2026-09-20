@@ -99,10 +99,21 @@ p{margin:0}
 .pitch__sub{color:var(--color-ink-3);font-size:var(--text-sm);max-width:none;margin-top:var(--space-2xs)}
 .pitch__est{display:flex;align-items:center;gap:var(--space-2xs);flex-wrap:wrap;
   color:var(--color-ink-3);font-size:var(--text-sm);margin-left:auto}
-.pitch__est input{width:3.25rem;min-height:32px;padding:0 var(--space-2xs);text-align:right;
-  border:var(--rule) solid var(--color-rule-2);border-radius:var(--radius-sm);
-  background:var(--color-paper);color:var(--color-ink);font-family:var(--font-mono);
-  font-size:var(--text-sm);font-variant-numeric:tabular-nums}
+/* A stepper rather than a text field: the only useful edit is one minute either way, and a
+   free field invites typing a number and wondering why nothing moved until blur. */
+.stepper{display:inline-flex;align-items:stretch;border:var(--rule) solid var(--color-rule-2);
+  border-radius:var(--radius-sm);background:var(--color-paper);overflow:hidden}
+.stepper__btn{width:28px;min-height:32px;padding:0;border:0;background:transparent;
+  color:var(--color-ink-3);font-family:var(--font-body);font-size:var(--text-base);
+  line-height:1;cursor:pointer;
+  transition:background var(--dur-fast) var(--ease-out),color var(--dur-fast) var(--ease-out)}
+.stepper__btn:hover:not(:disabled){background:var(--color-accent-soft);color:var(--color-accent)}
+.stepper__btn:active:not(:disabled){background:var(--color-accent);color:var(--color-accent-ink)}
+.stepper__btn:disabled{opacity:.35;cursor:not-allowed}
+.stepper__val{min-width:2.5ch;display:inline-flex;align-items:center;justify-content:center;
+  padding-inline:var(--space-2xs);font-family:var(--font-mono);font-size:var(--text-sm);
+  color:var(--color-ink);border-inline:var(--rule) solid var(--color-rule-2)}
+@media(max-width:40rem){.stepper__btn{width:36px;min-height:40px}}
 .tagline{font-family:var(--font-mono);font-size:10px;letter-spacing:.07em;text-transform:uppercase;
   color:var(--color-warn);border:var(--rule) solid currentColor;border-radius:3px;padding:0 3px;
   white-space:nowrap}

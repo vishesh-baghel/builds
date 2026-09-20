@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { SpendCap, SpendCapExceededError } from "@builds/shared";
 import { readReplyText, isProblem, MAX_REPLY_CHARS } from "../../../lib/limits";
 import { readVisitor, withCookie } from "../../../lib/visitor";
+import { capCents, hasTypesafeKey } from "../../../src/env";
 import { buildFixtureSet } from "../../../src/fixtures/parse";
 import { jevClient, judge, type Judgment } from "../../../src/jev";
 import { backend } from "../../../src/store/turso";
@@ -58,7 +59,7 @@ export async function POST(request: Request): Promise<NextResponse> {
     return NextResponse.json({ error: "pick an invoice from the committed ledger", retryable: false } satisfies ClassifyError, { status: 400 });
   }
 
-  if (!process.env["TYPESAFE_API_KEY"]) {
+  if (!hasTypesafeKey()) {
     return NextResponse.json({
       error: "This deploy has no vendor key, so it cannot judge new text. The committed replies still work.",
       retryable: false,
@@ -85,7 +86,7 @@ export async function POST(request: Request): Promise<NextResponse> {
       reply: { subject: `RE: Invoice ${invoice.invoiceNo}`, body: text },
     }, {
       client: jevClient(),
-      cap: new SpendCap(store.counter, Number(process.env["RECKON_CAP_CENTS"] ?? 2_500)),
+      cap: new SpendCap(store.counter, capCents()),
       counter: store.counter,
     });
 

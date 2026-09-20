@@ -148,8 +148,11 @@ a spent cap and a bad key stay distinguishable.
 
 ## Environment
 
-See `.env.example`. `TYPESAFE_API_KEY` is server-side only and is verified absent from the
-built client bundle. The two Turso variables are optional: without them the spend counter and
+See `.env.example`. Every variable is read through `src/env.ts`, which prefers a `RECKON_`
+prefixed name and falls back to the unprefixed one, so the deploy can namespace its keys
+while a local clone keeps using the names the TypeSafe SDK already expects.
+`RECKON_TYPESAFE_API_KEY` is server-side only and is verified absent from the built client
+bundle. The two Turso variables are optional: without them the spend counter and
 the idempotency store fall back to per-instance implementations, which is also the path a fresh
 clone and every `pnpm dev` exercises, so the degrade cannot rot unnoticed.
 

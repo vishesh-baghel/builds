@@ -47,6 +47,10 @@ const thresholdsFor = (act: number, review: number): Thresholds => ({
   ])) as Thresholds["act"],
 });
 
+/** The estimate is a dial, not a form field. One minute either way is the only useful step. */
+const MIN_MINUTES = 1;
+const MAX_MINUTES = 60;
+
 const money = (n: number): string => `$${Math.round(n).toLocaleString("en-US")}`;
 const hhmm = (minutes: number): string => {
   const h = Math.floor(minutes / 60);
@@ -194,6 +198,10 @@ export function Sandbox(props: SandboxProps) {
           <span className="bar__mark">reckon</span>
           <span className="bar__tag">reads what the customer writes back</span>
           <div className="bar__right">
+            <a
+              className="btn btn--ghost" href="https://cal.com/vishesh-baghel/15min"
+              target="_blank" rel="noopener noreferrer"
+            >Book 15 min</a>
             <button className="btn btn--primary" type="button" onClick={() => dialog.current?.showModal()}>
               How it works
             </button>
@@ -217,11 +225,20 @@ export function Sandbox(props: SandboxProps) {
               </p>
             </div>
             <div className="pitch__est">
-              <label htmlFor="mins">a reply takes</label>
-              <input
-                id="mins" type="number" min={1} max={60} step={1} value={minutes}
-                onChange={(event) => setMinutes(Math.max(1, Math.min(60, Number(event.target.value) || 1)))}
-              />
+              <span id="minsLabel">a reply takes</span>
+              <div className="stepper" role="group" aria-labelledby="minsLabel">
+                <button
+                  type="button" className="stepper__btn" aria-label="one minute less"
+                  disabled={minutes <= MIN_MINUTES}
+                  onClick={() => setMinutes((m) => Math.max(MIN_MINUTES, m - 1))}
+                >&minus;</button>
+                <output className="stepper__val num" aria-live="polite">{minutes}</output>
+                <button
+                  type="button" className="stepper__btn" aria-label="one minute more"
+                  disabled={minutes >= MAX_MINUTES}
+                  onClick={() => setMinutes((m) => Math.min(MAX_MINUTES, m + 1))}
+                >+</button>
+              </div>
               <span>min to read</span>
               <span className="tagline">your estimate</span>
             </div>
