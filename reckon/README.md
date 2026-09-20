@@ -4,12 +4,29 @@
 
 Chasing an unpaid invoice is two jobs. **Sending the reminder** is a commodity — QuickBooks
 bundles one inside an $85/mo plan, Chaser lists $180/mo for firms under $5M revenue.
-**Reading the reply** is the half that still lands on a person: telling a promise-to-pay from a
-dispute, noticing that someone says they already paid, spotting that the message reached the
-wrong person entirely.
+**Reading the reply** is the other half: telling a promise-to-pay from a dispute, noticing that
+someone says they already paid, spotting that the message reached the wrong person entirely.
 
-Checkable form of the gap, which is the only form worth stating: *Chaser's features page
-describes outbound reminders; inbound reply handling is not listed there as of 2026-09-19.*
+**The reading half is not an untouched gap, and this repo should not pretend otherwise.**
+Checked against Chaser's own pages on 2026-09-20: their Gmail and Outlook integrations state
+that *"any replies to these chase emails land directly in your Gmail inbox while simultaneously
+being logged within the corresponding customer history in Chaser"*, and their AI email generator
+states that *"The AI reads each debtor's message, detects intent (promise-to-pay, dispute,
+document request, etc.), and produces a courteous draft"*. Intent detection on inbound replies
+is a shipping feature of an incumbent.
+
+What that incumbent feature produces is **a draft for a person to send**. What this build
+produces is **a typed decision that moves the chase state**, with no prose written and nothing
+sent. Those are different outputs, and the second is the one this experiment is about:
+
+- the reply becomes a class set, not a sentence;
+- the class set drives a deterministic decision over a closed action enum;
+- the confidence threshold belongs to the operator and is visible;
+- every decision leaves an audit row, and the per-class accuracy is published with its `n`.
+
+Sources: [Chaser · Gmail](https://www.chaserhq.com/integrations/gmail) ·
+[Chaser · AI email generator](https://www.chaserhq.com/features/ai-email-generator) ·
+[Chaser · email reminders](https://www.chaserhq.com/features/email)
 
 **The design frame is retrofit.** Whatever the firm already runs keeps running and keeps
 sending. Reckon reads what comes back and updates the chase state. **It sends nothing** — there

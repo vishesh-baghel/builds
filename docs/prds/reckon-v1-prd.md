@@ -14,17 +14,27 @@ extraction vendor. All three are out. Read this file, not that one.
 
 Chasing unpaid invoices splits into two halves. **Sending the reminder** is a commodity:
 QuickBooks Payments AI ships inside an $85/mo plan and Chaser lists $180/mo for firms under
-$5M revenue. **Reading the reply** is the half that still lands on a person — telling a
-promise-to-pay from a dispute, noticing that someone says they already paid, spotting that the
-message went to the wrong person at all.
+$5M revenue. **Reading the reply** is the other half.
 
 Evidence the workflow is worth automating, publicly citable: the 2025 Intuit QuickBooks Small
 Business Late Payments Report (2,000+ US small businesses) found 56% were owed money on unpaid
 invoices, averaging $17.5K, and 47% carried invoices more than 30 days overdue.
 
-Checkable statement of the gap, in its only defensible form: *Chaser's features page describes
-outbound reminders; inbound reply handling is not listed there as of 2026-09-19.* Nothing in
-this repo may assert that Chaser cannot read replies.
+**Correction, 2026-09-20.** v1 of this PRD stated that Chaser's features page describes
+outbound reminders and that inbound reply handling was not listed there. That was checked
+against one page and is wrong as a characterisation of the product. Chaser's Gmail and Outlook
+integration pages state that *"any replies to these chase emails land directly in your Gmail
+inbox while simultaneously being logged within the corresponding customer history in Chaser"*,
+and its AI email generator page states that *"The AI reads each debtor's message, detects
+intent (promise-to-pay, dispute, document request, etc.), and produces a courteous draft"*.
+Intent detection on inbound replies ships today in an incumbent.
+
+The claim this build may make is therefore narrower, and is about the **output**, not the
+capability. The incumbent feature produces a draft for a person to send. This build produces a
+typed decision that moves chase state, over a closed action enum, with nothing written and
+nothing sent, a threshold the operator owns, an audit row per decision, and a published
+per-class accuracy figure. Nothing in this repo may assert that Chaser cannot read replies, and
+nothing may imply the reading half is unautomated.
 
 **The design frame is retrofit.** Whatever the firm already runs keeps running and keeps
 sending. Reckon reads what comes back and updates the chase state. It sends nothing.
@@ -53,7 +63,7 @@ sending. Reckon reads what comes back and updates the chase state. It sends noth
 - **No document extraction vendor.** The ledger is a committed CSV in the shape of a QuickBooks
   A/R Aging Detail export. There are no PDFs to parse.
 - **No write path to any ledger, in either direction.** An invoice is never marked paid.
-- **No free-text input on the sandbox.** The visitor picks from the committed fixtures.
+- ~~**No free-text input on the sandbox.**~~ **Reversed 2026-09-20** — see AC #35. Free text is accepted under a length cap, a committed-invoice requirement, a per-visitor allowance and the hard spend cap. Nothing a visitor writes enters the scored set or moves a published figure.
 - **No multi-tenancy, no per-client configuration layer, no reusable demo shell.** A second
   build earns those, not this one.
 
@@ -281,7 +291,7 @@ No endpoint accepts an email address, and there is no send path to accept one fo
 | Jev misreads the genuinely ambiguous replies | The gate degrades in the correct direction — more escalations, not more wrong actions. The catch rate is published, not hidden. |
 | Thresholds overfitted to the instrument | Swept on the ordinary subset only; hard subset reported separately; the full sweep committed. |
 | The published accuracy flatters itself on an imbalanced set | Per-class reporting only. No single headline accuracy figure anywhere. |
-| A visitor makes the demo expensive | Fixture picker only, no free text; per-visitor rate limit; hard spend cap with a committed replay behind it. |
+| A visitor makes the demo expensive | Free text is capped at 1,200 characters and must name a committed invoice; per-visitor monthly allowance; hard spend cap. The fixture path falls back to the committed replay; the free-text path refuses rather than faking a judgment. |
 | Vendor rate limits change without notice | `withRetry` on every Jev call; exhausted retries surface as a failed result in the audit log and fall back to the replay. |
 | Two `shared` contract changes destabilise the spine | Both are additive to the spine's purpose and covered by tests that fail if the invariant is removed. Both recorded in the variance log. |
 
@@ -351,7 +361,7 @@ probabilities and never call Jev.
 
 ### Surfaces
 
-- [ ] #35 The sandbox lets a visitor pick from the committed fixtures only — no free-text input exists in the UI or in any route handler.
+- [ ] #35 **Superseded 2026-09-20.** Originally: *the sandbox lets a visitor pick from the committed fixtures only — no free-text input exists in the UI or in any route handler.* A sandbox that only replays committed fixtures reads as hardcoded, and a visitor who believes the demo is faked has learned nothing true. Free text is now in scope. The protection the exclusion stood for is kept and is what this AC now tests: visitor text is length-capped, is rejected unless it names an invoice already in the committed ledger, is never stored, is subject to the same per-visitor allowance and the same hard spend cap, and has **no replay fallback** — a recorded run holds no judgment for unseen text, and inventing one would be the dishonesty the feature exists to disprove. A test asserts each of those.
 - [ ] #36 The threshold control changes the outcome without issuing a Jev call, verified by the spend counter not moving.
 - [ ] #37 The sandbox captions the probabilities as the model's raw judgment rather than calibrated frequencies, since jev-1.13 is documented as weakly numerically calibrated.
 - [ ] #38 A simulated spend-cap exhaustion serves the committed run artifact with a visible replay notice; it neither errors nor appears live.

@@ -243,6 +243,7 @@ details.steps[open] summary::after{content:"-"}
 
 /* - modal ------------------------------------------------------------ */
 dialog{border:0;padding:0;max-width:min(42rem,calc(100vw - 2rem));width:100%;
+  scrollbar-gutter:stable;
   border-radius:var(--radius-lg);background:var(--color-paper);color:var(--color-ink-2);
   box-shadow:var(--shadow-overlay);max-height:calc(100vh - 3rem)}
 dialog::backdrop{background:var(--color-scrim)}
@@ -254,14 +255,14 @@ dialog::backdrop{background:var(--color-scrim)}
 .mbody{padding:var(--space-md) var(--space-lg) var(--space-xl)}
 .mbody h3{font-size:var(--text-base);font-weight:600;margin-top:var(--space-lg)}
 .mbody h3:first-child{margin-top:0}
-.mbody p{margin-top:var(--space-xs);max-width:var(--measure)}
-.mbody ol,.mbody ul{margin:var(--space-xs) 0 0;padding-left:1.2rem;max-width:var(--measure)}
+.mbody p{margin-top:var(--space-xs)}
+.mbody ol,.mbody ul{margin:var(--space-xs) 0 0;padding-left:1.2rem}
 .mbody li+li{margin-top:var(--space-2xs)}
 .mbody code{font-family:var(--font-mono);font-size:.86em;background:var(--color-paper-3);
   border-radius:3px;padding:.1em .34em;color:var(--color-ink)}
 .mcall{margin-top:var(--space-sm);border-left:2px solid var(--color-accent);
   background:var(--color-accent-soft);border-radius:0 var(--radius-md) var(--radius-md) 0;
-  padding:var(--space-sm) var(--space-md);max-width:var(--measure)}
+  padding:var(--space-sm) var(--space-md)}
 .mcall p{margin-top:0}
 .mcall p+p{margin-top:var(--space-xs)}
 
@@ -269,3 +270,58 @@ dialog::backdrop{background:var(--color-scrim)}
   color:var(--color-ink-3);font-size:var(--text-sm)}
 
 @media(prefers-reduced-motion:reduce){*{transition-duration:.01ms!important;animation-duration:.01ms!important}}
+
+/* ─── mode switch + compose ───────────────────────────────────────────
+ * The visitor's own reply renders through the same component as a committed one, so these
+ * rules only dress the input. Anything that made the two look different would invite exactly
+ * the suspicion the control exists to answer.
+ */
+.modes { display: flex; gap: var(--space-2xs); padding-block: var(--space-xs); }
+.mode {
+  flex: 1 1 0; min-width: 0; min-height: 32px; padding: 0 var(--space-xs);
+  border: var(--rule) solid var(--color-rule-2); border-radius: var(--radius-sm);
+  background: var(--color-paper); color: var(--color-ink-3);
+  font-family: var(--font-mono); font-size: var(--text-xs); letter-spacing: 0.04em;
+  cursor: pointer; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
+  transition: border-color var(--dur-fast) var(--ease-out),
+              background var(--dur-fast) var(--ease-out), color var(--dur-fast) var(--ease-out);
+}
+.mode:hover { border-color: var(--color-accent); color: var(--color-ink); }
+.mode[aria-selected="true"] {
+  background: var(--color-accent); border-color: var(--color-accent); color: var(--color-accent-ink);
+}
+
+.compose { max-width: var(--measure); }
+.compose__label { display: block; font-size: var(--text-sm); color: var(--color-ink-3); }
+.compose textarea {
+  display: block; width: 100%; margin-top: var(--space-xs); padding: var(--space-sm);
+  border: var(--rule) solid var(--color-rule-2); border-radius: var(--radius-md);
+  background: var(--color-paper); color: var(--color-ink);
+  font-family: var(--font-body); font-size: var(--text-base); line-height: 1.5;
+  resize: vertical; min-height: 6rem;
+}
+.compose textarea:focus-visible { outline: 2px solid var(--color-focus); outline-offset: 1px; }
+.compose__row {
+  display: flex; flex-wrap: wrap; align-items: center; gap: var(--space-xs);
+  margin-top: var(--space-xs);
+}
+.compose__row select {
+  flex: 1 1 14rem; min-width: 0; min-height: 34px; padding: 0 var(--space-xs);
+  border: var(--rule) solid var(--color-rule-2); border-radius: var(--radius-sm);
+  background: var(--color-paper); color: var(--color-ink);
+  font-family: var(--font-body); font-size: var(--text-sm);
+}
+.compose__count { font-family: var(--font-mono); font-size: var(--text-xs); color: var(--color-ink-3); }
+.compose__err {
+  margin-top: var(--space-xs); padding-left: var(--space-sm);
+  border-left: 2px solid var(--color-neg); color: var(--color-ink-2); font-size: var(--text-sm);
+}
+.compose .btn:disabled { opacity: 0.45; cursor: not-allowed; }
+
+.yours {
+  margin-bottom: var(--space-lg); padding: var(--space-sm) var(--space-md);
+  border-left: 2px solid var(--color-accent); background: var(--color-accent-soft);
+  border-radius: 0 var(--radius-md) var(--radius-md) 0;
+  color: var(--color-ink-2); font-size: var(--text-sm); max-width: var(--measure);
+}
+.yours b { color: var(--color-ink); font-weight: 600; }

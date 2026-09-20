@@ -4,6 +4,7 @@ import { buildFixtureSet } from "../../../src/fixtures/parse";
 import { judge, type Judgment } from "../../../src/jev";
 import { jevClient } from "../../../src/jev";
 import { SPEND_CAP_CENTS } from "../../../src/run";
+import { readVisitor, withCookie } from "../../../lib/visitor";
 import { backend } from "../../../src/store/turso";
 import type { Invoice, Reply } from "../../../src/types";
 import run from "../../../runs/run.json" with { type: "json" };
@@ -103,19 +104,4 @@ export async function POST(request: Request): Promise<NextResponse> {
     console.error(`[judge] ${id} fell back to the recorded run:`, error);
     return replay("The vendor did not answer, so this is the recorded judgment.", await store.counter.spentCents());
   }
-}
-
-/** An opaque browser id, not a person. Nothing personal is ever written against it. */
-function readVisitor(request: Request): string {
-  const cookie = request.headers.get("cookie") ?? "";
-  const found = new RegExp(`${VISITOR_COOKIE}=([0-9a-f-]{36})`).exec(cookie);
-  return found?.[1] ?? crypto.randomUUID();
-}
-
-function withCookie(response: NextResponse, visitor: string): NextResponse {
-  response.cookies.set({
-    name: VISITOR_COOKIE, value: visitor, httpOnly: true, sameSite: "lax",
-    secure: process.env.NODE_ENV === "production", path: "/", maxAge: 60 * 60 * 24 * 90,
-  });
-  return response;
 }

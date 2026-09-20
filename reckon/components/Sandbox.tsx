@@ -6,6 +6,8 @@ import type { AmountComponents } from "../src/resolve/amount";
 import type { DateComponents } from "../src/resolve/date";
 import { decidePlan, PLAIN, type Plan } from "../src/stages/decide";
 import { REPLY_CLASSES, type Invoice, type Reply, type ReplyClass } from "../src/types";
+import { MAX_REPLY_CHARS } from "../lib/limits";
+import { ReadView } from "./ReadView";
 
 /**
  * The instrument.
@@ -64,6 +66,12 @@ export function Sandbox(props: SandboxProps) {
   const [notice, setNotice] = useState<string | null>(null);
   const [spend, setSpend] = useState({ cents: 0, cap: 0, persistent: false });
   const [busy, setBusy] = useState(false);
+  const [mode, setMode] = useState<"fixture" | "own">("fixture");
+  const [draft, setDraft] = useState("");
+  const [draftInvoice, setDraftInvoice] = useState("4340");
+  const [own, setOwn] = useState<{ judgment: Judgment; invoice: string; body: string } | null>(null);
+  const [ownError, setOwnError] = useState<string | null>(null);
+  const [classifying, setClassifying] = useState(false);
   const [freeFlash, setFreeFlash] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
 
@@ -146,6 +154,50 @@ export function Sandbox(props: SandboxProps) {
 
   useEffect(() => { void pick("r043"); }, [pick]);
 
+  /**
+   * Judges text the visitor wrote. There is no replay behind this one on purpose: a recorded
+   * run holds no judgment for a sentence nobody has written before, and faking one would be
+   * exactly the dishonesty this control exists to disprove. When it cannot judge, it says so.
+   */
+  const classifyOwn = useCallback(async () => {
+    const text = draft.trim();
+    if (!text || classifying) return;
+
+    setClassifying(true);
+    setOwnError(null);
+    try {
+      const response = await fetch("/api/classify", {
+        method: "POST",
+        headers: { "content-type": "application/json" },
+        body: JSON.stringify({ text, invoice: draftInvoice }),
+      });
+      const data = await response.json() as { judgment?: Judgment; invoice?: string; error?: string };
+      if (!response.ok || !data.judgment) {
+        setOwn(null);
+        setOwnError(data.error ?? "That did not work.");
+        return;
+      }
+      setOwn({ judgment: data.judgment, invoice: data.invoice ?? draftInvoice, body: text });
+    } catch {
+      setOwn(null);
+      setOwnError("Could not reach the judgment service.");
+    } finally {
+      setClassifying(false);
+    }
+  }, [draft, draftInvoice, classifying]);
+
+  /** The visitor's text, decided by the very same policy the committed replies go through. */
+  const ownPlan = useMemo(() => {
+    if (!own) return null;
+    const invoice = byInvoice.get(own.invoice);
+    if (!invoice) return null;
+    return decidePlan({
+      replyId: "your reply", body: own.body, invoice,
+      scores: own.judgment.scores, date: own.judgment.date, amount: own.judgment.amount,
+      thresholds, asOf,
+    });
+  }, [own, byInvoice, thresholds, asOf]);
+
   const flashFree = () => {
     setFreeFlash(true);
     const timer = setTimeout(() => setFreeFlash(false), 700);
@@ -191,8 +243,10 @@ export function Sandbox(props: SandboxProps) {
                 <b>{figures.reached}</b> reach one, already sorted.
               </p>
               <p className="pitch__sub">
-                Every reply is read and sorted first. Arguments, questions and wrong-person
-                replies always reach a human &mdash; that is the design, not a shortfall.
+                These are replies as they land in the finance mailbox &mdash; the inbox the
+                reminders were sent from, whichever tool sent them. Every one is read and sorted
+                before anyone opens it. Arguments, questions and wrong-person replies always
+                reach a human: that is the design, not a shortfall.
               </p>
             </div>
             <div className="pitch__est">
@@ -268,6 +322,16 @@ export function Sandbox(props: SandboxProps) {
               <span className="mono">Replies</span>
               <span className="mono num">{visible.length}/{replies.length}</span>
             </div>
+            <div className="modes" role="tablist" aria-label="What to read">
+              <button
+                className="mode" type="button" role="tab" aria-selected={mode === "fixture"}
+                onClick={() => setMode("fixture")}
+              >From the inbox</button>
+              <button
+                className="mode" type="button" role="tab" aria-selected={mode === "own"}
+                onClick={() => setMode("own")}
+              >Write your own</button>
+            </div>
             <div className="rail__find">
               <label className="sr" htmlFor="fClass">Filter</label>
               <select id="fClass" value={filterClass} onChange={(event) => setFilterClass(event.target.value)}>
@@ -305,106 +369,71 @@ export function Sandbox(props: SandboxProps) {
           </nav>
 
           <article className="read" aria-live="polite">
-            {reply && invoice && plan && judgment && (
+            {mode === "own" ? (
               <>
-                <p className="read__meta">
-                  <b>{invoice.customer}</b>
-                  <span>invoice {invoice.invoiceNo}</span>
-                  <span>{money(invoice.openBalance)} outstanding</span>
-                  <span>{invoice.daysPastDue} days late</span>
-                  {busy && <span>judging&hellip;</span>}
-                </p>
-
-                <blockquote className="read__msg">{reply.body}</blockquote>
-
-                <p className="read__verdict">
-                  {plan.asserted.length === 0
-                    ? <>Not sure enough about this one, so <b>a person gets it</b>.</>
-                    : <>Read as {plan.asserted.map((label, index) => (
-                        <span key={label}>{index > 0 ? " and " : ""}<b>{PLAIN[label]}</b></span>
-                      ))}{plan.tieBreak ? `, led by ${plan.tieBreak.name}` : ""}.</>}
-                </p>
-
-                {plan.effects.length > 0 && (
-                  <ul className="does">
-                    {plan.effects.map((effect) => (
-                      <li key={effect.action}>
-                        <span className="does__mark">&rarr;</span>
-                        <span>
-                          <b>{effect.action.replace(/_/g, " ")}</b>
-                          <small>{effect.summary}</small>
-                        </span>
-                      </li>
-                    ))}
-                  </ul>
-                )}
-
-                {plan.handoffs.length > 0 && (
-                  <div className="handover">
-                    <h3>Handed to a person</h3>
-                    <ul>{plan.handoffs.map((line) => <li key={line}>{line}</li>)}</ul>
-                    <p>
-                      Invoice {invoice.invoiceNo}, the full message and every score go with it,
-                      so nobody re-reads the mailbox.
-                    </p>
+                <div className="compose">
+                  <label className="compose__label" htmlFor="draft">
+                    Write a reply the way a customer would, and watch it go through the same
+                    seven questions. Nothing here is matched against a script.
+                  </label>
+                  <textarea
+                    id="draft" value={draft} maxLength={MAX_REPLY_CHARS}
+                    rows={4} placeholder="e.g. We paid half of this last Tuesday and we are disputing the call-out charge on the rest."
+                    onChange={(event) => setDraft(event.target.value)}
+                  />
+                  <div className="compose__row">
+                    <label className="sr" htmlFor="draftInv">Against which invoice</label>
+                    <select id="draftInv" value={draftInvoice} onChange={(e) => setDraftInvoice(e.target.value)}>
+                      {invoices.map((inv) => (
+                        <option key={inv.invoiceNo} value={inv.invoiceNo}>
+                          {inv.customer} — {inv.invoiceNo}, {money(inv.openBalance)} open
+                        </option>
+                      ))}
+                    </select>
+                    <span className="compose__count num">{draft.length}/{MAX_REPLY_CHARS}</span>
+                    <button
+                      className="btn btn--primary" type="button"
+                      disabled={classifying || draft.trim().length === 0}
+                      onClick={() => void classifyOwn()}
+                    >
+                      {classifying ? "Reading…" : "Read it"}
+                    </button>
                   </div>
+                  {ownError && <p className="compose__err">{ownError}</p>}
+                </div>
+
+                {own && ownPlan && byInvoice.get(own.invoice) && (
+                  <ReadView
+                    invoice={byInvoice.get(own.invoice) as Invoice}
+                    body={own.body}
+                    plan={ownPlan}
+                    scores={own.judgment.scores}
+                    thresholds={thresholds}
+                    money={money}
+                    provenance={`judged live just now · ${own.judgment.model}`}
+                    banner={
+                      <p className="yours">
+                        <b>Your words, judged live.</b> Same seven questions, same thresholds,
+                        same code as every reply on the left. Not part of the measured 72 — the
+                        published figures are the frozen set and only the frozen set.
+                      </p>
+                    }
+                  />
                 )}
-
-                {reply.note && (
-                  <p className="why"><b>Why this one is tricky:</b> {reply.note}</p>
-                )}
-
-                <section className="reads">
-                  <span className="mono">
-                    What it read &mdash; the model&rsquo;s raw judgment, not calibrated frequencies
-                  </span>
-                  <div className="reads__grid">
-                    {REPLY_CLASSES.map((label) => {
-                      const value = judgment.scores[label];
-                      const on = plan.asserted.includes(label);
-                      const maybe = plan.review.includes(label);
-                      return (
-                        <div key={label} className={`pb ${on ? "is-act" : maybe ? "is-review" : ""}`}>
-                          <div className="pb__top">
-                            <span className="pb__name">{PLAIN[label]}</span>
-                            <span className="pb__val">{value.toFixed(2)}</span>
-                          </div>
-                          <div className="pb__track">
-                            <span className="pb__fill" style={{ width: `${value * 100}%` }} />
-                            <span className="pb__mark" style={{ left: `calc(${thresholds.act[label] * 100}% - 1px)` }} />
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                </section>
-
-                <details className="steps">
-                  <summary><span className="mono">Every step it took</span></summary>
-                  <ul className="steps__log">
-                    <li><span className="mono">extract</span><span>
-                      invoice {invoice.invoiceNo}, {invoice.daysPastDue} days past due, {money(invoice.openBalance)} open
-                    </span></li>
-                    <li><span className="mono">classify</span><span>
-                      {REPLY_CLASSES.map((label) => `${label} ${judgment.scores[label].toFixed(2)}`).join("  ")}
-                    </span></li>
-                    <li><span className="mono">decide</span><span>{plan.reason}</span></li>
-                    {plan.effects.map((effect) => (
-                      <li key={effect.action}><span className="mono">act</span><span>{effect.action}</span></li>
-                    ))}
-                    {plan.handoffs.length > 0 && (
-                      <li><span className="mono">escalate</span><span>
-                        {plan.handoffs.length} reason(s), full reply attached
-                      </span></li>
-                    )}
-                    <li><span className="mono">source</span><span>
-                      {sources[reply.id] === "live" ? "judged live just now" : `recorded run of ${runDate}`}
-                      {" · "}{judgment.model}
-                    </span></li>
-                  </ul>
-                </details>
               </>
-            )}
+            ) : reply && invoice && plan && judgment ? (
+              <ReadView
+                invoice={invoice}
+                body={reply.body}
+                plan={plan}
+                scores={judgment.scores}
+                thresholds={thresholds}
+                money={money}
+                busy={busy}
+                {...(reply.note ? { note: reply.note } : {})}
+                provenance={`${sources[reply.id] === "live" ? "judged live just now" : `recorded run of ${runDate}`} · ${judgment.model}`}
+              />
+            ) : null}
           </article>
         </div>
 
@@ -430,18 +459,27 @@ export function Sandbox(props: SandboxProps) {
           </p>
           <div className="mcall">
             <p>
-              Tools that send the reminders are everywhere. QuickBooks bundles one at $85/mo;
-              Chaser lists $180/mo. Neither of their product pages advertises handling what comes
-              <em> back</em>.
+              Tools that send the reminders are everywhere &mdash; QuickBooks bundles one at
+              $85/mo, Chaser lists $180/mo &mdash; and the better ones already do something with
+              what comes back. Chaser logs replies from your Gmail or Outlook against the
+              customer, and its AI email generator reads a debtor&rsquo;s message, detects intent,
+              and drafts a courteous response for you to send.
             </p>
-            <p>So this does not replace your chasing tool. It sits behind it and reads the replies.</p>
+            <p>
+              <b>That draft is the difference.</b> What this produces is not a message. It is a
+              decision: the chase pauses or stops, a reconciliation item opens, a part payment is
+              recorded, a promise gets a date worked out in code. It writes no prose and sends
+              nothing &mdash; there is no email path in it at all.
+            </p>
           </div>
 
           <h3>Using it, in three steps</h3>
           <ol>
             <li>
-              <b>Pick a reply</b> from the list. There are {replies.length}, written to look like
-              a real inbox &mdash; mostly noise, with the awkward ones mixed in.
+              <b>Pick a reply</b> from the list. These stand in for what arrives in the finance
+              mailbox after a chasing tool sends its reminders &mdash; replies land in that inbox
+              whichever tool sent them. There are {replies.length}, written to look like a real
+              one: mostly noise, with the awkward cases mixed in.
             </li>
             <li>
               <b>Read the seven scores</b> under the message. One per outcome, because a message
@@ -462,6 +500,21 @@ export function Sandbox(props: SandboxProps) {
           <p>
             Nothing. The seven scores are bought once per reply and cached; moving the dial
             re-runs only the policy, which is ordinary code. The spend counter does not move.
+          </p>
+
+          <h3>&ldquo;Isn&rsquo;t this just hardcoded?&rdquo;</h3>
+          <p>
+            Fair question, and the reason for the <b>Write your own</b> tab. Type any reply you
+            like against any invoice in the ledger and it goes to the same model, through the
+            same seven questions, into the same policy, and renders in the same component as
+            everything on the left. Nothing is matched against a script.
+          </p>
+          <p>
+            The committed {replies.length} exist for a different reason: they were labelled
+            <em> before</em> the build, so they can be scored honestly. A set written afterwards
+            gets unconsciously shaped by what the system already does, and the accuracy number
+            stops meaning anything. Your own text is judged live and is deliberately{" "}
+            <em>not</em> counted in those figures.
           </p>
 
           <h3>What this is not</h3>
