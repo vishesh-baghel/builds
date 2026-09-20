@@ -4,8 +4,8 @@ import { REPLY_CLASSES, type ReplyClass } from "./types";
  * The policy, in one file, so it reads without reading the pipeline.
  *
  * Everything here is deterministic code over a set of probabilities. Nothing here calls a
- * model. That separation is what makes the sandbox's threshold control free — the judgment is
- * bought once and the policy re-runs over it as many times as a visitor likes — and what makes
+ * model. That separation is what makes the sandbox's threshold control free, the judgment is
+ * bought once and the policy re-runs over it as many times as a visitor likes, and what makes
  * the whole test suite runnable with no vendor key present.
  */
 
@@ -124,7 +124,7 @@ export interface PrimaryDerivation {
 
 /**
  * The primary-class rule, stated once: the highest-probability asserted class, then the
- * tie-breaks applied in order. Null when no class cleared its threshold — which is a routing
+ * tie-breaks applied in order. Null when no class cleared its threshold, which is a routing
  * signal, not a missing answer.
  */
 export function derivePrimary(asserted: readonly ReplyClass[], scores: ClassScores): PrimaryDerivation {
@@ -148,7 +148,7 @@ export function derivePrimary(asserted: readonly ReplyClass[], scores: ClassScor
  *
  * The fixture set records a known gap: "remove me from this distribution list" is labelled
  * `noise` because none of the seven classes holds it. The taxonomy stays at seven and the labels
- * stay frozen — a class with one example has no scoreable per-class number. Instead this runs on
+ * stay frozen, a class with one example has no scoreable per-class number. Instead this runs on
  * every reply, in code, and raises a stop-contacting item regardless of what Jev returned. The
  * gap stays recorded; the system no longer ignores it.
  */
@@ -176,7 +176,7 @@ export function renderHumanTimeEstimate(minutes: number = HUMAN_MINUTES_PER_REPL
  * `noise` earns no credit as a secondary class.
  *
  * Tie-break rule 3 says an actionable redirect outranks an auto-reply, so a system answering
- * `noise` on an out-of-office that names a live contact has not half-succeeded — it has missed
+ * `noise` on an out-of-office that names a live contact has not half-succeeded, it has missed
  * the only thing in the message worth acting on. Rewarding it for the `noise` it also asserted
  * would flatter exactly the failure the rule exists to name.
  */

@@ -1,8 +1,8 @@
-# reckon — reads what the debtor writes back
+# reckon, reads what the debtor writes back
 
 **[reckon.visheshbaghel.com](https://reckon.visheshbaghel.com)**
 
-Chasing an unpaid invoice is two jobs. **Sending the reminder** is a commodity — QuickBooks
+Chasing an unpaid invoice is two jobs. **Sending the reminder** is a commodity, QuickBooks
 bundles one inside an $85/mo plan, Chaser lists $180/mo for firms under $5M revenue.
 **Reading the reply** is the other half: telling a promise-to-pay from a dispute, noticing that
 someone says they already paid, spotting that the message reached the wrong person entirely.
@@ -29,7 +29,7 @@ Sources: [Chaser · Gmail](https://www.chaserhq.com/integrations/gmail) ·
 [Chaser · email reminders](https://www.chaserhq.com/features/email)
 
 **The design frame is retrofit.** Whatever the firm already runs keeps running and keeps
-sending. Reckon reads what comes back and updates the chase state. **It sends nothing** — there
+sending. Reckon reads what comes back and updates the chase state. **It sends nothing**, there
 is no mail dependency, no send path, and no endpoint anywhere that accepts a destination.
 
 ## What it is
@@ -70,7 +70,7 @@ purpose, to look like a real chasing inbox: a system answering `noise` every tim
 **The one ordinary error was not caught, and that is the most useful line on this page.** It is
 an out-of-office naming a live alternate contact, read as `noise` instead of `wrong_contact`.
 `noise` takes no action, so nothing escalated and nobody would have looked. That is precisely
-the case tie-break rule 3 exists for, and on the hard subset — where six errors happened — the
+the case tie-break rule 3 exists for, and on the hard subset, where six errors happened, the
 gate caught all six. Published rather than rounded away.
 
 Any human-time figure on the sandbox is a **declared estimate**, held in one named constant,
@@ -78,7 +78,7 @@ rendered with the word "estimate", and never placed beside a measured figure.
 
 ## How the judgment is shaped
 
-**Seven Nouls, one per class — not one Choice across seven labels.** Six of the 72 replies
+**Seven Nouls, one per class, not one Choice across seven labels.** Six of the 72 replies
 carry two classes at once: paying part of a bill while disputing the rest, claiming payment
 while offering to reissue. A pick-one answer manufactures a wrong answer on every one of them.
 
@@ -89,7 +89,7 @@ the rest, because their errors cost the most.
 **Dates and amounts are components plus code assembly, not extraction.** Only 4 of the 12
 `promise_to_pay` replies contain a numeral; the rest say "by Friday", "in the next cycle",
 "before month end". Jev names the *kind* of time reference; code does the calendar arithmetic
-against a fixed ledger date. When nothing fixes a date, **nothing is invented** — the promise is
+against a fixed ledger date. When nothing fixes a date, **nothing is invented**, the promise is
 recorded dateless and a person sets one. A guessed date silently resumes a chase.
 
 **The decision is plain TypeScript.** No model chooses what happens. Reply text is untrusted
@@ -113,7 +113,7 @@ The test suite runs with no key present and makes no network call: vendor accura
 inject probabilities.
 
 ```bash
-pnpm --filter @builds/reckon score           # buys 72 judgments — needs TYPESAFE_API_KEY
+pnpm --filter @builds/reckon score           # buys 72 judgments, needs TYPESAFE_API_KEY
 pnpm --filter @builds/reckon score --replay  # recompute from the committed run artifact
 pnpm --filter @builds/reckon snapshot        # regenerate fixtures/fixtures.json from source
 ```
@@ -123,7 +123,7 @@ cannot run without one is a gate that will not run.
 
 ### This build makes the repo gate real
 
-`test` and `build` are `--if-present` in CI, and until now no package defined either — so a
+`test` and `build` are `--if-present` in CI, and until now no package defined either, so a
 green gate proved only that the repo typechecked. reckon ships the repo's first `test` script
 and first `build` script. Its `typecheck` spans both the engine sources and the app's `.tsx`,
 so the root `pnpm -r typecheck` cannot silently skip the UI.
@@ -137,14 +137,13 @@ the binding for yours.
 
 **The `NODE_OPTIONS` on `dev`, `score` and `smoke`** are not superstition. Node's `fetch`
 (undici) runs Happy Eyeballs by default. On a network whose resolver synthesizes NAT64
-addresses (`64:ff9b::/96`) for A-only hosts while offering no IPv6 route — a VPN will do this —
-it races a dead IPv6 connection against the working IPv4 one and stalls until the request times
+addresses (`64:ff9b::/96`) for A-only hosts while offering no IPv6 route, a VPN will do this, it races a dead IPv6 connection against the working IPv4 one and stalls until the request times
 out. `curl` and Node's own `https` module with `family: 4` are both unaffected; only `fetch`
 is. Turning the race off costs nothing on a dual-stack network. Local scripts only: the
 deployed runtime never sees these flags.
 
-When it does happen, the sandbox degrades exactly as designed — recorded judgments behind a
-visible notice, never an error page — and the route logs the cause server-side so an outage,
+When it does happen, the sandbox degrades exactly as designed, recorded judgments behind a
+visible notice, never an error page, and the route logs the cause server-side so an outage,
 a spent cap and a bad key stay distinguishable.
 
 ## Environment
@@ -163,7 +162,7 @@ src/fixtures/   typed loader and schema; parse.ts is filesystem-free so the app 
 src/questions.ts  seven Nouls plus the date and amount component questions
 src/policy.ts   thresholds, the three bands, the five tie-break rules, the unsubscribe guard
 src/resolve/    component answers to a date and an amount, in code
-src/stages/     the decide stage — the only place that chooses what happens
+src/stages/     the decide stage, the only place that chooses what happens
 src/pipeline.ts the six stages wired to @builds/shared
 src/run.ts      the one entry point the scorecard and the sandbox both call
 src/score.ts    precision, recall, catch rate, the threshold sweep

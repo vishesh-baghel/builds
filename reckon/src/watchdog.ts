@@ -6,7 +6,7 @@ import { ChaseStore, type WorkItem } from "./state";
  * The promise watchdog.
  *
  * A promise to pay pauses the chase until a date. Nothing in the pipeline notices when that
- * date arrives and no money did — which is the exact failure the build exists to stop, so it
+ * date arrives and no money did, which is the exact failure the build exists to stop, so it
  * cannot be left to a human remembering. This sweeps the paused invoices against an injected
  * clock and raises an overdue-promise item for each one whose date has gone by.
  *

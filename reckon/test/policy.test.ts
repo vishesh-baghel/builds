@@ -9,7 +9,7 @@ import { scores } from "./helpers";
 
 const T = DEFAULT_THRESHOLDS;
 
-describe("the three bands — AC #13", () => {
+describe("the three bands, AC #13", () => {
   it("puts a class at its act threshold in the act band, and a hair below it in review", () => {
     expect(bandFor("question", T.act.question, T)).toBe("act");
     expect(bandFor("question", T.act.question - 0.001, T)).toBe("review");
@@ -36,7 +36,7 @@ describe("the three bands — AC #13", () => {
   });
 });
 
-describe("the five tie-break rules — AC #14", () => {
+describe("the five tie-break rules, AC #14", () => {
   it("rule 1: money now beats money later", () => {
     const s = scores({ partial: 0.90, promise_to_pay: 0.96 });
     const asserted = assertedFrom(s, T);
@@ -93,7 +93,7 @@ describe("the five tie-break rules — AC #14", () => {
   });
 });
 
-describe("the unsubscribe guard — AC #15", () => {
+describe("the unsubscribe guard, AC #15", () => {
   it("fires on the committed unsubscribe reply and on its common phrasings", () => {
     for (const body of [
       "Please remove me from this distribution list.",
@@ -117,7 +117,7 @@ describe("the unsubscribe guard — AC #15", () => {
   });
 });
 
-describe("the human-time figure is a declared estimate — AC #28", () => {
+describe("the human-time figure is a declared estimate, AC #28", () => {
   it("renders with the word estimate wherever it appears", () => {
     expect(renderHumanTimeEstimate()).toContain("estimate");
     expect(renderHumanTimeEstimate(9)).toContain("estimate");
@@ -130,7 +130,7 @@ describe("the human-time figure is a declared estimate — AC #28", () => {
   });
 });
 
-describe("noise earns no secondary credit — AC #25", () => {
+describe("noise earns no secondary credit, AC #25", () => {
   it("is the class excluded from also-credit", () => {
     expect(SECONDARY_CREDIT_EXCLUDES).toContain("noise");
   });

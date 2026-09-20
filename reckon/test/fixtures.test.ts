@@ -17,7 +17,7 @@ const EXPECTED_CLASS_COUNTS: Record<string, number> = {
   noise: 18,
 };
 
-describe("the committed fixture set — AC #1", () => {
+describe("the committed fixture set, AC #1", () => {
   it("parses all 15 invoice rows against the typed schema", () => {
     expect(fixtures.invoices).toHaveLength(15);
     for (const invoice of fixtures.invoices) {

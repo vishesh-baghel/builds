@@ -16,7 +16,7 @@ import snapshot from "../../../fixtures/fixtures.json" with { type: "json" };
  * narrowest possible opening:
  *
  * - the text is length-capped and never stored, here or anywhere;
- * - the invoice must be one already in the committed ledger — no numbers a visitor invents;
+ * - the invoice must be one already in the committed ledger, no numbers a visitor invents;
  * - the same per-visitor allowance and the same hard spend cap as the fixture path;
  * - the text enters Jev `state` as data and is classified. It is never an instruction, and the
  *   action enum is closed in code, so nothing it says can widen what the system may do;

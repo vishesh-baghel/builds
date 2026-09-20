@@ -22,7 +22,7 @@ export function readReplyText(value: unknown): string | TextProblem {
   const text = value.trim();
   if (text.length === 0) return { problem: "write something for it to read" };
   if (text.length > MAX_REPLY_CHARS) {
-    return { problem: `keep it under ${MAX_REPLY_CHARS} characters — that is longer than any real reply` };
+    return { problem: `keep it under ${MAX_REPLY_CHARS} characters, that is longer than any real reply` };
   }
   return text;
 }

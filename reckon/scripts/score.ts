@@ -62,7 +62,7 @@ if (replay) {
     const { judgment, elapsedMs, plan } = await reckon.run(reply);
     judgments[reply.id] = { ...judgment, elapsedMs };
     const mark = plan.primary === reply.label ? " " : "x";
-    console.log(`  ${mark} ${reply.id}  want ${reply.label.padEnd(15)} got ${(plan.primary ?? "—").padEnd(15)} ${elapsedMs.toFixed(0)}ms`);
+    console.log(`  ${mark} ${reply.id}  want ${reply.label.padEnd(15)} got ${(plan.primary ?? "-").padEnd(15)} ${elapsedMs.toFixed(0)}ms`);
   }
 
   runDate = today;
@@ -71,8 +71,7 @@ if (replay) {
 }
 
 const scoresById = Object.fromEntries(
-  Object.entries(judgments).map(([id, j]) => [id, j.scores as ClassScores]),
-);
+  Object.entries(judgments).map(([id, j]) => [id, j.scores as ClassScores]));
 
 // The sweep only ever sees the ordinary subset; `sweep()` filters `hard` out itself.
 const points = sweep(fixtures.replies, scoresById, DEFAULT_THRESHOLDS);
@@ -92,8 +91,7 @@ writeFileSync(
   renderScorecard({
     date: runDate, thresholds, figures, meta, sweep: points, chosen,
     replies: fixtures.replies, runArtifact, sweepArtifact,
-  }),
-);
+  }));
 
 console.log(`\nswept ${points.length} threshold combinations on the ordinary 51`);
 if (chosen) console.log(`chosen: base ${chosen.base}, risky ${chosen.risky}, review ${chosen.review}`);

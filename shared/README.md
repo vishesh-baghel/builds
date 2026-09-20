@@ -16,7 +16,7 @@ rewritten each week.
 | Primitive | Why it exists |
 |---|---|
 | `withRetry` | Vendor APIs fail mid-run. Exponential backoff with jitter, and fail-fast on errors retrying cannot fix. |
-| `once` / `IdempotencyStore` | A side effect happens once — the reminder is not re-sent on retry or redeploy. |
+| `once` / `IdempotencyStore` | A side effect happens once, the reminder is not re-sent on retry or redeploy. |
 | `AuditLog` | Every decision and its reason, reviewable by the owner. Not a black box. |
 | `SpendCap` | A hard ceiling. A public demo a stranger can make expensive is not shippable. |
 

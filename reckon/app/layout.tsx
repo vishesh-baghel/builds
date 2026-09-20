@@ -7,7 +7,7 @@ const body = Inter({ subsets: ["latin"], variable: "--font-inter" });
 const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-jetbrains-mono" });
 
 export const metadata: Metadata = {
-  title: "reckon — reads what the debtor writes back",
+  title: "reckon: reads what the customer writes back",
   description:
     "Chasing an unpaid invoice is two jobs. Sending the reminder is a commodity. Reading the reply still lands on a person. This reads the reply.",
 };

@@ -1,17 +1,17 @@
-# builds — working rules
+# builds, working rules
 
 One build a week. Each build automates a piece of messy back-office work for owner-led
 service firms, runs on synthetic or my own data, and carries a measured number.
 
 These are the rules the loop skills (`/spec-intake`, `/task-plan`, `/review-pr`, …) audit
-against. They describe this repo's engineering spine only. Scope decisions — which workflow
-is worth building, who it is for, what the business claim is — are not settled here.
+against. They describe this repo's engineering spine only. Scope decisions, which workflow
+is worth building, who it is for, what the business claim is, are not settled here.
 
 ## This repo is public. Write accordingly.
 
 Peers, vendors and prospective clients read this repo. It documents engineering, and only
-engineering. Commercial matters — positioning, pricing, who the work is sold to, how it is
-sold, and any internal planning or targets — live in a separate private vault and are not
+engineering. Commercial matters, positioning, pricing, who the work is sold to, how it is
+sold, and any internal planning or targets, live in a separate private vault and are not
 restated here in any form: not in a PRD, a README, a commit message, a code comment, a
 fixture, or a task note. Do not cite the vault by path; say "the private research".
 
@@ -20,7 +20,7 @@ publicly-citable evidence for why that workflow matters (a named survey, a vendo
 published page), the measured number and how it was measured, the claim constraints, and all
 engineering.
 
-The test before writing anything is not "is this true" — it is **"would I be content for a
+The test before writing anything is not "is this true", it is **"would I be content for a
 prospective client to read this?"** If a commercial fact would be needed to justify a
 requirement, state the requirement and leave the justification in the vault.
 
@@ -59,12 +59,12 @@ every one of them:
 - **Idempotency** (`idempotency.ts`) on every side-effecting action. An action that can
   double-send on a retry is a defect regardless of what the demo shows.
 - **Retry with backoff** (`retry.ts`) on every vendor API call.
-- **Audit log** (`audit-log.ts`) of every decision — input, classification, action taken,
+- **Audit log** (`audit-log.ts`) of every decision, input, classification, action taken,
   and why. "The agent decided" with no record is not a decision, it is a guess.
 - **Spend cap** (`spend-cap.ts`), hard, per run. A build with no ceiling is not shippable.
 
 A demo that only shows the happy path is not finished. Escalation to a human is a normal
-outcome, not an error path — build it as one.
+outcome, not an error path, build it as one.
 
 ## Claims discipline
 
@@ -72,7 +72,7 @@ This repo is public and its numbers are the whole point, so:
 
 - Every build is a **self-built experiment on synthetic or my own data**. Say so in the
   build's README.
-- **No client data, client names, or client results** appear here — ever — unless the client
+- **No client data, client names, or client results** appear here, ever, unless the client
   has consented in writing and is named as the source.
 - Every figure published anywhere carries a source, or it does not get published.
 - A number quoted without a **pre-baselined** counterpart is a demo, not a result. Baseline
@@ -91,6 +91,18 @@ judge what a transcript shows.
 
 Tasks carry them as `- [ ] #N` checkboxes between `<!-- AC:BEGIN -->` / `<!-- AC:END -->`.
 
+## No em dashes
+
+Do not use em dashes (`-`) or en dashes (`-`) anywhere: not in copy, not in READMEs, not in
+PRDs, not in commit messages, not in code comments, not in strings the UI renders. This is a
+house style rule and it is absolute, because the alternative is arguing about it case by case.
+
+Use a comma where the clause is an aside, a colon where the second half explains the first, a
+semicolon where both halves stand alone, or a full stop where it should have been two sentences
+all along. Each of those says something specific; an em dash says only "something goes here".
+
+`,` and `,` count. So does pasting one in from somewhere else.
+
 ## Code
 
 TypeScript throughout, ESM, Node >= 20, pnpm workspaces. No no-code tooling: the glue is code.
@@ -101,7 +113,7 @@ TypeScript throughout, ESM, Node >= 20, pnpm workspaces. No no-code tooling: the
   before a new one.
 - Never simplify away: input validation at a trust boundary, error handling that prevents
   data loss, secret handling, or anything an AC explicitly requires.
-- Secrets come from the environment. Nothing real is committed — `.env.example` only.
+- Secrets come from the environment. Nothing real is committed, `.env.example` only.
 - Fixtures over live vendor calls in tests. A test suite that needs a vendor key to run is a
   suite that will not run.
 
@@ -116,7 +128,7 @@ That is the local gate and the same one CI runs on every PR
 cannot be fixed here.
 
 **`test` and `build` are `--if-present` because no package defines them yet.** Until a POC
-ships a test script, those two steps pass without proving anything — a green gate today means
+ships a test script, those two steps pass without proving anything, a green gate today means
 "it typechecks", no more. The first build to ship tests should say so in its PR. Do not read
 green as validated; `/validate-local` Step 4 exists for exactly this gap.
 

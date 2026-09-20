@@ -20,7 +20,7 @@ export function loadFixtures(): FixtureSet {
 
 /**
  * The adversarial inputs, deliberately outside the scored 72. They share the reply shape so
- * they can run through the same pipeline, but they never enter `replies.jsonl` — mixing them
+ * they can run through the same pipeline, but they never enter `replies.jsonl`, mixing them
  * into the frozen set would change what the published number measures.
  */
 export function loadAdversarial(): Reply[] {

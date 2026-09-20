@@ -106,7 +106,7 @@ export function decidePlan(input: DecideInput): Plan {
         effects.push({
           action: "record_partial",
           summary: resolved.amount === null
-            ? `Part payment on ${invoice.invoiceNo}, amount not recorded — ${resolved.how}`
+            ? `Part payment on ${invoice.invoiceNo}, amount not recorded, ${resolved.how}`
             : `${money(resolved.amount)} recorded against ${invoice.invoiceNo}, ${money(invoice.openBalance - resolved.amount)} still outstanding`,
           detail: {
             invoice: invoice.invoiceNo,
@@ -126,7 +126,7 @@ export function decidePlan(input: DecideInput): Plan {
         if (resolved.date === null) {
           effects.push({
             action: "record_promise",
-            summary: `Promise on ${invoice.invoiceNo} recorded with no date — none was given, and none is invented`,
+            summary: `Promise on ${invoice.invoiceNo} recorded with no date, none was given, and none is invented`,
             detail: { invoice: invoice.invoiceNo, date: null, how: resolved.how },
           });
           handoffs.push("A promise with no date. A person agrees one.");
@@ -152,7 +152,7 @@ export function decidePlan(input: DecideInput): Plan {
       case "question":
         effects.push({
           action: "pause_chase",
-          summary: `Chasing ${invoice.invoiceNo} is held — they are waiting on an answer`,
+          summary: `Chasing ${invoice.invoiceNo} is held, they are waiting on an answer`,
           detail: { invoice: invoice.invoiceNo },
           status: "paused",
         });
@@ -170,7 +170,7 @@ export function decidePlan(input: DecideInput): Plan {
           action: "open_contact_correction",
           // Deliberately not a parsed replacement address. Extraction is out of scope for this
           // build, and a guessed address is a worse outcome than a person reading the reply.
-          summary: `Find the right contact for ${invoice.customer} — read reply ${replyId}`,
+          summary: `Find the right contact for ${invoice.customer}, read reply ${replyId}`,
           detail: { invoice: invoice.invoiceNo, readReply: replyId, assertedClass: "wrong_contact" },
         });
         handoffs.push("Wrong person. The reply goes with it so somebody can find the right one.");
@@ -206,15 +206,14 @@ export function decidePlan(input: DecideInput): Plan {
 }
 
 /**
- * The reason a person reads. Assembled from the class set and the rule that fired — this build
+ * The reason a person reads. Assembled from the class set and the rule that fired, this build
  * ships no generative model, so every string a human sees is composed here or in a template.
  */
 export function composeReason(
   asserted: readonly ReplyClass[],
   review: readonly ReplyClass[],
   tieBreak: TieBreak | null,
-  guardFired: boolean,
-): string {
+  guardFired: boolean): string {
   const parts: string[] = [];
 
   parts.push(asserted.length === 0

@@ -1,5 +1,5 @@
 {
-  "note": "Swept on the 51 ordinary replies only. `selection` is macro-F1 over classes with support — a selection criterion for choosing thresholds, deliberately not published as a result.",
+  "note": "Swept on the 51 ordinary replies only. `selection` is macro-F1 over classes with support, a selection criterion for choosing thresholds, deliberately not published as a result.",
   "chosen": {
     "base": 0.65,
     "risky": 0.8,

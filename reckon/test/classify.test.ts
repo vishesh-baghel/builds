@@ -6,7 +6,7 @@ import { CHASE_ACTIONS } from "../src/types";
 import { fixtures, scores } from "./helpers";
 
 /**
- * Free text on a public sandbox — AC #35 as rewritten.
+ * Free text on a public sandbox, AC #35 as rewritten.
  *
  * The PRD forbade this outright. It is now allowed, and these are the protections that
  * exclusion was standing in for. Every one of them is code, not a promise in a README.

@@ -7,12 +7,12 @@ import { fixtures, replyById, runOne, scores } from "./helpers";
  * Per-class behaviour, asserted over injected probabilities.
  *
  * No vendor call happens anywhere in this file. What the model would have said is not the
- * question here — what the code does with a given answer is.
+ * question here, what the code does with a given answer is.
  */
 
 const CERTAIN = 0.97;
 
-describe("every reply produces an asserted set and a reason naming the rule — AC #3", () => {
+describe("every reply produces an asserted set and a reason naming the rule, AC #3", () => {
   it("names the classes and, when one fires, the tie-break rule", async () => {
     const { plan } = await runOne("r043", scores({ partial: CERTAIN, dispute: 0.94 }));
     expect(plan.asserted.every((label) => REPLY_CLASSES.includes(label))).toBe(true);
@@ -31,7 +31,7 @@ describe("every reply produces an asserted set and a reason naming the rule — 
   });
 });
 
-describe("claimed_payment pauses and opens a reconciliation — AC #4", () => {
+describe("claimed_payment pauses and opens a reconciliation, AC #4", () => {
   it("holds the chase and raises a check, without touching the invoice", async () => {
     const { outcome, store, plan } = await runOne("r001", scores({ claimed_payment: CERTAIN }));
 
@@ -52,7 +52,7 @@ describe("claimed_payment pauses and opens a reconciliation — AC #4", () => {
   });
 });
 
-describe("dispute stops the chase and escalates with the evidence — AC #5", () => {
+describe("dispute stops the chase and escalates with the evidence, AC #5", () => {
   it("carries the invoice, the full reply, all seven probabilities and the reason", async () => {
     const s = scores({ dispute: CERTAIN });
     const { outcome, store } = await runOne("r036", s);
@@ -71,13 +71,12 @@ describe("dispute stops the chase and escalates with the evidence — AC #5", ()
   });
 });
 
-describe("partial and dispute together produce both outcomes — AC #9", () => {
+describe("partial and dispute together produce both outcomes, AC #9", () => {
   it("records the partial and escalates the dispute in one run", async () => {
     const { outcome, store, plan } = await runOne(
       "r043",
       scores({ partial: CERTAIN, dispute: 0.94 }),
-      { amount: { shape: "stated_figure", fraction: "none" } },
-    );
+      { amount: { shape: "stated_figure", fraction: "none" } });
 
     expect(plan.asserted).toEqual(expect.arrayContaining(["partial", "dispute"]));
     expect(outcome.results.map((r) => r.action).sort()).toEqual(["record_partial", "stop_chase"]);
@@ -94,13 +93,12 @@ describe("partial and dispute together produce both outcomes — AC #9", () => {
   });
 });
 
-describe("promise_to_pay — AC #6", () => {
+describe("promise_to_pay, AC #6", () => {
   it("pauses until the resolved date", async () => {
     const { store } = await runOne(
       "r013",
       scores({ promise_to_pay: CERTAIN }),
-      { date: { anchor: "weekday", weekday: "friday", period: "none" } },
-    );
+      { date: { anchor: "weekday", weekday: "friday", period: "none" } });
     const state = store.chaseState(replyById("r013").invoice);
     expect(state.status).toBe("paused");
     expect(state.resumeOn).toBe("2026-10-16");
@@ -117,12 +115,11 @@ describe("promise_to_pay — AC #6", () => {
   });
 
   it("flags a promise whose date has already gone by", async () => {
-    // r019 is "Scheduled for 10/3." — the ledger sits at 2026-10-11.
+    // r019 is "Scheduled for 10/3.", the ledger sits at 2026-10-11.
     const { outcome, store } = await runOne(
       "r019",
       scores({ promise_to_pay: CERTAIN }),
-      { date: { anchor: "day_of_month", weekday: "none", period: "none" } },
-    );
+      { date: { anchor: "day_of_month", weekday: "none", period: "none" } });
 
     // 10/3 is a Saturday, so the money would have landed Monday the 5th. Either way it is
     // behind the ledger date, which is what makes it a broken promise.
@@ -135,13 +132,12 @@ describe("promise_to_pay — AC #6", () => {
   });
 });
 
-describe("partial resolves its amount three ways — AC #8", () => {
+describe("partial resolves its amount three ways, AC #8", () => {
   it("records a fraction worked out against the open balance", async () => {
     const { store } = await runOne(
       "r011",
       scores({ partial: CERTAIN }),
-      { amount: { shape: "fraction_of_balance", fraction: "half" } },
-    );
+      { amount: { shape: "fraction_of_balance", fraction: "half" } });
     const balance = fixtures.byInvoice.get(replyById("r011").invoice)?.openBalance ?? 0;
     expect(store.itemsFor("r011").find((i) => i.kind === "partial_payment")?.detail["amount"]).toBe(balance / 2);
   });
@@ -153,7 +149,7 @@ describe("partial resolves its amount three ways — AC #8", () => {
   });
 });
 
-describe("question pauses and hands over — AC #10", () => {
+describe("question pauses and hands over, AC #10", () => {
   it("stops chasing someone who is waiting on an answer", async () => {
     const { outcome, store } = await runOne("r024", scores({ question: CERTAIN }));
     const reply = replyById("r024");
@@ -164,7 +160,7 @@ describe("question pauses and hands over — AC #10", () => {
   });
 });
 
-describe("wrong_contact stops and asks a person to find the right one — AC #11", () => {
+describe("wrong_contact stops and asks a person to find the right one, AC #11", () => {
   it("names the reply to read, not an address the system guessed", async () => {
     const { outcome, store } = await runOne("r053", scores({ wrong_contact: CERTAIN }));
     const reply = replyById("r053");
@@ -181,7 +177,7 @@ describe("wrong_contact stops and asks a person to find the right one — AC #11
   });
 });
 
-describe("noise neither pauses nor advances the chase — AC #12", () => {
+describe("noise neither pauses nor advances the chase, AC #12", () => {
   it("leaves chase state untouched", async () => {
     const { outcome, store } = await runOne("r055", scores({ noise: CERTAIN }));
     const reply = replyById("r055");
@@ -191,7 +187,7 @@ describe("noise neither pauses nor advances the chase — AC #12", () => {
     expect(store.chaseState(reply.invoice)).toMatchObject({ status: "chasing", resumeOn: null });
   });
 
-  it("except on r072, where the unsubscribe guard fires — AC #15", async () => {
+  it("except on r072, where the unsubscribe guard fires, AC #15", async () => {
     const { outcome, store } = await runOne("r072", scores({ noise: CERTAIN }));
     const reply = replyById("r072");
 
@@ -201,7 +197,7 @@ describe("noise neither pauses nor advances the chase — AC #12", () => {
   });
 });
 
-describe("the gate degrades toward a person — AC #13", () => {
+describe("the gate degrades toward a person, AC #13", () => {
   it("escalates when no class clears, whatever the highest probability was", async () => {
     const justUnder = DEFAULT_THRESHOLDS.act.question - 0.01;
     const { outcome, plan, store } = await runOne("r024", scores({ question: justUnder }));
@@ -215,8 +211,7 @@ describe("the gate degrades toward a person — AC #13", () => {
   it("escalates a review-band class without acting on it", async () => {
     const { outcome, plan } = await runOne(
       "r036",
-      scores({ dispute: 0.5, noise: CERTAIN }),
-    );
+      scores({ dispute: 0.5, noise: CERTAIN }));
 
     expect(plan.asserted).toEqual(["noise"]);
     expect(plan.review).toContain("dispute");

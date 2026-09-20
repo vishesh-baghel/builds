@@ -17,8 +17,7 @@ export interface Pipeline<TPayload, TFields, TLabel extends string, TAction exte
   escalate(
     decision: Decision<TAction>,
     extracted: Extracted<TFields>,
-    classified: Classified<TLabel>,
-  ): Promise<Escalation>;
+    classified: Classified<TLabel>): Promise<Escalation>;
 }
 
 /**
@@ -42,14 +41,12 @@ export class PipelineInvariantError extends Error {
 export async function runPipeline<TPayload, TFields, TLabel extends string, TAction extends string>(
   pipeline: Pipeline<TPayload, TFields, TLabel, TAction>,
   input: RawInput<TPayload>,
-  audit?: AuditLog,
-): Promise<PipelineOutcome> {
+  audit?: AuditLog): Promise<PipelineOutcome> {
   const at = input.receivedAt;
   const row = async (
     stage: "extract" | "classify" | "decide" | "act" | "escalate" | "log",
     summary: string,
-    data?: Record<string, unknown>,
-  ) => {
+    data?: Record<string, unknown>) => {
     if (!audit) return;
     await audit.record(data === undefined
       ? { at, inputId: input.id, stage, summary }
@@ -73,16 +70,15 @@ export async function runPipeline<TPayload, TFields, TLabel extends string, TAct
     escalate: decision.escalate,
   });
 
-  // The invariant. The only source of work is the decision's own action list — nothing else
-  // in this function can add to it — and each result must name the action it was scheduled
+  // The invariant. The only source of work is the decision's own action list, nothing else
+  // in this function can add to it, and each result must name the action it was scheduled
   // for, so an `act` that quietly does something else fails loudly rather than silently.
   const results: ActionResult[] = [];
   for (const action of new Set(decision.actions)) {
     const result = await pipeline.act(decision, action);
     if (result.action !== action) {
       throw new PipelineInvariantError(
-        `act reported "${result.action}" for scheduled action "${action}" on ${input.id}`,
-      );
+        `act reported "${result.action}" for scheduled action "${action}" on ${input.id}`);
     }
     results.push(result);
     await row("act", `${action}: ${result.status}`, result.detail === undefined ? undefined : { detail: result.detail });

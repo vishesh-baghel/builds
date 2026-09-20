@@ -1,22 +1,24 @@
 "use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { useCallback, useMemo, useRef, useState } from "react";
+import { MAX_REPLY_CHARS } from "../lib/limits";
 import { HUMAN_MINUTES_PER_REPLY, type ClassScores, type Thresholds } from "../src/policy";
 import type { AmountComponents } from "../src/resolve/amount";
 import type { DateComponents } from "../src/resolve/date";
-import { decidePlan, PLAIN, type Plan } from "../src/stages/decide";
+import { decidePlan, PLAIN } from "../src/stages/decide";
 import { REPLY_CLASSES, type Invoice, type Reply, type ReplyClass } from "../src/types";
-import { MAX_REPLY_CHARS } from "../lib/limits";
 import { ReadView } from "./ReadView";
 
 /**
  * The instrument.
  *
- * The only thing bought from the vendor is the seven probabilities. Everything the dials do —
- * the bands, the tie-breaks, the date and amount assembly, the effects — is `decidePlan`, the
- * same function the headless pipeline and the scorecard call, running here in the browser.
- * That is why moving a dial costs nothing: the judgment is unchanged and only the composition
- * re-runs.
+ * The 72 committed replies were judged once, in a recorded run, and their answers ship with
+ * the page. Nothing on this tab calls the model, ever: re-buying a judgment that has not
+ * changed would cost money to learn nothing. The live path is the "Write your own" tab, which
+ * is where a visitor can satisfy themselves that none of this is a lookup table.
+ *
+ * Everything the dials do runs here in the browser through `decidePlan`, the same function the
+ * headless pipeline and the scorecard call.
  */
 
 type Judgment = { scores: ClassScores; date: DateComponents; amount: AmountComponents; model: string };
@@ -31,9 +33,9 @@ export interface SandboxProps {
 }
 
 /**
- * How much higher the two expensive classes sit. Taken from the committed policy, where
- * `dispute` and `claimed_payment` clear at 0.80 against a base of 0.65 — moving the dial keeps
- * that relationship rather than flattening it.
+ * How much higher the two costly classes sit. Taken from the committed policy, where a reply
+ * that argues or claims payment must clear 0.80 against 0.65 for the rest. Moving the dial
+ * keeps that gap rather than flattening it.
  */
 const RISKY_PREMIUM = 0.15;
 const RISKY: readonly ReplyClass[] = ["dispute", "claimed_payment"];
@@ -52,6 +54,13 @@ const hhmm = (minutes: number): string => {
   return h ? `${h}h${m ? ` ${m}m` : ""}` : `${m}m`;
 };
 
+const BLANK: Judgment = {
+  scores: Object.fromEntries(REPLY_CLASSES.map((l) => [l, 0])) as ClassScores,
+  date: { anchor: "none", weekday: "none", period: "none" },
+  amount: { shape: "none", fraction: "none" },
+  model: "unknown",
+};
+
 export function Sandbox(props: SandboxProps) {
   const { asOf, replies, invoices, recorded, runDate } = props;
 
@@ -61,11 +70,6 @@ export function Sandbox(props: SandboxProps) {
   const [filterClass, setFilterClass] = useState("all");
   const [query, setQuery] = useState("");
   const [selected, setSelected] = useState("r043");
-  const [judgments, setJudgments] = useState<Record<string, Judgment>>(recorded);
-  const [sources, setSources] = useState<Record<string, "live" | "recorded">>({});
-  const [notice, setNotice] = useState<string | null>(null);
-  const [spend, setSpend] = useState({ cents: 0, cap: 0, persistent: false });
-  const [busy, setBusy] = useState(false);
   const [mode, setMode] = useState<"fixture" | "own">("fixture");
   const [draft, setDraft] = useState("");
   const [draftInvoice, setDraftInvoice] = useState("4340");
@@ -74,6 +78,7 @@ export function Sandbox(props: SandboxProps) {
   const [classifying, setClassifying] = useState(false);
   const [freeFlash, setFreeFlash] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
+  const composer = useRef<HTMLTextAreaElement>(null);
 
   const byInvoice = useMemo(
     () => new Map(invoices.map((invoice) => [invoice.invoiceNo, invoice])),
@@ -81,11 +86,11 @@ export function Sandbox(props: SandboxProps) {
   );
   const thresholds = useMemo(() => thresholdsFor(act, review), [act, review]);
 
-  /** Every reply re-decided at the current dial setting. Pure, and free. */
+  /** Every reply re-decided at the current dial setting. Pure, instant, and free. */
   const plans = useMemo(() => {
-    const out = new Map<string, Plan>();
+    const out = new Map<string, ReturnType<typeof decidePlan>>();
     for (const reply of replies) {
-      const judgment = judgments[reply.id];
+      const judgment = recorded[reply.id];
       const invoice = byInvoice.get(reply.invoice);
       if (!judgment || !invoice) continue;
       out.set(reply.id, decidePlan({
@@ -95,24 +100,24 @@ export function Sandbox(props: SandboxProps) {
       }));
     }
     return out;
-  }, [replies, judgments, byInvoice, thresholds, asOf]);
+  }, [replies, recorded, byInvoice, thresholds, asOf]);
 
   const figures = useMemo(() => {
-    let automated = 0;
-    let reached = 0;
+    let handled = 0;
+    let reachYou = 0;
     const atRisk = new Set<string>();
 
     for (const reply of replies) {
       const plan = plans.get(reply.id);
       if (!plan) continue;
-      if (plan.handoffs.length > 0) reached += 1; else automated += 1;
+      if (plan.handoffs.length > 0) reachYou += 1; else handled += 1;
       for (const label of RISKY) {
         if (plan.asserted.includes(label) || plan.review.includes(label)) atRisk.add(reply.invoice);
       }
     }
 
     return {
-      automated, reached, total: automated + reached,
+      handled, reachYou, total: handled + reachYou,
       risk: [...atRisk].reduce((sum, no) => sum + (byInvoice.get(no)?.openBalance ?? 0), 0),
     };
   }, [replies, plans, byInvoice]);
@@ -125,39 +130,10 @@ export function Sandbox(props: SandboxProps) {
         (byInvoice.get(reply.invoice)?.customer ?? "").toLowerCase().includes(needle)));
   }, [replies, filterClass, query, byInvoice]);
 
-  const pick = useCallback(async (id: string) => {
-    setSelected(id);
-    if (sources[id]) return;
-
-    setBusy(true);
-    try {
-      const response = await fetch("/api/judge", {
-        method: "POST",
-        headers: { "content-type": "application/json" },
-        body: JSON.stringify({ id }),
-      });
-      if (!response.ok) return;
-      const data = await response.json() as {
-        judgment: Judgment; source: "live" | "recorded"; why: string | null;
-        spentCents: number; capCents: number; persistent: boolean;
-      };
-      setJudgments((current) => ({ ...current, [id]: data.judgment }));
-      setSources((current) => ({ ...current, [id]: data.source }));
-      setSpend({ cents: data.spentCents, cap: data.capCents, persistent: data.persistent });
-      setNotice(data.why);
-    } catch {
-      setNotice("Could not reach the judgment service, so this is the recorded run.");
-    } finally {
-      setBusy(false);
-    }
-  }, [sources]);
-
-  useEffect(() => { void pick("r043"); }, [pick]);
-
   /**
-   * Judges text the visitor wrote. There is no replay behind this one on purpose: a recorded
-   * run holds no judgment for a sentence nobody has written before, and faking one would be
-   * exactly the dishonesty this control exists to disprove. When it cannot judge, it says so.
+   * Judges text the visitor wrote. There is deliberately no fallback behind this one: a
+   * recorded run holds no answer for a sentence nobody has written before, and showing a
+   * stand-in would be the exact thing this tab exists to disprove. If it cannot judge, it says so.
    */
   const classifyOwn = useCallback(async () => {
     const text = draft.trim();
@@ -180,11 +156,18 @@ export function Sandbox(props: SandboxProps) {
       setOwn({ judgment: data.judgment, invoice: data.invoice ?? draftInvoice, body: text });
     } catch {
       setOwn(null);
-      setOwnError("Could not reach the judgment service.");
+      setOwnError("Could not reach the service that reads replies.");
     } finally {
       setClassifying(false);
     }
   }, [draft, draftInvoice, classifying]);
+
+  const resetOwn = useCallback(() => {
+    setOwn(null);
+    setOwnError(null);
+    setDraft("");
+    composer.current?.focus();
+  }, []);
 
   /** The visitor's text, decided by the very same policy the committed replies go through. */
   const ownPlan = useMemo(() => {
@@ -200,14 +183,13 @@ export function Sandbox(props: SandboxProps) {
 
   const flashFree = () => {
     setFreeFlash(true);
-    const timer = setTimeout(() => setFreeFlash(false), 700);
-    return () => clearTimeout(timer);
+    setTimeout(() => setFreeFlash(false), 700);
   };
 
   const reply = replies.find((candidate) => candidate.id === selected);
   const invoice = reply ? byInvoice.get(reply.invoice) : undefined;
   const plan = reply ? plans.get(reply.id) : undefined;
-  const judgment = reply ? judgments[reply.id] : undefined;
+  const judgment = reply ? recorded[reply.id] ?? BLANK : BLANK;
 
   const counts = useMemo(() => {
     const out: Record<string, number> = {};
@@ -220,13 +202,8 @@ export function Sandbox(props: SandboxProps) {
       <header className="bar">
         <div className="wrap bar__in">
           <span className="bar__mark">reckon</span>
-          <span className="bar__tag">reads what the debtor writes back</span>
+          <span className="bar__tag">reads what the customer writes back</span>
           <div className="bar__right">
-            {spend.cap > 0 && (
-              <span className="spend">
-                spend <span className="num">{spend.cents.toFixed(2)} / {spend.cap}¢</span>
-              </span>
-            )}
             <button className="btn btn--primary" type="button" onClick={() => dialog.current?.showModal()}>
               How it works
             </button>
@@ -237,16 +214,16 @@ export function Sandbox(props: SandboxProps) {
       <section className="pitch" aria-label="What this setting does across every reply">
         <div className="wrap">
           <div className="pitch__in">
-            <div>
+            <div className="pitch__say">
               <p className="pitch__lead">
-                <b>{figures.automated} of {figures.total}</b> replies close without a person.{" "}
-                <b>{figures.reached}</b> reach one, already sorted.
+                <b>{figures.handled} of {figures.total}</b> replies are finished without you.
+                The other <b>{figures.reachYou}</b> reach you, already sorted by what they say.
               </p>
               <p className="pitch__sub">
-                These are replies as they land in the finance mailbox &mdash; the inbox the
-                reminders were sent from, whichever tool sent them. Every one is read and sorted
-                before anyone opens it. Arguments, questions and wrong-person replies always
-                reach a human: that is the design, not a shortfall.
+                These stand in for the replies that land in your finance inbox after a chasing
+                tool sends its reminders. Every one is read and sorted before you open it.
+                Replies that argue about the bill, ask you a question, or came from the wrong
+                person always reach you. That is on purpose, not a limitation.
               </p>
             </div>
             <div className="pitch__est">
@@ -263,19 +240,19 @@ export function Sandbox(props: SandboxProps) {
           <div className="figures">
             <div className="fig">
               <div className="fig__n">{hhmm(figures.total * minutes)}</div>
-              <p className="fig__l">to read all {figures.total} by hand, <b>every time</b> this inbox fills</p>
+              <p className="fig__l">to read all {figures.total} yourself, <b>every time</b> the inbox fills</p>
             </div>
             <div className="fig fig--saved">
-              <div className="fig__n">{hhmm(figures.automated * minutes)}</div>
-              <p className="fig__l">nobody does &mdash; those replies never get opened</p>
+              <div className="fig__n">{hhmm(figures.handled * minutes)}</div>
+              <p className="fig__l">of that is <b>handled for you</b>, on replies you never open</p>
             </div>
             <div className="fig">
-              <div className="fig__n">{hhmm(figures.reached * minutes)}</div>
-              <p className="fig__l">still yours, on the <b>{figures.reached}</b> that need judgment</p>
+              <div className="fig__n">{hhmm(figures.reachYou * minutes)}</div>
+              <p className="fig__l">is still your time, on the <b>{figures.reachYou}</b> that need a person</p>
             </div>
             <div className="fig fig--risk">
               <div className="fig__n">{money(figures.risk)}</div>
-              <p className="fig__l">outstanding on replies that <b>dispute the bill or claim it was already paid</b></p>
+              <p className="fig__l">is owed on replies that <b>argue about the bill or say it was already paid</b></p>
             </div>
           </div>
         </div>
@@ -285,7 +262,7 @@ export function Sandbox(props: SandboxProps) {
         <div className="wrap policy__in">
           <div>
             <div className="dial__top">
-              <label className="dial__name" htmlFor="actRange">How sure before it acts</label>
+              <label className="dial__name" htmlFor="actRange">How sure it must be to act on its own</label>
               <span className="dial__val num">{act.toFixed(2)}</span>
             </div>
             <input
@@ -295,7 +272,7 @@ export function Sandbox(props: SandboxProps) {
           </div>
           <div>
             <div className="dial__top">
-              <label className="dial__name" htmlFor="revRange">Worth a second look</label>
+              <label className="dial__name" htmlFor="revRange">Low enough to flag for you</label>
               <span className="dial__val num">{review.toFixed(2)}</span>
             </div>
             <input
@@ -304,68 +281,74 @@ export function Sandbox(props: SandboxProps) {
             />
           </div>
           <p className="policy__free" style={{ opacity: freeFlash ? 1 : 0.55 }}>
-            <b>no model call</b>
+            <b>costs nothing to move</b>
           </p>
         </div>
       </section>
 
       <main className="wrap">
-        {notice && (
-          <div className="replay is-on">
-            <b>Recorded run.</b> {notice}
-          </div>
-        )}
-
         <div className="zones">
           <nav className="rail" aria-label="Replies">
-            <div className="rail__head">
-              <span className="mono">Replies</span>
-              <span className="mono num">{visible.length}/{replies.length}</span>
-            </div>
             <div className="modes" role="tablist" aria-label="What to read">
               <button
                 className="mode" type="button" role="tab" aria-selected={mode === "fixture"}
                 onClick={() => setMode("fixture")}
-              >From the inbox</button>
+              >The 72 replies</button>
               <button
                 className="mode" type="button" role="tab" aria-selected={mode === "own"}
                 onClick={() => setMode("own")}
               >Write your own</button>
             </div>
-            <div className="rail__find">
-              <label className="sr" htmlFor="fClass">Filter</label>
-              <select id="fClass" value={filterClass} onChange={(event) => setFilterClass(event.target.value)}>
-                <option value="all">Every reply ({replies.length})</option>
-                {REPLY_CLASSES.map((label) => (
-                  <option key={label} value={label}>
-                    {PLAIN[label].charAt(0).toUpperCase() + PLAIN[label].slice(1)} ({counts[label] ?? 0})
-                  </option>
-                ))}
-              </select>
-              <label className="sr" htmlFor="fText">Search</label>
-              <input
-                id="fText" type="search" placeholder="Search" autoComplete="off"
-                value={query} onChange={(event) => setQuery(event.target.value)}
-              />
-            </div>
-            <ul className="list">
-              {visible.length === 0 && <li className="list__none">Nothing matches that.</li>}
-              {visible.map((candidate) => (
-                <li key={candidate.id}>
-                  <button
-                    className="item" type="button"
-                    aria-current={selected === candidate.id}
-                    onClick={() => void pick(candidate.id)}
-                  >
-                    <span className="item__top">
-                      <span className="item__who">{byInvoice.get(candidate.invoice)?.customer}</span>
-                      {candidate.also.length > 0 && <span className="item__flag">2 reads</span>}
-                    </span>
-                    <span className="item__line">{candidate.body}</span>
-                  </button>
-                </li>
-              ))}
-            </ul>
+
+            {mode === "fixture" && (
+              <>
+                <div className="rail__head">
+                  <span className="mono">Showing</span>
+                  <span className="mono num">{visible.length} of {replies.length}</span>
+                </div>
+                <div className="rail__find">
+                  <label className="sr" htmlFor="fClass">Filter</label>
+                  <select id="fClass" value={filterClass} onChange={(event) => setFilterClass(event.target.value)}>
+                    <option value="all">Every reply ({replies.length})</option>
+                    {REPLY_CLASSES.map((label) => (
+                      <option key={label} value={label}>
+                        {PLAIN[label].charAt(0).toUpperCase() + PLAIN[label].slice(1)} ({counts[label] ?? 0})
+                      </option>
+                    ))}
+                  </select>
+                  <label className="sr" htmlFor="fText">Search</label>
+                  <input
+                    id="fText" type="search" placeholder="Search" autoComplete="off"
+                    value={query} onChange={(event) => setQuery(event.target.value)}
+                  />
+                </div>
+                <ul className="list">
+                  {visible.length === 0 && <li className="list__none">Nothing matches that.</li>}
+                  {visible.map((candidate) => (
+                    <li key={candidate.id}>
+                      <button
+                        className="item" type="button"
+                        aria-current={selected === candidate.id}
+                        onClick={() => setSelected(candidate.id)}
+                      >
+                        <span className="item__top">
+                          <span className="item__who">{byInvoice.get(candidate.invoice)?.customer}</span>
+                          {candidate.also.length > 0 && <span className="item__flag">2 things</span>}
+                        </span>
+                        <span className="item__line">{candidate.body}</span>
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </>
+            )}
+
+            {mode === "own" && (
+              <p className="rail__note">
+                Type any reply you like. It goes to the same model and the same rules as the 72
+                on the other tab.
+              </p>
+            )}
           </nav>
 
           <article className="read" aria-live="polite">
@@ -373,11 +356,11 @@ export function Sandbox(props: SandboxProps) {
               <>
                 <div className="compose">
                   <label className="compose__label" htmlFor="draft">
-                    Write a reply the way a customer would, and watch it go through the same
-                    seven questions. Nothing here is matched against a script.
+                    Write a reply the way a customer would, then see what it makes of it.
+                    Nothing here is matched against a script.
                   </label>
                   <textarea
-                    id="draft" value={draft} maxLength={MAX_REPLY_CHARS}
+                    id="draft" ref={composer} value={draft} maxLength={MAX_REPLY_CHARS}
                     rows={4} placeholder="e.g. We paid half of this last Tuesday and we are disputing the call-out charge on the rest."
                     onChange={(event) => setDraft(event.target.value)}
                   />
@@ -386,17 +369,22 @@ export function Sandbox(props: SandboxProps) {
                     <select id="draftInv" value={draftInvoice} onChange={(e) => setDraftInvoice(e.target.value)}>
                       {invoices.map((inv) => (
                         <option key={inv.invoiceNo} value={inv.invoiceNo}>
-                          {inv.customer} — {inv.invoiceNo}, {money(inv.openBalance)} open
+                          {inv.customer} · {inv.invoiceNo} · {money(inv.openBalance)} owed
                         </option>
                       ))}
                     </select>
                     <span className="compose__count num">{draft.length}/{MAX_REPLY_CHARS}</span>
+                    {own && (
+                      <button className="btn btn--ghost" type="button" onClick={resetOwn}>
+                        Try another
+                      </button>
+                    )}
                     <button
                       className="btn btn--primary" type="button"
                       disabled={classifying || draft.trim().length === 0}
                       onClick={() => void classifyOwn()}
                     >
-                      {classifying ? "Reading…" : "Read it"}
+                      {classifying ? "Reading..." : "Read it"}
                     </button>
                   </div>
                   {ownError && <p className="compose__err">{ownError}</p>}
@@ -410,18 +398,18 @@ export function Sandbox(props: SandboxProps) {
                     scores={own.judgment.scores}
                     thresholds={thresholds}
                     money={money}
-                    provenance={`judged live just now · ${own.judgment.model}`}
+                    provenance={`read just now by ${own.judgment.model}`}
                     banner={
                       <p className="yours">
-                        <b>Your words, judged live.</b> Same seven questions, same thresholds,
-                        same code as every reply on the left. Not part of the measured 72 — the
-                        published figures are the frozen set and only the frozen set.
+                        <b>Your words, read just now.</b> Same seven questions, same settings and
+                        same code as every reply on the other tab. This one is not counted in the
+                        published accuracy figures, which cover the fixed set of 72 only.
                       </p>
                     }
                   />
                 )}
               </>
-            ) : reply && invoice && plan && judgment ? (
+            ) : reply && invoice && plan ? (
               <ReadView
                 invoice={invoice}
                 body={reply.body}
@@ -429,19 +417,18 @@ export function Sandbox(props: SandboxProps) {
                 scores={judgment.scores}
                 thresholds={thresholds}
                 money={money}
-                busy={busy}
                 {...(reply.note ? { note: reply.note } : {})}
-                provenance={`${sources[reply.id] === "live" ? "judged live just now" : `recorded run of ${runDate}`} · ${judgment.model}`}
+                provenance={`read once on ${runDate} by ${judgment.model}, and saved`}
               />
             ) : null}
           </article>
         </div>
 
         <footer className="foot">
-          Ledger as of <span className="num">{asOf}</span> &mdash; 15 open invoices worth{" "}
-          <span className="num">$245,960</span>, {replies.length} hand-written replies,{" "}
-          {replies.filter((r) => r.hard).length} of them deliberate edge cases.
-          Self-built experiment on invented data. No client data, names or results.
+          Ledger dated <span className="num">{asOf}</span>. 15 unpaid invoices worth{" "}
+          <span className="num">$245,960</span>, {replies.length} replies written by hand,{" "}
+          {replies.filter((r) => r.hard).length} of them deliberately awkward.
+          Everything here is invented. No client data, names or results.
         </footer>
       </main>
 
@@ -454,74 +441,92 @@ export function Sandbox(props: SandboxProps) {
           <h3>The problem, in one line</h3>
           <p>
             You chase an unpaid invoice. The customer writes back. Now somebody has to read that
-            reply and work out what it actually means &mdash; are they paying, arguing, confused,
-            or was it the wrong person entirely? That reading is the part nobody automated.
+            reply and work out what it actually means. Are they paying? Arguing? Confused? Was it
+            even the right person? That reading is the part that still lands on a human.
           </p>
           <div className="mcall">
             <p>
-              Tools that send the reminders are everywhere &mdash; QuickBooks bundles one at
-              $85/mo, Chaser lists $180/mo &mdash; and the better ones already do something with
-              what comes back. Chaser logs replies from your Gmail or Outlook against the
-              customer, and its AI email generator reads a debtor&rsquo;s message, detects intent,
-              and drafts a courteous response for you to send.
+              Tools that send the reminders are everywhere. QuickBooks bundles one at $85/mo and
+              Chaser lists $180/mo, and the better ones already do something with what comes
+              back. Chaser files replies from your Gmail or Outlook against the right customer,
+              and its AI can read a message, work out the intent, and write you a polite response
+              to send.
             </p>
             <p>
-              <b>That draft is the difference.</b> What this produces is not a message. It is a
-              decision: the chase pauses or stops, a reconciliation item opens, a part payment is
-              recorded, a promise gets a date worked out in code. It writes no prose and sends
-              nothing &mdash; there is no email path in it at all.
+              <b>That response is the difference.</b> What this produces is not a message. It is a
+              decision: the chasing pauses or stops, a payment query is opened, a part payment is
+              recorded, a promised date is worked out. It writes nothing and it sends nothing.
+              There is no email in it at all.
             </p>
           </div>
 
           <h3>Using it, in three steps</h3>
           <ol>
             <li>
-              <b>Pick a reply</b> from the list. These stand in for what arrives in the finance
-              mailbox after a chasing tool sends its reminders &mdash; replies land in that inbox
-              whichever tool sent them. There are {replies.length}, written to look like a real
-              one: mostly noise, with the awkward cases mixed in.
+              <b>Pick a reply</b> from the list. These stand in for what arrives in your finance
+              inbox after the reminders go out. There are {replies.length}, written to look like a
+              real inbox: mostly junk, with the awkward ones mixed in.
             </li>
             <li>
-              <b>Read the seven scores</b> under the message. One per outcome, because a message
-              can genuinely be two things at once.
+              <b>Look at the seven scores</b> under the message. Each one answers a separate
+              question, because a single reply can genuinely be two things at once.
             </li>
             <li>
-              <b>Move the dial</b> marked &ldquo;how sure before it acts&rdquo;. That is you
-              choosing how confident it must be before it does anything by itself. Everything
-              below your line goes to a person.
+              <b>Move the first slider.</b> That is you deciding how certain it has to be before
+              it does anything on its own. Anything below your line comes to you instead.
             </li>
           </ol>
           <p>
-            Try the ones marked <code>2 reads</code>. Those pay part of the bill and argue about
-            the rest. A system forced to pick one answer would have thrown one of them away.
+            Try the ones marked <code>2 things</code>. Those pay part of the bill and argue about
+            the rest. Anything forced to pick a single answer would have thrown one of them away.
           </p>
 
-          <h3>What the dial costs</h3>
-          <p>
-            Nothing. The seven scores are bought once per reply and cached; moving the dial
-            re-runs only the policy, which is ordinary code. The spend counter does not move.
-          </p>
-
-          <h3>&ldquo;Isn&rsquo;t this just hardcoded?&rdquo;</h3>
+          <h3>Is this just a canned demo?</h3>
           <p>
             Fair question, and the reason for the <b>Write your own</b> tab. Type any reply you
-            like against any invoice in the ledger and it goes to the same model, through the
-            same seven questions, into the same policy, and renders in the same component as
-            everything on the left. Nothing is matched against a script.
+            like against any invoice and it goes to the same model, through the same seven
+            questions, into the same rules, and comes out in the same layout as everything on the
+            other tab. Nothing is matched against a script.
           </p>
           <p>
-            The committed {replies.length} exist for a different reason: they were labelled
-            <em> before</em> the build, so they can be scored honestly. A set written afterwards
-            gets unconsciously shaped by what the system already does, and the accuracy number
-            stops meaning anything. Your own text is judged live and is deliberately{" "}
-            <em>not</em> counted in those figures.
+            The {replies.length} sample replies work differently on purpose. They were written and
+            labelled <em>before</em> the system was built, so they can be scored honestly, and
+            they were read once and saved. Re-reading them on every visit would cost money to
+            learn nothing. Your own text is read live, and is deliberately kept out of the
+            published accuracy figures.
           </p>
 
-          <h3>What this is not</h3>
+          <h3>What the sliders cost</h3>
           <p>
-            It never sends anything &mdash; there is no email path in the system at all. It never
-            marks an invoice paid; a claim of payment opens a check for a person. The data is
-            invented, and this is a self-built experiment, not a client result.
+            Nothing. The seven scores are worked out once per reply. Moving a slider only
+            re-applies your rules to numbers that already exist, so it is instant and free. That
+            is the whole point of keeping the judgment and the policy separate.
+          </p>
+
+          <h3>What it will not do</h3>
+          <ul>
+            <li><b>It never sends anything.</b> There is no email path in the system.</li>
+            <li>
+              <b>It never marks an invoice paid.</b> If someone claims they paid, that opens a
+              query for a person to check. There is no action in the system that can close an
+              invoice.
+            </li>
+            <li>
+              <b>It never invents a date.</b> If a promise has no date in it, the promise is
+              recorded without one and a person sets it.
+            </li>
+            <li>
+              <b>It does what the text says, not what the text asks.</b> A reply telling it to
+              ignore its rules is read as data, like any other reply.
+            </li>
+          </ul>
+
+          <h3>Where the numbers come from</h3>
+          <p>
+            The accuracy figures come from running all {replies.length} replies and comparing the
+            answer to the label written beforehand, reported one class at a time. The reading
+            time above is your own estimate, which is why you can change it. It is an estimate,
+            not a measurement, and it is never mixed in with the measured figures.
           </p>
         </div>
       </dialog>

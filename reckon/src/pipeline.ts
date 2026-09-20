@@ -17,7 +17,7 @@ import { REPLY_CLASSES, type ChaseAction, type Invoice, type Reply, type ReplyCl
  *
  * `classify` is the only stage that can reach the outside world, and it is supplied as a
  * function so the whole pipeline runs against injected probabilities in tests, against a live
- * request in the scorecard, and against a committed run artifact on the deploy — same code
+ * request in the scorecard, and against a committed run artifact on the deploy, same code
  * each time.
  */
 
@@ -172,8 +172,7 @@ export class ReckonPipeline implements Pipeline<Reply, ReplyFields, ReplyClass, 
   async escalate(
     decision: Decision<ChaseAction>,
     extracted: Extracted<ReplyFields>,
-    classified: Classified<ReplyClass>,
-  ): Promise<Escalation> {
+    classified: Classified<ReplyClass>): Promise<Escalation> {
     const plan = this.requirePlan(decision.inputId);
     const { reply, invoice } = extracted.fields;
 
@@ -189,8 +188,7 @@ export class ReckonPipeline implements Pipeline<Reply, ReplyFields, ReplyClass, 
         },
         reply: { id: reply.id, subject: reply.subject, body: reply.body },
         probabilities: Object.fromEntries(
-          classified.probabilities.map((p) => [p.label, p.probability]),
-        ) satisfies Record<string, number>,
+          classified.probabilities.map((p) => [p.label, p.probability])) satisfies Record<string, number>,
         asserted: plan.asserted,
         reviewBand: plan.review,
         handoffs: plan.handoffs,
@@ -201,7 +199,7 @@ export class ReckonPipeline implements Pipeline<Reply, ReplyFields, ReplyClass, 
 
   private requirePlan(inputId: string): Plan {
     const plan = this.plans.get(inputId);
-    if (!plan) throw new Error(`no plan for ${inputId} — classify must run before decide`);
+    if (!plan) throw new Error(`no plan for ${inputId}, classify must run before decide`);
     return plan;
   }
 }
@@ -209,8 +207,7 @@ export class ReckonPipeline implements Pipeline<Reply, ReplyFields, ReplyClass, 
 /** Convenience for callers that only hold probabilities, not a whole judgment. */
 export const judgmentFromScores = (
   scores: ClassScores,
-  overrides: Partial<Omit<Judgment, "scores">> = {},
-): Judgment => ({
+  overrides: Partial<Omit<Judgment, "scores">> = {}): Judgment => ({
   scores,
   date: { anchor: "none", weekday: "none", period: "none" },
   amount: { shape: "none", fraction: "none" },

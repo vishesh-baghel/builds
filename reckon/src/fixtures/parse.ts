@@ -6,7 +6,7 @@ import { FixtureError, INVOICE_COLUMNS, parseInvoiceRow, parseReplyRecord } from
  * sandbox can build a fixture set from the committed snapshot without dragging `node:fs` into
  * a browser-facing bundle.
  *
- * The CSV and the JSONL are the human-authored source of truth — they are the measurement
+ * The CSV and the JSONL are the human-authored source of truth, they are the measurement
  * instrument, frozen once a number is published. Parsing is deliberately strict: anything the
  * validators reject fails a test rather than reaching a demo.
  */

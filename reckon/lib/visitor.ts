@@ -5,7 +5,7 @@ import { NextResponse } from "next/server";
  *
  * It exists only so one visitor's allowance is not another's. It is not an account, it is
  * linked to nothing, and the only thing ever written against it is a count of calls. No reply
- * text — committed or visitor-written — is stored against it, or stored at all.
+ * text, committed or visitor-written, is stored against it, or stored at all.
  */
 export const VISITOR_COOKIE = "reckon_vid";
 

@@ -57,7 +57,7 @@ const endOfMonth = (at: Date, monthsAhead: number): Date =>
  * Finds an explicit calendar day in the text.
  *
  * Two forms appear in the fixture set: `M/D` and an ordinal such as "the 15th". Parsing rather
- * than asking the model, because this is character matching and arithmetic — exactly the work
+ * than asking the model, because this is character matching and arithmetic, exactly the work
  * that belongs in code. Jev's job was only to say that a calendar day is what the message used.
  */
 function parseDayOfMonth(body: string, asOf: Date): { at: Date; how: string } | null {
@@ -67,8 +67,7 @@ function parseDayOfMonth(body: string, asOf: Date): { at: Date; how: string } | 
     const day = Number(slash[2]);
     if (month >= 1 && month <= 12 && day >= 1 && day <= 31) {
       let at = new Date(Date.UTC(asOf.getUTCFullYear(), month - 1, day));
-      // A date earlier in the year than the ledger date means next year, not a past promise —
-      // unless it is only just past, which is a broken promise and must stay in the past.
+      // A date earlier in the year than the ledger date means next year, not a past promise, // unless it is only just past, which is a broken promise and must stay in the past.
       if (at.getUTCMonth() < asOf.getUTCMonth() - 6) {
         at = new Date(Date.UTC(asOf.getUTCFullYear() + 1, month - 1, day));
       }
@@ -132,8 +131,7 @@ function fromPeriod(asOf: Date, period: PromisePeriod): { at: Date; how: string 
 export function resolvePromiseDate(
   components: DateComponents,
   body: string,
-  asOf: string = LEDGER_AS_OF,
-): ResolvedDate {
+  asOf: string = LEDGER_AS_OF): ResolvedDate {
   const from = parseDay(asOf);
 
   let found: { at: Date; how: string } | null = null;

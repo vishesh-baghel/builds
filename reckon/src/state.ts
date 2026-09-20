@@ -11,7 +11,7 @@ import type { ChaseAction } from "./types";
 export type ChaseStatus =
   /** The default. Whatever tool the firm already runs keeps sending. */
   | "chasing"
-  /** Chasing is held — until a promised date, or until a person resolves something. */
+  /** Chasing is held, until a promised date, or until a person resolves something. */
   | "paused"
   /** Chasing this invoice has stopped. */
   | "stopped"
@@ -71,7 +71,7 @@ export class ChaseStore {
 
   /**
    * Chase state only ever gets stronger within a run, so a decision carrying two actions lands
-   * the same way whatever order they run in — a dispute that stops the chase is not quietly
+   * the same way whatever order they run in, a dispute that stops the chase is not quietly
    * downgraded to a pause because the same reply also asked a question. Asking not to be
    * contacted is the strongest state and is never walked back automatically.
    */

@@ -63,7 +63,7 @@ export interface Reply {
   readonly from: string;
   readonly subject: string;
   readonly body: string;
-  /** The primary class — what the system is scored against. */
+  /** The primary class, what the system is scored against. */
   readonly label: ReplyClass;
   /** Secondary classes that genuinely also apply. */
   readonly also: readonly ReplyClass[];

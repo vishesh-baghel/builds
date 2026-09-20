@@ -1,11 +1,11 @@
-# reckon — scorecard
+# reckon, scorecard
 
 **Run date:** 2026-09-19
 **Model:** `jev-1.13.0`
 **Instrument:** the 72 committed replies in `fixtures/replies.jsonl`, frozen.
 
 All data is synthetic. This is a self-built experiment on invented data: no client, no client
-names, no client results. There is no before/after comparison anywhere on this page — no
+names, no client results. There is no before/after comparison anywhere on this page, no
 pre-baseline was taken, and inventing one afterwards would be worse than having none.
 
 **There is deliberately no overall accuracy figure.** The class distribution is imbalanced on
@@ -17,7 +17,7 @@ matter. Everything below is per class, with its `n` beside it.
 
 The highest-probability class that cleared its own act threshold, after the five tie-break
 rules are applied in order. When nothing clears, there is no primary and the reply goes to a
-person — that is a routing signal, not a missing answer. The rule lives in `src/policy.ts`.
+person, that is a routing signal, not a missing answer. The rule lives in `src/policy.ts`.
 
 ## Thresholds
 
@@ -25,7 +25,7 @@ person — that is a routing signal, not a missing answer. The rule lives in `sr
 |---|---|---|
 | `dispute` | 0.80 | swept on the ordinary subset |
 | `claimed_payment` | 0.80 | swept on the ordinary subset |
-| `partial` | 0.65 | declared, not swept — n = 2 ordinary |
+| `partial` | 0.65 | declared, not swept, n = 2 ordinary |
 | `promise_to_pay` | 0.65 | swept on the ordinary subset |
 | `question` | 0.65 | swept on the ordinary subset |
 | `wrong_contact` | 0.65 | swept on the ordinary subset |
@@ -34,14 +34,14 @@ person — that is a routing signal, not a missing answer. The rule lives in `sr
 
 The sweep ran over the **51 ordinary replies only**. The 21 hard replies were never seen by it,
 so nothing here was chosen on the subset it is reported against. The full sweep is committed at
-`runs/sweep.json` — 150 threshold combinations.
+`runs/sweep.json`, 150 threshold combinations.
 
 `partial` is **declared rather than swept**: the ordinary subset holds 2 `partial` replies,
 and a threshold fitted to 2 examples is a number with a decimal point rather than a measurement.
 
 ## Results
 
-### Ordinary subset — n = 51
+### Ordinary subset, n = 51
 
 The 51 replies that are not deliberate boundary cases.
 
@@ -56,13 +56,13 @@ The 51 replies that are not deliberate boundary cases.
 | `noise` | 13 | 93% (13/14) | 100% (13/13) | 100% | 0% |
 
 **Errors:** 1 of 51 replies got the primary class wrong.
-Of those 1, the gate caught 0 — 0%.
+Of those 1, the gate caught 0, 0%.
 
 **Automation:** 29 of 51 closed without a person; 22 reached one.
 A system that escalated everything would read as 100% caught and 0% automated, which is why
 these two are printed beside the catch rate rather than behind it.
 
-### Hard subset — n = 21
+### Hard subset, n = 21
 
 The 21 replies written specifically to sit on a boundary. Scored apart, on purpose: averaging them into the rest hides the thing they were included to show.
 
@@ -77,13 +77,13 @@ The 21 replies written specifically to sit on a boundary. Scored apart, on purpo
 | `noise` | 5 | 100% (4/4) | 80% (4/5) | 60% | 40% |
 
 **Errors:** 6 of 21 replies got the primary class wrong.
-Of those 6, the gate caught 6 — 100%.
+Of those 6, the gate caught 6, 100%.
 
 **Automation:** 6 of 21 closed without a person; 15 reached one.
 A system that escalated everything would read as 100% caught and 0% automated, which is why
 these two are printed beside the catch rate rather than behind it.
 
-### Multi-label replies — n = 5
+### Multi-label replies, n = 5
 
 Scored apart from the strict primary figure. These are the replies that genuinely carry two
 classes at once, which is the case a pick-one classifier cannot represent at all.
@@ -100,7 +100,7 @@ Both classes asserted on **4 of 5**.
 Primary correct on **5 of 5**.
 
 `noise` earns no secondary credit, so asserting `noise` alongside `wrong_contact` on an
-out-of-office that names a live contact is not rewarded — tie-break rule 3 requires the
+out-of-office that names a live contact is not rewarded, tie-break rule 3 requires the
 actionable redirect to outrank the auto-reply.
 
 ## Measured cost and time
@@ -119,7 +119,7 @@ Both from this run's real token counts and wall-clock timings.
 Output tokens are not billed on this model, so the cost figure is input-only.
 
 Every judgment behind these figures is committed at `runs/run.json`, so the whole
-scorecard can be recomputed — at these thresholds or any others — without spending again.
+scorecard can be recomputed, at these thresholds or any others, without spending again.
 
 ## What these numbers are not
 

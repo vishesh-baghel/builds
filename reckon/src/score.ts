@@ -9,10 +9,10 @@ import { REPLY_CLASSES, type Reply, type ReplyClass } from "./types";
  * threshold sweep explore a whole grid without spending again, and lets anyone recompute the
  * published figures from the committed run artifact.
  *
- * Two rules this file exists to enforce. **Per-class only** — the fixture distribution is
+ * Two rules this file exists to enforce. **Per-class only**, the fixture distribution is
  * deliberately imbalanced to look like a real inbox, so a system answering `noise` every time
  * would score 25% and a single headline number would flatter exactly the rare, expensive
- * classes that matter. And **ordinary and hard scored separately** — the 21 boundary cases were
+ * classes that matter. And **ordinary and hard scored separately**, the 21 boundary cases were
  * included on purpose and averaging them away hides the thing they were included to show.
  */
 
@@ -47,7 +47,7 @@ export function resultFor(reply: Reply, scores: ClassScores, thresholds: Thresho
   const { primary } = derivePrimary(asserted, scores);
 
   // A reply escalates when nothing cleared, when a class sits in the review band, or when an
-  // asserted class hands over by design. The last is not an error — disputes, questions and
+  // asserted class hands over by design. The last is not an error, disputes, questions and
   // wrong contacts always reach a person.
   const handsOver = asserted.some((label) => HANDS_OVER.includes(label));
   const escalated = asserted.length === 0 || review.length > 0 || handsOver;
@@ -134,8 +134,7 @@ export interface MultiLabelFigures {
 /** Scored apart from the strict primary figure, because asserting one of two is a partial answer. */
 export function multiLabelFigures(
   replies: readonly Reply[],
-  results: readonly ReplyResult[],
-): MultiLabelFigures {
+  results: readonly ReplyResult[]): MultiLabelFigures {
   const byId = new Map(results.map((r) => [r.id, r]));
   const multi = replies.filter((reply) => expectedSet(reply).length > 1);
 
@@ -167,8 +166,7 @@ export interface RunFigures {
 export function scoreRun(
   replies: readonly Reply[],
   scoresById: Readonly<Record<string, ClassScores>>,
-  thresholds: Thresholds,
-): RunFigures {
+  thresholds: Thresholds): RunFigures {
   const results = replies.map((reply) => {
     const scores = scoresById[reply.id];
     if (!scores) throw new Error(`no judgment recorded for ${reply.id}`);
@@ -227,8 +225,7 @@ export function thresholdsAt(base: number, risky: number, review: number, declar
 export function sweep(
   replies: readonly Reply[],
   scoresById: Readonly<Record<string, ClassScores>>,
-  declared: Thresholds,
-): SweepPoint[] {
+  declared: Thresholds): SweepPoint[] {
   const ordinary = replies.filter((reply) => !reply.hard);
   const points: SweepPoint[] = [];
 

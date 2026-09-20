@@ -10,7 +10,7 @@ import type { ClassScores, Thresholds } from "../src/policy";
  * Used for both a committed fixture and text the visitor just wrote. That is deliberate and
  * load-bearing: if the two rendered through different code, a visitor would be right to
  * suspect the fixtures were getting special treatment. Same component, same `decidePlan`,
- * same thresholds — the only difference is where the seven numbers came from.
+ * same thresholds, the only difference is where the seven numbers came from.
  */
 export interface ReadViewProps {
   invoice: Invoice;
@@ -80,7 +80,7 @@ export function ReadView(props: ReadViewProps) {
 
       <section className="reads">
         <span className="mono">
-          What it read &mdash; the model&rsquo;s raw judgment, not calibrated frequencies
+          What it made of it. These are the model&rsquo;s own scores, not proven odds
         </span>
         <div className="reads__grid">
           {REPLY_CLASSES.map((label) => {

@@ -4,7 +4,7 @@ import auditFixture from "../fixtures/audit-r043.json" with { type: "json" };
 import recorded from "../fixtures/recorded-answers.json" with { type: "json" };
 import { fixedClock } from "../src/clock";
 import { loadAdversarial } from "../src/fixtures/load";
-import { JudgmentError, judge, readJudgment } from "../src/jev";
+import { JudgmentError, judge, readJudgment, type JudgeDeps } from "../src/jev";
 import { CLASS_QUESTION_NAMES, COMPONENT_QUESTION_NAMES, QUESTIONS } from "../src/questions";
 import { createReckon } from "../src/run";
 import { ChaseStore } from "../src/state";
@@ -15,13 +15,13 @@ import { fixtures, harness, replyById, runOne, scores } from "./helpers";
 type Recorded = Record<string, { model: string; answers: unknown; usage: { input_tokens: number; output_tokens: number } }>;
 const RECORDED = recorded as Recorded;
 
-describe("the classify request — AC #2", () => {
+describe("the classify request, AC #2", () => {
   it("carries one Noul per class, and every question the design uses", () => {
     for (const label of CLASS_QUESTION_NAMES) {
       expect(QUESTIONS[label]?.type).toBe("noul");
     }
     // Asserted by shape rather than by count, so adding a component question does not
-    // require editing this test — only removing one the design still needs would fail it.
+    // require editing this test, only removing one the design still needs would fail it.
     const answered = Object.keys(RECORDED["r043"]?.answers as object);
     for (const name of Object.keys(QUESTIONS)) expect(answered).toContain(name);
     for (const name of COMPONENT_QUESTION_NAMES) expect(QUESTIONS[name]?.type).toBe("choice");
@@ -51,11 +51,20 @@ describe("the classify request — AC #2", () => {
   });
 });
 
-describe("retries are bounded and failures are recorded — AC #17", () => {
-  const client = (fail: () => unknown) => ({ systemOne: async () => fail() as never });
-  const deps = (fail: () => unknown) => {
+describe("retries are bounded and failures are recorded, AC #17", () => {
+  /**
+   * A stand-in for the SDK client. The real `systemOne` returns an `APIPromise`, a Promise
+   * subclass with extra methods `judge` never touches, so the stub is cast rather than
+   * reimplemented. Typed here rather than left as `any`: this file is inside the typecheck now.
+   */
+  const deps = (fail: () => unknown): JudgeDeps => {
     const counter = new InMemorySpendCounter();
-    return { client: client(fail), cap: new SpendCap(counter, 10_000), counter, sleep: async () => {} };
+    return {
+      client: { systemOne: (() => Promise.resolve().then(fail)) as unknown as JudgeDeps["client"]["systemOne"] },
+      cap: new SpendCap(counter, 10_000),
+      counter,
+      sleep: async () => {},
+    };
   };
 
   it("retries a transient failure and succeeds", async () => {
@@ -95,7 +104,7 @@ describe("retries are bounded and failures are recorded — AC #17", () => {
   });
 });
 
-describe("running twice changes nothing the second time — AC #16", () => {
+describe("running twice changes nothing the second time, AC #16", () => {
   it("applies one work item and one state transition per action", async () => {
     const store = new ChaseStore();
     const idempotency = new InMemoryIdempotencyStore();
@@ -114,7 +123,7 @@ describe("running twice changes nothing the second time — AC #16", () => {
   });
 });
 
-describe("the audit trail — AC #18", () => {
+describe("the audit trail, AC #18", () => {
   it("holds one row per stage that ran, carrying the evidence", async () => {
     const { audit: rows, plan } = await runOne("r043", scores({ partial: 0.97, dispute: 0.94 }));
 
@@ -138,8 +147,7 @@ describe("the audit trail — AC #18", () => {
     const { audit: rows } = await runOne(
       "r043",
       scores({ partial: 0.97, dispute: 0.94 }),
-      { amount: { shape: "stated_figure", fraction: "none" } },
-    );
+      { amount: { shape: "stated_figure", fraction: "none" } });
 
     const shaped = rows.map((row) => ({
       inputId: row.inputId, stage: row.stage, summary: row.summary, data: row.data ?? null,
@@ -160,13 +168,12 @@ describe("the audit trail — AC #18", () => {
   });
 });
 
-describe("the promise watchdog runs on an injected clock — AC #7", () => {
+describe("the promise watchdog runs on an injected clock, AC #7", () => {
   it("raises an overdue-promise item when the resume date arrives with no payment", async () => {
     const store = new ChaseStore();
     await harness(
       { r013: { scores: scores({ promise_to_pay: 0.96 }), date: { anchor: "weekday", weekday: "friday", period: "none" } } },
-      { store },
-    ).run(replyById("r013"));
+      { store }).run(replyById("r013"));
 
     const invoice = replyById("r013").invoice;
     expect(store.chaseState(invoice).resumeOn).toBe("2026-10-16");
@@ -187,8 +194,7 @@ describe("the promise watchdog runs on an injected clock — AC #7", () => {
     const store = new ChaseStore();
     await harness(
       { r013: { scores: scores({ promise_to_pay: 0.96 }), date: { anchor: "weekday", weekday: "friday", period: "none" } } },
-      { store },
-    ).run(replyById("r013"));
+      { store }).run(replyById("r013"));
 
     sweepOverduePromises(store, fixedClock("2026-10-20"));
     const count = store.workItems().length;
@@ -207,13 +213,12 @@ describe("the promise watchdog runs on an injected clock — AC #7", () => {
   });
 });
 
-describe("instruction-shaped replies are data — AC #19", () => {
+describe("instruction-shaped replies are data, AC #19", () => {
   const adversarial = loadAdversarial();
 
   const inject = (store: ChaseStore) => harness(
     Object.fromEntries(adversarial.map((reply) => [reply.id, { scores: scores({ [reply.label]: 0.95 }) }])),
-    { store },
-  );
+    { store });
 
   it("keeps the adversarial inputs out of the frozen scored set", () => {
     const scored = new Set(fixtures.replies.map((r) => r.id));

@@ -15,8 +15,8 @@ import {
 /**
  * The spine's own contract, exercised from the build that forced it to change.
  *
- * These live here rather than in `shared` so the repo has exactly one `test` script — the
- * first one it has ever had — and so the invariant is tested by a real consumer rather than
+ * These live here rather than in `shared` so the repo has exactly one `test` script, the
+ * first one it has ever had, and so the invariant is tested by a real consumer rather than
  * in isolation.
  */
 
@@ -74,7 +74,7 @@ const input: RawInput<string> = {
   payload: "hello",
 };
 
-describe("runPipeline invariant — AC #20", () => {
+describe("runPipeline invariant, AC #20", () => {
   it("never calls act when the decision lists no actions", async () => {
     const spy = spyPipeline({ actions: [], escalate: true, reason: "nothing cleared" });
     const outcome = await runPipeline(spy.pipeline, input);
@@ -96,13 +96,12 @@ describe("runPipeline invariant — AC #20", () => {
   it("throws when act reports work other than what it was scheduled for", async () => {
     const spy = spyPipeline(
       { actions: ["one"], escalate: false, reason: "one" },
-      { act: async (d) => ({ inputId: d.inputId, action: "two", status: "done" }) },
-    );
+      { act: async (d) => ({ inputId: d.inputId, action: "two", status: "done" }) });
     await expect(runPipeline(spy.pipeline, input)).rejects.toThrow(PipelineInvariantError);
   });
 });
 
-describe("runPipeline outcome — acting and escalating are not exclusive", () => {
+describe("runPipeline outcome, acting and escalating are not exclusive", () => {
   it("returns both results and the escalation in one run", async () => {
     const spy = spyPipeline({ actions: ["one"], escalate: true, reason: "acted and handed over" });
     const outcome = await runPipeline(spy.pipeline, input);

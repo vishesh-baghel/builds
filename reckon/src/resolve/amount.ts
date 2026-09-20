@@ -1,12 +1,12 @@
 /**
  * Turning what the model saw into an amount, in code.
  *
- * Two of the six `partial` replies state the amount only as a fraction — "half now", "the
+ * Two of the six `partial` replies state the amount only as a fraction, "half now", "the
  * undisputed portion". Asking a model to multiply is asking it to do the one thing it should
  * not be trusted with here, so Jev names the shape and this file does the arithmetic against
  * the open balance.
  *
- * Where no size can be fixed — "most of it" — nothing is recorded and it goes to a person.
+ * Where no size can be fixed, "most of it", nothing is recorded and it goes to a person.
  * Recording a guessed number against a real balance is the worst available outcome.
  */
 
@@ -37,7 +37,7 @@ const FRACTIONS: Partial<Record<AmountFraction, number>> = {
  * Finds a stated figure in the text.
  *
  * Handles the three forms the fixture set uses: `20k`, `21,000` and `$10,000`. Bare one- and
- * two-digit numbers are ignored on purpose — "net 60" and "invoice 4417" are not payments, and
+ * two-digit numbers are ignored on purpose, "net 60" and "invoice 4417" are not payments, and
  * a parser loose enough to catch every figure catches those too.
  */
 export function parseStatedFigure(body: string): number | null {
@@ -65,8 +65,7 @@ export function parseStatedFigure(body: string): number | null {
 export function resolvePartialAmount(
   components: AmountComponents,
   body: string,
-  openBalance: number,
-): ResolvedAmount {
+  openBalance: number): ResolvedAmount {
   if (components.shape === "stated_figure") {
     const figure = parseStatedFigure(body);
     if (figure === null) return NONE;

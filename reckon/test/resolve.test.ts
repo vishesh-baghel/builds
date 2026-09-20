@@ -12,7 +12,7 @@ import { resolvePromiseDate, type DateComponents } from "../src/resolve/date";
 const components = (over: Partial<DateComponents>): DateComponents =>
   ({ anchor: "none", weekday: "none", period: "none", ...over });
 
-describe("promise dates are assembled in code — AC #6", () => {
+describe("promise dates are assembled in code, AC #6", () => {
   it("resolves an explicit day of the month, rolling to next month when it has passed", () => {
     // The 15th has not happened yet in October.
     expect(resolvePromiseDate(components({ anchor: "day_of_month" }), "we'll pay on the 15th").date)
@@ -67,7 +67,7 @@ describe("promise dates are assembled in code — AC #6", () => {
     expect(resolvePromiseDate(components({ anchor: "relative_period", period: "none" }), "shortly").date).toBeNull();
   });
 
-  it("does not read the wall clock — the same components resolve the same in any year", () => {
+  it("does not read the wall clock, the same components resolve the same in any year", () => {
     const a = resolvePromiseDate(components({ anchor: "weekday", weekday: "friday" }), "Friday", LEDGER_AS_OF);
     const b = resolvePromiseDate(components({ anchor: "weekday", weekday: "friday" }), "Friday", "2030-01-01");
     expect(a.date).toBe("2026-10-16");
@@ -75,15 +75,14 @@ describe("promise dates are assembled in code — AC #6", () => {
   });
 });
 
-describe("partial amounts are worked out in code — AC #8", () => {
+describe("partial amounts are worked out in code, AC #8", () => {
   const balance = 41_250;
 
   it("takes a stated figure from the message", () => {
     const resolved = resolvePartialAmount(
       { shape: "stated_figure", fraction: "none" },
       "Paying the undisputed portion now - 21,000 - and holding the rest.",
-      balance,
-    );
+      balance);
     expect(resolved.amount).toBe(21_000);
     expect(resolved.how).toContain("stated");
   });

@@ -12,7 +12,7 @@ import { REPLY_CLASSES, type Reply } from "../src/types";
  *
  * Almost every test in this suite hands the pipeline a set of numbers and asserts what the
  * code does with them. That is deliberate: the vendor's accuracy is *reported* by the
- * scorecard, while code-deterministic behaviour is *asserted* here — so the suite runs with no
+ * scorecard, while code-deterministic behaviour is *asserted* here, so the suite runs with no
  * key, makes no network call, and never goes flaky because a model moved.
  */
 
@@ -37,8 +37,7 @@ export interface Harness extends Reckon {
 /** A pipeline whose judgment is whatever the test says it is. */
 export function harness(
   byId: Readonly<Record<string, Partial<Judgment> & { scores: ClassScores }>>,
-  options: { thresholds?: Thresholds; store?: ChaseStore; idempotency?: IdempotencyStore; asOf?: string } = {},
-): Harness {
+  options: { thresholds?: Thresholds; store?: ChaseStore; idempotency?: IdempotencyStore; asOf?: string } = {}): Harness {
   const calls: string[] = [];
   const reckon = createReckon({
     fixtures,
@@ -62,8 +61,7 @@ export async function runOne(
   id: string,
   s: ClassScores,
   extra: Partial<Judgment> = {},
-  options: Parameters<typeof harness>[1] = {},
-) {
+  options: Parameters<typeof harness>[1] = {}) {
   const h = harness({ [id]: { scores: s, ...extra } }, options);
   const outcome = await h.run(replyById(id));
   return { ...outcome, store: h.store, harness: h };

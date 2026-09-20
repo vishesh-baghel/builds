@@ -59,7 +59,7 @@ const choiceOf = (value: unknown): string | null =>
 /**
  * A response that fails any of these is a failed call, not a partial result.
  *
- * Typed output guarantees the shape of the interface, not that the interface was honoured — so
+ * Typed output guarantees the shape of the interface, not that the interface was honoured, so
  * the envelope is checked before a single number is trusted. A `noul` outside 0..1 or a missing
  * class would otherwise become a silently wrong decision.
  */
@@ -119,14 +119,13 @@ export function jevClient(): TypeSafeClient {
  * One request per reply, wrapped in the two primitives every outside call in this repo uses.
  *
  * The cap is checked against an estimate before spending, then reconciled against real token
- * usage afterwards — a ceiling enforced on a guess and never corrected would drift away from
+ * usage afterwards, a ceiling enforced on a guess and never corrected would drift away from
  * what was actually spent.
  */
 export async function judge(
   replyId: string,
   state: JudgmentState,
-  deps: JudgeDeps,
-): Promise<Judgment> {
+  deps: JudgeDeps): Promise<Judgment> {
   const estimate = estimateCents(state);
 
   const judgment = await deps.cap.guard(estimate, async () =>
@@ -140,8 +139,7 @@ export async function judge(
         // A malformed envelope and a 4xx are both unfixable by trying again.
         isRetryable: (error) => !(error instanceof JudgmentError) && !isClientError(error),
         ...(deps.sleep ? { sleep: deps.sleep } : {}),
-      },
-    ));
+      }));
 
   const correction = judgment.costCents - estimate;
   if (correction > 0) await deps.counter.add(correction);

@@ -82,7 +82,7 @@ export function createReckon(options: ReckonRunOptions): Reckon {
       } catch (error) {
         // A vendor call that exhausted its retries must leave a mark. Failing silently and
         // letting the reply fall out of the run is the one outcome an audit log exists to
-        // prevent — a reply nobody acted on and nobody knows about.
+        // prevent, a reply nobody acted on and nobody knows about.
         await audit.record({
           at: input.receivedAt,
           inputId: reply.id,
