@@ -120,7 +120,19 @@ p{margin:0}
 .fig__l b{color:var(--color-ink-2);font-weight:500}
 
 /* - policy: horizontal, so there is no third column ------------------ */
+/* The dials stay reachable while you read. They are the one control the whole page turns on,
+   and having to scroll back up to reach them is the reason a pinned reply pane looked
+   tempting; pinning 66px of strip is the cheaper answer and leaves one scroll region.
+   `top` matches the bar's height so the two sit flush. */
 .policy{border-bottom:var(--rule) solid var(--color-rule);background:var(--color-paper)}
+/* Pinned only where the strip is a single 66px row. Below 46rem the two dials stack to 119px,
+   which pinned against a 57px bar would hold 39% of a phone screen for controls you are not
+   touching while you read. There you scroll past them like any other page. */
+@media(min-width:46rem){
+  .policy{position:sticky;top:56px;z-index:30;
+    background:color-mix(in oklch,var(--color-paper) 94%,transparent);
+    backdrop-filter:blur(10px)}
+}
 .policy__in{display:grid;gap:var(--space-sm) var(--space-xl);padding-block:var(--space-sm);
   grid-template-columns:minmax(0,1fr)}
 @media(min-width:46rem){.policy__in{grid-template-columns:repeat(2,minmax(0,1fr));align-items:center}}
@@ -141,7 +153,7 @@ input[type=range]{width:100%;margin-top:2px;accent-color:var(--color-accent);
 
 /* rail: the only bordered thing on the page */
 .rail{min-width:0}
-@media(min-width:58rem){.rail{position:sticky;top:calc(56px + var(--space-md))}}
+@media(min-width:58rem){.rail{position:sticky;top:calc(56px + 66px + var(--space-md))}}
 .rail__head{display:flex;align-items:baseline;justify-content:space-between;gap:var(--space-sm);
   padding-bottom:var(--space-xs);border-bottom:var(--rule) solid var(--color-rule-2);
   color:var(--color-ink-3)}
@@ -153,7 +165,7 @@ input[type=range]{width:100%;margin-top:2px;accent-color:var(--color-accent);
   font-family:var(--font-body);font-size:var(--text-sm)}
 .list{list-style:none;margin:0;padding:0;overflow-y:auto;max-height:15rem;
   border-top:var(--rule) solid var(--color-rule)}
-@media(min-width:58rem){.list{max-height:calc(100vh - 17rem)}}
+@media(min-width:58rem){.list{max-height:calc(100vh - 21rem)}}
 .list li+li{border-top:var(--rule) solid var(--color-rule)}
 .item{display:block;width:100%;text-align:left;border:0;background:transparent;cursor:pointer;
   padding:var(--space-xs) var(--space-sm) var(--space-xs) var(--space-xs);
