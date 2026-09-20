@@ -68,7 +68,6 @@ export function Sandbox(props: SandboxProps) {
   const [review, setReview] = useState(props.defaults.review);
   const [minutes, setMinutes] = useState(HUMAN_MINUTES_PER_REPLY);
   const [filterClass, setFilterClass] = useState("all");
-  const [query, setQuery] = useState("");
   const [selected, setSelected] = useState("r043");
   const [mode, setMode] = useState<"fixture" | "own">("fixture");
   const [draft, setDraft] = useState("");
@@ -76,7 +75,6 @@ export function Sandbox(props: SandboxProps) {
   const [own, setOwn] = useState<{ judgment: Judgment; invoice: string; body: string } | null>(null);
   const [ownError, setOwnError] = useState<string | null>(null);
   const [classifying, setClassifying] = useState(false);
-  const [freeFlash, setFreeFlash] = useState(false);
   const dialog = useRef<HTMLDialogElement>(null);
   const composer = useRef<HTMLTextAreaElement>(null);
 
@@ -122,13 +120,10 @@ export function Sandbox(props: SandboxProps) {
     };
   }, [replies, plans, byInvoice]);
 
-  const visible = useMemo(() => {
-    const needle = query.trim().toLowerCase();
-    return replies.filter((reply) =>
-      (filterClass === "all" || reply.label === filterClass) &&
-      (!needle || reply.body.toLowerCase().includes(needle) || reply.id.includes(needle) ||
-        (byInvoice.get(reply.invoice)?.customer ?? "").toLowerCase().includes(needle)));
-  }, [replies, filterClass, query, byInvoice]);
+  const visible = useMemo(
+    () => replies.filter((reply) => filterClass === "all" || reply.label === filterClass),
+    [replies, filterClass],
+  );
 
   /**
    * Judges text the visitor wrote. There is deliberately no fallback behind this one: a
@@ -180,11 +175,6 @@ export function Sandbox(props: SandboxProps) {
       thresholds, asOf,
     });
   }, [own, byInvoice, thresholds, asOf]);
-
-  const flashFree = () => {
-    setFreeFlash(true);
-    setTimeout(() => setFreeFlash(false), 700);
-  };
 
   const reply = replies.find((candidate) => candidate.id === selected);
   const invoice = reply ? byInvoice.get(reply.invoice) : undefined;
@@ -267,7 +257,7 @@ export function Sandbox(props: SandboxProps) {
             </div>
             <input
               id="actRange" type="range" min={0.5} max={0.99} step={0.01} value={act}
-              onChange={(event) => { setAct(Number(event.target.value)); flashFree(); }}
+              onChange={(event) => setAct(Number(event.target.value))}
             />
           </div>
           <div>
@@ -277,12 +267,9 @@ export function Sandbox(props: SandboxProps) {
             </div>
             <input
               id="revRange" type="range" min={0.1} max={0.7} step={0.01} value={review}
-              onChange={(event) => { setReview(Number(event.target.value)); flashFree(); }}
+              onChange={(event) => setReview(Number(event.target.value))}
             />
           </div>
-          <p className="policy__free" style={{ opacity: freeFlash ? 1 : 0.55 }}>
-            <b>costs nothing to move</b>
-          </p>
         </div>
       </section>
 
@@ -316,11 +303,6 @@ export function Sandbox(props: SandboxProps) {
                       </option>
                     ))}
                   </select>
-                  <label className="sr" htmlFor="fText">Search</label>
-                  <input
-                    id="fText" type="search" placeholder="Search" autoComplete="off"
-                    value={query} onChange={(event) => setQuery(event.target.value)}
-                  />
                 </div>
                 <ul className="list">
                   {visible.length === 0 && <li className="list__none">Nothing matches that.</li>}
@@ -481,6 +463,33 @@ export function Sandbox(props: SandboxProps) {
             the rest. Anything forced to pick a single answer would have thrown one of them away.
           </p>
 
+          <h3>How to read the seven scores</h3>
+          <p>
+            Each score is that question answered on its own, from 0 to 1. They are not shares of
+            a total and they do not add up to anything: a reply can score high on two at once,
+            which is the whole point.
+          </p>
+          <p>The small mark on each bar is your line. So:</p>
+          <ul>
+            <li><b>Bar past the mark</b>, it is sure enough, and it acts.</li>
+            <li>
+              <b>Bar close to the mark but short of it</b>, it is unsure, so it does nothing and
+              flags the reply for you with the score attached.
+            </li>
+            <li><b>Bar nowhere near</b>, it does not apply and you never hear about it.</li>
+          </ul>
+          <p>
+            Two of the seven sit at a higher line than the rest: a reply that argues about the
+            bill, and one that claims it was already paid. Those are the two where acting wrongly
+            costs the most, so they have to be more certain before they act on their own.
+          </p>
+          <p>
+            Drag the first slider and watch the row of numbers at the top move. Right, and almost
+            everything comes to you. Left, and more is handled without you, with more chance of
+            something being handled wrongly. There is no correct setting. It is your call, and
+            the point of showing it is that it is a dial rather than someone else's decision.
+          </p>
+
           <h3>Is this just a canned demo?</h3>
           <p>
             Fair question, and the reason for the <b>Write your own</b> tab. Type any reply you
@@ -490,17 +499,9 @@ export function Sandbox(props: SandboxProps) {
           </p>
           <p>
             The {replies.length} sample replies work differently on purpose. They were written and
-            labelled <em>before</em> the system was built, so they can be scored honestly, and
-            they were read once and saved. Re-reading them on every visit would cost money to
-            learn nothing. Your own text is read live, and is deliberately kept out of the
-            published accuracy figures.
-          </p>
-
-          <h3>What the sliders cost</h3>
-          <p>
-            Nothing. The seven scores are worked out once per reply. Moving a slider only
-            re-applies your rules to numbers that already exist, so it is instant and free. That
-            is the whole point of keeping the judgment and the policy separate.
+            labelled <em>before</em> this was built, and their answers are fixed, so the accuracy
+            figures below are measured against something that cannot be quietly adjusted after
+            the fact. Your own text is read fresh each time and is kept out of those figures.
           </p>
 
           <h3>What it will not do</h3>
