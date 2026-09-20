@@ -152,9 +152,35 @@ See `.env.example`. Every variable is read through `src/env.ts`, which prefers a
 prefixed name and falls back to the unprefixed one, so the deploy can namespace its keys
 while a local clone keeps using the names the TypeSafe SDK already expects.
 `RECKON_TYPESAFE_API_KEY` is server-side only and is verified absent from the built client
-bundle. The two Turso variables are optional: without them the spend counter and
-the idempotency store fall back to per-instance implementations, which is also the path a fresh
-clone and every `pnpm dev` exercises, so the degrade cannot rot unnoticed.
+bundle.
+
+**The deploy runs the per-instance counter on purpose, and the Turso variables are unset.** A
+serverless instance keeps its own spend counter and its own per-visitor tally, so neither is a
+global ceiling; both reset on a cold start or a redeploy. That was worth measuring rather than
+assuming, and the measurement is why it is fine:
+
+| | |
+|---|---|
+| measured cost per judgment | 0.0084¢ |
+| a visitor's full 25-call monthly allowance | 0.21¢ |
+| calls needed to spend $1 | ~11,900 |
+| calls needed to spend $10 | ~119,000 |
+
+The fixed 72 replies cost nothing at all, since they ship with the page and call nothing. Only
+the "write your own" tab spends. Setting the two Turso variables turns both counters into real
+cross-instance ones with no code change, if that ever stops being true.
+
+### Analytics
+
+Vercel Web Analytics and Speed Insights are on. Both are cookieless and record page-level
+counts, with no cross-site identifier and nothing tied to what anyone typed. Reply text, yours
+or the fixtures', is never stored anywhere.
+
+### The Turso adapter is written but unexercised
+
+`src/store/turso.ts` implements `SpendCounter` and `IdempotencyStore` against a real database,
+and has never run against one. It is kept so that setting two environment variables is the only
+thing ever needed, but it should be read as untested code rather than a working fallback.
 
 There is deliberately no mail variable, because there is no send path to configure.
 

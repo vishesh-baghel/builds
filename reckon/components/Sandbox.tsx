@@ -201,7 +201,7 @@ export function Sandbox(props: SandboxProps) {
             <a
               className="btn btn--ghost" href="https://cal.com/vishesh-baghel/15min"
               target="_blank" rel="noopener noreferrer"
-            >Book 15 min</a>
+            >Want this on your inbox?</a>
             <button className="btn btn--primary" type="button" onClick={() => dialog.current?.showModal()}>
               How it works
             </button>
