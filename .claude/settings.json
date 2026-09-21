@@ -21,5 +21,17 @@
       "Bash(git push:*)",
       "Bash(mkdir:*)"
     ]
+  },
+  "hooks": {
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "$CLAUDE_PROJECT_DIR/.claude/hooks/gate.sh"
+          }
+        ]
+      }
+    ]
   }
 }

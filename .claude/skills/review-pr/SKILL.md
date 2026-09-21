@@ -14,8 +14,8 @@ invoking it in the same session that just wrote the code, you are not reviewing 
 re-reading your own reasoning and agreeing with it. Stop and let the driver do it:
 
 ```bash
-scripts/loop/task-loop.sh TASK-<id> --review-only            # resolves the PR from the branch
-scripts/loop/task-loop.sh TASK-<id> --review-only --pr 12    # or name it
+scripts/loop/task-loop.sh <build> --review-only            # resolves the PR from the branch
+scripts/loop/task-loop.sh <build> --review-only --pr 12    # or name it
 ```
 
 Argument: a PR number, or nothing (resolve from the current branch).
@@ -30,13 +30,39 @@ gh pr diff <id> > /tmp/pr-<id>.diff
 Also read the PRD the PR claims to implement. A review that does not check
 the diff **against the stated acceptance criteria** is only a style pass.
 
-Read `.claude/plans/TASK-<id>-handoff.md` if it exists, but treat it as a **claim, not
+Read `.claude/plans/<build>-handoff.md` if it exists, but treat it as a **claim, not
 evidence**. It is the author's own account of what passed. Where it says a gate was green, the
 diff and the PR body should show why you would believe that.
 
 A **merged** PR is still worth reviewing — findings become follow-up tasks rather than change
 requests. Say so in the verdict instead of asking for changes that can no longer be pushed to
 that branch.
+
+## Step 0b — CI, the plan, and which round this is
+
+Three cheap checks before reading any code:
+
+```bash
+gh pr checks <id>
+gh pr view <id> --json comments \
+  --jq '[.comments[] | select(.body | startswith("[builds-review]"))] | length'
+```
+
+**CI.** A red gate is finding one, always, then review anyway, because the author needs
+both. Read what green actually covers: the gate is `--if-present`, so it proves only what the
+packages in the diff define. `reckon` ships a real suite; a build that ships none gets a green
+gate for typechecking alone. Never report "CI is green" as evidence that untested code works.
+
+**The plan.** The branch carries `.claude/plans/<build>-plan.md`. Read it against the PRD's
+`AC:BEGIN` block *before* the code: does every acceptance criterion appear in some phase, and
+does each phase name a command that would actually prove the ACs it claims? Nobody reviewed
+the plan before the code was written — that is a deliberate choice, and this is where the
+cost of it is paid. A plan that quietly dropped an AC is the cheapest defect to catch here
+and the most expensive to catch after merge.
+
+**Which round.** If the comment count is zero, this is round one: run the full pass below.
+If it is non-zero, a previous round already reviewed this PR and new commits have arrived —
+go to "Round two" at the end of this file instead, and do not repeat the full pass.
 
 ## Step 1 — Review across lenses
 
@@ -144,3 +170,32 @@ triage each `[builds-review]` comment, push a fix for the ones the human accepts
 the reason and resolve the ones they reject. The reviewer only comments; it never pushes fixes
 to the branch it reviewed. Never leave a finding silently accepted or silently dropped — an
 unresolved review comment with no decision is the same failure as no review at all.
+
+
+## Round two — verifying the previous round
+
+A `pull_request.synchronize` event means the author pushed after a review. Your job is not to
+review the PR again. It is to check whether the last round's findings were actually
+addressed, and to review only what changed.
+
+```bash
+gh pr view <id> --json comments --jq '.comments[] | select(.body|startswith("[builds-review]")) | .body'
+gh api repos/:owner/:repo/pulls/<id>/comments --jq '.[] | {id, path, line, body}'
+gh pr diff <id> --name-only
+```
+
+For every finding from the previous round, reach one of three verdicts and name it:
+
+- **addressed** — point at the commit or hunk that fixes it.
+- **not addressed** — still live. Restate it in one line; do not re-argue it.
+- **rejected by the author** — they replied with a reason. Judge the reason on its merits and
+  say whether it holds. Do not relitigate a call a human made with an argument you have read.
+
+Then review the new commits only, through the same lenses and with the same
+try-to-disprove-it discipline. A fix that introduces a fresh defect is exactly what this
+round exists to catch.
+
+Post one `[builds-review]` summary comment for the round: the verdict on each prior finding
+first, then anything new. **A finding that was neither addressed nor rejected must reappear
+in every round until one or the other happens.** That is the mechanism that stops a finding
+from being quietly dropped, and it is the reason rounds are cheap to run.
