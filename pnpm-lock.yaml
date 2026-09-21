@@ -60,6 +60,12 @@ importers:
 
   shared: {}
 
+  sift:
+    dependencies:
+      '@builds/shared':
+        specifier: workspace:*
+        version: link:../shared
+
 packages:
 
   '@emnapi/runtime@1.11.3':
