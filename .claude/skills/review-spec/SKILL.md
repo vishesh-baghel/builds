@@ -11,16 +11,16 @@ re-reads its own rationale and agrees with it. This skill is a real review **onl
 fresh session**, launched by `scripts/loop/spec-review.sh` (or by spec-intake shelling out to
 it) as a separate `claude --effort max` process with no memory of the authoring conversation.
 
-If you are in the session that just WROTE the task/PRD, stop — you cannot review it here.
+If you are in the session that just WROTE the PRD, stop — you cannot review it here.
 Let the driver run it fresh:
 
 ```bash
-scripts/loop/spec-review.sh TASK-<id>
+scripts/loop/spec-review.sh <build>
 ```
 
-Argument: a task ID (`TASK-7`, or `7`).
+Argument: a build name, e.g. `reckon` — the top-level build directory.
 
-**This review is read-only.** Do NOT edit the task or PRD, and do NOT commit. Emit findings.
+**This review is read-only.** Do NOT edit the PRD, and do NOT commit. Emit findings.
 The human decides at the spec-intake checkpoint; the authoring session applies the approved
 calls. A reviewer that edits the artifact is laundering its opinion past the human — the very
 decision the checkpoint exists to protect.
@@ -77,7 +77,7 @@ hunch — a review that cries wolf gets ignored. Classify each:
 
 Your **final message** must be exactly this block, so the driver can extract it from the log
 and spec-intake can fold it into the checkpoint. Also write the same block to your session
-scratchpad as `spec-review-<id>.md`.
+scratchpad as `spec-review-<build>.md`.
 
 ```
 ===SPEC-REVIEW-FINDINGS-BEGIN===
@@ -96,6 +96,6 @@ list. Do not edit the task or PRD; do not commit anything.
 
 This skill only emits findings; it never decides or applies. Whoever runs it — spec-intake,
 or the human directly — must **drive every important finding to an explicit human decision,
-then apply the approved calls to the task/PRD in place.** The author applies; this reviewer
+then apply the approved calls to the PRD in place.** The author applies; this reviewer
 stays read-only. A finding is never silently accepted and never silently dropped — an
 unaddressed BLOCKER with no decision is the same failure as never running the review.

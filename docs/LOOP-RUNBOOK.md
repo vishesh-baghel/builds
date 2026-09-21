@@ -53,7 +53,7 @@ killed with the turn, and validation, commit, push, PR and review are skipped in
 the driver sees exit 0 and reports success.
 
 The fix is the driver supplying the continuation: it re-enters the same session with
-`--resume` until `.claude/plans/TASK-<id>-handoff.md` appears, capped at `BUILDS_IMPL_MAX_ITER`
+`--resume` until `.claude/plans/<build>-handoff.md` appears, capped at `BUILDS_IMPL_MAX_ITER`
 (default 10). The handoff file carries `status: shipped|blocked` plus the PR number, and is the
 completion signal a Stop hook would otherwise have judged. Seeing
 `implement iteration 2/10 (resuming …)` in the log is normal.
@@ -95,11 +95,11 @@ claude
 > /spec-intake <describe the build or bug>
 
 # plan first, read the scope split, then go
-scripts/loop/task-loop.sh TASK-7 --plan-only
-scripts/loop/task-loop.sh TASK-7 --implement-only --stream
+scripts/loop/task-loop.sh reckon --plan-only
+scripts/loop/task-loop.sh reckon --implement-only --stream
 
 # or straight through
-scripts/loop/task-loop.sh TASK-7
+scripts/loop/task-loop.sh reckon
 
 # tend the PR afterwards
 claude
@@ -112,10 +112,10 @@ Defaults: plan `max`, code `medium`, review `high`, spec-review `max`. Model def
 whatever the CLI is configured to use.
 
 ```bash
-scripts/loop/task-loop.sh TASK-7 --effort-code high
-scripts/loop/task-loop.sh TASK-7 --model claude-opus-5                 # all stages
-scripts/loop/task-loop.sh TASK-7 --model-code claude-sonnet-5          # codegen only
-scripts/loop/task-loop.sh TASK-7 --model-plan claude-opus-5 \
+scripts/loop/task-loop.sh reckon --effort-code high
+scripts/loop/task-loop.sh reckon --model claude-opus-5                 # all stages
+scripts/loop/task-loop.sh reckon --model-code claude-sonnet-5          # codegen only
+scripts/loop/task-loop.sh reckon --model-plan claude-opus-5 \
                                  --model-code claude-sonnet-5 \
                                  --model-review claude-opus-5
 ```

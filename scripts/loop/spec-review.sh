@@ -25,7 +25,7 @@
 #   spec-review.sh reckon --stream                 # surface each message as it happens
 #   spec-review.sh reckon --gate                   # exit 3 if the review returns BLOCKERS
 #
-# Findings: /tmp/spec-review-<id>.md      Log: /tmp/spec-review-<id>.log
+# Findings: /tmp/spec-review-<build>.md    Log: /tmp/spec-review-<build>.log
 # Read those rather than re-running — a second max-effort review is not free.
 
 set -euo pipefail
@@ -67,7 +67,7 @@ command -v claude >/dev/null || die "claude CLI not on PATH"
 
 MAIN_WT=$(git worktree list 2>/dev/null | head -1 | awk '{print $1}')
 [ -n "$MAIN_WT" ] || die "not inside a git repository"
-[ -f "${MAIN_WT}/pnpm-workspace.yaml" ] && [ -d "${MAIN_WT}/pocs" ] || die \
+[ -f "${MAIN_WT}/pnpm-workspace.yaml" ] && [ -d "${MAIN_WT}/shared" ] || die \
     "cwd resolves to ${MAIN_WT}, which is not the builds repo — cd there first"
 
 LOG="/tmp/spec-review-${SLUG}.log"

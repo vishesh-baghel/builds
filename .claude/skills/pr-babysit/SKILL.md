@@ -38,13 +38,13 @@ If that is `0`, the PR has never been reviewed from our side. Run the review **a
 process**, not inline — a review sharing this session's context is not a second opinion:
 
 ```bash
-scripts/loop/task-loop.sh TASK-<id> --review-only --pr <id>
+scripts/loop/task-loop.sh <build> --review-only --pr <id>
 ```
 
 Wait for it in the foreground, then re-read the comments and carry on with this iteration. Do
 it once; the `[builds-review]` tag stops later iterations from re-reviewing.
 
-If you cannot resolve a task ID for the PR, invoke the `review-pr` skill directly and say in
+If you cannot resolve a build name for the PR, invoke the `review-pr` skill directly and say in
 your summary that the review ran in-session, so the user knows to weigh it accordingly.
 
 ### 3. Handle CI

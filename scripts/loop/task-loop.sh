@@ -13,7 +13,7 @@
 #      waves the work through. Only a fresh process is a real second opinion.
 #
 # So the driver runs three headless invocations against one dedicated worktree:
-#   1. /task-plan      at --effort max     -> .claude/plans/TASK-<id>-plan.md
+#   1. /task-plan      at --effort max     -> .claude/plans/<build>-plan.md
 #   2. /task-implement at --effort medium  -> phases, validation, commit, push, PR
 #   3. /review-pr      at --effort high    -> independent review of the resulting PR
 #
@@ -135,7 +135,7 @@ MAIN_WT=$(git worktree list 2>/dev/null | head -1 | awk '{print $1}')
 
 # The repo is resolved from cwd, so a stray cwd would otherwise plant a worktree and a plan
 # in the wrong tree and fail much later, somewhere confusing.
-[ -f "${MAIN_WT}/pnpm-workspace.yaml" ] && [ -d "${MAIN_WT}/pocs" ] || die \
+[ -f "${MAIN_WT}/pnpm-workspace.yaml" ] && [ -d "${MAIN_WT}/shared" ] || die \
     "cwd resolves to ${MAIN_WT}, which is not the builds repo — cd there first"
 
 WORKTREE="${MAIN_WT}/.claude/worktrees/${SLUG}"

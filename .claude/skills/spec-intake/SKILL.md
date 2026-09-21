@@ -1,6 +1,6 @@
 ---
 name: spec-intake
-description: builds repo only. Turn a raw build idea or bug report into a reviewed PRD (plus PRD when warranted), audited against the CLAUDE.md spine rules, and stop for human approval before committing to main. Use at the start of any new piece of work.
+description: builds repo only. Turn a raw build idea or bug report into a reviewed PRD, audited against the CLAUDE.md spine rules, and stop for human approval before committing to main. Use at the start of any new piece of work.
 ---
 
 # Spec intake
@@ -68,11 +68,12 @@ Good: "`pnpm --filter reckon test` passes and the audit-log fixture shows
 one entry per decision."
 Bad: "the chasing flow works correctly."
 
-Write a PRD under `docs/prds/poc-NN-<slug>-v1.0-prd.md` when the change spans more than one
-package, changes a `shared` contract, or introduces a new external system of record.
-Otherwise the task alone is enough — do not manufacture a PRD for a one-file fix. Give the
-PRD a **phase-by-phase checklist of `- [ ]` items**; the implementation loop ticks these and
-they are how progress is tracked.
+Wrap the acceptance criteria in `<!-- AC:BEGIN -->` / `<!-- AC:END -->` markers — `/task-plan`
+reads the block between them. Give the PRD a **phase-by-phase checklist of `- [ ]` items` too;
+the implementation loop ticks those and they are how progress is tracked.
+
+A one-file fix does not need a PRD. Anything that spans more than one package, changes a
+`shared` contract, or introduces a new external system of record does.
 
 If the work is a new build, also stub `<build-name>/README.md` from
 `docs/POC-TEMPLATE.md` with the baseline table filled in as far as it is known. An empty
@@ -80,23 +81,23 @@ baseline row at intake is a flag, not a formality.
 
 ## Step 4 — Independent review [FRESH SESSION]
 
-You wrote this task and PRD, so you are the wrong reviewer — a same-session audit re-reads
+You wrote this PRD, so you are the wrong reviewer — a same-session audit re-reads
 your own rationale and agrees with it, the exact bias `/review-pr` guards against for code.
 **Do NOT audit it in this session.** Dispatch an independent review to a fresh process:
 
 ```bash
-scripts/loop/spec-review.sh TASK-<id>
+scripts/loop/spec-review.sh <build>
 ```
 
 That launches `/review-spec` as a separate `claude --effort max` session with no memory of
-this conversation. It checks the task + PRD against the live repo across the intake lenses —
+this conversation. It checks the PRD against the live repo across the intake lenses —
 spine reuse, reliability coverage, claims discipline, AC verifiability, scope minimality —
-and writes findings to `/tmp/spec-review-<id>.md`. It is **read-only**: it never edits the
-task or PRD.
+and writes findings to `/tmp/spec-review-<build>.md`. It is **read-only**: it never edits the
+PRD.
 
 Run it after Step 3 has written the artifacts; they need not be committed, the reviewer reads
 them from the main tree on disk. Do **not** invoke `/review-spec` in THIS session — the fresh
-process is the whole point. When it finishes, read `/tmp/spec-review-<id>.md` and carry its
+process is the whole point. When it finishes, read `/tmp/spec-review-<build>.md` and carry its
 findings into Step 5.
 
 If `spec-review.sh` genuinely cannot run (no nested `claude`, offline), say so and fall back
@@ -107,9 +108,8 @@ independent.
 
 Present to the user:
 
-1. The task as written (ID, title, acceptance criteria).
-2. The PRD outline with its phase checklist, if one was created.
-3. **The independent review's findings** from `/tmp/spec-review-<id>.md` — the verdict, then
+1. The PRD as written — title, acceptance criteria, phase checklist.
+2. **The independent review's findings** from `/tmp/spec-review-<build>.md` — the verdict, then
    the BLOCKERs and SUGGESTIONs — as the open decisions. Attribute them to the fresh
    reviewer, not to yourself; do not quietly overrule a BLOCKER because you disagree.
 
@@ -118,7 +118,7 @@ every important finding to an explicit decision from the user, then apply the ap
 **in place** — never silently accept a finding, never silently drop one.
 
 **Do not commit.** Wait for the user's calls on the open decisions. Apply the approved
-changes to the task/PRD in place, in this authoring session — the reviewer left them
+changes to the PRD in place, in this authoring session — the reviewer left them
 untouched by design. Re-present if the changes were material. If a change materially alters
 the scope or the reliability story, offer to re-run `spec-review.sh` for a fresh pass — it is
 not automatic (a second max-effort review is not free).
@@ -138,5 +138,5 @@ to do — that hazard left with the backlog.
 Then tell the user the next command:
 
 ```bash
-scripts/loop/task-loop.sh TASK-<id>
+scripts/loop/task-loop.sh <build>
 ```

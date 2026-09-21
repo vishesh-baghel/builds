@@ -8,20 +8,20 @@ description: builds repo only. Execute an approved implementation plan phase by 
 Stage 3 of the automated workflow. Run at **medium effort** — plan quality is already banked,
 this is execution.
 
-Argument: a task ID, e.g. `TASK-7`.
+Argument: a build name, e.g. `reckon` — the top-level build directory.
 
 ## Step 0 — The completion contract
 
-Read `.claude/plans/TASK-<id>-plan.md`, in particular its **Verification command** and its
+Read `.claude/plans/<build>-plan.md`, in particular its **Verification command** and its
 **AC scope** section.
 
 You are running inside `task-loop.sh`, which will **resume this exact session** every time
 your turn ends without a handoff file present. That file is the only completion signal (write
-it to your session scratchpad as `TASK-<id>-handoff.md`; `task-loop.sh` copies it into
+it to your session scratchpad as `<build>-handoff.md`; `task-loop.sh` copies it into
 `.claude/plans/`, which is where it is read back from):
 
 ```
-.claude/plans/TASK-<id>-handoff.md
+.claude/plans/<build>-handoff.md
 ```
 
 Write it once, at the very end (Step 5), and not before. Until it exists the driver assumes
@@ -62,7 +62,7 @@ For each phase in order:
    and naming.
 2. **Run that phase's verification**, captured to a file:
    ```bash
-   pnpm --filter <package> test 2>&1 | tee /tmp/TASK-<id>-phase<N>.log
+   pnpm --filter <package> test 2>&1 | tee /tmp/<build>-phase<N>.log
    ```
    Then read the log back. **Never re-run a test command to inspect a failure** — re-running
    costs time and loses the original output.
@@ -164,8 +164,8 @@ ticked acceptance criteria commit alongside the code that satisfied them.
 git push -u origin HEAD
 gh pr create \
   --base main \
-  --title "TASK-<id>: <title>" \
-  --body-file /tmp/TASK-<id>-pr-body.md
+  --title "<build>: <title>" \
+  --body-file /tmp/<build>-pr-body.md
 ```
 
 Write the PR body first, and open it with a **plain-language summary** the reviewer can act on
@@ -188,9 +188,9 @@ that is the blast radius a reviewer most needs to see.
 
 ## Step 5 — Write the handoff and stop
 
-Last action of the run. Write `TASK-<id>-handoff.md` into your **session scratchpad
+Last action of the run. Write `<build>-handoff.md` into your **session scratchpad
 directory** (NOT under `.claude/` — guarded from inside the worktree session).
-`task-loop.sh` copies it to `.claude/plans/TASK-<id>-handoff.md`, which is the completion
+`task-loop.sh` copies it to `.claude/plans/<build>-handoff.md`, which is the completion
 signal it polls for:
 
 ```

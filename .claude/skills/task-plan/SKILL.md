@@ -8,13 +8,13 @@ description: builds repo only. Create an isolated worktree for an approved build
 Stage 2 of the automated workflow. Runs at **max effort** because plan quality sets the
 ceiling on everything downstream. Writes a plan file and nothing else.
 
-Argument: a task ID, e.g. `TASK-7`.
+Argument: a build name, e.g. `reckon` — the top-level build directory.
 
-## Step 1 — Load the task
+## Step 1 — Load the PRD
 
 Read the build's PRD at `docs/prds/<build-name>-*-prd.md` — its acceptance criteria are the stop condition.
 
-The task carries numbered acceptance criteria as `- [ ] #N` checkboxes between the
+The PRD carries numbered acceptance criteria as `- [ ] #N` checkboxes between the
 `<!-- AC:BEGIN -->` / `<!-- AC:END -->` markers. Those ACs are the spine of the plan: map each
 phase to the AC numbers it closes, and make the plan's Verification command the union of the
 commands the ACs name.
@@ -48,14 +48,15 @@ git worktree list | head -1        # first entry is always the MAIN worktree
 
 - **Already in a worktree** (toplevel differs from the main worktree): stay put. The driver
   also ran `pnpm install`, so skip the install below and go to Step 3.
-- **In the main worktree**: use the `EnterWorktree` tool with the name
-  `task-<id>-<short-slug>`, then `pnpm install --frozen-lockfile` — a fresh worktree has no
+- **In the main worktree**: use the `EnterWorktree` tool with the name `worktree-<build>` —
+  the same name `task-loop.sh` uses, so a hand-run and a driver-run share one tree instead of
+  silently forking two. Then `pnpm install --frozen-lockfile`: a fresh worktree has no
   `node_modules` and every gate in it fails until that runs.
 
 ## Step 2.5 — Scope the ACs for THIS cycle
 
 Not every AC has to land in one pass, and pretending otherwise produces a plan that stalls at
-80% with no way to finish. Before writing phases, split the task's ACs into two lists:
+80% with no way to finish. Before writing phases, split the PRD's ACs into two lists:
 
 - **In scope this cycle** — what this run will actually close.
 - **Deferred** — with a one-line reason each: blocked on another task, needs a decision only
@@ -95,13 +96,13 @@ built on a wrong assumption about what a function returns or which stage runs fi
 
 ## Step 4 — Write the plan
 
-Write the plan to `TASK-<id>-plan.md` in your **session scratchpad directory** (NOT under
+Write the plan to `<build>-plan.md` in your **session scratchpad directory** (NOT under
 `.claude/` — that path is guarded from inside the worktree session and the write will be
-refused). `task-loop.sh` copies it to `.claude/plans/TASK-<id>-plan.md` after this phase. If
+refused). `task-loop.sh` copies it to `.claude/plans/<build>-plan.md` after this phase. If
 you are running this skill standalone, write it to `.claude/plans/` yourself. Structure:
 
 ```markdown
-# TASK-<id> — <title>
+# <build> — <title>
 
 ## Verification command
 <the exact command that proves the IN-SCOPE ACs are done.

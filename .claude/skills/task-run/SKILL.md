@@ -1,6 +1,6 @@
 ---
 name: task-run
-description: builds repo only. Start the full unattended loop for a build — worktree, plan at max effort, code at medium, repo gate, push, PR, independent review — and report progress. Say "run the task loop for TASK-7" or invoke directly.
+description: builds repo only. Start the full unattended loop for a build — worktree, plan at max effort, code at medium, repo gate, push, PR, independent review — and report progress. Say "run the task loop for reckon" or invoke directly.
 ---
 
 # Task run
@@ -8,7 +8,7 @@ description: builds repo only. Start the full unattended loop for a build — wo
 The entry point for working a build. Wraps `scripts/loop/task-loop.sh` so you can start
 it from a conversation instead of a separate terminal.
 
-Argument: a task ID (`TASK-7`, or just `7`).
+Argument: a build name, e.g. `reckon` — the top-level build directory.
 
 ## Step 1 — Pre-flight
 
@@ -32,7 +32,7 @@ here than three minutes in.
 Default to **plan-first** unless the user has already said to go straight through:
 
 ```bash
-scripts/loop/task-loop.sh TASK-<id> --plan-only
+scripts/loop/task-loop.sh <build> --plan-only
 ```
 
 Run it with `run_in_background: true` — there is no reason to block the conversation. Tell the
@@ -46,7 +46,7 @@ any code is written.
 Then, once they are happy:
 
 ```bash
-scripts/loop/task-loop.sh TASK-<id> --implement-only --stream
+scripts/loop/task-loop.sh <build> --implement-only --stream
 ```
 
 Also backgrounded. This is the long one: phases, the full gate, the AC ledger, commit, push,
@@ -55,7 +55,7 @@ PR — then a **separate** review session against the PR it just opened.
 Two things about this phase are worth knowing when you report on it:
 
 - The driver **re-enters the implement session** each time a turn ends without
-  `.claude/plans/TASK-<id>-handoff.md`. Multiple iterations are normal, not a fault. You will
+  `.claude/plans/<build>-handoff.md`. Multiple iterations are normal, not a fault. You will
   see `implement iteration 2/10 (resuming …)` in the log.
 - The review runs as its **own process** with a fresh context, because a reviewer that shares
   the author's session inherits the author's blind spots. It is not optional and not something
@@ -68,13 +68,13 @@ anything mid-session:
 
 ```bash
 # cheaper codegen, unchanged planning and review
-scripts/loop/task-loop.sh TASK-<id> --model-code claude-sonnet-5
+scripts/loop/task-loop.sh <build> --model-code claude-sonnet-5
 
 # one model everywhere
-scripts/loop/task-loop.sh TASK-<id> --model claude-opus-5
+scripts/loop/task-loop.sh <build> --model claude-opus-5
 
 # effort per stage (defaults: plan=max, code=medium, review=high)
-scripts/loop/task-loop.sh TASK-<id> --effort-code high
+scripts/loop/task-loop.sh <build> --effort-code high
 ```
 
 A per-stage flag overrides `--model`; omitting both inherits the CLI's configured model. If
@@ -87,8 +87,8 @@ The conversation stays usable. If asked for progress, read the log rather than r
 anything:
 
 ```bash
-tail -40 /tmp/task-loop-task-<id>-implement.log      # or -implement-2.log on a resume
-tail -40 /tmp/task-loop-task-<id>-review.log
+tail -40 /tmp/task-loop-<build>-implement.log      # or -implement-2.log on a resume
+tail -40 /tmp/task-loop-<build>-review.log
 ```
 
 If the user wants it stopped, kill the background task — do not let a half-finished phase sit
@@ -107,7 +107,7 @@ When it exits, report:
     --jq '[.comments[] | select(.body | startswith("[builds-review]"))] | length'
   ```
   A `0` there means the review did not actually run, whatever the log says. Say so and offer
-  `scripts/loop/task-loop.sh TASK-<id> --review-only` — do not report the PR as reviewed.
+  `scripts/loop/task-loop.sh <build> --review-only` — do not report the PR as reviewed.
 - **Findings are decisions, not FYIs.** Do not just report the count and move on: each
   surviving finding must be driven to an explicit call — accept (→ fix and push) or reject (→
   reply with the reason and resolve). `/loop /pr-babysit` does this per comment; never leave a
