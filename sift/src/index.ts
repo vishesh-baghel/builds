@@ -1,7 +1,12 @@
 /**
- * sift · shared-inbox triage
+ * sift, shared-inbox triage.
  *
- * Scaffold only — no implementation yet. The build composes the six stages from
- * `@builds/shared`, supplying an implementation of each for this workflow.
+ * The engine, exported for the app, the scripts and the tests. The six stages compose from
+ * `@builds/shared`; this barrel exposes the firm vocabulary, the policy, the pure decision and the
+ * committed fixtures. Nothing here reaches the outside world; `jev.ts` and the pipeline do that.
  */
-export {};
+export * from "./types";
+export * from "./clock";
+export * from "./policy";
+export * from "./stages/decide";
+export * from "./fixtures";
