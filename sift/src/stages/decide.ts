@@ -59,12 +59,27 @@ const topOf = (outcomes: readonly Outcome[]): Priority | null =>
       )
     : null;
 
+/**
+ * How the headless pipeline overrides the fixture defaults with code.
+ *
+ * The browser passes nothing and the illustrative fixture routes apply. The pipeline passes a
+ * priority derived from the systems of record (AC #6) and a corroboration flag from the deterministic
+ * deadline parse and log cross-reference (AC #5), so priority is code, not fixture text, and a clock
+ * the model scored low still raises an alert when a record confirms it.
+ */
+export interface DecideOpts {
+  readonly priorityOf?: (topic: string) => Priority | undefined;
+  readonly corroborated?: boolean;
+}
+
 export function decidePlan(
   message: Message,
   firm: Firm,
   thresholds: Thresholds,
   asOf: string = INBOX_AS_OF,
+  opts: DecideOpts = {},
 ): Plan {
+  const corroborated = message.corroborated === true || opts.corroborated === true;
   const classes = firm.classes.map((c) => c[0]);
   const plain = new Map(firm.classes.map((c) => [c[0], c[2]] as const));
   const kind = new Map(firm.classes.map((c) => [c[0], c[3]] as const));
@@ -81,15 +96,16 @@ export function decidePlan(
     const r = message.routes?.[c] ?? firm.defaults[c] ?? fallback;
     const who = r.who;
     const init = who && who !== "?" ? (initials.get(who) ?? "") : who === "?" ? "?" : "";
-    return { topic: c, kind: kind.get(c) ?? "Other", who, priority: r.priority, why: r.why, initials: init };
+    const priority = opts.priorityOf?.(c) ?? r.priority;
+    return { topic: c, kind: kind.get(c) ?? "Other", who, priority, why: r.why, initials: init };
   });
 
   const handoffs: string[] = [];
   let alert: OwnerAlert | null = null;
   let clockFlagged = false;
-  if (message.clock >= thresholds.clockAct || message.corroborated) {
+  if (message.clock >= thresholds.clockAct || corroborated) {
     clockFlagged = true;
-    const how = message.corroborated
+    const how = corroborated
       ? "Confirmed against the records."
       : `The deadline question alone was confident (${message.clock.toFixed(2)}).`;
     if (message.deadline) {
