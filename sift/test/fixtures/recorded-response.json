@@ -1,0 +1,46 @@
+{
+  "messageId": "m001",
+  "model": "jev-1.13.0",
+  "usage": {
+    "input_tokens": 1042,
+    "output_tokens": 157
+  },
+  "answers": {
+    "rfi": {
+      "type": "noul",
+      "noul": 0.98
+    },
+    "submittal": {
+      "type": "noul",
+      "noul": 0.05
+    },
+    "agency_letter": {
+      "type": "noul",
+      "noul": 0.18
+    },
+    "invoice": {
+      "type": "noul",
+      "noul": 0.02
+    },
+    "client_status": {
+      "type": "noul",
+      "noul": 0.11
+    },
+    "other": {
+      "type": "noul",
+      "noul": 0.11
+    },
+    "vendor_pitch": {
+      "type": "noul",
+      "noul": 0.02
+    },
+    "internal": {
+      "type": "noul",
+      "noul": 0.29
+    },
+    "carries_clock": {
+      "type": "noul",
+      "noul": 0.79
+    }
+  }
+}

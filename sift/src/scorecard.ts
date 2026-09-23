@@ -61,6 +61,33 @@ export interface ScorecardInput {
   readonly counts: { readonly total: number; readonly clocked: number; readonly hard: number };
   readonly runArtifact: string;
   readonly sweepArtifact: string;
+  /** Earlier runs on this same frozen instrument, recomputed from their committed artifacts. */
+  readonly history?: readonly PriorRun[];
+}
+
+export interface PriorRun {
+  readonly label: string;
+  readonly date: string;
+  readonly change: string;
+  readonly thresholds: Thresholds;
+  readonly headline: Headline;
+  readonly artifact: string;
+}
+
+function historySection(history: readonly PriorRun[]): string {
+  if (history.length === 0) return "";
+  return `## Revisions
+
+This page reports the latest run. Earlier runs on the same frozen instrument are kept, not replaced:
+their judgments are committed, and their headline below is recomputed from them, not transcribed.
+
+| run | date | what changed after it | clocks caught | false alarms | automated | lines (act, review, clock) |
+|---|---|---|---|---|---|---|
+${history.map((h) => `| ${h.label} | ${h.date} | ${h.change} | ${pct(h.headline.caught)} | ${pct(h.headline.falseAlarms)} | ${pct(h.headline.automated)} | ${h.thresholds.act.toFixed(2)}, ${h.thresholds.review.toFixed(2)}, ${h.thresholds.clockAct.toFixed(2)} (\`${h.artifact}\`) |`).join("\n")}
+
+No label was changed between runs.
+
+`;
 }
 
 export function renderScorecard(input: ScorecardInput): string {
@@ -131,7 +158,7 @@ Output tokens are not billed on this model, so the cost figure is input only. Ev
 these figures is committed at \`${input.runArtifact}\`, so the whole scorecard can be recomputed at
 these thresholds or any others without spending again.
 
-## What these numbers are not
+${historySection(input.history ?? [])}## What these numbers are not
 
 The probabilities are the model's raw judgment, not calibrated frequencies: jev-1.13 is documented
 as weakly numerically calibrated, which is why the lines were swept on this build's own data rather

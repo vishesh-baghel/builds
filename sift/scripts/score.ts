@@ -8,7 +8,7 @@
  * This is **outside the CI gate** and always will be: it needs a vendor key, and a gate that cannot
  * run without one is a gate that will not run.
  */
-import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
+import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { InMemorySpendCounter } from "@builds/shared";
 import { hasTypesafeKey } from "../src/env";
@@ -17,7 +17,7 @@ import type { Judgment } from "../src/jev";
 import { DECLARED_THRESHOLDS, DEFAULT_THRESHOLDS, withDeclared } from "../src/policy";
 import { createSift, liveJudge, SPEND_CAP_CENTS } from "../src/run";
 import { bestPoint, runMeta, scoreRun, sweep } from "../src/score";
-import { renderScorecard, renderSweepArtifact } from "../src/scorecard";
+import { renderScorecard, renderSweepArtifact, type PriorRun } from "../src/scorecard";
 
 const replay = process.argv.includes("--replay");
 const runsDir = fileURLToPath(new URL("../runs/", import.meta.url));
@@ -62,11 +62,25 @@ const thresholds = chosen ? withDeclared({ act: chosen.act, review: chosen.revie
 writeFileSync(`${runsDir}sweep.json`, renderSweepArtifact(points, chosen));
 
 const figures = scoreRun(instrument.inbox, judgments, firm, instrument, thresholds);
+
+/**
+ * Earlier runs on the same instrument, kept and recomputed: each is replayed and re-swept exactly as
+ * the current one is, so its headline cannot drift from its own judgments.
+ */
+const PRIOR: readonly { file: string; label: string; change: string }[] = [
+  { file: "run-1.json", label: "run 1", change: "Class question criteria were generic, not written from the labelling rules as the PRD requires. Rewritten from the rules committed before run 1, then rerun." },
+];
+const history: PriorRun[] = PRIOR.filter((p) => existsSync(`${runsDir}${p.file}`)).map((p) => {
+  const prior = JSON.parse(readFileSync(`${runsDir}${p.file}`, "utf8")) as { date: string; judgments: Record<string, Recorded> };
+  const best = bestPoint(sweep(instrument.inbox, prior.judgments, firm, instrument, DECLARED_THRESHOLDS));
+  const lines = best ? withDeclared({ act: best.act, review: best.review, clockAct: best.clockAct }) : DEFAULT_THRESHOLDS;
+  return { label: p.label, date: prior.date, change: p.change, thresholds: lines, artifact: `runs/${p.file}`, headline: scoreRun(instrument.inbox, prior.judgments, firm, instrument, lines).headline };
+});
 const meta = runMeta(Object.values(judgments));
 writeFileSync(fileURLToPath(new URL("../SCORECARD.md", import.meta.url)), renderScorecard({
   date: runDate, thresholds, declared: DECLARED_THRESHOLDS, figures, meta, sweep: points,
   counts: { total: instrument.inbox.length, clocked: instrument.inbox.filter((m) => m.clocked).length, hard: instrument.inbox.filter((m) => m.hard).length },
-  runArtifact: "runs/run.json", sweepArtifact: "runs/sweep.json",
+  runArtifact: "runs/run.json", sweepArtifact: "runs/sweep.json", history,
 }));
 
 const h = figures.headline;

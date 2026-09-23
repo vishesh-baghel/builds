@@ -103,3 +103,12 @@ describe("measured run metadata", () => {
     expect(runMeta(js).medianMs).toBe(20);
   });
 });
+
+describe("the committed lines match the committed sweep (AC #22)", () => {
+  it("MERIDIAN_THRESHOLDS is exactly the point runs/sweep.json chose", async () => {
+    const { MERIDIAN_THRESHOLDS } = await import("../src/policy");
+    const { default: artifact } = await import("../runs/sweep.json", { with: { type: "json" } });
+    const chosen = artifact.chosen as { act: number; review: number; clockAct: number };
+    expect(MERIDIAN_THRESHOLDS).toEqual({ act: chosen.act, review: chosen.review, clockAct: chosen.clockAct });
+  });
+});

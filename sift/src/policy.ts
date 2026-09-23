@@ -55,6 +55,13 @@ export function linesFor(dial: number): Thresholds {
 export const DEFAULT_THRESHOLDS: Thresholds = linesFor(SHIPPED_DIAL);
 
 /**
+ * Meridian's lines, as the sweep chose them on the ordinary subset of run 2 and committed in
+ * `runs/sweep.json`. A test fails if the two ever disagree. The dashboard's dial is a separate,
+ * illustrative control; these are what the measured pipeline and the published number use.
+ */
+export const MERIDIAN_THRESHOLDS: Thresholds = { act: 0.55, review: 0.5, clockAct: 0.5 };
+
+/**
  * A class whose ordinary subset is too small to sweep gets its act line **declared** here, with its
  * `n` and the reason, rather than fitted to a handful of examples. The instrument's floor test fails
  * when a class falls under six ordinary examples without an entry here. Empty while every Meridian

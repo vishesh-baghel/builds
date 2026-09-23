@@ -1,0 +1,1825 @@
+{
+  "date": "2026-09-23",
+  "judgments": {
+    "m001": {
+      "scores": {
+        "rfi": 0.98,
+        "submittal": 0.02,
+        "agency_letter": 0.02,
+        "invoice": 0.01,
+        "client_status": 0.09,
+        "other": 0.02,
+        "vendor_pitch": 0.01,
+        "internal": 0.27
+      },
+      "clock": 0.79,
+      "usage": {
+        "input_tokens": 1237,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0051954,
+      "elapsedMs": 1796.590064
+    },
+    "m002": {
+      "scores": {
+        "rfi": 0.98,
+        "submittal": 0.02,
+        "agency_letter": 0.03,
+        "invoice": 0.01,
+        "client_status": 0.09,
+        "other": 0.02,
+        "vendor_pitch": 0.02,
+        "internal": 0.32
+      },
+      "clock": 0.17,
+      "usage": {
+        "input_tokens": 1205,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0050609999999999995,
+      "elapsedMs": 555.9294869999999
+    },
+    "m003": {
+      "scores": {
+        "rfi": 0.98,
+        "submittal": 0.02,
+        "agency_letter": 0.02,
+        "invoice": 0.01,
+        "client_status": 0.06,
+        "other": 0.02,
+        "vendor_pitch": 0.01,
+        "internal": 0.36
+      },
+      "clock": 0.18,
+      "usage": {
+        "input_tokens": 1204,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0050568,
+      "elapsedMs": 526.0471280000002
+    },
+    "m004": {
+      "scores": {
+        "rfi": 0.98,
+        "submittal": 0.02,
+        "agency_letter": 0.02,
+        "invoice": 0.01,
+        "client_status": 0.07,
+        "other": 0.02,
+        "vendor_pitch": 0.02,
+        "internal": 0.34
+      },
+      "clock": 0.19,
+      "usage": {
+        "input_tokens": 1207,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0050694,
+      "elapsedMs": 447.6543569999999
+    },
+    "m005": {
+      "scores": {
+        "rfi": 0.97,
+        "submittal": 0.03,
+        "agency_letter": 0.03,
+        "invoice": 0.01,
+        "client_status": 0.11,
+        "other": 0.02,
+        "vendor_pitch": 0.02,
+        "internal": 0.35
+      },
+      "clock": 0.5,
+      "usage": {
+        "input_tokens": 1191,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0050022,
+      "elapsedMs": 509.00526699999955
+    },
+    "m006": {
+      "scores": {
+        "rfi": 0.97,
+        "submittal": 0.02,
+        "agency_letter": 0.03,
+        "invoice": 0.01,
+        "client_status": 0.06,
+        "other": 0.03,
+        "vendor_pitch": 0.02,
+        "internal": 0.37
+      },
+      "clock": 0.15,
+      "usage": {
+        "input_tokens": 1191,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0050022,
+      "elapsedMs": 441.46984900000007
+    },
+    "m007": {
+      "scores": {
+        "rfi": 0.97,
+        "submittal": 0.03,
+        "agency_letter": 0.03,
+        "invoice": 0.01,
+        "client_status": 0.08,
+        "other": 0.02,
+        "vendor_pitch": 0.02,
+        "internal": 0.27
+      },
+      "clock": 0.17,
+      "usage": {
+        "input_tokens": 1193,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0050106000000000005,
+      "elapsedMs": 811.2130670000006
+    },
+    "m008": {
+      "scores": {
+        "rfi": 0.98,
+        "submittal": 0.02,
+        "agency_letter": 0.02,
+        "invoice": 0.01,
+        "client_status": 0.08,
+        "other": 0.02,
+        "vendor_pitch": 0.02,
+        "internal": 0.3
+      },
+      "clock": 0.19,
+      "usage": {
+        "input_tokens": 1199,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0050358,
+      "elapsedMs": 463.34402800000043
+    },
+    "m009": {
+      "scores": {
+        "rfi": 0.98,
+        "submittal": 0.02,
+        "agency_letter": 0.03,
+        "invoice": 0.02,
+        "client_status": 0.09,
+        "other": 0.02,
+        "vendor_pitch": 0.02,
+        "internal": 0.28
+      },
+      "clock": 0.2,
+      "usage": {
+        "input_tokens": 1195,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005019000000000001,
+      "elapsedMs": 480.5232469999992
+    },
+    "m010": {
+      "scores": {
+        "rfi": 0.95,
+        "submittal": 0.03,
+        "agency_letter": 0.03,
+        "invoice": 0.01,
+        "client_status": 0.05,
+        "other": 0.03,
+        "vendor_pitch": 0.03,
+        "internal": 0.23
+      },
+      "clock": 0.2,
+      "usage": {
+        "input_tokens": 1194,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0050148,
+      "elapsedMs": 442.7161209999995
+    },
+    "m011": {
+      "scores": {
+        "rfi": 0.93,
+        "submittal": 0.03,
+        "agency_letter": 0.03,
+        "invoice": 0.01,
+        "client_status": 0.11,
+        "other": 0.1,
+        "vendor_pitch": 0.02,
+        "internal": 0.3
+      },
+      "clock": 0.43,
+      "usage": {
+        "input_tokens": 1198,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005031600000000001,
+      "elapsedMs": 489.3465299999998
+    },
+    "m012": {
+      "scores": {
+        "rfi": 0.54,
+        "submittal": 0.24,
+        "agency_letter": 0.03,
+        "invoice": 0.01,
+        "client_status": 0.07,
+        "other": 0.18,
+        "vendor_pitch": 0.05,
+        "internal": 0.47
+      },
+      "clock": 0.14,
+      "usage": {
+        "input_tokens": 1186,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049812,
+      "elapsedMs": 513.9559119999994
+    },
+    "m013": {
+      "scores": {
+        "rfi": 0.8,
+        "submittal": 0.55,
+        "agency_letter": 0.02,
+        "invoice": 0.02,
+        "client_status": 0.65,
+        "other": 0.12,
+        "vendor_pitch": 0.02,
+        "internal": 0.29
+      },
+      "clock": 0.49,
+      "usage": {
+        "input_tokens": 1236,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0051912,
+      "elapsedMs": 444.67270800000006
+    },
+    "m014": {
+      "scores": {
+        "rfi": 0.96,
+        "submittal": 0.03,
+        "agency_letter": 0.03,
+        "invoice": 0.01,
+        "client_status": 0.07,
+        "other": 0.03,
+        "vendor_pitch": 0.02,
+        "internal": 0.26
+      },
+      "clock": 0.11,
+      "usage": {
+        "input_tokens": 1190,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.004998000000000001,
+      "elapsedMs": 497.59217700000045
+    },
+    "m015": {
+      "scores": {
+        "rfi": 0.92,
+        "submittal": 0.03,
+        "agency_letter": 0.03,
+        "invoice": 0.01,
+        "client_status": 0.55,
+        "other": 0.05,
+        "vendor_pitch": 0.02,
+        "internal": 0.32
+      },
+      "clock": 0.38,
+      "usage": {
+        "input_tokens": 1190,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.004998000000000001,
+      "elapsedMs": 543.1113779999996
+    },
+    "m016": {
+      "scores": {
+        "rfi": 0.87,
+        "submittal": 0.04,
+        "agency_letter": 0.05,
+        "invoice": 0.02,
+        "client_status": 0.05,
+        "other": 0.21,
+        "vendor_pitch": 0.02,
+        "internal": 0.5
+      },
+      "clock": 0.58,
+      "usage": {
+        "input_tokens": 1200,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005039999999999999,
+      "elapsedMs": 497.0400409999984
+    },
+    "m020": {
+      "scores": {
+        "rfi": 0.03,
+        "submittal": 0.98,
+        "agency_letter": 0.03,
+        "invoice": 0.02,
+        "client_status": 0.07,
+        "other": 0.02,
+        "vendor_pitch": 0.05,
+        "internal": 0.2
+      },
+      "clock": 0.18,
+      "usage": {
+        "input_tokens": 1214,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0050988000000000006,
+      "elapsedMs": 607.9750459999996
+    },
+    "m021": {
+      "scores": {
+        "rfi": 0.03,
+        "submittal": 0.98,
+        "agency_letter": 0.03,
+        "invoice": 0.02,
+        "client_status": 0.09,
+        "other": 0.03,
+        "vendor_pitch": 0.03,
+        "internal": 0.27
+      },
+      "clock": 0.28,
+      "usage": {
+        "input_tokens": 1202,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0050484,
+      "elapsedMs": 469.75237599999855
+    },
+    "m022": {
+      "scores": {
+        "rfi": 0.07,
+        "submittal": 0.89,
+        "agency_letter": 0.03,
+        "invoice": 0.02,
+        "client_status": 0.41,
+        "other": 0.08,
+        "vendor_pitch": 0.04,
+        "internal": 0.24
+      },
+      "clock": 0.36,
+      "usage": {
+        "input_tokens": 1206,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005065200000000001,
+      "elapsedMs": 454.9621969999989
+    },
+    "m023": {
+      "scores": {
+        "rfi": 0.03,
+        "submittal": 0.98,
+        "agency_letter": 0.02,
+        "invoice": 0.02,
+        "client_status": 0.08,
+        "other": 0.03,
+        "vendor_pitch": 0.04,
+        "internal": 0.25
+      },
+      "clock": 0.14,
+      "usage": {
+        "input_tokens": 1203,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005052600000000001,
+      "elapsedMs": 431.8933099999995
+    },
+    "m024": {
+      "scores": {
+        "rfi": 0.03,
+        "submittal": 0.98,
+        "agency_letter": 0.03,
+        "invoice": 0.02,
+        "client_status": 0.12,
+        "other": 0.03,
+        "vendor_pitch": 0.04,
+        "internal": 0.3
+      },
+      "clock": 0.18,
+      "usage": {
+        "input_tokens": 1194,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0050148,
+      "elapsedMs": 578.397798
+    },
+    "m025": {
+      "scores": {
+        "rfi": 0.04,
+        "submittal": 0.96,
+        "agency_letter": 0.03,
+        "invoice": 0.02,
+        "client_status": 0.14,
+        "other": 0.09,
+        "vendor_pitch": 0.04,
+        "internal": 0.22
+      },
+      "clock": 0.16,
+      "usage": {
+        "input_tokens": 1209,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0050778,
+      "elapsedMs": 505.27948599999945
+    },
+    "m026": {
+      "scores": {
+        "rfi": 0.07,
+        "submittal": 0.95,
+        "agency_letter": 0.02,
+        "invoice": 0.02,
+        "client_status": 0.1,
+        "other": 0.23,
+        "vendor_pitch": 0.13,
+        "internal": 0.38
+      },
+      "clock": 0.1,
+      "usage": {
+        "input_tokens": 1178,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049476,
+      "elapsedMs": 506.6053869999996
+    },
+    "m027": {
+      "scores": {
+        "rfi": 0.05,
+        "submittal": 0.98,
+        "agency_letter": 0.04,
+        "invoice": 0.02,
+        "client_status": 0.11,
+        "other": 0.06,
+        "vendor_pitch": 0.02,
+        "internal": 0.26
+      },
+      "clock": 0.26,
+      "usage": {
+        "input_tokens": 1195,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005019000000000001,
+      "elapsedMs": 514.3742970000003
+    },
+    "m028": {
+      "scores": {
+        "rfi": 0.05,
+        "submittal": 0.95,
+        "agency_letter": 0.05,
+        "invoice": 0.02,
+        "client_status": 0.09,
+        "other": 0.12,
+        "vendor_pitch": 0.02,
+        "internal": 0.27
+      },
+      "clock": 0.06,
+      "usage": {
+        "input_tokens": 1194,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0050148,
+      "elapsedMs": 454.43091099999947
+    },
+    "m029": {
+      "scores": {
+        "rfi": 0.11,
+        "submittal": 0.73,
+        "agency_letter": 0.03,
+        "invoice": 0.02,
+        "client_status": 0.15,
+        "other": 0.05,
+        "vendor_pitch": 0.04,
+        "internal": 0.28
+      },
+      "clock": 0.14,
+      "usage": {
+        "input_tokens": 1189,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049938,
+      "elapsedMs": 446.6062089999996
+    },
+    "m030": {
+      "scores": {
+        "rfi": 0.04,
+        "submittal": 0.76,
+        "agency_letter": 0.03,
+        "invoice": 0.91,
+        "client_status": 0.62,
+        "other": 0.05,
+        "vendor_pitch": 0.03,
+        "internal": 0.22
+      },
+      "clock": 0.89,
+      "usage": {
+        "input_tokens": 1220,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005124,
+      "elapsedMs": 443.5244500000008
+    },
+    "m031": {
+      "scores": {
+        "rfi": 0.71,
+        "submittal": 0.85,
+        "agency_letter": 0.03,
+        "invoice": 0.02,
+        "client_status": 0.54,
+        "other": 0.03,
+        "vendor_pitch": 0.02,
+        "internal": 0.27
+      },
+      "clock": 0.24,
+      "usage": {
+        "input_tokens": 1220,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005124,
+      "elapsedMs": 518.2203309999986
+    },
+    "m040": {
+      "scores": {
+        "rfi": 0.05,
+        "submittal": 0.05,
+        "agency_letter": 0.96,
+        "invoice": 0.02,
+        "client_status": 0.11,
+        "other": 0.34,
+        "vendor_pitch": 0.02,
+        "internal": 0.04
+      },
+      "clock": 0.98,
+      "usage": {
+        "input_tokens": 1246,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052332,
+      "elapsedMs": 512.1814360000008
+    },
+    "m041": {
+      "scores": {
+        "rfi": 0.15,
+        "submittal": 0.28,
+        "agency_letter": 0.27,
+        "invoice": 0.02,
+        "client_status": 0.16,
+        "other": 0.24,
+        "vendor_pitch": 0.03,
+        "internal": 0.29
+      },
+      "clock": 0.54,
+      "usage": {
+        "input_tokens": 1194,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0050148,
+      "elapsedMs": 444.0199399999983
+    },
+    "m042": {
+      "scores": {
+        "rfi": 0.04,
+        "submittal": 0.04,
+        "agency_letter": 0.57,
+        "invoice": 0.02,
+        "client_status": 0.1,
+        "other": 0.17,
+        "vendor_pitch": 0.02,
+        "internal": 0.24
+      },
+      "clock": 0.08,
+      "usage": {
+        "input_tokens": 1199,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0050358,
+      "elapsedMs": 489.9077099999995
+    },
+    "m043": {
+      "scores": {
+        "rfi": 0.18,
+        "submittal": 0.48,
+        "agency_letter": 0.25,
+        "invoice": 0.02,
+        "client_status": 0.12,
+        "other": 0.24,
+        "vendor_pitch": 0.02,
+        "internal": 0.27
+      },
+      "clock": 0.97,
+      "usage": {
+        "input_tokens": 1188,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049896,
+      "elapsedMs": 424.2305919999999
+    },
+    "m044": {
+      "scores": {
+        "rfi": 0.04,
+        "submittal": 0.03,
+        "agency_letter": 0.56,
+        "invoice": 0.01,
+        "client_status": 0.09,
+        "other": 0.61,
+        "vendor_pitch": 0.03,
+        "internal": 0.17
+      },
+      "clock": 0.67,
+      "usage": {
+        "input_tokens": 1200,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005039999999999999,
+      "elapsedMs": 497.899727
+    },
+    "m045": {
+      "scores": {
+        "rfi": 0.04,
+        "submittal": 0.05,
+        "agency_letter": 0.59,
+        "invoice": 0.03,
+        "client_status": 0.08,
+        "other": 0.56,
+        "vendor_pitch": 0.04,
+        "internal": 0.12
+      },
+      "clock": 0.98,
+      "usage": {
+        "input_tokens": 1191,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0050022,
+      "elapsedMs": 439.8977550000018
+    },
+    "m046": {
+      "scores": {
+        "rfi": 0.07,
+        "submittal": 0.04,
+        "agency_letter": 0.27,
+        "invoice": 0.01,
+        "client_status": 0.28,
+        "other": 0.33,
+        "vendor_pitch": 0.02,
+        "internal": 0.46
+      },
+      "clock": 0.95,
+      "usage": {
+        "input_tokens": 1213,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0050946,
+      "elapsedMs": 397.48455399999875
+    },
+    "m047": {
+      "scores": {
+        "rfi": 0.1,
+        "submittal": 0.1,
+        "agency_letter": 0.45,
+        "invoice": 0.02,
+        "client_status": 0.12,
+        "other": 0.16,
+        "vendor_pitch": 0.02,
+        "internal": 0.19
+      },
+      "clock": 0.97,
+      "usage": {
+        "input_tokens": 1207,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0050694,
+      "elapsedMs": 503.99875600000087
+    },
+    "m048": {
+      "scores": {
+        "rfi": 0.28,
+        "submittal": 0.43,
+        "agency_letter": 0.16,
+        "invoice": 0.02,
+        "client_status": 0.21,
+        "other": 0.32,
+        "vendor_pitch": 0.02,
+        "internal": 0.4
+      },
+      "clock": 0.97,
+      "usage": {
+        "input_tokens": 1190,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.004998000000000001,
+      "elapsedMs": 462.04128499999933
+    },
+    "m049": {
+      "scores": {
+        "rfi": 0.35,
+        "submittal": 0.18,
+        "agency_letter": 0.97,
+        "invoice": 0.02,
+        "client_status": 0.09,
+        "other": 0.07,
+        "vendor_pitch": 0.02,
+        "internal": 0.68
+      },
+      "clock": 0.95,
+      "usage": {
+        "input_tokens": 1214,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0050988000000000006,
+      "elapsedMs": 416.55357599999843
+    },
+    "m050": {
+      "scores": {
+        "rfi": 0.11,
+        "submittal": 0.19,
+        "agency_letter": 0.61,
+        "invoice": 0.02,
+        "client_status": 0.26,
+        "other": 0.2,
+        "vendor_pitch": 0.03,
+        "internal": 0.17
+      },
+      "clock": 0.98,
+      "usage": {
+        "input_tokens": 1201,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0050442,
+      "elapsedMs": 476.7689539999992
+    },
+    "m060": {
+      "scores": {
+        "rfi": 0.03,
+        "submittal": 0.03,
+        "agency_letter": 0.02,
+        "invoice": 0.94,
+        "client_status": 0.06,
+        "other": 0.03,
+        "vendor_pitch": 0.03,
+        "internal": 0.18
+      },
+      "clock": 0.9,
+      "usage": {
+        "input_tokens": 1196,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0050232,
+      "elapsedMs": 500.8918849999973
+    },
+    "m061": {
+      "scores": {
+        "rfi": 0.02,
+        "submittal": 0.03,
+        "agency_letter": 0.02,
+        "invoice": 0.94,
+        "client_status": 0.1,
+        "other": 0.03,
+        "vendor_pitch": 0.03,
+        "internal": 0.24
+      },
+      "clock": 0.9,
+      "usage": {
+        "input_tokens": 1195,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005019000000000001,
+      "elapsedMs": 566.783456000001
+    },
+    "m062": {
+      "scores": {
+        "rfi": 0.02,
+        "submittal": 0.04,
+        "agency_letter": 0.03,
+        "invoice": 0.92,
+        "client_status": 0.11,
+        "other": 0.03,
+        "vendor_pitch": 0.03,
+        "internal": 0.28
+      },
+      "clock": 0.93,
+      "usage": {
+        "input_tokens": 1186,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049812,
+      "elapsedMs": 448.3405559999992
+    },
+    "m063": {
+      "scores": {
+        "rfi": 0.03,
+        "submittal": 0.03,
+        "agency_letter": 0.02,
+        "invoice": 0.38,
+        "client_status": 0.26,
+        "other": 0.25,
+        "vendor_pitch": 0.04,
+        "internal": 0.25
+      },
+      "clock": 0.15,
+      "usage": {
+        "input_tokens": 1189,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049938,
+      "elapsedMs": 459.06037899999865
+    },
+    "m064": {
+      "scores": {
+        "rfi": 0.02,
+        "submittal": 0.02,
+        "agency_letter": 0.02,
+        "invoice": 0.93,
+        "client_status": 0.05,
+        "other": 0.04,
+        "vendor_pitch": 0.03,
+        "internal": 0.14
+      },
+      "clock": 0.19,
+      "usage": {
+        "input_tokens": 1193,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0050106000000000005,
+      "elapsedMs": 445.14612000000125
+    },
+    "m065": {
+      "scores": {
+        "rfi": 0.03,
+        "submittal": 0.03,
+        "agency_letter": 0.02,
+        "invoice": 0.91,
+        "client_status": 0.11,
+        "other": 0.03,
+        "vendor_pitch": 0.03,
+        "internal": 0.23
+      },
+      "clock": 0.86,
+      "usage": {
+        "input_tokens": 1191,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0050022,
+      "elapsedMs": 453.59263499999724
+    },
+    "m066": {
+      "scores": {
+        "rfi": 0.03,
+        "submittal": 0.03,
+        "agency_letter": 0.03,
+        "invoice": 0.94,
+        "client_status": 0.13,
+        "other": 0.03,
+        "vendor_pitch": 0.03,
+        "internal": 0.21
+      },
+      "clock": 0.97,
+      "usage": {
+        "input_tokens": 1198,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005031600000000001,
+      "elapsedMs": 512.4348920000011
+    },
+    "m070": {
+      "scores": {
+        "rfi": 0.14,
+        "submittal": 0.04,
+        "agency_letter": 0.02,
+        "invoice": 0.01,
+        "client_status": 0.79,
+        "other": 0.19,
+        "vendor_pitch": 0.03,
+        "internal": 0.68
+      },
+      "clock": 0.2,
+      "usage": {
+        "input_tokens": 1184,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049728,
+      "elapsedMs": 436.2355179999977
+    },
+    "m071": {
+      "scores": {
+        "rfi": 0.05,
+        "submittal": 0.03,
+        "agency_letter": 0.02,
+        "invoice": 0.01,
+        "client_status": 0.75,
+        "other": 0.27,
+        "vendor_pitch": 0.02,
+        "internal": 0.36
+      },
+      "clock": 0.24,
+      "usage": {
+        "input_tokens": 1180,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.004956,
+      "elapsedMs": 433.9003440000015
+    },
+    "m072": {
+      "scores": {
+        "rfi": 0.11,
+        "submittal": 0.33,
+        "agency_letter": 0.04,
+        "invoice": 0.01,
+        "client_status": 0.83,
+        "other": 0.14,
+        "vendor_pitch": 0.02,
+        "internal": 0.46
+      },
+      "clock": 0.29,
+      "usage": {
+        "input_tokens": 1189,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049938,
+      "elapsedMs": 468.15663499999937
+    },
+    "m073": {
+      "scores": {
+        "rfi": 0.54,
+        "submittal": 0.42,
+        "agency_letter": 0.04,
+        "invoice": 0.01,
+        "client_status": 0.77,
+        "other": 0.14,
+        "vendor_pitch": 0.03,
+        "internal": 0.3
+      },
+      "clock": 0.16,
+      "usage": {
+        "input_tokens": 1181,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049602,
+      "elapsedMs": 483.9994320000005
+    },
+    "m074": {
+      "scores": {
+        "rfi": 0.17,
+        "submittal": 0.05,
+        "agency_letter": 0.03,
+        "invoice": 0.01,
+        "client_status": 0.7,
+        "other": 0.2,
+        "vendor_pitch": 0.02,
+        "internal": 0.73
+      },
+      "clock": 0.38,
+      "usage": {
+        "input_tokens": 1178,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049476,
+      "elapsedMs": 466.55326799999966
+    },
+    "m075": {
+      "scores": {
+        "rfi": 0.1,
+        "submittal": 0.05,
+        "agency_letter": 0.03,
+        "invoice": 0.01,
+        "client_status": 0.84,
+        "other": 0.14,
+        "vendor_pitch": 0.04,
+        "internal": 0.43
+      },
+      "clock": 0.07,
+      "usage": {
+        "input_tokens": 1177,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.004943400000000001,
+      "elapsedMs": 463.36046400000123
+    },
+    "m076": {
+      "scores": {
+        "rfi": 0.06,
+        "submittal": 0.04,
+        "agency_letter": 0.04,
+        "invoice": 0.02,
+        "client_status": 0.79,
+        "other": 0.19,
+        "vendor_pitch": 0.02,
+        "internal": 0.57
+      },
+      "clock": 0.17,
+      "usage": {
+        "input_tokens": 1187,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049854,
+      "elapsedMs": 464.8829719999994
+    },
+    "m077": {
+      "scores": {
+        "rfi": 0.08,
+        "submittal": 0.03,
+        "agency_letter": 0.03,
+        "invoice": 0.01,
+        "client_status": 0.93,
+        "other": 0.13,
+        "vendor_pitch": 0.03,
+        "internal": 0.33
+      },
+      "clock": 0.67,
+      "usage": {
+        "input_tokens": 1177,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.004943400000000001,
+      "elapsedMs": 436.94063200000164
+    },
+    "m080": {
+      "scores": {
+        "rfi": 0.04,
+        "submittal": 0.04,
+        "agency_letter": 0.02,
+        "invoice": 0.02,
+        "client_status": 0.06,
+        "other": 0.15,
+        "vendor_pitch": 0.91,
+        "internal": 0.14
+      },
+      "clock": 0.16,
+      "usage": {
+        "input_tokens": 1194,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0050148,
+      "elapsedMs": 472.07677200000035
+    },
+    "m081": {
+      "scores": {
+        "rfi": 0.02,
+        "submittal": 0.02,
+        "agency_letter": 0.02,
+        "invoice": 0.02,
+        "client_status": 0.04,
+        "other": 0.59,
+        "vendor_pitch": 0.79,
+        "internal": 0.21
+      },
+      "clock": 0.37,
+      "usage": {
+        "input_tokens": 1203,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005052600000000001,
+      "elapsedMs": 499.6132370000014
+    },
+    "m082": {
+      "scores": {
+        "rfi": 0.04,
+        "submittal": 0.06,
+        "agency_letter": 0.03,
+        "invoice": 0.03,
+        "client_status": 0.07,
+        "other": 0.16,
+        "vendor_pitch": 0.94,
+        "internal": 0.15
+      },
+      "clock": 0.03,
+      "usage": {
+        "input_tokens": 1187,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049854,
+      "elapsedMs": 511.1803559999971
+    },
+    "m083": {
+      "scores": {
+        "rfi": 0.04,
+        "submittal": 0.02,
+        "agency_letter": 0.03,
+        "invoice": 0.02,
+        "client_status": 0.05,
+        "other": 0.51,
+        "vendor_pitch": 0.86,
+        "internal": 0.19
+      },
+      "clock": 0.07,
+      "usage": {
+        "input_tokens": 1190,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.004998000000000001,
+      "elapsedMs": 436.4394930000017
+    },
+    "m084": {
+      "scores": {
+        "rfi": 0.03,
+        "submittal": 0.06,
+        "agency_letter": 0.02,
+        "invoice": 0.04,
+        "client_status": 0.03,
+        "other": 0.11,
+        "vendor_pitch": 0.93,
+        "internal": 0.17
+      },
+      "clock": 0.03,
+      "usage": {
+        "input_tokens": 1180,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.004956,
+      "elapsedMs": 408.28408200000194
+    },
+    "m085": {
+      "scores": {
+        "rfi": 0.03,
+        "submittal": 0.04,
+        "agency_letter": 0.03,
+        "invoice": 0.03,
+        "client_status": 0.09,
+        "other": 0.2,
+        "vendor_pitch": 0.95,
+        "internal": 0.15
+      },
+      "clock": 0.02,
+      "usage": {
+        "input_tokens": 1173,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.004926600000000001,
+      "elapsedMs": 468.7952879999975
+    },
+    "m086": {
+      "scores": {
+        "rfi": 0.02,
+        "submittal": 0.03,
+        "agency_letter": 0.02,
+        "invoice": 0.04,
+        "client_status": 0.05,
+        "other": 0.1,
+        "vendor_pitch": 0.97,
+        "internal": 0.05
+      },
+      "clock": 0.03,
+      "usage": {
+        "input_tokens": 1176,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049392,
+      "elapsedMs": 601.3084789999994
+    },
+    "m087": {
+      "scores": {
+        "rfi": 0.06,
+        "submittal": 0.06,
+        "agency_letter": 0.03,
+        "invoice": 0.03,
+        "client_status": 0.37,
+        "other": 0.29,
+        "vendor_pitch": 0.86,
+        "internal": 0.25
+      },
+      "clock": 0.16,
+      "usage": {
+        "input_tokens": 1180,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.004956,
+      "elapsedMs": 477.8005970000013
+    },
+    "m088": {
+      "scores": {
+        "rfi": 0.04,
+        "submittal": 0.11,
+        "agency_letter": 0.02,
+        "invoice": 0.02,
+        "client_status": 0.04,
+        "other": 0.17,
+        "vendor_pitch": 0.94,
+        "internal": 0.15
+      },
+      "clock": 0.03,
+      "usage": {
+        "input_tokens": 1173,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.004926600000000001,
+      "elapsedMs": 432.53579199999876
+    },
+    "m089": {
+      "scores": {
+        "rfi": 0.03,
+        "submittal": 0.03,
+        "agency_letter": 0.02,
+        "invoice": 0.03,
+        "client_status": 0.05,
+        "other": 0.46,
+        "vendor_pitch": 0.96,
+        "internal": 0.11
+      },
+      "clock": 0.04,
+      "usage": {
+        "input_tokens": 1170,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.004914,
+      "elapsedMs": 431.8688009999969
+    },
+    "m090": {
+      "scores": {
+        "rfi": 0.04,
+        "submittal": 0.04,
+        "agency_letter": 0.03,
+        "invoice": 0.04,
+        "client_status": 0.06,
+        "other": 0.24,
+        "vendor_pitch": 0.93,
+        "internal": 0.16
+      },
+      "clock": 0.03,
+      "usage": {
+        "input_tokens": 1176,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049392,
+      "elapsedMs": 428.21766399999615
+    },
+    "m091": {
+      "scores": {
+        "rfi": 0.03,
+        "submittal": 0.03,
+        "agency_letter": 0.03,
+        "invoice": 0.02,
+        "client_status": 0.06,
+        "other": 0.72,
+        "vendor_pitch": 0.69,
+        "internal": 0.5
+      },
+      "clock": 0.04,
+      "usage": {
+        "input_tokens": 1172,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049224,
+      "elapsedMs": 453.0376679999972
+    },
+    "m092": {
+      "scores": {
+        "rfi": 0.03,
+        "submittal": 0.03,
+        "agency_letter": 0.02,
+        "invoice": 0.03,
+        "client_status": 0.1,
+        "other": 0.26,
+        "vendor_pitch": 0.97,
+        "internal": 0.11
+      },
+      "clock": 0.03,
+      "usage": {
+        "input_tokens": 1177,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.004943400000000001,
+      "elapsedMs": 414.33137200000056
+    },
+    "m093": {
+      "scores": {
+        "rfi": 0.02,
+        "submittal": 0.03,
+        "agency_letter": 0.02,
+        "invoice": 0.04,
+        "client_status": 0.05,
+        "other": 0.24,
+        "vendor_pitch": 0.97,
+        "internal": 0.08
+      },
+      "clock": 0.38,
+      "usage": {
+        "input_tokens": 1187,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049854,
+      "elapsedMs": 451.5621419999952
+    },
+    "m094": {
+      "scores": {
+        "rfi": 0.03,
+        "submittal": 0.03,
+        "agency_letter": 0.04,
+        "invoice": 0.06,
+        "client_status": 0.14,
+        "other": 0.76,
+        "vendor_pitch": 0.92,
+        "internal": 0.13
+      },
+      "clock": 0.57,
+      "usage": {
+        "input_tokens": 1191,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0050022,
+      "elapsedMs": 452.02055599999585
+    },
+    "m095": {
+      "scores": {
+        "rfi": 0.03,
+        "submittal": 0.04,
+        "agency_letter": 0.02,
+        "invoice": 0.02,
+        "client_status": 0.07,
+        "other": 0.12,
+        "vendor_pitch": 0.95,
+        "internal": 0.06
+      },
+      "clock": 0.02,
+      "usage": {
+        "input_tokens": 1186,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049812,
+      "elapsedMs": 492.59321400000044
+    },
+    "m096": {
+      "scores": {
+        "rfi": 0.09,
+        "submittal": 0.03,
+        "agency_letter": 0.02,
+        "invoice": 0.02,
+        "client_status": 0.15,
+        "other": 0.13,
+        "vendor_pitch": 0.97,
+        "internal": 0.14
+      },
+      "clock": 0.05,
+      "usage": {
+        "input_tokens": 1183,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049686,
+      "elapsedMs": 436.48754100000224
+    },
+    "m097": {
+      "scores": {
+        "rfi": 0.02,
+        "submittal": 0.02,
+        "agency_letter": 0.03,
+        "invoice": 0.11,
+        "client_status": 0.06,
+        "other": 0.36,
+        "vendor_pitch": 0.95,
+        "internal": 0.08
+      },
+      "clock": 0.16,
+      "usage": {
+        "input_tokens": 1198,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005031600000000001,
+      "elapsedMs": 427.2650489999942
+    },
+    "m100": {
+      "scores": {
+        "rfi": 0.02,
+        "submittal": 0.02,
+        "agency_letter": 0.02,
+        "invoice": 0.01,
+        "client_status": 0.06,
+        "other": 0.15,
+        "vendor_pitch": 0.01,
+        "internal": 0.91
+      },
+      "clock": 0.04,
+      "usage": {
+        "input_tokens": 1190,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.004998000000000001,
+      "elapsedMs": 555.5577189999967
+    },
+    "m101": {
+      "scores": {
+        "rfi": 0.03,
+        "submittal": 0.02,
+        "agency_letter": 0.02,
+        "invoice": 0.01,
+        "client_status": 0.08,
+        "other": 0.35,
+        "vendor_pitch": 0.02,
+        "internal": 0.7
+      },
+      "clock": 0.08,
+      "usage": {
+        "input_tokens": 1181,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049602,
+      "elapsedMs": 514.5000050000017
+    },
+    "m102": {
+      "scores": {
+        "rfi": 0.03,
+        "submittal": 0.02,
+        "agency_letter": 0.02,
+        "invoice": 0.01,
+        "client_status": 0.04,
+        "other": 0.23,
+        "vendor_pitch": 0.01,
+        "internal": 0.85
+      },
+      "clock": 0.03,
+      "usage": {
+        "input_tokens": 1182,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.004964400000000001,
+      "elapsedMs": 453.02874699999666
+    },
+    "m103": {
+      "scores": {
+        "rfi": 0.02,
+        "submittal": 0.02,
+        "agency_letter": 0.02,
+        "invoice": 0.04,
+        "client_status": 0.05,
+        "other": 0.24,
+        "vendor_pitch": 0.02,
+        "internal": 0.85
+      },
+      "clock": 0.73,
+      "usage": {
+        "input_tokens": 1177,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.004943400000000001,
+      "elapsedMs": 458.23637299999973
+    },
+    "m104": {
+      "scores": {
+        "rfi": 0.04,
+        "submittal": 0.06,
+        "agency_letter": 0.02,
+        "invoice": 0.01,
+        "client_status": 0.05,
+        "other": 0.3,
+        "vendor_pitch": 0.02,
+        "internal": 0.78
+      },
+      "clock": 0.02,
+      "usage": {
+        "input_tokens": 1179,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049518,
+      "elapsedMs": 430.2736539999969
+    },
+    "m105": {
+      "scores": {
+        "rfi": 0.02,
+        "submittal": 0.02,
+        "agency_letter": 0.02,
+        "invoice": 0.01,
+        "client_status": 0.03,
+        "other": 0.26,
+        "vendor_pitch": 0.02,
+        "internal": 0.85
+      },
+      "clock": 0.14,
+      "usage": {
+        "input_tokens": 1179,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049518,
+      "elapsedMs": 510.46013700000185
+    },
+    "m106": {
+      "scores": {
+        "rfi": 0.03,
+        "submittal": 0.03,
+        "agency_letter": 0.02,
+        "invoice": 0.01,
+        "client_status": 0.12,
+        "other": 0.24,
+        "vendor_pitch": 0.02,
+        "internal": 0.82
+      },
+      "clock": 0.04,
+      "usage": {
+        "input_tokens": 1168,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049056,
+      "elapsedMs": 456.4172829999952
+    },
+    "m107": {
+      "scores": {
+        "rfi": 0.06,
+        "submittal": 0.07,
+        "agency_letter": 0.02,
+        "invoice": 0.01,
+        "client_status": 0.06,
+        "other": 0.33,
+        "vendor_pitch": 0.02,
+        "internal": 0.72
+      },
+      "clock": 0.05,
+      "usage": {
+        "input_tokens": 1183,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049686,
+      "elapsedMs": 525.9476729999951
+    },
+    "m108": {
+      "scores": {
+        "rfi": 0.04,
+        "submittal": 0.02,
+        "agency_letter": 0.03,
+        "invoice": 0.01,
+        "client_status": 0.06,
+        "other": 0.21,
+        "vendor_pitch": 0.02,
+        "internal": 0.91
+      },
+      "clock": 0.2,
+      "usage": {
+        "input_tokens": 1179,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049518,
+      "elapsedMs": 449.0780700000032
+    },
+    "m109": {
+      "scores": {
+        "rfi": 0.13,
+        "submittal": 0.13,
+        "agency_letter": 0.57,
+        "invoice": 0.02,
+        "client_status": 0.12,
+        "other": 0.21,
+        "vendor_pitch": 0.02,
+        "internal": 0.84
+      },
+      "clock": 0.97,
+      "usage": {
+        "input_tokens": 1215,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005103,
+      "elapsedMs": 444.9568680000011
+    },
+    "m110": {
+      "scores": {
+        "rfi": 0.04,
+        "submittal": 0.03,
+        "agency_letter": 0.04,
+        "invoice": 0.01,
+        "client_status": 0.04,
+        "other": 0.9,
+        "vendor_pitch": 0.03,
+        "internal": 0.13
+      },
+      "clock": 0.07,
+      "usage": {
+        "input_tokens": 1189,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049938,
+      "elapsedMs": 489.0021149999957
+    },
+    "m111": {
+      "scores": {
+        "rfi": 0.09,
+        "submittal": 0.08,
+        "agency_letter": 0.02,
+        "invoice": 0.02,
+        "client_status": 0.29,
+        "other": 0.9,
+        "vendor_pitch": 0.03,
+        "internal": 0.24
+      },
+      "clock": 0.14,
+      "usage": {
+        "input_tokens": 1186,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049812,
+      "elapsedMs": 508.02400799999305
+    },
+    "m112": {
+      "scores": {
+        "rfi": 0.03,
+        "submittal": 0.02,
+        "agency_letter": 0.03,
+        "invoice": 0.01,
+        "client_status": 0.19,
+        "other": 0.89,
+        "vendor_pitch": 0.35,
+        "internal": 0.2
+      },
+      "clock": 0.04,
+      "usage": {
+        "input_tokens": 1185,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049770000000000005,
+      "elapsedMs": 448.2283219999954
+    },
+    "m113": {
+      "scores": {
+        "rfi": 0.03,
+        "submittal": 0.02,
+        "agency_letter": 0.03,
+        "invoice": 0.01,
+        "client_status": 0.06,
+        "other": 0.86,
+        "vendor_pitch": 0.2,
+        "internal": 0.25
+      },
+      "clock": 0.05,
+      "usage": {
+        "input_tokens": 1176,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049392,
+      "elapsedMs": 518.3370779999968
+    },
+    "m114": {
+      "scores": {
+        "rfi": 0.05,
+        "submittal": 0.02,
+        "agency_letter": 0.02,
+        "invoice": 0.02,
+        "client_status": 0.05,
+        "other": 0.67,
+        "vendor_pitch": 0.25,
+        "internal": 0.14
+      },
+      "clock": 0.03,
+      "usage": {
+        "input_tokens": 1193,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0050106000000000005,
+      "elapsedMs": 455.2770440000022
+    },
+    "m115": {
+      "scores": {
+        "rfi": 0.02,
+        "submittal": 0.07,
+        "agency_letter": 0.06,
+        "invoice": 0.02,
+        "client_status": 0.08,
+        "other": 0.83,
+        "vendor_pitch": 0.4,
+        "internal": 0.31
+      },
+      "clock": 0.48,
+      "usage": {
+        "input_tokens": 1181,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0049602,
+      "elapsedMs": 494.24182300000393
+    },
+    "m116": {
+      "scores": {
+        "rfi": 0.03,
+        "submittal": 0.06,
+        "agency_letter": 0.03,
+        "invoice": 0.04,
+        "client_status": 0.1,
+        "other": 0.93,
+        "vendor_pitch": 0.09,
+        "internal": 0.2
+      },
+      "clock": 0.98,
+      "usage": {
+        "input_tokens": 1182,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.004964400000000001,
+      "elapsedMs": 419.40055199999915
+    },
+    "m117": {
+      "scores": {
+        "rfi": 0.09,
+        "submittal": 0.06,
+        "agency_letter": 0.07,
+        "invoice": 0.02,
+        "client_status": 0.14,
+        "other": 0.45,
+        "vendor_pitch": 0.05,
+        "internal": 0.6
+      },
+      "clock": 0.05,
+      "usage": {
+        "input_tokens": 1161,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0048762,
+      "elapsedMs": 423.1798969999945
+    },
+    "m118": {
+      "scores": {
+        "rfi": 0.03,
+        "submittal": 0.03,
+        "agency_letter": 0.06,
+        "invoice": 0.01,
+        "client_status": 0.03,
+        "other": 0.93,
+        "vendor_pitch": 0.01,
+        "internal": 0.08
+      },
+      "clock": 0.97,
+      "usage": {
+        "input_tokens": 1198,
+        "output_tokens": 157
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005031600000000001,
+      "elapsedMs": 493.52400900000066
+    }
+  }
+}

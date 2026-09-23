@@ -4,6 +4,7 @@ import { InMemorySpendCounter, SpendCap, SpendCapExceededError } from "@builds/s
 import { CLOCK_QUESTION, questionsFor, stateFor } from "../src/questions";
 import { estimateCents, judge, JudgmentError, readJudgment } from "../src/jev";
 import { firmById } from "../src/fixtures";
+import recordedResponse from "./fixtures/recorded-response.json" with { type: "json" };
 
 const arch = firmById("arch");
 const classes = arch.classes.map((c) => c[0]);
@@ -29,11 +30,20 @@ describe("the single Jev request (AC #2)", () => {
     for (const key of Object.keys(q)) expect(q[key]?.type).toBe("noul");
   });
 
-  it("reads a recorded vendor response by shape, not by counting", () => {
+  it("reads the recorded live vendor response by shape, not by counting", () => {
+    // Recorded by `pnpm --filter @builds/sift smoke`: one real call on m001, committed as a fixture.
+    const answers = recordedResponse.answers as Record<string, unknown>;
+    expect(Object.keys(answers).sort()).toEqual([...classes, CLOCK_QUESTION].sort());
+    const j = readJudgment(recordedResponse.messageId, classes, recordedResponse as never);
+    expect(Object.keys(j.scores).sort()).toEqual([...classes].sort());
+    for (const v of [...Object.values(j.scores), j.clock]) expect(v >= 0 && v <= 1).toBe(true);
+    expect(j.usage.input_tokens).toBeGreaterThan(0);
+  });
+
+  it("reads a hand-built response of the same shape", () => {
     const j = readJudgment("a2", classes, recorded({ rfi: 0.92, [CLOCK_QUESTION]: 0.62 }) as never);
     expect(j.scores["rfi"]).toBe(0.92);
     expect(j.clock).toBe(0.62);
-    expect(Object.keys(j.scores).sort()).toEqual([...classes].sort());
   });
 
   it("rejects a malformed envelope rather than trusting a partial result", () => {
@@ -69,5 +79,15 @@ describe("SpendCap refuses before spending (AC #30)", () => {
     const cap = new SpendCap(counter, estimateCents(state) / 2);
     await expect(judge("m1", arch, state, { client, cap, counter })).rejects.toBeInstanceOf(SpendCapExceededError);
     expect(spy).toHaveBeenCalledTimes(0);
+  });
+});
+
+describe("Meridian's class criteria", () => {
+  it("states each class's own boundary rather than a generic yes/no pair", () => {
+    const q = questionsFor(arch);
+    for (const c of classes) {
+      const criteria = q[c]?.criteria as { true?: unknown } | null | undefined;
+      expect(String(criteria?.true), c).not.toMatch(/^Yes: this message is/);
+    }
   });
 });

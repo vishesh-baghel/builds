@@ -6,7 +6,7 @@ import { toMessage } from "./fixtures/instrument";
 import { MEASURED_FIRM_ID } from "./fixtures/load";
 import type { Instrument, LabelledMessage } from "./fixtures/schema";
 import { judge as callJev, jevClient, type Judgment } from "./jev";
-import type { Thresholds } from "./policy";
+import { MERIDIAN_THRESHOLDS, withDeclared, type Thresholds } from "./policy";
 import { SiftPipeline, type Judge } from "./pipeline";
 import type { Plan } from "./stages/decide";
 import { SiftStore } from "./store";
@@ -48,7 +48,7 @@ export function createSift(options: SiftRunOptions) {
     firm, judge: options.judge, store,
     idempotency: options.idempotency ?? new InMemoryIdempotencyStore(),
     sor: { projects: instrument.projects, rfis: instrument.rfis, submittals: instrument.submittals, contacts: instrument.contacts },
-    ...(options.thresholds ? { thresholds: options.thresholds } : {}),
+    thresholds: options.thresholds ?? withDeclared(MERIDIAN_THRESHOLDS),
   });
 
   return {

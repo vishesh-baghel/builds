@@ -8,9 +8,9 @@ number stops meaning anything.
 submittals and every inbox message are invented. No client, no real mailbox, no real
 correspondence. Nothing here may be presented as evidence of client work.
 
-Status: **drafted, awaiting review before it freezes.** 91 messages and four systems of record,
-authored to the distribution in `docs/prds/sift-v1-prd.md`. Nothing has been scored against it yet:
-the labels are frozen first, and only then does `pnpm --filter @builds/sift score` buy judgments.
+Status: **frozen at the first scored run, 2026-09-23.** Any label change from here is recorded in
+`docs/VARIANCE-LOG.md`, never made silently. 91 messages and four systems of record,
+authored to the distribution in `docs/prds/sift-v1-prd.md`.
 `fixtures.json` is the generated snapshot the app reads; regenerate it with
 `pnpm --filter @builds/sift snapshot` after any edit, or the gate fails.
 
@@ -95,6 +95,28 @@ A multi-topic message counts under each of its classes.
 Discovered while labelling and binding on both the labels here and the code in `src/stages/`. The
 code states each once; a test asserts that, given a perfect judgment, every ordinary message lands
 exactly where its labels say.
+
+**Class boundaries.** Each is the class table above, plus the labelling notes on the messages that
+sit on its edge. These were written before the first scored run; the question criteria in
+`src/questions.ts` state them to the model, and nothing was added to them from a run's results.
+
+- `rfi`: a question about the drawings or specifications that construction is waiting on, numbered
+  or not, whoever passes it along. A request to approve product data is a submittal even when it is
+  titled RFI; closing out an RFI already answered asks nothing new, but is still RFI correspondence.
+- `submittal`: product data, samples, shop drawings, mix designs or cut sheets sent for review or
+  approval, including resubmittals, reminders about a pending review and confirmations of one done.
+- `agency_letter`: a letter or automated notice from a city, county, state or other authority about
+  a permit, plan review, inspection, hearing, licence or compliance, including one someone forwards.
+- `invoice`: a bill or statement asking the firm to pay for something it bought. A solicitation that
+  says it is not a bill is a pitch.
+- `client_status`: a client asking about progress, schedule or an outstanding item, first ask or
+  repeat. A client relaying a contractor's question carries an RFI; a client forwarding an
+  authority's letter carries an agency letter.
+- `vendor_pitch`: unsolicited marketing, however urgent or official it sounds: offers, trials, demos,
+  directory listings, recruiting, event invitations.
+- `internal`: mail between the firm's own staff, including forwards and assignments among them.
+- `other`: actionable mail none of the seven kinds above holds: insurance, legal, press, employment,
+  new-business requests. If any of the seven fits, it is not `other`.
 
 **What is a clock.**
 
