@@ -22,6 +22,8 @@ export interface Thresholds {
   readonly act: number;
   readonly review: number;
   readonly clockAct: number;
+  /** Per-class act lines that override `act`: only for classes too sparse to sweep, declared below. */
+  readonly actByClass?: Readonly<Record<string, number>>;
 }
 
 /** The dial position the build ships at: the midpoint of the slider. */
@@ -51,6 +53,26 @@ export function linesFor(dial: number): Thresholds {
 }
 
 export const DEFAULT_THRESHOLDS: Thresholds = linesFor(SHIPPED_DIAL);
+
+/**
+ * A class whose ordinary subset is too small to sweep gets its act line **declared** here, with its
+ * `n` and the reason, rather than fitted to a handful of examples. The instrument's floor test fails
+ * when a class falls under six ordinary examples without an entry here. Empty while every Meridian
+ * class meets the floor.
+ */
+export interface DeclaredThreshold {
+  readonly act: number;
+  readonly n: number;
+  readonly reason: string;
+}
+
+export const DECLARED_THRESHOLDS: Readonly<Record<string, DeclaredThreshold>> = {};
+
+/** Folds the declared per-class lines into a set of swept lines. */
+export function withDeclared(thresholds: Thresholds, declared: Readonly<Record<string, DeclaredThreshold>> = DECLARED_THRESHOLDS): Thresholds {
+  const entries = Object.entries(declared);
+  return entries.length === 0 ? thresholds : { ...thresholds, actByClass: Object.fromEntries(entries.map(([c, d]) => [c, d.act])) };
+}
 
 /**
  * The probability of a topic on a message. Where a firm's fixture omits a class it is treated as a

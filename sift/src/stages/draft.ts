@@ -11,7 +11,7 @@ import type { Firm, Message } from "../types";
  * draft in this build.
  */
 
-const DRAFTING = new Set(["rfi", "submittal", "status"]);
+const DRAFTING = new Set(["rfi", "submittal", "client_status"]);
 
 export interface Draft {
   readonly topic: string;
@@ -21,7 +21,7 @@ export interface Draft {
 
 export function draftFor(firm: Firm, message: Message, topic: string): Draft | null {
   if (firm.id !== "arch" || !DRAFTING.has(topic)) return null;
-  const project = matchProject(`${message.subject} ${message.body}`);
+  const project = matchProject(`${message.subject} ${message.body}`, message.email);
   const projName = project?.name ?? "the referenced project";
   const rfiNo = Object.keys(RFI_LOG).find((n) => message.subject.includes(n) || message.body.includes(n));
   const subNo = Object.keys(SUB_LOG).find((n) => message.subject.includes(n) || message.body.includes(n));

@@ -30,9 +30,9 @@ describe("routing and reasons (AC #3)", () => {
 
 describe("two topics, two outcomes, not collapsed (AC #8)", () => {
   it("fans a two-topic message out to two distinct topic-qualified actions and two records", async () => {
-    const { outcome, store } = await runOne(arch, msg("a1"), { status: 0.88, rfi: 0.74 }, 0.1);
+    const { outcome, store } = await runOne(arch, msg("a1"), { client_status: 0.88, rfi: 0.74 }, 0.1);
     const routes = store.forMessage("a1").filter((r) => r.kind === "route");
-    expect(routes.map((r) => r.topic).sort()).toEqual(["rfi", "status"]);
+    expect(routes.map((r) => r.topic).sort()).toEqual(["client_status", "rfi"]);
     const ids = new Set(routes.map((r) => r.id));
     expect(ids.size).toBe(2); // two distinct idempotency keys, never one collapsed act
     expect(outcome.results.filter((r) => r.action.startsWith("route:")).length).toBe(2);
@@ -41,7 +41,7 @@ describe("two topics, two outcomes, not collapsed (AC #8)", () => {
 
 describe("the escalation band (AC #7)", () => {
   it("escalates the whole message when nothing clears the act line, acting on nothing", async () => {
-    const { outcome, store } = await runOne(arch, msg("a9"), { agency: 0.5 }, 0.1);
+    const { outcome, store } = await runOne(arch, msg("a9"), { agency_letter: 0.5 }, 0.1);
     expect(outcome.results.length).toBe(0);
     expect(outcome.escalation).toBeDefined();
     expect(store.forMessage("a9").length).toBe(0);
@@ -50,7 +50,7 @@ describe("the escalation band (AC #7)", () => {
 
 describe("vendor pitch is labelled, not routed, not escalated (AC #10)", () => {
   it("labels noise, routes it to no one and does not escalate", async () => {
-    const { outcome, store } = await runOne(arch, msg("a7"), { noise: 0.87 }, 0.06);
+    const { outcome, store } = await runOne(arch, msg("a7"), { vendor_pitch: 0.87 }, 0.06);
     const records = store.forMessage("a7");
     expect(records.every((r) => r.kind === "label")).toBe(true);
     expect(records.every((r) => r.who === null)).toBe(true);
@@ -63,7 +63,7 @@ describe("idempotency: a second run is a no-op (AC #11)", () => {
   it("records one action per topic across two runs and skips the second", async () => {
     const store = new SiftStore();
     const idempotency = new InMemoryIdempotencyStore();
-    const pipeline = new SiftPipeline({ firm: arch, judge: async () => judgmentFromScores({ status: 0.88, rfi: 0.74 }, 0.1), store, idempotency });
+    const pipeline = new SiftPipeline({ firm: arch, judge: async () => judgmentFromScores({ client_status: 0.88, rfi: 0.74 }, 0.1), store, idempotency });
     const input = asInput(msg("a1"));
 
     const first = await runPipeline(pipeline, input);
@@ -77,7 +77,7 @@ describe("idempotency: a second run is a no-op (AC #11)", () => {
 
 describe("the audit log (AC #13)", () => {
   it("writes one row per stage that ran and one per action acted", async () => {
-    const { audit } = await runOne(arch, msg("a1"), { status: 0.88, rfi: 0.74 }, 0.1);
+    const { audit } = await runOne(arch, msg("a1"), { client_status: 0.88, rfi: 0.74 }, 0.1);
     const stages = (await audit.list("a1")).map((e) => e.stage);
     expect(stages).toContain("extract");
     expect(stages).toContain("classify");

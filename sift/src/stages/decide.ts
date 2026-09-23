@@ -62,14 +62,16 @@ const topOf = (outcomes: readonly Outcome[]): Priority | null =>
 /**
  * How the headless pipeline overrides the fixture defaults with code.
  *
- * The browser passes nothing and the illustrative fixture routes apply. The pipeline passes a
- * priority derived from the systems of record (AC #6) and a corroboration flag from the deterministic
- * deadline parse and log cross-reference (AC #5), so priority is code, not fixture text, and a clock
- * the model scored low still raises an alert when a record confirms it.
+ * The browser passes nothing and the illustrative fixture routes apply. The pipeline passes a route
+ * per topic computed from the systems of record (who, and a priority derived from the schedule, AC
+ * #6), a corroboration flag from the deterministic deadline parse and log cross-reference (AC #5),
+ * and the priority the dated window itself carries, so none of it is read from fixture text.
  */
 export interface DecideOpts {
-  readonly priorityOf?: (topic: string) => Priority | undefined;
+  readonly routeOf?: (topic: string) => Route | undefined;
   readonly corroborated?: boolean;
+  /** The priority a flagged clock carries on its own, from its deadline. Undated clocks are high. */
+  readonly clockPriority?: Priority;
 }
 
 export function decidePlan(
@@ -85,19 +87,19 @@ export function decidePlan(
   const kind = new Map(firm.classes.map((c) => [c[0], c[3]] as const));
   const initials = new Map(firm.people.map((p) => [p.name, p.initials] as const));
 
-  const asserted = classes.filter((c) => probOf(message, c) >= thresholds.act);
+  const actFor = (c: string): number => thresholds.actByClass?.[c] ?? thresholds.act;
+  const asserted = classes.filter((c) => probOf(message, c) >= actFor(c));
   const review = classes.filter((c) => {
     const p = probOf(message, c);
-    return p >= thresholds.review && p < thresholds.act;
+    return p >= thresholds.review && p < actFor(c);
   });
 
   const fallback: Route = { who: "?", priority: "normal", why: "Real, but none of the usual kinds." };
   const outcomes: Outcome[] = asserted.map((c) => {
-    const r = message.routes?.[c] ?? firm.defaults[c] ?? fallback;
+    const r = opts.routeOf?.(c) ?? message.routes?.[c] ?? firm.defaults[c] ?? fallback;
     const who = r.who;
     const init = who && who !== "?" ? (initials.get(who) ?? "") : who === "?" ? "?" : "";
-    const priority = opts.priorityOf?.(c) ?? r.priority;
-    return { topic: c, kind: kind.get(c) ?? "Other", who, priority, why: r.why, initials: init };
+    return { topic: c, kind: kind.get(c) ?? "Other", who, priority: r.priority, why: r.why, initials: init };
   });
 
   const handoffs: string[] = [];
@@ -144,7 +146,10 @@ export function decidePlan(
   const foot = handoffs.length ? `Someone still has to ${handoffs.join("; ")}.` : "";
   const quiet = outcomes.length > 0 && people.length === 0 && handoffs.length === 0;
   const routeShort = people.length ? people.map(first).join(" + ") : handoffs.length ? "a person decides" : "no one";
-  const priority: Priority | null = alert && message.deadline ? (days(asOf, message.deadline) <= 7 ? "urgent" : top ?? "high") : top;
+  const clockPriority = alert ? (alert.needsDate ? "high" : opts.clockPriority) : undefined;
+  const priority: Priority | null = opts.clockPriority !== undefined
+    ? (clockPriority === undefined ? top : top === null ? clockPriority : PRIORITY_RANK.indexOf(clockPriority) < PRIORITY_RANK.indexOf(top) ? clockPriority : top)
+    : alert && message.deadline ? (days(asOf, message.deadline) <= 7 ? "urgent" : top ?? "high") : top;
 
   const actions: SiftAction[] = [
     ...(alert ? [alert.needsDate ? ("set_deadline" as const) : ("alert:owner" as const)] : []),

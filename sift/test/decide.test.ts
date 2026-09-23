@@ -28,7 +28,7 @@ describe("decidePlan over Meridian at the shipped dial", () => {
 
   it("fans a two-topic message out to two routes and two people", () => {
     const plan = decidePlan(msg("a1"), arch, DEFAULT_THRESHOLDS);
-    expect([...plan.asserted].sort()).toEqual(["rfi", "status"]);
+    expect([...plan.asserted].sort()).toEqual(["client_status", "rfi"]);
     expect(plan.actions.filter((a) => a.startsWith("route:")).length).toBe(2);
     expect(plan.people.length).toBe(2);
   });
