@@ -3,6 +3,7 @@
 import type { CSSProperties } from "react";
 import type { Priority } from "../src/types";
 import type { InboxRow, ProbBar, VerdictLine } from "../src/view";
+import type { ClassifyOk } from "../lib/classify";
 
 /**
  * One decided message, opened.
@@ -37,7 +38,7 @@ const mark = (ok: boolean, what: string) => (
   <span aria-label={`${what} ${ok ? "matches" : "differs"}`} style={{ fontFamily: "var(--font-mono)", fontSize: ".625rem", letterSpacing: ".06em", textTransform: "uppercase", padding: "1px 6px", borderRadius: 3, border: "1px solid currentColor", color: ok ? "var(--color-pos)" : "var(--color-neg)" }}>{what} {ok ? "ok" : "off"}</span>
 );
 
-export function ReadView({ row, measured = null }: { row: InboxRow; measured?: { runDate: string; model: string } | null }) {
+export function ReadView({ row, measured = null, live = null }: { row: InboxRow; measured?: { runDate: string; model: string } | null; live?: ClassifyOk | null }) {
   const c = row.check;
   return (
     <div style={{ padding: ".5rem 1rem 1.5rem 1.25rem", borderLeft: "3px solid var(--color-accent)", background: "var(--color-paper)" }}>
@@ -87,10 +88,15 @@ export function ReadView({ row, measured = null }: { row: InboxRow; measured?: {
         ))}
       </div>
       <p style={{ margin: ".625rem 0 0", fontSize: ".75rem", color: "var(--color-ink-3)" }}>
-        {measured
-          ? `Nine yes/no questions, asked once, recorded from the live run on ${measured.runDate} (${measured.model}). These are the model's raw judgments, not calibrated frequencies. The mark on each bar is the current line.`
-          : "Nine yes/no questions, asked once. These probabilities are illustrative, not from a live run. The mark on each bar is the current line from the autonomy slider."}
+        {live?.live
+          ? `Nine yes/no questions, asked just now in one live request (${live.judgment.model}). These are the model's raw judgments, not calibrated frequencies. The mark on each bar is the current line.`
+          : measured
+            ? `Nine yes/no questions, asked once, recorded from the live run on ${measured.runDate} (${measured.model}). These are the model's raw judgments, not calibrated frequencies. The mark on each bar is the current line.`
+            : "Nine yes/no questions, asked once. These probabilities are illustrative, not from a live run. The mark on each bar is the current line from the autonomy slider."}
       </p>
+      {live && !live.live && live.notice && (
+        <p role="status" style={{ margin: ".375rem 0 0", fontSize: ".75rem", color: "var(--color-warn)" }}>{live.notice}</p>
+      )}
       {c && (
         <div style={{ marginTop: ".875rem", paddingTop: ".75rem", borderTop: "1px solid var(--color-rule)" }}>
           <div style={{ display: "flex", flexWrap: "wrap", gap: ".375rem", alignItems: "center" }}>

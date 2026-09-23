@@ -1,9 +1,5 @@
 import { Dashboard } from "../components/Dashboard";
-import snapshot from "../fixtures/fixtures.json" with { type: "json" };
-import run from "../runs/run.json" with { type: "json" };
-import { FIRMS } from "../src/fixtures";
-import { measuredFirm, type RecordedRun } from "../src/fixtures/meridian";
-import type { Instrument } from "../src/fixtures/schema";
+import { SERVED_FIRMS } from "../lib/firms";
 import { MERIDIAN_THRESHOLDS } from "../src/policy";
 
 /**
@@ -16,7 +12,5 @@ import { MERIDIAN_THRESHOLDS } from "../src/policy";
  * and only scores and clocks leave the server, never token counts or costs.
  */
 export default function Page() {
-  const firms = FIRMS.map((f) =>
-    f.id === "arch" ? measuredFirm(f, snapshot as unknown as Instrument, run as unknown as RecordedRun) : f);
-  return <Dashboard firms={firms} measuredLines={MERIDIAN_THRESHOLDS} />;
+  return <Dashboard firms={SERVED_FIRMS} measuredLines={MERIDIAN_THRESHOLDS} />;
 }

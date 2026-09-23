@@ -11,7 +11,8 @@
     "dev": "NODE_OPTIONS='--dns-result-order=ipv4first --no-network-family-autoselection' next dev --port 3021",
     "build": "next build",
     "start": "next start --port 3021",
-    "snapshot": "tsx scripts/snapshot.ts"
+    "snapshot": "tsx scripts/snapshot.ts",
+    "check:bundle": "tsx scripts/check-bundle.ts"
   },
   "dependencies": {
     "@builds/shared": "workspace:*",

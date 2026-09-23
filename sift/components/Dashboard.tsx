@@ -1,9 +1,10 @@
 "use client";
 
-import { useMemo, useState, type CSSProperties } from "react";
+import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
+import type { ClassifyOk } from "../lib/classify";
 import { linesFor, type Thresholds } from "../src/policy";
 import { deriveView } from "../src/view";
-import type { Firm, Priority } from "../src/types";
+import type { Firm, Message, Priority } from "../src/types";
 import { ReadView, priColor } from "./ReadView";
 
 /**
@@ -19,6 +20,15 @@ import { ReadView, priColor } from "./ReadView";
  * setting, and the Measured preset returns to it. The other six firms are illustrative, and the
  * sidebar says which is which.
  */
+
+interface LiveStatus {
+  readonly live: boolean;
+  readonly persistent: boolean;
+  readonly spentCents: number;
+  readonly capCents: number;
+  readonly liveCallsToday: number;
+  readonly ceiling: number;
+}
 
 type PageId = "overview" | "inbox" | "deadlines" | "people" | "decide" | "autonomy" | "savings" | "how";
 
@@ -57,7 +67,45 @@ export function Dashboard({ firms, measuredLines }: { firms: readonly Firm[]; me
   const [handSecs, setHandSecs] = useState(90);
   const [lookupSecs, setLookupSecs] = useState(120);
 
-  const firm = useMemo(() => firms.find((f) => f.id === firmId) ?? firms[0]!, [firms, firmId]);
+  // Live judging: opening a message asks the route for one fresh judgment, once per message per page
+  // load. A live result replaces that message's scores; the dial still re-decides locally, for free.
+  const [status, setStatus] = useState<LiveStatus | null>(null);
+  const [results, setResults] = useState<Readonly<Record<string, ClassifyOk>>>({});
+  const requested = useRef(new Set<string>());
+
+  useEffect(() => {
+    fetch("/api/classify").then((r) => (r.ok ? r.json() : null)).then((s: LiveStatus | null) => { if (s) setStatus(s); }).catch(() => {});
+  }, []);
+
+  const pick = useCallback((fid: string, mid: string) => {
+    const key = `${fid}/${mid}`;
+    if (requested.current.has(key)) return;
+    requested.current.add(key);
+    fetch("/api/classify", { method: "POST", headers: { "content-type": "application/json" }, body: JSON.stringify({ firmId: fid, messageId: mid }) })
+      .then((r) => (r.ok ? r.json() : null))
+      .then((body: ClassifyOk | null) => {
+        if (!body) return;
+        setResults((prev) => ({ ...prev, [key]: body }));
+        setStatus((prev) => (prev ? { ...prev, spentCents: body.spend.spentCents, liveCallsToday: prev.liveCallsToday + (body.live ? 1 : 0) } : prev));
+      })
+      .catch(() => { requested.current.delete(key); });
+  }, []);
+
+  const baseFirm = useMemo(() => firms.find((f) => f.id === firmId) ?? firms[0]!, [firms, firmId]);
+  const liveHere = useMemo(() => Object.values(results).filter((r) => r.live && r.firmId === baseFirm.id), [results, baseFirm.id]);
+  const firm = useMemo<Firm>(() => {
+    if (liveHere.length === 0) return baseFirm;
+    const byId = new Map(liveHere.map((r) => [r.messageId, r.judgment]));
+    return {
+      ...baseFirm,
+      messages: baseFirm.messages.map((m): Message => {
+        const j = byId.get(m.id);
+        return j ? { ...m, p: j.scores, clock: j.clock } : m;
+      }),
+    };
+  }, [baseFirm, liveHere]);
+
+  useEffect(() => { if (openId) pick(firm.id, openId); }, [openId, firm.id, pick]);
   const measuring = firm.measured !== undefined && atMeasured;
   const th = useMemo(() => (measuring ? measuredLines : linesFor(dial)), [measuring, measuredLines, dial]);
   const view = useMemo(() => deriveView(firm, th, handSecs, lookupSecs), [firm, th, handSecs, lookupSecs]);
@@ -117,6 +165,17 @@ export function Dashboard({ firms, measuredLines }: { firms: readonly Firm[]; me
             <span style={{ fontFamily: "var(--font-mono)", fontSize: ".6875rem", color: "var(--color-accent)" }}>{dialLabel}</span>
           </div>
           {dialInput("dial")}
+          {status && (
+            <p style={{ margin: ".75rem 0 0", fontSize: ".6875rem", color: "var(--color-ink-3)", lineHeight: 1.45 }}>
+              {status.live ? "Live judging on: opening a message asks the model once." : "Live judging off: messages show their recorded judgment."}
+              {" "}Spent {status.spentCents.toFixed(3)} of {status.capCents} cents this month{status.persistent ? "" : " on this instance"}; {status.liveCallsToday} of {status.ceiling} live judgments in the last 24 hours.
+            </p>
+          )}
+          {firm.measured && liveHere.length > 0 && (
+            <p style={{ margin: ".5rem 0 0", fontSize: ".6875rem", color: "var(--color-warn)", lineHeight: 1.45 }}>
+              {liveHere.length} {liveHere.length === 1 ? "message was" : "messages were"} re-judged live this visit, so this page may differ from the published figures, which use the recorded run.
+            </p>
+          )}
           <p style={{ margin: ".75rem 0 0", fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: ".07em", textTransform: "uppercase", color: "var(--color-warn)" }}>{firm.measured ? `synthetic data · recorded model judgments, ${firm.measured.runDate} · nothing is sent` : "synthetic data · probabilities illustrative · nothing is sent"}</p>
         </div>
       </aside>
@@ -128,7 +187,7 @@ export function Dashboard({ firms, measuredLines }: { firms: readonly Firm[]; me
         </header>
 
         {page === "overview" && <Overview view={view} firm={firm} open={open} setPage={setPage} />}
-        {page === "inbox" && <Inbox view={view} firm={firm} openId={openId} setOpenId={setOpenId} />}
+        {page === "inbox" && <Inbox view={view} firm={firm} openId={openId} setOpenId={setOpenId} results={results} />}
         {page === "deadlines" && <Deadlines view={view} open={open} />}
         {page === "people" && <People view={view} open={open} />}
         {page === "decide" && <Decide view={view} open={open} />}
@@ -207,7 +266,7 @@ function Overview({ view, firm, open, setPage }: { view: V; firm: Firm; open: (i
   );
 }
 
-function Inbox({ view, firm, openId, setOpenId }: { view: V; firm: Firm; openId: string | null; setOpenId: (id: string | null) => void }) {
+function Inbox({ view, firm, openId, setOpenId, results }: { view: V; firm: Firm; openId: string | null; setOpenId: (id: string | null) => void; results: Readonly<Record<string, ClassifyOk>> }) {
   const [onlyDiff, setOnlyDiff] = useState(false);
   const checked = view.inboxRows.filter((r) => r.check !== null);
   const differs = (r: V["inboxRows"][number]) => r.check !== null && !(r.check.topics && r.check.route && r.check.priority && r.check.clock);
@@ -237,7 +296,7 @@ function Inbox({ view, firm, openId, setOpenId }: { view: V; firm: Firm; openId:
                 <span style={{ fontFamily: "var(--font-mono)", fontSize: ".625rem", letterSpacing: ".05em", textTransform: "uppercase", color: m.clockFlagged ? "var(--color-neg)" : m.priority ? priColor(m.priority) : "var(--color-warn)", whiteSpace: "nowrap" }}>{m.clockFlagged ? `clock ${m.priority ? PRI[m.priority] : ""}` : m.priority ? PRI[m.priority] : "person"}</span>
                 <span style={{ textAlign: "right", fontFamily: "var(--font-mono)", fontSize: ".6875rem", color: "var(--color-ink-3)", whiteSpace: "nowrap" }}>{m.when}</span>
               </button>
-              {isOpen && <ReadView row={m} measured={firm.measured ?? null} />}
+              {isOpen && <ReadView row={m} measured={firm.measured ?? null} live={results[`${firm.id}/${m.id}`] ?? null} />}
             </li>
           );
         })}
