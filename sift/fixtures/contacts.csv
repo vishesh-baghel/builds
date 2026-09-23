@@ -1,0 +1,17 @@
+name,email,org,project,role
+Priya Nair,priya@meridianarch.example,Meridian Architects,,principal
+Tom Okafor,tom@meridianarch.example,Meridian Architects,,coordinator
+Sam Adeyemi,sam@meridianarch.example,Meridian Architects,,coordinator
+Elena Ruiz,elena@meridianarch.example,Meridian Architects,,reviewer
+Marcus Lee,marcus@meridianarch.example,Meridian Architects,,lead
+Dana Whitfield,dana@meridianarch.example,Meridian Architects,,accounting
+Nina Castro,ncastro@harborpointdev.example,Harbor Point Development,HP,client
+Omar Haddad,ohaddad@northbridgelibrary.example,Northbridge Public Library,LL,client
+Rebecca Hale,r.hale@westgatehealth.example,Westgate Health,WC,client
+Dan Marsh,d.marsh@oldmillpartners.example,Old Mill Partners,OM,client
+Jorge Castellan,j.castellan@castellanbuilders.example,Castellan Builders,HP,contractor
+Keith Brandt,kbrandt@brandtgc.example,Brandt General,LL,contractor
+Marisol Ortiz,m.ortiz@baird-construction.example,Baird Construction,,contractor
+Apex Roofing Systems,submittals@apexroofing.example,Apex Roofing Systems,HP,subcontractor
+Kessler Structural Engineers,ar@kesslerstructural.example,Kessler Structural Engineers,,consultant
+Lumen MEP Engineers,billing@lumenmep.example,Lumen MEP Engineers,,consultant

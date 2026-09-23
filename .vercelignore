@@ -1,0 +1,13 @@
+# What a CLI deploy may upload. Secrets and build output never leave the machine; each build's
+# Vercel project builds from source with its Root Directory set.
+.env
+.env.*
+**/.env
+**/.env.*
+!**/.env.example
+node_modules
+**/node_modules
+**/.next
+**/*.tsbuildinfo
+.claude
+.git

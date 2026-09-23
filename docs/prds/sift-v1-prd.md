@@ -415,54 +415,54 @@ probabilities and never call Jev.
 
 ### Functional
 
-- [ ] #1 `pnpm --filter @builds/sift test` passes, and a loader test asserts every inbox record and every system-of-record row parses against the typed schema, with all clock/deadline arithmetic computed from `INBOX_AS_OF` and not from the clock, matching the committed `deadline` field on every clocked row.
-- [ ] #2 A test asserts the classify stage issues **exactly one Jev request per message**, carrying one Noul per topic class plus the `carries_clock` Noul, and that every question the design uses is present, asserted by **shape against a recorded vendor response**, not by counting. The test suite makes no network call. (The published cost-per-message figure depends on this being one request, not nine.)
-- [ ] #3 For an inbound message the pipeline assigns a route, a priority level and a deadline where one is present, each with a non-empty reason string naming the rule that fired. Asserted over injected probabilities across the topic classes.
-- [ ] #4 A message carrying a contractual or regulatory clock raises an owner alert with the deadline **even when its topic probability is modest**, asserted with the `agency_letter` probability held below its act threshold while `carries_clock` clears its low threshold, so the alert fires on the clock judgment, not the topic.
-- [ ] #5 The clock is corroborated in code: a test asserts an owner alert also fires when the deterministic deadline parse or the RFI-log cross-reference finds a clock the model missed, and that a clock implied but not datable escalates for a human to set the date rather than defaulting one.
-- [ ] #6 Priority is firm-specific and computed in code: a test asserts the **same** message text yields `urgent` when the matched project has a scheduled activity inside the response window and a lower priority when it does not, proving priority is not read from the message.
-- [ ] #7 Below the act threshold a topic escalates without acting, and when no topic clears its threshold the whole message escalates whatever the highest probability was. Both asserted at the band boundaries.
-- [ ] #8 A message asserting two topics produces two outcomes in one run: two routes, each with its own priority, deadline and reason held in the Sift-local plan. The plan is keyed by a topic-qualified action string (for example `route:rfi` and `route:submittal`), so `runPipeline`'s `new Set(decision.actions)` cannot dedupe two topics into one `act` call. Asserted over injected probabilities, and never collapsed to a single route.
-- [ ] #9 A matched drafting-class message produces a draft assembled from a fixed template with slots filled from the matched system-of-record rows; a test asserts the draft contains the looked-up values, is never auto-sent (there is no send path in the route handlers or the dependency manifest), and takes no text from the message body, so instruction-shaped body text cannot reach the draft.
-- [ ] #10 A `vendor_pitch` message is labelled noise, routed to no one and not escalated, asserted by comparing routing state before and after.
-- [ ] #11 Running the pipeline twice on the same message produces one route record, one alert and one draft per topic; the second run is a no-op. Asserted through `once()` with the in-memory store, including a multi-topic message whose two actions produce two distinct topic-qualified string idempotency keys.
-- [ ] #12 Every vendor call is wrapped in `withRetry`, and a test asserts an exhausted retry surfaces as a failed result in the audit log, never as a silent success.
-- [ ] #13 The audit log holds one row **per stage that ran, and one per action acted** (multi-topic fan-out writes one `act` row per topic, matching the committed audit fixture), each row carrying input id, topic probabilities, the clock judgment, the derived route, priority and deadline, the action taken and the reason.
-- [ ] #14 A test asserts an instruction-shaped message body is classified as data: no route outside the enum, no priority outside the levels, no threshold change, no suppressed escalation. The adversarial inputs live in a separate fixture file and never enter `inbox.jsonl`, which is the frozen scored set.
-- [ ] #15 A test fails if the `runPipeline` invariant is removed: an outcome not listed as auto-executable can never reach `act`.
+- [x] #1 `pnpm --filter @builds/sift test` passes, and a loader test asserts every inbox record and every system-of-record row parses against the typed schema, with all clock/deadline arithmetic computed from `INBOX_AS_OF` and not from the clock, matching the committed `deadline` field on every clocked row.
+- [x] #2 A test asserts the classify stage issues **exactly one Jev request per message**, carrying one Noul per topic class plus the `carries_clock` Noul, and that every question the design uses is present, asserted by **shape against a recorded vendor response**, not by counting. The test suite makes no network call. (The published cost-per-message figure depends on this being one request, not nine.)
+- [x] #3 For an inbound message the pipeline assigns a route, a priority level and a deadline where one is present, each with a non-empty reason string naming the rule that fired. Asserted over injected probabilities across the topic classes.
+- [x] #4 A message carrying a contractual or regulatory clock raises an owner alert with the deadline **even when its topic probability is modest**, asserted with the `agency_letter` probability held below its act threshold while `carries_clock` clears its low threshold, so the alert fires on the clock judgment, not the topic.
+- [x] #5 The clock is corroborated in code: a test asserts an owner alert also fires when the deterministic deadline parse or the RFI-log cross-reference finds a clock the model missed, and that a clock implied but not datable escalates for a human to set the date rather than defaulting one.
+- [x] #6 Priority is firm-specific and computed in code: a test asserts the **same** message text yields `urgent` when the matched project has a scheduled activity inside the response window and a lower priority when it does not, proving priority is not read from the message.
+- [x] #7 Below the act threshold a topic escalates without acting, and when no topic clears its threshold the whole message escalates whatever the highest probability was. Both asserted at the band boundaries.
+- [x] #8 A message asserting two topics produces two outcomes in one run: two routes, each with its own priority, deadline and reason held in the Sift-local plan. The plan is keyed by a topic-qualified action string (for example `route:rfi` and `route:submittal`), so `runPipeline`'s `new Set(decision.actions)` cannot dedupe two topics into one `act` call. Asserted over injected probabilities, and never collapsed to a single route.
+- [x] #9 A matched drafting-class message produces a draft assembled from a fixed template with slots filled from the matched system-of-record rows; a test asserts the draft contains the looked-up values, is never auto-sent (there is no send path in the route handlers or the dependency manifest), and takes no text from the message body, so instruction-shaped body text cannot reach the draft.
+- [x] #10 A `vendor_pitch` message is labelled noise, routed to no one and not escalated, asserted by comparing routing state before and after.
+- [x] #11 Running the pipeline twice on the same message produces one route record, one alert and one draft per topic; the second run is a no-op. Asserted through `once()` with the in-memory store, including a multi-topic message whose two actions produce two distinct topic-qualified string idempotency keys.
+- [x] #12 Every vendor call is wrapped in `withRetry`, and a test asserts an exhausted retry surfaces as a failed result in the audit log, never as a silent success.
+- [ ] #13 The audit log holds one row **per stage that ran, and one per action acted** (multi-topic fan-out writes one `act` row per topic, matching the committed audit fixture), each row carrying input id, topic probabilities, the clock judgment, the derived route, priority and deadline, the action taken and the reason. *Open, 2026-09-23: rows exist per stage and per action, but do not carry the clock judgment, route, priority or deadline, and there is no committed audit fixture.*
+- [x] #14 A test asserts an instruction-shaped message body is classified as data: no route outside the enum, no priority outside the levels, no threshold change, no suppressed escalation. The adversarial inputs live in a separate fixture file and never enter `inbox.jsonl`, which is the frozen scored set.
+- [x] #15 A test fails if the `runPipeline` invariant is removed: an outcome not listed as auto-executable can never reach `act`.
 
 ### The number
 
-- [ ] #16 A loader test fails when the committed inbox misses either size floor: the `clocked` subset holds fewer than 12 messages, or any topic class holds fewer than 6 ordinary examples without its threshold being declared (rather than swept) in `policy.ts` with its `n` and reason. The instrument cannot freeze below its floors.
-- [ ] #17 `pnpm --filter @builds/sift score` runs the pipeline over the committed inbox and writes a dated scorecard plus a run artifact holding every Jev answer, both committed. `score` requires a vendor key and is therefore **outside** the CI gate; the PRD and the package scripts both say so.
-- [ ] #18 The scorecard reports the **clocked-item catch rate** as the headline, with `n`: of all messages labelled `clocked`, the share the system flagged with an owner alert.
-- [ ] #19 The scorecard prints, **beside the headline and never without it**, the false-alarm count and rate on the unclocked subset (with that `n`) and the automation-vs-escalation share, so a system that alerted on every message reads as high false-alarm and low automation rather than as a 100% success. A test asserts the harness does not emit the catch rate without both counterparts present.
-- [ ] #20 The scorecard reports per-class routing accuracy and priority accuracy, the ordinary and hard subsets scored **separately**, with `n` beside every figure. No single headline accuracy figure is produced by the harness.
-- [ ] #21 The scorecard reports the confidence-gate catch rate, the share of the system's own errors sent to a human, with the error denominator printed as a count, not only a percentage.
-- [ ] #22 The threshold sweep over the ordinary subset is committed alongside the chosen thresholds; any class below the ordinary floor has its threshold **declared** with its `n` and reason recorded in `policy.ts`.
-- [ ] #23 Measured machine time per message and measured cost per message, both from real run data, appear in the scorecard.
-- [ ] #24 Any human-time figure is a **declared estimate** held in one named constant, rendered with the word "estimate" on every surface, and never placed in the measured table or beside a measured figure. A test asserts the constant's rendered label contains "estimate". No before/after comparison appears on any surface.
+- [x] #16 A loader test fails when the committed inbox misses either size floor: the `clocked` subset holds fewer than 12 messages, or any topic class holds fewer than 6 ordinary examples without its threshold being declared (rather than swept) in `policy.ts` with its `n` and reason. The instrument cannot freeze below its floors.
+- [x] #17 `pnpm --filter @builds/sift score` runs the pipeline over the committed inbox and writes a dated scorecard plus a run artifact holding every Jev answer, both committed. `score` requires a vendor key and is therefore **outside** the CI gate; the PRD and the package scripts both say so.
+- [x] #18 The scorecard reports the **clocked-item catch rate** as the headline, with `n`: of all messages labelled `clocked`, the share the system flagged with an owner alert.
+- [x] #19 The scorecard prints, **beside the headline and never without it**, the false-alarm count and rate on the unclocked subset (with that `n`) and the automation-vs-escalation share, so a system that alerted on every message reads as high false-alarm and low automation rather than as a 100% success. A test asserts the harness does not emit the catch rate without both counterparts present.
+- [x] #20 The scorecard reports per-class routing accuracy and priority accuracy, the ordinary and hard subsets scored **separately**, with `n` beside every figure. No single headline accuracy figure is produced by the harness.
+- [x] #21 The scorecard reports the confidence-gate catch rate, the share of the system's own errors sent to a human, with the error denominator printed as a count, not only a percentage.
+- [x] #22 The threshold sweep over the ordinary subset is committed alongside the chosen thresholds; any class below the ordinary floor has its threshold **declared** with its `n` and reason recorded in `policy.ts`.
+- [x] #23 Measured machine time per message and measured cost per message, both from real run data, appear in the scorecard.
+- [x] #24 Any human-time figure is a **declared estimate** held in one named constant, rendered with the word "estimate" on every surface, and never placed in the measured table or beside a measured figure. A test asserts the constant's rendered label contains "estimate". No before/after comparison appears on any surface.
 
 ### Quality
 
-- [ ] #25 `pnpm -r typecheck && pnpm -r --if-present test && pnpm -r --if-present build` is green at the repo root.
-- [ ] #26 The sandbox is covered by the gate: `sift`'s typecheck script spans both the engine sources and the app's `.tsx`, so the root `pnpm -r typecheck` cannot silently skip the UI.
-- [ ] #27 The test suite runs with no vendor key present. A test run in a clean environment passes.
-- [ ] #28 Grepping the built sandbox bundle finds no Jev key and no vendor token.
-- [ ] #29 The no-send-path boundary is checked by command, not by reading: grepping the dependency manifest for mail transports (`nodemailer`, `resend`, `@sendgrid`, `postmark`, `mailgun`) returns nothing, and grepping the route handlers for a destination-address or free-message-body request parameter returns nothing. (Contact addresses exist in the fixtures as data; what must not exist is anything able to send to one.)
-- [ ] #30 A test asserts `SpendCap.guard()` **refuses before spending**: when the estimated cost would cross the per-run ceiling it raises `SpendCapExceededError` and the wrapped vendor call is never made (asserted with a spy that records zero invocations).
-- [ ] #31 No type declared in `sift/` duplicates `Classified`, `Decision`, `ActionResult` or `PipelineOutcome` from `@builds/shared`, checked by `grep -rnE "(interface|type) +(Classified|Decision|ActionResult|PipelineOutcome)\b" sift/src` returning nothing. Sift's own domain vocabulary (topic classes, routes, priority levels, fixture-row types, and the per-topic plan) is expected and permitted as stage-local domain logic; the per-topic plan is keyed by the string action and introduces **no** `@builds/shared` contract change, so this build files no variance-log row of its own beyond inheriting Reckon's.
+- [x] #25 `pnpm -r typecheck && pnpm -r --if-present test && pnpm -r --if-present build` is green at the repo root.
+- [x] #26 The sandbox is covered by the gate: `sift`'s typecheck script spans both the engine sources and the app's `.tsx`, so the root `pnpm -r typecheck` cannot silently skip the UI.
+- [x] #27 The test suite runs with no vendor key present. A test run in a clean environment passes.
+- [x] #28 Grepping the built sandbox bundle finds no Jev key and no vendor token.
+- [x] #29 The no-send-path boundary is checked by command, not by reading: grepping the dependency manifest for mail transports (`nodemailer`, `resend`, `@sendgrid`, `postmark`, `mailgun`) returns nothing, and grepping the route handlers for a destination-address or free-message-body request parameter returns nothing. (Contact addresses exist in the fixtures as data; what must not exist is anything able to send to one.)
+- [x] #30 A test asserts `SpendCap.guard()` **refuses before spending**: when the estimated cost would cross the per-run ceiling it raises `SpendCapExceededError` and the wrapped vendor call is never made (asserted with a spy that records zero invocations).
+- [x] #31 No type declared in `sift/` duplicates `Classified`, `Decision`, `ActionResult` or `PipelineOutcome` from `@builds/shared`, checked by `grep -rnE "(interface|type) +(Classified|Decision|ActionResult|PipelineOutcome)\b" sift/src` returning nothing. Sift's own domain vocabulary (topic classes, routes, priority levels, fixture-row types, and the per-topic plan) is expected and permitted as stage-local domain logic; the per-topic plan is keyed by the string action and introduces **no** `@builds/shared` contract change, so this build files no variance-log row of its own beyond inheriting Reckon's.
 
 ### Surfaces
 
-- [ ] #32 The sandbox exposes only a fixture-id selector, checked by command: grepping the UI and the route handlers finds no free-text input, no `textarea`, and no free-message-body request parameter, and no field accepts a visitor-supplied address.
-- [ ] #33 Picking a fixture issues **one live, capped Jev classification** and the visible spend counter advances by that call; **moving the threshold afterwards issues no further Jev call** and the counter does not advance. Both asserted against the deployed instance.
-- [ ] #34 The sandbox captions the probabilities as the model's raw judgment rather than calibrated frequencies, since jev-1.13 is documented as weakly numerically calibrated.
-- [ ] #35 A simulated per-run spend-cap exhaustion serves the committed run artifact with a visible replay notice; it neither errors nor appears live.
-- [ ] #36 The deploy enforces a **per-instance ceiling of at most 500 live Jev classifications per rolling 24 hours** (a technical guardrail, not a commercial figure), and exhausting it against the **deployed** instance serves the committed replay behind the visible notice rather than an error or an uncapped live call. Verified against the deployment, not locally.
-- [ ] #37 The per-visitor rate limit is enforced and verified against the **deployed** instance, not locally.
-- [ ] #38 The deployed sandbox is reachable at sift.visheshbaghel.com; a command against the deployment fetches the page and drives one committed fixture end to end.
-- [ ] #39 `sift/README.md` carries the measured numbers (no `_unmeasured_` placeholder remains), names the stack actually used, and labels the work a self-built experiment on synthetic data with no client results, as does the sandbox page. Checkable by grepping the README for the label and for the absence of the placeholder.
+- [x] #32 The sandbox exposes only a fixture-id selector, checked by command: grepping the UI and the route handlers finds no free-text input, no `textarea`, and no free-message-body request parameter, and no field accepts a visitor-supplied address.
+- [ ] #33 Picking a fixture issues **one live, capped Jev classification** and the visible spend counter advances by that call; **moving the threshold afterwards issues no further Jev call** and the counter does not advance. Both asserted against the deployed instance. *Open, 2026-09-23: one live call on pick and none on a dial move are verified locally, in the browser; not yet against the deployed instance.*
+- [x] #34 The sandbox captions the probabilities as the model's raw judgment rather than calibrated frequencies, since jev-1.13 is documented as weakly numerically calibrated.
+- [x] #35 A simulated per-run spend-cap exhaustion serves the committed run artifact with a visible replay notice; it neither errors nor appears live.
+- [ ] #36 The deploy enforces a **per-instance ceiling of at most 500 live Jev classifications per rolling 24 hours** (a technical guardrail, not a commercial figure), and exhausting it against the **deployed** instance serves the committed replay behind the visible notice rather than an error or an uncapped live call. Verified against the deployment, not locally. *Open, 2026-09-23: built and tested, but held per instance on the deploy (no Turso); see the variance log.*
+- [ ] #37 The per-visitor rate limit is enforced and verified against the **deployed** instance, not locally. *Open, 2026-09-23: built and tested, but held per instance on the deploy (no Turso); see the variance log.*
+- [ ] #38 The deployed sandbox is reachable at sift.visheshbaghel.com; a command against the deployment fetches the page and drives one committed fixture end to end. *Open, 2026-09-23: deployed and reachable at sift.visheshbaghel.com; driving a fixture end to end against it is not yet done.*
+- [x] #39 `sift/README.md` carries the measured numbers (no `_unmeasured_` placeholder remains), names the stack actually used, and labels the work a self-built experiment on synthetic data with no client results, as does the sandbox page. Checkable by grepping the README for the label and for the absence of the placeholder.
 
 <!-- AC:END -->
 
@@ -479,43 +479,43 @@ This keeps the build inside its one-week slot without dropping the part that car
 ### Phase 1: Instrument and spine
 **Goal:** the fixtures load typed, and the Sift-local plan carries a per-topic outcome.
 
-- [ ] **Precondition met: Reckon is merged to `main`** (2026-09-21, PRs #1 to #6). The widened `Classified`, `Decision` and `runPipeline(AuditLog)` are live in `@builds/shared`; build on them and do not re-fork the contracts in `sift/`.
-- [ ] Define the Sift-local plan (keyed by the string action) carrying per-topic route, priority, deadline and reason, following Reckon's `plan.effects` precedent (`reckon/src/pipeline.ts`). `@builds/shared`'s `Decision`, `ActionResult` and the string idempotency key stay untouched; this build files no new variance-log row for it.
-- [ ] Author `inbox.jsonl` and the system-of-record CSVs to the distribution, **meeting both size floors** (clocked subset at least 12; every topic class at least 6 ordinary or its threshold declared); flag the boundary cases; record the tie-break rules and the exact per-class counts, then freeze.
-- [ ] Typed fixture loader with schema validation for the inbox and every CSV; `INBOX_AS_OF` fixed; the committed `deadline` field asserted against code arithmetic on every clocked row.
-- [ ] Add vitest to `sift` as its `test` script; confirm the root gate runs it.
-- [ ] TypeSafe key in the environment only; one live smoke call recorded as the classify test's fixture, and the one-request-per-message shape asserted against it.
+- [x] **Precondition met: Reckon is merged to `main`** (2026-09-21, PRs #1 to #6). The widened `Classified`, `Decision` and `runPipeline(AuditLog)` are live in `@builds/shared`; build on them and do not re-fork the contracts in `sift/`.
+- [x] Define the Sift-local plan (keyed by the string action) carrying per-topic route, priority, deadline and reason, following Reckon's `plan.effects` precedent (`reckon/src/pipeline.ts`). `@builds/shared`'s `Decision`, `ActionResult` and the string idempotency key stay untouched; this build files no new variance-log row for it.
+- [x] Author `inbox.jsonl` and the system-of-record CSVs to the distribution, **meeting both size floors** (clocked subset at least 12; every topic class at least 6 ordinary or its threshold declared); flag the boundary cases; record the tie-break rules and the exact per-class counts, then freeze.
+- [x] Typed fixture loader with schema validation for the inbox and every CSV; `INBOX_AS_OF` fixed; the committed `deadline` field asserted against code arithmetic on every clocked row.
+- [x] Add vitest to `sift` as its `test` script; confirm the root gate runs it.
+- [x] TypeSafe key in the environment only; one live smoke call recorded as the classify test's fixture, and the one-request-per-message shape asserted against it.
 
 **Deliverables:** frozen instrument with a README meeting the size floors, typed loader, the Sift-local per-topic plan with green tests, recorded vendor response.
 
 ### Phase 2: The judgment and the decision
 **Goal:** the workflow runs correctly and survives failure, headless.
 
-- [ ] The single Jev request: one Noul per topic class with tie-break-derived criteria, plus the separated `carries_clock` Noul.
-- [ ] `policy.ts`: per-class thresholds and bands, the route map, the firm-specific priority rules over the project/RFI joins, the clock corroboration (deadline parse plus RFI-log cross-reference), the draft templates.
-- [ ] `extract`, `decide`, `act`, `escalate`, `log` implemented; per-topic routing, alerts and drafts; `once()` per action; `withRetry` on every vendor call; `SpendCap` wired to real usage within the shelf-wide budget.
-- [ ] Adversarial fixtures in their own file, deliberately outside the scored inbox.
-- [ ] The full test suite: every AC in the Functional block above.
+- [x] The single Jev request: one Noul per topic class with tie-break-derived criteria, plus the separated `carries_clock` Noul.
+- [x] `policy.ts`: per-class thresholds and bands, the route map, the firm-specific priority rules over the project/RFI joins, the clock corroboration (deadline parse plus RFI-log cross-reference), the draft templates.
+- [x] `extract`, `decide`, `act`, `escalate`, `log` implemented; per-topic routing, alerts and drafts; `once()` per action; `withRetry` on every vendor call; `SpendCap` wired to real usage within the shelf-wide budget.
+- [x] Adversarial fixtures in their own file, deliberately outside the scored inbox.
+- [ ] The full test suite: every AC in the Functional block above. *Open: #13 still lacks the clock judgment, route, priority and deadline on its audit rows, and a committed audit fixture.*
 
 **Deliverables:** working headless pipeline, green suite, no network in tests.
 
 ### Phase 3: The number
 **Goal:** a figure a stranger can check.
 
-- [ ] Threshold sweep over the ordinary subset; commit the sweep and the chosen thresholds; declare any sparse class's threshold with its reason.
-- [ ] Full run over the committed inbox; commit the run artifact and the dated scorecard.
-- [ ] Clocked-item catch rate as the headline, with the false-alarm and automation/escalation counterparts beside it; per-class routing and priority accuracy with `n`, ordinary and hard separately; gate catch rate with the error count; measured time and cost per message.
-- [ ] Fill `sift/README.md` with the measured numbers. No before/after table; the human-time estimate sits apart, labelled.
+- [x] Threshold sweep over the ordinary subset; commit the sweep and the chosen thresholds; declare any sparse class's threshold with its reason.
+- [x] Full run over the committed inbox; commit the run artifact and the dated scorecard.
+- [x] Clocked-item catch rate as the headline, with the false-alarm and automation/escalation counterparts beside it; per-class routing and priority accuracy with `n`, ordinary and hard separately; gate catch rate with the error count; measured time and cost per message.
+- [x] Fill `sift/README.md` with the measured numbers. No before/after table; the human-time estimate sits apart, labelled.
 
 **Deliverables:** committed scorecard and run artifact, README carrying the numbers.
 
 ### Phase 4: The sandbox and the deploy
 **Goal:** a stranger can drive it. This phase is the explicit cut if the week runs long.
 
-- [ ] The Next.js app: pick a committed message; show the topic probabilities and the clock judgment, the derived route/priority/deadline, the code-templated draft, the audit rows and the live spend counter; a threshold control that re-renders without a Jev call.
-- [ ] Server-side Jev key; grep the built bundle for the key and any vendor token; no free-text input in the UI or any route handler.
-- [ ] Per-visitor rate limit; the per-instance ceiling; spend-cap exhaustion serves the committed run artifact behind a visible replay notice.
-- [ ] Second tsconfig for the app and a composite `typecheck` so the root gate sees the UI.
-- [ ] Deploy to sift.visheshbaghel.com; verify the rate limit, the per-instance ceiling and a full fixture end to end against the deployment.
+- [ ] The Next.js app: pick a committed message; show the topic probabilities and the clock judgment, the derived route/priority/deadline, the code-templated draft, the audit rows and the live spend counter; a threshold control that re-renders without a Jev call. *Open: built and deployed, but the page shows neither the code-templated draft nor the audit rows for a message.*
+- [x] Server-side Jev key; grep the built bundle for the key and any vendor token; no free-text input in the UI or any route handler.
+- [x] Per-visitor rate limit; the per-instance ceiling; spend-cap exhaustion serves the committed run artifact behind a visible replay notice.
+- [x] Second tsconfig for the app and a composite `typecheck` so the root gate sees the UI.
+- [ ] Deploy to sift.visheshbaghel.com; verify the rate limit, the per-instance ceiling and a full fixture end to end against the deployment. *Open: deployed; the rate limit, the ceiling and a fixture end to end are not yet verified against it.*
 
 **Deliverables:** deployed sandbox, gate covering the UI, README and sandbox page labelled.

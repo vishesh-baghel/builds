@@ -4,11 +4,12 @@
 > shared inbox and hand-labelled synthetic systems of record, never from a client. No client
 > data, names or results appear here.
 
-Status: **not started** , , ,  spec written (`docs/prds/sift-v1-prd.md`), no implementation yet.
+Status: **building.** The headless pipeline and the measured number are done; the dashboard runs
+locally on illustrative data; the live deploy is not up yet. Spec: `docs/prds/sift-v1-prd.md`.
 
 ## The workflow
 
-A firm's shared mailbox (`info@, , ¦`) holds everything overnight: a contractor RFI that blocks
+A firm's shared mailbox (`info@`) holds everything overnight: a contractor RFI that blocks
 Thursday's concrete pour, two consultant invoices, a plan-review letter from the city with a
 14-day clock that reads like a form email, vendor spam about window systems, and a client
 asking for the second time why the submittal log hasn't moved. Someone sorts these by hand
@@ -23,47 +24,68 @@ system of record.**
 
 ## Why this one
 
-Shared-inbox tools already ship AI triage , , ,  Missive lists three plans at $14/$24/$36 per
-user/mo billed annually with AI requiring your own API key (missiveapp.com/pricing, accessed
-2026-09-21), and Front lists $25/$65/$105 per seat/mo billed annually with AI add-ons at
-$10, , , 20/seat/mo (front.com/pricing, accessed 2026-09-21). In its only checkable form: Missive
-and Front ship AI-assisted triage; reaching a firm's project, RFI/submittal and CRM
-context to judge firm-specific urgency and draft with live data is not part of that, as of those
-pages on 2026-09-21. That is a statement about published pages on a date, and nothing more.
-Nothing here asserts those tools cannot triage.
+Shared-inbox tools already ship AI triage. Missive lists three plans at $14/$24/$36 per user/mo
+billed annually, with AI requiring your own API key (missiveapp.com/pricing, accessed
+2026-09-21), and Front lists $25/$65/$105 per seat/mo billed annually, with AI add-ons at $10 to
+$20/seat/mo (front.com/pricing, accessed 2026-09-21). In its only checkable form: Missive and
+Front ship AI-assisted triage; reaching a firm's project, RFI/submittal and CRM context to judge
+firm-specific urgency and draft with live data is not part of that, as of those pages on
+2026-09-21. That is a statement about published pages on a date, and nothing more. Nothing here
+asserts those tools cannot triage.
 
 ## The measurement instrument
 
-`fixtures/` was built **before** the system, on purpose , , ,  a fixture set authored afterwards
-gets shaped by what the system already handles and the number stops meaning anything.
-
-- `inbox.jsonl` , , ,  hand-labelled shared-inbox messages at a deliberately imbalanced real-inbox
-  distribution (mostly noise), each labelled with its route(s), priority, deadline where one
-  exists, topic class(es), and whether it carries a clock. Boundary cases flagged.
-- `projects.csv`, `rfi-log.csv`, `submittal-log.csv`, `contacts.csv` , , ,  synthetic
-  systems of record in the shape of real exports, joined at extract time and used to compute
-  firm-specific priority and to fill the drafted replies.
+`fixtures/` holds 91 hand-labelled messages for a synthetic architecture firm, Meridian
+Architects, and four synthetic systems of record (projects with their next scheduled activity,
+an RFI log, a submittal log, contacts). 30 messages carry a real clock, 9 of them disguised as
+routine mail; 26 are deliberate boundary cases; vendor pitches are the plurality, as in a real
+shared inbox. Every class holds at least six ordinary examples. The labelling rules, the
+per-class counts and the known gaps are in `fixtures/README.md`.
 
 A message may carry more than one topic, which is why the judgment is one yes/no question per
-topic class rather than one pick-one question , , ,  a multi-topic thread routes to more than one
-person. Frozen once a number is published.
+topic class rather than one pick-one question: a multi-topic thread routes to more than one
+person. The instrument is frozen; any later label change goes in `docs/VARIANCE-LOG.md`.
 
 ## The numbers
 
-Measured on the committed inbox, per class, ordinary and hard cases scored separately.
+Run 2, 2026-09-23, on all 91 messages at the lines the sweep chose on the ordinary subset (act
+0.55, review 0.50, clock 0.50). Full tables in `SCORECARD.md`; every judgment behind them is
+committed in `runs/run.json`, so any figure can be recomputed without spending again.
 
 | Measure | Value |
 |---|---|
-| Clocked-item catch rate (headline, with n) | _unmeasured_ |
-| False-alarm rate on unclocked messages (with n) | _unmeasured_ |
-| Share acted on automatically / escalated | _unmeasured_ |
-| Per-class routing accuracy (with n), ordinary / hard | _unmeasured_ |
-| Per-class priority accuracy (with n), ordinary / hard | _unmeasured_ |
-| Share of its own errors the gate caught | _unmeasured_ |
-| Machine time per message | _unmeasured_ |
-| Cost per message | _unmeasured_ |
+| **Clocked-item catch rate** (headline) | **100% (30/30)**: ordinary 21/21, hard 9/9 |
+| False alarms on unclocked messages | 18% (11/61) |
+| Handled with no person asked / reached a person | 69% (63/91) / 31% (28/91) |
+| Per-class routing accuracy, ordinary | 100% for 6 of 8 classes; `rfi` 83% (10/12); `invoice` 17% (1/6) |
+| Per-class priority accuracy, ordinary | 100% for 4 of 8 classes; `rfi` and `vendor_pitch` 92% (11/12); `agency_letter` 83% (5/6); `invoice` 17% (1/6) |
+| Hard subset, routing and priority | per class in `SCORECARD.md`; `internal` 0% (0/2) on both |
+| Errors the gate sent to a person | ordinary 80% (12/15); hard 36% (5/14) |
+| Machine time per message, median | 465 ms |
+| Cost per message | 0.0050 cents (input tokens only) |
 
-Filled by `pnpm --filter @builds/sift score` in Phase 3, from a committed run artifact.
+What these say, plainly:
+
+- **Every clock was caught, including the disguised ones**, at the price of 11 false alarms. The
+  clock question is deliberately separate from the topic and sits on a low line, because a false
+  alarm costs a glance and a miss costs a deadline. It did its job: on the ordinary set the model
+  named only 2 of 6 agency letters as agency letters, yet every clocked one still raised an alert.
+- **Invoices are the weak spot.** The model reads payment terms as a running clock: every invoice
+  that states them ("Net 30", "Net 45", "due on receipt", a dated late fee) scored 0.86 to 0.97,
+  while the statement and the card-charged subscription, which state none, scored under 0.2. The
+  labels say a bill's date is accounting's calendar, not a response clock. That is 5 of the 11
+  false alarms and almost every invoice routing and priority miss. The labels were kept as written
+  rather than changed to agree with the model.
+- **The gate is weaker on the hard cases.** Of the 14 hard messages it got wrong, 9 reached no
+  person, mostly an extra topic asserted alongside the right one. That trade came with the higher
+  automation of run 2 and is printed rather than hidden.
+
+**Run 1 is kept, not replaced.** Its class questions carried generic criteria, not the boundaries
+the labels were written to, as the PRD requires; `other` fired on 16 of 18 vendor pitches.
+The criteria were rewritten from the labelling rules committed before run 1, nothing from its
+results, and the inbox was run again. Run 1 caught 30 of 30 with 11 false alarms, like run 2, but
+handled only 41% (37/91) without a person. Its artifact and scorecard are in `runs/`, and the
+scorecard recomputes its headline from them. No label changed between runs.
 
 **There is no before/after claim here, deliberately.** No baseline was measured before the
 build, so no comparison would be honest. What is published is the system's own performance on a
@@ -75,29 +97,29 @@ an estimate, and is never set beside a machine figure.
 | Layer | Choice |
 |---|---|
 | Orchestration | the six-stage spine in `@builds/shared` |
-| Judgment (`classify`) | TypeSafe Jev , , ,  one Noul per topic class plus a separate clock judgment, in one request |
-| Decision (`decide`) | plain TypeScript. Never a model. Routes, priority and deadlines derived from the synthetic systems of record. |
-| Drafting | code-templated from the matched project data , , ,  no generative model |
-| Deploy target | Vercel, own project , , ,  sift.visheshbaghel.com |
+| Judgment (`classify`) | TypeSafe Jev (`jev-1.13.0`): one Noul per topic class plus a separate clock judgment, in one request |
+| Decision (`decide`) | plain TypeScript, never a model. Routes, priority and deadlines derived from the synthetic systems of record. |
+| Drafting | code-templated from the matched project data; no generative model |
+| Dashboard | Next.js, one pure decision function shared with the pipeline, so moving the autonomy dial never calls the model |
+| Deploy target | Vercel, own project, sift.visheshbaghel.com (not deployed yet) |
 | System of record | none written to. Synthetic project/RFI/submittal/CRM fixtures, read-only. |
 
 ## Reliability
 
-- **Idempotency** on every routing record, alert and draft, keyed on message, topic and action.
+- **Idempotency** on every routing record, alert and draft, keyed on message and topic-qualified
+  action, so a two-topic message writes two records and a rerun writes none.
 - **Retry with backoff** on every Jev call; an exhausted retry is a failed result in the audit
   log, never a silent success.
-- **Audit log** of every decision: the topic probabilities, the clock judgment, the route,
-  priority, deadline, action and reason.
-- **Spend cap**, hard and per run, within the shelf-wide budget; `guard()` refuses a call before
-  it spends. Exhaustion serves a committed recorded run behind a visible notice, not an error
-  page.
-- **Escalation is a normal outcome.** Below threshold, ambiguous, or nothing confident , , ,  a
-  human gets it with the message, the matched project rows and every probability attached.
+- **Audit log** of every decision: one row per stage that ran and one per action taken.
+- **Spend cap**, hard and per run; `guard()` refuses a call before it spends. Both scored runs
+  together cost under a cent against a 25-dollar cap.
+- **Escalation is a normal outcome.** Below threshold, ambiguous, or nothing confident: a
+  person gets it with the message, the matched project rows and every probability attached.
 
 ## Deliberately not doing
 
 - **No auto-send.** No mail vendor, no send path, no destination-address field anywhere. Sift
-  drafts; a human sends from the tool the firm already runs.
+  drafts; a person sends from the tool the firm already runs.
 - **No generative model.** Drafts are templates filled from fixture data; nothing here writes
   free prose.
 - **No system-of-record write path.** An RFI is never marked answered, an invoice never marked

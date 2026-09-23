@@ -1,0 +1,1650 @@
+{
+  "note": "Swept on the ordinary subset only. `selection` is mean F1 over the topic classes with support plus the clock alert: a selection criterion for choosing thresholds, deliberately not published as a result.",
+  "chosen": {
+    "act": 0.5,
+    "review": 0.4,
+    "clockAct": 0.5,
+    "selection": 0.8074775762418783,
+    "escalatedShare": 0.6
+  },
+  "points": [
+    {
+      "act": 0.5,
+      "review": 0.2,
+      "clockAct": 0.2,
+      "selection": 0.7924480539659792,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.5,
+      "review": 0.2,
+      "clockAct": 0.3,
+      "selection": 0.7993616342128927,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.5,
+      "review": 0.2,
+      "clockAct": 0.4,
+      "selection": 0.8053190810214034,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.5,
+      "review": 0.2,
+      "clockAct": 0.5,
+      "selection": 0.8074775762418783,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.5,
+      "review": 0.2,
+      "clockAct": 0.6,
+      "selection": 0.8074775762418783,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.5,
+      "review": 0.2,
+      "clockAct": 0.7,
+      "selection": 0.8074775762418783,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.5,
+      "review": 0.3,
+      "clockAct": 0.2,
+      "selection": 0.7924480539659792,
+      "escalatedShare": 0.8153846153846154
+    },
+    {
+      "act": 0.5,
+      "review": 0.3,
+      "clockAct": 0.3,
+      "selection": 0.7993616342128927,
+      "escalatedShare": 0.8
+    },
+    {
+      "act": 0.5,
+      "review": 0.3,
+      "clockAct": 0.4,
+      "selection": 0.8053190810214034,
+      "escalatedShare": 0.7846153846153846
+    },
+    {
+      "act": 0.5,
+      "review": 0.3,
+      "clockAct": 0.5,
+      "selection": 0.8074775762418783,
+      "escalatedShare": 0.7846153846153846
+    },
+    {
+      "act": 0.5,
+      "review": 0.3,
+      "clockAct": 0.6,
+      "selection": 0.8074775762418783,
+      "escalatedShare": 0.7846153846153846
+    },
+    {
+      "act": 0.5,
+      "review": 0.3,
+      "clockAct": 0.7,
+      "selection": 0.8074775762418783,
+      "escalatedShare": 0.7846153846153846
+    },
+    {
+      "act": 0.5,
+      "review": 0.4,
+      "clockAct": 0.2,
+      "selection": 0.7924480539659792,
+      "escalatedShare": 0.6615384615384615
+    },
+    {
+      "act": 0.5,
+      "review": 0.4,
+      "clockAct": 0.3,
+      "selection": 0.7993616342128927,
+      "escalatedShare": 0.6307692307692307
+    },
+    {
+      "act": 0.5,
+      "review": 0.4,
+      "clockAct": 0.4,
+      "selection": 0.8053190810214034,
+      "escalatedShare": 0.6
+    },
+    {
+      "act": 0.5,
+      "review": 0.4,
+      "clockAct": 0.5,
+      "selection": 0.8074775762418783,
+      "escalatedShare": 0.6
+    },
+    {
+      "act": 0.5,
+      "review": 0.4,
+      "clockAct": 0.6,
+      "selection": 0.8074775762418783,
+      "escalatedShare": 0.6
+    },
+    {
+      "act": 0.5,
+      "review": 0.4,
+      "clockAct": 0.7,
+      "selection": 0.8074775762418783,
+      "escalatedShare": 0.6
+    },
+    {
+      "act": 0.55,
+      "review": 0.2,
+      "clockAct": 0.2,
+      "selection": 0.7878209284006386,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.55,
+      "review": 0.2,
+      "clockAct": 0.3,
+      "selection": 0.7947345086475521,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.55,
+      "review": 0.2,
+      "clockAct": 0.4,
+      "selection": 0.8006919554560628,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.55,
+      "review": 0.2,
+      "clockAct": 0.5,
+      "selection": 0.8028504506765377,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.55,
+      "review": 0.2,
+      "clockAct": 0.6,
+      "selection": 0.8028504506765377,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.55,
+      "review": 0.2,
+      "clockAct": 0.7,
+      "selection": 0.8028504506765377,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.55,
+      "review": 0.3,
+      "clockAct": 0.2,
+      "selection": 0.7878209284006386,
+      "escalatedShare": 0.8461538461538461
+    },
+    {
+      "act": 0.55,
+      "review": 0.3,
+      "clockAct": 0.3,
+      "selection": 0.7947345086475521,
+      "escalatedShare": 0.8307692307692308
+    },
+    {
+      "act": 0.55,
+      "review": 0.3,
+      "clockAct": 0.4,
+      "selection": 0.8006919554560628,
+      "escalatedShare": 0.8153846153846154
+    },
+    {
+      "act": 0.55,
+      "review": 0.3,
+      "clockAct": 0.5,
+      "selection": 0.8028504506765377,
+      "escalatedShare": 0.8153846153846154
+    },
+    {
+      "act": 0.55,
+      "review": 0.3,
+      "clockAct": 0.6,
+      "selection": 0.8028504506765377,
+      "escalatedShare": 0.8153846153846154
+    },
+    {
+      "act": 0.55,
+      "review": 0.3,
+      "clockAct": 0.7,
+      "selection": 0.8028504506765377,
+      "escalatedShare": 0.8153846153846154
+    },
+    {
+      "act": 0.55,
+      "review": 0.4,
+      "clockAct": 0.2,
+      "selection": 0.7878209284006386,
+      "escalatedShare": 0.6923076923076923
+    },
+    {
+      "act": 0.55,
+      "review": 0.4,
+      "clockAct": 0.3,
+      "selection": 0.7947345086475521,
+      "escalatedShare": 0.6615384615384615
+    },
+    {
+      "act": 0.55,
+      "review": 0.4,
+      "clockAct": 0.4,
+      "selection": 0.8006919554560628,
+      "escalatedShare": 0.6307692307692307
+    },
+    {
+      "act": 0.55,
+      "review": 0.4,
+      "clockAct": 0.5,
+      "selection": 0.8028504506765377,
+      "escalatedShare": 0.6307692307692307
+    },
+    {
+      "act": 0.55,
+      "review": 0.4,
+      "clockAct": 0.6,
+      "selection": 0.8028504506765377,
+      "escalatedShare": 0.6307692307692307
+    },
+    {
+      "act": 0.55,
+      "review": 0.4,
+      "clockAct": 0.7,
+      "selection": 0.8028504506765377,
+      "escalatedShare": 0.6307692307692307
+    },
+    {
+      "act": 0.55,
+      "review": 0.5,
+      "clockAct": 0.2,
+      "selection": 0.7878209284006386,
+      "escalatedShare": 0.5692307692307692
+    },
+    {
+      "act": 0.55,
+      "review": 0.5,
+      "clockAct": 0.3,
+      "selection": 0.7947345086475521,
+      "escalatedShare": 0.5230769230769231
+    },
+    {
+      "act": 0.55,
+      "review": 0.5,
+      "clockAct": 0.4,
+      "selection": 0.8006919554560628,
+      "escalatedShare": 0.49230769230769234
+    },
+    {
+      "act": 0.55,
+      "review": 0.5,
+      "clockAct": 0.5,
+      "selection": 0.8028504506765377,
+      "escalatedShare": 0.49230769230769234
+    },
+    {
+      "act": 0.55,
+      "review": 0.5,
+      "clockAct": 0.6,
+      "selection": 0.8028504506765377,
+      "escalatedShare": 0.49230769230769234
+    },
+    {
+      "act": 0.55,
+      "review": 0.5,
+      "clockAct": 0.7,
+      "selection": 0.8028504506765377,
+      "escalatedShare": 0.49230769230769234
+    },
+    {
+      "act": 0.6,
+      "review": 0.2,
+      "clockAct": 0.2,
+      "selection": 0.7662159901290336,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.6,
+      "review": 0.2,
+      "clockAct": 0.3,
+      "selection": 0.7731295703759472,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.6,
+      "review": 0.2,
+      "clockAct": 0.4,
+      "selection": 0.7790870171844578,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.6,
+      "review": 0.2,
+      "clockAct": 0.5,
+      "selection": 0.7812455124049327,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.6,
+      "review": 0.2,
+      "clockAct": 0.6,
+      "selection": 0.7812455124049327,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.6,
+      "review": 0.2,
+      "clockAct": 0.7,
+      "selection": 0.7812455124049327,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.6,
+      "review": 0.3,
+      "clockAct": 0.2,
+      "selection": 0.7662159901290336,
+      "escalatedShare": 0.8461538461538461
+    },
+    {
+      "act": 0.6,
+      "review": 0.3,
+      "clockAct": 0.3,
+      "selection": 0.7731295703759472,
+      "escalatedShare": 0.8307692307692308
+    },
+    {
+      "act": 0.6,
+      "review": 0.3,
+      "clockAct": 0.4,
+      "selection": 0.7790870171844578,
+      "escalatedShare": 0.8153846153846154
+    },
+    {
+      "act": 0.6,
+      "review": 0.3,
+      "clockAct": 0.5,
+      "selection": 0.7812455124049327,
+      "escalatedShare": 0.8153846153846154
+    },
+    {
+      "act": 0.6,
+      "review": 0.3,
+      "clockAct": 0.6,
+      "selection": 0.7812455124049327,
+      "escalatedShare": 0.8153846153846154
+    },
+    {
+      "act": 0.6,
+      "review": 0.3,
+      "clockAct": 0.7,
+      "selection": 0.7812455124049327,
+      "escalatedShare": 0.8153846153846154
+    },
+    {
+      "act": 0.6,
+      "review": 0.4,
+      "clockAct": 0.2,
+      "selection": 0.7662159901290336,
+      "escalatedShare": 0.6923076923076923
+    },
+    {
+      "act": 0.6,
+      "review": 0.4,
+      "clockAct": 0.3,
+      "selection": 0.7731295703759472,
+      "escalatedShare": 0.6615384615384615
+    },
+    {
+      "act": 0.6,
+      "review": 0.4,
+      "clockAct": 0.4,
+      "selection": 0.7790870171844578,
+      "escalatedShare": 0.6307692307692307
+    },
+    {
+      "act": 0.6,
+      "review": 0.4,
+      "clockAct": 0.5,
+      "selection": 0.7812455124049327,
+      "escalatedShare": 0.6307692307692307
+    },
+    {
+      "act": 0.6,
+      "review": 0.4,
+      "clockAct": 0.6,
+      "selection": 0.7812455124049327,
+      "escalatedShare": 0.6307692307692307
+    },
+    {
+      "act": 0.6,
+      "review": 0.4,
+      "clockAct": 0.7,
+      "selection": 0.7812455124049327,
+      "escalatedShare": 0.6307692307692307
+    },
+    {
+      "act": 0.6,
+      "review": 0.5,
+      "clockAct": 0.2,
+      "selection": 0.7662159901290336,
+      "escalatedShare": 0.5846153846153846
+    },
+    {
+      "act": 0.6,
+      "review": 0.5,
+      "clockAct": 0.3,
+      "selection": 0.7731295703759472,
+      "escalatedShare": 0.5384615384615384
+    },
+    {
+      "act": 0.6,
+      "review": 0.5,
+      "clockAct": 0.4,
+      "selection": 0.7790870171844578,
+      "escalatedShare": 0.5076923076923077
+    },
+    {
+      "act": 0.6,
+      "review": 0.5,
+      "clockAct": 0.5,
+      "selection": 0.7812455124049327,
+      "escalatedShare": 0.5076923076923077
+    },
+    {
+      "act": 0.6,
+      "review": 0.5,
+      "clockAct": 0.6,
+      "selection": 0.7812455124049327,
+      "escalatedShare": 0.5076923076923077
+    },
+    {
+      "act": 0.6,
+      "review": 0.5,
+      "clockAct": 0.7,
+      "selection": 0.7812455124049327,
+      "escalatedShare": 0.5076923076923077
+    },
+    {
+      "act": 0.65,
+      "review": 0.2,
+      "clockAct": 0.2,
+      "selection": 0.7320409059539494,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.65,
+      "review": 0.2,
+      "clockAct": 0.3,
+      "selection": 0.738954486200863,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.65,
+      "review": 0.2,
+      "clockAct": 0.4,
+      "selection": 0.7449119330093736,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.65,
+      "review": 0.2,
+      "clockAct": 0.5,
+      "selection": 0.7470704282298486,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.65,
+      "review": 0.2,
+      "clockAct": 0.6,
+      "selection": 0.7470704282298486,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.65,
+      "review": 0.2,
+      "clockAct": 0.7,
+      "selection": 0.7470704282298486,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.65,
+      "review": 0.3,
+      "clockAct": 0.2,
+      "selection": 0.7320409059539494,
+      "escalatedShare": 0.8461538461538461
+    },
+    {
+      "act": 0.65,
+      "review": 0.3,
+      "clockAct": 0.3,
+      "selection": 0.738954486200863,
+      "escalatedShare": 0.8307692307692308
+    },
+    {
+      "act": 0.65,
+      "review": 0.3,
+      "clockAct": 0.4,
+      "selection": 0.7449119330093736,
+      "escalatedShare": 0.8307692307692308
+    },
+    {
+      "act": 0.65,
+      "review": 0.3,
+      "clockAct": 0.5,
+      "selection": 0.7470704282298486,
+      "escalatedShare": 0.8307692307692308
+    },
+    {
+      "act": 0.65,
+      "review": 0.3,
+      "clockAct": 0.6,
+      "selection": 0.7470704282298486,
+      "escalatedShare": 0.8307692307692308
+    },
+    {
+      "act": 0.65,
+      "review": 0.3,
+      "clockAct": 0.7,
+      "selection": 0.7470704282298486,
+      "escalatedShare": 0.8307692307692308
+    },
+    {
+      "act": 0.65,
+      "review": 0.4,
+      "clockAct": 0.2,
+      "selection": 0.7320409059539494,
+      "escalatedShare": 0.7076923076923077
+    },
+    {
+      "act": 0.65,
+      "review": 0.4,
+      "clockAct": 0.3,
+      "selection": 0.738954486200863,
+      "escalatedShare": 0.676923076923077
+    },
+    {
+      "act": 0.65,
+      "review": 0.4,
+      "clockAct": 0.4,
+      "selection": 0.7449119330093736,
+      "escalatedShare": 0.6615384615384615
+    },
+    {
+      "act": 0.65,
+      "review": 0.4,
+      "clockAct": 0.5,
+      "selection": 0.7470704282298486,
+      "escalatedShare": 0.6615384615384615
+    },
+    {
+      "act": 0.65,
+      "review": 0.4,
+      "clockAct": 0.6,
+      "selection": 0.7470704282298486,
+      "escalatedShare": 0.6615384615384615
+    },
+    {
+      "act": 0.65,
+      "review": 0.4,
+      "clockAct": 0.7,
+      "selection": 0.7470704282298486,
+      "escalatedShare": 0.6615384615384615
+    },
+    {
+      "act": 0.65,
+      "review": 0.5,
+      "clockAct": 0.2,
+      "selection": 0.7320409059539494,
+      "escalatedShare": 0.6
+    },
+    {
+      "act": 0.65,
+      "review": 0.5,
+      "clockAct": 0.3,
+      "selection": 0.738954486200863,
+      "escalatedShare": 0.5538461538461539
+    },
+    {
+      "act": 0.65,
+      "review": 0.5,
+      "clockAct": 0.4,
+      "selection": 0.7449119330093736,
+      "escalatedShare": 0.5384615384615384
+    },
+    {
+      "act": 0.65,
+      "review": 0.5,
+      "clockAct": 0.5,
+      "selection": 0.7470704282298486,
+      "escalatedShare": 0.5384615384615384
+    },
+    {
+      "act": 0.65,
+      "review": 0.5,
+      "clockAct": 0.6,
+      "selection": 0.7470704282298486,
+      "escalatedShare": 0.5384615384615384
+    },
+    {
+      "act": 0.65,
+      "review": 0.5,
+      "clockAct": 0.7,
+      "selection": 0.7470704282298486,
+      "escalatedShare": 0.5384615384615384
+    },
+    {
+      "act": 0.7,
+      "review": 0.2,
+      "clockAct": 0.2,
+      "selection": 0.7005163129630307,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.7,
+      "review": 0.2,
+      "clockAct": 0.3,
+      "selection": 0.7074298932099443,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.7,
+      "review": 0.2,
+      "clockAct": 0.4,
+      "selection": 0.7133873400184549,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.7,
+      "review": 0.2,
+      "clockAct": 0.5,
+      "selection": 0.7155458352389298,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.7,
+      "review": 0.2,
+      "clockAct": 0.6,
+      "selection": 0.7155458352389298,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.7,
+      "review": 0.2,
+      "clockAct": 0.7,
+      "selection": 0.7155458352389298,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.7,
+      "review": 0.3,
+      "clockAct": 0.2,
+      "selection": 0.7005163129630307,
+      "escalatedShare": 0.8461538461538461
+    },
+    {
+      "act": 0.7,
+      "review": 0.3,
+      "clockAct": 0.3,
+      "selection": 0.7074298932099443,
+      "escalatedShare": 0.8307692307692308
+    },
+    {
+      "act": 0.7,
+      "review": 0.3,
+      "clockAct": 0.4,
+      "selection": 0.7133873400184549,
+      "escalatedShare": 0.8307692307692308
+    },
+    {
+      "act": 0.7,
+      "review": 0.3,
+      "clockAct": 0.5,
+      "selection": 0.7155458352389298,
+      "escalatedShare": 0.8307692307692308
+    },
+    {
+      "act": 0.7,
+      "review": 0.3,
+      "clockAct": 0.6,
+      "selection": 0.7155458352389298,
+      "escalatedShare": 0.8307692307692308
+    },
+    {
+      "act": 0.7,
+      "review": 0.3,
+      "clockAct": 0.7,
+      "selection": 0.7155458352389298,
+      "escalatedShare": 0.8307692307692308
+    },
+    {
+      "act": 0.7,
+      "review": 0.4,
+      "clockAct": 0.2,
+      "selection": 0.7005163129630307,
+      "escalatedShare": 0.7076923076923077
+    },
+    {
+      "act": 0.7,
+      "review": 0.4,
+      "clockAct": 0.3,
+      "selection": 0.7074298932099443,
+      "escalatedShare": 0.6923076923076923
+    },
+    {
+      "act": 0.7,
+      "review": 0.4,
+      "clockAct": 0.4,
+      "selection": 0.7133873400184549,
+      "escalatedShare": 0.676923076923077
+    },
+    {
+      "act": 0.7,
+      "review": 0.4,
+      "clockAct": 0.5,
+      "selection": 0.7155458352389298,
+      "escalatedShare": 0.676923076923077
+    },
+    {
+      "act": 0.7,
+      "review": 0.4,
+      "clockAct": 0.6,
+      "selection": 0.7155458352389298,
+      "escalatedShare": 0.676923076923077
+    },
+    {
+      "act": 0.7,
+      "review": 0.4,
+      "clockAct": 0.7,
+      "selection": 0.7155458352389298,
+      "escalatedShare": 0.676923076923077
+    },
+    {
+      "act": 0.7,
+      "review": 0.5,
+      "clockAct": 0.2,
+      "selection": 0.7005163129630307,
+      "escalatedShare": 0.6
+    },
+    {
+      "act": 0.7,
+      "review": 0.5,
+      "clockAct": 0.3,
+      "selection": 0.7074298932099443,
+      "escalatedShare": 0.5692307692307692
+    },
+    {
+      "act": 0.7,
+      "review": 0.5,
+      "clockAct": 0.4,
+      "selection": 0.7133873400184549,
+      "escalatedShare": 0.5538461538461539
+    },
+    {
+      "act": 0.7,
+      "review": 0.5,
+      "clockAct": 0.5,
+      "selection": 0.7155458352389298,
+      "escalatedShare": 0.5538461538461539
+    },
+    {
+      "act": 0.7,
+      "review": 0.5,
+      "clockAct": 0.6,
+      "selection": 0.7155458352389298,
+      "escalatedShare": 0.5538461538461539
+    },
+    {
+      "act": 0.7,
+      "review": 0.5,
+      "clockAct": 0.7,
+      "selection": 0.7155458352389298,
+      "escalatedShare": 0.5538461538461539
+    },
+    {
+      "act": 0.75,
+      "review": 0.2,
+      "clockAct": 0.2,
+      "selection": 0.6296888833120717,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.75,
+      "review": 0.2,
+      "clockAct": 0.3,
+      "selection": 0.6366024635589853,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.75,
+      "review": 0.2,
+      "clockAct": 0.4,
+      "selection": 0.6425599103674959,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.75,
+      "review": 0.2,
+      "clockAct": 0.5,
+      "selection": 0.6447184055879708,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.75,
+      "review": 0.2,
+      "clockAct": 0.6,
+      "selection": 0.6447184055879708,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.75,
+      "review": 0.2,
+      "clockAct": 0.7,
+      "selection": 0.6447184055879708,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.75,
+      "review": 0.3,
+      "clockAct": 0.2,
+      "selection": 0.6296888833120717,
+      "escalatedShare": 0.8461538461538461
+    },
+    {
+      "act": 0.75,
+      "review": 0.3,
+      "clockAct": 0.3,
+      "selection": 0.6366024635589853,
+      "escalatedShare": 0.8307692307692308
+    },
+    {
+      "act": 0.75,
+      "review": 0.3,
+      "clockAct": 0.4,
+      "selection": 0.6425599103674959,
+      "escalatedShare": 0.8307692307692308
+    },
+    {
+      "act": 0.75,
+      "review": 0.3,
+      "clockAct": 0.5,
+      "selection": 0.6447184055879708,
+      "escalatedShare": 0.8307692307692308
+    },
+    {
+      "act": 0.75,
+      "review": 0.3,
+      "clockAct": 0.6,
+      "selection": 0.6447184055879708,
+      "escalatedShare": 0.8307692307692308
+    },
+    {
+      "act": 0.75,
+      "review": 0.3,
+      "clockAct": 0.7,
+      "selection": 0.6447184055879708,
+      "escalatedShare": 0.8307692307692308
+    },
+    {
+      "act": 0.75,
+      "review": 0.4,
+      "clockAct": 0.2,
+      "selection": 0.6296888833120717,
+      "escalatedShare": 0.7076923076923077
+    },
+    {
+      "act": 0.75,
+      "review": 0.4,
+      "clockAct": 0.3,
+      "selection": 0.6366024635589853,
+      "escalatedShare": 0.6923076923076923
+    },
+    {
+      "act": 0.75,
+      "review": 0.4,
+      "clockAct": 0.4,
+      "selection": 0.6425599103674959,
+      "escalatedShare": 0.676923076923077
+    },
+    {
+      "act": 0.75,
+      "review": 0.4,
+      "clockAct": 0.5,
+      "selection": 0.6447184055879708,
+      "escalatedShare": 0.676923076923077
+    },
+    {
+      "act": 0.75,
+      "review": 0.4,
+      "clockAct": 0.6,
+      "selection": 0.6447184055879708,
+      "escalatedShare": 0.676923076923077
+    },
+    {
+      "act": 0.75,
+      "review": 0.4,
+      "clockAct": 0.7,
+      "selection": 0.6447184055879708,
+      "escalatedShare": 0.676923076923077
+    },
+    {
+      "act": 0.75,
+      "review": 0.5,
+      "clockAct": 0.2,
+      "selection": 0.6296888833120717,
+      "escalatedShare": 0.6153846153846154
+    },
+    {
+      "act": 0.75,
+      "review": 0.5,
+      "clockAct": 0.3,
+      "selection": 0.6366024635589853,
+      "escalatedShare": 0.6
+    },
+    {
+      "act": 0.75,
+      "review": 0.5,
+      "clockAct": 0.4,
+      "selection": 0.6425599103674959,
+      "escalatedShare": 0.5846153846153846
+    },
+    {
+      "act": 0.75,
+      "review": 0.5,
+      "clockAct": 0.5,
+      "selection": 0.6447184055879708,
+      "escalatedShare": 0.5846153846153846
+    },
+    {
+      "act": 0.75,
+      "review": 0.5,
+      "clockAct": 0.6,
+      "selection": 0.6447184055879708,
+      "escalatedShare": 0.5846153846153846
+    },
+    {
+      "act": 0.75,
+      "review": 0.5,
+      "clockAct": 0.7,
+      "selection": 0.6447184055879708,
+      "escalatedShare": 0.5846153846153846
+    },
+    {
+      "act": 0.8,
+      "review": 0.2,
+      "clockAct": 0.2,
+      "selection": 0.5802592469259136,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.8,
+      "review": 0.2,
+      "clockAct": 0.3,
+      "selection": 0.5871728271728271,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.8,
+      "review": 0.2,
+      "clockAct": 0.4,
+      "selection": 0.5931302739813378,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.8,
+      "review": 0.2,
+      "clockAct": 0.5,
+      "selection": 0.5952887692018126,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.8,
+      "review": 0.2,
+      "clockAct": 0.6,
+      "selection": 0.5952887692018126,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.8,
+      "review": 0.2,
+      "clockAct": 0.7,
+      "selection": 0.5952887692018126,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.8,
+      "review": 0.3,
+      "clockAct": 0.2,
+      "selection": 0.5802592469259136,
+      "escalatedShare": 0.8923076923076924
+    },
+    {
+      "act": 0.8,
+      "review": 0.3,
+      "clockAct": 0.3,
+      "selection": 0.5871728271728271,
+      "escalatedShare": 0.8769230769230769
+    },
+    {
+      "act": 0.8,
+      "review": 0.3,
+      "clockAct": 0.4,
+      "selection": 0.5931302739813378,
+      "escalatedShare": 0.8769230769230769
+    },
+    {
+      "act": 0.8,
+      "review": 0.3,
+      "clockAct": 0.5,
+      "selection": 0.5952887692018126,
+      "escalatedShare": 0.8769230769230769
+    },
+    {
+      "act": 0.8,
+      "review": 0.3,
+      "clockAct": 0.6,
+      "selection": 0.5952887692018126,
+      "escalatedShare": 0.8769230769230769
+    },
+    {
+      "act": 0.8,
+      "review": 0.3,
+      "clockAct": 0.7,
+      "selection": 0.5952887692018126,
+      "escalatedShare": 0.8769230769230769
+    },
+    {
+      "act": 0.8,
+      "review": 0.4,
+      "clockAct": 0.2,
+      "selection": 0.5802592469259136,
+      "escalatedShare": 0.7538461538461538
+    },
+    {
+      "act": 0.8,
+      "review": 0.4,
+      "clockAct": 0.3,
+      "selection": 0.5871728271728271,
+      "escalatedShare": 0.7384615384615385
+    },
+    {
+      "act": 0.8,
+      "review": 0.4,
+      "clockAct": 0.4,
+      "selection": 0.5931302739813378,
+      "escalatedShare": 0.7230769230769231
+    },
+    {
+      "act": 0.8,
+      "review": 0.4,
+      "clockAct": 0.5,
+      "selection": 0.5952887692018126,
+      "escalatedShare": 0.7230769230769231
+    },
+    {
+      "act": 0.8,
+      "review": 0.4,
+      "clockAct": 0.6,
+      "selection": 0.5952887692018126,
+      "escalatedShare": 0.7230769230769231
+    },
+    {
+      "act": 0.8,
+      "review": 0.4,
+      "clockAct": 0.7,
+      "selection": 0.5952887692018126,
+      "escalatedShare": 0.7230769230769231
+    },
+    {
+      "act": 0.8,
+      "review": 0.5,
+      "clockAct": 0.2,
+      "selection": 0.5802592469259136,
+      "escalatedShare": 0.676923076923077
+    },
+    {
+      "act": 0.8,
+      "review": 0.5,
+      "clockAct": 0.3,
+      "selection": 0.5871728271728271,
+      "escalatedShare": 0.6615384615384615
+    },
+    {
+      "act": 0.8,
+      "review": 0.5,
+      "clockAct": 0.4,
+      "selection": 0.5931302739813378,
+      "escalatedShare": 0.6461538461538462
+    },
+    {
+      "act": 0.8,
+      "review": 0.5,
+      "clockAct": 0.5,
+      "selection": 0.5952887692018126,
+      "escalatedShare": 0.6461538461538462
+    },
+    {
+      "act": 0.8,
+      "review": 0.5,
+      "clockAct": 0.6,
+      "selection": 0.5952887692018126,
+      "escalatedShare": 0.6461538461538462
+    },
+    {
+      "act": 0.8,
+      "review": 0.5,
+      "clockAct": 0.7,
+      "selection": 0.5952887692018126,
+      "escalatedShare": 0.6461538461538462
+    },
+    {
+      "act": 0.85,
+      "review": 0.2,
+      "clockAct": 0.2,
+      "selection": 0.44798411465078136,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.85,
+      "review": 0.2,
+      "clockAct": 0.3,
+      "selection": 0.45489769489769494,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.85,
+      "review": 0.2,
+      "clockAct": 0.4,
+      "selection": 0.46085514170620556,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.85,
+      "review": 0.2,
+      "clockAct": 0.5,
+      "selection": 0.4630136369266804,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.85,
+      "review": 0.2,
+      "clockAct": 0.6,
+      "selection": 0.4630136369266804,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.85,
+      "review": 0.2,
+      "clockAct": 0.7,
+      "selection": 0.4630136369266804,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.85,
+      "review": 0.3,
+      "clockAct": 0.2,
+      "selection": 0.44798411465078136,
+      "escalatedShare": 0.8923076923076924
+    },
+    {
+      "act": 0.85,
+      "review": 0.3,
+      "clockAct": 0.3,
+      "selection": 0.45489769489769494,
+      "escalatedShare": 0.8769230769230769
+    },
+    {
+      "act": 0.85,
+      "review": 0.3,
+      "clockAct": 0.4,
+      "selection": 0.46085514170620556,
+      "escalatedShare": 0.8769230769230769
+    },
+    {
+      "act": 0.85,
+      "review": 0.3,
+      "clockAct": 0.5,
+      "selection": 0.4630136369266804,
+      "escalatedShare": 0.8769230769230769
+    },
+    {
+      "act": 0.85,
+      "review": 0.3,
+      "clockAct": 0.6,
+      "selection": 0.4630136369266804,
+      "escalatedShare": 0.8769230769230769
+    },
+    {
+      "act": 0.85,
+      "review": 0.3,
+      "clockAct": 0.7,
+      "selection": 0.4630136369266804,
+      "escalatedShare": 0.8769230769230769
+    },
+    {
+      "act": 0.85,
+      "review": 0.4,
+      "clockAct": 0.2,
+      "selection": 0.44798411465078136,
+      "escalatedShare": 0.7846153846153846
+    },
+    {
+      "act": 0.85,
+      "review": 0.4,
+      "clockAct": 0.3,
+      "selection": 0.45489769489769494,
+      "escalatedShare": 0.7692307692307693
+    },
+    {
+      "act": 0.85,
+      "review": 0.4,
+      "clockAct": 0.4,
+      "selection": 0.46085514170620556,
+      "escalatedShare": 0.7538461538461538
+    },
+    {
+      "act": 0.85,
+      "review": 0.4,
+      "clockAct": 0.5,
+      "selection": 0.4630136369266804,
+      "escalatedShare": 0.7538461538461538
+    },
+    {
+      "act": 0.85,
+      "review": 0.4,
+      "clockAct": 0.6,
+      "selection": 0.4630136369266804,
+      "escalatedShare": 0.7538461538461538
+    },
+    {
+      "act": 0.85,
+      "review": 0.4,
+      "clockAct": 0.7,
+      "selection": 0.4630136369266804,
+      "escalatedShare": 0.7538461538461538
+    },
+    {
+      "act": 0.85,
+      "review": 0.5,
+      "clockAct": 0.2,
+      "selection": 0.44798411465078136,
+      "escalatedShare": 0.7230769230769231
+    },
+    {
+      "act": 0.85,
+      "review": 0.5,
+      "clockAct": 0.3,
+      "selection": 0.45489769489769494,
+      "escalatedShare": 0.7076923076923077
+    },
+    {
+      "act": 0.85,
+      "review": 0.5,
+      "clockAct": 0.4,
+      "selection": 0.46085514170620556,
+      "escalatedShare": 0.6923076923076923
+    },
+    {
+      "act": 0.85,
+      "review": 0.5,
+      "clockAct": 0.5,
+      "selection": 0.4630136369266804,
+      "escalatedShare": 0.6923076923076923
+    },
+    {
+      "act": 0.85,
+      "review": 0.5,
+      "clockAct": 0.6,
+      "selection": 0.4630136369266804,
+      "escalatedShare": 0.6923076923076923
+    },
+    {
+      "act": 0.85,
+      "review": 0.5,
+      "clockAct": 0.7,
+      "selection": 0.4630136369266804,
+      "escalatedShare": 0.6923076923076923
+    },
+    {
+      "act": 0.9,
+      "review": 0.2,
+      "clockAct": 0.2,
+      "selection": 0.39483726150392817,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.9,
+      "review": 0.2,
+      "clockAct": 0.3,
+      "selection": 0.4017508417508418,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.9,
+      "review": 0.2,
+      "clockAct": 0.4,
+      "selection": 0.4077082885593524,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.9,
+      "review": 0.2,
+      "clockAct": 0.5,
+      "selection": 0.40986678377982727,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.9,
+      "review": 0.2,
+      "clockAct": 0.6,
+      "selection": 0.40986678377982727,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.9,
+      "review": 0.2,
+      "clockAct": 0.7,
+      "selection": 0.40986678377982727,
+      "escalatedShare": 0.9846153846153847
+    },
+    {
+      "act": 0.9,
+      "review": 0.3,
+      "clockAct": 0.2,
+      "selection": 0.39483726150392817,
+      "escalatedShare": 0.8923076923076924
+    },
+    {
+      "act": 0.9,
+      "review": 0.3,
+      "clockAct": 0.3,
+      "selection": 0.4017508417508418,
+      "escalatedShare": 0.8769230769230769
+    },
+    {
+      "act": 0.9,
+      "review": 0.3,
+      "clockAct": 0.4,
+      "selection": 0.4077082885593524,
+      "escalatedShare": 0.8769230769230769
+    },
+    {
+      "act": 0.9,
+      "review": 0.3,
+      "clockAct": 0.5,
+      "selection": 0.40986678377982727,
+      "escalatedShare": 0.8769230769230769
+    },
+    {
+      "act": 0.9,
+      "review": 0.3,
+      "clockAct": 0.6,
+      "selection": 0.40986678377982727,
+      "escalatedShare": 0.8769230769230769
+    },
+    {
+      "act": 0.9,
+      "review": 0.3,
+      "clockAct": 0.7,
+      "selection": 0.40986678377982727,
+      "escalatedShare": 0.8769230769230769
+    },
+    {
+      "act": 0.9,
+      "review": 0.4,
+      "clockAct": 0.2,
+      "selection": 0.39483726150392817,
+      "escalatedShare": 0.8
+    },
+    {
+      "act": 0.9,
+      "review": 0.4,
+      "clockAct": 0.3,
+      "selection": 0.4017508417508418,
+      "escalatedShare": 0.7846153846153846
+    },
+    {
+      "act": 0.9,
+      "review": 0.4,
+      "clockAct": 0.4,
+      "selection": 0.4077082885593524,
+      "escalatedShare": 0.7692307692307693
+    },
+    {
+      "act": 0.9,
+      "review": 0.4,
+      "clockAct": 0.5,
+      "selection": 0.40986678377982727,
+      "escalatedShare": 0.7692307692307693
+    },
+    {
+      "act": 0.9,
+      "review": 0.4,
+      "clockAct": 0.6,
+      "selection": 0.40986678377982727,
+      "escalatedShare": 0.7692307692307693
+    },
+    {
+      "act": 0.9,
+      "review": 0.4,
+      "clockAct": 0.7,
+      "selection": 0.40986678377982727,
+      "escalatedShare": 0.7692307692307693
+    },
+    {
+      "act": 0.9,
+      "review": 0.5,
+      "clockAct": 0.2,
+      "selection": 0.39483726150392817,
+      "escalatedShare": 0.7538461538461538
+    },
+    {
+      "act": 0.9,
+      "review": 0.5,
+      "clockAct": 0.3,
+      "selection": 0.4017508417508418,
+      "escalatedShare": 0.7384615384615385
+    },
+    {
+      "act": 0.9,
+      "review": 0.5,
+      "clockAct": 0.4,
+      "selection": 0.4077082885593524,
+      "escalatedShare": 0.7230769230769231
+    },
+    {
+      "act": 0.9,
+      "review": 0.5,
+      "clockAct": 0.5,
+      "selection": 0.40986678377982727,
+      "escalatedShare": 0.7230769230769231
+    },
+    {
+      "act": 0.9,
+      "review": 0.5,
+      "clockAct": 0.6,
+      "selection": 0.40986678377982727,
+      "escalatedShare": 0.7230769230769231
+    },
+    {
+      "act": 0.9,
+      "review": 0.5,
+      "clockAct": 0.7,
+      "selection": 0.40986678377982727,
+      "escalatedShare": 0.7230769230769231
+    },
+    {
+      "act": 0.95,
+      "review": 0.2,
+      "clockAct": 0.2,
+      "selection": 0.3076233860547586,
+      "escalatedShare": 1
+    },
+    {
+      "act": 0.95,
+      "review": 0.2,
+      "clockAct": 0.3,
+      "selection": 0.3145369663016722,
+      "escalatedShare": 1
+    },
+    {
+      "act": 0.95,
+      "review": 0.2,
+      "clockAct": 0.4,
+      "selection": 0.32049441311018284,
+      "escalatedShare": 1
+    },
+    {
+      "act": 0.95,
+      "review": 0.2,
+      "clockAct": 0.5,
+      "selection": 0.32265290833065774,
+      "escalatedShare": 1
+    },
+    {
+      "act": 0.95,
+      "review": 0.2,
+      "clockAct": 0.6,
+      "selection": 0.32265290833065774,
+      "escalatedShare": 1
+    },
+    {
+      "act": 0.95,
+      "review": 0.2,
+      "clockAct": 0.7,
+      "selection": 0.32265290833065774,
+      "escalatedShare": 1
+    },
+    {
+      "act": 0.95,
+      "review": 0.3,
+      "clockAct": 0.2,
+      "selection": 0.3076233860547586,
+      "escalatedShare": 0.9230769230769231
+    },
+    {
+      "act": 0.95,
+      "review": 0.3,
+      "clockAct": 0.3,
+      "selection": 0.3145369663016722,
+      "escalatedShare": 0.9230769230769231
+    },
+    {
+      "act": 0.95,
+      "review": 0.3,
+      "clockAct": 0.4,
+      "selection": 0.32049441311018284,
+      "escalatedShare": 0.9230769230769231
+    },
+    {
+      "act": 0.95,
+      "review": 0.3,
+      "clockAct": 0.5,
+      "selection": 0.32265290833065774,
+      "escalatedShare": 0.9230769230769231
+    },
+    {
+      "act": 0.95,
+      "review": 0.3,
+      "clockAct": 0.6,
+      "selection": 0.32265290833065774,
+      "escalatedShare": 0.9230769230769231
+    },
+    {
+      "act": 0.95,
+      "review": 0.3,
+      "clockAct": 0.7,
+      "selection": 0.32265290833065774,
+      "escalatedShare": 0.9230769230769231
+    },
+    {
+      "act": 0.95,
+      "review": 0.4,
+      "clockAct": 0.2,
+      "selection": 0.3076233860547586,
+      "escalatedShare": 0.8307692307692308
+    },
+    {
+      "act": 0.95,
+      "review": 0.4,
+      "clockAct": 0.3,
+      "selection": 0.3145369663016722,
+      "escalatedShare": 0.8307692307692308
+    },
+    {
+      "act": 0.95,
+      "review": 0.4,
+      "clockAct": 0.4,
+      "selection": 0.32049441311018284,
+      "escalatedShare": 0.8307692307692308
+    },
+    {
+      "act": 0.95,
+      "review": 0.4,
+      "clockAct": 0.5,
+      "selection": 0.32265290833065774,
+      "escalatedShare": 0.8307692307692308
+    },
+    {
+      "act": 0.95,
+      "review": 0.4,
+      "clockAct": 0.6,
+      "selection": 0.32265290833065774,
+      "escalatedShare": 0.8307692307692308
+    },
+    {
+      "act": 0.95,
+      "review": 0.4,
+      "clockAct": 0.7,
+      "selection": 0.32265290833065774,
+      "escalatedShare": 0.8307692307692308
+    },
+    {
+      "act": 0.95,
+      "review": 0.5,
+      "clockAct": 0.2,
+      "selection": 0.3076233860547586,
+      "escalatedShare": 0.8
+    },
+    {
+      "act": 0.95,
+      "review": 0.5,
+      "clockAct": 0.3,
+      "selection": 0.3145369663016722,
+      "escalatedShare": 0.8
+    },
+    {
+      "act": 0.95,
+      "review": 0.5,
+      "clockAct": 0.4,
+      "selection": 0.32049441311018284,
+      "escalatedShare": 0.8
+    },
+    {
+      "act": 0.95,
+      "review": 0.5,
+      "clockAct": 0.5,
+      "selection": 0.32265290833065774,
+      "escalatedShare": 0.8
+    },
+    {
+      "act": 0.95,
+      "review": 0.5,
+      "clockAct": 0.6,
+      "selection": 0.32265290833065774,
+      "escalatedShare": 0.8
+    },
+    {
+      "act": 0.95,
+      "review": 0.5,
+      "clockAct": 0.7,
+      "selection": 0.32265290833065774,
+      "escalatedShare": 0.8
+    }
+  ]
+}
