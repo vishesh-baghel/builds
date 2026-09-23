@@ -4,7 +4,9 @@ import { firmById } from "../src/fixtures";
 import { loadInstrument } from "../src/fixtures/load";
 import { measuredFirm, type RecordedRun } from "../src/fixtures/meridian";
 import type { Judgment } from "../src/jev";
-import { HAND_SECONDS_PER_MESSAGE, linesFor, LOOKUP_SECONDS_PER_MESSAGE, MERIDIAN_THRESHOLDS } from "../src/policy";
+import { HUMAN_TIME_ESTIMATE, linesFor, MERIDIAN_THRESHOLDS } from "../src/policy";
+const HAND = HUMAN_TIME_ESTIMATE.handSecondsPerMessage;
+const LOOKUP = HUMAN_TIME_ESTIMATE.lookupSecondsPerRecord;
 import { scoreRun } from "../src/score";
 import { deriveView } from "../src/view";
 
@@ -12,7 +14,7 @@ const instrument = loadInstrument();
 const base = firmById("arch");
 const recorded = run as unknown as RecordedRun & { judgments: Record<string, Judgment> };
 const meridian = measuredFirm(base, instrument, recorded);
-const view = deriveView(meridian, MERIDIAN_THRESHOLDS, HAND_SECONDS_PER_MESSAGE, LOOKUP_SECONDS_PER_MESSAGE);
+const view = deriveView(meridian, MERIDIAN_THRESHOLDS, HAND, LOOKUP);
 const scored = scoreRun(instrument.inbox, recorded.judgments, base, instrument, MERIDIAN_THRESHOLDS);
 
 describe("the dashboard's Meridian is the measured instrument", () => {
@@ -58,7 +60,7 @@ describe("at the measured setting the dashboard equals the published scorecard",
 describe("the deadline screen hides nothing", () => {
   it("lists every clocked message, caught or missed, at any setting", () => {
     for (const th of [MERIDIAN_THRESHOLDS, linesFor(0.95), linesFor(0.15)]) {
-      const v = deriveView(meridian, th, HAND_SECONDS_PER_MESSAGE, LOOKUP_SECONDS_PER_MESSAGE);
+      const v = deriveView(meridian, th, HAND, LOOKUP);
       const listed = new Set(v.deadlines.map((d) => d.id));
       for (const lm of instrument.inbox.filter((x) => x.clocked)) expect(listed.has(lm.id), lm.id).toBe(true);
     }
@@ -66,7 +68,7 @@ describe("the deadline screen hides nothing", () => {
 
   it("marks a clock the setting misses as missed, never drops it", () => {
     // At a high clock line some clocks go unflagged; each still appears, marked missed.
-    const v = deriveView(meridian, { ...MERIDIAN_THRESHOLDS, clockAct: 0.99 }, HAND_SECONDS_PER_MESSAGE, LOOKUP_SECONDS_PER_MESSAGE);
+    const v = deriveView(meridian, { ...MERIDIAN_THRESHOLDS, clockAct: 0.99 }, HAND, LOOKUP);
     const unflagged = instrument.inbox.filter((m) => m.clocked).filter((m) => !v.inboxRows.find((r) => r.id === m.id)?.clockFlagged);
     for (const m of unflagged) expect(v.deadlines.find((d) => d.id === m.id)?.state, m.id).toBe("missed");
   });

@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
 import type { ClassifyOk } from "../lib/classify";
-import { linesFor, type Thresholds } from "../src/policy";
+import { HUMAN_TIME_ESTIMATE, linesFor, type Thresholds } from "../src/policy";
 import { deriveView } from "../src/view";
 import type { Firm, Message, Priority } from "../src/types";
 import { ReadView, priColor } from "./ReadView";
@@ -64,8 +64,8 @@ export function Dashboard({ firms, measuredLines }: { firms: readonly Firm[]; me
   const [atMeasured, setAtMeasured] = useState(true);
   const setDial = (n: number) => { setDialState(n); setAtMeasured(false); };
   const [openId, setOpenId] = useState<string | null>(null);
-  const [handSecs, setHandSecs] = useState(90);
-  const [lookupSecs, setLookupSecs] = useState(120);
+  const [handSecs, setHandSecs] = useState<number>(HUMAN_TIME_ESTIMATE.handSecondsPerMessage);
+  const [lookupSecs, setLookupSecs] = useState<number>(HUMAN_TIME_ESTIMATE.lookupSecondsPerRecord);
 
   // Live judging: opening a message asks the route for one fresh judgment, once per message per page
   // load. A live result replaces that message's scores; the dial still re-decides locally, for free.
@@ -186,7 +186,7 @@ export function Dashboard({ firms, measuredLines }: { firms: readonly Firm[]; me
           <span style={{ fontSize: ".8125rem", color: "var(--color-ink-3)" }}>{TITLES[page][1]}</span>
         </header>
 
-        {page === "overview" && <Overview view={view} firm={firm} open={open} setPage={setPage} />}
+        {page === "overview" && <Overview view={view} firm={firm} open={open} />}
         {page === "inbox" && <Inbox view={view} firm={firm} openId={openId} setOpenId={setOpenId} results={results} />}
         {page === "deadlines" && <Deadlines view={view} open={open} />}
         {page === "people" && <People view={view} open={open} />}
@@ -205,17 +205,11 @@ function Avatar({ initials, bg = "var(--color-accent-soft)", fg = "var(--color-a
   return <span style={{ width: size, height: size, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-mono)", fontSize: ".625rem", fontWeight: 500, background: bg, color: fg, flex: "none" }}>{initials}</span>;
 }
 
-function Overview({ view, firm, open, setPage }: { view: V; firm: Firm; open: (id: string) => void; setPage: (p: PageId) => void }) {
+function Overview({ view, firm, open }: { view: V; firm: Firm; open: (id: string) => void }) {
   const s = view.score;
-  const sav = view.savings;
   return (
     <>
       <div style={{ display: "grid", gap: "1rem", gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,12rem),1fr))" }}>
-        <div style={{ ...card, background: "var(--color-graphite)", color: "var(--color-on-graphite)" }}>
-          <div style={mono({ color: "var(--color-on-graphite-2)" })}>time back on this inbox (estimate)</div>
-          <div style={{ ...bigNum, color: "var(--color-accent-ink)" }}>{sav.savedToday}</div>
-          <p style={{ margin: ".5rem 0 0", fontSize: ".8125rem", color: "var(--color-on-graphite)" }}>{sav.handToday} by hand, {sav.siftToday} with Sift. <button type="button" onClick={() => setPage("savings")} style={{ border: 0, background: "transparent", padding: 0, font: "inherit", fontSize: ".8125rem", color: "var(--color-graphite-accent)", cursor: "pointer", textDecoration: "underline" }}>How this is counted</button></p>
-        </div>
         <div style={card}>
           <div style={mono()}>deadlines caught</div>
           <div style={{ ...bigNum, color: "var(--color-accent)" }}>{s.caught} of {s.clockedN}</div>
@@ -419,7 +413,7 @@ function Savings({ view, firm, handSecs, setHandSecs, lookupSecs, setLookupSecs 
   return (
     <div style={{ display: "grid", gap: "1.5rem 2.5rem", gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,20rem),1fr))", alignItems: "start" }}>
       <div>
-        <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 6rem 6rem", gap: ".75rem", padding: "0 .25rem .5rem", borderBottom: "1px solid var(--color-rule-2)", ...mono() }}><span>this inbox</span><span style={{ textAlign: "right" }}>by hand</span><span style={{ textAlign: "right" }}>with sift</span></div>
+        <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 6rem 6rem", gap: ".75rem", padding: "0 .25rem .5rem", borderBottom: "1px solid var(--color-rule-2)", ...mono() }}><span>this inbox, estimated</span><span style={{ textAlign: "right" }}>by hand</span><span style={{ textAlign: "right" }}>with sift</span></div>
         <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
           {sav.rows.map((r, i) => (
             <li key={i} style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 6rem 6rem", gap: ".75rem", padding: ".625rem .25rem", borderBottom: "1px solid var(--color-rule)", alignItems: "baseline" }}>
@@ -435,9 +429,9 @@ function Savings({ view, firm, handSecs, setHandSecs, lookupSecs, setLookupSecs 
           </li>
         </ul>
         <div style={{ marginTop: "1.5rem", display: "grid", gap: "1rem", gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,8rem),1fr))" }}>
-          <div><div style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "1.75rem", letterSpacing: "-.03em", lineHeight: 1, color: "var(--color-accent)", fontVariantNumeric: "tabular-nums" }}>{sav.savedToday}</div><p style={{ margin: ".25rem 0 0", fontSize: ".8125rem", color: "var(--color-ink-3)" }}>back on these {firm.messages.length} messages</p></div>
-          <div><div style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "1.75rem", letterSpacing: "-.03em", lineHeight: 1, color: "var(--color-ink)", fontVariantNumeric: "tabular-nums" }}>{sav.savedWeek}</div><p style={{ margin: ".25rem 0 0", fontSize: ".8125rem", color: "var(--color-ink-3)" }}>a week, at this volume</p></div>
-          <div><div style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "1.75rem", letterSpacing: "-.03em", lineHeight: 1, color: "var(--color-ink)", fontVariantNumeric: "tabular-nums" }}>{sav.savedMonth}</div><p style={{ margin: ".25rem 0 0", fontSize: ".8125rem", color: "var(--color-ink-3)" }}>a month, 21 working days</p></div>
+          <div><div style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "1.75rem", letterSpacing: "-.03em", lineHeight: 1, color: "var(--color-accent)", fontVariantNumeric: "tabular-nums" }}>{sav.savedToday}</div><p style={{ margin: ".25rem 0 0", fontSize: ".8125rem", color: "var(--color-ink-3)" }}>back on these {firm.messages.length} messages (estimate)</p></div>
+          <div><div style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "1.75rem", letterSpacing: "-.03em", lineHeight: 1, color: "var(--color-ink)", fontVariantNumeric: "tabular-nums" }}>{sav.savedWeek}</div><p style={{ margin: ".25rem 0 0", fontSize: ".8125rem", color: "var(--color-ink-3)" }}>a week, at this volume (estimate)</p></div>
+          <div><div style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "1.75rem", letterSpacing: "-.03em", lineHeight: 1, color: "var(--color-ink)", fontVariantNumeric: "tabular-nums" }}>{sav.savedMonth}</div><p style={{ margin: ".25rem 0 0", fontSize: ".8125rem", color: "var(--color-ink-3)" }}>a month, 21 working days (estimate)</p></div>
         </div>
       </div>
       <div style={{ ...card, padding: "1.25rem 1.5rem", background: "var(--color-paper-2)" }}>
@@ -445,7 +439,7 @@ function Savings({ view, firm, handSecs, setHandSecs, lookupSecs, setLookupSecs 
         <label style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "1rem", marginTop: "1rem", fontSize: ".875rem" }}><span>Seconds to read and sort one message by hand (estimate)</span>{numInput(handSecs, setHandSecs, 15, 600)}</label>
         <label style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "1rem", marginTop: ".75rem", fontSize: ".875rem" }}><span>Seconds to look a message up in {firm.sourcesShort} (estimate)</span>{numInput(lookupSecs, setLookupSecs, 0, 900)}</label>
         <ul style={{ margin: "1.25rem 0 0", padding: ".875rem 0 0 1.1rem", borderTop: "1px solid var(--color-rule)", fontSize: ".8125rem", color: "var(--color-ink-2)", display: "flex", flexDirection: "column", gap: ".375rem" }}>
-          <li>With Sift, a person still spends 45 seconds on each item that needs a decision and 20 seconds on each deadline alert, plus a minute glancing over the sorted list.</li>
+          <li>With Sift, a person still spends {HUMAN_TIME_ESTIMATE.decideSecondsPerItem} seconds on each item that needs a decision and {HUMAN_TIME_ESTIMATE.acknowledgeSecondsPerAlert} seconds on each deadline alert, plus {HUMAN_TIME_ESTIMATE.glanceSecondsPerWorkingDay} seconds a working day glancing over the sorted list. Every time on this page is an estimate built from these.</li>
           <li>Deadlines are not priced. One missed {firm.clockExample} costs more than every morning sort in a year, so that column is shown as a count, not a number.</li>
           <li>No before/after claim is made. This is arithmetic on these {firm.messages.length} invented messages, spread over {view.span.workingDays} working days, at the current setting; the weekly and monthly figures scale the per-day rate, and the two rates above are estimates.</li>
         </ul>

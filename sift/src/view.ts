@@ -1,5 +1,5 @@
 import { days, first, INBOX_AS_OF, nice, when } from "./clock";
-import { probOf, type Thresholds } from "./policy";
+import { HUMAN_TIME_ESTIMATE, probOf, type Thresholds } from "./policy";
 import { decidePlan, type Plan } from "./stages/decide";
 import { factsFor, type Facts } from "./stages/extract";
 import { assess } from "./triage";
@@ -271,9 +271,9 @@ export function deriveView(
   const handLookup = recordN * lookupSecs;
   // Sift still costs a person one glance at the sorted list per working day the set spans.
   const span = spanOf(messages);
-  const siftRead = 60 * span.workingDays;
-  const siftDecide = escalated * 45;
-  const siftAlerts = alerts * 20;
+  const siftRead = HUMAN_TIME_ESTIMATE.glanceSecondsPerWorkingDay * span.workingDays;
+  const siftDecide = escalated * HUMAN_TIME_ESTIMATE.decideSecondsPerItem;
+  const siftAlerts = alerts * HUMAN_TIME_ESTIMATE.acknowledgeSecondsPerAlert;
   const handT = handRead + handLookup;
   const siftT = siftRead + siftDecide + siftAlerts;
   const saved = Math.max(0, handT - siftT);
@@ -283,8 +283,8 @@ export function deriveView(
     rows: [
       { label: "Read and sort every message", sub: `${messages.length} messages at ${handSecs}s each by hand; with Sift, one glance at the sorted list on each of ${span.workingDays} working ${span.workingDays === 1 ? "day" : "days"}`, hand: fmtMin(handRead), sift: fmtMin(siftRead) },
       { label: `Look things up in ${firm.sourcesShort}`, sub: `${recordN} messages matched a record; Sift matched them in code`, hand: fmtMin(handLookup), sift: "0 min" },
-      { label: "Decide the unclear ones", sub: `${escalated} items need a person's call, 45s each, reasons attached`, hand: "included", sift: fmtMin(siftDecide) },
-      { label: "Deadline alerts", sub: `${alerts} ${alerts === 1 ? "alert" : "alerts"} to ${firm.owner}, 20s each to acknowledge`, hand: "not by hand", sift: fmtMin(siftAlerts) },
+      { label: "Decide the unclear ones", sub: `${escalated} items need a person's call, ${HUMAN_TIME_ESTIMATE.decideSecondsPerItem}s each, reasons attached`, hand: "included", sift: fmtMin(siftDecide) },
+      { label: "Deadline alerts", sub: `${alerts} ${alerts === 1 ? "alert" : "alerts"} to ${firm.owner}, ${HUMAN_TIME_ESTIMATE.acknowledgeSecondsPerAlert}s each to acknowledge`, hand: "not by hand", sift: fmtMin(siftAlerts) },
     ],
   };
 

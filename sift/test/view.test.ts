@@ -1,10 +1,10 @@
 import { describe, expect, it } from "vitest";
 import { deriveView } from "../src/view";
-import { DEFAULT_THRESHOLDS, HAND_SECONDS_PER_MESSAGE, LOOKUP_SECONDS_PER_MESSAGE, linesFor } from "../src/policy";
+import { DEFAULT_THRESHOLDS, HUMAN_TIME_ESTIMATE, linesFor } from "../src/policy";
 import { FIRMS, firmById } from "../src/fixtures";
 
-const hand = HAND_SECONDS_PER_MESSAGE;
-const lookup = LOOKUP_SECONDS_PER_MESSAGE;
+const hand = HUMAN_TIME_ESTIMATE.handSecondsPerMessage;
+const lookup = HUMAN_TIME_ESTIMATE.lookupSecondsPerRecord;
 const arch = firmById("arch");
 const v = deriveView(arch, DEFAULT_THRESHOLDS, hand, lookup);
 

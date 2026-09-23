@@ -416,19 +416,19 @@ probabilities and never call Jev.
 ### Functional
 
 - [x] #1 `pnpm --filter @builds/sift test` passes, and a loader test asserts every inbox record and every system-of-record row parses against the typed schema, with all clock/deadline arithmetic computed from `INBOX_AS_OF` and not from the clock, matching the committed `deadline` field on every clocked row.
-- [ ] #2 A test asserts the classify stage issues **exactly one Jev request per message**, carrying one Noul per topic class plus the `carries_clock` Noul, and that every question the design uses is present, asserted by **shape against a recorded vendor response**, not by counting. The test suite makes no network call. (The published cost-per-message figure depends on this being one request, not nine.) *Open, 2026-09-23: shape is asserted against the recorded live response; no test yet counts exactly one request per message through the classify stage.*
+- [x] #2 A test asserts the classify stage issues **exactly one Jev request per message**, carrying one Noul per topic class plus the `carries_clock` Noul, and that every question the design uses is present, asserted by **shape against a recorded vendor response**, not by counting. The test suite makes no network call. (The published cost-per-message figure depends on this being one request, not nine.)
 - [x] #3 For an inbound message the pipeline assigns a route, a priority level and a deadline where one is present, each with a non-empty reason string naming the rule that fired. Asserted over injected probabilities across the topic classes.
 - [x] #4 A message carrying a contractual or regulatory clock raises an owner alert with the deadline **even when its topic probability is modest**, asserted with the `agency_letter` probability held below its act threshold while `carries_clock` clears its low threshold, so the alert fires on the clock judgment, not the topic.
 - [x] #5 The clock is corroborated in code: a test asserts an owner alert also fires when the deterministic deadline parse or the RFI-log cross-reference finds a clock the model missed, and that a clock implied but not datable escalates for a human to set the date rather than defaulting one.
 - [x] #6 Priority is firm-specific and computed in code: a test asserts the **same** message text yields `urgent` when the matched project has a scheduled activity inside the response window and a lower priority when it does not, proving priority is not read from the message.
-- [ ] #7 Below the act threshold a topic escalates without acting, and when no topic clears its threshold the whole message escalates whatever the highest probability was. Both asserted at the band boundaries. *Open, 2026-09-23: escalation when nothing clears is tested; the exact band boundaries are not.*
+- [x] #7 Below the act threshold a topic escalates without acting, and when no topic clears its threshold the whole message escalates whatever the highest probability was. Both asserted at the band boundaries.
 - [x] #8 A message asserting two topics produces two outcomes in one run: two routes, each with its own priority, deadline and reason held in the Sift-local plan. The plan is keyed by a topic-qualified action string (for example `route:rfi` and `route:submittal`), so `runPipeline`'s `new Set(decision.actions)` cannot dedupe two topics into one `act` call. Asserted over injected probabilities, and never collapsed to a single route.
 - [x] #9 A matched drafting-class message produces a draft assembled from a fixed template with slots filled from the matched system-of-record rows; a test asserts the draft contains the looked-up values, is never auto-sent (there is no send path in the route handlers or the dependency manifest), and takes no text from the message body, so instruction-shaped body text cannot reach the draft.
 - [x] #10 A `vendor_pitch` message is labelled noise, routed to no one and not escalated, asserted by comparing routing state before and after.
 - [x] #11 Running the pipeline twice on the same message produces one route record, one alert and one draft per topic; the second run is a no-op. Asserted through `once()` with the in-memory store, including a multi-topic message whose two actions produce two distinct topic-qualified string idempotency keys.
-- [ ] #12 Every vendor call is wrapped in `withRetry`, and a test asserts an exhausted retry surfaces as a failed result in the audit log, never as a silent success. *Open, 2026-09-23: the retry and its exhaustion are tested; no test yet reads the failed result out of the audit log.*
+- [x] #12 Every vendor call is wrapped in `withRetry`, and a test asserts an exhausted retry surfaces as a failed result in the audit log, never as a silent success.
 - [ ] #13 The audit log holds one row **per stage that ran, and one per action acted** (multi-topic fan-out writes one `act` row per topic, matching the committed audit fixture), each row carrying input id, topic probabilities, the clock judgment, the derived route, priority and deadline, the action taken and the reason. *Open, 2026-09-23: rows exist per stage and per action, but do not carry the clock judgment, route, priority or deadline, and there is no committed audit fixture.*
-- [ ] #14 A test asserts an instruction-shaped message body is classified as data: no route outside the enum, no priority outside the levels, no threshold change, no suppressed escalation. The adversarial inputs live in a separate fixture file and never enter `inbox.jsonl`, which is the frozen scored set. *Open, 2026-09-23: the closed action enum, the priority levels and the recipients are asserted; no threshold change and no suppressed escalation are not.*
+- [x] #14 A test asserts an instruction-shaped message body is classified as data: no route outside the enum, no priority outside the levels, no threshold change, no suppressed escalation. The adversarial inputs live in a separate fixture file and never enter `inbox.jsonl`, which is the frozen scored set.
 - [x] #15 A test fails if the `runPipeline` invariant is removed: an outcome not listed as auto-executable can never reach `act`.
 
 ### The number
@@ -441,7 +441,7 @@ probabilities and never call Jev.
 - [x] #21 The scorecard reports the confidence-gate catch rate, the share of the system's own errors sent to a human, with the error denominator printed as a count, not only a percentage.
 - [x] #22 The threshold sweep over the ordinary subset is committed alongside the chosen thresholds; any class below the ordinary floor has its threshold **declared** with its `n` and reason recorded in `policy.ts`.
 - [x] #23 Measured machine time per message and measured cost per message, both from real run data, appear in the scorecard.
-- [ ] #24 Any human-time figure is a **declared estimate** held in one named constant, rendered with the word "estimate" on every surface, and never placed in the measured table or beside a measured figure. A test asserts the constant's rendered label contains "estimate". No before/after comparison appears on any surface. *Open, 2026-09-23: the estimate is labelled, but the rates are several inline values rather than one named constant, and the dashboard's time-back tile sits beside the measured catch-rate tiles.*
+- [x] #24 Any human-time figure is a **declared estimate** held in one named constant, rendered with the word "estimate" on every surface, and never placed in the measured table or beside a measured figure. A test asserts the constant's rendered label contains "estimate". No before/after comparison appears on any surface.
 
 ### Quality
 
@@ -484,7 +484,7 @@ This keeps the build inside its one-week slot without dropping the part that car
 - [x] Author `inbox.jsonl` and the system-of-record CSVs to the distribution, **meeting both size floors** (clocked subset at least 12; every topic class at least 6 ordinary or its threshold declared); flag the boundary cases; record the tie-break rules and the exact per-class counts, then freeze.
 - [x] Typed fixture loader with schema validation for the inbox and every CSV; `INBOX_AS_OF` fixed; the committed `deadline` field asserted against code arithmetic on every clocked row.
 - [x] Add vitest to `sift` as its `test` script; confirm the root gate runs it.
-- [ ] TypeSafe key in the environment only; one live smoke call recorded as the classify test's fixture, and the one-request-per-message shape asserted against it. *Open: the live smoke call is recorded and its shape asserted; the one-request count is AC #2's gap.*
+- [x] TypeSafe key in the environment only; one live smoke call recorded as the classify test's fixture, and the one-request-per-message shape asserted against it.
 
 **Deliverables:** frozen instrument with a README meeting the size floors, typed loader, the Sift-local per-topic plan with green tests, recorded vendor response.
 
@@ -495,7 +495,7 @@ This keeps the build inside its one-week slot without dropping the part that car
 - [x] `policy.ts`: per-class thresholds and bands, the route map, the firm-specific priority rules over the project/RFI joins, the clock corroboration (deadline parse plus RFI-log cross-reference), the draft templates.
 - [x] `extract`, `decide`, `act`, `escalate`, `log` implemented; per-topic routing, alerts and drafts; `once()` per action; `withRetry` on every vendor call; `SpendCap` wired to real usage within the shelf-wide budget.
 - [x] Adversarial fixtures in their own file, deliberately outside the scored inbox.
-- [ ] The full test suite: every AC in the Functional block above. *Open: #2, #7, #12, #13 and #14 still have gaps.*
+- [ ] The full test suite: every AC in the Functional block above. *Open: #13 still lacks the clock judgment, route, priority and deadline on its audit rows, and a committed audit fixture.*
 
 **Deliverables:** working headless pipeline, green suite, no network in tests.
 

@@ -105,15 +105,25 @@ export const PRI_LABEL: Readonly<Record<Priority, string>> = {
 };
 
 /**
- * How long a person spends on the morning sort, and on one record lookup.
+ * Every human-time figure this build shows, in one named constant (AC #24).
  *
  * These are **declared estimates**, not measurements. No before/after baseline was taken, and
- * inventing one afterwards would be worse than having none. They live here, alone, so every surface
- * that renders one goes through `renderSecondsEstimate` and therefore carries the word "estimate".
- * They never sit in a measured table or beside a measured figure.
+ * inventing one afterwards would be worse than having none. Every surface that shows a figure built
+ * from them says "estimate", and none of them is ever placed in the measured table or beside a
+ * measured figure: they live on the Savings page only, never on the Overview beside the catch rate.
  */
-export const HAND_SECONDS_PER_MESSAGE = 90;
-export const LOOKUP_SECONDS_PER_MESSAGE = 120;
+export const HUMAN_TIME_ESTIMATE = {
+  /** Reading and sorting one message by hand. The visitor can change this on the Savings page. */
+  handSecondsPerMessage: 90,
+  /** Looking one message up in the firm's records by hand. Also visitor-adjustable. */
+  lookupSecondsPerRecord: 120,
+  /** With Sift, one glance over the sorted list, once per working day. */
+  glanceSecondsPerWorkingDay: 60,
+  /** With Sift, a person's call on each item that needs one, reasons attached. */
+  decideSecondsPerItem: 45,
+  /** With Sift, acknowledging one deadline alert. */
+  acknowledgeSecondsPerAlert: 20,
+} as const;
 
 export function renderSecondsEstimate(seconds: number): string {
   return `${seconds}s per message (estimate)`;
