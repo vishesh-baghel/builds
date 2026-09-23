@@ -15,6 +15,8 @@ import type { Message } from "../types";
 export interface Deadline {
   readonly date: string;
   readonly how: string;
+  /** Where it came from: an RFI or submittal log, a "within N days" window, or a dated phrase. */
+  readonly source: "rfi" | "submittal" | "window" | "dated";
 }
 
 export interface Facts {
@@ -60,10 +62,10 @@ export function parseDeadline(text: string, receivedAt: string, sor: Sor): Deadl
   const received = receivedAt.slice(0, 10);
 
   for (const r of sor.rfis) {
-    if (r.status === "open" && text.includes(r.number)) return { date: r.due, how: `${r.number} response window in the RFI log` };
+    if (r.status === "open" && text.includes(r.number)) return { date: r.due, how: `${r.number} response window in the RFI log`, source: "rfi" };
   }
   for (const s of sor.submittals) {
-    if (s.status !== "approved" && text.includes(s.number)) return { date: s.reviewDue, how: `submittal ${s.number} review due in the log` };
+    if (s.status !== "approved" && text.includes(s.number)) return { date: s.reviewDue, how: `submittal ${s.number} review due in the log`, source: "submittal" };
   }
 
   const within = WITHIN.exec(text);
@@ -71,8 +73,8 @@ export function parseDeadline(text: string, receivedAt: string, sor: Sor): Deadl
     const n = Number(within[1]);
     const business = (within[2] ?? "").trim() !== "" && !/calendar/i.test(within[2] ?? "");
     return business
-      ? { date: addBusinessDays(received, n), how: `${n} business days from ${received}` }
-      : { date: addDays(received, n), how: `${n} days from ${received}` };
+      ? { date: addBusinessDays(received, n), how: `${n} business days from ${received}`, source: "window" }
+      : { date: addDays(received, n), how: `${n} days from ${received}`, source: "window" };
   }
 
   const dated = DATED.exec(text);
@@ -86,7 +88,7 @@ export function parseDeadline(text: string, receivedAt: string, sor: Sor): Deadl
         year += 1;
         date = `${year}${date.slice(4)}`;
       }
-      if (!Number.isNaN(Date.parse(date))) return { date, how: `stated as "${dated[0].trim()}"` };
+      if (!Number.isNaN(Date.parse(date))) return { date, how: `stated as "${dated[0].trim()}"`, source: "dated" };
     }
   }
 
@@ -95,7 +97,7 @@ export function parseDeadline(text: string, receivedAt: string, sor: Sor): Deadl
     const target = WEEKDAYS.indexOf(named[1].toLowerCase() as (typeof WEEKDAYS)[number]);
     let date = addDays(received, 1);
     while (weekday(date) !== target) date = addDays(date, 1);
-    return { date, how: `stated as "${named[0].trim()}", the next ${named[1]} after ${received}` };
+    return { date, how: `stated as "${named[0].trim()}", the next ${named[1]} after ${received}`, source: "dated" };
   }
 
   return null;

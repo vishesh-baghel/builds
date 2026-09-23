@@ -1,6 +1,8 @@
 import { days, first, INBOX_AS_OF, nice, when } from "./clock";
 import { probOf, type Thresholds } from "./policy";
 import { decidePlan, type Plan } from "./stages/decide";
+import { factsFor, type Facts } from "./stages/extract";
+import { assess } from "./triage";
 import type { Firm, Message, Priority } from "./types";
 
 /**
@@ -38,7 +40,9 @@ export interface SavingsRow {
 export interface Savings {
   readonly handToday: string;
   readonly siftToday: string;
+  /** Time saved across the whole message set shown, however many days it spans. */
   readonly savedToday: string;
+  /** Projections from the per-working-day rate, not from the whole set. */
   readonly savedWeek: string;
   readonly savedMonth: string;
   readonly rows: readonly SavingsRow[];
@@ -60,6 +64,15 @@ export interface VerdictLine {
   readonly kind: "alert" | "person" | "none";
 }
 
+/** What Sift did against the answer key, on the measured firm only. */
+export interface AnswerCheck {
+  readonly topics: boolean;
+  readonly route: boolean;
+  readonly priority: boolean;
+  readonly clock: boolean;
+  readonly labelled: { readonly topics: readonly string[]; readonly route: readonly string[]; readonly priority: Priority; readonly clocked: boolean };
+}
+
 export interface InboxRow {
   readonly id: string;
   readonly fromName: string;
@@ -76,6 +89,7 @@ export interface InboxRow {
   readonly foot: string;
   readonly note: string | null;
   readonly probs: readonly ProbBar[];
+  readonly check: AnswerCheck | null;
 }
 
 export interface DeadlineRow {
@@ -140,6 +154,13 @@ export interface NavCounts {
   readonly decide: number;
 }
 
+/** The working days (Monday to Friday) the message set spans, first to last received. */
+export interface Span {
+  readonly workingDays: number;
+  readonly from: string;
+  readonly to: string;
+}
+
 export interface View {
   readonly thresholds: Thresholds;
   readonly score: Score;
@@ -152,6 +173,7 @@ export interface View {
   readonly effects: readonly EffectRow[];
   readonly quietLine: string;
   readonly navCounts: NavCounts;
+  readonly span: Span;
 }
 
 const fmtMin = (seconds: number): string => {
@@ -159,7 +181,40 @@ const fmtMin = (seconds: number): string => {
   return m >= 60 ? `${Math.floor(m / 60)}h ${String(m % 60).padStart(2, "0")}m` : `${m} min`;
 };
 
+function spanOf(messages: readonly Message[]): Span {
+  const daysIn = messages.map((m) => m.received.slice(0, 10)).sort();
+  const from = daysIn[0] ?? INBOX_AS_OF;
+  const to = daysIn[daysIn.length - 1] ?? INBOX_AS_OF;
+  let working = 0;
+  for (let t = Date.parse(from); t <= Date.parse(to); t += 864e5) {
+    const wd = new Date(t).getUTCDay();
+    if (wd !== 0 && wd !== 6) working++;
+  }
+  return { workingDays: Math.max(1, working), from, to };
+}
+
+/** A distance to a deadline, in words. A date already behind the inbox reads as overdue, never negative. */
+const dueIn = (d: number): string => (d < 0 ? `${-d} ${-d === 1 ? "day" : "days"} overdue` : `${d} ${d === 1 ? "day" : "days"}`);
+
 const cap = (s: string): string => (s.length ? s.charAt(0).toUpperCase() + s.slice(1) : s);
+
+/**
+ * The joins and the date parse depend only on the message and the firm's records, never on the
+ * dial, so each is computed once per message and reused on every dial move.
+ */
+const factsCache = new WeakMap<Message, Facts>();
+const factsOf = (m: Message, firm: Firm): Facts | null => {
+  if (!firm.sor) return null;
+  let f = factsCache.get(m);
+  if (!f) {
+    f = factsFor(m, firm.sor);
+    factsCache.set(m, f);
+  }
+  return f;
+};
+
+const sameSet = (a: readonly string[], b: readonly string[]): boolean =>
+  a.length === b.length && [...a].sort().join("|") === [...b].sort().join("|");
 
 const PRIORITY_ORDER: readonly Priority[] = ["urgent", "high", "normal", "low"];
 const worst = (a: Priority, b: Priority): Priority =>
@@ -175,7 +230,14 @@ export function deriveView(
   const messages = firm.messages;
   const classes = firm.classes.map((c) => c[0]);
   const initials = new Map(firm.people.map((p) => [p.name, p.initials] as const));
-  const plans = new Map<string, Plan>(messages.map((m) => [m.id, decidePlan(m, firm, thresholds, asOf)]));
+  // The measured firm decides exactly as the scored pipeline does: code routing, priority and
+  // deadlines over its systems of record. The illustrative firms route from their fixture defaults.
+  const plans = new Map<string, Plan>(messages.map((m) => {
+    const facts = factsOf(m, firm);
+    return [m.id, firm.sor && facts
+      ? assess(firm, m, { scores: m.p, clock: m.clock }, facts, firm.sor, thresholds, asOf)
+      : decidePlan(m, firm, thresholds, asOf)];
+  }));
   const planOf = (id: string): Plan => {
     const p = plans.get(id);
     if (!p) throw new Error(`no plan for ${id}`);
@@ -207,7 +269,9 @@ export function deriveView(
   const recordN = messages.filter((m) => m.record).length;
   const handRead = messages.length * handSecs;
   const handLookup = recordN * lookupSecs;
-  const siftRead = 60;
+  // Sift still costs a person one glance at the sorted list per working day the set spans.
+  const span = spanOf(messages);
+  const siftRead = 60 * span.workingDays;
   const siftDecide = escalated * 45;
   const siftAlerts = alerts * 20;
   const handT = handRead + handLookup;
@@ -215,9 +279,9 @@ export function deriveView(
   const saved = Math.max(0, handT - siftT);
   const savings: Savings = {
     handToday: fmtMin(handT), siftToday: fmtMin(siftT), savedToday: fmtMin(saved),
-    savedWeek: fmtMin(saved * 5), savedMonth: fmtMin(saved * 21),
+    savedWeek: fmtMin((saved / span.workingDays) * 5), savedMonth: fmtMin((saved / span.workingDays) * 21),
     rows: [
-      { label: "Read and sort every message", sub: `${messages.length} messages at ${handSecs}s each by hand; one glance at the sorted list with Sift`, hand: fmtMin(handRead), sift: fmtMin(siftRead) },
+      { label: "Read and sort every message", sub: `${messages.length} messages at ${handSecs}s each by hand; with Sift, one glance at the sorted list on each of ${span.workingDays} working ${span.workingDays === 1 ? "day" : "days"}`, hand: fmtMin(handRead), sift: fmtMin(siftRead) },
       { label: `Look things up in ${firm.sourcesShort}`, sub: `${recordN} messages matched a record; Sift matched them in code`, hand: fmtMin(handLookup), sift: "0 min" },
       { label: "Decide the unclear ones", sub: `${escalated} items need a person's call, 45s each, reasons attached`, hand: "included", sift: fmtMin(siftDecide) },
       { label: "Deadline alerts", sub: `${alerts} ${alerts === 1 ? "alert" : "alerts"} to ${firm.owner}, 20s each to acknowledge`, hand: "not by hand", sift: fmtMin(siftAlerts) },
@@ -225,15 +289,25 @@ export function deriveView(
   };
 
   // --- inbox rows (with the nine probability bars) ---
-  const bandOf = (v: number): "act" | "review" | "off" => (v >= thresholds.act ? "act" : v >= thresholds.review ? "review" : "off");
-  const inboxRows: InboxRow[] = messages.map((m) => {
+  const actFor = (c: string): number => thresholds.actByClass?.[c] ?? thresholds.act;
+  const bandOf = (c: string, v: number): "act" | "review" | "off" => (v >= actFor(c) ? "act" : v >= thresholds.review ? "review" : "off");
+  const newestFirst = [...messages].sort((a, b) => b.received.localeCompare(a.received));
+  const inboxRows: InboxRow[] = newestFirst.map((m) => {
     const p = planOf(m.id);
     const probs: ProbBar[] = firm.classes.map(([c, q]) => {
       const v = probOf(m, c);
-      return { question: q, value: v, band: bandOf(v), markPct: thresholds.act * 100, isClock: false };
+      return { question: q, value: v, band: bandOf(c, v), markPct: actFor(c) * 100, isClock: false };
     });
-    const cf = m.clock >= thresholds.clockAct || m.corroborated === true;
-    probs.push({ question: "Is a deadline running?", value: m.clock, band: cf ? "act" : "off", markPct: thresholds.clockAct * 100, isClock: true });
+    // The clock bar shows whether the alert fired, which on the measured firm includes corroboration
+    // by the logs and the date parse, not only the bar's own value.
+    probs.push({ question: "Is a deadline running?", value: m.clock, band: p.clockFlagged ? "act" : "off", markPct: thresholds.clockAct * 100, isClock: true });
+    const check: AnswerCheck | null = m.label ? {
+      topics: sameSet(p.asserted, m.label.topics),
+      route: sameSet(p.people, m.label.route),
+      priority: p.priority === m.label.priority,
+      clock: p.clockFlagged === (m.clocked === true),
+      labelled: { ...m.label, clocked: m.clocked === true },
+    } : null;
 
     const verdictLines: VerdictLine[] = [
       ...(p.alert ? [{ initials: initials.get(firm.owner) ?? "", who: p.alert.who, why: p.alert.why, kind: "alert" as const }] : []),
@@ -249,7 +323,7 @@ export function deriveView(
       id: m.id, fromName: m.from, fromEmail: m.email, subject: m.subject, body: m.body,
       received: m.received, when: when(m.received, asOf), routeShort: p.routeShort,
       priority: p.priority, clockFlagged: p.clockFlagged, headline: p.headline,
-      verdictLines, foot: p.foot, note: m.note ?? null, probs,
+      verdictLines, foot: p.foot, note: m.note ?? null, probs, check,
     };
   });
 
@@ -266,15 +340,20 @@ export function deriveView(
     const state: DeadlineRow["state"] = p.clockFlagged ? (m.clocked ? "caught" : "false alarm") : "missed";
     const owner = p.routed[0]?.who ?? firm.owner;
     return {
-      id: m.id, date: nice(dl), days: `${d} days`, subject: m.subject, kind: m.kind ?? "Deadline",
-      owner, widthPct: (Math.min(d, SPAN) / SPAN) * 100, state,
+      id: m.id, date: nice(dl), days: dueIn(d), subject: m.subject, kind: m.kind ?? "Deadline",
+      owner, widthPct: (Math.max(0, Math.min(d, SPAN)) / SPAN) * 100, state,
       urgency: d <= 7 ? "urgent" : d <= 14 ? "soon" : "later", hasDate: true,
     };
   });
-  for (const m of messages.filter((m) => m.deadline == null && planOf(m.id).clockFlagged)) {
+  // Undated clocks: one that fired needs a person to set its date; one that should have fired and
+  // did not is listed as missed, because a miss hidden from this page is the costliest kind.
+  for (const m of messages.filter((m) => m.deadline == null && (planOf(m.id).clockFlagged || m.clocked === true))) {
+    const flagged = planOf(m.id).clockFlagged;
     deadlines.push({
       id: m.id, date: "no date", days: "", subject: m.subject, kind: m.kind ?? "Deadline",
-      owner: `${firm.owner} sets it`, widthPct: 0, state: "needs a person", urgency: "none", hasDate: false,
+      owner: `${firm.owner} sets it`, widthPct: 0,
+      state: flagged ? (m.clocked === false ? "false alarm" : "needs a person") : "missed",
+      urgency: "none", hasDate: false,
     });
   }
 
@@ -325,7 +404,7 @@ export function deriveView(
       return {
         id: m.id, subject: m.subject, isAlert: p.alert != null, priority: p.priority,
         line: `${p.routeShort}${m.kind ? ` · ${m.kind}` : ""}`,
-        due: m.deadline != null ? `${nice(m.deadline)} · ${d}d` : p.alert != null ? "no date" : "",
+        due: m.deadline != null && d != null ? (d < 0 ? `${nice(m.deadline)} · overdue` : `${nice(m.deadline)} · ${d}d`) : p.alert != null ? "no date" : "",
         dueSoon: d != null && d <= 7,
       };
     });
@@ -346,6 +425,7 @@ export function deriveView(
   return {
     thresholds, score, savings, inboxRows, deadlines, lanes, decisions, attention, effects, quietLine,
     navCounts: { inbox: messages.length, deadlines: deadlines.length, decide: decisions.length },
+    span,
   };
 }
 

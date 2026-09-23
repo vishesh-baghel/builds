@@ -1,7 +1,7 @@
 "use client";
 
 import { useMemo, useState, type CSSProperties } from "react";
-import { linesFor } from "../src/policy";
+import { linesFor, type Thresholds } from "../src/policy";
 import { deriveView } from "../src/view";
 import type { Firm, Priority } from "../src/types";
 import { ReadView, priColor } from "./ReadView";
@@ -14,7 +14,10 @@ import { ReadView, priColor } from "./ReadView";
  * the headless pipeline calls. There is no network on the client and no model call when the dial
  * moves: the judgment is bought once per message on the deploy, and this re-decides over it for free.
  *
- * Every probability shown is illustrative until the live deploy, which is stated in the sidebar.
+ * Meridian is the measured firm: recorded model judgments over the frozen instrument, opened at the
+ * lines the sweep chose so its numbers match the published scorecard. Moving the dial leaves that
+ * setting, and the Measured preset returns to it. The other six firms are illustrative, and the
+ * sidebar says which is which.
  */
 
 type PageId = "overview" | "inbox" | "deadlines" | "people" | "decide" | "autonomy" | "savings" | "how";
@@ -44,30 +47,33 @@ const h2mono: CSSProperties = { margin: 0, fontFamily: "var(--font-mono)", fontS
 const card: CSSProperties = { border: "1px solid var(--color-rule)", borderRadius: "var(--radius-lg)", padding: "1.125rem 1.25rem" };
 const bigNum: CSSProperties = { marginTop: ".375rem", fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "2.25rem", letterSpacing: "-.03em", lineHeight: 1, fontVariantNumeric: "tabular-nums" };
 
-export function Dashboard({ firms }: { firms: readonly Firm[] }) {
+export function Dashboard({ firms, measuredLines }: { firms: readonly Firm[]; measuredLines: Thresholds }) {
   const [firmId, setFirmId] = useState(firms[0]?.id ?? "arch");
   const [page, setPage] = useState<PageId>("overview");
-  const [dial, setDial] = useState(0.6);
+  const [dial, setDialState] = useState(0.6);
+  const [atMeasured, setAtMeasured] = useState(true);
+  const setDial = (n: number) => { setDialState(n); setAtMeasured(false); };
   const [openId, setOpenId] = useState<string | null>(null);
   const [handSecs, setHandSecs] = useState(90);
   const [lookupSecs, setLookupSecs] = useState(120);
 
   const firm = useMemo(() => firms.find((f) => f.id === firmId) ?? firms[0]!, [firms, firmId]);
-  const th = useMemo(() => linesFor(dial), [dial]);
+  const measuring = firm.measured !== undefined && atMeasured;
+  const th = useMemo(() => (measuring ? measuredLines : linesFor(dial)), [measuring, measuredLines, dial]);
   const view = useMemo(() => deriveView(firm, th, handSecs, lookupSecs), [firm, th, handSecs, lookupSecs]);
 
   const open = (id: string) => { setPage("inbox"); setOpenId(id); };
-  const dialLabel = dial <= 0.01 ? "check everything" : dial >= 0.99 ? "hands off" : `${Math.round(dial * 100)}%`;
+  const dialLabel = measuring ? "measured setting" : dial <= 0.01 ? "check everything" : dial >= 0.99 ? "hands off" : `${Math.round(dial * 100)}%`;
   const counts: Record<string, number | undefined> = { inbox: view.navCounts.inbox, deadlines: view.navCounts.deadlines, decide: view.navCounts.decide };
 
   const TITLES: Record<PageId, readonly [string, string]> = {
-    overview: [`Monday morning at ${firm.firm}`, `${firm.messages.length} messages arrived overnight. Sorted at the current autonomy setting.`],
+    overview: [`Monday morning at ${firm.firm}`, `${firm.messages.length} messages from ${view.span.workingDays} working ${view.span.workingDays === 1 ? "day" : "days"} in the shared inbox. Sorted at ${measuring ? "the measured setting" : "the current autonomy setting"}.`],
     inbox: ["Inbox", "As it arrived, newest first. Click a row to see what Sift did and why."],
-    deadlines: ["Deadlines", "Every clock Sift found in this morning's mail, and the ones it did not."],
+    deadlines: ["Deadlines", "Every clock Sift found in this inbox, and the ones it did not."],
     people: ["People", "One lane per person. A message with two topics appears in two lanes."],
     decide: ["Needs a decision", "Where Sift was not sure enough to act. Reasons attached."],
     autonomy: ["Autonomy", "One slider sets how much Sift does before asking."],
-    savings: ["Savings", "Time and effort this morning, by hand versus with Sift."],
+    savings: ["Savings", `Time and effort on this inbox, by hand versus with Sift, over ${view.span.workingDays} working ${view.span.workingDays === 1 ? "day" : "days"}.`],
     how: ["How it works", `The same system, reading ${firm.firm}'s mail.`],
   };
 
@@ -90,7 +96,7 @@ export function Dashboard({ firms }: { firms: readonly Firm[] }) {
             style={{ appearance: "none", width: "100%", minHeight: 38, padding: "0 2rem 0 .625rem", border: "1px solid var(--color-rule-2)", borderRadius: "var(--radius-md)", background: "var(--color-paper)", color: "var(--color-ink)", font: "inherit", fontSize: ".875rem", fontWeight: 500, cursor: "pointer" }}>
             {firms.map((f) => <option key={f.id} value={f.id}>{f.label}</option>)}
           </select>
-          <p style={{ margin: ".375rem 0 0", fontSize: ".75rem", color: "var(--color-ink-3)", lineHeight: 1.4 }}>{firm.firm} · {firm.messages.length} messages this morning</p>
+          <p style={{ margin: ".375rem 0 0", fontSize: ".75rem", color: "var(--color-ink-3)", lineHeight: 1.4 }}>{firm.firm} · {firm.messages.length} messages over {view.span.workingDays} working {view.span.workingDays === 1 ? "day" : "days"}</p>
         </div>
         <nav aria-label="Sections" style={{ padding: "0 .625rem", display: "flex", flexDirection: "column", gap: 2 }}>
           {NAV.map(([id, label]) => {
@@ -111,7 +117,7 @@ export function Dashboard({ firms }: { firms: readonly Firm[] }) {
             <span style={{ fontFamily: "var(--font-mono)", fontSize: ".6875rem", color: "var(--color-accent)" }}>{dialLabel}</span>
           </div>
           {dialInput("dial")}
-          <p style={{ margin: ".75rem 0 0", fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: ".07em", textTransform: "uppercase", color: "var(--color-warn)" }}>synthetic data · probabilities illustrative · nothing is sent</p>
+          <p style={{ margin: ".75rem 0 0", fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: ".07em", textTransform: "uppercase", color: "var(--color-warn)" }}>{firm.measured ? `synthetic data · recorded model judgments, ${firm.measured.runDate} · nothing is sent` : "synthetic data · probabilities illustrative · nothing is sent"}</p>
         </div>
       </aside>
 
@@ -122,11 +128,11 @@ export function Dashboard({ firms }: { firms: readonly Firm[] }) {
         </header>
 
         {page === "overview" && <Overview view={view} firm={firm} open={open} setPage={setPage} />}
-        {page === "inbox" && <Inbox view={view} openId={openId} setOpenId={setOpenId} />}
+        {page === "inbox" && <Inbox view={view} firm={firm} openId={openId} setOpenId={setOpenId} />}
         {page === "deadlines" && <Deadlines view={view} open={open} />}
         {page === "people" && <People view={view} open={open} />}
         {page === "decide" && <Decide view={view} open={open} />}
-        {page === "autonomy" && <Autonomy view={view} firm={firm} dial={dial} setDial={setDial} dialLabel={dialLabel} dialInput={dialInput} />}
+        {page === "autonomy" && <Autonomy view={view} firm={firm} setDial={setDial} dialLabel={dialLabel} dialInput={dialInput} measuring={measuring} toMeasured={() => setAtMeasured(true)} />}
         {page === "savings" && <Savings view={view} firm={firm} handSecs={handSecs} setHandSecs={setHandSecs} lookupSecs={lookupSecs} setLookupSecs={setLookupSecs} />}
         {page === "how" && <How firm={firm} />}
       </main>
@@ -147,7 +153,7 @@ function Overview({ view, firm, open, setPage }: { view: V; firm: Firm; open: (i
     <>
       <div style={{ display: "grid", gap: "1rem", gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,12rem),1fr))" }}>
         <div style={{ ...card, background: "var(--color-graphite)", color: "var(--color-on-graphite)" }}>
-          <div style={mono({ color: "var(--color-on-graphite-2)" })}>time back this morning</div>
+          <div style={mono({ color: "var(--color-on-graphite-2)" })}>time back on this inbox (estimate)</div>
           <div style={{ ...bigNum, color: "var(--color-accent-ink)" }}>{sav.savedToday}</div>
           <p style={{ margin: ".5rem 0 0", fontSize: ".8125rem", color: "var(--color-on-graphite)" }}>{sav.handToday} by hand, {sav.siftToday} with Sift. <button type="button" onClick={() => setPage("savings")} style={{ border: 0, background: "transparent", padding: 0, font: "inherit", fontSize: ".8125rem", color: "var(--color-graphite-accent)", cursor: "pointer", textDecoration: "underline" }}>How this is counted</button></p>
         </div>
@@ -201,30 +207,42 @@ function Overview({ view, firm, open, setPage }: { view: V; firm: Firm; open: (i
   );
 }
 
-function Inbox({ view, openId, setOpenId }: { view: V; openId: string | null; setOpenId: (id: string | null) => void }) {
+function Inbox({ view, firm, openId, setOpenId }: { view: V; firm: Firm; openId: string | null; setOpenId: (id: string | null) => void }) {
+  const [onlyDiff, setOnlyDiff] = useState(false);
+  const checked = view.inboxRows.filter((r) => r.check !== null);
+  const differs = (r: V["inboxRows"][number]) => r.check !== null && !(r.check.topics && r.check.route && r.check.priority && r.check.clock);
+  const diffCount = checked.filter(differs).length;
+  const rows = onlyDiff ? view.inboxRows.filter(differs) : view.inboxRows;
   return (
     <>
+      {checked.length > 0 && (
+        <label style={{ display: "flex", alignItems: "center", gap: ".5rem", margin: "0 0 .75rem", fontSize: ".8125rem", color: "var(--color-ink-2)", cursor: "pointer" }}>
+          <input type="checkbox" checked={onlyDiff} onChange={(e) => setOnlyDiff(e.target.checked)} style={{ accentColor: "var(--color-accent)" }} />
+          Show only where Sift and the answer key differ ({diffCount} of {checked.length} at this setting)
+        </label>
+      )}
       <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1.1fr) minmax(0,2fr) minmax(0,1.3fr) 5.5rem 6rem", gap: ".75rem", padding: "0 .75rem .5rem", borderBottom: "1px solid var(--color-rule-2)", ...mono() }}>
         <span>from</span><span>subject</span><span>goes to</span><span>priority</span><span style={{ textAlign: "right" }}>received</span>
       </div>
       <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
-        {view.inboxRows.map((m) => {
+        {rows.map((m) => {
           const isOpen = openId === m.id;
           return (
             <li key={m.id} style={{ borderBottom: "1px solid var(--color-rule)" }}>
               <button type="button" onClick={() => setOpenId(isOpen ? null : m.id)} aria-expanded={isOpen}
-                style={{ display: "grid", gridTemplateColumns: "minmax(0,1.1fr) minmax(0,2fr) minmax(0,1.3fr) 5.5rem 6rem", gap: ".75rem", alignItems: "baseline", width: "100%", textAlign: "left", border: 0, cursor: "pointer", padding: ".75rem .75rem", borderLeft: `3px solid ${isOpen ? "var(--color-accent)" : "transparent"}`, background: isOpen ? "var(--color-accent-soft)" : "transparent", font: "inherit", minHeight: 48 }}>
+                style={{ display: "grid", gridTemplateColumns: "minmax(0,1.1fr) minmax(0,2fr) minmax(0,1.3fr) 5.5rem 6rem", gap: ".75rem", alignItems: "baseline", width: "100%", textAlign: "left", border: 0, cursor: "pointer", padding: ".75rem .75rem", borderLeft: `3px solid ${isOpen ? "var(--color-accent)" : differs(m) ? "var(--color-warn)" : "transparent"}`, background: isOpen ? "var(--color-accent-soft)" : "transparent", font: "inherit", minHeight: 48 }}>
                 <span style={{ fontSize: ".875rem", color: "var(--color-ink-2)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", minWidth: 0 }}>{m.fromName}</span>
                 <span style={{ minWidth: 0, fontSize: ".9375rem", color: "var(--color-ink)", fontWeight: 500, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{m.subject}</span>
                 <span style={{ fontSize: ".8125rem", color: "var(--color-ink-2)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", minWidth: 0 }}>{m.routeShort}</span>
                 <span style={{ fontFamily: "var(--font-mono)", fontSize: ".625rem", letterSpacing: ".05em", textTransform: "uppercase", color: m.clockFlagged ? "var(--color-neg)" : m.priority ? priColor(m.priority) : "var(--color-warn)", whiteSpace: "nowrap" }}>{m.clockFlagged ? `clock ${m.priority ? PRI[m.priority] : ""}` : m.priority ? PRI[m.priority] : "person"}</span>
                 <span style={{ textAlign: "right", fontFamily: "var(--font-mono)", fontSize: ".6875rem", color: "var(--color-ink-3)", whiteSpace: "nowrap" }}>{m.when}</span>
               </button>
-              {isOpen && <ReadView row={m} />}
+              {isOpen && <ReadView row={m} measured={firm.measured ?? null} />}
             </li>
           );
         })}
       </ul>
+      {onlyDiff && rows.length === 0 && <p style={{ margin: "1rem 0 0", color: "var(--color-ink-3)" }}>Every message matches its answer key at this setting.</p>}
     </>
   );
 }
@@ -267,7 +285,7 @@ function People({ view, open }: { view: V; open: (id: string) => void }) {
                 </button></li>
               ))}
             </ul>
-            {l.empty && <p style={{ margin: ".75rem 0 0", fontSize: ".875rem", color: "var(--color-ink-3)" }}>Nothing this morning.</p>}
+            {l.empty && <p style={{ margin: ".75rem 0 0", fontSize: ".875rem", color: "var(--color-ink-3)" }}>Nothing in this inbox.</p>}
           </div>
         ))}
       </div>
@@ -294,7 +312,7 @@ function Decide({ view, open }: { view: V; open: (id: string) => void }) {
   );
 }
 
-function Autonomy({ view, firm, dial, setDial, dialLabel, dialInput }: { view: V; firm: Firm; dial: number; setDial: (n: number) => void; dialLabel: string; dialInput: (id: string) => React.ReactNode }) {
+function Autonomy({ view, firm, setDial, dialLabel, dialInput, measuring, toMeasured }: { view: V; firm: Firm; setDial: (n: number) => void; dialLabel: string; dialInput: (id: string) => React.ReactNode; measuring: boolean; toMeasured: () => void }) {
   const th = view.thresholds;
   const preset = (label: string, value: number) => (
     <button type="button" onClick={() => setDial(value)} style={{ minHeight: 32, padding: "0 .75rem", borderRadius: "var(--radius-md)", border: "1px solid var(--color-rule-2)", background: "var(--color-paper)", font: "inherit", fontSize: ".8125rem", cursor: "pointer", color: "var(--color-ink-2)" }}>{label}</button>
@@ -305,7 +323,11 @@ function Autonomy({ view, firm, dial, setDial, dialLabel, dialInput }: { view: V
         <div style={{ display: "flex", justifyContent: "space-between", gap: "1rem", alignItems: "baseline" }}><label htmlFor="dial2" style={{ fontWeight: 500, color: "var(--color-ink)" }}>How much should Sift do on its own?</label><span style={{ fontFamily: "var(--font-mono)", fontSize: ".75rem", color: "var(--color-accent)" }}>{dialLabel}</span></div>
         {dialInput("dial2")}
         <div style={{ display: "flex", justifyContent: "space-between", fontSize: ".75rem", color: "var(--color-ink-3)", marginTop: ".125rem" }}><span>Check almost everything with me</span><span>Handle it</span></div>
-        <div style={{ display: "flex", gap: ".5rem", marginTop: "1rem", flexWrap: "wrap" }}>{preset("Cautious", 0.15)}{preset("Default", 0.6)}{preset("Hands off", 0.95)}</div>
+        <div style={{ display: "flex", gap: ".5rem", marginTop: "1rem", flexWrap: "wrap" }}>
+          {firm.measured && <button type="button" onClick={toMeasured} aria-pressed={measuring} style={{ minHeight: 32, padding: "0 .75rem", borderRadius: "var(--radius-md)", border: `1px solid ${measuring ? "var(--color-accent)" : "var(--color-rule-2)"}`, background: measuring ? "var(--color-accent-soft)" : "var(--color-paper)", font: "inherit", fontSize: ".8125rem", cursor: "pointer", color: measuring ? "var(--color-accent)" : "var(--color-ink-2)" }}>Measured</button>}
+          {preset("Cautious", 0.15)}{preset("Default", 0.6)}{preset("Hands off", 0.95)}
+        </div>
+        {firm.measured && <p style={{ margin: ".625rem 0 0", fontSize: ".75rem", color: "var(--color-ink-3)" }}>{measuring ? "These are the lines the sweep chose on the ordinary subset; every number on this page matches the published scorecard." : "Off the measured setting: the numbers on this page are what this setting would do, not the published figures."}</p>}
         <ul style={{ listStyle: "none", margin: "1.25rem 0 0", padding: ".875rem 0 0", borderTop: "1px solid var(--color-rule)", display: "flex", flexDirection: "column", gap: ".375rem", fontSize: ".875rem" }}>
           <li style={{ display: "flex", gap: ".75rem" }}><span style={{ flex: "none", minWidth: "6.5rem", fontFamily: "var(--font-mono)", fontSize: ".75rem", color: "var(--color-ink)" }}>{th.act.toFixed(2)} and up</span><span>Sift acts: routes and labels on its own</span></li>
           <li style={{ display: "flex", gap: ".75rem" }}><span style={{ flex: "none", minWidth: "6.5rem", fontFamily: "var(--font-mono)", fontSize: ".75rem", color: "var(--color-ink)" }}>{th.review.toFixed(2)} to {th.act.toFixed(2)}</span><span>Sift asks a person, does nothing</span></li>
@@ -338,7 +360,7 @@ function Savings({ view, firm, handSecs, setHandSecs, lookupSecs, setLookupSecs 
   return (
     <div style={{ display: "grid", gap: "1.5rem 2.5rem", gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,20rem),1fr))", alignItems: "start" }}>
       <div>
-        <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 6rem 6rem", gap: ".75rem", padding: "0 .25rem .5rem", borderBottom: "1px solid var(--color-rule-2)", ...mono() }}><span>this morning</span><span style={{ textAlign: "right" }}>by hand</span><span style={{ textAlign: "right" }}>with sift</span></div>
+        <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 6rem 6rem", gap: ".75rem", padding: "0 .25rem .5rem", borderBottom: "1px solid var(--color-rule-2)", ...mono() }}><span>this inbox</span><span style={{ textAlign: "right" }}>by hand</span><span style={{ textAlign: "right" }}>with sift</span></div>
         <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
           {sav.rows.map((r, i) => (
             <li key={i} style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 6rem 6rem", gap: ".75rem", padding: ".625rem .25rem", borderBottom: "1px solid var(--color-rule)", alignItems: "baseline" }}>
@@ -354,7 +376,7 @@ function Savings({ view, firm, handSecs, setHandSecs, lookupSecs, setLookupSecs 
           </li>
         </ul>
         <div style={{ marginTop: "1.5rem", display: "grid", gap: "1rem", gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,8rem),1fr))" }}>
-          <div><div style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "1.75rem", letterSpacing: "-.03em", lineHeight: 1, color: "var(--color-accent)", fontVariantNumeric: "tabular-nums" }}>{sav.savedToday}</div><p style={{ margin: ".25rem 0 0", fontSize: ".8125rem", color: "var(--color-ink-3)" }}>back today</p></div>
+          <div><div style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "1.75rem", letterSpacing: "-.03em", lineHeight: 1, color: "var(--color-accent)", fontVariantNumeric: "tabular-nums" }}>{sav.savedToday}</div><p style={{ margin: ".25rem 0 0", fontSize: ".8125rem", color: "var(--color-ink-3)" }}>back on these {firm.messages.length} messages</p></div>
           <div><div style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "1.75rem", letterSpacing: "-.03em", lineHeight: 1, color: "var(--color-ink)", fontVariantNumeric: "tabular-nums" }}>{sav.savedWeek}</div><p style={{ margin: ".25rem 0 0", fontSize: ".8125rem", color: "var(--color-ink-3)" }}>a week, at this volume</p></div>
           <div><div style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "1.75rem", letterSpacing: "-.03em", lineHeight: 1, color: "var(--color-ink)", fontVariantNumeric: "tabular-nums" }}>{sav.savedMonth}</div><p style={{ margin: ".25rem 0 0", fontSize: ".8125rem", color: "var(--color-ink-3)" }}>a month, 21 working days</p></div>
         </div>
@@ -366,7 +388,7 @@ function Savings({ view, firm, handSecs, setHandSecs, lookupSecs, setLookupSecs 
         <ul style={{ margin: "1.25rem 0 0", padding: ".875rem 0 0 1.1rem", borderTop: "1px solid var(--color-rule)", fontSize: ".8125rem", color: "var(--color-ink-2)", display: "flex", flexDirection: "column", gap: ".375rem" }}>
           <li>With Sift, a person still spends 45 seconds on each item that needs a decision and 20 seconds on each deadline alert, plus a minute glancing over the sorted list.</li>
           <li>Deadlines are not priced. One missed {firm.clockExample} costs more than every morning sort in a year, so that column is shown as a count, not a number.</li>
-          <li>No before/after claim is made. This is arithmetic on today's {firm.messages.length} invented messages at the current autonomy setting, and the two rates above are estimates.</li>
+          <li>No before/after claim is made. This is arithmetic on these {firm.messages.length} invented messages, spread over {view.span.workingDays} working days, at the current setting; the weekly and monthly figures scale the per-day rate, and the two rates above are estimates.</li>
         </ul>
       </div>
     </div>

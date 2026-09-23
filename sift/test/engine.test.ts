@@ -14,7 +14,7 @@ const message = (over: Partial<Message>): Message => ({
 describe("priority is computed in code from the schedule (AC #6)", () => {
   const asOf = "2026-09-21";
   const facts = (project: keyof typeof PROJECTS, deadline: string): Facts => ({
-    project: PROJECTS[project] ?? null, deadline: { date: deadline, how: "test" }, inLog: true, logged: true, repeat: false,
+    project: PROJECTS[project] ?? null, deadline: { date: deadline, how: "test", source: "rfi" }, inLog: true, logged: true, repeat: false,
   });
 
   it("is urgent when the project's next activity waits on this kind of item and lands inside the window", () => {

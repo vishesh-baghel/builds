@@ -18,7 +18,7 @@ import type { Firm, Message } from "./types";
  * into the decision that is being measured.
  */
 export function assess(
-  firm: Firm, message: Message, judgment: Judgment, facts: Facts, sor: Sor, thresholds: Thresholds, asOf: string,
+  firm: Firm, message: Message, judgment: Pick<Judgment, "scores" | "clock">, facts: Facts, sor: Sor, thresholds: Thresholds, asOf: string,
 ): Plan {
   const actFor = (c: string): number => thresholds.actByClass?.[c] ?? thresholds.act;
   // A date in a pitch, in team mail or on a bill is somebody's calendar, not a response clock.

@@ -8,6 +8,8 @@
  * two topics on one message survive `runPipeline`'s `new Set(decision.actions)` dedupe.
  */
 
+import type { Sor } from "./fixtures/schema";
+
 export type Priority = "urgent" | "high" | "normal" | "low";
 
 /** Most urgent first, so a lower index wins a tie. */
@@ -63,6 +65,11 @@ export interface Message {
   /** Per-topic routing overrides; where absent the firm's `defaults[topic]` is used. */
   readonly routes?: Readonly<Record<string, Route>>;
   readonly note?: string;
+  /**
+   * The answer key, on the measured firm only. Shown beside what Sift did so a reader can check it;
+   * never an input to a decision (`assess` drops it before deciding).
+   */
+  readonly label?: { readonly topics: readonly string[]; readonly route: readonly string[]; readonly priority: Priority };
 }
 
 export interface Firm {
@@ -77,6 +84,13 @@ export interface Firm {
   readonly classes: readonly TopicClassDef[];
   readonly defaults: Readonly<Record<string, Route>>;
   readonly messages: readonly Message[];
+  /**
+   * The firm's systems of record. Present only on the measured firm: its routing, priority and
+   * deadlines are then code over these, exactly as in the scored pipeline, and its probabilities are
+   * recorded model judgments rather than illustrative ones.
+   */
+  readonly sor?: Sor;
+  readonly measured?: { readonly runDate: string; readonly model: string };
 }
 
 /**

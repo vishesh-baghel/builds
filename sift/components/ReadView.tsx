@@ -33,7 +33,12 @@ const cardStyle: CSSProperties = {
   background: "var(--color-graphite)", color: "var(--color-on-graphite)",
 };
 
-export function ReadView({ row }: { row: InboxRow }) {
+const mark = (ok: boolean, what: string) => (
+  <span aria-label={`${what} ${ok ? "matches" : "differs"}`} style={{ fontFamily: "var(--font-mono)", fontSize: ".625rem", letterSpacing: ".06em", textTransform: "uppercase", padding: "1px 6px", borderRadius: 3, border: "1px solid currentColor", color: ok ? "var(--color-pos)" : "var(--color-neg)" }}>{what} {ok ? "ok" : "off"}</span>
+);
+
+export function ReadView({ row, measured = null }: { row: InboxRow; measured?: { runDate: string; model: string } | null }) {
+  const c = row.check;
   return (
     <div style={{ padding: ".5rem 1rem 1.5rem 1.25rem", borderLeft: "3px solid var(--color-accent)", background: "var(--color-paper)" }}>
       <div style={{ display: "grid", gap: "1.5rem 2.5rem", gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,20rem),1fr))", alignItems: "start" }}>
@@ -81,7 +86,24 @@ export function ReadView({ row }: { row: InboxRow }) {
           </div>
         ))}
       </div>
-      <p style={{ margin: ".625rem 0 0", fontSize: ".75rem", color: "var(--color-ink-3)" }}>Nine yes/no questions, asked once. The mark on each bar is the current line from the autonomy slider.</p>
+      <p style={{ margin: ".625rem 0 0", fontSize: ".75rem", color: "var(--color-ink-3)" }}>
+        {measured
+          ? `Nine yes/no questions, asked once, recorded from the live run on ${measured.runDate} (${measured.model}). These are the model's raw judgments, not calibrated frequencies. The mark on each bar is the current line.`
+          : "Nine yes/no questions, asked once. These probabilities are illustrative, not from a live run. The mark on each bar is the current line from the autonomy slider."}
+      </p>
+      {c && (
+        <div style={{ marginTop: ".875rem", paddingTop: ".75rem", borderTop: "1px solid var(--color-rule)" }}>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: ".375rem", alignItems: "center" }}>
+            <span style={{ fontSize: ".75rem", color: "var(--color-ink-2)", marginRight: ".25rem" }}>Against the answer key</span>
+            {mark(c.topics, "topics")}{mark(c.route, "route")}{mark(c.priority, "priority")}{mark(c.clock, "clock")}
+          </div>
+          {!(c.topics && c.route && c.priority && c.clock) && (
+            <p style={{ margin: ".375rem 0 0", fontSize: ".75rem", color: "var(--color-ink-3)" }}>
+              Labelled: {c.labelled.topics.join(" and ")}; reaches {c.labelled.route.length ? c.labelled.route.join(", ") : "no one"}; {c.labelled.priority}; {c.labelled.clocked ? "carries a clock" : "no clock"}.
+            </p>
+          )}
+        </div>
+      )}
     </div>
   );
 }
