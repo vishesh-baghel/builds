@@ -94,7 +94,7 @@ export function decidePlan(
     return p >= thresholds.review && p < actFor(c);
   });
 
-  const fallback: Route = { who: "?", priority: "normal", why: "Real, but none of the usual kinds." };
+  const fallback: Route = { who: "?", priority: "normal", why: "Needs attention, but fits none of the usual kinds." };
   const outcomes: Outcome[] = asserted.map((c) => {
     const r = opts.routeOf?.(c) ?? message.routes?.[c] ?? firm.defaults[c] ?? fallback;
     const who = r.who;
@@ -109,7 +109,7 @@ export function decidePlan(
     clockFlagged = true;
     const how = corroborated
       ? "Confirmed against the records."
-      : `The deadline question alone was confident (${message.clock.toFixed(2)}).`;
+      : `Sift's deadline check was confident on its own (${message.clock.toFixed(2)}).`;
     if (message.deadline) {
       alert = {
         who: `${firm.owner}: deadline alert`,
@@ -119,7 +119,7 @@ export function decidePlan(
     } else {
       alert = {
         who: `${firm.owner}: set the deadline`,
-        why: "A clock is running but the message gives no date, and Sift never guesses one.",
+        why: "A deadline is running but the message gives no date, and Sift never guesses one.",
         needsDate: true,
       };
       handoffs.push("set the deadline by hand");

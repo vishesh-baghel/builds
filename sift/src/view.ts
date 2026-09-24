@@ -282,9 +282,9 @@ export function deriveView(
     savedWeek: fmtMin((saved / span.workingDays) * 5), savedMonth: fmtMin((saved / span.workingDays) * 21),
     rows: [
       { label: "Read and sort every message", sub: `${messages.length} messages at ${handSecs}s each by hand; with Sift, one glance at the sorted list on each of ${span.workingDays} working ${span.workingDays === 1 ? "day" : "days"}`, hand: fmtMin(handRead), sift: fmtMin(siftRead) },
-      { label: `Look things up in ${firm.sourcesShort}`, sub: `${recordN} messages matched a record; Sift matched them in code`, hand: fmtMin(handLookup), sift: "0 min" },
-      { label: "Decide the unclear ones", sub: `${escalated} items need a person's call, ${HUMAN_TIME_ESTIMATE.decideSecondsPerItem}s each, reasons attached`, hand: "included", sift: fmtMin(siftDecide) },
-      { label: "Deadline alerts", sub: `${alerts} ${alerts === 1 ? "alert" : "alerts"} to ${firm.owner}, ${HUMAN_TIME_ESTIMATE.acknowledgeSecondsPerAlert}s each to acknowledge`, hand: "not by hand", sift: fmtMin(siftAlerts) },
+      { label: `Look things up in ${firm.sourcesShort}`, sub: `${recordN} messages matched a record; Sift looks them up automatically`, hand: fmtMin(handLookup), sift: "0 min" },
+      { label: "Decide the unclear ones", sub: `${escalated} items need a person to decide, ${HUMAN_TIME_ESTIMATE.decideSecondsPerItem}s each, reason attached`, hand: "in the sort", sift: fmtMin(siftDecide) },
+      { label: "Deadline alerts", sub: `${alerts} ${alerts === 1 ? "alert" : "alerts"} to ${firm.owner}, ${HUMAN_TIME_ESTIMATE.acknowledgeSecondsPerAlert}s each to acknowledge`, hand: "none", sift: fmtMin(siftAlerts) },
     ],
   };
 
@@ -387,7 +387,7 @@ export function deriveView(
     return { name: person.name, role: person.role, initials: person.initials, count: items.length, items: items.map(({ rank: _rank, ...i }) => i), empty: items.length === 0, isDecideLane: false };
   });
   lanes.push({
-    name: "Someone decides", role: "not clear enough to act on", initials: "?",
+    name: "Needs a decision", role: "Sift was not sure; a person decides", initials: "?",
     count: decisions.length,
     items: decisions.map((d) => ({ id: d.id, subject: d.subject, priority: null, isAlert: false, unclear: true })),
     empty: decisions.length === 0, isDecideLane: true,
@@ -412,15 +412,15 @@ export function deriveView(
   // --- effects (Autonomy screen) ---
   const routesTotal = messages.reduce((s, m) => s + planOf(m.id).routed.length, 0);
   const effects: EffectRow[] = [
-    { n: automated, label: "messages sorted without a person", sub: "routed, labelled or left alone with no one asked", tone: "accent" },
-    { n: escalated, label: "need a person's call", sub: "below the act line, above the review line, or no date to set", tone: "warn" },
+    { n: automated, label: "messages sorted without a person", sub: "sent to the right person, or labelled and left alone, with no one asked", tone: "accent" },
+    { n: escalated, label: "need a person to decide", sub: "Sift was not sure enough, or a deadline has no date to set", tone: "warn" },
     { n: alerts, label: "deadline alerts", sub: `to ${firm.owner}; ${caught} of ${clockedN} real deadlines caught`, tone: "neg" },
     { n: falseAlarms, label: falseAlarms === 1 ? "false alarm" : "false alarms", sub: "a deadline flagged on a message that has none", tone: "ink" },
-    { n: routesTotal, label: "routes", sub: "a message with two topics reaches two people", tone: "ink" },
+    { n: routesTotal, label: "deliveries", sub: "a message about two things reaches two people", tone: "ink" },
   ];
 
   const quietN = messages.filter((m) => planOf(m.id).quiet).length;
-  const quietLine = `${quietN} ${quietN === 1 ? "message was" : "messages were"} labelled and left alone: pitches and internal mail. Nothing was deleted.`;
+  const quietLine = `${quietN} ${quietN === 1 ? "message was" : "messages were"} labelled and left alone because nobody needed them, such as sales pitches and internal mail. Nothing was deleted.`;
 
   return {
     thresholds, score, savings, inboxRows, deadlines, lanes, decisions, attention, effects, quietLine,
