@@ -209,7 +209,7 @@ function Overview({ view, firm, open, measuring }: { view: V; firm: Firm; open: 
   const s = view.score;
   return (
     <>
-      <p style={{ margin: "0 0 1.5rem", maxWidth: "68ch", color: "var(--color-ink-2)", lineHeight: 1.55 }}>
+      <p style={{ margin: "0 0 1.5rem", color: "var(--color-ink-2)", lineHeight: 1.55 }}>
         Sift reads a firm's shared inbox, checks each message against {firm.sourcesLong}, and sends it to the person who owns it.
         Every deadline goes to {firm.owner}, including the ones buried in routine-looking mail. Anything Sift is unsure about waits for a person, with the reason attached.
         It never sends email, never changes a record and never deletes anything.
