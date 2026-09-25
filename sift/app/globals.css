@@ -520,7 +520,9 @@ select option { color: var(--color-ink); background: var(--color-paper); }
 .savrow{display:grid;grid-template-columns:minmax(0,1fr) 6rem 6rem}
 
 @media (max-width: 47.99rem) {
-  .shell{grid-template-columns:minmax(0,1fr)}
+  /* Start-aligned rows: with min-height:100vh a short page would otherwise stretch every auto
+     row to fill the screen, and the bar would take the slack. */
+  .shell{grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr;align-content:start}
 
   .mbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:var(--space-sm);
     min-height:56px;padding:0 var(--space-md);border-bottom:var(--rule) solid var(--color-rule);
