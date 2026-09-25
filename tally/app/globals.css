@@ -17,6 +17,10 @@ button { font: inherit; }
   .tl-detail { border-left: 0 !important; padding-left: 0 !important; overflow: visible !important; }
 }
 
+/* The replay is designed for at least 820px of height. Shorter screens keep that layout and
+   scroll the page by hand; nothing on it moves or resizes by itself. */
+@media (min-width: 901px) and (max-height: 819px) { .rp-shell { height: 820px !important; } .rp-note { flex-basis: 42% !important; } .rp-decide-head { display: none !important; } }
+
 /* The replay is one fixed screen on desktop; on a phone it becomes a normal scrolling page. */
 @media (max-width: 900px) {
   .rp-shell { height: auto !important; overflow: visible !important; }
@@ -25,5 +29,8 @@ button { font: inherit; }
   .rp-head dl { justify-content: flex-start !important; flex-wrap: wrap; }
   .rp-stage { grid-template-columns: 1fr !important; }
   .rp-stage > div { border-left: 0 !important; padding-left: 0 !important; }
+  .rp-grid dl { grid-template-columns: repeat(2,minmax(0,1fr)) !important; }
   .rp-list { overflow: visible !important; }
+  .rp-note { flex: none !important; }
+  .rp-shell svg { flex: none !important; height: auto !important; }
 }
