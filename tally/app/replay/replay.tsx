@@ -110,34 +110,33 @@ export function Replay() {
         </dl>
       </header>
 
-      <section className="rp-stage" style={{ display: "grid", gridTemplateColumns: "minmax(0,5fr) minmax(0,7fr)", gap: "2rem", minHeight: 0 }}>
-        <article style={{ minWidth: 0, minHeight: 0, overflow: "hidden", display: "flex", flexDirection: "column", gap: "1rem" }}>
-          <div className="rp-note" style={{ flex: "0 0 52%", minHeight: 0, overflow: "hidden", maskImage: "linear-gradient(to bottom, #000 calc(100% - 1.25rem), transparent)", WebkitMaskImage: "linear-gradient(to bottom, #000 calc(100% - 1.25rem), transparent)" }}>
-          <div style={{ display: "flex", flexWrap: "wrap", gap: ".25rem 1rem", color: K.ink3, fontSize: ".8125rem", lineHeight: 1.4 }}>
-            <b style={{ color: K.ink2, fontWeight: 500 }}>{order.id}</b><span>{order.customer}</span><span>{order.technician}</span><span>{day(order.date)}</span><span>{order.equipment}</span>
-          </div>
-          <span style={{ ...eyebrow, display: "block", marginTop: "1rem" }}>What the technician wrote</span>
-          <p style={{ margin: ".625rem 0 0", padding: "0 0 0 1rem", borderLeft: `2px solid ${K.rule2}`, fontFamily: F.mono, fontSize: "clamp(.75rem, min(1.2vw, 2vh), 1.25rem)", lineHeight: 1.5, color: K.ink, whiteSpace: "pre-wrap" }}>
-            {noteSegments(order, statuses, cur.i)}
-          </p>
-          </div>
-          <JobGrid outcome={run.outcome} ids={run.ids} done={ordersDone} current={g < 0 ? -1 : cur.o} />
+      <section className="rp-stage" style={{ display: "grid", gridTemplateColumns: "minmax(0,11fr) minmax(0,9fr)", gap: "2rem", minHeight: 0 }}>
+        <JobGrid outcome={run.outcome} ids={run.ids} done={ordersDone} current={g < 0 ? -1 : cur.o} />
 
-        </article>
-
-        <div style={{ minWidth: 0, minHeight: 0, display: "flex", flexDirection: "column", borderLeft: `1px solid ${K.rule}`, paddingLeft: "1.5rem" }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: "1rem", paddingBottom: ".5rem", borderBottom: `1px solid ${K.rule}` }}>
-            <span style={eyebrow}>How Tally decided</span>
-            <span style={{ fontSize: ".75rem", color: K.ink3 }}>four checks on every piece of work</span>
+        <div className="rp-order" style={{ minWidth: 0, minHeight: 0, display: "flex", flexDirection: "column", gap: ".75rem", borderLeft: `1px solid ${K.rule}`, paddingLeft: "1.5rem" }}>
+          <div className="rp-note" style={{ flex: "0 0 38%", minHeight: 0, overflow: "hidden", maskImage: "linear-gradient(to bottom, #000 calc(100% - 1.25rem), transparent)", WebkitMaskImage: "linear-gradient(to bottom, #000 calc(100% - 1.25rem), transparent)" }}>
+            <div style={{ display: "flex", flexWrap: "wrap", gap: ".25rem 1rem", color: K.ink3, fontSize: ".8125rem", lineHeight: 1.4 }}>
+              <b style={{ color: K.ink2, fontWeight: 500 }}>{order.id}</b><span>{order.customer}</span><span>{order.technician}</span><span>{day(order.date)}</span><span>{order.equipment}</span>
+            </div>
+            <span style={{ ...eyebrow, display: "block", marginTop: ".625rem" }}>What the technician wrote</span>
+            <p style={{ margin: ".375rem 0 0", padding: "0 0 0 1rem", borderLeft: `2px solid ${K.rule2}`, fontFamily: F.mono, fontSize: "clamp(.75rem, min(1.05vw, 2vh), 1.25rem)", lineHeight: 1.5, color: K.ink, whiteSpace: "pre-wrap" }}>
+              {noteSegments(order, statuses, cur.i)}
+            </p>
           </div>
-          <ol className="rp-list" style={{ listStyle: "none", margin: 0, padding: 0, flex: "1 1 auto", minHeight: 0, overflow: "hidden", display: "grid", gridTemplateColumns: "minmax(0,1fr)", gridTemplateRows: `repeat(${SLOTS}, minmax(0,1fr))` }}>
-            {Array.from({ length: SLOTS }, (_, i) => {
-              const it = order.items[i];
-              return it
-                ? <Card key={it.id} it={it} n={i + 1} st={statuses[i]!} shown={revealed(i)} active={i === cur.i} fast={fast} order={order} data={data} />
-                : <li key={`empty${i}`} aria-hidden style={{ borderBottom: `1px solid transparent` }} />;
-            })}
-          </ol>
+          <div style={{ flex: "1 1 0", minHeight: 0, display: "flex", flexDirection: "column" }}>
+            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: "1rem", paddingBottom: ".375rem", borderBottom: `1px solid ${K.rule}` }}>
+              <span style={eyebrow}>How Tally decided</span>
+              <span style={{ fontSize: ".75rem", color: K.ink3 }}>four checks on every piece of work</span>
+            </div>
+            <ol className="rp-list" style={{ listStyle: "none", margin: 0, padding: 0, flex: "1 1 auto", minHeight: 0, overflow: "hidden", display: "grid", gridTemplateColumns: "minmax(0,1fr)", gridTemplateRows: `repeat(${SLOTS}, minmax(0,1fr))` }}>
+              {Array.from({ length: SLOTS }, (_, i) => {
+                const it = order.items[i];
+                return it
+                  ? <Card key={it.id} it={it} n={i + 1} st={statuses[i]!} shown={revealed(i)} active={i === cur.i} fast={fast} order={order} data={data} />
+                  : <li key={`empty${i}`} aria-hidden style={{ borderBottom: "1px solid transparent" }} />;
+              })}
+            </ol>
+          </div>
         </div>
       </section>
 
@@ -161,6 +160,17 @@ const OUTCOME: Record<Outcome, [string, string]> = {
   found: ["money found", K.accent], blocked: ["charge blocked", K.neg], person: ["your call", K.warn], clean: ["nothing missed", "oklch(78% .01 256)"],
 };
 const COLS = 40;
+const TILE: Record<Outcome, string> = { found: "jobs with money found", blocked: "jobs with a blocked charge", person: "jobs waiting for your call", clean: "jobs with nothing missed" };
+
+/** One job. Memoised, so a finished job repaints only its own dot, not all 1,000. */
+const Dot = memo(function Dot({ k, id, outcome, current }: { k: number; id: string; outcome: Outcome | null; current: boolean }) {
+  return (
+    <circle cx={(k % COLS) * 10 + 5} cy={Math.floor(k / COLS) * 10 + 5} r={current ? 4.4 : 3.9}
+      fill={outcome ? OUTCOME[outcome][1] : K.track} stroke={current ? K.ink : "none"} strokeWidth={1.1}>
+      <title>{`${id} · ${outcome ? OUTCOME[outcome][0] : "not reached yet"}`}</title>
+    </circle>
+  );
+});
 
 /**
  * One dot per work order, in run order, filling in as the replay reaches it. Validated palette:
@@ -172,27 +182,24 @@ const JobGrid = memo(function JobGrid({ outcome, ids, done, current }: { outcome
   const counts: Record<Outcome, number> = { found: 0, blocked: 0, person: 0, clean: 0 };
   for (let k = 0; k < done; k++) counts[outcome[k]!]++;
   return (
-    <div style={{ flex: "1 1 0", minHeight: 0, display: "flex", flexDirection: "column", gap: ".5rem", paddingTop: ".75rem", borderTop: `1px solid ${K.rule}` }}>
-      <div style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: ".25rem 1rem" }}>
-        <span style={eyebrow}>{outcome.length.toLocaleString("en-US")} jobs</span>
-        {(Object.keys(OUTCOME) as Outcome[]).map((k) => (
-          <span key={k} style={{ display: "inline-flex", alignItems: "center", gap: ".375rem", fontSize: ".75rem", color: K.ink2, whiteSpace: "nowrap" }}>
-            <span style={{ width: 8, height: 8, borderRadius: "50%", background: OUTCOME[k][1] }} />
-            {OUTCOME[k][0]} <b style={{ fontFamily: F.mono, fontWeight: 500, color: K.ink, fontVariantNumeric: "tabular-nums" }}>{counts[k]}</b>
-          </span>
-        ))}
+    <div className="rp-grid" style={{ minWidth: 0, minHeight: 0, display: "flex", flexDirection: "column", gap: ".75rem" }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: "1rem" }}>
+        <span style={eyebrow}>{outcome.length.toLocaleString("en-US")} work orders, one dot each</span>
+        <span style={{ fontSize: ".75rem", color: K.ink3 }}>filled in as Tally reads them</span>
       </div>
-      <svg viewBox={`0 0 ${COLS * 10} ${rows * 10}`} preserveAspectRatio="xMinYMin meet" role="img" aria-label={`${done} of ${outcome.length} jobs checked: ${counts.found} with money found, ${counts.blocked} with a blocked charge, ${counts.person} waiting for your call, ${counts.clean} with nothing missed`} style={{ flex: "1 1 0", minHeight: 0, width: "100%", display: "block" }}>
-        {outcome.map((o, k) => {
-          const reached = k < done || k === current;
-          return (
-            <circle key={k} cx={(k % COLS) * 10 + 5} cy={Math.floor(k / COLS) * 10 + 5} r={k === current ? 4.2 : 3.6}
-              fill={k < done ? OUTCOME[o][1] : K.track} stroke={k === current ? K.ink : "none"} strokeWidth={1.2}>
-              <title>{`${ids[k]} · ${reached && k < done ? OUTCOME[o][0] : "not reached yet"}`}</title>
-            </circle>
-          );
-        })}
+      <svg viewBox={`0 0 ${COLS * 10} ${rows * 10}`} preserveAspectRatio="xMidYMid meet" role="img" aria-label={`${done} of ${outcome.length} jobs checked: ${counts.found} with money found, ${counts.blocked} with a blocked charge, ${counts.person} waiting for your call, ${counts.clean} with nothing missed`} style={{ flex: "1 1 0", minHeight: 0, width: "100%", display: "block" }}>
+        {outcome.map((o, k) => <Dot key={k} k={k} id={ids[k]!} outcome={k < done ? o : null} current={k === current} />)}
       </svg>
+      <dl style={{ display: "grid", gridTemplateColumns: "repeat(4,minmax(0,1fr))", gap: "1rem", margin: 0, paddingTop: ".75rem", borderTop: `1px solid ${K.rule}` }}>
+        {(Object.keys(OUTCOME) as Outcome[]).map((k) => (
+          <div key={k} style={{ minWidth: 0 }}>
+            <dd style={{ margin: 0, fontFamily: F.display, fontWeight: 600, fontSize: "clamp(1.25rem,2.2vw,2rem)", lineHeight: 1.1, letterSpacing: "-.02em", color: k === "clean" ? K.ink : OUTCOME[k][1], fontVariantNumeric: "tabular-nums" }}>{counts[k]}</dd>
+            <dt style={{ display: "flex", alignItems: "center", gap: ".375rem", marginTop: ".25rem", fontSize: ".75rem", color: K.ink2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+              <span style={{ flex: "none", width: 8, height: 8, borderRadius: "50%", background: OUTCOME[k][1] }} />{TILE[k]}
+            </dt>
+          </div>
+        ))}
+      </dl>
     </div>
   );
 });
