@@ -26,9 +26,7 @@ export function Replay() {
   const [data, setData] = useState<Data | null>(null);
   const [g, setG] = useState(-1);
   const [playing, setPlaying] = useState(false);
-  const [paused, setPaused] = useState(false);
   const [speed, setSpeed] = useState<(typeof SPEEDS)[number]>(1);
-  const trapSeen = useRef(false);
   const listRef = useRef<HTMLOListElement>(null);
 
   useEffect(() => {
@@ -57,15 +55,14 @@ export function Replay() {
   }, [data]);
 
   useEffect(() => {
-    if (!run || !playing || paused) return;
+    if (!run || !playing) return;
     const id = setTimeout(() => {
       const next = g + 1;
       if (next >= run.flat.length) { setPlaying(false); return; }
-      if (next === run.trap && !trapSeen.current) { trapSeen.current = true; setPaused(true); }
       setG(next);
     }, BASE_MS / speed);
     return () => clearTimeout(id);
-  }, [run, playing, paused, speed, g]);
+  }, [run, playing, speed, g]);
 
   const cur = run && g >= 0 ? run.flat[g]! : { o: 0, i: -1 };
 
@@ -87,16 +84,14 @@ export function Replay() {
   const statuses = run.status[cur.o]!;
   const at = (arr: number[]) => (g >= 0 ? arr[g]! : 0);
   const ordersDone = g < 0 ? 0 : cur.i === order.items.length - 1 ? cur.o + 1 : cur.o;
-  const atTrap = paused && g === run.trap;
   const fast = speed >= 30;
   const revealed = (i: number) => i <= cur.i;
-  const current = order.items[cur.i];
   const orderFound = order.items.reduce((s, it, i) => s + (revealed(i) && statuses[i] === "counted" ? it.priceCents : 0), 0);
   const billed = order.invoice.reduce((s, l) => s + l.cents, 0);
 
   const play = () => {
-    if (!playing && g >= run.flat.length - 1) { setG(-1); trapSeen.current = false; }
-    setPlaying(!playing || paused); setPaused(false);
+    if (!playing && g >= run.flat.length - 1) setG(-1);
+    setPlaying(!playing);
   };
 
   return (
@@ -181,27 +176,17 @@ export function Replay() {
       </section>
 
       <footer style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: ".375rem", paddingTop: ".75rem", borderTop: `1px solid ${K.rule}` }}>
-        <button type="button" onClick={play} style={{ ...smallBtn(true), minWidth: "4.5rem", background: playing && !paused ? K.paper : K.accent, color: playing && !paused ? K.ink2 : K.accentInk, borderColor: playing && !paused ? K.rule2 : K.accent }}>{playing && !paused ? "Pause" : "Play"}</button>
+        <button type="button" onClick={play} style={{ ...smallBtn(true), minWidth: "4.5rem", background: playing ? K.paper : K.accent, color: playing ? K.ink2 : K.accentInk, borderColor: playing ? K.rule2 : K.accent }}>{playing ? "Pause" : "Play"}</button>
         {SPEEDS.map((s) => (
           <button key={s} type="button" onClick={() => setSpeed(s)} style={{ ...smallBtn(true), background: s === speed ? K.accentSoft : K.paper, color: s === speed ? K.accent : K.ink2, borderColor: s === speed ? K.accent : K.rule2 }}>{s}x</button>
         ))}
-        {run.trap >= 0 && <button type="button" onClick={() => { trapSeen.current = true; setG(run.trap); setPlaying(true); setPaused(true); }} style={smallBtn(true)}>Jump to the trap</button>}
+        {run.trap >= 0 && <button type="button" onClick={() => { setG(run.trap); setPlaying(false); }} style={smallBtn(true)}>Jump to the trap</button>}
         <a href="/" style={{ marginLeft: ".5rem", fontSize: ".8125rem", color: K.accent }}>Open the sandbox</a>
         <span style={{ marginLeft: "auto", fontSize: ".75rem", color: K.ink3, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", minWidth: 0 }}>
           Replay of the committed run on 1,000 generated work orders. Checked against the answer key: {at(run.wrong)} {at(run.wrong) === 1 ? "charge" : "charges"} ({money(at(run.wrongCents))}) added for work that wasn't done, not in the total.
         </span>
       </footer>
 
-      {atTrap && current && (
-        <aside style={{ position: "fixed", left: "50%", bottom: "5rem", transform: "translateX(-50%)", zIndex: 10, width: "min(46rem, calc(100vw - 2rem))", display: "flex", gap: "1.25rem", alignItems: "center", borderRadius: 10, padding: "1rem 1.25rem", background: K.g, color: K.onG, boxShadow: "0 16px 48px oklch(20% .02 258 / .25)" }}>
-          <span style={{ flex: "none", width: 10, height: 10, borderRadius: "50%", background: K.neg }} />
-          <span style={{ flex: 1, minWidth: 0 }}>
-            <b style={{ display: "block", fontFamily: F.display, fontWeight: 600, fontSize: "1.125rem", letterSpacing: "-.015em" }}>Caught: the note never says this was done.</b>
-            <span style={{ fontSize: ".8125rem", color: K.onG2 }}>A line in the note asks for “{draftText(current)}” to be billed. Tally checks every charge against what the technician actually recorded, and blocks this one.</span>
-          </span>
-          <button type="button" onClick={() => setPaused(false)} style={{ flex: "none", minHeight: 34, padding: "0 1rem", borderRadius: 6, border: 0, background: K.gAccent, color: K.g, font: "inherit", fontSize: ".8125rem", fontWeight: 600, cursor: "pointer" }}>Continue</button>
-        </aside>
-      )}
     </div>
   );
 }
