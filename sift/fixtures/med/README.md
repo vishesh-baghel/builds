@@ -10,7 +10,7 @@ Patients appear by first name and an invented chart number only, and no message 
 clinical data. No client, no real mailbox, no real correspondence. Nothing here may be presented as
 evidence of client work.
 
-Status: **authored 2026-09-25, not yet scored. It freezes at its first scored run; any label change
+Status: **frozen at the first scored run, 2026-09-25 (`runs/med/SCORECARD.md`). Any label change
 after that goes in `docs/VARIANCE-LOG.md`.** 90 messages and three systems of record (the claims
 ledger, the lab tracker and the records log, held together in one `log.csv`), labelled against the
 rules in `src/trades/med.ts`. `fixtures.json` is the generated snapshot the app reads; regenerate it

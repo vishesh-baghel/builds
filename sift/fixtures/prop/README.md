@@ -9,7 +9,7 @@ tenants, vendors, work orders, lease calendar entries, the City of Lakemont, Lak
 every agency and HOA named, and every inbox message are invented. No client, no real mailbox, no
 real correspondence. Nothing here may be presented as evidence of client work.
 
-Status: **authored 2026-09-25, not yet scored. It freezes at its first scored run; any label change
+Status: **frozen at the first scored run, 2026-09-25 (`runs/prop/SCORECARD.md`). Any label change
 after that goes in `docs/VARIANCE-LOG.md`.** 92 messages and three systems of record, authored to
 the same bar as Meridian's set (`fixtures/README.md`). `fixtures.json` is the generated snapshot the
 app reads; regenerate it with `pnpm --filter @builds/sift snapshot` after any edit.

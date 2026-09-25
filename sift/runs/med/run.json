@@ -1,0 +1,1805 @@
+{
+  "date": "2026-09-25",
+  "judgments": {
+    "d001": {
+      "scores": {
+        "claim": 0.98,
+        "lab": 0.06,
+        "appt": 0.02,
+        "records": 0.04,
+        "patient": 0.14,
+        "vendor": 0.03,
+        "noise": 0.02,
+        "internal": 0.04
+      },
+      "clock": 0.98,
+      "usage": {
+        "input_tokens": 1412,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005930400000000001,
+      "elapsedMs": 303.606144
+    },
+    "d002": {
+      "scores": {
+        "claim": 0.04,
+        "lab": 0.68,
+        "appt": 0.05,
+        "records": 0.03,
+        "patient": 0.09,
+        "vendor": 0.03,
+        "noise": 0.02,
+        "internal": 0.5
+      },
+      "clock": 0.52,
+      "usage": {
+        "input_tokens": 1409,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005917800000000001,
+      "elapsedMs": 196.17522700000006
+    },
+    "d003": {
+      "scores": {
+        "claim": 0.02,
+        "lab": 0.03,
+        "appt": 0.97,
+        "records": 0.02,
+        "patient": 0.12,
+        "vendor": 0.02,
+        "noise": 0.01,
+        "internal": 0.03
+      },
+      "clock": 0.05,
+      "usage": {
+        "input_tokens": 1375,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005775,
+      "elapsedMs": 166.40474900000004
+    },
+    "d004": {
+      "scores": {
+        "claim": 0.05,
+        "lab": 0.1,
+        "appt": 0.04,
+        "records": 0.97,
+        "patient": 0.04,
+        "vendor": 0.02,
+        "noise": 0.03,
+        "internal": 0.08
+      },
+      "clock": 0.83,
+      "usage": {
+        "input_tokens": 1415,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005943,
+      "elapsedMs": 133.9465530000001
+    },
+    "d005": {
+      "scores": {
+        "claim": 0.94,
+        "lab": 0.05,
+        "appt": 0.02,
+        "records": 0.04,
+        "patient": 0.98,
+        "vendor": 0.05,
+        "noise": 0.02,
+        "internal": 0.03
+      },
+      "clock": 0.07,
+      "usage": {
+        "input_tokens": 1402,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058884,
+      "elapsedMs": 115.07251500000007
+    },
+    "d006": {
+      "scores": {
+        "claim": 0.03,
+        "lab": 0.13,
+        "appt": 0.02,
+        "records": 0.02,
+        "patient": 0.05,
+        "vendor": 0.9,
+        "noise": 0.03,
+        "internal": 0.08
+      },
+      "clock": 0.95,
+      "usage": {
+        "input_tokens": 1379,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005791800000000001,
+      "elapsedMs": 116.34698600000002
+    },
+    "d007": {
+      "scores": {
+        "claim": 0.01,
+        "lab": 0.04,
+        "appt": 0.03,
+        "records": 0.02,
+        "patient": 0.02,
+        "vendor": 0.02,
+        "noise": 0.98,
+        "internal": 0.04
+      },
+      "clock": 0.02,
+      "usage": {
+        "input_tokens": 1385,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005817,
+      "elapsedMs": 140.92248500000005
+    },
+    "d008": {
+      "scores": {
+        "claim": 0.02,
+        "lab": 0.05,
+        "appt": 0.02,
+        "records": 0.03,
+        "patient": 0.03,
+        "vendor": 0.03,
+        "noise": 0.06,
+        "internal": 0.82
+      },
+      "clock": 0.94,
+      "usage": {
+        "input_tokens": 1392,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058464,
+      "elapsedMs": 142.7561659999999
+    },
+    "d009": {
+      "scores": {
+        "claim": 0.02,
+        "lab": 0.05,
+        "appt": 0.02,
+        "records": 0.02,
+        "patient": 0.03,
+        "vendor": 0.03,
+        "noise": 0.02,
+        "internal": 0.86
+      },
+      "clock": 0.04,
+      "usage": {
+        "input_tokens": 1381,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058002,
+      "elapsedMs": 183.87524899999994
+    },
+    "d010": {
+      "scores": {
+        "claim": 0.02,
+        "lab": 0.03,
+        "appt": 0.98,
+        "records": 0.03,
+        "patient": 0.33,
+        "vendor": 0.02,
+        "noise": 0.01,
+        "internal": 0.03
+      },
+      "clock": 0.07,
+      "usage": {
+        "input_tokens": 1384,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005812800000000001,
+      "elapsedMs": 96.93557899999996
+    },
+    "d011": {
+      "scores": {
+        "claim": 0.98,
+        "lab": 0.06,
+        "appt": 0.03,
+        "records": 0.11,
+        "patient": 0.09,
+        "vendor": 0.03,
+        "noise": 0.03,
+        "internal": 0.12
+      },
+      "clock": 0.98,
+      "usage": {
+        "input_tokens": 1428,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059976000000000005,
+      "elapsedMs": 110.04837500000008
+    },
+    "d012": {
+      "scores": {
+        "claim": 0.95,
+        "lab": 0.05,
+        "appt": 0.04,
+        "records": 0.13,
+        "patient": 0.04,
+        "vendor": 0.03,
+        "noise": 0.03,
+        "internal": 0.07
+      },
+      "clock": 0.92,
+      "usage": {
+        "input_tokens": 1429,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060018,
+      "elapsedMs": 92.91334600000005
+    },
+    "d013": {
+      "scores": {
+        "claim": 0.97,
+        "lab": 0.05,
+        "appt": 0.02,
+        "records": 0.03,
+        "patient": 0.11,
+        "vendor": 0.03,
+        "noise": 0.02,
+        "internal": 0.13
+      },
+      "clock": 0.13,
+      "usage": {
+        "input_tokens": 1400,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.00588,
+      "elapsedMs": 114.37546399999997
+    },
+    "d014": {
+      "scores": {
+        "claim": 0.98,
+        "lab": 0.04,
+        "appt": 0.02,
+        "records": 0.03,
+        "patient": 0.12,
+        "vendor": 0.05,
+        "noise": 0.02,
+        "internal": 0.06
+      },
+      "clock": 0.07,
+      "usage": {
+        "input_tokens": 1412,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005930400000000001,
+      "elapsedMs": 124.26862100000017
+    },
+    "d015": {
+      "scores": {
+        "claim": 0.97,
+        "lab": 0.03,
+        "appt": 0.01,
+        "records": 0.02,
+        "patient": 0.03,
+        "vendor": 0.03,
+        "noise": 0.02,
+        "internal": 0.04
+      },
+      "clock": 0.96,
+      "usage": {
+        "input_tokens": 1457,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0061194,
+      "elapsedMs": 164.4320029999999
+    },
+    "d016": {
+      "scores": {
+        "claim": 0.98,
+        "lab": 0.03,
+        "appt": 0.02,
+        "records": 0.05,
+        "patient": 0.95,
+        "vendor": 0.04,
+        "noise": 0.02,
+        "internal": 0.17
+      },
+      "clock": 0.97,
+      "usage": {
+        "input_tokens": 1435,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.006027,
+      "elapsedMs": 115.03600800000004
+    },
+    "d017": {
+      "scores": {
+        "claim": 0.97,
+        "lab": 0.05,
+        "appt": 0.01,
+        "records": 0.02,
+        "patient": 0.07,
+        "vendor": 0.05,
+        "noise": 0.03,
+        "internal": 0.13
+      },
+      "clock": 0.98,
+      "usage": {
+        "input_tokens": 1421,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059682,
+      "elapsedMs": 150.22120099999984
+    },
+    "d018": {
+      "scores": {
+        "claim": 0.96,
+        "lab": 0.05,
+        "appt": 0.04,
+        "records": 0.03,
+        "patient": 0.06,
+        "vendor": 0.03,
+        "noise": 0.02,
+        "internal": 0.08
+      },
+      "clock": 0.88,
+      "usage": {
+        "input_tokens": 1422,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005972400000000001,
+      "elapsedMs": 97.18010499999991
+    },
+    "d019": {
+      "scores": {
+        "claim": 0.95,
+        "lab": 0.1,
+        "appt": 0.03,
+        "records": 0.13,
+        "patient": 0.12,
+        "vendor": 0.04,
+        "noise": 0.04,
+        "internal": 0.21
+      },
+      "clock": 0.16,
+      "usage": {
+        "input_tokens": 1395,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058590000000000005,
+      "elapsedMs": 124.10109600000033
+    },
+    "d020": {
+      "scores": {
+        "claim": 0.96,
+        "lab": 0.05,
+        "appt": 0.02,
+        "records": 0.03,
+        "patient": 0.09,
+        "vendor": 0.03,
+        "noise": 0.02,
+        "internal": 0.06
+      },
+      "clock": 0.11,
+      "usage": {
+        "input_tokens": 1409,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005917800000000001,
+      "elapsedMs": 148.01451799999995
+    },
+    "d021": {
+      "scores": {
+        "claim": 0.9,
+        "lab": 0.05,
+        "appt": 0.02,
+        "records": 0.07,
+        "patient": 0.07,
+        "vendor": 0.03,
+        "noise": 0.04,
+        "internal": 0.13
+      },
+      "clock": 0.11,
+      "usage": {
+        "input_tokens": 1404,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005896800000000001,
+      "elapsedMs": 117.20329999999967
+    },
+    "d022": {
+      "scores": {
+        "claim": 0.07,
+        "lab": 0.04,
+        "appt": 0.27,
+        "records": 0.04,
+        "patient": 0.04,
+        "vendor": 0.04,
+        "noise": 0.98,
+        "internal": 0.06
+      },
+      "clock": 0.44,
+      "usage": {
+        "input_tokens": 1406,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059052,
+      "elapsedMs": 149.44443899999987
+    },
+    "d023": {
+      "scores": {
+        "claim": 0.98,
+        "lab": 0.05,
+        "appt": 0.02,
+        "records": 0.04,
+        "patient": 0.14,
+        "vendor": 0.04,
+        "noise": 0.02,
+        "internal": 0.09
+      },
+      "clock": 0.67,
+      "usage": {
+        "input_tokens": 1405,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005901,
+      "elapsedMs": 129.80121400000007
+    },
+    "d024": {
+      "scores": {
+        "claim": 0.95,
+        "lab": 0.05,
+        "appt": 0.02,
+        "records": 0.41,
+        "patient": 0.05,
+        "vendor": 0.03,
+        "noise": 0.04,
+        "internal": 0.05
+      },
+      "clock": 0.97,
+      "usage": {
+        "input_tokens": 1409,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005917800000000001,
+      "elapsedMs": 106.59877899999992
+    },
+    "d025": {
+      "scores": {
+        "claim": 0.97,
+        "lab": 0.06,
+        "appt": 0.03,
+        "records": 0.41,
+        "patient": 0.79,
+        "vendor": 0.03,
+        "noise": 0.02,
+        "internal": 0.03
+      },
+      "clock": 0.95,
+      "usage": {
+        "input_tokens": 1409,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005917800000000001,
+      "elapsedMs": 133.71986400000014
+    },
+    "d026": {
+      "scores": {
+        "claim": 0.03,
+        "lab": 0.72,
+        "appt": 0.02,
+        "records": 0.03,
+        "patient": 0.04,
+        "vendor": 0.03,
+        "noise": 0.02,
+        "internal": 0.4
+      },
+      "clock": 0.06,
+      "usage": {
+        "input_tokens": 1395,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058590000000000005,
+      "elapsedMs": 140.02253199999996
+    },
+    "d027": {
+      "scores": {
+        "claim": 0.04,
+        "lab": 0.69,
+        "appt": 0.16,
+        "records": 0.03,
+        "patient": 0.05,
+        "vendor": 0.03,
+        "noise": 0.02,
+        "internal": 0.51
+      },
+      "clock": 0.42,
+      "usage": {
+        "input_tokens": 1433,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.006018600000000001,
+      "elapsedMs": 113.31331
+    },
+    "d028": {
+      "scores": {
+        "claim": 0.05,
+        "lab": 0.81,
+        "appt": 0.03,
+        "records": 0.04,
+        "patient": 0.06,
+        "vendor": 0.04,
+        "noise": 0.03,
+        "internal": 0.15
+      },
+      "clock": 0.14,
+      "usage": {
+        "input_tokens": 1395,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058590000000000005,
+      "elapsedMs": 160.3033690000002
+    },
+    "d029": {
+      "scores": {
+        "claim": 0.03,
+        "lab": 0.69,
+        "appt": 0.03,
+        "records": 0.03,
+        "patient": 0.04,
+        "vendor": 0.04,
+        "noise": 0.03,
+        "internal": 0.52
+      },
+      "clock": 0.11,
+      "usage": {
+        "input_tokens": 1402,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058884,
+      "elapsedMs": 146.70272900000055
+    },
+    "d030": {
+      "scores": {
+        "claim": 0.04,
+        "lab": 0.82,
+        "appt": 0.05,
+        "records": 0.03,
+        "patient": 0.06,
+        "vendor": 0.04,
+        "noise": 0.02,
+        "internal": 0.33
+      },
+      "clock": 0.1,
+      "usage": {
+        "input_tokens": 1389,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058338,
+      "elapsedMs": 134.65122300000075
+    },
+    "d031": {
+      "scores": {
+        "claim": 0.02,
+        "lab": 0.48,
+        "appt": 0.02,
+        "records": 0.02,
+        "patient": 0.02,
+        "vendor": 0.03,
+        "noise": 0.03,
+        "internal": 0.56
+      },
+      "clock": 0.17,
+      "usage": {
+        "input_tokens": 1392,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058464,
+      "elapsedMs": 136.78068600000006
+    },
+    "d032": {
+      "scores": {
+        "claim": 0.08,
+        "lab": 0.83,
+        "appt": 0.02,
+        "records": 0.02,
+        "patient": 0.03,
+        "vendor": 0.03,
+        "noise": 0.03,
+        "internal": 0.26
+      },
+      "clock": 0.09,
+      "usage": {
+        "input_tokens": 1393,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058506,
+      "elapsedMs": 104.44336699999985
+    },
+    "d033": {
+      "scores": {
+        "claim": 0.04,
+        "lab": 0.85,
+        "appt": 0.08,
+        "records": 0.04,
+        "patient": 0.05,
+        "vendor": 0.04,
+        "noise": 0.03,
+        "internal": 0.15
+      },
+      "clock": 0.25,
+      "usage": {
+        "input_tokens": 1392,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058464,
+      "elapsedMs": 104.63504099999955
+    },
+    "d034": {
+      "scores": {
+        "claim": 0.04,
+        "lab": 0.44,
+        "appt": 0.02,
+        "records": 0.03,
+        "patient": 0.05,
+        "vendor": 0.03,
+        "noise": 0.02,
+        "internal": 0.81
+      },
+      "clock": 0.04,
+      "usage": {
+        "input_tokens": 1402,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058884,
+      "elapsedMs": 116.56584800000019
+    },
+    "d035": {
+      "scores": {
+        "claim": 0.07,
+        "lab": 0.32,
+        "appt": 0.04,
+        "records": 0.13,
+        "patient": 0.05,
+        "vendor": 0.03,
+        "noise": 0.02,
+        "internal": 0.85
+      },
+      "clock": 0.05,
+      "usage": {
+        "input_tokens": 1416,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059472,
+      "elapsedMs": 97.17065100000036
+    },
+    "d036": {
+      "scores": {
+        "claim": 0.06,
+        "lab": 0.56,
+        "appt": 0.03,
+        "records": 0.03,
+        "patient": 0.06,
+        "vendor": 0.04,
+        "noise": 0.02,
+        "internal": 0.58
+      },
+      "clock": 0.12,
+      "usage": {
+        "input_tokens": 1395,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058590000000000005,
+      "elapsedMs": 119.91177599999992
+    },
+    "d037": {
+      "scores": {
+        "claim": 0.11,
+        "lab": 0.13,
+        "appt": 0.02,
+        "records": 0.03,
+        "patient": 0.1,
+        "vendor": 0.65,
+        "noise": 0.04,
+        "internal": 0.15
+      },
+      "clock": 0.92,
+      "usage": {
+        "input_tokens": 1401,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058842,
+      "elapsedMs": 98.58732899999995
+    },
+    "d038": {
+      "scores": {
+        "claim": 0.02,
+        "lab": 0.04,
+        "appt": 0.98,
+        "records": 0.02,
+        "patient": 0.08,
+        "vendor": 0.02,
+        "noise": 0.01,
+        "internal": 0.03
+      },
+      "clock": 0.04,
+      "usage": {
+        "input_tokens": 1384,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005812800000000001,
+      "elapsedMs": 103.73295299999972
+    },
+    "d039": {
+      "scores": {
+        "claim": 0.02,
+        "lab": 0.03,
+        "appt": 0.98,
+        "records": 0.03,
+        "patient": 0.1,
+        "vendor": 0.02,
+        "noise": 0.02,
+        "internal": 0.03
+      },
+      "clock": 0.05,
+      "usage": {
+        "input_tokens": 1394,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058548,
+      "elapsedMs": 99.56968000000052
+    },
+    "d040": {
+      "scores": {
+        "claim": 0.04,
+        "lab": 0.03,
+        "appt": 0.98,
+        "records": 0.03,
+        "patient": 0.04,
+        "vendor": 0.02,
+        "noise": 0.02,
+        "internal": 0.08
+      },
+      "clock": 0.04,
+      "usage": {
+        "input_tokens": 1386,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058212,
+      "elapsedMs": 100.6638869999997
+    },
+    "d041": {
+      "scores": {
+        "claim": 0.03,
+        "lab": 0.05,
+        "appt": 0.97,
+        "records": 0.13,
+        "patient": 0.05,
+        "vendor": 0.02,
+        "noise": 0.02,
+        "internal": 0.04
+      },
+      "clock": 0.2,
+      "usage": {
+        "input_tokens": 1408,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059136,
+      "elapsedMs": 123.43174700000054
+    },
+    "d042": {
+      "scores": {
+        "claim": 0.1,
+        "lab": 0.1,
+        "appt": 0.39,
+        "records": 0.08,
+        "patient": 0.17,
+        "vendor": 0.06,
+        "noise": 0.04,
+        "internal": 0.3
+      },
+      "clock": 0.14,
+      "usage": {
+        "input_tokens": 1367,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0057414,
+      "elapsedMs": 139.54075199999988
+    },
+    "d043": {
+      "scores": {
+        "claim": 0.02,
+        "lab": 0.03,
+        "appt": 0.85,
+        "records": 0.02,
+        "patient": 0.04,
+        "vendor": 0.02,
+        "noise": 0.01,
+        "internal": 0.03
+      },
+      "clock": 0.11,
+      "usage": {
+        "input_tokens": 1388,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058296,
+      "elapsedMs": 124.74240599999939
+    },
+    "d044": {
+      "scores": {
+        "claim": 0.06,
+        "lab": 0.04,
+        "appt": 0.91,
+        "records": 0.03,
+        "patient": 0.85,
+        "vendor": 0.02,
+        "noise": 0.02,
+        "internal": 0.04
+      },
+      "clock": 0.04,
+      "usage": {
+        "input_tokens": 1384,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005812800000000001,
+      "elapsedMs": 108.19397000000026
+    },
+    "d045": {
+      "scores": {
+        "claim": 0.02,
+        "lab": 0.04,
+        "appt": 0.96,
+        "records": 0.02,
+        "patient": 0.12,
+        "vendor": 0.02,
+        "noise": 0.02,
+        "internal": 0.04
+      },
+      "clock": 0.08,
+      "usage": {
+        "input_tokens": 1378,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0057876,
+      "elapsedMs": 97.15570500000013
+    },
+    "d046": {
+      "scores": {
+        "claim": 0.03,
+        "lab": 0.04,
+        "appt": 0.03,
+        "records": 0.97,
+        "patient": 0.08,
+        "vendor": 0.02,
+        "noise": 0.02,
+        "internal": 0.03
+      },
+      "clock": 0.27,
+      "usage": {
+        "input_tokens": 1422,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005972400000000001,
+      "elapsedMs": 123.83240600000045
+    },
+    "d047": {
+      "scores": {
+        "claim": 0.07,
+        "lab": 0.08,
+        "appt": 0.02,
+        "records": 0.97,
+        "patient": 0.06,
+        "vendor": 0.02,
+        "noise": 0.04,
+        "internal": 0.08
+      },
+      "clock": 0.95,
+      "usage": {
+        "input_tokens": 1394,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058548,
+      "elapsedMs": 129.61877800000002
+    },
+    "d048": {
+      "scores": {
+        "claim": 0.05,
+        "lab": 0.07,
+        "appt": 0.03,
+        "records": 0.97,
+        "patient": 0.22,
+        "vendor": 0.02,
+        "noise": 0.02,
+        "internal": 0.04
+      },
+      "clock": 0.66,
+      "usage": {
+        "input_tokens": 1395,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058590000000000005,
+      "elapsedMs": 115.98108200000024
+    },
+    "d049": {
+      "scores": {
+        "claim": 0.06,
+        "lab": 0.05,
+        "appt": 0.02,
+        "records": 0.97,
+        "patient": 0.03,
+        "vendor": 0.02,
+        "noise": 0.02,
+        "internal": 0.05
+      },
+      "clock": 0.97,
+      "usage": {
+        "input_tokens": 1408,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059136,
+      "elapsedMs": 117.0281300000006
+    },
+    "d050": {
+      "scores": {
+        "claim": 0.08,
+        "lab": 0.08,
+        "appt": 0.04,
+        "records": 0.95,
+        "patient": 0.04,
+        "vendor": 0.03,
+        "noise": 0.04,
+        "internal": 0.14
+      },
+      "clock": 0.06,
+      "usage": {
+        "input_tokens": 1395,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058590000000000005,
+      "elapsedMs": 134.92045299999972
+    },
+    "d051": {
+      "scores": {
+        "claim": 0.08,
+        "lab": 0.25,
+        "appt": 0.04,
+        "records": 0.81,
+        "patient": 0.1,
+        "vendor": 0.04,
+        "noise": 0.03,
+        "internal": 0.71
+      },
+      "clock": 0.58,
+      "usage": {
+        "input_tokens": 1396,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005863200000000001,
+      "elapsedMs": 111.80240999999933
+    },
+    "d052": {
+      "scores": {
+        "claim": 0.04,
+        "lab": 0.06,
+        "appt": 0.02,
+        "records": 0.98,
+        "patient": 0.08,
+        "vendor": 0.02,
+        "noise": 0.01,
+        "internal": 0.03
+      },
+      "clock": 0.95,
+      "usage": {
+        "input_tokens": 1393,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058506,
+      "elapsedMs": 98.20148599999993
+    },
+    "d053": {
+      "scores": {
+        "claim": 0.04,
+        "lab": 0.04,
+        "appt": 0.08,
+        "records": 0.97,
+        "patient": 0.29,
+        "vendor": 0.02,
+        "noise": 0.02,
+        "internal": 0.1
+      },
+      "clock": 0.08,
+      "usage": {
+        "input_tokens": 1396,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005863200000000001,
+      "elapsedMs": 130.6677319999999
+    },
+    "d054": {
+      "scores": {
+        "claim": 0.04,
+        "lab": 0.05,
+        "appt": 0.03,
+        "records": 0.23,
+        "patient": 0.07,
+        "vendor": 0.03,
+        "noise": 0.98,
+        "internal": 0.13
+      },
+      "clock": 0.78,
+      "usage": {
+        "input_tokens": 1402,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058884,
+      "elapsedMs": 121.42282499999965
+    },
+    "d055": {
+      "scores": {
+        "claim": 0.02,
+        "lab": 0.04,
+        "appt": 0.28,
+        "records": 0.03,
+        "patient": 0.97,
+        "vendor": 0.02,
+        "noise": 0.01,
+        "internal": 0.03
+      },
+      "clock": 0.04,
+      "usage": {
+        "input_tokens": 1385,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005817,
+      "elapsedMs": 116.60563699999966
+    },
+    "d056": {
+      "scores": {
+        "claim": 0.05,
+        "lab": 0.04,
+        "appt": 0.02,
+        "records": 0.02,
+        "patient": 0.98,
+        "vendor": 0.03,
+        "noise": 0.02,
+        "internal": 0.03
+      },
+      "clock": 0.06,
+      "usage": {
+        "input_tokens": 1382,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058044,
+      "elapsedMs": 100.51605699999982
+    },
+    "d057": {
+      "scores": {
+        "claim": 0.15,
+        "lab": 0.04,
+        "appt": 0.02,
+        "records": 0.02,
+        "patient": 0.97,
+        "vendor": 0.03,
+        "noise": 0.01,
+        "internal": 0.06
+      },
+      "clock": 0.3,
+      "usage": {
+        "input_tokens": 1394,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058548,
+      "elapsedMs": 116.36033599999973
+    },
+    "d058": {
+      "scores": {
+        "claim": 0.02,
+        "lab": 0.09,
+        "appt": 0.06,
+        "records": 0.03,
+        "patient": 0.02,
+        "vendor": 0.03,
+        "noise": 0.97,
+        "internal": 0.13
+      },
+      "clock": 0.08,
+      "usage": {
+        "input_tokens": 1393,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058506,
+      "elapsedMs": 104.54079499999989
+    },
+    "d059": {
+      "scores": {
+        "claim": 0.2,
+        "lab": 0.04,
+        "appt": 0.02,
+        "records": 0.26,
+        "patient": 0.91,
+        "vendor": 0.03,
+        "noise": 0.02,
+        "internal": 0.03
+      },
+      "clock": 0.86,
+      "usage": {
+        "input_tokens": 1395,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058590000000000005,
+      "elapsedMs": 109.43738200000007
+    },
+    "d060": {
+      "scores": {
+        "claim": 0.08,
+        "lab": 0.05,
+        "appt": 0.02,
+        "records": 0.04,
+        "patient": 0.97,
+        "vendor": 0.04,
+        "noise": 0.02,
+        "internal": 0.05
+      },
+      "clock": 0.06,
+      "usage": {
+        "input_tokens": 1381,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058002,
+      "elapsedMs": 143.74023300000044
+    },
+    "d061": {
+      "scores": {
+        "claim": 0.03,
+        "lab": 0.04,
+        "appt": 0.05,
+        "records": 0.02,
+        "patient": 0.86,
+        "vendor": 0.02,
+        "noise": 0.01,
+        "internal": 0.04
+      },
+      "clock": 0.06,
+      "usage": {
+        "input_tokens": 1384,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005812800000000001,
+      "elapsedMs": 115.60445900000013
+    },
+    "d062": {
+      "scores": {
+        "claim": 0.03,
+        "lab": 0.07,
+        "appt": 0.18,
+        "records": 0.04,
+        "patient": 0.97,
+        "vendor": 0.02,
+        "noise": 0.01,
+        "internal": 0.03
+      },
+      "clock": 0.06,
+      "usage": {
+        "input_tokens": 1395,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058590000000000005,
+      "elapsedMs": 102.29170900000008
+    },
+    "d063": {
+      "scores": {
+        "claim": 0.06,
+        "lab": 0.11,
+        "appt": 0.02,
+        "records": 0.02,
+        "patient": 0.06,
+        "vendor": 0.87,
+        "noise": 0.03,
+        "internal": 0.09
+      },
+      "clock": 0.12,
+      "usage": {
+        "input_tokens": 1400,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.00588,
+      "elapsedMs": 158.60979399999997
+    },
+    "d064": {
+      "scores": {
+        "claim": 0.05,
+        "lab": 0.1,
+        "appt": 0.01,
+        "records": 0.02,
+        "patient": 0.06,
+        "vendor": 0.94,
+        "noise": 0.02,
+        "internal": 0.15
+      },
+      "clock": 0.97,
+      "usage": {
+        "input_tokens": 1407,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059094,
+      "elapsedMs": 107.63833899999918
+    },
+    "d065": {
+      "scores": {
+        "claim": 0.03,
+        "lab": 0.04,
+        "appt": 0.02,
+        "records": 0.02,
+        "patient": 0.09,
+        "vendor": 0.76,
+        "noise": 0.03,
+        "internal": 0.13
+      },
+      "clock": 0.06,
+      "usage": {
+        "input_tokens": 1390,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005838,
+      "elapsedMs": 109.56114300000081
+    },
+    "d066": {
+      "scores": {
+        "claim": 0.02,
+        "lab": 0.04,
+        "appt": 0.02,
+        "records": 0.02,
+        "patient": 0.02,
+        "vendor": 0.05,
+        "noise": 0.97,
+        "internal": 0.12
+      },
+      "clock": 0.12,
+      "usage": {
+        "input_tokens": 1412,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005930400000000001,
+      "elapsedMs": 135.39681299999938
+    },
+    "d067": {
+      "scores": {
+        "claim": 0.07,
+        "lab": 0.09,
+        "appt": 0.01,
+        "records": 0.02,
+        "patient": 0.08,
+        "vendor": 0.25,
+        "noise": 0.03,
+        "internal": 0.15
+      },
+      "clock": 0.31,
+      "usage": {
+        "input_tokens": 1402,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058884,
+      "elapsedMs": 112.48960799999986
+    },
+    "d068": {
+      "scores": {
+        "claim": 0.02,
+        "lab": 0.09,
+        "appt": 0.1,
+        "records": 0.02,
+        "patient": 0.02,
+        "vendor": 0.03,
+        "noise": 0.97,
+        "internal": 0.08
+      },
+      "clock": 0.31,
+      "usage": {
+        "input_tokens": 1395,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058590000000000005,
+      "elapsedMs": 155.5207389999996
+    },
+    "d069": {
+      "scores": {
+        "claim": 0.03,
+        "lab": 0.05,
+        "appt": 0.01,
+        "records": 0.04,
+        "patient": 0.04,
+        "vendor": 0.93,
+        "noise": 0.03,
+        "internal": 0.11
+      },
+      "clock": 0.12,
+      "usage": {
+        "input_tokens": 1393,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058506,
+      "elapsedMs": 95.63970100000006
+    },
+    "d070": {
+      "scores": {
+        "claim": 0.04,
+        "lab": 0.07,
+        "appt": 0.02,
+        "records": 0.02,
+        "patient": 0.04,
+        "vendor": 0.91,
+        "noise": 0.03,
+        "internal": 0.17
+      },
+      "clock": 0.11,
+      "usage": {
+        "input_tokens": 1402,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058884,
+      "elapsedMs": 106.7313549999999
+    },
+    "d071": {
+      "scores": {
+        "claim": 0.02,
+        "lab": 0.05,
+        "appt": 0.03,
+        "records": 0.02,
+        "patient": 0.02,
+        "vendor": 0.02,
+        "noise": 0.93,
+        "internal": 0.27
+      },
+      "clock": 0.11,
+      "usage": {
+        "input_tokens": 1387,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058254000000000005,
+      "elapsedMs": 132.48770100000002
+    },
+    "d072": {
+      "scores": {
+        "claim": 0.02,
+        "lab": 0.03,
+        "appt": 0.43,
+        "records": 0.02,
+        "patient": 0.02,
+        "vendor": 0.02,
+        "noise": 0.98,
+        "internal": 0.05
+      },
+      "clock": 0.1,
+      "usage": {
+        "input_tokens": 1400,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.00588,
+      "elapsedMs": 114.30131400000027
+    },
+    "d073": {
+      "scores": {
+        "claim": 0.04,
+        "lab": 0.06,
+        "appt": 0.02,
+        "records": 0.03,
+        "patient": 0.02,
+        "vendor": 0.03,
+        "noise": 0.95,
+        "internal": 0.07
+      },
+      "clock": 0.03,
+      "usage": {
+        "input_tokens": 1386,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058212,
+      "elapsedMs": 108.27916200000072
+    },
+    "d074": {
+      "scores": {
+        "claim": 0.02,
+        "lab": 0.03,
+        "appt": 0.07,
+        "records": 0.03,
+        "patient": 0.02,
+        "vendor": 0.03,
+        "noise": 0.97,
+        "internal": 0.06
+      },
+      "clock": 0.07,
+      "usage": {
+        "input_tokens": 1386,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058212,
+      "elapsedMs": 127.40677599999981
+    },
+    "d075": {
+      "scores": {
+        "claim": 0.02,
+        "lab": 0.04,
+        "appt": 0.02,
+        "records": 0.02,
+        "patient": 0.02,
+        "vendor": 0.02,
+        "noise": 0.97,
+        "internal": 0.12
+      },
+      "clock": 0.11,
+      "usage": {
+        "input_tokens": 1389,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058338,
+      "elapsedMs": 150.1421050000008
+    },
+    "d076": {
+      "scores": {
+        "claim": 0.02,
+        "lab": 0.04,
+        "appt": 0.02,
+        "records": 0.03,
+        "patient": 0.03,
+        "vendor": 0.03,
+        "noise": 0.98,
+        "internal": 0.07
+      },
+      "clock": 0.08,
+      "usage": {
+        "input_tokens": 1389,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058338,
+      "elapsedMs": 140.83460999999988
+    },
+    "d077": {
+      "scores": {
+        "claim": 0.02,
+        "lab": 0.04,
+        "appt": 0.02,
+        "records": 0.03,
+        "patient": 0.01,
+        "vendor": 0.02,
+        "noise": 0.95,
+        "internal": 0.06
+      },
+      "clock": 0.03,
+      "usage": {
+        "input_tokens": 1379,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005791800000000001,
+      "elapsedMs": 136.47000599999956
+    },
+    "d078": {
+      "scores": {
+        "claim": 0.02,
+        "lab": 0.04,
+        "appt": 0.02,
+        "records": 0.03,
+        "patient": 0.02,
+        "vendor": 0.05,
+        "noise": 0.98,
+        "internal": 0.06
+      },
+      "clock": 0.03,
+      "usage": {
+        "input_tokens": 1380,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005796,
+      "elapsedMs": 99.51917899999899
+    },
+    "d079": {
+      "scores": {
+        "claim": 0.01,
+        "lab": 0.05,
+        "appt": 0.01,
+        "records": 0.02,
+        "patient": 0.02,
+        "vendor": 0.05,
+        "noise": 0.96,
+        "internal": 0.22
+      },
+      "clock": 0.3,
+      "usage": {
+        "input_tokens": 1399,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058758000000000005,
+      "elapsedMs": 130.3950700000005
+    },
+    "d080": {
+      "scores": {
+        "claim": 0.04,
+        "lab": 0.04,
+        "appt": 0.06,
+        "records": 0.03,
+        "patient": 0.03,
+        "vendor": 0.03,
+        "noise": 0.98,
+        "internal": 0.08
+      },
+      "clock": 0.09,
+      "usage": {
+        "input_tokens": 1391,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058422000000000005,
+      "elapsedMs": 151.42826400000013
+    },
+    "d081": {
+      "scores": {
+        "claim": 0.06,
+        "lab": 0.04,
+        "appt": 0.02,
+        "records": 0.04,
+        "patient": 0.02,
+        "vendor": 0.03,
+        "noise": 0.84,
+        "internal": 0.15
+      },
+      "clock": 0.95,
+      "usage": {
+        "input_tokens": 1396,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005863200000000001,
+      "elapsedMs": 100.55609000000004
+    },
+    "d082": {
+      "scores": {
+        "claim": 0.02,
+        "lab": 0.05,
+        "appt": 0.02,
+        "records": 0.02,
+        "patient": 0.02,
+        "vendor": 0.02,
+        "noise": 0.02,
+        "internal": 0.98
+      },
+      "clock": 0.06,
+      "usage": {
+        "input_tokens": 1392,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058464,
+      "elapsedMs": 101.47848199999862
+    },
+    "d083": {
+      "scores": {
+        "claim": 0.03,
+        "lab": 0.04,
+        "appt": 0.21,
+        "records": 0.03,
+        "patient": 0.05,
+        "vendor": 0.02,
+        "noise": 0.01,
+        "internal": 0.9
+      },
+      "clock": 0.06,
+      "usage": {
+        "input_tokens": 1388,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058296,
+      "elapsedMs": 130.5316729999995
+    },
+    "d084": {
+      "scores": {
+        "claim": 0.97,
+        "lab": 0.06,
+        "appt": 0.03,
+        "records": 0.26,
+        "patient": 0.06,
+        "vendor": 0.03,
+        "noise": 0.03,
+        "internal": 0.81
+      },
+      "clock": 0.88,
+      "usage": {
+        "input_tokens": 1434,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060228,
+      "elapsedMs": 111.26764199999889
+    },
+    "d085": {
+      "scores": {
+        "claim": 0.03,
+        "lab": 0.22,
+        "appt": 0.03,
+        "records": 0.03,
+        "patient": 0.03,
+        "vendor": 0.03,
+        "noise": 0.01,
+        "internal": 0.91
+      },
+      "clock": 0.22,
+      "usage": {
+        "input_tokens": 1390,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005838,
+      "elapsedMs": 100.7207269999999
+    },
+    "d086": {
+      "scores": {
+        "claim": 0.02,
+        "lab": 0.04,
+        "appt": 0.07,
+        "records": 0.02,
+        "patient": 0.03,
+        "vendor": 0.02,
+        "noise": 0.01,
+        "internal": 0.9
+      },
+      "clock": 0.04,
+      "usage": {
+        "input_tokens": 1382,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058044,
+      "elapsedMs": 111.31921899999907
+    },
+    "d087": {
+      "scores": {
+        "claim": 0.02,
+        "lab": 0.04,
+        "appt": 0.02,
+        "records": 0.02,
+        "patient": 0.02,
+        "vendor": 0.02,
+        "noise": 0.08,
+        "internal": 0.95
+      },
+      "clock": 0.92,
+      "usage": {
+        "input_tokens": 1394,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058548,
+      "elapsedMs": 109.05719900000076
+    },
+    "d088": {
+      "scores": {
+        "claim": 0.36,
+        "lab": 0.05,
+        "appt": 0.02,
+        "records": 0.04,
+        "patient": 0.02,
+        "vendor": 0.06,
+        "noise": 0.02,
+        "internal": 0.88
+      },
+      "clock": 0.16,
+      "usage": {
+        "input_tokens": 1389,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058338,
+      "elapsedMs": 98.52476899999965
+    },
+    "d089": {
+      "scores": {
+        "claim": 0.02,
+        "lab": 0.03,
+        "appt": 0.11,
+        "records": 0.02,
+        "patient": 0.03,
+        "vendor": 0.02,
+        "noise": 0.01,
+        "internal": 0.93
+      },
+      "clock": 0.04,
+      "usage": {
+        "input_tokens": 1384,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005812800000000001,
+      "elapsedMs": 99.59654799999953
+    },
+    "d090": {
+      "scores": {
+        "claim": 0.04,
+        "lab": 0.06,
+        "appt": 0.03,
+        "records": 0.97,
+        "patient": 0.17,
+        "vendor": 0.02,
+        "noise": 0.02,
+        "internal": 0.03
+      },
+      "clock": 0.09,
+      "usage": {
+        "input_tokens": 1394,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058548,
+      "elapsedMs": 132.3284760000006
+    }
+  }
+}

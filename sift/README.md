@@ -64,12 +64,24 @@ code is the same for all seven.
 | Brightwater Builders | general contractor | 90 | 27 | 25 |
 | Fieldstone Talent | recruiting agency | 90 | 25 | 26 |
 
-**None of the six is scored yet**, so no number is published for them. `test/firms.test.ts` holds
-each one to Meridian's floors and checks that, under a perfect judgment, every ordinary message
-lands where its labels say and only the recorded known gaps disagree. Until a firm has a run, the
-dashboard shows its ten illustrative messages, captioned illustrative. Scoring one buys a judgment
-per message, writes `runs/<firm>/` and the firm's entry in `runs/served.json`, and from then on the
-dashboard serves that firm measured:
+Each was scored on 2026-09-25, one recorded judgment per message from the same model as
+Meridian's run, at the lines its own sweep chose on its ordinary subset. Full per-class tables,
+the thresholds and the measured cost are in each firm's scorecard; every judgment is committed in
+`runs/<firm>/run.json`, so any figure can be recomputed without spending again.
+
+| firm | trade | clocked-item catch rate | false alarms | handled with no person asked | source |
+|---|---|---|---|---|---|
+| Hale & Marrow LLP | law firm | 89% (24/27) | 11% (7/63) | 77% (69/90) | `runs/law/SCORECARD.md` |
+| Northgate Property Group | property management | 90% (26/29) | 10% (6/63) | 76% (70/92) | `runs/prop/SCORECARD.md` |
+| Cedar Grove Dental | dental practice | 96% (27/28) | 15% (9/62) | 90% (81/90) | `runs/med/SCORECARD.md` |
+| Larkin & Voss CPAs | accounting firm | 100% (25/25) | 15% (10/65) | 77% (69/90) | `runs/cpa/SCORECARD.md` |
+| Brightwater Builders | general contractor | 100% (27/27) | 16% (10/63) | 69% (62/90) | `runs/gc/SCORECARD.md` |
+| Fieldstone Talent | recruiting agency | 84% (21/25) | 6% (4/65) | 78% (70/90) | `runs/rec/SCORECARD.md` |
+
+As with Meridian, these are measurements on invented inboxes, with no before/after comparison.
+`test/firms.test.ts` also holds each instrument to Meridian's bar: both size floors, deadlines code
+can reproduce, and, under a perfect judgment, every ordinary message landing where its labels say.
+A firm is re-scored with:
 
 ```bash
 pnpm --filter @builds/sift score --firm law

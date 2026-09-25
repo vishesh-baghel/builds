@@ -9,7 +9,7 @@ suppliers, authorities, change orders, bids and every inbox message are invented
 mailbox, no real correspondence. Every sender uses an `.example` domain. Nothing here may be
 presented as evidence of client work.
 
-Status: **authored 2026-09-25, not yet scored. It freezes at its first scored run; any label change
+Status: **frozen at the first scored run, 2026-09-25 (`runs/gc/SCORECARD.md`). Any label change
 after that goes in `docs/VARIANCE-LOG.md`.**
 
 ## Files

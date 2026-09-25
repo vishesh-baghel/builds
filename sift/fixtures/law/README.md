@@ -9,7 +9,7 @@ clients, opposing counsel, prospective clients, vendors and every inbox message 
 client, no real mailbox, no real correspondence, no real court. Every sender uses an `.example`
 domain. Nothing here may be presented as evidence of client work.
 
-Status: **authored 2026-09-25, not yet scored. It freezes at its first scored run; any label change
+Status: **frozen at the first scored run, 2026-09-25 (`runs/law/SCORECARD.md`). Any label change
 after that goes in `docs/VARIANCE-LOG.md`.**
 
 The rules the labels were written against are in `src/trades/law.ts`. The inbox is read on Monday

@@ -8,7 +8,7 @@ number measures the system rather than being shaped by it.
 offers, invoices, vendors and every inbox message are invented. No client, no real mailbox, no real
 correspondence, no real company or product. Nothing here may be presented as evidence of client work.
 
-Status: **authored 2026-09-25, not yet scored. It freezes at its first scored run; any label change
+Status: **frozen at the first scored run, 2026-09-25 (`runs/rec/SCORECARD.md`). Any label change
 after that goes in `docs/VARIANCE-LOG.md`.**
 
 ## Files

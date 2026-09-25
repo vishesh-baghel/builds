@@ -9,7 +9,7 @@ client ids, agencies and payroll providers are made up, and every sender sits on
 domain. No client, no real mailbox, no real correspondence. Nothing here may be presented as
 evidence of client work.
 
-Status: **authored 2026-09-25, not yet scored. It freezes at its first scored run; any label change
+Status: **frozen at the first scored run, 2026-09-25 (`runs/cpa/SCORECARD.md`). Any label change
 after that goes in `docs/VARIANCE-LOG.md`.** 90 messages and three systems of record.
 `fixtures.json` is the generated snapshot the app reads; regenerate it with
 `pnpm --filter @builds/sift snapshot` after any edit, or the gate fails.
