@@ -16,9 +16,14 @@ import {
  * 200x stays watchable.
  */
 
-const SPEEDS = [1, 4, 30, 200] as const;
+const SPEEDS = [1, 4, 30, 200, 300] as const;
 /** Milliseconds per item at 1x. */
 const BASE_MS = 1_400;
+/**
+ * A browser repaints at best every ~16ms, so above ~90x one item per tick would cap the replay
+ * below its label. There each tick advances several items instead, keeping the rate honest.
+ */
+const FRAME_MS = 16;
 /** The most work items any order has; every order is laid out in this many fixed slots. */
 const SLOTS = 7;
 
@@ -61,11 +66,12 @@ export function Replay() {
 
   useEffect(() => {
     if (!run || !playing) return;
+    const perItem = BASE_MS / speed;
+    const step = Math.max(1, Math.round(FRAME_MS / perItem));
     const id = setTimeout(() => {
-      const next = g + 1;
-      if (next >= run.flat.length) { setPlaying(false); return; }
-      setG(next);
-    }, BASE_MS / speed);
+      if (g + 1 >= run.flat.length) { setPlaying(false); return; }
+      setG(Math.min(run.flat.length - 1, g + step));
+    }, perItem * step);
     return () => clearTimeout(id);
   }, [run, playing, speed, g]);
 
