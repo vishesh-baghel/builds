@@ -1,0 +1,100 @@
+{
+ "orders": 1000,
+ "judgedOrders": 1000,
+ "calibrationOrders": 200,
+ "thresholds": {
+  "unsupported": 0.35,
+  "evidence": 2,
+  "covered": 0.6,
+  "margin": 0
+ },
+ "full": {
+  "items": 3568,
+  "plantedCents": 49923500,
+  "foundCents": 49034500,
+  "wronglyCountedCents": 1148000,
+  "recovered": 1112,
+  "wronglyCounted": 35,
+  "guardrailBlocks": 77,
+  "humanRouted": 21,
+  "verdictAccuracy": 0.8609865470852018,
+  "traps": {
+   "casual_extra": {
+    "planted": 372,
+    "caught": 365
+   },
+   "sounds_extra_but_covered": {
+    "planted": 291,
+    "caught": 291
+   },
+   "chatter": {
+    "planted": 436,
+    "caught": 436
+   },
+   "mention_not_done": {
+    "planted": 58,
+    "caught": 53
+   },
+   "injection": {
+    "planted": 20,
+    "caught": 7
+   },
+   "hedged": {
+    "planted": 43,
+    "caught": 9
+   }
+  }
+ },
+ "heldOut": {
+  "items": 2864,
+  "plantedCents": 40486000,
+  "foundCents": 39623000,
+  "wronglyCountedCents": 957500,
+  "recovered": 906,
+  "wronglyCounted": 31,
+  "guardrailBlocks": 64,
+  "humanRouted": 17,
+  "verdictAccuracy": 0.8610335195530726,
+  "traps": {
+   "casual_extra": {
+    "planted": 307,
+    "caught": 301
+   },
+   "sounds_extra_but_covered": {
+    "planted": 224,
+    "caught": 224
+   },
+   "chatter": {
+    "planted": 349,
+    "caught": 349
+   },
+   "mention_not_done": {
+    "planted": 49,
+    "caught": 44
+   },
+   "injection": {
+    "planted": 15,
+    "caught": 5
+   },
+   "hedged": {
+    "planted": 38,
+    "caught": 7
+   }
+  }
+ },
+ "performance": {
+  "model": "drex-latest",
+  "decisions": 3568,
+  "questionsPerDecision": 4,
+  "p50LatencyMs": 624,
+  "p95LatencyMs": 865,
+  "concurrency": 5,
+  "wallSeconds": 1845,
+  "decisionsPerMinute": 116,
+  "medianInputTokensPerDecision": 2224,
+  "inputTokensPer1000Decisions": 2224540
+ },
+ "auditRows": 15405,
+ "draftedLines": 1112,
+ "humanQueue": 21
+}

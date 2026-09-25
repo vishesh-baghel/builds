@@ -7,6 +7,7 @@
     "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.app.json",
     "test": "vitest run",
     "fixtures": "tsx scripts/generate-fixtures.ts",
+    "score": "tsx scripts/score.ts",
     "run": "NODE_OPTIONS='--dns-result-order=ipv4first --no-network-family-autoselection' tsx --env-file=.env.local scripts/run.ts",
     "dev": "next dev --port 3013",
     "build": "next build",
