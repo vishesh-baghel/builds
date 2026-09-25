@@ -502,3 +502,64 @@ select option { color: var(--color-ink); background: var(--color-paper); }
      towering over it. It nudges a number by one; it is not a primary action. */
   .stepper__btn { width: 38px; min-height: 32px; }
 }
+
+/* ─── the dashboard shell ─────────────────────────────────────────────
+ * Two columns on a wide screen: the sidebar holds the firm, the sections and the dial, and stays
+ * in view. Under 48rem there is no room for a 15rem column beside a message, so the sidebar
+ * becomes a drawer behind a one-row bar, the same pattern reckon uses for its actions.
+ */
+.shell{min-height:100vh;display:grid;grid-template-columns:15rem minmax(0,1fr);background:var(--color-paper)}
+.side{border-right:var(--rule) solid var(--color-rule);background:var(--color-paper-2);display:flex;
+  flex-direction:column;position:sticky;top:0;height:100vh;overflow:auto}
+.mbar,.side__close,.side__scrim{display:none}
+
+/* The inbox table: five columns on a wide screen. */
+.irow{display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,2fr) minmax(0,1.3fr) 5.5rem 6rem;
+  gap:.75rem;align-items:baseline}
+.irow__when{text-align:right}
+.savrow{display:grid;grid-template-columns:minmax(0,1fr) 6rem 6rem}
+
+@media (max-width: 47.99rem) {
+  /* Start-aligned rows: with min-height:100vh a short page would otherwise stretch every auto
+     row to fill the screen, and the bar would take the slack. */
+  .shell{grid-template-columns:minmax(0,1fr);grid-template-rows:auto 1fr;align-content:start}
+
+  .mbar{position:sticky;top:0;z-index:40;display:flex;align-items:center;gap:var(--space-sm);
+    min-height:56px;padding:0 var(--space-md);border-bottom:var(--rule) solid var(--color-rule);
+    background:color-mix(in oklch,var(--color-paper-2) 92%,transparent);backdrop-filter:blur(10px)}
+  .mbar__mark{font-family:var(--font-display);font-weight:600;font-size:var(--text-lg);
+    color:var(--color-ink);letter-spacing:-.02em;flex:none}
+  .mbar__where{min-width:0;font-size:var(--text-sm);color:var(--color-ink-3);
+    overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+  .mbar .burger{display:inline-flex}
+
+  /* A sibling of the bar, not a child: the bar's backdrop-filter would make it the containing
+     block for a fixed drawer, as reckon found. */
+  .side__scrim{display:block}
+  .side{position:fixed;top:0;right:0;bottom:0;z-index:60;height:auto;width:min(19rem,86vw);
+    border-right:0;border-left:var(--rule) solid var(--color-rule);box-shadow:var(--shadow-overlay);
+    transform:translateX(100%);visibility:hidden;
+    transition:transform var(--dur-mid) var(--ease-out),visibility var(--dur-mid)}
+  .side.is-open{transform:none;visibility:visible}
+  .side__close{display:inline-flex;margin-left:auto;align-self:center}
+
+  /* Five columns do not fit a phone. Each row stacks: who and when, the subject, then where
+     it went and at what priority. */
+  .irow--head{display:none}
+  .irow{grid-template-columns:minmax(0,1fr) auto;
+    grid-template-areas:"from when" "subj subj" "to pri";gap:.125rem .75rem}
+  .irow__from{grid-area:from}
+  .irow__when{grid-area:when}
+  .irow__subj{grid-area:subj}
+  .irow__to{grid-area:to}
+  .irow__pri{grid-area:pri;text-align:right}
+
+  /* Two 6rem figure columns left the row labels a word per line. */
+  .savrow{grid-template-columns:minmax(0,1fr) 4.75rem 4.75rem}
+}
+
+@media (pointer: coarse) {
+  .side nav button, .side select { min-height: 44px !important; }
+  .side__close { min-height: 44px; }
+  .burger { width: 44px; height: 44px; }
+}
