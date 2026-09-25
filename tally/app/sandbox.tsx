@@ -42,6 +42,7 @@ export function Sandbox() {
   const [act, setAct] = useState<number | null>(null);
   const [dec, setDec] = useState<Record<string, "bill" | "leave" | undefined>>({});
   const [how, setHow] = useState(false);
+  const [menu, setMenu] = useState(false);
   const [rows, setRows] = useState(10);
   const listRef = useRef<HTMLUListElement>(null);
 
@@ -143,8 +144,21 @@ export function Sandbox() {
 
   return (
     <div className="tl-shell" style={{ minHeight: "100vh", display: "grid", gridTemplateColumns: "15rem minmax(0,1fr)", background: K.paper, color: K.ink2, fontFamily: F.sans, fontSize: ".9375rem", lineHeight: 1.6 }}>
-      <aside className="tl-side" style={{ borderRight: `1px solid ${K.rule}`, background: K.side, display: "flex", flexDirection: "column", position: "sticky", top: 0, height: "100vh", overflow: "auto" }}>
-        <div style={{ padding: "1.125rem 1.25rem .25rem", display: "flex", alignItems: "baseline", gap: ".5rem" }}>
+      <div className="tl-mobilebar" style={{ alignItems: "center", justifyContent: "space-between", gap: "1rem", padding: ".75rem 1rem", borderBottom: `1px solid ${K.rule}`, background: K.side }}>
+        <span style={{ display: "flex", alignItems: "baseline", gap: ".5rem", minWidth: 0 }}>
+          <span style={{ fontFamily: F.display, fontWeight: 600, fontSize: "1.0625rem", color: K.ink, letterSpacing: "-.02em" }}>tally</span>
+          <span style={{ fontSize: ".75rem", color: K.ink3, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{PAGES.find(([id]) => id === page)![1]}</span>
+        </span>
+        <button type="button" onClick={() => setMenu(!menu)} aria-expanded={menu} aria-controls="tl-menu" aria-label={menu ? "Close menu" : "Open menu"}
+          style={{ flex: "none", width: 40, height: 40, display: "flex", flexDirection: "column", alignItems: "center", justifyContent: "center", gap: 4, border: `1px solid ${K.rule2}`, borderRadius: 6, background: K.paper, cursor: "pointer", padding: 0 }}>
+          {[0, 1, 2].map((k) => (
+            <span key={k} style={{ display: "block", width: 18, height: 2, borderRadius: 1, background: K.ink, transition: "transform 180ms, opacity 180ms",
+              transform: menu ? (k === 0 ? "translateY(6px) rotate(45deg)" : k === 2 ? "translateY(-6px) rotate(-45deg)" : "none") : "none", opacity: menu && k === 1 ? 0 : 1 }} />
+          ))}
+        </button>
+      </div>
+      <aside id="tl-menu" className={`tl-side${menu ? " open" : ""}`} style={{ borderRight: `1px solid ${K.rule}`, background: K.side, display: "flex", flexDirection: "column", position: "sticky", top: 0, height: "100vh", overflow: "auto" }}>
+        <div className="tl-sidebrand" style={{ padding: "1.125rem 1.25rem .25rem", display: "flex", alignItems: "baseline", gap: ".5rem" }}>
           <span style={{ fontFamily: F.display, fontWeight: 600, fontSize: "1.0625rem", color: K.ink, letterSpacing: "-.02em" }}>tally</span>
           <span style={{ fontSize: ".75rem", color: K.ink3 }}>billing leakage</span>
         </div>
@@ -157,7 +171,7 @@ export function Sandbox() {
           {PAGES.map(([id, label, count]) => {
             const cur = page === id;
             return (
-              <button key={id} type="button" onClick={() => setPage(id)} style={{ display: "flex", alignItems: "center", gap: ".625rem", width: "100%", minHeight: 38, padding: "0 .625rem", border: 0, borderRadius: 6, textAlign: "left", font: "inherit", fontSize: ".875rem", fontWeight: 500, cursor: "pointer", background: cur ? K.accentSoft : "transparent", color: cur ? K.accent : K.ink2 }}>
+              <button key={id} type="button" onClick={() => { setPage(id); setMenu(false); }} style={{ display: "flex", alignItems: "center", gap: ".625rem", width: "100%", minHeight: 38, padding: "0 .625rem", border: 0, borderRadius: 6, textAlign: "left", font: "inherit", fontSize: ".875rem", fontWeight: 500, cursor: "pointer", background: cur ? K.accentSoft : "transparent", color: cur ? K.accent : K.ink2 }}>
                 <span style={{ flex: "1 1 auto" }}>{label}</span>
                 <span style={{ fontFamily: F.mono, fontSize: ".6875rem", fontVariantNumeric: "tabular-nums", color: id === "review" && pending ? K.warn : id === "guard" ? K.neg : K.ink3 }}>{count}</span>
               </button>
@@ -172,8 +186,7 @@ export function Sandbox() {
             </div>
             <input type="range" min={0} max={1} step={0.02} value={dial} onChange={(e) => onDial(Number(e.target.value))} aria-label="Auto-bill setting" style={{ display: "block", width: "100%", accentColor: K.accent, cursor: "pointer" }} />
           </div>
-          <button type="button" onClick={() => setHow(true)} style={{ minHeight: 34, padding: "0 1rem", borderRadius: 6, border: `1px solid ${K.rule2}`, background: "transparent", color: K.ink3, font: "inherit", fontSize: ".8125rem", fontWeight: 500, cursor: "pointer", width: "100%" }}>How it works</button>
-          <a href="/replay" style={{ fontSize: ".75rem", color: K.accent, textAlign: "center" }}>Watch the run replay</a>
+          <button type="button" onClick={() => { setHow(true); setMenu(false); }} style={{ minHeight: 34, padding: "0 1rem", borderRadius: 6, border: `1px solid ${K.rule2}`, background: "transparent", color: K.ink3, font: "inherit", fontSize: ".8125rem", fontWeight: 500, cursor: "pointer", width: "100%" }}>How it works</button>
         </div>
       </aside>
 
@@ -572,9 +585,10 @@ function Stat({ n, color, edge, label, sub, onClick }: { n: string; color: strin
       <div style={{ marginTop: ".25rem", color: K.ink3, fontSize: ".8125rem" }}><b style={{ color: K.ink2, fontWeight: 500 }}>{label}</b> {sub}</div>
     </>
   );
-  const style: CSSProperties = { minWidth: 0, padding: "0 0 0 1rem", borderLeft: `2px solid ${edge}`, textAlign: "left" };
+  // `border: 0` resets the button; it has to come before the edge or it wipes it out.
+  const style: CSSProperties = { minWidth: 0, padding: "0 0 0 1rem", border: 0, borderLeft: `2px solid ${edge}`, textAlign: "left" };
   return onClick
-    ? <button type="button" onClick={onClick} style={{ ...style, border: 0, borderLeft: `2px solid ${edge}`, background: "transparent", cursor: "pointer", font: "inherit" }}>{body}</button>
+    ? <button type="button" onClick={onClick} style={{ ...style, background: "transparent", cursor: "pointer", font: "inherit" }}>{body}</button>
     : <div style={style}>{body}</div>;
 }
 
