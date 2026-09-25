@@ -9,7 +9,7 @@ import { firmById } from "../src/fixtures";
 import { ADVERSARIAL } from "../src/fixtures/adversarial";
 import { toMessage } from "../src/fixtures/instrument";
 import { loadInstrument } from "../src/fixtures/load";
-import { measuredFirm, type RecordedRun } from "../src/fixtures/meridian";
+import { measuredFirm, type RecordedRun } from "../src/fixtures/measured";
 import { judge } from "../src/jev";
 import { HUMAN_TIME_ESTIMATE, MERIDIAN_THRESHOLDS, renderSecondsEstimate } from "../src/policy";
 import { CLOCK_QUESTION } from "../src/questions";
@@ -113,7 +113,7 @@ describe("AC #24: human time is one named, labelled estimate, never beside a mea
   });
 
   it("builds every with-Sift figure from the one constant, not from inline numbers", () => {
-    const meridian = measuredFirm(arch, instrument, run as unknown as RecordedRun);
+    const meridian = measuredFirm(arch, instrument, run as unknown as RecordedRun, MERIDIAN_THRESHOLDS);
     const v = deriveView(meridian, MERIDIAN_THRESHOLDS, HUMAN_TIME_ESTIMATE.handSecondsPerMessage, HUMAN_TIME_ESTIMATE.lookupSecondsPerRecord);
     const expected = HUMAN_TIME_ESTIMATE.glanceSecondsPerWorkingDay * v.span.workingDays
       + v.score.escalated * HUMAN_TIME_ESTIMATE.decideSecondsPerItem

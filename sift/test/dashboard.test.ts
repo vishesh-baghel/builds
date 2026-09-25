@@ -2,7 +2,7 @@ import { describe, expect, it } from "vitest";
 import run from "../runs/run.json" with { type: "json" };
 import { firmById } from "../src/fixtures";
 import { loadInstrument } from "../src/fixtures/load";
-import { measuredFirm, type RecordedRun } from "../src/fixtures/meridian";
+import { measuredFirm, type RecordedRun } from "../src/fixtures/measured";
 import type { Judgment } from "../src/jev";
 import { HUMAN_TIME_ESTIMATE, linesFor, MERIDIAN_THRESHOLDS } from "../src/policy";
 const HAND = HUMAN_TIME_ESTIMATE.handSecondsPerMessage;
@@ -13,7 +13,7 @@ import { deriveView } from "../src/view";
 const instrument = loadInstrument();
 const base = firmById("arch");
 const recorded = run as unknown as RecordedRun & { judgments: Record<string, Judgment> };
-const meridian = measuredFirm(base, instrument, recorded);
+const meridian = measuredFirm(base, instrument, recorded, MERIDIAN_THRESHOLDS);
 const view = deriveView(meridian, MERIDIAN_THRESHOLDS, HAND, LOOKUP);
 const scored = scoreRun(instrument.inbox, recorded.judgments, base, instrument, MERIDIAN_THRESHOLDS);
 

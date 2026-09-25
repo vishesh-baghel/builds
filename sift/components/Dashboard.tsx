@@ -15,10 +15,10 @@ import { ReadView, priColor } from "./ReadView";
  * the headless pipeline calls. There is no network on the client and no model call when the dial
  * moves: the judgment is bought once per message on the deploy, and this re-decides over it for free.
  *
- * Meridian is the measured firm: recorded model judgments over the frozen instrument, opened at the
- * lines the sweep chose so its numbers match the published scorecard. Moving the dial leaves that
- * setting, and the Measured preset returns to it. The other six firms are illustrative, and the
- * sidebar says which is which.
+ * A measured firm shows recorded model judgments over its frozen instrument, opened at the lines its
+ * sweep chose so its numbers match its published scorecard. Moving the dial leaves that setting, and
+ * the Measured preset returns to it. A firm with no recorded run yet is illustrative, and the sidebar
+ * says which is which.
  */
 
 interface LiveStatus {
@@ -57,7 +57,7 @@ const h2mono: CSSProperties = { margin: 0, fontFamily: "var(--font-mono)", fontS
 const card: CSSProperties = { border: "1px solid var(--color-rule)", borderRadius: "var(--radius-lg)", padding: "1.125rem 1.25rem" };
 const bigNum: CSSProperties = { marginTop: ".375rem", fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "2.25rem", letterSpacing: "-.03em", lineHeight: 1, fontVariantNumeric: "tabular-nums" };
 
-export function Dashboard({ firms, measuredLines }: { firms: readonly Firm[]; measuredLines: Thresholds }) {
+export function Dashboard({ firms }: { firms: readonly Firm[] }) {
   const [firmId, setFirmId] = useState(firms[0]?.id ?? "arch");
   const [page, setPage] = useState<PageId>("overview");
   const [dial, setDialState] = useState(0.6);
@@ -107,7 +107,8 @@ export function Dashboard({ firms, measuredLines }: { firms: readonly Firm[]; me
 
   useEffect(() => { if (openId) pick(firm.id, openId); }, [openId, firm.id, pick]);
   const measuring = firm.measured !== undefined && atMeasured;
-  const th = useMemo(() => (measuring ? measuredLines : linesFor(dial)), [measuring, measuredLines, dial]);
+  const measuredLines = firm.measured?.lines;
+  const th = useMemo(() => (measuring && measuredLines ? measuredLines : linesFor(dial)), [measuring, measuredLines, dial]);
   const view = useMemo(() => deriveView(firm, th, handSecs, lookupSecs), [firm, th, handSecs, lookupSecs]);
 
   const open = (id: string) => { setPage("inbox"); setOpenId(id); };

@@ -1,3 +1,4 @@
+import type { Judgment } from "./jev";
 import type { DeclaredThreshold, Thresholds } from "./policy";
 import type { Headline, Ratio, RunFigures, RunMeta, SubsetFigures, SweepPoint } from "./score";
 
@@ -63,6 +64,10 @@ export interface ScorecardInput {
   readonly sweepArtifact: string;
   /** Earlier runs on this same frozen instrument, recomputed from their committed artifacts. */
   readonly history?: readonly PriorRun[];
+  /** The firm, named in the title. Meridian's scorecard predates it and leaves it out. */
+  readonly firm?: string;
+  /** Where the instrument's inbox is committed. Defaults to Meridian's. */
+  readonly instrumentPath?: string;
 }
 
 export interface PriorRun {
@@ -98,11 +103,11 @@ export function renderScorecard(input: ScorecardInput): string {
   const clockedHard = figures.results.filter((r) => r.clocked && r.hard);
   const caughtOf = (rs: readonly { clockFlagged: boolean }[]) => `${rs.filter((r) => r.clockFlagged).length} of ${rs.length}`;
 
-  return `# sift, scorecard
+  return `# sift, scorecard${input.firm ? `: ${input.firm}` : ""}
 
 **Run date:** ${input.date}
 **Model:** \`${meta.model}\`
-**Instrument:** the ${counts.total} committed messages in \`fixtures/inbox.jsonl\`, frozen: ${counts.clocked} carry a real clock, ${counts.hard} are deliberate boundary cases.
+**Instrument:** the ${counts.total} committed messages in \`${input.instrumentPath ?? "fixtures/inbox.jsonl"}\`, frozen: ${counts.clocked} carry a real clock, ${counts.hard} are deliberate boundary cases.
 
 All data is synthetic. This is a self-built experiment on invented data: no client, no client names,
 no client results. There is no before/after comparison anywhere on this page: no pre-baseline was
@@ -172,4 +177,18 @@ export function renderSweepArtifact(points: readonly SweepPoint[], chosen: Sweep
     chosen,
     points,
   }, null, 2)}\n`;
+}
+
+/**
+ * One firm's entry in `runs/served.json`: what the deploy serves for it. The recorded scores and
+ * clock per message, the model, and the lines its sweep chose. Never token counts or costs.
+ */
+export function servedEntry(
+  date: string, judgments: Readonly<Record<string, Judgment>>, lines: Thresholds,
+): { date: string; lines: Thresholds; judgments: Record<string, { scores: Readonly<Record<string, number>>; clock: number; model: string }> } {
+  return {
+    date,
+    lines,
+    judgments: Object.fromEntries(Object.entries(judgments).map(([id, j]) => [id, { scores: j.scores, clock: j.clock, model: j.model }])),
+  };
 }

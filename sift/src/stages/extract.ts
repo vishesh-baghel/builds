@@ -5,8 +5,9 @@ import type { Message } from "../types";
 /**
  * The extract stage's code: the joins, the date arithmetic and the lookups. No model here.
  *
- * A deadline is only ever read, never guessed. It comes from, in order: an open RFI or submittal the
- * message names (the log carries the contractual window); a "within N days" window counted from the
+ * A deadline is only ever read, never guessed. It comes from, in order: an open item in one of the
+ * firm's logs that the message names (an RFI, a submittal, a docketed date; the log carries the
+ * window); a "within N days" window counted from the
  * day the message arrived; or an explicit dated phrase such as "by October 2" or "no later than
  * Friday". Anything else, including "promptly", yields no date, and a clock with no date is handed
  * to a person to set.
@@ -15,16 +16,18 @@ import type { Message } from "../types";
 export interface Deadline {
   readonly date: string;
   readonly how: string;
-  /** Where it came from: an RFI or submittal log, a "within N days" window, or a dated phrase. */
-  readonly source: "rfi" | "submittal" | "window" | "dated";
+  /** Where it came from: one of the firm's logs, a "within N days" window, or a dated phrase. */
+  readonly source: "log" | "window" | "dated";
+  /** On a log deadline, the log's own name for it: "RFI response", "Filing deadline". */
+  readonly kind?: string;
 }
 
 export interface Facts {
   readonly project: Project | null;
   readonly deadline: Deadline | null;
-  /** The message names an open RFI or submittal, so the log itself corroborates a clock. */
+  /** The message names an open item in a log, so the log itself corroborates a clock. */
   readonly inLog: boolean;
-  /** The message names an RFI or submittal the logs hold, open or closed. */
+  /** The message names an item the logs hold, open or closed. */
   readonly logged: boolean;
   /** A repeat ask: a threaded reply, or a sender saying they are asking again. */
   readonly repeat: boolean;
@@ -61,11 +64,8 @@ const WEEKDAY = new RegExp(String.raw`\b${KEY}\s+(?:this\s+|next\s+)?(${WEEKDAYS
 export function parseDeadline(text: string, receivedAt: string, sor: Sor): Deadline | null {
   const received = receivedAt.slice(0, 10);
 
-  for (const r of sor.rfis) {
-    if (r.status === "open" && text.includes(r.number)) return { date: r.due, how: `${r.number} response window in the RFI log`, source: "rfi" };
-  }
-  for (const s of sor.submittals) {
-    if (s.status !== "approved" && text.includes(s.number)) return { date: s.reviewDue, how: `submittal ${s.number} review due in the log`, source: "submittal" };
+  for (const r of sor.logs) {
+    if (r.status === "open" && text.includes(r.number)) return { date: r.due, how: `${r.number} in the ${r.log}`, source: "log", kind: r.kind };
   }
 
   const within = WITHIN.exec(text);
@@ -104,13 +104,12 @@ export function parseDeadline(text: string, receivedAt: string, sor: Sor): Deadl
 }
 
 /**
- * The project a message is about: a logged RFI, submittal or permit number first, then the
+ * The project a message is about: a logged item's number or a project reference first, then the
  * project's name as written, then the sender's own project in the contact list.
  */
 export function matchProject(sor: Sor, text: string, email = ""): Project | null {
   const byCode = (code: string): Project | null => sor.projects.find((p) => p.code === code) ?? null;
-  for (const r of sor.rfis) if (text.includes(r.number)) return byCode(r.project);
-  for (const s of sor.submittals) if (text.includes(s.number)) return byCode(s.project);
+  for (const r of sor.logs) if (text.includes(r.number)) return byCode(r.project);
   for (const p of sor.projects) if (p.permits.some((n) => text.includes(n))) return p;
 
   const lower = text.toLowerCase();
@@ -134,9 +133,8 @@ export function factsFor(message: Pick<Message, "subject" | "body" | "email" | "
   return {
     project: matchProject(sor, text, message.email),
     deadline: parseDeadline(text, message.received, sor),
-    inLog: sor.rfis.some((r) => r.status === "open" && text.includes(r.number))
-      || sor.submittals.some((s) => s.status !== "approved" && text.includes(s.number)),
-    logged: sor.rfis.some((r) => text.includes(r.number)) || sor.submittals.some((s) => text.includes(s.number)),
+    inLog: sor.logs.some((r) => r.status === "open" && text.includes(r.number)),
+    logged: sor.logs.some((r) => text.includes(r.number)),
     repeat: /^re:\s*re:/i.test(message.subject) || REPEAT.test(message.body),
   };
 }

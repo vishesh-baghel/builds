@@ -5,7 +5,7 @@ import type {
 } from "@builds/shared";
 import { INBOX_AS_OF } from "./clock";
 import type { Sor } from "./fixtures/schema";
-import { MERIDIAN } from "./fixtures/sor";
+import { SORS } from "./fixtures/sor";
 import type { Judgment } from "./jev";
 import { DEFAULT_THRESHOLDS, type Thresholds } from "./policy";
 import { stateFor, type JudgmentState } from "./questions";
@@ -44,8 +44,8 @@ export interface SiftOptions {
   readonly thresholds?: Thresholds;
   readonly asOf?: string;
   /**
-   * The firm's systems of record. Meridian has them, so routing, priority and deadlines are code;
-   * the illustrative firms have none and fall back to their fixture routes.
+   * The firm's systems of record. A firm with an instrument has them, so routing, priority and
+   * deadlines are code; a firm without falls back to its fixture routes.
    */
   readonly sor?: Sor | null;
 }
@@ -62,7 +62,7 @@ export class SiftPipeline implements Pipeline<Message, MessageFields, string, Si
   constructor(private readonly options: SiftOptions) {
     this.thresholds = options.thresholds ?? DEFAULT_THRESHOLDS;
     this.asOf = options.asOf ?? INBOX_AS_OF;
-    this.sor = options.sor !== undefined ? options.sor : options.firm.id === "arch" ? MERIDIAN : null;
+    this.sor = options.sor !== undefined ? options.sor : SORS[options.firm.id] ?? null;
   }
 
   get store(): SiftStore { return this.options.store; }
