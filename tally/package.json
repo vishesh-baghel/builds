@@ -1,0 +1,30 @@
+{
+  "name": "@builds/tally",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit -p tsconfig.json && tsc --noEmit -p tsconfig.app.json",
+    "test": "vitest run",
+    "fixtures": "tsx scripts/generate-fixtures.ts",
+    "score": "tsx scripts/score.ts",
+    "run": "NODE_OPTIONS='--dns-result-order=ipv4first --no-network-family-autoselection' tsx --env-file=.env.local scripts/run.ts",
+    "dev": "next dev --port 3013",
+    "build": "next build",
+    "start": "next start --port 3013"
+  },
+  "dependencies": {
+    "@builds/shared": "workspace:*",
+    "@typesafe-ai/sdk": "^0.6.0",
+    "next": "16.3.5",
+    "react": "19.2.8",
+    "react-dom": "19.2.8"
+  },
+  "devDependencies": {
+    "@rolldown/binding-linux-x64-gnu": "^1.2.9",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "tsx": "^4.23.13",
+    "vitest": "^5.0.1"
+  }
+}

@@ -1,0 +1,25 @@
+{
+ "items": 220,
+ "withAgreement": {
+  "coverage": {
+   "right": 184,
+   "of": 186
+  },
+  "verdict": {
+   "right": 190,
+   "of": 220
+  },
+  "meanInputTokens": 2224
+ },
+ "withoutAgreement": {
+  "coverage": {
+   "right": 161,
+   "of": 186
+  },
+  "verdict": {
+   "right": 132,
+   "of": 220
+  },
+  "meanInputTokens": 1182
+ }
+}

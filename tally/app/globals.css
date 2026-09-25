@@ -1,0 +1,27 @@
+* { box-sizing: border-box; }
+html, body { margin: 0; }
+body { -webkit-font-smoothing: antialiased; }
+button { font: inherit; }
+
+/* The sandbox sidebar collapses above the page on narrow screens. */
+@media (max-width: 900px) {
+  .tl-shell { grid-template-columns: 1fr !important; }
+  .tl-side { position: static !important; height: auto !important; }
+  .tl-nav { flex-direction: row !important; flex-wrap: wrap; }
+  .tl-nav button { width: auto !important; }
+  .tl-sidefoot { margin-top: .5rem !important; }
+  .tl-orders { grid-template-columns: 1fr !important; height: auto !important; }
+  .tl-list ul { height: 26rem; }
+  .tl-detail { border-left: 0 !important; padding-left: 0 !important; overflow: visible !important; }
+}
+
+/* The replay is one fixed screen on desktop; on a phone it becomes a normal scrolling page. */
+@media (max-width: 900px) {
+  .rp-shell { height: auto !important; overflow: visible !important; }
+  .rp-head { grid-template-columns: 1fr !important; text-align: left; }
+  .rp-head > div { text-align: left !important; }
+  .rp-head dl { justify-content: flex-start !important; flex-wrap: wrap; }
+  .rp-stage { grid-template-columns: 1fr !important; }
+  .rp-stage > div { border-left: 0 !important; padding-left: 0 !important; }
+  .rp-list { overflow: visible !important; }
+}

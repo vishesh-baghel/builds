@@ -103,6 +103,40 @@ importers:
         specifier: ^5.0.1
         version: 5.0.1(@types/node@20.19.43)(vite@8.3.0(@types/node@20.19.43)(esbuild@0.28.2)(tsx@4.23.13))
 
+  tally:
+    dependencies:
+      '@builds/shared':
+        specifier: workspace:*
+        version: link:../shared
+      '@typesafe-ai/sdk':
+        specifier: ^0.6.0
+        version: 0.6.0
+      next:
+        specifier: 16.3.5
+        version: 16.3.5(@types/node@20.19.43)(react-dom@19.2.8(react@19.2.8))(react@19.2.8)
+      react:
+        specifier: 19.2.8
+        version: 19.2.8
+      react-dom:
+        specifier: 19.2.8
+        version: 19.2.8(react@19.2.8)
+    devDependencies:
+      '@rolldown/binding-linux-x64-gnu':
+        specifier: ^1.2.9
+        version: 1.2.9
+      '@types/react':
+        specifier: ^19
+        version: 19.3.0
+      '@types/react-dom':
+        specifier: ^19
+        version: 19.3.0(@types/react@19.3.0)
+      tsx:
+        specifier: ^4.23.13
+        version: 4.23.13
+      vitest:
+        specifier: ^5.0.1
+        version: 5.0.1(@types/node@20.19.43)(vite@8.3.0(@types/node@20.19.43)(esbuild@0.28.2)(tsx@4.23.13))
+
 packages:
 
   '@emnapi/runtime@1.11.3':
