@@ -64,6 +64,14 @@ export function Dashboard({ firms, measuredLines }: { firms: readonly Firm[]; me
   const [atMeasured, setAtMeasured] = useState(true);
   const setDial = (n: number) => { setDialState(n); setAtMeasured(false); };
   const [openId, setOpenId] = useState<string | null>(null);
+  // On a phone the sidebar is a drawer behind the bar's burger, as reckon's actions are.
+  const [menuOpen, setMenuOpen] = useState(false);
+  useEffect(() => {
+    if (!menuOpen) return;
+    const onKey = (event: KeyboardEvent) => { if (event.key === "Escape") setMenuOpen(false); };
+    window.addEventListener("keydown", onKey);
+    return () => window.removeEventListener("keydown", onKey);
+  }, [menuOpen]);
   const [handSecs, setHandSecs] = useState<number>(HUMAN_TIME_ESTIMATE.handSecondsPerMessage);
   const [lookupSecs, setLookupSecs] = useState<number>(HUMAN_TIME_ESTIMATE.lookupSecondsPerRecord);
 
@@ -132,11 +140,25 @@ export function Dashboard({ firms, measuredLines }: { firms: readonly Firm[]; me
   );
 
   return (
-    <div style={{ minHeight: "100vh", display: "grid", gridTemplateColumns: "15rem minmax(0,1fr)", background: "var(--color-paper)" }}>
-      <aside style={{ borderRight: "1px solid var(--color-rule)", background: "var(--color-paper-2)", display: "flex", flexDirection: "column", position: "sticky", top: 0, height: "100vh", overflow: "auto" }}>
+    <div className="shell">
+      {/* The narrow-screen bar. Hidden on a wide screen, where the sidebar is always in view. */}
+      <header className="mbar">
+        <span className="mbar__mark">sift</span>
+        <span className="mbar__where">{NAV.find(([id]) => id === page)?.[1]} · {firm.label}</span>
+        <button className="burger" type="button" aria-label="Menu" aria-expanded={menuOpen}
+          aria-controls="sideMenu" onClick={() => setMenuOpen((o) => !o)}>
+          <svg width="18" height="14" viewBox="0 0 18 14" aria-hidden="true" focusable="false">
+            <path d="M1 1h16M1 7h16M1 13h16" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" />
+          </svg>
+        </button>
+      </header>
+      <div className={`navscrim side__scrim${menuOpen ? " is-open" : ""}`} aria-hidden="true" onClick={() => setMenuOpen(false)} />
+
+      <aside id="sideMenu" className={`side${menuOpen ? " is-open" : ""}`}>
         <div style={{ padding: "1.125rem 1.25rem 1rem", display: "flex", alignItems: "baseline", gap: ".5rem" }}>
           <span style={{ fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "1.0625rem", color: "var(--color-ink)", letterSpacing: "-.02em" }}>sift</span>
           <span style={{ fontSize: ".75rem", color: "var(--color-ink-3)" }}>inbox triage</span>
+          <button className="btn btn--ghost side__close" type="button" onClick={() => setMenuOpen(false)}>Close</button>
         </div>
         <div style={{ padding: "0 1rem 1rem" }}>
           <label htmlFor="firm" style={mono({ display: "block", marginBottom: ".375rem" })}>Firm</label>
@@ -151,7 +173,7 @@ export function Dashboard({ firms, measuredLines }: { firms: readonly Firm[]; me
             const current = page === id;
             const count = counts[id];
             return (
-              <button key={id} type="button" onClick={() => setPage(id)} aria-current={current ? "page" : undefined}
+              <button key={id} type="button" onClick={() => { setPage(id); setMenuOpen(false); }} aria-current={current ? "page" : undefined}
                 style={{ display: "flex", alignItems: "center", gap: ".625rem", width: "100%", minHeight: 38, padding: "0 .625rem", border: 0, borderRadius: "var(--radius-md)", textAlign: "left", font: "inherit", fontSize: ".875rem", fontWeight: 500, cursor: "pointer", background: current ? "var(--color-accent-soft)" : "transparent", color: current ? "var(--color-accent)" : "var(--color-ink-2)" }}>
                 <span style={{ flex: "1 1 auto" }}>{label}</span>
                 {count != null && <span className="num" style={{ fontFamily: "var(--font-mono)", fontSize: ".6875rem", color: id === "decide" && count ? "var(--color-warn)" : "var(--color-ink-3)" }}>{count}</span>}
@@ -286,8 +308,8 @@ function Inbox({ view, firm, openId, setOpenId, results }: { view: V; firm: Firm
           Show only messages where Sift got something wrong ({diffCount} of {checked.length} at this setting)
         </label>
       )}
-      <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1.1fr) minmax(0,2fr) minmax(0,1.3fr) 5.5rem 6rem", gap: ".75rem", padding: "0 .75rem .5rem", borderBottom: "1px solid var(--color-rule-2)", ...mono() }}>
-        <span>from</span><span>subject</span><span>sent to</span><span>priority</span><span style={{ textAlign: "right" }}>received</span>
+      <div className="irow irow--head" style={{ padding: "0 .75rem .5rem", borderBottom: "1px solid var(--color-rule-2)", ...mono() }}>
+        <span>from</span><span>subject</span><span>sent to</span><span>priority</span><span className="irow__when">received</span>
       </div>
       <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
         {rows.map((m) => {
@@ -295,12 +317,12 @@ function Inbox({ view, firm, openId, setOpenId, results }: { view: V; firm: Firm
           return (
             <li key={m.id} style={{ borderBottom: "1px solid var(--color-rule)" }}>
               <button type="button" onClick={() => setOpenId(isOpen ? null : m.id)} aria-expanded={isOpen}
-                style={{ display: "grid", gridTemplateColumns: "minmax(0,1.1fr) minmax(0,2fr) minmax(0,1.3fr) 5.5rem 6rem", gap: ".75rem", alignItems: "baseline", width: "100%", textAlign: "left", border: 0, cursor: "pointer", padding: ".75rem .75rem", borderLeft: `3px solid ${isOpen ? "var(--color-accent)" : differs(m) ? "var(--color-warn)" : "transparent"}`, background: isOpen ? "var(--color-accent-soft)" : "transparent", font: "inherit", minHeight: 48 }}>
-                <span style={{ fontSize: ".875rem", color: "var(--color-ink-2)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", minWidth: 0 }}>{m.fromName}</span>
-                <span style={{ minWidth: 0, fontSize: ".9375rem", color: "var(--color-ink)", fontWeight: 500, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{m.subject}</span>
-                <span style={{ fontSize: ".8125rem", color: "var(--color-ink-2)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", minWidth: 0 }}>{m.routeShort}</span>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: ".625rem", letterSpacing: ".05em", textTransform: "uppercase", color: m.clockFlagged ? "var(--color-neg)" : m.priority ? priColor(m.priority) : "var(--color-warn)", whiteSpace: "nowrap" }}>{m.clockFlagged ? `due ${m.priority ? PRI[m.priority] : ""}` : m.priority ? PRI[m.priority] : "unclear"}</span>
-                <span style={{ textAlign: "right", fontFamily: "var(--font-mono)", fontSize: ".6875rem", color: "var(--color-ink-3)", whiteSpace: "nowrap" }}>{m.when}</span>
+                className="irow" style={{ width: "100%", textAlign: "left", border: 0, cursor: "pointer", padding: ".75rem .75rem", borderLeft: `3px solid ${isOpen ? "var(--color-accent)" : differs(m) ? "var(--color-warn)" : "transparent"}`, background: isOpen ? "var(--color-accent-soft)" : "transparent", font: "inherit", minHeight: 48 }}>
+                <span className="irow__from" style={{ fontSize: ".875rem", color: "var(--color-ink-2)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", minWidth: 0 }}>{m.fromName}</span>
+                <span className="irow__subj" style={{ minWidth: 0, fontSize: ".9375rem", color: "var(--color-ink)", fontWeight: 500, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{m.subject}</span>
+                <span className="irow__to" style={{ fontSize: ".8125rem", color: "var(--color-ink-2)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", minWidth: 0 }}>{m.routeShort}</span>
+                <span className="irow__pri" style={{ fontFamily: "var(--font-mono)", fontSize: ".625rem", letterSpacing: ".05em", textTransform: "uppercase", color: m.clockFlagged ? "var(--color-neg)" : m.priority ? priColor(m.priority) : "var(--color-warn)", whiteSpace: "nowrap" }}>{m.clockFlagged ? `due ${m.priority ? PRI[m.priority] : ""}` : m.priority ? PRI[m.priority] : "unclear"}</span>
+                <span className="irow__when" style={{ fontFamily: "var(--font-mono)", fontSize: ".6875rem", color: "var(--color-ink-3)", whiteSpace: "nowrap" }}>{m.when}</span>
               </button>
               {isOpen && <ReadView row={m} measured={firm.measured ?? null} live={results[`${firm.id}/${m.id}`] ?? null} />}
             </li>
@@ -425,16 +447,16 @@ function Savings({ view, firm, handSecs, setHandSecs, lookupSecs, setLookupSecs 
   return (
     <div style={{ display: "grid", gap: "1.5rem 2.5rem", gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,20rem),1fr))", alignItems: "start" }}>
       <div>
-        <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 6rem 6rem", gap: ".75rem", padding: "0 .25rem .5rem", borderBottom: "1px solid var(--color-rule-2)", ...mono() }}><span>time on this inbox (estimate)</span><span style={{ textAlign: "right" }}>by hand</span><span style={{ textAlign: "right" }}>with sift</span></div>
+        <div className="savrow" style={{ gap: ".75rem", padding: "0 .25rem .5rem", borderBottom: "1px solid var(--color-rule-2)", ...mono() }}><span>time on this inbox (estimate)</span><span style={{ textAlign: "right" }}>by hand</span><span style={{ textAlign: "right" }}>with sift</span></div>
         <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
           {sav.rows.map((r, i) => (
-            <li key={i} style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 6rem 6rem", gap: ".75rem", padding: ".625rem .25rem", borderBottom: "1px solid var(--color-rule)", alignItems: "baseline" }}>
+            <li key={i} className="savrow" style={{ gap: ".75rem", padding: ".625rem .25rem", borderBottom: "1px solid var(--color-rule)", alignItems: "baseline" }}>
               <span><span style={{ display: "block", color: "var(--color-ink)", fontWeight: 500, fontSize: ".9375rem" }}>{r.label}</span><span style={{ display: "block", fontSize: ".8125rem", color: "var(--color-ink-3)" }}>{r.sub}</span></span>
               <span style={{ textAlign: "right", fontFamily: "var(--font-mono)", fontSize: ".875rem", color: "var(--color-ink-2)", fontVariantNumeric: "tabular-nums" }}>{r.hand}</span>
               <span style={{ textAlign: "right", fontFamily: "var(--font-mono)", fontSize: ".875rem", color: "var(--color-accent)", fontVariantNumeric: "tabular-nums" }}>{r.sift}</span>
             </li>
           ))}
-          <li style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 6rem 6rem", gap: ".75rem", padding: ".75rem .25rem", alignItems: "baseline" }}>
+          <li className="savrow" style={{ gap: ".75rem", padding: ".75rem .25rem", alignItems: "baseline" }}>
             <span style={{ color: "var(--color-ink)", fontWeight: 600 }}>Total</span>
             <span style={{ textAlign: "right", fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "1.25rem", color: "var(--color-ink)", fontVariantNumeric: "tabular-nums", letterSpacing: "-.02em" }}>{sav.handToday}</span>
             <span style={{ textAlign: "right", fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "1.25rem", color: "var(--color-accent)", fontVariantNumeric: "tabular-nums", letterSpacing: "-.02em" }}>{sav.siftToday}</span>
@@ -474,7 +496,7 @@ function How({ firm }: { firm: Firm }) {
       <P h="What Sift never does">It never sends email, never changes a record, never deletes a message and never invents a date. Messages that need no one, like sales pitches, are labelled and left in place.</P>
       <P h="You set how much it handles">The autonomy slider sets how sure Sift must be before it acts on its own. Left, it checks almost everything with you and flags even faint deadlines. Right, it handles more by itself. Moving it does not ask the AI again, so every page updates instantly.</P>
       <P h="Every decision is on the record">Sift keeps a log of every message it read, what it decided and why. Each run has a hard spending cap, and a message is never acted on twice.</P>
-      <p style={{ margin: 0, fontSize: ".8125rem", color: "var(--color-ink-3)" }}>A self-built experiment on invented data. Every firm, person, project and message here is made up. The architecture firm's numbers come from a recorded test run; the other firms are illustrative. Switch the firm in the sidebar to see the same system read a different trade's mail.</p>
+      <p style={{ margin: 0, fontSize: ".8125rem", color: "var(--color-ink-3)" }}>A self-built experiment on invented data. Every firm, person, project and message here is made up. The architecture firm's numbers come from a recorded test run; the other firms are illustrative. Switch the firm to see the same system read a different trade's mail.</p>
     </div>
   );
 }

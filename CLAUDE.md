@@ -117,6 +117,26 @@ TypeScript throughout, ESM, Node >= 20, pnpm workspaces. No no-code tooling: the
 - Fixtures over live vendor calls in tests. A test suite that needs a vendor key to run is a
   suite that will not run.
 
+## Every UI works on a phone
+
+Most people first open a build's link on a phone. A dashboard that only works at desktop width
+is not finished, however good it looks on a laptop. Build responsive from the first commit, not as
+a follow-up.
+
+- **No horizontal page scroll at 320px, 375px, 768px or 1280px.** Check each width in Chromium
+  with Playwright (`document.documentElement.scrollWidth - innerWidth` is 0) and look at the
+  screenshots before calling a UI done.
+- **Navigation collapses behind a burger into a drawer** under the build's breakpoint, as reckon's
+  bar (`reckon/app/globals.css`, narrow-screen block) and sift's sidebar
+  (`sift/app/globals.css`, dashboard shell) do. The drawer is a sibling of any bar with a
+  `backdrop-filter`, closes on Escape, on the scrim and on picking a destination.
+- **Tables stack on a phone** rather than truncating five columns into unreadable slivers.
+- **Tap sizing keys off `(pointer: coarse)`, not width:** 44px for buttons, selects and range
+  inputs.
+- **Layout lives in CSS classes, not inline styles.** A media query cannot override an inline
+  `style`, so anything that must change with width (grid columns, position, display) goes in a
+  class.
+
 ## Gates
 
 ```bash
