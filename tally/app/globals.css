@@ -17,6 +17,10 @@ button { font: inherit; }
   .tl-detail { border-left: 0 !important; padding-left: 0 !important; overflow: visible !important; }
 }
 
+/* On short screens the note needs more of the replay's left column than the job grid does. */
+@media (min-width: 901px) and (max-height: 800px) { .rp-note { flex-basis: 60% !important; } }
+@media (min-width: 901px) and (max-height: 680px) { .rp-note { flex-basis: 66% !important; } }
+
 /* The replay is one fixed screen on desktop; on a phone it becomes a normal scrolling page. */
 @media (max-width: 900px) {
   .rp-shell { height: auto !important; overflow: visible !important; }
@@ -26,4 +30,6 @@ button { font: inherit; }
   .rp-stage { grid-template-columns: 1fr !important; }
   .rp-stage > div { border-left: 0 !important; padding-left: 0 !important; }
   .rp-list { overflow: visible !important; }
+  .rp-note { flex: none !important; }
+  .rp-shell svg { flex: none !important; height: auto !important; }
 }
