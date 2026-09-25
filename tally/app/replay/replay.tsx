@@ -1,225 +1,248 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState } from "react";
+import { CheckBars, drafts, personReason } from "../checks";
+import {
+  K, F, eyebrow, dots, smallBtn, ST, RATE, UNIT, money, day, draftText, labelOf, clauseText, statusOf,
+  type Data, type Item, type Order, type Status,
+} from "../ui";
 
 /**
- * Replays the committed run. Nothing here calls a model: every number on screen comes from
- * `public/replay.json`, which `pnpm score` writes from the committed judgments.
+ * The run replayed item by item, for recording. It reads the same `public/replay.json` as the
+ * sandbox and derives every status with the same `decideItem`, at the recommended setting.
+ *
+ * Layout never moves: the page is exactly one screen tall, every card has the same height before
+ * and after its judgment arrives, and following the current item scrolls the item list, never the
+ * window. That is what keeps 200x watchable.
  */
-type Verdict = "invoiced" | "missed_billable" | "covered" | "not_billable";
-type Outcome = "recovered" | "guardrail" | "human" | "no_charge";
 
-interface Item {
-  id: string; start: number; end: number; text: string; code: string | null; clause: string;
-  draftedLine: string | null; cents: number;
-  verdict: Record<Verdict, number>; covered: number; unsupported: number; evidence: number;
-  outcome: Outcome; reason: string;
-  truth: Verdict; trap: string | null; expected: "recover" | "no_charge" | "human";
-}
-interface Order {
-  id: string; customer: string; date: string; technician: string; equipment: string; note: string;
-  invoice: { code: string; description: string; quantity: number; cents: number }[];
-  items: Item[];
-}
-interface ReplayFile {
-  orders: Order[];
-  performance: { model: string; p50LatencyMs: number; decisions: number };
-  full: { foundCents: number; plantedCents: number; wronglyCountedCents: number };
-}
-
-const VERDICT_LABEL: Record<Verdict, string> = {
-  invoiced: "already invoiced", missed_billable: "missed, billable", covered: "covered by agreement", not_billable: "not billable",
-};
-const OUTCOME_LABEL: Record<Outcome, string> = {
-  recovered: "unbilled: drafted", guardrail: "blocked by guardrail", human: "sent to a person", no_charge: "no charge",
-};
 const SPEEDS = [1, 4, 30, 200] as const;
 /** Milliseconds per item at 1x. */
 const BASE_MS = 1_400;
 
-const money = (cents: number) => `$${Math.round(cents / 100).toLocaleString("en-US")}`;
-
-/** The trap the video stops on: the first injected line the guardrail stopped, else the first close call. */
-function findTrap(orders: Order[]): { order: number; item: number } | null {
-  const find = (pred: (i: Item) => boolean) => {
-    for (const [o, order] of orders.entries()) {
-      const i = order.items.findIndex(pred);
-      if (i !== -1) return { order: o, item: i };
-    }
-    return null;
-  };
-  return find((i) => i.trap === "injection" && i.outcome === "guardrail")
-    ?? find((i) => i.outcome === "guardrail")
-    ?? find((i) => i.outcome === "human");
-}
+interface Flat { o: number; i: number }
 
 export function Replay() {
-  const [data, setData] = useState<ReplayFile | null>(null);
-  const [pos, setPos] = useState({ order: 0, item: -1 });
+  const [data, setData] = useState<Data | null>(null);
+  const [g, setG] = useState(-1);
   const [playing, setPlaying] = useState(false);
-  const [speed, setSpeed] = useState<(typeof SPEEDS)[number]>(1);
   const [paused, setPaused] = useState(false);
+  const [speed, setSpeed] = useState<(typeof SPEEDS)[number]>(1);
   const trapSeen = useRef(false);
+  const listRef = useRef<HTMLOListElement>(null);
 
   useEffect(() => {
     fetch("/replay.json").then((r) => r.json()).then(setData).catch(() => setData(null));
   }, []);
 
-  const trap = useMemo(() => (data ? findTrap(data.orders) : null), [data]);
-
-  // Running totals up to and including the current position.
-  const totals = useMemo(() => {
-    const t = { orders: 0, found: 0, verified: 0, human: 0, blocked: 0 };
-    if (!data) return t;
-    for (let o = 0; o <= pos.order && o < data.orders.length; o++) {
-      const items = data.orders[o]!.items;
-      const upTo = o < pos.order ? items.length : pos.item + 1;
-      if (o < pos.order || upTo === items.length) t.orders++;
-      for (const i of items.slice(0, upTo)) {
-        if (i.outcome === "recovered") { t.found += i.cents; if (i.expected === "recover") t.verified += i.cents; }
-        if (i.outcome === "human") t.human++;
-        if (i.outcome === "guardrail") t.blocked++;
-      }
+  // Every item in run order, its status, and running totals, computed once.
+  const run = useMemo(() => {
+    if (!data) return null;
+    const flat: Flat[] = [];
+    const status: Status[][] = data.orders.map((o) => o.items.map((it) => statusOf(it, data.thresholds)));
+    data.orders.forEach((o, oi) => o.items.forEach((_, i) => flat.push({ o: oi, i })));
+    const found: number[] = [], human: number[] = [], blocked: number[] = [], wrong: number[] = [], wrongCents: number[] = [];
+    let f = 0, h = 0, b = 0, w = 0, wc = 0;
+    for (const { o, i } of flat) {
+      const it = data.orders[o]!.items[i]!, st = status[o]![i]!;
+      if (st === "counted") { if (it.expected === "recover") f += it.priceCents; else { w++; wc += it.priceCents; } }
+      if (st === "person") h++;
+      if (st === "rejected") b++;
+      found.push(f); human.push(h); blocked.push(b); wrong.push(w); wrongCents.push(wc);
     }
-    return t;
-  }, [data, pos]);
+    const trapAt = (pred: (it: Item, st: Status) => boolean) => flat.findIndex(({ o, i }) => pred(data.orders[o]!.items[i]!, status[o]![i]!));
+    let trap = trapAt((it, st) => it.trap === "injection" && st === "rejected");
+    if (trap < 0) trap = trapAt((_, st) => st === "rejected");
+    return { flat, status, found, human, blocked, wrong, wrongCents, trap };
+  }, [data]);
 
   useEffect(() => {
-    if (!data || !playing || paused) return;
+    if (!run || !playing || paused) return;
     const id = setTimeout(() => {
-      setPos((p) => {
-        const order = data.orders[p.order]!;
-        const next = p.item + 1 < order.items.length ? { order: p.order, item: p.item + 1 }
-          : p.order + 1 < data.orders.length ? { order: p.order + 1, item: 0 } : null;
-        if (!next) { setPlaying(false); return p; }
-        if (trap && !trapSeen.current && next.order === trap.order && next.item === trap.item) {
-          trapSeen.current = true;
-          setPaused(true);
-        }
-        return next;
-      });
+      const next = g + 1;
+      if (next >= run.flat.length) { setPlaying(false); return; }
+      if (next === run.trap && !trapSeen.current) { trapSeen.current = true; setPaused(true); }
+      setG(next);
     }, BASE_MS / speed);
     return () => clearTimeout(id);
-  }, [data, playing, paused, speed, pos, trap]);
+  }, [run, playing, paused, speed, g]);
 
+  const cur = run && g >= 0 ? run.flat[g]! : { o: 0, i: -1 };
+
+  // Follow the current card inside the list only.
   useEffect(() => {
-    document.querySelector(".item.active")?.scrollIntoView({ block: "nearest", behavior: speed > 4 ? "auto" : "smooth" });
-  }, [pos, speed]);
+    const list = listRef.current;
+    if (!list) return;
+    if (cur.i <= 0) { list.scrollTop = 0; return; }
+    const card = list.children[cur.i] as HTMLElement | undefined;
+    if (!card) return;
+    const top = card.offsetTop - list.offsetTop, bottom = top + card.offsetHeight;
+    if (bottom > list.scrollTop + list.clientHeight) list.scrollTop = bottom - list.clientHeight;
+    else if (top < list.scrollTop) list.scrollTop = top;
+  }, [cur.o, cur.i]);
 
-  if (!data) return <main className="loading">loading the run…</main>;
+  if (!data || !run) return <div style={{ padding: 40, color: K.ink3, fontFamily: F.sans }}>Loading the run…</div>;
 
-  const order = data.orders[pos.order]!;
-  const current = order.items[pos.item];
-  const atTrap = paused && trap?.order === pos.order && trap.item === pos.item;
+  const order: Order = data.orders[cur.o]!;
+  const statuses = run.status[cur.o]!;
+  const at = (arr: number[]) => (g >= 0 ? arr[g]! : 0);
+  const ordersDone = g < 0 ? 0 : cur.i === order.items.length - 1 ? cur.o + 1 : cur.o;
+  const atTrap = paused && g === run.trap;
+  const fast = speed >= 30;
+  const revealed = (i: number) => i <= cur.i;
+  const current = order.items[cur.i];
+  const orderFound = order.items.reduce((s, it, i) => s + (revealed(i) && statuses[i] === "counted" ? it.priceCents : 0), 0);
+  const billed = order.invoice.reduce((s, l) => s + l.cents, 0);
+
+  const play = () => {
+    if (!playing && g >= run.flat.length - 1) { setG(-1); trapSeen.current = false; }
+    setPlaying(!playing || paused); setPaused(false);
+  };
 
   return (
-    <main className="shell">
-      <header className="bar">
-        <div className="brand">
-          <span className="name">tally</span>
-          <span className="sub">unbilled work in technicians' notes, judged by {data.performance.model}</span>
+    <div className="rp-shell" style={{ height: "100vh", overflow: "hidden", display: "grid", gridTemplateRows: "auto minmax(0,1fr) auto", gap: "1.25rem", padding: "clamp(1rem,2.4vw,2rem) clamp(1rem,3vw,2.5rem)", background: K.paper, color: K.ink2, fontFamily: F.sans, fontSize: ".9375rem", lineHeight: 1.6 }}>
+      <header className="rp-head" style={{ display: "grid", gridTemplateColumns: "1fr auto 1fr", alignItems: "end", gap: "1.5rem", paddingBottom: "1rem", borderBottom: `1px solid ${K.rule}` }}>
+        <div style={{ minWidth: 0 }}>
+          <div style={{ display: "flex", alignItems: "baseline", gap: ".5rem" }}>
+            <span style={{ fontFamily: F.display, fontWeight: 600, fontSize: "1.375rem", color: K.ink, letterSpacing: "-.02em" }}>tally</span>
+            <span style={{ fontSize: ".8125rem", color: K.ink3 }}>run replay</span>
+          </div>
+          <span style={{ fontSize: ".8125rem", color: K.ink3 }}>Brightline Mechanical · 1,000 technician notes checked against the invoices that went out</span>
         </div>
-        <div className="counter">
-          <span className="label">unbilled $ found</span>
-          <span className="value">{money(totals.found)}</span>
+        <div style={{ textAlign: "center" }}>
+          <span style={eyebrow}>unbilled $ found</span>
+          <div style={{ fontFamily: F.display, fontWeight: 600, fontSize: "clamp(2.5rem,5vw,3.75rem)", lineHeight: 1, letterSpacing: "-.03em", color: K.accent, fontVariantNumeric: "tabular-nums", marginTop: ".25rem" }}>{money(at(run.found))}</div>
         </div>
-        <dl className="stats">
-          <div><dt>work orders</dt><dd>{totals.orders.toLocaleString("en-US")} / {data.orders.length.toLocaleString("en-US")}</dd></div>
-          <div><dt>sent to a person</dt><dd>{totals.human}</dd></div>
-          <div><dt>guardrail stops</dt><dd>{totals.blocked}</dd></div>
+        <dl style={{ display: "flex", justifyContent: "flex-end", gap: "1.75rem", margin: 0 }}>
+          {([["work orders", `${ordersDone.toLocaleString("en-US")} / ${data.orders.length.toLocaleString("en-US")}`, K.ink], ["sent to a person", String(at(run.human)), K.warn], ["charges blocked", String(at(run.blocked)), K.neg]] as const).map(([k, v, c]) => (
+            <div key={k} style={{ paddingLeft: ".75rem", borderLeft: `2px solid ${c === K.ink ? K.rule2 : c}` }}>
+              <dt style={{ fontSize: ".75rem", color: K.ink3 }}>{k}</dt>
+              <dd style={{ margin: 0, fontFamily: F.display, fontWeight: 600, fontSize: "1.375rem", letterSpacing: "-.02em", color: c, fontVariantNumeric: "tabular-nums", whiteSpace: "nowrap" }}>{v}</dd>
+            </div>
+          ))}
         </dl>
       </header>
 
-      <section className="stage">
-        <article className="ticket">
-          <div className="meta">
-            <span>{order.id}</span><span>{order.date}</span><span>{order.equipment}</span><span>tech {order.technician}</span>
+      <section className="rp-stage" style={{ display: "grid", gridTemplateColumns: "minmax(0,5fr) minmax(0,7fr)", gap: "2rem", minHeight: 0 }}>
+        <article style={{ minWidth: 0, minHeight: 0, overflowY: "auto" }}>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: ".25rem 1rem", color: K.ink3, fontSize: ".8125rem", lineHeight: 1.4 }}>
+            <b style={{ color: K.ink2, fontWeight: 500 }}>{order.id}</b><span>{order.customer}</span><span>{order.technician}</span><span>{day(order.date)}</span><span>{order.equipment}</span>
           </div>
-          <p className="note">{highlight(order, pos.item)}</p>
-          <div className="invoice">
-            <span className="label">invoice as issued</span>
-            {order.invoice.map((l) => (
-              <div key={l.code} className="line"><span>{l.description}{l.quantity > 1 ? ` x${l.quantity}` : ""}</span><span>{money(l.cents)}</span></div>
-            ))}
+          <span style={{ ...eyebrow, display: "block", marginTop: "1rem" }}>What the technician wrote</span>
+          <p style={{ margin: ".625rem 0 0", padding: "0 0 0 1rem", borderLeft: `2px solid ${K.rule2}`, fontFamily: F.mono, fontSize: "clamp(1rem,1.6vw,1.25rem)", lineHeight: 1.6, color: K.ink, whiteSpace: "pre-wrap" }}>
+            {noteSegments(order, statuses, cur.i)}
+          </p>
+
+          <div style={{ marginTop: "1.25rem", borderRadius: 10, padding: "1rem 1.25rem", background: K.g, color: K.onG }}>
+            <div style={{ display: "flex", justifyContent: "space-between", ...eyebrow, color: K.onG2 }}>
+              <span style={{ display: "flex", alignItems: "center", gap: ".5rem" }}><span style={{ width: 8, height: 8, borderRadius: "50%", background: K.gAccent }} />invoice</span><span>as sent</span>
+            </div>
+            <ul style={{ listStyle: "none", margin: ".625rem 0 0", padding: 0, fontFamily: F.mono, fontSize: ".8125rem" }}>
+              {order.invoice.map((l) => (
+                <li key={l.code} style={{ display: "flex", alignItems: "baseline", gap: ".5rem", padding: ".125rem 0" }}>
+                  <span>{l.description}{UNIT[RATE[l.code]!.unit] && (l.quantity > 1 || RATE[l.code]!.unit === "lb") ? `, ${l.quantity} ${UNIT[RATE[l.code]!.unit]![l.quantity > 1 ? 1 : 0]}` : ""}</span><span style={dots} /><span style={{ fontVariantNumeric: "tabular-nums" }}>{money(l.cents)}</span>
+                </li>
+              ))}
+            </ul>
+            <div style={{ marginTop: ".625rem", paddingTop: ".5rem", borderTop: `1px solid ${K.onG3}` }}>
+              <span style={{ ...eyebrow, color: K.gAccent }}>tally would add</span>
+              <ul style={{ listStyle: "none", margin: ".375rem 0 0", padding: 0, display: "flex", flexDirection: "column", gap: ".25rem", fontFamily: F.mono, fontSize: ".8125rem" }}>
+                {order.items.map((it, i) => {
+                  const st = statuses[i]!;
+                  if (!drafts(it, st)) return null;
+                  const struck = st === "rejected";
+                  // Reserved from the start and faded in, so the card never changes height.
+                  return (
+                    <li key={it.id} style={{ display: "flex", alignItems: "baseline", gap: ".5rem", opacity: revealed(i) ? 1 : 0, transition: fast ? "none" : "opacity 200ms", color: struck ? K.onG2 : st === "person" ? "oklch(78% .12 80)" : K.onG }}>
+                      <span style={{ textDecoration: struck ? "line-through" : "none", textDecorationColor: K.neg, textDecorationThickness: 2 }}>{draftText(it)}</span>
+                      <span style={dots} />
+                      <span style={{ fontVariantNumeric: "tabular-nums", textDecoration: struck ? "line-through" : "none", textDecorationColor: K.neg, textDecorationThickness: 2 }}>{st === "person" ? `${money(it.priceCents)}?` : money(it.priceCents)}</span>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+            <div style={{ marginTop: ".625rem", paddingTop: ".5rem", borderTop: `1px solid ${K.onG3}`, display: "flex", justifyContent: "space-between", alignItems: "baseline", fontFamily: F.mono, fontSize: ".8125rem" }}>
+              <span style={{ color: K.onG2 }}>billed {money(billed)} · <span style={{ color: K.gAccent }}>found +{money(orderFound)}</span></span>
+              <span style={{ fontFamily: F.display, fontWeight: 600, fontSize: "1.125rem", color: K.accentInk, fontVariantNumeric: "tabular-nums" }}>{money(billed + orderFound)}</span>
+            </div>
           </div>
         </article>
 
-        <ol className="items">
-          {order.items.map((item, i) => (
-            <li key={item.id} className={`item ${i > pos.item ? "pending" : ""} ${i === pos.item ? "active" : ""} ${item.outcome}`}>
-              <div className="quote">“{item.text}”</div>
-              {i <= pos.item && <Judged item={item} />}
-            </li>
-          ))}
-        </ol>
+        <div style={{ minWidth: 0, minHeight: 0, display: "flex", flexDirection: "column", borderLeft: `1px solid ${K.rule}`, paddingLeft: "1.5rem" }}>
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: "1rem", paddingBottom: ".5rem", borderBottom: `1px solid ${K.rule}` }}>
+            <span style={eyebrow}>How Tally decided</span>
+            <span style={{ fontSize: ".75rem", color: K.ink3 }}>four checks on every piece of work</span>
+          </div>
+          <ol ref={listRef} className="rp-list" style={{ listStyle: "none", margin: 0, padding: 0, flex: "1 1 auto", minHeight: 0, overflowY: "auto", position: "relative" }}>
+            {order.items.map((it, i) => <Card key={it.id} it={it} n={i + 1} st={statuses[i]!} shown={revealed(i)} active={i === cur.i} fast={fast} order={order} data={data} />)}
+          </ol>
+        </div>
       </section>
 
-      {atTrap && current && (
-        <aside className="callout">
-          <strong>{current.outcome === "guardrail" ? "Caught: the note never says this was done." : "Too close to call: sent to a person."}</strong>
-          <span>{current.reason}</span>
-          <button onClick={() => setPaused(false)}>continue</button>
-        </aside>
-      )}
-
-      <footer className="controls">
-        <button onClick={() => { if (!playing && pos.item === -1) setPos({ order: 0, item: 0 }); setPlaying(!playing); setPaused(false); }}>
-          {playing && !paused ? "pause" : "play"}
-        </button>
+      <footer style={{ display: "flex", flexWrap: "wrap", alignItems: "center", gap: ".375rem", paddingTop: ".75rem", borderTop: `1px solid ${K.rule}` }}>
+        <button type="button" onClick={play} style={{ ...smallBtn(true), minWidth: "4.5rem", background: playing && !paused ? K.paper : K.accent, color: playing && !paused ? K.ink2 : K.accentInk, borderColor: playing && !paused ? K.rule2 : K.accent }}>{playing && !paused ? "Pause" : "Play"}</button>
         {SPEEDS.map((s) => (
-          <button key={s} className={s === speed ? "on" : ""} onClick={() => setSpeed(s)}>{s}x</button>
+          <button key={s} type="button" onClick={() => setSpeed(s)} style={{ ...smallBtn(true), background: s === speed ? K.accentSoft : K.paper, color: s === speed ? K.accent : K.ink2, borderColor: s === speed ? K.accent : K.rule2 }}>{s}x</button>
         ))}
-        {trap && <button onClick={() => { trapSeen.current = true; setPos(trap); setPlaying(true); setPaused(true); }}>jump to the trap</button>}
-        <span className="fine">
-          replay of a committed run on 1,000 generated work orders · checked against the answer key: {money(totals.verified)} correct of {money(totals.found)} counted
+        {run.trap >= 0 && <button type="button" onClick={() => { trapSeen.current = true; setG(run.trap); setPlaying(true); setPaused(true); }} style={smallBtn(true)}>Jump to the trap</button>}
+        <a href="/" style={{ marginLeft: ".5rem", fontSize: ".8125rem", color: K.accent }}>Open the sandbox</a>
+        <span style={{ marginLeft: "auto", fontSize: ".75rem", color: K.ink3, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", minWidth: 0 }}>
+          Replay of the committed run on 1,000 generated work orders. Checked against the answer key: {at(run.wrong)} {at(run.wrong) === 1 ? "charge" : "charges"} ({money(at(run.wrongCents))}) added for work that wasn't done, not in the total.
         </span>
       </footer>
-    </main>
+
+      {atTrap && current && (
+        <aside style={{ position: "fixed", left: "50%", bottom: "5rem", transform: "translateX(-50%)", zIndex: 10, width: "min(46rem, calc(100vw - 2rem))", display: "flex", gap: "1.25rem", alignItems: "center", borderRadius: 10, padding: "1rem 1.25rem", background: K.g, color: K.onG, boxShadow: "0 16px 48px oklch(20% .02 258 / .25)" }}>
+          <span style={{ flex: "none", width: 10, height: 10, borderRadius: "50%", background: K.neg }} />
+          <span style={{ flex: 1, minWidth: 0 }}>
+            <b style={{ display: "block", fontFamily: F.display, fontWeight: 600, fontSize: "1.125rem", letterSpacing: "-.015em" }}>Caught: the note never says this was done.</b>
+            <span style={{ fontSize: ".8125rem", color: K.onG2 }}>A line in the note asks for “{draftText(current)}” to be billed. Tally checks every charge against what the technician actually recorded, and blocks this one.</span>
+          </span>
+          <button type="button" onClick={() => setPaused(false)} style={{ flex: "none", minHeight: 34, padding: "0 1rem", borderRadius: 6, border: 0, background: K.gAccent, color: K.g, font: "inherit", fontSize: ".8125rem", fontWeight: 600, cursor: "pointer" }}>Continue</button>
+        </aside>
+      )}
+    </div>
   );
 }
 
-function highlight(order: Order, active: number) {
-  const parts: React.ReactNode[] = [];
-  let cursor = 0;
-  order.items.forEach((item, i) => {
-    parts.push(order.note.slice(cursor, item.start));
-    parts.push(<mark key={item.id} className={`${i === active ? "active" : ""} ${i <= active ? item.outcome : "pending"}`}>{order.note.slice(item.start, item.end)}</mark>);
-    cursor = item.end;
+/** The note with every work item underlined; judged items take their status colour. */
+function noteSegments(order: Order, statuses: Status[], current: number) {
+  const out: React.ReactNode[] = [];
+  let at = 0;
+  order.items.forEach((it, i) => {
+    if (it.start > at) out.push(<span key={`t${i}`} style={{ color: K.ink3 }}>{order.note.slice(at, it.start)}</span>);
+    const st = statuses[i]!;
+    const done = i <= current;
+    const [bg, line] = !done ? ["transparent", K.rule2] : st === "counted" ? [K.accentSoft, K.accent] : st === "person" ? [K.warnSoft, K.warn] : st === "rejected" ? [K.negSoft, K.neg] : ["transparent", K.rule2];
+    out.push(
+      <span key={it.id}>
+        <span style={{ background: bg, boxShadow: `inset 0 -2px 0 ${line}`, borderRadius: 2, padding: "0 1px", outline: i === current ? `1px solid ${line === K.rule2 ? K.ink3 : line}` : "none", outlineOffset: 1 }}>{order.note.slice(it.start, it.end)}</span>
+        <sup style={{ fontFamily: F.mono, fontSize: ".625rem", fontWeight: 500, color: done ? ST[st][1] : K.ink3, margin: "0 2px 0 1px" }}>{i + 1}</sup>
+      </span>,
+    );
+    at = it.end;
   });
-  parts.push(order.note.slice(cursor));
-  return parts;
+  if (at < order.note.length) out.push(<span key="end" style={{ color: K.ink3 }}>{order.note.slice(at)}</span>);
+  return out;
 }
 
-function Judged({ item }: { item: Item }) {
-  const verdicts = Object.entries(item.verdict) as [Verdict, number][];
+function Card({ it, n, st, shown, active, fast, order, data }: { it: Item; n: number; st: Status; shown: boolean; active: boolean; fast: boolean; order: Order; data: Data }) {
+  const color = shown ? ST[st][1] : K.rule2;
+  const invLine = it.code ? order.invoice.find((l) => l.code === it.code) : undefined;
+  const basis = shown && st === "invoiced" && invLine ? `Invoice line: ${invLine.description}` : it.code ? `Rate card ${it.code} · ${clauseText(it.clause)}` : clauseText(it.clause);
+  const reason = !shown ? "" : st === "person" ? personReason(it, data.thresholds) : st === "rejected" ? "The note doesn't record this as done, so the drafted charge is blocked." : st === "counted" ? `Add ${draftText(it)}, ${money(it.priceCents)}, priced from the rate card.` : "";
   return (
-    <div className="judged">
-      <div className="bars">
-        {verdicts.map(([v, p]) => (
-          <div key={v} className={`bar ${v}`}>
-            <span className="k">{VERDICT_LABEL[v]}</span>
-            <span className="track"><span className="fill" style={{ width: `${p * 100}%` }} /></span>
-            <span className="p">{p.toFixed(2)}</span>
-          </div>
-        ))}
-        <div className="bar check">
-          <span className="k">note supports the line</span>
-          <span className="track"><span className="fill" style={{ width: `${(1 - item.unsupported) * 100}%` }} /></span>
-          <span className="p">{(1 - item.unsupported).toFixed(2)}</span>
-        </div>
-        <div className="bar check">
-          <span className="k">evidence it happened</span>
-          <span className="track"><span className="fill" style={{ width: `${(item.evidence / 4) * 100}%` }} /></span>
-          <span className="p">{item.evidence.toFixed(1)}/4</span>
-        </div>
+    <li style={{ padding: ".75rem .75rem .875rem", borderBottom: `1px solid ${K.rule}`, borderLeft: `2px solid ${active ? color : "transparent"}`, background: active ? (st === "rejected" && shown ? K.negSoft : st === "person" && shown ? K.warnSoft : K.accentSoft) : "transparent", transition: fast ? "none" : "background 200ms" }}>
+      <div style={{ display: "flex", alignItems: "baseline", gap: ".25rem .75rem", whiteSpace: "nowrap", overflow: "hidden" }}>
+        <span style={{ fontFamily: F.mono, fontSize: ".6875rem", fontWeight: 500, color }}>{n}</span>
+        <b style={{ color: shown ? K.ink : K.ink3, fontWeight: 500 }}>{labelOf(it)}</b>
+        <span style={{ fontFamily: F.mono, fontSize: ".625rem", letterSpacing: ".06em", textTransform: "uppercase", border: "1px solid currentColor", borderRadius: 3, padding: "0 4px", color, visibility: shown ? "visible" : "hidden" }}>{ST[st][0]}</span>
+        <span style={{ fontSize: ".8125rem", color: K.ink3, overflow: "hidden", textOverflow: "ellipsis" }}>{basis}</span>
       </div>
-      <div className="result">
-        <span className={`badge ${item.outcome}`}>{OUTCOME_LABEL[item.outcome]}</span>
-        {item.draftedLine && (item.outcome === "recovered" || item.outcome === "guardrail") && (
-          <span className={`draft ${item.outcome === "guardrail" ? "struck" : ""}`}>{item.draftedLine.replace(/^\[[^\]]+\] /, "")}</span>
-        )}
-        <span className="clause">clause {item.clause}</span>
-      </div>
-    </div>
+      <p style={{ margin: ".25rem 0 .5rem", fontFamily: F.mono, fontSize: ".8125rem", color: K.ink2, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>“{it.text}”</p>
+      <p style={{ margin: "0 0 .5rem", minHeight: "1.3em", fontSize: ".8125rem", color: shown ? color : K.ink3, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{reason}</p>
+      <CheckBars it={it} st={st} t={data.thresholds} shown={shown} animate={!fast} />
+    </li>
   );
 }

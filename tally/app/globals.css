@@ -14,3 +14,14 @@ button { font: inherit; }
   .tl-list ul { height: 26rem; }
   .tl-detail { border-left: 0 !important; padding-left: 0 !important; overflow: visible !important; }
 }
+
+/* The replay is one fixed screen on desktop; on a phone it becomes a normal scrolling page. */
+@media (max-width: 900px) {
+  .rp-shell { height: auto !important; overflow: visible !important; }
+  .rp-head { grid-template-columns: 1fr !important; text-align: left; }
+  .rp-head > div { text-align: left !important; }
+  .rp-head dl { justify-content: flex-start !important; flex-wrap: wrap; }
+  .rp-stage { grid-template-columns: 1fr !important; }
+  .rp-stage > div { border-left: 0 !important; padding-left: 0 !important; }
+  .rp-list { overflow: visible !important; }
+}

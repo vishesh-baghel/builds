@@ -1,11 +1,13 @@
 "use client";
 
 import { useEffect, useMemo, useRef, useState, type CSSProperties } from "react";
-import { CATEGORY, CLAUSE_TITLES, NON_BILLABLE_LABEL, RATE_CARD, type NonBillableKind, type RateCode } from "../src/catalog";
-import type { Judgment } from "../src/drex";
-import type { Expected, Trap, Verdict } from "../src/fixtures";
-import type { WorkItem } from "../src/item";
-import { decideItem, topVerdict, type Thresholds } from "../src/policy";
+import { CATEGORY } from "../src/catalog";
+import type { Thresholds } from "../src/policy";
+import { CheckBars, drafts, personReason } from "./checks";
+import {
+  K, F, eyebrow, bigNum, dots, smallBtn, ST, RATE, UNIT, pct, money, day, draftText, labelOf, clauseText, statusOf,
+  type Data, type Item, type Order, type Status,
+} from "./ui";
 
 /**
  * The sandbox. Every number is computed here from `public/replay.json`, which `pnpm score`
@@ -13,38 +15,6 @@ import { decideItem, topVerdict, type Thresholds } from "../src/policy";
  * `decideItem` over those judgments; nothing is sent anywhere and no model is called.
  */
 
-type Item = WorkItem & {
-  alreadyInvoiced: boolean;
-  verdict: Record<Verdict, number>; covered: number; unsupported: number; evidence: number;
-  truth: Verdict; trap: Trap | null; expected: Expected; valueCents: number;
-};
-interface Order {
-  id: string; customer: string; date: string; technician: string; equipment: string; note: string;
-  invoice: { code: RateCode; description: string; quantity: number; cents: number }[];
-  items: Item[];
-}
-interface Data { thresholds: Thresholds; samples: string[]; orders: Order[] }
-
-type Status = "counted" | "person" | "rejected" | "invoiced" | "covered" | "notbill";
-
-const K = {
-  ink: "oklch(24% .02 258)", ink2: "oklch(36% .018 257)", ink3: "oklch(54% .015 256)", rule: "oklch(91% .006 255)", rule2: "oklch(84% .009 255)",
-  paper: "oklch(98.5% .004 250)", side: "oklch(96.4% .005 252)", track: "oklch(94% .006 253)",
-  accent: "oklch(52% .20 256)", accentSoft: "oklch(94.5% .028 256)", accentInk: "oklch(99% .005 256)",
-  g: "oklch(22% .016 260)", gAccent: "oklch(72% .17 254)", onG: "oklch(92% .006 256)", onG2: "oklch(70% .012 256)", onG3: "oklch(56% .012 256)",
-  neg: "oklch(54% .18 27)", negSoft: "oklch(95% .025 27)", warn: "oklch(62% .13 75)", warnSoft: "oklch(95% .03 80)",
-};
-const F = { display: "var(--font-display), ui-sans-serif, system-ui, sans-serif", sans: "var(--font-sans), ui-sans-serif, system-ui, sans-serif", mono: "var(--font-mono), ui-monospace, monospace" };
-const eyebrow: CSSProperties = { fontFamily: F.mono, fontSize: ".6875rem", letterSpacing: ".07em", textTransform: "uppercase", fontWeight: 500, color: K.ink3 };
-const bigNum: CSSProperties = { fontFamily: F.display, fontWeight: 600, fontSize: "1.625rem", letterSpacing: "-.02em", lineHeight: 1.05, fontVariantNumeric: "tabular-nums" };
-const dots: CSSProperties = { flex: 1, borderBottom: `1px dotted ${K.onG3}`, transform: "translateY(-3px)", minWidth: "1rem" };
-const smallBtn = (enabled: boolean): CSSProperties => ({ minHeight: 30, padding: "0 .625rem", borderRadius: 4, background: K.paper, fontFamily: F.mono, fontSize: ".6875rem", letterSpacing: ".04em", whiteSpace: "nowrap", flex: "none", border: `1px solid ${K.rule2}`, color: enabled ? K.ink2 : K.rule2, cursor: enabled ? "pointer" : "default" });
-
-const VN: Record<Verdict, string> = { invoiced: "Already billed", missed_billable: "Done, not billed", covered: "Covered, no charge", not_billable: "No charge" };
-const ST: Record<Status, [string, string]> = {
-  counted: ["add to invoice", K.accent], person: ["your call", K.warn], rejected: ["blocked", K.neg],
-  invoiced: ["already billed", K.ink3], covered: ["in the plan", K.ink3], notbill: ["no charge", K.ink3],
-};
 const CATS: Record<string, [string, string]> = {
   labour: ["Extra labour", "additional technicians, hours past the first two"],
   equipment: ["Equipment not on the invoice", "compressors, blower motors, thermostats, igniters"],
@@ -53,36 +23,10 @@ const CATS: Record<string, [string, string]> = {
   after_hours: ["After-hours surcharges", "nights and weekends"],
   other: ["Everything else", "haul-away and disposal"],
 };
-const RATE = Object.fromEntries(RATE_CARD.map((l) => [l.code, l]));
-
-const pct = (v: number) => `${Math.round(v * 100)}%`;
-const money = (cents: number) => `$${Math.round(cents / 100).toLocaleString("en-US")}`;
-const day = (iso: string) => new Date(`${iso}T12:00:00Z`).toLocaleDateString("en-US", { month: "short", day: "2-digit", timeZone: "UTC" });
-const UNIT: Record<string, [string, string]> = { lb: ["lb", "lb"], hour: ["hour", "hours"], "technician per visit": ["technician", "technicians"] };
-/** The line Tally would add, as a person would write it: "Refrigerant R-410A, 3 lb". */
-const draftText = (it: Item) => {
-  if (!it.code) return "";
-  const line = RATE[it.code]!;
-  const unit = UNIT[line.unit];
-  return unit && (it.quantity > 1 || line.unit === "lb") ? `${line.description}, ${it.quantity} ${unit[it.quantity > 1 ? 1 : 0]}` : line.description;
-};
-const labelOf = (it: Item) => (it.code ? RATE[it.code]!.description : NON_BILLABLE_LABEL[it.nonBillable as NonBillableKind]);
-const clauseText = (c: string) => `Agreement §${c} · ${CLAUSE_TITLES[c] ?? ""}`;
-
 /** The slider runs from asking about more (left) to asking about less (right). */
 const actFromDial = (v: number) => +(0.95 - 0.7 * v).toFixed(3);
 const dialFromAct = (a: number) => (0.95 - a) / 0.7;
 
-function statusOf(it: Item, t: Thresholds): Status {
-  const d = decideItem(it, judgmentOf(it), t, it.alreadyInvoiced);
-  if (d.outcome === "recovered") return "counted";
-  if (d.outcome === "human") return "person";
-  if (d.outcome === "guardrail") return "rejected";
-  if (d.verdict === "invoiced" || (d.verdict === "missed_billable" && it.alreadyInvoiced)) return "invoiced";
-  if (d.verdict === "covered") return "covered";
-  return "notbill";
-}
-const judgmentOf = (it: Item): Judgment => ({ verdict: it.verdict, covered: it.covered, unsupported: it.unsupported, evidence: it.evidence, inputTokens: 0, latencyMs: 0 });
 
 interface ItemInfo { it: Item; i: number; st: Status; dec: "bill" | "leave" | undefined }
 interface OrderInfo { o: Order; n: number; its: ItemInfo[]; found: number; counted: number; billed: number; rej: boolean; per: boolean; anyPer: boolean; sample: boolean }
@@ -400,7 +344,7 @@ export function Sandbox() {
       at = x.it.end;
     }
     if (at < o.note.length) segs.push({ text: o.note.slice(at), bg: "transparent", line: "transparent", color: K.ink3, n: "" });
-    const adds = cur.its.filter((x) => x.it.draftedLine && ["counted", "person", "rejected"].includes(x.st));
+    const adds = cur.its.filter((x) => drafts(x.it, x.st));
     const nCounted = cur.its.filter((x) => x.st === "counted" || (x.st === "person" && x.dec === "bill")).length;
 
     return (
@@ -555,18 +499,11 @@ export function Sandbox() {
   }
 
   function Why({ x, n, o }: { x: ItemInfo; n: string; o: Order }) {
-    const it = x.it, st = x.st, top = topVerdict(judgmentOf(it));
-    const drafted = it.draftedLine && ["counted", "person", "rejected"].includes(st);
+    const it = x.it, st = x.st;
     const invLine = it.code ? o.invoice.find((l2) => l2.code === it.code) : undefined;
     const basis = st === "invoiced" && invLine ? `Invoice line: ${invLine.description}`
       : it.code ? `Rate card ${it.code} · ${clauseText(it.clause)}` : clauseText(it.clause);
     const reason = st === "person" ? personReason(it, th!) : st === "rejected" ? "The note doesn't record this as done on this visit, so the drafted charge is blocked." : "";
-    const bars = [
-      bar(VN[top], it.verdict[top], it.verdict[top] >= 0.55 ? K.accent : K.rule2),
-      bar("Included in the plan", it.covered, it.covered >= 0.5 ? K.accent : K.rule2),
-      bar("Note backs up the charge", drafted ? 1 - it.unsupported : null, drafted && 1 - it.unsupported <= 1 - th!.unsupported ? K.neg : K.accent, drafted ? 1 - th!.unsupported : null, K.neg),
-      bar("Sure it was done", it.evidence / 4, it.evidence / 4 >= actNow ? K.accent : K.warn, actNow, K.ink),
-    ];
     return (
       <li key={it.id} style={{ padding: ".875rem 0", borderBottom: `1px solid ${K.rule}` }}>
         <div style={{ display: "flex", flexWrap: "wrap", alignItems: "baseline", gap: ".25rem .75rem" }}>
@@ -576,20 +513,7 @@ export function Sandbox() {
           <span style={{ fontSize: ".8125rem", color: K.ink3 }}>{basis}</span>
         </div>
         {reason && <p style={{ margin: ".375rem 0 0", paddingLeft: ".75rem", borderLeft: `2px solid ${ST[st][1]}`, fontSize: ".8125rem", color: K.ink2, maxWidth: "60ch" }}>{reason}</p>}
-        <div style={{ marginTop: ".625rem", display: "grid", gap: ".5rem 1.5rem", gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,10rem),1fr))" }}>
-          {bars.map((b, k) => (
-            <div key={k}>
-              <div style={{ display: "flex", justifyContent: "space-between", gap: ".5rem", alignItems: "baseline" }}>
-                <span style={{ fontSize: ".75rem", color: b.v == null ? K.ink3 : K.ink }}>{b.q}</span>
-                <span style={{ fontFamily: F.mono, fontSize: ".6875rem", fontVariantNumeric: "tabular-nums", color: b.fill === K.accent || b.fill === K.neg || b.fill === K.warn ? b.fill : K.ink3 }}>{b.v == null ? "no charge" : pct(b.v)}</span>
-              </div>
-              <div style={{ position: "relative", height: 6, marginTop: 4, borderRadius: 2, background: K.track, overflow: "hidden" }}>
-                <span style={{ position: "absolute", top: 0, bottom: 0, left: 0, width: b.v == null ? "0%" : `${b.v * 100}%`, background: b.fill, transition: "width 260ms cubic-bezier(.16,1,.3,1)" }} />
-                {b.mark != null && <span style={{ position: "absolute", top: -2, bottom: -2, width: 2, left: `calc(${(b.mark * 100).toFixed(1)}% - 1px)`, background: b.markColor, opacity: 0.6, transition: "left 140ms cubic-bezier(.16,1,.3,1)" }} />}
-              </div>
-            </div>
-          ))}
-        </div>
+        <div style={{ marginTop: ".625rem" }}><CheckBars it={it} st={st} t={th!} /></div>
       </li>
     );
   }
@@ -639,16 +563,6 @@ export function Sandbox() {
       </div>
     );
   }
-}
-
-function bar(q: string, v: number | null, fill: string, mark: number | null = null, markColor: string = K.ink) {
-  return { q, v, fill, mark, markColor };
-}
-
-function personReason(it: Item, t: Thresholds): string {
-  if (it.evidence < t.evidence) return `Tally is ${pct(it.evidence / 4)} sure this was done. Your setting adds charges on its own only at ${pct(t.evidence / 4)} or more.`;
-  if (it.covered >= t.covered) return `Tally says this is billable, but its plan check says the agreement may cover it (${pct(it.covered)}). You decide.`;
-  return "Too close to call. You decide.";
 }
 
 function Stat({ n, color, edge, label, sub, onClick }: { n: string; color: string; edge: string; label: string; sub: string; onClick?: () => void }) {
