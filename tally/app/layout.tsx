@@ -1,18 +1,19 @@
 import type { Metadata } from "next";
-import { IBM_Plex_Mono, IBM_Plex_Sans } from "next/font/google";
+import { Inter, JetBrains_Mono, Space_Grotesk } from "next/font/google";
 import "./globals.css";
 
-const sans = IBM_Plex_Sans({ subsets: ["latin"], variable: "--font-sans", weight: ["400", "500", "600"] });
-const mono = IBM_Plex_Mono({ subsets: ["latin"], variable: "--font-mono", weight: ["400", "500"] });
+const display = Space_Grotesk({ subsets: ["latin"], variable: "--font-display", weight: ["500", "600", "700"] });
+const sans = Inter({ subsets: ["latin"], variable: "--font-sans" });
+const mono = JetBrains_Mono({ subsets: ["latin"], variable: "--font-mono", weight: ["400", "500"] });
 
 export const metadata: Metadata = {
-  title: "tally: unbilled work, found in the technician's notes",
-  description: "A replay of 1,000 generated HVAC work orders: each work item in the technician's note judged against the service agreement and the invoice.",
+  title: "tally: unbilled work, found in technicians' notes",
+  description: "1,000 generated HVAC work orders: each piece of work in the technician's note checked against the service agreement and the invoice that went out.",
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en" className={`${sans.variable} ${mono.variable}`}>
+    <html lang="en" className={`${display.variable} ${sans.variable} ${mono.variable}`}>
       <body>{children}</body>
     </html>
   );

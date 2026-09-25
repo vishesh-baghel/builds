@@ -1,5 +1,5 @@
-import { Replay } from "./replay";
+import { Sandbox } from "./sandbox";
 
 export default function Page() {
-  return <Replay />;
+  return <Sandbox />;
 }

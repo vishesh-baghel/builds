@@ -84,3 +84,34 @@ export const TRIGGERS: readonly Trigger[] = [
   { kind: "non_billable", what: "cleanup", pattern: /\bswept\b|\bcleaned up\b|\bdrop cloth\b|\bvacuumed\b|\bshoe covers\b/i },
   { kind: "non_billable", what: "conversation", pattern: /\btalked\b|\bchatted\b|\bexplained\b|\bwalked (?:her|him|them|cust|customer|owner)\b|\bshowed (?:her|him|them|cust|customer)\b|\bquestions? about\b/i },
 ];
+
+/** Short titles for the agreement clauses items rest on, as `fixtures/agreement.md` words them. */
+export const CLAUSE_TITLES: Record<string, string> = {
+  "2.2": "Maintenance work covered",
+  "3.1": "Capacitors and contactors covered",
+  "3.2": "Major components billed",
+  "3.3": "Refrigerant billed per lb",
+  "4.1": "Service call, first two hours",
+  "4.2": "Additional technicians billed",
+  "4.3": "Time past two hours billed",
+  "4.4": "After-hours surcharge",
+  "5.1": "Travel never billed",
+  "5.2": "Waiting never billed",
+  "5.3": "Advice and conversation never billed",
+  "5.4": "Callbacks never billed",
+  "5.5": "Clean up never billed",
+  "6.1": "Disposal billed once per visit",
+};
+
+export const NON_BILLABLE_LABEL: Record<NonBillableKind, string> = {
+  travel: "Travel", waiting: "Waiting for access", conversation: "Talking with the customer",
+  callback: "Callback", cleanup: "Clean up",
+};
+
+/** How the overview groups unbilled work. */
+export const CATEGORY: Record<RateCode, "labour" | "equipment" | "refrigerant" | "after_hours" | "line_set" | "other" | "covered"> = {
+  "SVC-CALL": "labour", "TECH-ADD": "labour", "LABOR-HR": "labour", "AFTER-HRS": "after_hours",
+  COMP: "equipment", BLOWER: "equipment", TSTAT: "equipment", IGNITER: "equipment",
+  LINESET: "line_set", REFRIG: "refrigerant", DISPOSAL: "other",
+  CAP: "covered", CONTACTOR: "covered", FILTER: "covered", "COIL-CLEAN": "covered", DRAIN: "covered",
+};

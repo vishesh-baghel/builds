@@ -15,7 +15,11 @@ writes to no system of record.
 (96.6%).** It also counted $5,435.00 across 15 items that it should not have. Every number here
 comes from [`SCORECARD.md`](SCORECARD.md), which `pnpm score` regenerates from the committed run.
 
-Live replay: [tally.visheshbaghel.com](https://tally.visheshbaghel.com)
+Try it at [tally.visheshbaghel.com](https://tally.visheshbaghel.com): every work order, the four
+checks on each piece of work, and an auto-bill setting you can move to see what changes. The site
+replays the committed run; it calls no model, so moving the setting re-runs the same decision code
+over the same answers. [`/replay`](https://tally.visheshbaghel.com/replay) plays the run item by
+item.
 
 ## How it works
 
@@ -130,7 +134,7 @@ It reads it and uses it.
 pnpm install
 pnpm --filter @builds/tally test        # no key needed
 pnpm --filter @builds/tally score       # re-scores the committed run, no key needed
-pnpm --filter @builds/tally dev         # the replay at localhost:3013
+pnpm --filter @builds/tally dev         # the site at localhost:3013
 ```
 
 To judge the work orders again, set `TYPESAFE_API_KEY` in `tally/.env.local` (see
@@ -144,6 +148,6 @@ fixtures/     work orders, agreement, rate card, answer key (committed before th
 src/          catalog, splitter, questions, Drex call, policy, pipeline, scorecard
 scripts/      generate fixtures, run (calls Drex), score (no calls), ablation
 runs/         committed judgments, scorecard, audit trail, first-run record
-app/          the replay page
-public/       replay.json, written by `score`
+app/          the sandbox (/) and the run replay (/replay)
+public/       replay.json, written by `score`; both pages read it
 ```

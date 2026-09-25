@@ -75,12 +75,17 @@ The run is two phases so the expensive one happens once: `pnpm run` collects Dre
 into `runs/judgments.json` (resumable, checkpointed); `pnpm score` does everything else with no
 key and no calls.
 
-## Recording view
+## The site
 
-A Next.js page that replays the committed run from `public/replay.json`: the note on the left
-with each work item underlined, the four judgments as probability bars per item, a running
-"unbilled $ found" counter, and an automatic pause on one caught trap. Hosted at
-tally.visheshbaghel.com. The hosted page makes no model calls.
+A Next.js app hosted at tally.visheshbaghel.com, reading only `public/replay.json`; it makes no
+model calls.
+
+- `/`: the sandbox. An overview of the run, every work order with the note, the invoice as sent,
+  the lines Tally would add and the four checks per item, a queue of items sent to a person
+  (with bill it / leave it), the blocked charges, and an auto-bill setting. Moving the setting
+  re-runs `decideItem` from `src/policy.ts` in the browser over the committed judgments.
+- `/replay`: the recording view. The run replayed item by item with probability bars, a
+  running "unbilled $ found" counter, and a pause on one caught trap.
 
 ## Acceptance criteria
 
@@ -95,4 +100,5 @@ tally.visheshbaghel.com. The hosted page makes no model calls.
 - [x] #8 `pnpm --filter @builds/tally build` succeeds and the page replays the run with probability bars, a running counter and a pause on a caught trap
 - [x] #9 The README says once that the work orders are generated
 - [x] #10 Every number in the README appears in `SCORECARD.md` or a committed file under `tally/runs/`
+- [x] #11 `pnpm --filter @builds/tally test` asserts that `decideItem` over `public/replay.json` at the recommended setting reproduces the scorecard's recovered, blocked, routed and found figures
 <!-- AC:END -->

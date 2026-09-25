@@ -60,14 +60,40 @@ for (const [i, order] of orders.entries()) {
     auditRows += rows.length;
     for (const row of rows) auditLines.push(JSON.stringify(row));
     items.push({
-      id: s.item.id, start: s.item.start, end: s.item.end, text: s.item.text, code: s.item.code,
-      clause: s.item.clause, draftedLine: s.item.draftedLine, cents: s.item.priceCents,
+      // The full work item, so the page can re-run `decideItem` itself when the viewer moves
+      // the auto-bill setting, with the committed judgment and nothing else.
+      ...s.item, cents: s.item.priceCents, alreadyInvoiced: s.alreadyInvoiced,
       verdict: s.judgment.verdict, covered: s.judgment.covered, unsupported: s.judgment.unsupported, evidence: s.judgment.evidence,
       outcome: out.decision.outcome, reason: out.decision.reason,
-      truth: s.key.truth, trap: s.key.trap, expected: s.key.expected,
+      truth: s.key.truth, trap: s.key.trap, expected: s.key.expected, valueCents: s.key.valueCents,
     });
   }
   replay.push({ id: order.id, customer: order.customer, date: order.date, technician: order.technician, equipment: order.equipment, note: order.note, invoice: order.invoice, items });
+}
+
+// "Start here": the first order that shows each kind of case, chosen by rule so nobody picks
+// flattering examples by hand. A counted mistake is in the list on purpose.
+type ReplayItem = (typeof replay)[number]["items"][number];
+const SAMPLE_RULES: ((items: ReplayItem[]) => boolean)[] = [
+  (i) => i.filter((x) => x.outcome === "recovered").length >= 2 && i.some((x) => x.code === "LINESET"),
+  (i) => i.some((x) => x.trap === "casual_extra" && x.outcome === "recovered"),
+  (i) => i.some((x) => x.trap === "sounds_extra_but_covered") && !i.some((x) => x.outcome === "recovered"),
+  (i) => i.some((x) => x.trap === "injection" && x.outcome === "guardrail"),
+  (i) => i.some((x) => x.trap === "hedged" && x.outcome === "human"),
+  (i) => i.some((x) => x.trap === "mention_not_done"),
+  (i) => i.some((x) => x.code === "REFRIG" && x.outcome === "recovered"),
+  (i) => i.some((x) => x.code === "AFTER-HRS" && x.outcome === "recovered"),
+  (i) => i.some((x) => x.trap === "chatter") && i.every((x) => x.outcome === "no_charge"),
+  (i) => i.some((x) => x.code === "COMP" && x.outcome === "recovered"),
+  (i) => i.some((x) => x.outcome === "human" && x.trap !== "hedged"),
+  (i) => i.some((x) => x.outcome === "recovered" && x.expected !== "recover"),
+  (i) => i.some((x) => x.code === "DISPOSAL" && x.outcome === "recovered"),
+  (i) => i.some((x) => x.outcome === "guardrail" && x.trap !== "injection"),
+];
+const samples: string[] = [];
+for (const rule of SAMPLE_RULES) {
+  const hit = replay.find((o) => !samples.includes(o.id) && rule(o.items));
+  if (hit) samples.push(hit.id);
 }
 
 const all = scoredByOrder.flat();
@@ -97,7 +123,7 @@ const scorecard = {
 
 writeFileSync(new URL("runs/scorecard.json", root), JSON.stringify(scorecard, null, 1) + "\n");
 writeFileSync(new URL("runs/audit.jsonl", root), auditLines.join("\n") + "\n");
-writeFileSync(new URL("public/replay.json", root), JSON.stringify({ thresholds, performance, full, orders: replay }) + "\n");
+writeFileSync(new URL("public/replay.json", root), JSON.stringify({ thresholds, performance, full, samples, orders: replay }) + "\n");
 writeFileSync(new URL("SCORECARD.md", root), markdown());
 console.log(markdown());
 
