@@ -545,7 +545,7 @@
       "clocked": true,
       "project": "WC",
       "hard": true,
-      "note": "Due later than RFI-008, yet more urgent: Westgate releases casework on Oct 2, before this RFI is due. Priority from the schedule, not the calendar."
+      "note": "Due later than RFI-008, yet more urgent: Westgate releases casework on Oct 2, before this RFI is due. Priority comes from the schedule, not the due date."
     },
     {
       "id": "m010",
@@ -586,7 +586,7 @@
       "clocked": false,
       "project": "LL",
       "hard": false,
-      "note": "A new RFI the log has not seen: no logged window yet, so no clock, but high because it needs logging."
+      "note": "A new RFI the log has not seen yet, so no response window is running. Still marked Soon, because someone needs to log it."
     },
     {
       "id": "m012",
@@ -628,7 +628,7 @@
       "clocked": false,
       "project": "WC",
       "hard": true,
-      "note": "Two topics in one thread: a repeat status chase for the lead and a new RFI for the coordinator. A pick-one classifier drops one of them."
+      "note": "Two things in one thread: a repeat status chase for the project lead and a new RFI for the coordinator. A tool that files each email under one heading would lose one of them."
     },
     {
       "id": "m014",
@@ -648,7 +648,7 @@
       "clocked": false,
       "project": "HP",
       "hard": true,
-      "note": "Names a logged RFI, but one already answered: no window is running."
+      "note": "Names a logged RFI, but one that was already answered, so no response window is running."
     },
     {
       "id": "m015",
@@ -918,7 +918,7 @@
       "clocked": true,
       "project": "HP",
       "hard": true,
-      "note": "A bill and a clocked submittal in one message: accounting and the reviewer both need it."
+      "note": "A bill and a submittal with a deadline, in one message: accounting and the reviewer both need it."
     },
     {
       "id": "m031",
@@ -941,7 +941,7 @@
       "clocked": true,
       "project": "WC",
       "hard": true,
-      "note": "Two clocks in one message; the earlier one, RFI-009 on Oct 5, is the deadline."
+      "note": "Two deadlines in one message; the earlier one, RFI-009 on Oct 5, is the one that counts."
     },
     {
       "id": "m040",
@@ -961,7 +961,7 @@
       "clocked": true,
       "project": "LL",
       "hard": true,
-      "note": "Reads like every other portal notification. The clock is in the second paragraph, stated as a window, not a date."
+      "note": "Reads like every other portal notification. The deadline is in the second paragraph, written as a response window, not a date."
     },
     {
       "id": "m041",
@@ -981,7 +981,7 @@
       "clocked": true,
       "project": "WC",
       "hard": true,
-      "note": "A clock is plainly running but no date is given. The right outcome is a person setting it, never a guessed date."
+      "note": "A deadline is plainly running but no date is given. The right outcome is a person setting it, never a guessed date."
     },
     {
       "id": "m042",
@@ -1041,7 +1041,7 @@
       "clocked": false,
       "project": "LL",
       "hard": true,
-      "note": "A regulatory letter with a date that obliges the firm to nothing: not a clock."
+      "note": "A regulatory letter with a date that obliges the firm to nothing: not a deadline."
     },
     {
       "id": "m045",
@@ -1141,7 +1141,7 @@
       "clocked": true,
       "project": "WC",
       "hard": true,
-      "note": "A regulatory clock forwarded casually by the client. The surface is a client email; the content is an agency window."
+      "note": "A regulatory deadline forwarded casually by the client. It looks like a client email; inside is an agency's response window."
     },
     {
       "id": "m050",
@@ -1301,7 +1301,7 @@
       "clocked": false,
       "project": "HP",
       "hard": true,
-      "note": "A dated bill. The date is accounting's calendar, not a response clock, so no owner alert is due."
+      "note": "A dated bill. The date is for accounting's calendar, not a response deadline, so the principal gets no alert."
     },
     {
       "id": "m070",
@@ -1461,7 +1461,7 @@
       "clocked": false,
       "project": "WC",
       "hard": true,
-      "note": "The client's lease date, not a clock the firm must answer to. A date parser will see a deadline here; the label says no alert."
+      "note": "The client's lease date, not a deadline the firm must answer to. Simple date matching would flag it; the correct answer is no alert."
     },
     {
       "id": "m080",
@@ -1497,7 +1497,7 @@
       "clocked": false,
       "project": null,
       "hard": true,
-      "note": "A pitch with a date in it. An RSVP is not a clock."
+      "note": "A pitch with a date in it. An RSVP is not a deadline."
     },
     {
       "id": "m082",
@@ -1713,7 +1713,7 @@
       "clocked": false,
       "project": null,
       "hard": true,
-      "note": "Urgent wording, no obligation: a countdown is a sales tactic, not a clock."
+      "note": "Urgent wording, no obligation: a countdown is a sales tactic, not a deadline."
     },
     {
       "id": "m094",
@@ -1965,7 +1965,7 @@
       "clocked": false,
       "project": "LL",
       "hard": true,
-      "note": "The principal assigning work on a clock that already arrived as m040. The forward is internal mail, not a second clock; counting from the forward would also give the wrong date."
+      "note": "The principal passing on work for a deadline that already arrived in an earlier message. The forward is internal mail, not a second deadline; counting from the forward would also give the wrong date."
     },
     {
       "id": "m110",
@@ -2131,7 +2131,7 @@
       "clocked": true,
       "project": "HP",
       "hard": true,
-      "note": "Outside every class, and clocked in legal language."
+      "note": "Fits none of the usual kinds, and the deadline is buried in legal language."
     }
   ]
 }
