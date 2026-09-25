@@ -17,18 +17,8 @@ import { ReadView, priColor } from "./ReadView";
  *
  * A measured firm shows recorded model judgments over its frozen instrument, opened at the lines its
  * sweep chose so its numbers match its published scorecard. Moving the dial leaves that setting, and
- * the Measured preset returns to it. A firm with no recorded run yet is illustrative, and the sidebar
- * says which is which.
+ * the Measured preset returns to it. A firm with no recorded run yet is illustrative.
  */
-
-interface LiveStatus {
-  readonly live: boolean;
-  readonly persistent: boolean;
-  readonly spentCents: number;
-  readonly capCents: number;
-  readonly liveCallsToday: number;
-  readonly ceiling: number;
-}
 
 type PageId = "overview" | "inbox" | "deadlines" | "people" | "decide" | "autonomy" | "savings" | "how";
 
@@ -77,13 +67,8 @@ export function Dashboard({ firms }: { firms: readonly Firm[] }) {
 
   // Live judging: opening a message asks the route for one fresh judgment, once per message per page
   // load. A live result replaces that message's scores; the dial still re-decides locally, for free.
-  const [status, setStatus] = useState<LiveStatus | null>(null);
   const [results, setResults] = useState<Readonly<Record<string, ClassifyOk>>>({});
   const requested = useRef(new Set<string>());
-
-  useEffect(() => {
-    fetch("/api/classify").then((r) => (r.ok ? r.json() : null)).then((s: LiveStatus | null) => { if (s) setStatus(s); }).catch(() => {});
-  }, []);
 
   const pick = useCallback((fid: string, mid: string) => {
     const key = `${fid}/${mid}`;
@@ -94,7 +79,6 @@ export function Dashboard({ firms }: { firms: readonly Firm[] }) {
       .then((body: ClassifyOk | null) => {
         if (!body) return;
         setResults((prev) => ({ ...prev, [key]: body }));
-        setStatus((prev) => (prev ? { ...prev, spentCents: body.spend.spentCents, liveCallsToday: prev.liveCallsToday + (body.live ? 1 : 0) } : prev));
       })
       .catch(() => { requested.current.delete(key); });
   }, []);
@@ -188,18 +172,6 @@ export function Dashboard({ firms }: { firms: readonly Firm[] }) {
             <span style={{ fontFamily: "var(--font-mono)", fontSize: ".6875rem", color: "var(--color-accent)" }}>{dialLabel}</span>
           </div>
           {dialInput("dial")}
-          {status && (
-            <p style={{ margin: ".75rem 0 0", fontSize: ".6875rem", color: "var(--color-ink-3)", lineHeight: 1.45 }}>
-              {status.live ? "Live mode on: opening a message has the AI read it fresh, once." : "Live mode off: each message shows the answers recorded in testing."}
-              {" "}Hard spending cap: {status.spentCents.toFixed(3)} of {status.capCents} cents used this month{status.persistent ? "" : " on this server"}; {status.liveCallsToday} of {status.ceiling} live reads used in the last 24 hours.
-            </p>
-          )}
-          {firm.measured && liveHere.length > 0 && (
-            <p style={{ margin: ".5rem 0 0", fontSize: ".6875rem", color: "var(--color-warn)", lineHeight: 1.45 }}>
-              {liveHere.length} {liveHere.length === 1 ? "message was" : "messages were"} read live this visit, so this page may differ from the tested results.
-            </p>
-          )}
-          <p style={{ margin: ".75rem 0 0", fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: ".07em", textTransform: "uppercase", color: "var(--color-warn)" }}>{firm.measured ? `invented data · AI answers recorded ${firm.measured.runDate} · no email is sent` : "invented data · illustrative AI answers · no email is sent"}</p>
         </div>
       </aside>
 
