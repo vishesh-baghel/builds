@@ -14,7 +14,7 @@ export const drafts = (it: Item, st: Status) => Boolean(it.draftedLine) && ["cou
  * The four checks on one piece of work, as bars. `shown` false draws the same bars empty, so a
  * card has the same height before and after its judgment arrives.
  */
-export function CheckBars({ it, st, t, shown = true, animate = true }: { it: Item; st: Status; t: Thresholds; shown?: boolean; animate?: boolean }) {
+export function CheckBars({ it, st, t, shown = true, animate = true, compact = false }: { it: Item; st: Status; t: Thresholds; shown?: boolean; animate?: boolean; compact?: boolean }) {
   const top = topVerdict(judgmentOf(it));
   const drafted = drafts(it, st);
   const act = t.evidence / 4;
@@ -25,14 +25,14 @@ export function CheckBars({ it, st, t, shown = true, animate = true }: { it: Ite
     { q: "Sure it was done", v: it.evidence / 4, fill: it.evidence / 4 >= act ? K.accent : K.warn, mark: act, markColor: K.ink },
   ];
   return (
-    <div style={{ display: "grid", gap: ".5rem 1.5rem", gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,10rem),1fr))" }}>
+    <div style={{ display: "grid", gap: compact ? ".25rem 1rem" : ".5rem 1.5rem", gridTemplateColumns: compact ? "repeat(4,minmax(0,1fr))" : "repeat(auto-fit,minmax(min(100%,10rem),1fr))" }}>
       {bars.map((b, k) => (
         <div key={k}>
           <div style={{ display: "flex", justifyContent: "space-between", gap: ".5rem", alignItems: "baseline" }}>
-            <span style={{ fontSize: ".75rem", color: !shown || b.v == null ? K.ink3 : K.ink, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{b.q}</span>
+            <span style={{ fontSize: compact ? ".6875rem" : ".75rem", color: !shown || b.v == null ? K.ink3 : K.ink, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{b.q}</span>
             <span style={{ fontFamily: F.mono, fontSize: ".6875rem", fontVariantNumeric: "tabular-nums", color: b.fill === K.accent || b.fill === K.neg || b.fill === K.warn ? b.fill : K.ink3, visibility: shown ? "visible" : "hidden" }}>{b.v == null ? "no charge" : pct(b.v)}</span>
           </div>
-          <div style={{ position: "relative", height: 6, marginTop: 4, borderRadius: 2, background: K.track, overflow: "hidden" }}>
+          <div style={{ position: "relative", height: compact ? 5 : 6, marginTop: compact ? 2 : 4, borderRadius: 2, background: K.track, overflow: "hidden" }}>
             <span style={{ position: "absolute", top: 0, bottom: 0, left: 0, width: shown && b.v != null ? `${b.v * 100}%` : "0%", background: b.fill, transition: animate ? "width 260ms cubic-bezier(.16,1,.3,1)" : "none" }} />
             {shown && b.mark != null && <span style={{ position: "absolute", top: -2, bottom: -2, width: 2, left: `calc(${(b.mark * 100).toFixed(1)}% - 1px)`, background: b.markColor, opacity: 0.6 }} />}
           </div>
