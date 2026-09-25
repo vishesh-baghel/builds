@@ -1,7 +1,7 @@
 "use client";
 
 import { memo, useEffect, useMemo, useState } from "react";
-import { CheckBars, personReason } from "../checks";
+import { CHECK_COLUMNS, CheckBars, personReason } from "../checks";
 import {
   K, F, eyebrow, smallBtn, ST, money, day, draftText, labelOf, clauseText, statusOf,
   type Data, type Item, type Order, type Status,
@@ -120,7 +120,7 @@ export function Replay() {
         <JobGrid outcome={run.outcome} ids={run.ids} done={ordersDone} current={g < 0 ? -1 : cur.o} />
 
         <div className="rp-order" style={{ minWidth: 0, minHeight: 0, display: "flex", flexDirection: "column", gap: ".75rem", borderLeft: `1px solid ${K.rule}`, paddingLeft: "1.5rem" }}>
-          <div className="rp-note" style={{ flex: "0 0 38%", minHeight: 0, overflow: "hidden", maskImage: "linear-gradient(to bottom, #000 calc(100% - 1.25rem), transparent)", WebkitMaskImage: "linear-gradient(to bottom, #000 calc(100% - 1.25rem), transparent)" }}>
+          <div className="rp-note" style={{ flex: "0 0 40%", minHeight: 0, overflow: "hidden", maskImage: "linear-gradient(to bottom, #000 calc(100% - 1.25rem), transparent)", WebkitMaskImage: "linear-gradient(to bottom, #000 calc(100% - 1.25rem), transparent)" }}>
             <div style={{ display: "flex", flexWrap: "wrap", gap: ".25rem 1rem", color: K.ink3, fontSize: ".8125rem", lineHeight: 1.4 }}>
               <b style={{ color: K.ink2, fontWeight: 500 }}>{order.id}</b><span>{order.customer}</span><span>{order.technician}</span><span>{day(order.date)}</span><span>{order.equipment}</span>
             </div>
@@ -130,9 +130,12 @@ export function Replay() {
             </p>
           </div>
           <div style={{ flex: "1 1 0", minHeight: 0, display: "flex", flexDirection: "column" }}>
-            <div style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: "1rem", paddingBottom: ".375rem", borderBottom: `1px solid ${K.rule}` }}>
+            <div className="rp-decide-head" style={{ display: "flex", justifyContent: "space-between", alignItems: "baseline", gap: "1rem", paddingBottom: ".375rem", borderBottom: `1px solid ${K.rule}` }}>
               <span style={eyebrow}>How Tally decided</span>
               <span style={{ fontSize: ".75rem", color: K.ink3 }}>four checks on every piece of work</span>
+            </div>
+            <div aria-hidden style={{ display: "grid", gridTemplateColumns: "repeat(4,minmax(0,1fr))", columnGap: "1rem", padding: ".375rem .75rem .375rem calc(.75rem + 2px)", borderBottom: `1px solid ${K.rule}` }}>
+              {CHECK_COLUMNS.map((c) => <span key={c} style={{ fontSize: ".6875rem", color: K.ink3, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{c}</span>)}
             </div>
             <ol className="rp-list" style={{ listStyle: "none", margin: 0, padding: 0, flex: "1 1 auto", minHeight: 0, overflow: "hidden", display: "grid", gridTemplateColumns: "minmax(0,1fr)", gridTemplateRows: `repeat(${SLOTS}, minmax(0,1fr))` }}>
               {Array.from({ length: SLOTS }, (_, i) => {
@@ -237,8 +240,9 @@ function Card({ it, n, st, shown, active, fast, order, data }: { it: Item; n: nu
   const basis = shown && st === "invoiced" && invLine ? `Invoice line: ${invLine.description}` : it.code ? `Rate card ${it.code} · ${clauseText(it.clause)}` : clauseText(it.clause);
   const reason = !shown ? "" : st === "person" ? personReason(it, data.thresholds) : st === "rejected" ? "The note doesn't record this as done, so the charge is blocked." : st === "counted" ? `Add ${draftText(it)}, ${money(it.priceCents)}.` : "";
   return (
-    <li style={{ minHeight: 0, overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "center", gap: ".375rem", padding: "0 .75rem", borderBottom: `1px solid ${K.rule}`, borderLeft: `2px solid ${active ? color : "transparent"}`, background: active ? (st === "rejected" && shown ? K.negSoft : st === "person" && shown ? K.warnSoft : K.accentSoft) : "transparent", transition: fast ? "none" : "background 200ms" }}>
-      <div style={{ display: "flex", alignItems: "baseline", gap: ".625rem", whiteSpace: "nowrap", overflow: "hidden", minWidth: 0 }}>
+    <li style={{ minHeight: 0, overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "center", gap: ".3125rem", padding: "0 .75rem", borderBottom: `1px solid ${K.rule}`, borderLeft: `2px solid ${active ? color : "transparent"}`, background: active ? (st === "rejected" && shown ? K.negSoft : st === "person" && shown ? K.warnSoft : K.accentSoft) : "transparent", transition: fast ? "none" : "background 200ms" }}>
+      {/* Clipped sideways only: a vertical clip would shave the descenders off every label. */}
+      <div style={{ display: "flex", alignItems: "center", gap: ".625rem", whiteSpace: "nowrap", overflowX: "clip", overflowY: "visible", minWidth: 0, lineHeight: 1.35 }}>
         <span style={{ fontFamily: F.mono, fontSize: ".6875rem", fontWeight: 500, color, flex: "none" }}>{n}</span>
         <b style={{ color: shown ? K.ink : K.ink3, fontWeight: 500, flex: "none" }}>{labelOf(it)}</b>
         {shown && <span style={{ flex: "none", fontFamily: F.mono, fontSize: ".625rem", letterSpacing: ".06em", textTransform: "uppercase", border: "1px solid currentColor", borderRadius: 3, padding: "0 4px", color }}>{ST[st][0]}</span>}

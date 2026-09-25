@@ -10,8 +10,12 @@ export function personReason(it: Item, t: Thresholds): string {
 
 export const drafts = (it: Item, st: Status) => Boolean(it.draftedLine) && ["counted", "person", "rejected"].includes(st);
 
+/** Column headers for a list of compact check bars, in the same four columns. */
+export const CHECK_COLUMNS = ["Billing status", "In the plan", "Note backs it up", "Sure it was done"] as const;
+
 /**
- * The four checks on one piece of work, as bars. `shown` false draws the same bars empty, so a
+ * The four checks on one piece of work, as bars. Compact draws each as one line (bar and value)
+ * under shared column headers; the full form labels every bar. `shown` false draws the same bars empty, so a
  * card has the same height before and after its judgment arrives.
  */
 export function CheckBars({ it, st, t, shown = true, animate = true, compact = false }: { it: Item; st: Status; t: Thresholds; shown?: boolean; animate?: boolean; compact?: boolean }) {
@@ -20,19 +24,34 @@ export function CheckBars({ it, st, t, shown = true, animate = true, compact = f
   const act = t.evidence / 4;
   const bars: { q: string; v: number | null; fill: string; mark: number | null; markColor: string }[] = [
     { q: shown ? VN[top] : "Billing status", v: it.verdict[top], fill: it.verdict[top] >= 0.55 ? K.accent : K.rule2, mark: null, markColor: K.ink },
-    { q: compact ? "In the plan" : "Included in the plan", v: it.covered, fill: it.covered >= 0.5 ? K.accent : K.rule2, mark: null, markColor: K.ink },
-    { q: compact ? "Note backs it up" : "Note backs up the charge", v: drafted ? 1 - it.unsupported : null, fill: drafted && it.unsupported >= t.unsupported ? K.neg : K.accent, mark: drafted ? 1 - t.unsupported : null, markColor: K.neg },
+    { q: "Included in the plan", v: it.covered, fill: it.covered >= 0.5 ? K.accent : K.rule2, mark: null, markColor: K.ink },
+    { q: "Note backs up the charge", v: drafted ? 1 - it.unsupported : null, fill: drafted && it.unsupported >= t.unsupported ? K.neg : K.accent, mark: drafted ? 1 - t.unsupported : null, markColor: K.neg },
     { q: "Sure it was done", v: it.evidence / 4, fill: it.evidence / 4 >= act ? K.accent : K.warn, mark: act, markColor: K.ink },
   ];
+  if (compact) {
+    return (
+      <div style={{ display: "grid", gridTemplateColumns: `repeat(4,minmax(0,1fr))`, columnGap: "1rem", alignItems: "center" }}>
+        {bars.map((b, k) => (
+          <div key={k} style={{ display: "flex", alignItems: "center", gap: ".5rem", minWidth: 0 }}>
+            <div style={{ position: "relative", flex: "1 1 auto", height: 5, borderRadius: 2, background: K.track, overflow: "hidden" }}>
+              <span style={{ position: "absolute", top: 0, bottom: 0, left: 0, width: shown && b.v != null ? `${b.v * 100}%` : "0%", background: b.fill, transition: animate ? "width 260ms cubic-bezier(.16,1,.3,1)" : "none" }} />
+              {shown && b.mark != null && <span style={{ position: "absolute", top: 0, bottom: 0, width: 2, left: `calc(${(b.mark * 100).toFixed(1)}% - 1px)`, background: b.markColor, opacity: 0.6 }} />}
+            </div>
+            <span style={{ flex: "none", width: "3.75rem", textAlign: "right", whiteSpace: "nowrap", fontFamily: F.mono, fontSize: ".6875rem", lineHeight: 1.3, fontVariantNumeric: "tabular-nums", color: b.fill === K.accent || b.fill === K.neg || b.fill === K.warn ? b.fill : K.ink3, visibility: shown ? "visible" : "hidden" }}>{b.v == null ? "no charge" : pct(b.v)}</span>
+          </div>
+        ))}
+      </div>
+    );
+  }
   return (
-    <div style={{ display: "grid", gap: compact ? ".25rem 1rem" : ".5rem 1.5rem", gridTemplateColumns: compact ? "repeat(4,minmax(0,1fr))" : "repeat(auto-fit,minmax(min(100%,10rem),1fr))" }}>
+    <div style={{ display: "grid", gap: ".5rem 1.5rem", gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,10rem),1fr))" }}>
       {bars.map((b, k) => (
         <div key={k}>
           <div style={{ display: "flex", justifyContent: "space-between", gap: ".5rem", alignItems: "baseline" }}>
-            <span style={{ flex: "1 1 auto", minWidth: 0, fontSize: compact ? ".6875rem" : ".75rem", color: !shown || b.v == null ? K.ink3 : K.ink, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{b.q}</span>
+            <span style={{ flex: "1 1 auto", minWidth: 0, fontSize: ".75rem", color: !shown || b.v == null ? K.ink3 : K.ink, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{b.q}</span>
             <span style={{ flex: "none", whiteSpace: "nowrap", fontFamily: F.mono, fontSize: ".6875rem", fontVariantNumeric: "tabular-nums", color: b.fill === K.accent || b.fill === K.neg || b.fill === K.warn ? b.fill : K.ink3, visibility: shown ? "visible" : "hidden" }}>{b.v == null ? "no charge" : pct(b.v)}</span>
           </div>
-          <div style={{ position: "relative", height: compact ? 5 : 6, marginTop: compact ? 2 : 4, borderRadius: 2, background: K.track, overflow: "hidden" }}>
+          <div style={{ position: "relative", height: 6, marginTop: 4, borderRadius: 2, background: K.track, overflow: "hidden" }}>
             <span style={{ position: "absolute", top: 0, bottom: 0, left: 0, width: shown && b.v != null ? `${b.v * 100}%` : "0%", background: b.fill, transition: animate ? "width 260ms cubic-bezier(.16,1,.3,1)" : "none" }} />
             {shown && b.mark != null && <span style={{ position: "absolute", top: -2, bottom: -2, width: 2, left: `calc(${(b.mark * 100).toFixed(1)}% - 1px)`, background: b.markColor, opacity: 0.6 }} />}
           </div>
