@@ -1,0 +1,1805 @@
+{
+  "date": "2026-09-25",
+  "judgments": {
+    "g001": {
+      "scores": {
+        "co": 0.05,
+        "bid": 0.06,
+        "inspection": 0.02,
+        "sub": 0.92,
+        "owner": 0.04,
+        "invoice": 0.04,
+        "noise": 0.02,
+        "internal": 0.09
+      },
+      "clock": 0.95,
+      "usage": {
+        "input_tokens": 1505,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.006321,
+      "elapsedMs": 292.17707899999994
+    },
+    "g002": {
+      "scores": {
+        "co": 0.05,
+        "bid": 0.04,
+        "inspection": 0.86,
+        "sub": 0.11,
+        "owner": 0.2,
+        "invoice": 0.03,
+        "noise": 0.03,
+        "internal": 0.27
+      },
+      "clock": 0.97,
+      "usage": {
+        "input_tokens": 1464,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0061488,
+      "elapsedMs": 247.95433199999997
+    },
+    "g003": {
+      "scores": {
+        "co": 0.95,
+        "bid": 0.04,
+        "inspection": 0.31,
+        "sub": 0.32,
+        "owner": 0.67,
+        "invoice": 0.05,
+        "noise": 0.05,
+        "internal": 0.37
+      },
+      "clock": 0.79,
+      "usage": {
+        "input_tokens": 1485,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.006237,
+      "elapsedMs": 103.56364399999995
+    },
+    "g004": {
+      "scores": {
+        "co": 0.03,
+        "bid": 0.78,
+        "inspection": 0.02,
+        "sub": 0.23,
+        "owner": 0.07,
+        "invoice": 0.04,
+        "noise": 0.12,
+        "internal": 0.29
+      },
+      "clock": 0.77,
+      "usage": {
+        "input_tokens": 1446,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060732,
+      "elapsedMs": 100.24537599999996
+    },
+    "g005": {
+      "scores": {
+        "co": 0.04,
+        "bid": 0.04,
+        "inspection": 0.02,
+        "sub": 0.77,
+        "owner": 0.11,
+        "invoice": 0.89,
+        "noise": 0.02,
+        "internal": 0.34
+      },
+      "clock": 0.89,
+      "usage": {
+        "input_tokens": 1453,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0061026000000000006,
+      "elapsedMs": 99.94369100000006
+    },
+    "g006": {
+      "scores": {
+        "co": 0.19,
+        "bid": 0.05,
+        "inspection": 0.03,
+        "sub": 0.33,
+        "owner": 0.09,
+        "invoice": 0.04,
+        "noise": 0.02,
+        "internal": 0.81
+      },
+      "clock": 0.18,
+      "usage": {
+        "input_tokens": 1423,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059766,
+      "elapsedMs": 99.81347600000004
+    },
+    "g007": {
+      "scores": {
+        "co": 0.04,
+        "bid": 0.05,
+        "inspection": 0.11,
+        "sub": 0.16,
+        "owner": 0.57,
+        "invoice": 0.04,
+        "noise": 0.02,
+        "internal": 0.49
+      },
+      "clock": 0.42,
+      "usage": {
+        "input_tokens": 1421,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059682,
+      "elapsedMs": 114.36870199999998
+    },
+    "g008": {
+      "scores": {
+        "co": 0.62,
+        "bid": 0.05,
+        "inspection": 0.02,
+        "sub": 0.05,
+        "owner": 0.05,
+        "invoice": 0.03,
+        "noise": 0.98,
+        "internal": 0.08
+      },
+      "clock": 0.03,
+      "usage": {
+        "input_tokens": 1428,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059976000000000005,
+      "elapsedMs": 101.74941200000012
+    },
+    "g009": {
+      "scores": {
+        "co": 0.07,
+        "bid": 0.04,
+        "inspection": 0.86,
+        "sub": 0.04,
+        "owner": 0.14,
+        "invoice": 0.03,
+        "noise": 0.02,
+        "internal": 0.11
+      },
+      "clock": 0.98,
+      "usage": {
+        "input_tokens": 1457,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0061194,
+      "elapsedMs": 96.26921300000004
+    },
+    "g010": {
+      "scores": {
+        "co": 0.07,
+        "bid": 0.06,
+        "inspection": 0.03,
+        "sub": 0.69,
+        "owner": 0.19,
+        "invoice": 0.04,
+        "noise": 0.03,
+        "internal": 0.66
+      },
+      "clock": 0.18,
+      "usage": {
+        "input_tokens": 1438,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060396,
+      "elapsedMs": 112.19622600000002
+    },
+    "g011": {
+      "scores": {
+        "co": 0.96,
+        "bid": 0.04,
+        "inspection": 0.02,
+        "sub": 0.31,
+        "owner": 0.17,
+        "invoice": 0.09,
+        "noise": 0.03,
+        "internal": 0.6
+      },
+      "clock": 0.15,
+      "usage": {
+        "input_tokens": 1447,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060774,
+      "elapsedMs": 106.59293699999989
+    },
+    "g012": {
+      "scores": {
+        "co": 0.83,
+        "bid": 0.15,
+        "inspection": 0.02,
+        "sub": 0.23,
+        "owner": 0.48,
+        "invoice": 0.04,
+        "noise": 0.05,
+        "internal": 0.26
+      },
+      "clock": 0.07,
+      "usage": {
+        "input_tokens": 1434,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060228,
+      "elapsedMs": 114.34390900000017
+    },
+    "g013": {
+      "scores": {
+        "co": 0.94,
+        "bid": 0.05,
+        "inspection": 0.02,
+        "sub": 0.43,
+        "owner": 0.14,
+        "invoice": 0.09,
+        "noise": 0.04,
+        "internal": 0.37
+      },
+      "clock": 0.11,
+      "usage": {
+        "input_tokens": 1451,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060942,
+      "elapsedMs": 100.73844899999995
+    },
+    "g014": {
+      "scores": {
+        "co": 0.97,
+        "bid": 0.03,
+        "inspection": 0.02,
+        "sub": 0.19,
+        "owner": 0.32,
+        "invoice": 0.05,
+        "noise": 0.03,
+        "internal": 0.72
+      },
+      "clock": 0.1,
+      "usage": {
+        "input_tokens": 1434,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060228,
+      "elapsedMs": 209.05719
+    },
+    "g015": {
+      "scores": {
+        "co": 0.95,
+        "bid": 0.06,
+        "inspection": 0.02,
+        "sub": 0.4,
+        "owner": 0.42,
+        "invoice": 0.05,
+        "noise": 0.05,
+        "internal": 0.64
+      },
+      "clock": 0.55,
+      "usage": {
+        "input_tokens": 1435,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.006027,
+      "elapsedMs": 97.05810400000018
+    },
+    "g016": {
+      "scores": {
+        "co": 0.94,
+        "bid": 0.06,
+        "inspection": 0.02,
+        "sub": 0.24,
+        "owner": 0.42,
+        "invoice": 0.04,
+        "noise": 0.03,
+        "internal": 0.37
+      },
+      "clock": 0.97,
+      "usage": {
+        "input_tokens": 1469,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0061698000000000005,
+      "elapsedMs": 116.60610499999984
+    },
+    "g017": {
+      "scores": {
+        "co": 0.95,
+        "bid": 0.04,
+        "inspection": 0.02,
+        "sub": 0.2,
+        "owner": 0.1,
+        "invoice": 0.22,
+        "noise": 0.02,
+        "internal": 0.88
+      },
+      "clock": 0.12,
+      "usage": {
+        "input_tokens": 1438,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060396,
+      "elapsedMs": 106.02033099999971
+    },
+    "g018": {
+      "scores": {
+        "co": 0.85,
+        "bid": 0.04,
+        "inspection": 0.06,
+        "sub": 0.37,
+        "owner": 0.43,
+        "invoice": 0.11,
+        "noise": 0.03,
+        "internal": 0.47
+      },
+      "clock": 0.96,
+      "usage": {
+        "input_tokens": 1464,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0061488,
+      "elapsedMs": 142.42938200000026
+    },
+    "g019": {
+      "scores": {
+        "co": 0.95,
+        "bid": 0.04,
+        "inspection": 0.05,
+        "sub": 0.57,
+        "owner": 0.25,
+        "invoice": 0.04,
+        "noise": 0.03,
+        "internal": 0.77
+      },
+      "clock": 0.41,
+      "usage": {
+        "input_tokens": 1443,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060606,
+      "elapsedMs": 117.72884900000008
+    },
+    "g020": {
+      "scores": {
+        "co": 0.95,
+        "bid": 0.04,
+        "inspection": 0.02,
+        "sub": 0.09,
+        "owner": 0.78,
+        "invoice": 0.04,
+        "noise": 0.03,
+        "internal": 0.21
+      },
+      "clock": 0.06,
+      "usage": {
+        "input_tokens": 1423,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059766,
+      "elapsedMs": 121.72491599999967
+    },
+    "g021": {
+      "scores": {
+        "co": 0.89,
+        "bid": 0.03,
+        "inspection": 0.02,
+        "sub": 0.59,
+        "owner": 0.3,
+        "invoice": 0.12,
+        "noise": 0.04,
+        "internal": 0.48
+      },
+      "clock": 0.08,
+      "usage": {
+        "input_tokens": 1440,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.006048,
+      "elapsedMs": 102.2902979999999
+    },
+    "g022": {
+      "scores": {
+        "co": 0.05,
+        "bid": 0.97,
+        "inspection": 0.07,
+        "sub": 0.07,
+        "owner": 0.18,
+        "invoice": 0.03,
+        "noise": 0.04,
+        "internal": 0.09
+      },
+      "clock": 0.96,
+      "usage": {
+        "input_tokens": 1507,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.006329400000000001,
+      "elapsedMs": 106.20529600000009
+    },
+    "g023": {
+      "scores": {
+        "co": 0.07,
+        "bid": 0.95,
+        "inspection": 0.03,
+        "sub": 0.09,
+        "owner": 0.18,
+        "invoice": 0.03,
+        "noise": 0.03,
+        "internal": 0.31
+      },
+      "clock": 0.95,
+      "usage": {
+        "input_tokens": 1465,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.006153,
+      "elapsedMs": 96.28855900000008
+    },
+    "g024": {
+      "scores": {
+        "co": 0.09,
+        "bid": 0.92,
+        "inspection": 0.03,
+        "sub": 0.12,
+        "owner": 0.17,
+        "invoice": 0.04,
+        "noise": 0.03,
+        "internal": 0.4
+      },
+      "clock": 0.44,
+      "usage": {
+        "input_tokens": 1443,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060606,
+      "elapsedMs": 110.31836299999986
+    },
+    "g025": {
+      "scores": {
+        "co": 0.09,
+        "bid": 0.69,
+        "inspection": 0.03,
+        "sub": 0.27,
+        "owner": 0.11,
+        "invoice": 0.12,
+        "noise": 0.1,
+        "internal": 0.63
+      },
+      "clock": 0.04,
+      "usage": {
+        "input_tokens": 1443,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060606,
+      "elapsedMs": 103.09665300000006
+    },
+    "g026": {
+      "scores": {
+        "co": 0.1,
+        "bid": 0.85,
+        "inspection": 0.02,
+        "sub": 0.33,
+        "owner": 0.12,
+        "invoice": 0.05,
+        "noise": 0.16,
+        "internal": 0.38
+      },
+      "clock": 0.49,
+      "usage": {
+        "input_tokens": 1435,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.006027,
+      "elapsedMs": 151.74753800000008
+    },
+    "g027": {
+      "scores": {
+        "co": 0.06,
+        "bid": 0.83,
+        "inspection": 0.02,
+        "sub": 0.16,
+        "owner": 0.23,
+        "invoice": 0.04,
+        "noise": 0.07,
+        "internal": 0.23
+      },
+      "clock": 0.21,
+      "usage": {
+        "input_tokens": 1428,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059976000000000005,
+      "elapsedMs": 98.60301799999979
+    },
+    "g028": {
+      "scores": {
+        "co": 0.05,
+        "bid": 0.95,
+        "inspection": 0.03,
+        "sub": 0.17,
+        "owner": 0.11,
+        "invoice": 0.03,
+        "noise": 0.06,
+        "internal": 0.53
+      },
+      "clock": 0.87,
+      "usage": {
+        "input_tokens": 1462,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0061404,
+      "elapsedMs": 117.89459899999974
+    },
+    "g029": {
+      "scores": {
+        "co": 0.07,
+        "bid": 0.12,
+        "inspection": 0.01,
+        "sub": 0.06,
+        "owner": 0.04,
+        "invoice": 0.03,
+        "noise": 0.96,
+        "internal": 0.07
+      },
+      "clock": 0.33,
+      "usage": {
+        "input_tokens": 1443,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060606,
+      "elapsedMs": 142.88345500000014
+    },
+    "g030": {
+      "scores": {
+        "co": 0.04,
+        "bid": 0.82,
+        "inspection": 0.02,
+        "sub": 0.38,
+        "owner": 0.11,
+        "invoice": 0.08,
+        "noise": 0.09,
+        "internal": 0.23
+      },
+      "clock": 0.12,
+      "usage": {
+        "input_tokens": 1452,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060984,
+      "elapsedMs": 143.97387600000002
+    },
+    "g031": {
+      "scores": {
+        "co": 0.05,
+        "bid": 0.68,
+        "inspection": 0.02,
+        "sub": 0.23,
+        "owner": 0.18,
+        "invoice": 0.03,
+        "noise": 0.16,
+        "internal": 0.35
+      },
+      "clock": 0.27,
+      "usage": {
+        "input_tokens": 1428,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059976000000000005,
+      "elapsedMs": 125.61559699999998
+    },
+    "g032": {
+      "scores": {
+        "co": 0.04,
+        "bid": 0.97,
+        "inspection": 0.02,
+        "sub": 0.08,
+        "owner": 0.29,
+        "invoice": 0.02,
+        "noise": 0.04,
+        "internal": 0.11
+      },
+      "clock": 0.87,
+      "usage": {
+        "input_tokens": 1458,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.006123600000000001,
+      "elapsedMs": 156.5251929999995
+    },
+    "g033": {
+      "scores": {
+        "co": 0.05,
+        "bid": 0.04,
+        "inspection": 0.93,
+        "sub": 0.09,
+        "owner": 0.2,
+        "invoice": 0.03,
+        "noise": 0.02,
+        "internal": 0.35
+      },
+      "clock": 0.98,
+      "usage": {
+        "input_tokens": 1479,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.006211800000000001,
+      "elapsedMs": 111.0937759999997
+    },
+    "g034": {
+      "scores": {
+        "co": 0.04,
+        "bid": 0.04,
+        "inspection": 0.9,
+        "sub": 0.12,
+        "owner": 0.18,
+        "invoice": 0.03,
+        "noise": 0.02,
+        "internal": 0.35
+      },
+      "clock": 0.15,
+      "usage": {
+        "input_tokens": 1443,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060606,
+      "elapsedMs": 124.89471400000002
+    },
+    "g035": {
+      "scores": {
+        "co": 0.06,
+        "bid": 0.04,
+        "inspection": 0.08,
+        "sub": 0.3,
+        "owner": 0.22,
+        "invoice": 0.05,
+        "noise": 0.02,
+        "internal": 0.65
+      },
+      "clock": 0.22,
+      "usage": {
+        "input_tokens": 1451,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060942,
+      "elapsedMs": 98.21522100000038
+    },
+    "g036": {
+      "scores": {
+        "co": 0.06,
+        "bid": 0.05,
+        "inspection": 0.92,
+        "sub": 0.31,
+        "owner": 0.14,
+        "invoice": 0.03,
+        "noise": 0.03,
+        "internal": 0.42
+      },
+      "clock": 0.94,
+      "usage": {
+        "input_tokens": 1468,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0061656,
+      "elapsedMs": 121.3222310000001
+    },
+    "g037": {
+      "scores": {
+        "co": 0.07,
+        "bid": 0.04,
+        "inspection": 0.52,
+        "sub": 0.43,
+        "owner": 0.21,
+        "invoice": 0.06,
+        "noise": 0.02,
+        "internal": 0.62
+      },
+      "clock": 0.14,
+      "usage": {
+        "input_tokens": 1436,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060312000000000004,
+      "elapsedMs": 114.90815899999961
+    },
+    "g038": {
+      "scores": {
+        "co": 0.04,
+        "bid": 0.03,
+        "inspection": 0.93,
+        "sub": 0.05,
+        "owner": 0.16,
+        "invoice": 0.03,
+        "noise": 0.02,
+        "internal": 0.18
+      },
+      "clock": 0.98,
+      "usage": {
+        "input_tokens": 1457,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0061194,
+      "elapsedMs": 111.3405160000002
+    },
+    "g039": {
+      "scores": {
+        "co": 0.06,
+        "bid": 0.03,
+        "inspection": 0.73,
+        "sub": 0.14,
+        "owner": 0.18,
+        "invoice": 0.03,
+        "noise": 0.02,
+        "internal": 0.65
+      },
+      "clock": 0.97,
+      "usage": {
+        "input_tokens": 1461,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0061362000000000005,
+      "elapsedMs": 105.09576900000047
+    },
+    "g040": {
+      "scores": {
+        "co": 0.05,
+        "bid": 0.06,
+        "inspection": 0.9,
+        "sub": 0.17,
+        "owner": 0.2,
+        "invoice": 0.03,
+        "noise": 0.03,
+        "internal": 0.31
+      },
+      "clock": 0.33,
+      "usage": {
+        "input_tokens": 1446,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060732,
+      "elapsedMs": 102.37258199999997
+    },
+    "g041": {
+      "scores": {
+        "co": 0.4,
+        "bid": 0.12,
+        "inspection": 0.96,
+        "sub": 0.06,
+        "owner": 0.54,
+        "invoice": 0.04,
+        "noise": 0.04,
+        "internal": 0.81
+      },
+      "clock": 0.96,
+      "usage": {
+        "input_tokens": 1468,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0061656,
+      "elapsedMs": 99.08372699999927
+    },
+    "g042": {
+      "scores": {
+        "co": 0.17,
+        "bid": 0.08,
+        "inspection": 0.02,
+        "sub": 0.86,
+        "owner": 0.2,
+        "invoice": 0.05,
+        "noise": 0.03,
+        "internal": 0.34
+      },
+      "clock": 0.89,
+      "usage": {
+        "input_tokens": 1452,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060984,
+      "elapsedMs": 109.38154500000019
+    },
+    "g043": {
+      "scores": {
+        "co": 0.05,
+        "bid": 0.06,
+        "inspection": 0.23,
+        "sub": 0.59,
+        "owner": 0.18,
+        "invoice": 0.04,
+        "noise": 0.02,
+        "internal": 0.78
+      },
+      "clock": 0.52,
+      "usage": {
+        "input_tokens": 1429,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060018,
+      "elapsedMs": 108.2575939999997
+    },
+    "g044": {
+      "scores": {
+        "co": 0.05,
+        "bid": 0.06,
+        "inspection": 0.03,
+        "sub": 0.76,
+        "owner": 0.25,
+        "invoice": 0.03,
+        "noise": 0.04,
+        "internal": 0.25
+      },
+      "clock": 0.17,
+      "usage": {
+        "input_tokens": 1419,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059597999999999995,
+      "elapsedMs": 103.86633600000005
+    },
+    "g045": {
+      "scores": {
+        "co": 0.06,
+        "bid": 0.03,
+        "inspection": 0.02,
+        "sub": 0.4,
+        "owner": 0.1,
+        "invoice": 0.12,
+        "noise": 0.02,
+        "internal": 0.71
+      },
+      "clock": 0.54,
+      "usage": {
+        "input_tokens": 1428,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059976000000000005,
+      "elapsedMs": 95.61704699999973
+    },
+    "g046": {
+      "scores": {
+        "co": 0.06,
+        "bid": 0.03,
+        "inspection": 0.02,
+        "sub": 0.57,
+        "owner": 0.17,
+        "invoice": 0.1,
+        "noise": 0.03,
+        "internal": 0.24
+      },
+      "clock": 0.37,
+      "usage": {
+        "input_tokens": 1429,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060018,
+      "elapsedMs": 98.98116500000015
+    },
+    "g047": {
+      "scores": {
+        "co": 0.06,
+        "bid": 0.04,
+        "inspection": 0.03,
+        "sub": 0.81,
+        "owner": 0.17,
+        "invoice": 0.14,
+        "noise": 0.02,
+        "internal": 0.3
+      },
+      "clock": 0.19,
+      "usage": {
+        "input_tokens": 1455,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.006111,
+      "elapsedMs": 139.51418300000023
+    },
+    "g048": {
+      "scores": {
+        "co": 0.06,
+        "bid": 0.04,
+        "inspection": 0.02,
+        "sub": 0.94,
+        "owner": 0.09,
+        "invoice": 0.19,
+        "noise": 0.03,
+        "internal": 0.13
+      },
+      "clock": 0.97,
+      "usage": {
+        "input_tokens": 1473,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0061865999999999996,
+      "elapsedMs": 105.44698999999946
+    },
+    "g049": {
+      "scores": {
+        "co": 0.11,
+        "bid": 0.05,
+        "inspection": 0.02,
+        "sub": 0.78,
+        "owner": 0.13,
+        "invoice": 0.05,
+        "noise": 0.02,
+        "internal": 0.62
+      },
+      "clock": 0.13,
+      "usage": {
+        "input_tokens": 1428,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059976000000000005,
+      "elapsedMs": 107.37282099999993
+    },
+    "g050": {
+      "scores": {
+        "co": 0.19,
+        "bid": 0.23,
+        "inspection": 0.02,
+        "sub": 0.8,
+        "owner": 0.15,
+        "invoice": 0.07,
+        "noise": 0.09,
+        "internal": 0.26
+      },
+      "clock": 0.9,
+      "usage": {
+        "input_tokens": 1453,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0061026000000000006,
+      "elapsedMs": 133.52605099999982
+    },
+    "g051": {
+      "scores": {
+        "co": 0.08,
+        "bid": 0.13,
+        "inspection": 0.03,
+        "sub": 0.81,
+        "owner": 0.15,
+        "invoice": 0.04,
+        "noise": 0.09,
+        "internal": 0.41
+      },
+      "clock": 0.35,
+      "usage": {
+        "input_tokens": 1426,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059892,
+      "elapsedMs": 175.8082400000003
+    },
+    "g052": {
+      "scores": {
+        "co": 0.06,
+        "bid": 0.04,
+        "inspection": 0.07,
+        "sub": 0.32,
+        "owner": 0.57,
+        "invoice": 0.15,
+        "noise": 0.02,
+        "internal": 0.58
+      },
+      "clock": 0.12,
+      "usage": {
+        "input_tokens": 1440,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.006048,
+      "elapsedMs": 138.56329899999946
+    },
+    "g053": {
+      "scores": {
+        "co": 0.09,
+        "bid": 0.08,
+        "inspection": 0.03,
+        "sub": 0.1,
+        "owner": 0.49,
+        "invoice": 0.04,
+        "noise": 0.04,
+        "internal": 0.65
+      },
+      "clock": 0.07,
+      "usage": {
+        "input_tokens": 1414,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059388,
+      "elapsedMs": 150.91252499999973
+    },
+    "g054": {
+      "scores": {
+        "co": 0.09,
+        "bid": 0.05,
+        "inspection": 0.21,
+        "sub": 0.15,
+        "owner": 0.21,
+        "invoice": 0.06,
+        "noise": 0.02,
+        "internal": 0.7
+      },
+      "clock": 0.16,
+      "usage": {
+        "input_tokens": 1432,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060144,
+      "elapsedMs": 102.7996549999998
+    },
+    "g055": {
+      "scores": {
+        "co": 0.05,
+        "bid": 0.04,
+        "inspection": 0.35,
+        "sub": 0.28,
+        "owner": 0.5,
+        "invoice": 0.55,
+        "noise": 0.02,
+        "internal": 0.71
+      },
+      "clock": 0.9,
+      "usage": {
+        "input_tokens": 1429,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060018,
+      "elapsedMs": 97.73645099999976
+    },
+    "g056": {
+      "scores": {
+        "co": 0.05,
+        "bid": 0.06,
+        "inspection": 0.08,
+        "sub": 0.41,
+        "owner": 0.35,
+        "invoice": 0.05,
+        "noise": 0.02,
+        "internal": 0.45
+      },
+      "clock": 0.19,
+      "usage": {
+        "input_tokens": 1422,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005972400000000001,
+      "elapsedMs": 93.40044600000056
+    },
+    "g057": {
+      "scores": {
+        "co": 0.08,
+        "bid": 0.06,
+        "inspection": 0.05,
+        "sub": 0.24,
+        "owner": 0.68,
+        "invoice": 0.04,
+        "noise": 0.03,
+        "internal": 0.42
+      },
+      "clock": 0.11,
+      "usage": {
+        "input_tokens": 1414,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059388,
+      "elapsedMs": 100.54013599999962
+    },
+    "g058": {
+      "scores": {
+        "co": 0.11,
+        "bid": 0.08,
+        "inspection": 0.04,
+        "sub": 0.1,
+        "owner": 0.74,
+        "invoice": 0.04,
+        "noise": 0.03,
+        "internal": 0.45
+      },
+      "clock": 0.51,
+      "usage": {
+        "input_tokens": 1441,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.006052200000000001,
+      "elapsedMs": 139.76623699999982
+    },
+    "g059": {
+      "scores": {
+        "co": 0.07,
+        "bid": 0.04,
+        "inspection": 0.07,
+        "sub": 0.28,
+        "owner": 0.27,
+        "invoice": 0.07,
+        "noise": 0.02,
+        "internal": 0.74
+      },
+      "clock": 0.09,
+      "usage": {
+        "input_tokens": 1422,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005972400000000001,
+      "elapsedMs": 94.06992799999989
+    },
+    "g060": {
+      "scores": {
+        "co": 0.12,
+        "bid": 0.04,
+        "inspection": 0.07,
+        "sub": 0.26,
+        "owner": 0.79,
+        "invoice": 0.04,
+        "noise": 0.02,
+        "internal": 0.26
+      },
+      "clock": 0.97,
+      "usage": {
+        "input_tokens": 1458,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.006123600000000001,
+      "elapsedMs": 94.25153200000022
+    },
+    "g061": {
+      "scores": {
+        "co": 0.05,
+        "bid": 0.03,
+        "inspection": 0.02,
+        "sub": 0.4,
+        "owner": 0.49,
+        "invoice": 0.27,
+        "noise": 0.02,
+        "internal": 0.55
+      },
+      "clock": 0.96,
+      "usage": {
+        "input_tokens": 1437,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060354,
+      "elapsedMs": 101.62445399999979
+    },
+    "g062": {
+      "scores": {
+        "co": 0.05,
+        "bid": 0.06,
+        "inspection": 0.02,
+        "sub": 0.8,
+        "owner": 0.13,
+        "invoice": 0.92,
+        "noise": 0.03,
+        "internal": 0.3
+      },
+      "clock": 0.67,
+      "usage": {
+        "input_tokens": 1446,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060732,
+      "elapsedMs": 112.61937000000034
+    },
+    "g063": {
+      "scores": {
+        "co": 0.06,
+        "bid": 0.03,
+        "inspection": 0.03,
+        "sub": 0.51,
+        "owner": 0.22,
+        "invoice": 0.51,
+        "noise": 0.03,
+        "internal": 0.48
+      },
+      "clock": 0.25,
+      "usage": {
+        "input_tokens": 1434,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060228,
+      "elapsedMs": 144.8135429999993
+    },
+    "g064": {
+      "scores": {
+        "co": 0.05,
+        "bid": 0.05,
+        "inspection": 0.02,
+        "sub": 0.73,
+        "owner": 0.16,
+        "invoice": 0.9,
+        "noise": 0.03,
+        "internal": 0.37
+      },
+      "clock": 0.17,
+      "usage": {
+        "input_tokens": 1432,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060144,
+      "elapsedMs": 116.92483600000014
+    },
+    "g065": {
+      "scores": {
+        "co": 0.06,
+        "bid": 0.04,
+        "inspection": 0.02,
+        "sub": 0.51,
+        "owner": 0.13,
+        "invoice": 0.78,
+        "noise": 0.02,
+        "internal": 0.32
+      },
+      "clock": 0.72,
+      "usage": {
+        "input_tokens": 1429,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060018,
+      "elapsedMs": 99.42733399999997
+    },
+    "g066": {
+      "scores": {
+        "co": 0.04,
+        "bid": 0.06,
+        "inspection": 0.02,
+        "sub": 0.23,
+        "owner": 0.07,
+        "invoice": 0.94,
+        "noise": 0.08,
+        "internal": 0.19
+      },
+      "clock": 0.96,
+      "usage": {
+        "input_tokens": 1427,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059934,
+      "elapsedMs": 105.5900730000003
+    },
+    "g067": {
+      "scores": {
+        "co": 0.02,
+        "bid": 0.05,
+        "inspection": 0.02,
+        "sub": 0.05,
+        "owner": 0.07,
+        "invoice": 0.04,
+        "noise": 0.97,
+        "internal": 0.1
+      },
+      "clock": 0.05,
+      "usage": {
+        "input_tokens": 1454,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0061068,
+      "elapsedMs": 133.92736799999966
+    },
+    "g068": {
+      "scores": {
+        "co": 0.06,
+        "bid": 0.03,
+        "inspection": 0.02,
+        "sub": 0.61,
+        "owner": 0.09,
+        "invoice": 0.4,
+        "noise": 0.02,
+        "internal": 0.62
+      },
+      "clock": 0.09,
+      "usage": {
+        "input_tokens": 1432,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060144,
+      "elapsedMs": 109.96909199999936
+    },
+    "g069": {
+      "scores": {
+        "co": 0.09,
+        "bid": 0.04,
+        "inspection": 0.04,
+        "sub": 0.4,
+        "owner": 0.15,
+        "invoice": 0.33,
+        "noise": 0.03,
+        "internal": 0.19
+      },
+      "clock": 0.35,
+      "usage": {
+        "input_tokens": 1444,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060648,
+      "elapsedMs": 135.49306700000125
+    },
+    "g070": {
+      "scores": {
+        "co": 0.06,
+        "bid": 0.05,
+        "inspection": 0.19,
+        "sub": 0.77,
+        "owner": 0.19,
+        "invoice": 0.9,
+        "noise": 0.02,
+        "internal": 0.32
+      },
+      "clock": 0.17,
+      "usage": {
+        "input_tokens": 1436,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060312000000000004,
+      "elapsedMs": 123.6556700000001
+    },
+    "g071": {
+      "scores": {
+        "co": 0.03,
+        "bid": 0.09,
+        "inspection": 0.02,
+        "sub": 0.12,
+        "owner": 0.04,
+        "invoice": 0.03,
+        "noise": 0.97,
+        "internal": 0.09
+      },
+      "clock": 0.04,
+      "usage": {
+        "input_tokens": 1428,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059976000000000005,
+      "elapsedMs": 98.9418399999995
+    },
+    "g072": {
+      "scores": {
+        "co": 0.03,
+        "bid": 0.06,
+        "inspection": 0.01,
+        "sub": 0.08,
+        "owner": 0.04,
+        "invoice": 0.04,
+        "noise": 0.96,
+        "internal": 0.2
+      },
+      "clock": 0.32,
+      "usage": {
+        "input_tokens": 1426,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059892,
+      "elapsedMs": 118.4301919999998
+    },
+    "g073": {
+      "scores": {
+        "co": 0.04,
+        "bid": 0.06,
+        "inspection": 0.02,
+        "sub": 0.07,
+        "owner": 0.06,
+        "invoice": 0.03,
+        "noise": 0.96,
+        "internal": 0.19
+      },
+      "clock": 0.04,
+      "usage": {
+        "input_tokens": 1429,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060018,
+      "elapsedMs": 141.0951299999997
+    },
+    "g074": {
+      "scores": {
+        "co": 0.07,
+        "bid": 0.05,
+        "inspection": 0.02,
+        "sub": 0.07,
+        "owner": 0.06,
+        "invoice": 0.03,
+        "noise": 0.93,
+        "internal": 0.19
+      },
+      "clock": 0.09,
+      "usage": {
+        "input_tokens": 1426,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059892,
+      "elapsedMs": 170.81396700000005
+    },
+    "g075": {
+      "scores": {
+        "co": 0.1,
+        "bid": 0.28,
+        "inspection": 0.02,
+        "sub": 0.09,
+        "owner": 0.05,
+        "invoice": 0.04,
+        "noise": 0.97,
+        "internal": 0.1
+      },
+      "clock": 0.02,
+      "usage": {
+        "input_tokens": 1423,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059766,
+      "elapsedMs": 107.58724500000062
+    },
+    "g076": {
+      "scores": {
+        "co": 0.05,
+        "bid": 0.05,
+        "inspection": 0.02,
+        "sub": 0.05,
+        "owner": 0.04,
+        "invoice": 0.05,
+        "noise": 0.88,
+        "internal": 0.1
+      },
+      "clock": 0.86,
+      "usage": {
+        "input_tokens": 1440,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.006048,
+      "elapsedMs": 94.17978200000107
+    },
+    "g077": {
+      "scores": {
+        "co": 0.05,
+        "bid": 0.08,
+        "inspection": 0.03,
+        "sub": 0.07,
+        "owner": 0.12,
+        "invoice": 0.03,
+        "noise": 0.97,
+        "internal": 0.16
+      },
+      "clock": 0.06,
+      "usage": {
+        "input_tokens": 1420,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059640000000000006,
+      "elapsedMs": 105.44719199999963
+    },
+    "g078": {
+      "scores": {
+        "co": 0.09,
+        "bid": 0.04,
+        "inspection": 0.07,
+        "sub": 0.06,
+        "owner": 0.05,
+        "invoice": 0.04,
+        "noise": 0.89,
+        "internal": 0.08
+      },
+      "clock": 0.9,
+      "usage": {
+        "input_tokens": 1449,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.006085800000000001,
+      "elapsedMs": 138.5996070000001
+    },
+    "g079": {
+      "scores": {
+        "co": 0.14,
+        "bid": 0.06,
+        "inspection": 0.09,
+        "sub": 0.09,
+        "owner": 0.07,
+        "invoice": 0.04,
+        "noise": 0.97,
+        "internal": 0.1
+      },
+      "clock": 0.13,
+      "usage": {
+        "input_tokens": 1425,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005985000000000001,
+      "elapsedMs": 110.60063000000082
+    },
+    "g080": {
+      "scores": {
+        "co": 0.07,
+        "bid": 0.04,
+        "inspection": 0.08,
+        "sub": 0.09,
+        "owner": 0.04,
+        "invoice": 0.03,
+        "noise": 0.96,
+        "internal": 0.09
+      },
+      "clock": 0.12,
+      "usage": {
+        "input_tokens": 1424,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059808,
+      "elapsedMs": 123.25139300000046
+    },
+    "g081": {
+      "scores": {
+        "co": 0.04,
+        "bid": 0.04,
+        "inspection": 0.01,
+        "sub": 0.07,
+        "owner": 0.05,
+        "invoice": 0.03,
+        "noise": 0.87,
+        "internal": 0.33
+      },
+      "clock": 0.06,
+      "usage": {
+        "input_tokens": 1422,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005972400000000001,
+      "elapsedMs": 106.50686999999925
+    },
+    "g082": {
+      "scores": {
+        "co": 0.06,
+        "bid": 0.1,
+        "inspection": 0.02,
+        "sub": 0.09,
+        "owner": 0.08,
+        "invoice": 0.03,
+        "noise": 0.91,
+        "internal": 0.26
+      },
+      "clock": 0.03,
+      "usage": {
+        "input_tokens": 1429,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060018,
+      "elapsedMs": 102.94270700000015
+    },
+    "g083": {
+      "scores": {
+        "co": 0.05,
+        "bid": 0.03,
+        "inspection": 0.03,
+        "sub": 0.08,
+        "owner": 0.07,
+        "invoice": 0.03,
+        "noise": 0.02,
+        "internal": 0.9
+      },
+      "clock": 0.12,
+      "usage": {
+        "input_tokens": 1421,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059682,
+      "elapsedMs": 101.44470700000056
+    },
+    "g084": {
+      "scores": {
+        "co": 0.06,
+        "bid": 0.04,
+        "inspection": 0.02,
+        "sub": 0.39,
+        "owner": 0.09,
+        "invoice": 0.49,
+        "noise": 0.02,
+        "internal": 0.75
+      },
+      "clock": 0.89,
+      "usage": {
+        "input_tokens": 1417,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005951400000000001,
+      "elapsedMs": 167.10990999999922
+    },
+    "g085": {
+      "scores": {
+        "co": 0.09,
+        "bid": 0.5,
+        "inspection": 0.03,
+        "sub": 0.11,
+        "owner": 0.13,
+        "invoice": 0.04,
+        "noise": 0.02,
+        "internal": 0.87
+      },
+      "clock": 0.1,
+      "usage": {
+        "input_tokens": 1429,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060018,
+      "elapsedMs": 158.23932599999898
+    },
+    "g086": {
+      "scores": {
+        "co": 0.05,
+        "bid": 0.05,
+        "inspection": 0.07,
+        "sub": 0.18,
+        "owner": 0.27,
+        "invoice": 0.04,
+        "noise": 0.01,
+        "internal": 0.91
+      },
+      "clock": 0.18,
+      "usage": {
+        "input_tokens": 1419,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059597999999999995,
+      "elapsedMs": 116.3243679999996
+    },
+    "g087": {
+      "scores": {
+        "co": 0.04,
+        "bid": 0.04,
+        "inspection": 0.02,
+        "sub": 0.16,
+        "owner": 0.06,
+        "invoice": 0.04,
+        "noise": 0.02,
+        "internal": 0.89
+      },
+      "clock": 0.06,
+      "usage": {
+        "input_tokens": 1419,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0059597999999999995,
+      "elapsedMs": 97.0472860000009
+    },
+    "g088": {
+      "scores": {
+        "co": 0.06,
+        "bid": 0.04,
+        "inspection": 0.96,
+        "sub": 0.04,
+        "owner": 0.09,
+        "invoice": 0.03,
+        "noise": 0.02,
+        "internal": 0.81
+      },
+      "clock": 0.98,
+      "usage": {
+        "input_tokens": 1485,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.006237,
+      "elapsedMs": 126.67817599999944
+    },
+    "g089": {
+      "scores": {
+        "co": 0.92,
+        "bid": 0.06,
+        "inspection": 0.02,
+        "sub": 0.31,
+        "owner": 0.12,
+        "invoice": 0.05,
+        "noise": 0.02,
+        "internal": 0.85
+      },
+      "clock": 0.1,
+      "usage": {
+        "input_tokens": 1431,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060102,
+      "elapsedMs": 101.79838000000018
+    },
+    "g090": {
+      "scores": {
+        "co": 0.06,
+        "bid": 0.06,
+        "inspection": 0.17,
+        "sub": 0.13,
+        "owner": 0.31,
+        "invoice": 0.04,
+        "noise": 0.02,
+        "internal": 0.91
+      },
+      "clock": 0.45,
+      "usage": {
+        "input_tokens": 1432,
+        "output_tokens": 151
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060144,
+      "elapsedMs": 137.32087200000024
+    }
+  }
+}

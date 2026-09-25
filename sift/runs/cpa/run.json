@@ -1,0 +1,1805 @@
+{
+  "date": "2026-09-25",
+  "judgments": {
+    "c001": {
+      "scores": {
+        "notice": 0.97,
+        "docs": 0.18,
+        "question": 0.8,
+        "payroll": 0.06,
+        "prospect": 0.06,
+        "billing": 0.03,
+        "noise": 0.02,
+        "internal": 0.2
+      },
+      "clock": 0.96,
+      "usage": {
+        "input_tokens": 1279,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0053718,
+      "elapsedMs": 290.44390999999996
+    },
+    "c002": {
+      "scores": {
+        "notice": 0.54,
+        "docs": 0.07,
+        "question": 0.15,
+        "payroll": 0.87,
+        "prospect": 0.03,
+        "billing": 0.04,
+        "noise": 0.05,
+        "internal": 0.16
+      },
+      "clock": 0.98,
+      "usage": {
+        "input_tokens": 1262,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0053004,
+      "elapsedMs": 164.559209
+    },
+    "c003": {
+      "scores": {
+        "notice": 0.03,
+        "docs": 0.93,
+        "question": 0.09,
+        "payroll": 0.07,
+        "prospect": 0.05,
+        "billing": 0.08,
+        "noise": 0.02,
+        "internal": 0.4
+      },
+      "clock": 0.12,
+      "usage": {
+        "input_tokens": 1240,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005208,
+      "elapsedMs": 122.78595499999994
+    },
+    "c004": {
+      "scores": {
+        "notice": 0.28,
+        "docs": 0.04,
+        "question": 0.92,
+        "payroll": 0.03,
+        "prospect": 0.05,
+        "billing": 0.04,
+        "noise": 0.02,
+        "internal": 0.41
+      },
+      "clock": 0.87,
+      "usage": {
+        "input_tokens": 1257,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005279400000000001,
+      "elapsedMs": 86.07195000000013
+    },
+    "c005": {
+      "scores": {
+        "notice": 0.02,
+        "docs": 0.02,
+        "question": 0.04,
+        "payroll": 0.06,
+        "prospect": 0.96,
+        "billing": 0.05,
+        "noise": 0.06,
+        "internal": 0.05
+      },
+      "clock": 0.06,
+      "usage": {
+        "input_tokens": 1241,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052122,
+      "elapsedMs": 130.02906400000006
+    },
+    "c006": {
+      "scores": {
+        "notice": 0.03,
+        "docs": 0.03,
+        "question": 0.04,
+        "payroll": 0.07,
+        "prospect": 0.04,
+        "billing": 0.85,
+        "noise": 0.02,
+        "internal": 0.17
+      },
+      "clock": 0.07,
+      "usage": {
+        "input_tokens": 1233,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0051786,
+      "elapsedMs": 126.1633240000001
+    },
+    "c007": {
+      "scores": {
+        "notice": 0.02,
+        "docs": 0.03,
+        "question": 0.03,
+        "payroll": 0.05,
+        "prospect": 0.54,
+        "billing": 0.09,
+        "noise": 0.93,
+        "internal": 0.18
+      },
+      "clock": 0.1,
+      "usage": {
+        "input_tokens": 1241,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052122,
+      "elapsedMs": 105.59532399999989
+    },
+    "c008": {
+      "scores": {
+        "notice": 0.03,
+        "docs": 0.07,
+        "question": 0.06,
+        "payroll": 0.91,
+        "prospect": 0.04,
+        "billing": 0.06,
+        "noise": 0.01,
+        "internal": 0.95
+      },
+      "clock": 0.66,
+      "usage": {
+        "input_tokens": 1246,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052332,
+      "elapsedMs": 147.2687330000001
+    },
+    "c009": {
+      "scores": {
+        "notice": 0.03,
+        "docs": 0.02,
+        "question": 0.73,
+        "payroll": 0.03,
+        "prospect": 0.09,
+        "billing": 0.06,
+        "noise": 0.03,
+        "internal": 0.29
+      },
+      "clock": 0.21,
+      "usage": {
+        "input_tokens": 1233,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0051786,
+      "elapsedMs": 140.35151999999994
+    },
+    "c010": {
+      "scores": {
+        "notice": 0.19,
+        "docs": 0.03,
+        "question": 0.05,
+        "payroll": 0.04,
+        "prospect": 0.05,
+        "billing": 0.06,
+        "noise": 0.05,
+        "internal": 0.24
+      },
+      "clock": 0.2,
+      "usage": {
+        "input_tokens": 1244,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005224800000000001,
+      "elapsedMs": 85.18807000000015
+    },
+    "c011": {
+      "scores": {
+        "notice": 0.9,
+        "docs": 0.17,
+        "question": 0.57,
+        "payroll": 0.06,
+        "prospect": 0.03,
+        "billing": 0.04,
+        "noise": 0.02,
+        "internal": 0.81
+      },
+      "clock": 0.89,
+      "usage": {
+        "input_tokens": 1313,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055146,
+      "elapsedMs": 116.63995
+    },
+    "c012": {
+      "scores": {
+        "notice": 0.86,
+        "docs": 0.05,
+        "question": 0.68,
+        "payroll": 0.02,
+        "prospect": 0.03,
+        "billing": 0.04,
+        "noise": 0.03,
+        "internal": 0.7
+      },
+      "clock": 0.73,
+      "usage": {
+        "input_tokens": 1262,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0053004,
+      "elapsedMs": 82.783635
+    },
+    "c013": {
+      "scores": {
+        "notice": 0.57,
+        "docs": 0.6,
+        "question": 0.36,
+        "payroll": 0.03,
+        "prospect": 0.04,
+        "billing": 0.04,
+        "noise": 0.02,
+        "internal": 0.71
+      },
+      "clock": 0.34,
+      "usage": {
+        "input_tokens": 1280,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005376000000000001,
+      "elapsedMs": 181.97065700000007
+    },
+    "c014": {
+      "scores": {
+        "notice": 0.86,
+        "docs": 0.04,
+        "question": 0.1,
+        "payroll": 0.04,
+        "prospect": 0.04,
+        "billing": 0.04,
+        "noise": 0.02,
+        "internal": 0.55
+      },
+      "clock": 0.97,
+      "usage": {
+        "input_tokens": 1298,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0054516,
+      "elapsedMs": 95.18669799999998
+    },
+    "c015": {
+      "scores": {
+        "notice": 0.92,
+        "docs": 0.5,
+        "question": 0.56,
+        "payroll": 0.76,
+        "prospect": 0.03,
+        "billing": 0.05,
+        "noise": 0.02,
+        "internal": 0.11
+      },
+      "clock": 0.95,
+      "usage": {
+        "input_tokens": 1276,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005359200000000001,
+      "elapsedMs": 164.30280300000004
+    },
+    "c016": {
+      "scores": {
+        "notice": 0.92,
+        "docs": 0.1,
+        "question": 0.88,
+        "payroll": 0.03,
+        "prospect": 0.07,
+        "billing": 0.06,
+        "noise": 0.03,
+        "internal": 0.54
+      },
+      "clock": 0.96,
+      "usage": {
+        "input_tokens": 1276,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005359200000000001,
+      "elapsedMs": 159.719963
+    },
+    "c017": {
+      "scores": {
+        "notice": 0.78,
+        "docs": 0.64,
+        "question": 0.07,
+        "payroll": 0.79,
+        "prospect": 0.04,
+        "billing": 0.05,
+        "noise": 0.02,
+        "internal": 0.86
+      },
+      "clock": 0.98,
+      "usage": {
+        "input_tokens": 1295,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005439,
+      "elapsedMs": 145.8992870000002
+    },
+    "c018": {
+      "scores": {
+        "notice": 0.26,
+        "docs": 0.05,
+        "question": 0.16,
+        "payroll": 0.03,
+        "prospect": 0.05,
+        "billing": 0.05,
+        "noise": 0.03,
+        "internal": 0.52
+      },
+      "clock": 0.98,
+      "usage": {
+        "input_tokens": 1270,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005334,
+      "elapsedMs": 90.47837100000015
+    },
+    "c019": {
+      "scores": {
+        "notice": 0.93,
+        "docs": 0.08,
+        "question": 0.26,
+        "payroll": 0.16,
+        "prospect": 0.03,
+        "billing": 0.04,
+        "noise": 0.02,
+        "internal": 0.68
+      },
+      "clock": 0.98,
+      "usage": {
+        "input_tokens": 1281,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0053802,
+      "elapsedMs": 111.11621299999979
+    },
+    "c020": {
+      "scores": {
+        "notice": 0.86,
+        "docs": 0.03,
+        "question": 0.08,
+        "payroll": 0.03,
+        "prospect": 0.03,
+        "billing": 0.04,
+        "noise": 0.03,
+        "internal": 0.43
+      },
+      "clock": 0.68,
+      "usage": {
+        "input_tokens": 1258,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052836,
+      "elapsedMs": 112.3381730000001
+    },
+    "c021": {
+      "scores": {
+        "notice": 0.37,
+        "docs": 0.04,
+        "question": 0.47,
+        "payroll": 0.61,
+        "prospect": 0.04,
+        "billing": 0.05,
+        "noise": 0.02,
+        "internal": 0.22
+      },
+      "clock": 0.06,
+      "usage": {
+        "input_tokens": 1267,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0053214,
+      "elapsedMs": 104.32876699999997
+    },
+    "c022": {
+      "scores": {
+        "notice": 0.88,
+        "docs": 0.14,
+        "question": 0.39,
+        "payroll": 0.03,
+        "prospect": 0.03,
+        "billing": 0.03,
+        "noise": 0.02,
+        "internal": 0.49
+      },
+      "clock": 0.98,
+      "usage": {
+        "input_tokens": 1275,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005355,
+      "elapsedMs": 82.22415200000023
+    },
+    "c023": {
+      "scores": {
+        "notice": 0.64,
+        "docs": 0.09,
+        "question": 0.63,
+        "payroll": 0.04,
+        "prospect": 0.03,
+        "billing": 0.82,
+        "noise": 0.02,
+        "internal": 0.38
+      },
+      "clock": 0.98,
+      "usage": {
+        "input_tokens": 1263,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0053046000000000005,
+      "elapsedMs": 112.80709999999999
+    },
+    "c024": {
+      "scores": {
+        "notice": 0.61,
+        "docs": 0.06,
+        "question": 0.18,
+        "payroll": 0.9,
+        "prospect": 0.03,
+        "billing": 0.04,
+        "noise": 0.03,
+        "internal": 0.17
+      },
+      "clock": 0.98,
+      "usage": {
+        "input_tokens": 1274,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0053508,
+      "elapsedMs": 81.08332699999983
+    },
+    "c025": {
+      "scores": {
+        "notice": 0.76,
+        "docs": 0.54,
+        "question": 0.61,
+        "payroll": 0.03,
+        "prospect": 0.04,
+        "billing": 0.06,
+        "noise": 0.03,
+        "internal": 0.28
+      },
+      "clock": 0.95,
+      "usage": {
+        "input_tokens": 1273,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005346600000000001,
+      "elapsedMs": 131.27281399999993
+    },
+    "c026": {
+      "scores": {
+        "notice": 0.74,
+        "docs": 0.11,
+        "question": 0.17,
+        "payroll": 0.9,
+        "prospect": 0.09,
+        "billing": 0.04,
+        "noise": 0.04,
+        "internal": 0.6
+      },
+      "clock": 0.96,
+      "usage": {
+        "input_tokens": 1276,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005359200000000001,
+      "elapsedMs": 84.55508199999986
+    },
+    "c027": {
+      "scores": {
+        "notice": 0.15,
+        "docs": 0.04,
+        "question": 0.1,
+        "payroll": 0.92,
+        "prospect": 0.04,
+        "billing": 0.09,
+        "noise": 0.03,
+        "internal": 0.32
+      },
+      "clock": 0.97,
+      "usage": {
+        "input_tokens": 1261,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052962,
+      "elapsedMs": 143.71665399999983
+    },
+    "c028": {
+      "scores": {
+        "notice": 0.43,
+        "docs": 0.06,
+        "question": 0.07,
+        "payroll": 0.62,
+        "prospect": 0.03,
+        "billing": 0.04,
+        "noise": 0.03,
+        "internal": 0.68
+      },
+      "clock": 0.97,
+      "usage": {
+        "input_tokens": 1263,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0053046000000000005,
+      "elapsedMs": 125.22240499999998
+    },
+    "c029": {
+      "scores": {
+        "notice": 0.02,
+        "docs": 0.14,
+        "question": 0.03,
+        "payroll": 0.75,
+        "prospect": 0.04,
+        "billing": 0.05,
+        "noise": 0.02,
+        "internal": 0.67
+      },
+      "clock": 0.25,
+      "usage": {
+        "input_tokens": 1233,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0051786,
+      "elapsedMs": 110.96671899999956
+    },
+    "c030": {
+      "scores": {
+        "notice": 0.07,
+        "docs": 0.03,
+        "question": 0.1,
+        "payroll": 0.64,
+        "prospect": 0.04,
+        "billing": 0.07,
+        "noise": 0.03,
+        "internal": 0.88
+      },
+      "clock": 0.69,
+      "usage": {
+        "input_tokens": 1256,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052752,
+      "elapsedMs": 119.99806600000011
+    },
+    "c031": {
+      "scores": {
+        "notice": 0.16,
+        "docs": 0.28,
+        "question": 0.07,
+        "payroll": 0.67,
+        "prospect": 0.08,
+        "billing": 0.04,
+        "noise": 0.02,
+        "internal": 0.76
+      },
+      "clock": 0.94,
+      "usage": {
+        "input_tokens": 1268,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005325600000000001,
+      "elapsedMs": 150.35407600000053
+    },
+    "c032": {
+      "scores": {
+        "notice": 0.02,
+        "docs": 0.87,
+        "question": 0.21,
+        "payroll": 0.67,
+        "prospect": 0.05,
+        "billing": 0.04,
+        "noise": 0.02,
+        "internal": 0.06
+      },
+      "clock": 0.16,
+      "usage": {
+        "input_tokens": 1249,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052458,
+      "elapsedMs": 104.7859440000002
+    },
+    "c033": {
+      "scores": {
+        "notice": 0.03,
+        "docs": 0.03,
+        "question": 0.16,
+        "payroll": 0.8,
+        "prospect": 0.03,
+        "billing": 0.04,
+        "noise": 0.02,
+        "internal": 0.65
+      },
+      "clock": 0.26,
+      "usage": {
+        "input_tokens": 1257,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005279400000000001,
+      "elapsedMs": 144.80126000000018
+    },
+    "c034": {
+      "scores": {
+        "notice": 0.04,
+        "docs": 0.92,
+        "question": 0.18,
+        "payroll": 0.05,
+        "prospect": 0.06,
+        "billing": 0.07,
+        "noise": 0.02,
+        "internal": 0.43
+      },
+      "clock": 0.26,
+      "usage": {
+        "input_tokens": 1251,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052542,
+      "elapsedMs": 86.00459899999987
+    },
+    "c035": {
+      "scores": {
+        "notice": 0.03,
+        "docs": 0.79,
+        "question": 0.19,
+        "payroll": 0.05,
+        "prospect": 0.06,
+        "billing": 0.08,
+        "noise": 0.02,
+        "internal": 0.78
+      },
+      "clock": 0.1,
+      "usage": {
+        "input_tokens": 1247,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052374000000000006,
+      "elapsedMs": 118.15443300000061
+    },
+    "c036": {
+      "scores": {
+        "notice": 0.03,
+        "docs": 0.61,
+        "question": 0.17,
+        "payroll": 0.03,
+        "prospect": 0.03,
+        "billing": 0.05,
+        "noise": 0.01,
+        "internal": 0.84
+      },
+      "clock": 0.4,
+      "usage": {
+        "input_tokens": 1245,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005229,
+      "elapsedMs": 117.71428199999991
+    },
+    "c037": {
+      "scores": {
+        "notice": 0.03,
+        "docs": 0.86,
+        "question": 0.06,
+        "payroll": 0.04,
+        "prospect": 0.13,
+        "billing": 0.09,
+        "noise": 0.02,
+        "internal": 0.41
+      },
+      "clock": 0.31,
+      "usage": {
+        "input_tokens": 1235,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005187,
+      "elapsedMs": 96.66590999999971
+    },
+    "c038": {
+      "scores": {
+        "notice": 0.04,
+        "docs": 0.86,
+        "question": 0.17,
+        "payroll": 0.03,
+        "prospect": 0.06,
+        "billing": 0.07,
+        "noise": 0.03,
+        "internal": 0.42
+      },
+      "clock": 0.12,
+      "usage": {
+        "input_tokens": 1247,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052374000000000006,
+      "elapsedMs": 109.69056399999954
+    },
+    "c039": {
+      "scores": {
+        "notice": 0.04,
+        "docs": 0.95,
+        "question": 0.51,
+        "payroll": 0.03,
+        "prospect": 0.06,
+        "billing": 0.05,
+        "noise": 0.02,
+        "internal": 0.36
+      },
+      "clock": 0.22,
+      "usage": {
+        "input_tokens": 1257,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005279400000000001,
+      "elapsedMs": 105.74698999999964
+    },
+    "c040": {
+      "scores": {
+        "notice": 0.02,
+        "docs": 0.95,
+        "question": 0.07,
+        "payroll": 0.04,
+        "prospect": 0.04,
+        "billing": 0.05,
+        "noise": 0.02,
+        "internal": 0.18
+      },
+      "clock": 0.26,
+      "usage": {
+        "input_tokens": 1259,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052878,
+      "elapsedMs": 127.20874399999957
+    },
+    "c041": {
+      "scores": {
+        "notice": 0.03,
+        "docs": 0.93,
+        "question": 0.89,
+        "payroll": 0.03,
+        "prospect": 0.06,
+        "billing": 0.03,
+        "noise": 0.02,
+        "internal": 0.25
+      },
+      "clock": 0.14,
+      "usage": {
+        "input_tokens": 1260,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005292000000000001,
+      "elapsedMs": 109.04814600000009
+    },
+    "c042": {
+      "scores": {
+        "notice": 0.03,
+        "docs": 0.7,
+        "question": 0.03,
+        "payroll": 0.04,
+        "prospect": 0.05,
+        "billing": 0.11,
+        "noise": 0.02,
+        "internal": 0.77
+      },
+      "clock": 0.47,
+      "usage": {
+        "input_tokens": 1247,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052374000000000006,
+      "elapsedMs": 89.82371200000034
+    },
+    "c043": {
+      "scores": {
+        "notice": 0.09,
+        "docs": 0.03,
+        "question": 0.75,
+        "payroll": 0.05,
+        "prospect": 0.33,
+        "billing": 0.06,
+        "noise": 0.03,
+        "internal": 0.73
+      },
+      "clock": 0.27,
+      "usage": {
+        "input_tokens": 1233,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0051786,
+      "elapsedMs": 169.42721800000072
+    },
+    "c044": {
+      "scores": {
+        "notice": 0.03,
+        "docs": 0.03,
+        "question": 0.87,
+        "payroll": 0.03,
+        "prospect": 0.14,
+        "billing": 0.05,
+        "noise": 0.02,
+        "internal": 0.2
+      },
+      "clock": 0.08,
+      "usage": {
+        "input_tokens": 1245,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005229,
+      "elapsedMs": 85.27952100000039
+    },
+    "c045": {
+      "scores": {
+        "notice": 0.03,
+        "docs": 0.04,
+        "question": 0.75,
+        "payroll": 0.03,
+        "prospect": 0.03,
+        "billing": 0.05,
+        "noise": 0.02,
+        "internal": 0.6
+      },
+      "clock": 0.36,
+      "usage": {
+        "input_tokens": 1241,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052122,
+      "elapsedMs": 133.7994209999997
+    },
+    "c046": {
+      "scores": {
+        "notice": 0.06,
+        "docs": 0.05,
+        "question": 0.74,
+        "payroll": 0.05,
+        "prospect": 0.08,
+        "billing": 0.05,
+        "noise": 0.02,
+        "internal": 0.66
+      },
+      "clock": 0.93,
+      "usage": {
+        "input_tokens": 1250,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.00525,
+      "elapsedMs": 99.99484800000027
+    },
+    "c047": {
+      "scores": {
+        "notice": 0.16,
+        "docs": 0.12,
+        "question": 0.93,
+        "payroll": 0.07,
+        "prospect": 0.05,
+        "billing": 0.06,
+        "noise": 0.02,
+        "internal": 0.18
+      },
+      "clock": 0.53,
+      "usage": {
+        "input_tokens": 1245,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005229,
+      "elapsedMs": 119.03058099999998
+    },
+    "c048": {
+      "scores": {
+        "notice": 0.07,
+        "docs": 0.04,
+        "question": 0.72,
+        "payroll": 0.04,
+        "prospect": 0.06,
+        "billing": 0.05,
+        "noise": 0.02,
+        "internal": 0.63
+      },
+      "clock": 0.31,
+      "usage": {
+        "input_tokens": 1251,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052542,
+      "elapsedMs": 86.83034399999997
+    },
+    "c049": {
+      "scores": {
+        "notice": 0.02,
+        "docs": 0.03,
+        "question": 0.49,
+        "payroll": 0.04,
+        "prospect": 0.23,
+        "billing": 0.07,
+        "noise": 0.03,
+        "internal": 0.1
+      },
+      "clock": 0.87,
+      "usage": {
+        "input_tokens": 1257,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005279400000000001,
+      "elapsedMs": 132.56134199999997
+    },
+    "c050": {
+      "scores": {
+        "notice": 0.06,
+        "docs": 0.62,
+        "question": 0.9,
+        "payroll": 0.03,
+        "prospect": 0.04,
+        "billing": 0.07,
+        "noise": 0.02,
+        "internal": 0.47
+      },
+      "clock": 0.68,
+      "usage": {
+        "input_tokens": 1252,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005258400000000001,
+      "elapsedMs": 104.06826499999988
+    },
+    "c051": {
+      "scores": {
+        "notice": 0.02,
+        "docs": 0.03,
+        "question": 0.06,
+        "payroll": 0.07,
+        "prospect": 0.46,
+        "billing": 0.1,
+        "noise": 0.04,
+        "internal": 0.33
+      },
+      "clock": 0.12,
+      "usage": {
+        "input_tokens": 1247,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052374000000000006,
+      "elapsedMs": 124.90388800000073
+    },
+    "c052": {
+      "scores": {
+        "notice": 0.02,
+        "docs": 0.03,
+        "question": 0.05,
+        "payroll": 0.07,
+        "prospect": 0.96,
+        "billing": 0.08,
+        "noise": 0.07,
+        "internal": 0.7
+      },
+      "clock": 0.03,
+      "usage": {
+        "input_tokens": 1266,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0053172,
+      "elapsedMs": 84.27603399999953
+    },
+    "c053": {
+      "scores": {
+        "notice": 0.02,
+        "docs": 0.02,
+        "question": 0.06,
+        "payroll": 0.82,
+        "prospect": 0.94,
+        "billing": 0.05,
+        "noise": 0.03,
+        "internal": 0.05
+      },
+      "clock": 0.06,
+      "usage": {
+        "input_tokens": 1272,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0053424,
+      "elapsedMs": 99.15002600000025
+    },
+    "c054": {
+      "scores": {
+        "notice": 0.03,
+        "docs": 0.04,
+        "question": 0.11,
+        "payroll": 0.05,
+        "prospect": 0.96,
+        "billing": 0.07,
+        "noise": 0.05,
+        "internal": 0.07
+      },
+      "clock": 0.8,
+      "usage": {
+        "input_tokens": 1257,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005279400000000001,
+      "elapsedMs": 101.0248760000004
+    },
+    "c055": {
+      "scores": {
+        "notice": 0.02,
+        "docs": 0.02,
+        "question": 0.06,
+        "payroll": 0.05,
+        "prospect": 0.96,
+        "billing": 0.05,
+        "noise": 0.04,
+        "internal": 0.04
+      },
+      "clock": 0.09,
+      "usage": {
+        "input_tokens": 1270,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005334,
+      "elapsedMs": 108.46474300000045
+    },
+    "c056": {
+      "scores": {
+        "notice": 0.02,
+        "docs": 0.03,
+        "question": 0.05,
+        "payroll": 0.17,
+        "prospect": 0.94,
+        "billing": 0.06,
+        "noise": 0.05,
+        "internal": 0.23
+      },
+      "clock": 0.04,
+      "usage": {
+        "input_tokens": 1254,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005266799999999999,
+      "elapsedMs": 99.34147699999994
+    },
+    "c057": {
+      "scores": {
+        "notice": 0.88,
+        "docs": 0.04,
+        "question": 0.57,
+        "payroll": 0.06,
+        "prospect": 0.85,
+        "billing": 0.05,
+        "noise": 0.04,
+        "internal": 0.16
+      },
+      "clock": 0.79,
+      "usage": {
+        "input_tokens": 1267,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0053214,
+      "elapsedMs": 122.96030100000007
+    },
+    "c058": {
+      "scores": {
+        "notice": 0.02,
+        "docs": 0.02,
+        "question": 0.07,
+        "payroll": 0.42,
+        "prospect": 0.95,
+        "billing": 0.04,
+        "noise": 0.06,
+        "internal": 0.08
+      },
+      "clock": 0.07,
+      "usage": {
+        "input_tokens": 1254,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005266799999999999,
+      "elapsedMs": 112.12510099999963
+    },
+    "c059": {
+      "scores": {
+        "notice": 0.02,
+        "docs": 0.02,
+        "question": 0.06,
+        "payroll": 0.03,
+        "prospect": 0.96,
+        "billing": 0.04,
+        "noise": 0.03,
+        "internal": 0.04
+      },
+      "clock": 0.07,
+      "usage": {
+        "input_tokens": 1255,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052710000000000005,
+      "elapsedMs": 134.04926699999942
+    },
+    "c060": {
+      "scores": {
+        "notice": 0.02,
+        "docs": 0.03,
+        "question": 0.02,
+        "payroll": 0.03,
+        "prospect": 0.03,
+        "billing": 0.94,
+        "noise": 0.02,
+        "internal": 0.47
+      },
+      "clock": 0.06,
+      "usage": {
+        "input_tokens": 1255,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052710000000000005,
+      "elapsedMs": 88.91871700000047
+    },
+    "c061": {
+      "scores": {
+        "notice": 0.03,
+        "docs": 0.07,
+        "question": 0.05,
+        "payroll": 0.03,
+        "prospect": 0.04,
+        "billing": 0.81,
+        "noise": 0.02,
+        "internal": 0.27
+      },
+      "clock": 0.08,
+      "usage": {
+        "input_tokens": 1234,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0051828,
+      "elapsedMs": 103.3610120000003
+    },
+    "c062": {
+      "scores": {
+        "notice": 0.03,
+        "docs": 0.02,
+        "question": 0.13,
+        "payroll": 0.03,
+        "prospect": 0.22,
+        "billing": 0.8,
+        "noise": 0.03,
+        "internal": 0.22
+      },
+      "clock": 0.18,
+      "usage": {
+        "input_tokens": 1235,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005187,
+      "elapsedMs": 127.82999600000039
+    },
+    "c063": {
+      "scores": {
+        "notice": 0.02,
+        "docs": 0.04,
+        "question": 0.03,
+        "payroll": 0.04,
+        "prospect": 0.03,
+        "billing": 0.89,
+        "noise": 0.02,
+        "internal": 0.17
+      },
+      "clock": 0.07,
+      "usage": {
+        "input_tokens": 1256,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052752,
+      "elapsedMs": 101.2520599999998
+    },
+    "c064": {
+      "scores": {
+        "notice": 0.05,
+        "docs": 0.04,
+        "question": 0.04,
+        "payroll": 0.05,
+        "prospect": 0.06,
+        "billing": 0.85,
+        "noise": 0.02,
+        "internal": 0.16
+      },
+      "clock": 0.81,
+      "usage": {
+        "input_tokens": 1237,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0051954,
+      "elapsedMs": 95.65361100000064
+    },
+    "c065": {
+      "scores": {
+        "notice": 0.01,
+        "docs": 0.03,
+        "question": 0.02,
+        "payroll": 0.02,
+        "prospect": 0.03,
+        "billing": 0.92,
+        "noise": 0.02,
+        "internal": 0.47
+      },
+      "clock": 0.21,
+      "usage": {
+        "input_tokens": 1263,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0053046000000000005,
+      "elapsedMs": 121.30332799999996
+    },
+    "c066": {
+      "scores": {
+        "notice": 0.15,
+        "docs": 0.03,
+        "question": 0.04,
+        "payroll": 0.04,
+        "prospect": 0.1,
+        "billing": 0.07,
+        "noise": 0.8,
+        "internal": 0.32
+      },
+      "clock": 0.72,
+      "usage": {
+        "input_tokens": 1288,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0054096000000000005,
+      "elapsedMs": 126.89260900000045
+    },
+    "c067": {
+      "scores": {
+        "notice": 0.03,
+        "docs": 0.02,
+        "question": 0.07,
+        "payroll": 0.04,
+        "prospect": 0.19,
+        "billing": 0.05,
+        "noise": 0.95,
+        "internal": 0.07
+      },
+      "clock": 0.05,
+      "usage": {
+        "input_tokens": 1256,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052752,
+      "elapsedMs": 161.68946900000083
+    },
+    "c068": {
+      "scores": {
+        "notice": 0.27,
+        "docs": 0.03,
+        "question": 0.12,
+        "payroll": 0.44,
+        "prospect": 0.06,
+        "billing": 0.06,
+        "noise": 0.15,
+        "internal": 0.2
+      },
+      "clock": 0.93,
+      "usage": {
+        "input_tokens": 1249,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052458,
+      "elapsedMs": 100.24083500000052
+    },
+    "c069": {
+      "scores": {
+        "notice": 0.02,
+        "docs": 0.02,
+        "question": 0.02,
+        "payroll": 0.02,
+        "prospect": 0.06,
+        "billing": 0.12,
+        "noise": 0.93,
+        "internal": 0.07
+      },
+      "clock": 0.18,
+      "usage": {
+        "input_tokens": 1267,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0053214,
+      "elapsedMs": 115.7184699999998
+    },
+    "c070": {
+      "scores": {
+        "notice": 0.02,
+        "docs": 0.02,
+        "question": 0.04,
+        "payroll": 0.04,
+        "prospect": 0.34,
+        "billing": 0.06,
+        "noise": 0.71,
+        "internal": 0.19
+      },
+      "clock": 0.08,
+      "usage": {
+        "input_tokens": 1254,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005266799999999999,
+      "elapsedMs": 82.9513109999989
+    },
+    "c071": {
+      "scores": {
+        "notice": 0.02,
+        "docs": 0.02,
+        "question": 0.04,
+        "payroll": 0.36,
+        "prospect": 0.09,
+        "billing": 0.07,
+        "noise": 0.97,
+        "internal": 0.1
+      },
+      "clock": 0.03,
+      "usage": {
+        "input_tokens": 1255,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052710000000000005,
+      "elapsedMs": 100.83427400000073
+    },
+    "c072": {
+      "scores": {
+        "notice": 0.02,
+        "docs": 0.08,
+        "question": 0.04,
+        "payroll": 0.07,
+        "prospect": 0.12,
+        "billing": 0.07,
+        "noise": 0.96,
+        "internal": 0.11
+      },
+      "clock": 0.14,
+      "usage": {
+        "input_tokens": 1252,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005258400000000001,
+      "elapsedMs": 99.32533300000068
+    },
+    "c073": {
+      "scores": {
+        "notice": 0.02,
+        "docs": 0.03,
+        "question": 0.05,
+        "payroll": 0.04,
+        "prospect": 0.47,
+        "billing": 0.07,
+        "noise": 0.68,
+        "internal": 0.35
+      },
+      "clock": 0.16,
+      "usage": {
+        "input_tokens": 1245,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005229,
+      "elapsedMs": 123.201728
+    },
+    "c074": {
+      "scores": {
+        "notice": 0.02,
+        "docs": 0.02,
+        "question": 0.04,
+        "payroll": 0.05,
+        "prospect": 0.1,
+        "billing": 0.08,
+        "noise": 0.97,
+        "internal": 0.05
+      },
+      "clock": 0.04,
+      "usage": {
+        "input_tokens": 1242,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052164,
+      "elapsedMs": 106.59415699999954
+    },
+    "c075": {
+      "scores": {
+        "notice": 0.01,
+        "docs": 0.03,
+        "question": 0.03,
+        "payroll": 0.04,
+        "prospect": 0.57,
+        "billing": 0.1,
+        "noise": 0.6,
+        "internal": 0.17
+      },
+      "clock": 0.38,
+      "usage": {
+        "input_tokens": 1245,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005229,
+      "elapsedMs": 99.3726970000007
+    },
+    "c076": {
+      "scores": {
+        "notice": 0.01,
+        "docs": 0.02,
+        "question": 0.03,
+        "payroll": 0.03,
+        "prospect": 0.04,
+        "billing": 0.05,
+        "noise": 0.86,
+        "internal": 0.18
+      },
+      "clock": 0.2,
+      "usage": {
+        "input_tokens": 1246,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052332,
+      "elapsedMs": 107.68778200000088
+    },
+    "c077": {
+      "scores": {
+        "notice": 0.02,
+        "docs": 0.03,
+        "question": 0.03,
+        "payroll": 0.05,
+        "prospect": 0.09,
+        "billing": 0.08,
+        "noise": 0.97,
+        "internal": 0.1
+      },
+      "clock": 0.03,
+      "usage": {
+        "input_tokens": 1248,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052416,
+      "elapsedMs": 126.36983499999951
+    },
+    "c078": {
+      "scores": {
+        "notice": 0.02,
+        "docs": 0.02,
+        "question": 0.02,
+        "payroll": 0.04,
+        "prospect": 0.13,
+        "billing": 0.05,
+        "noise": 0.79,
+        "internal": 0.11
+      },
+      "clock": 0.23,
+      "usage": {
+        "input_tokens": 1247,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052374000000000006,
+      "elapsedMs": 79.85906000000068
+    },
+    "c079": {
+      "scores": {
+        "notice": 0.05,
+        "docs": 0.03,
+        "question": 0.11,
+        "payroll": 0.04,
+        "prospect": 0.19,
+        "billing": 0.08,
+        "noise": 0.92,
+        "internal": 0.28
+      },
+      "clock": 0.14,
+      "usage": {
+        "input_tokens": 1253,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052626,
+      "elapsedMs": 114.7869869999995
+    },
+    "c080": {
+      "scores": {
+        "notice": 0.02,
+        "docs": 0.11,
+        "question": 0.07,
+        "payroll": 0.03,
+        "prospect": 0.13,
+        "billing": 0.07,
+        "noise": 0.91,
+        "internal": 0.28
+      },
+      "clock": 0.42,
+      "usage": {
+        "input_tokens": 1258,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052836,
+      "elapsedMs": 81.08627100000012
+    },
+    "c081": {
+      "scores": {
+        "notice": 0.02,
+        "docs": 0.03,
+        "question": 0.03,
+        "payroll": 0.05,
+        "prospect": 0.08,
+        "billing": 0.07,
+        "noise": 0.97,
+        "internal": 0.08
+      },
+      "clock": 0.06,
+      "usage": {
+        "input_tokens": 1244,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005224800000000001,
+      "elapsedMs": 102.59883300000001
+    },
+    "c082": {
+      "scores": {
+        "notice": 0.03,
+        "docs": 0.02,
+        "question": 0.07,
+        "payroll": 0.56,
+        "prospect": 0.28,
+        "billing": 0.05,
+        "noise": 0.69,
+        "internal": 0.22
+      },
+      "clock": 0.09,
+      "usage": {
+        "input_tokens": 1260,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005292000000000001,
+      "elapsedMs": 200.03615200000058
+    },
+    "c083": {
+      "scores": {
+        "notice": 0.02,
+        "docs": 0.02,
+        "question": 0.02,
+        "payroll": 0.04,
+        "prospect": 0.05,
+        "billing": 0.08,
+        "noise": 0.92,
+        "internal": 0.05
+      },
+      "clock": 0.17,
+      "usage": {
+        "input_tokens": 1260,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005292000000000001,
+      "elapsedMs": 108.86206099999981
+    },
+    "c084": {
+      "scores": {
+        "notice": 0.05,
+        "docs": 0.05,
+        "question": 0.08,
+        "payroll": 0.05,
+        "prospect": 0.04,
+        "billing": 0.05,
+        "noise": 0.01,
+        "internal": 0.91
+      },
+      "clock": 0.27,
+      "usage": {
+        "input_tokens": 1242,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052164,
+      "elapsedMs": 132.11269999999968
+    },
+    "c085": {
+      "scores": {
+        "notice": 0.04,
+        "docs": 0.03,
+        "question": 0.14,
+        "payroll": 0.03,
+        "prospect": 0.11,
+        "billing": 0.08,
+        "noise": 0.02,
+        "internal": 0.96
+      },
+      "clock": 0.17,
+      "usage": {
+        "input_tokens": 1243,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052206,
+      "elapsedMs": 104.9724900000001
+    },
+    "c086": {
+      "scores": {
+        "notice": 0.02,
+        "docs": 0.03,
+        "question": 0.03,
+        "payroll": 0.04,
+        "prospect": 0.04,
+        "billing": 0.07,
+        "noise": 0.01,
+        "internal": 0.87
+      },
+      "clock": 0.05,
+      "usage": {
+        "input_tokens": 1241,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052122,
+      "elapsedMs": 146.6134750000001
+    },
+    "c087": {
+      "scores": {
+        "notice": 0.03,
+        "docs": 0.53,
+        "question": 0.04,
+        "payroll": 0.03,
+        "prospect": 0.04,
+        "billing": 0.07,
+        "noise": 0.02,
+        "internal": 0.85
+      },
+      "clock": 0.07,
+      "usage": {
+        "input_tokens": 1242,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052164,
+      "elapsedMs": 99.68526999999995
+    },
+    "c088": {
+      "scores": {
+        "notice": 0.68,
+        "docs": 0.12,
+        "question": 0.37,
+        "payroll": 0.04,
+        "prospect": 0.04,
+        "billing": 0.04,
+        "noise": 0.02,
+        "internal": 0.93
+      },
+      "clock": 0.61,
+      "usage": {
+        "input_tokens": 1248,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052416,
+      "elapsedMs": 84.67073500000151
+    },
+    "c089": {
+      "scores": {
+        "notice": 0.05,
+        "docs": 0.05,
+        "question": 0.07,
+        "payroll": 0.05,
+        "prospect": 0.05,
+        "billing": 0.07,
+        "noise": 0.02,
+        "internal": 0.86
+      },
+      "clock": 0.93,
+      "usage": {
+        "input_tokens": 1239,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005203800000000001,
+      "elapsedMs": 111.0586740000017
+    },
+    "c090": {
+      "scores": {
+        "notice": 0.03,
+        "docs": 0.32,
+        "question": 0.17,
+        "payroll": 0.03,
+        "prospect": 0.04,
+        "billing": 0.06,
+        "noise": 0.02,
+        "internal": 0.82
+      },
+      "clock": 0.33,
+      "usage": {
+        "input_tokens": 1253,
+        "output_tokens": 153
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0052626,
+      "elapsedMs": 90.52918099999988
+    }
+  }
+}

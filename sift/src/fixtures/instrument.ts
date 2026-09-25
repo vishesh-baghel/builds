@@ -1,6 +1,6 @@
 import { factsFor } from "../stages/extract";
 import type { Firm, Message } from "../types";
-import { FixtureError, type Contact, type Instrument, type LabelledMessage, type Project, type RfiRow, type SubmittalRow } from "./schema";
+import { FixtureError, type Contact, type Instrument, type LabelledMessage, type LogRow, type Project } from "./schema";
 import { parseLabelled } from "./schema";
 
 /**
@@ -61,14 +61,13 @@ const unique = (source: string, keys: readonly string[], what: string): void => 
 
 export interface InstrumentParts {
   readonly projects: readonly Project[];
-  readonly rfis: readonly RfiRow[];
-  readonly submittals: readonly SubmittalRow[];
+  readonly logs: readonly LogRow[];
   readonly contacts: readonly Contact[];
   readonly inbox: readonly LabelledMessage[];
 }
 
 /**
- * Joins the five files and checks every reference: log rows name real projects, labels name real
+ * Joins the files and checks every reference: log rows name real projects and real classes, labels name real
  * classes and real staff, and on every clocked row the deadline code derives from the message and
  * the logs, counted from its own received date, equals the committed `deadline`. That last check is
  * what makes the instrument reproducible by a stranger rather than a set of dates to take on faith.
@@ -79,8 +78,7 @@ export function buildInstrument(parts: InstrumentParts, firm: Firm): Instrument 
   const codes = new Set(parts.projects.map((p) => p.code));
 
   unique("projects.csv", parts.projects.map((p) => p.code), "project code");
-  unique("rfi-log.csv", parts.rfis.map((r) => r.number), "RFI number");
-  unique("submittal-log.csv", parts.submittals.map((s) => s.number), "submittal number");
+  unique("log.csv", parts.logs.map((r) => r.number), "log number");
   unique("contacts.csv", parts.contacts.map((c) => c.email), "contact email");
   unique("inbox.jsonl", parts.inbox.map((m) => m.id), "message id");
 
@@ -90,11 +88,13 @@ export function buildInstrument(parts: InstrumentParts, firm: Firm): Instrument 
     }
     for (const t of p.next.blocks) if (!classes.has(t)) throw new FixtureError("projects.csv", p.code, `next_blocks names ${t}, which is not a class`);
   }
-  for (const r of parts.rfis) if (!codes.has(r.project)) throw new FixtureError("rfi-log.csv", r.number, `names project ${r.project}, which is not in projects.csv`);
-  for (const s of parts.submittals) if (!codes.has(s.project)) throw new FixtureError("submittal-log.csv", s.number, `names project ${s.project}, which is not in projects.csv`);
+  for (const r of parts.logs) {
+    if (!codes.has(r.project)) throw new FixtureError("log.csv", r.number, `names project ${r.project}, which is not in projects.csv`);
+    if (!classes.has(r.topic)) throw new FixtureError("log.csv", r.number, `names topic ${r.topic}, which is not a class`);
+  }
   for (const c of parts.contacts) if (c.project !== null && !codes.has(c.project)) throw new FixtureError("contacts.csv", c.email, `names project ${c.project}, which is not in projects.csv`);
 
-  const sor = { projects: parts.projects, rfis: parts.rfis, submittals: parts.submittals, contacts: parts.contacts };
+  const sor = { projects: parts.projects, logs: parts.logs, contacts: parts.contacts };
   for (const m of parts.inbox) {
     const where = m.id;
     if (new Set(m.topics).size !== m.topics.length) throw new FixtureError("inbox.jsonl", where, "topics repeats a class");

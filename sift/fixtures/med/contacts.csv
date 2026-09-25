@@ -1,0 +1,17 @@
+name,email,org,project,role
+Dr. Anita Rao,anita@cedargrovedental.example,Cedar Grove Dental,,owner dentist
+Beth Lawson,beth@cedargrovedental.example,Cedar Grove Dental,,office manager
+Carlos Mena,carlos@cedargrovedental.example,Cedar Grove Dental,,insurance coordinator
+Jen Park,jpark@cedargrovedental.example,Cedar Grove Dental,,lead assistant
+Sofia Duarte,sofia@cedargrovedental.example,Cedar Grove Dental,,front desk
+Tomas R.,tomas.r@mailbox.example,patient,TOM,patient
+Helen K.,helen.k@mailbox.example,patient,HEL,patient
+Rania S.,rania.s@mailbox.example,patient,RAN,patient
+Denise M.,denise.m@mailbox.example,patient,DEN,patient
+Ridgeway Dental Lab,cases@ridgewaylab.example,Ridgeway Dental Lab,,dental lab
+Crestline Milling,cases@crestlinemilling.example,Crestline Milling,,dental lab
+Northside Oral Surgery,referrals@northsideos.example,Northside Oral Surgery,,referring specialist
+Larkspur Benefits Administration,claims-noreply@larkspurbenefits.example,Larkspur Benefits Administration,,payer
+Keystone Dental Plan,priorauth@keystonedental.example,Keystone Dental Plan,,payer
+Pinecrest Mutual,provider@pinecrestmutual.example,Pinecrest Mutual,,payer
+Brightline Dental Supply,invoices@brightlinesupply.example,Brightline Dental Supply,,supplier

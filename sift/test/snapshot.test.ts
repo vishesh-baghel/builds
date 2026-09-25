@@ -1,6 +1,6 @@
 import { describe, expect, it } from "vitest";
 import snapshot from "../fixtures/fixtures.json" with { type: "json" };
-import { loadInstrument } from "../src/fixtures/load";
+import { loadInstruments } from "../src/fixtures/load";
 
 /**
  * The snapshot is what the app and the systems-of-record module read; the CSVs and the JSONL are what
@@ -11,6 +11,6 @@ import { loadInstrument } from "../src/fixtures/load";
  */
 describe("the committed snapshot matches its sources", () => {
   it("holds exactly what the authored files parse to", () => {
-    expect(snapshot).toEqual(JSON.parse(JSON.stringify(loadInstrument())));
+    expect(snapshot).toEqual(JSON.parse(JSON.stringify(loadInstruments())));
   });
 });

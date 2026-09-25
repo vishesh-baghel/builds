@@ -1,0 +1,13 @@
+number,project,topic,log,kind,subject,received,due,status
+OL-2611,CVB,offer,offer log,Offer expiry,Vasquez offer for the senior backend role,2026-09-18,2026-09-24,open
+OL-2609,CVB,offer,offer log,Offer expiry,Lindqvist offer declined,2026-09-01,2026-09-08,closed
+OL-2604,HLA,offer,offer log,Offer expiry,Cole analyst offer accepted,2026-08-27,2026-09-03,closed
+OL-2615,PCU,offer,offer log,Offer expiry,Nwosu controller offer,2026-09-17,2026-10-02,open
+OL-2620,KDO,offer,offer log,Offer expiry,Halvorsen DevOps offer,2026-09-19,2026-09-29,open
+SLA-0329,HLA,client,client SLA tracker,Shortlist due,analyst shortlist delivered,2026-08-04,2026-08-15,closed
+SLA-0335,CVB,client,client SLA tracker,Second slate due,second slate of three candidates,2026-09-08,2026-09-22,open
+SLA-0338,KDO,client,client SLA tracker,Shortlist due,first DevOps shortlist,2026-09-11,2026-09-25,open
+SLA-0341,BWD,client,client SLA tracker,Shortlist due,first data engineer shortlist,2026-09-18,2026-10-02,open
+SLA-0343,PCU,client,client SLA tracker,Reference reports due,two reference reports on the controller finalist,2026-09-16,2026-09-23,open
+CL-7714,HLA,onboarding,onboarding tracker,Consent cutoff,Cole background check consent,2026-09-16,2026-09-23,open
+ONB-0212,HLA,onboarding,onboarding tracker,I-9 Section 2,Cole I-9 verification after the start,2026-09-18,2026-10-01,open

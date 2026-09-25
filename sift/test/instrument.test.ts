@@ -18,8 +18,8 @@ describe("the loader (AC #1)", () => {
   it("parses every inbox record and every system-of-record row against the typed schema", () => {
     expect(instrument.inbox.length).toBeGreaterThan(60);
     expect(instrument.projects.length).toBeGreaterThan(0);
-    expect(instrument.rfis.length).toBeGreaterThan(0);
-    expect(instrument.submittals.length).toBeGreaterThan(0);
+    expect(instrument.logs.filter((r) => r.topic === "rfi").length).toBeGreaterThan(0);
+    expect(instrument.logs.filter((r) => r.topic === "submittal").length).toBeGreaterThan(0);
     expect(instrument.contacts.length).toBeGreaterThan(0);
   });
 

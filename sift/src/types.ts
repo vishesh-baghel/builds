@@ -9,6 +9,7 @@
  */
 
 import type { Sor } from "./fixtures/schema";
+import type { Thresholds } from "./policy";
 
 export type Priority = "urgent" | "high" | "normal" | "low";
 
@@ -90,7 +91,8 @@ export interface Firm {
    * recorded model judgments rather than illustrative ones.
    */
   readonly sor?: Sor;
-  readonly measured?: { readonly runDate: string; readonly model: string };
+  /** On a measured firm: its recorded run, and the lines its sweep chose, which the page opens at. */
+  readonly measured?: { readonly runDate: string; readonly model: string; readonly lines: Thresholds };
 }
 
 /**

@@ -1,0 +1,14 @@
+number,project,topic,log,kind,subject,received,due,status
+CO-2604-05,CR,co,change-order register,Owner approval,window trim upgrade at buildings 1 and 2,2026-08-10,2026-08-24,closed
+CO-2604-06,CR,co,change-order register,Owner approval,tile upgrade at units 1 and 2,2026-08-21,2026-09-04,closed
+CO-2604-07,CR,co,change-order register,Owner approval,kitchen island upgrade at units 3 to 6,2026-09-10,2026-09-30,open
+CO-2604-08,CR,co,change-order register,Pricing due,added exterior hose bibs,2026-09-11,2026-10-09,open
+CO-2607-02,FS,co,change-order register,Owner approval,relocated electrical service entrance,2026-08-03,2026-08-17,closed
+CO-2607-03,FS,co,change-order register,Owner approval,added sink rough-in at exam room 6,2026-09-11,2026-09-25,open
+CO-2607-04,FS,co,change-order register,Pricing due,abandoned footing removal at grid B,2026-09-18,2026-10-02,open
+CO-2612-01,LS,co,change-order register,Owner approval,drive-up canopy relocation,2026-09-14,2026-10-14,open
+CO-2612-02,LS,co,change-order register,Pricing due,night deposit vault sleeve,2026-09-14,2026-09-28,open
+CO-2612-03,LS,co,change-order register,Owner approval,added bollards at the drive-up lane,2026-08-26,2026-09-09,closed
+BID-26-031,LS,bid,bid log,Bid due,Lakeshore branch lump sum bid (won),2026-05-20,2026-06-12,closed
+BID-26-044,HV,bid,bid log,Bid due,Harbor View GMP bid,2026-09-01,2026-10-02,open
+BID-26-047,PH,bid,bid log,Bid due,Pine Hollow Elementary public bid,2026-09-14,2026-10-08,open

@@ -15,10 +15,10 @@ import { ReadView, priColor } from "./ReadView";
  * the headless pipeline calls. There is no network on the client and no model call when the dial
  * moves: the judgment is bought once per message on the deploy, and this re-decides over it for free.
  *
- * Meridian is the measured firm: recorded model judgments over the frozen instrument, opened at the
- * lines the sweep chose so its numbers match the published scorecard. Moving the dial leaves that
- * setting, and the Measured preset returns to it. The other six firms are illustrative, and the
- * sidebar says which is which.
+ * A measured firm shows recorded model judgments over its frozen instrument, opened at the lines its
+ * sweep chose so its numbers match its published scorecard. Moving the dial leaves that setting, and
+ * the Measured preset returns to it. A firm with no recorded run yet is illustrative, and the sidebar
+ * says which is which.
  */
 
 interface LiveStatus {
@@ -57,7 +57,7 @@ const h2mono: CSSProperties = { margin: 0, fontFamily: "var(--font-mono)", fontS
 const card: CSSProperties = { border: "1px solid var(--color-rule)", borderRadius: "var(--radius-lg)", padding: "1.125rem 1.25rem" };
 const bigNum: CSSProperties = { marginTop: ".375rem", fontFamily: "var(--font-display)", fontWeight: 600, fontSize: "2.25rem", letterSpacing: "-.03em", lineHeight: 1, fontVariantNumeric: "tabular-nums" };
 
-export function Dashboard({ firms, measuredLines }: { firms: readonly Firm[]; measuredLines: Thresholds }) {
+export function Dashboard({ firms }: { firms: readonly Firm[] }) {
   const [firmId, setFirmId] = useState(firms[0]?.id ?? "arch");
   const [page, setPage] = useState<PageId>("overview");
   const [dial, setDialState] = useState(0.6);
@@ -115,7 +115,8 @@ export function Dashboard({ firms, measuredLines }: { firms: readonly Firm[]; me
 
   useEffect(() => { if (openId) pick(firm.id, openId); }, [openId, firm.id, pick]);
   const measuring = firm.measured !== undefined && atMeasured;
-  const th = useMemo(() => (measuring ? measuredLines : linesFor(dial)), [measuring, measuredLines, dial]);
+  const measuredLines = firm.measured?.lines;
+  const th = useMemo(() => (measuring && measuredLines ? measuredLines : linesFor(dial)), [measuring, measuredLines, dial]);
   const view = useMemo(() => deriveView(firm, th, handSecs, lookupSecs), [firm, th, handSecs, lookupSecs]);
 
   const open = (id: string) => { setPage("inbox"); setOpenId(id); };
@@ -496,7 +497,7 @@ function How({ firm }: { firm: Firm }) {
       <P h="What Sift never does">It never sends email, never changes a record, never deletes a message and never invents a date. Messages that need no one, like sales pitches, are labelled and left in place.</P>
       <P h="You set how much it handles">The autonomy slider sets how sure Sift must be before it acts on its own. Left, it checks almost everything with you and flags even faint deadlines. Right, it handles more by itself. Moving it does not ask the AI again, so every page updates instantly.</P>
       <P h="Every decision is on the record">Sift keeps a log of every message it read, what it decided and why. Each run has a hard spending cap, and a message is never acted on twice.</P>
-      <p style={{ margin: 0, fontSize: ".8125rem", color: "var(--color-ink-3)" }}>A self-built experiment on invented data. Every firm, person, project and message here is made up. The architecture firm's numbers come from a recorded test run; the other firms are illustrative. Switch the firm to see the same system read a different trade's mail.</p>
+      <p style={{ margin: 0, fontSize: ".8125rem", color: "var(--color-ink-3)" }}>A self-built experiment on invented data. Every firm, person, project and message here is made up. {firm.measured ? `This firm's numbers come from a recorded test run on ${firm.measured.runDate}.` : "This firm's numbers are illustrative until its test set is scored."} Switch the firm to see the same system read a different trade's mail.</p>
     </div>
   );
 }

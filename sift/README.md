@@ -46,6 +46,47 @@ A message may carry more than one topic, which is why the judgment is one yes/no
 topic class rather than one pick-one question: a multi-topic thread routes to more than one
 person. The instrument is frozen; any later label change goes in `docs/VARIANCE-LOG.md`.
 
+## The other six firms
+
+The dashboard's firm switcher shows seven trades. Each of the other six now carries an instrument
+built the same way as Meridian's, and to the same bar, in `fixtures/<firm>/`: hand-labelled messages
+in `inbox.jsonl`, synthetic systems of record (`projects.csv`, `log.csv`, `contacts.csv`), and a
+README with that firm's labelling rules, per-class counts and known gaps. Each firm's routing,
+priority rules and question criteria are in `src/trades/<firm>.ts`; the extract, route and decide
+code is the same for all seven.
+
+| firm | trade | messages | clocked | hard |
+|---|---|---|---|---|
+| Hale & Marrow LLP | law firm | 90 | 27 | 28 |
+| Northgate Property Group | property management | 92 | 29 | 31 |
+| Cedar Grove Dental | dental practice | 90 | 28 | 28 |
+| Larkin & Voss CPAs | accounting firm | 90 | 25 | 27 |
+| Brightwater Builders | general contractor | 90 | 27 | 25 |
+| Fieldstone Talent | recruiting agency | 90 | 25 | 26 |
+
+Each was scored on 2026-09-25, one recorded judgment per message from the same model as
+Meridian's run, at the lines its own sweep chose on its ordinary subset. Full per-class tables,
+the thresholds and the measured cost are in each firm's scorecard; every judgment is committed in
+`runs/<firm>/run.json`, so any figure can be recomputed without spending again.
+
+| firm | trade | clocked-item catch rate | false alarms | handled with no person asked | source |
+|---|---|---|---|---|---|
+| Hale & Marrow LLP | law firm | 89% (24/27) | 11% (7/63) | 77% (69/90) | `runs/law/SCORECARD.md` |
+| Northgate Property Group | property management | 90% (26/29) | 10% (6/63) | 76% (70/92) | `runs/prop/SCORECARD.md` |
+| Cedar Grove Dental | dental practice | 96% (27/28) | 15% (9/62) | 90% (81/90) | `runs/med/SCORECARD.md` |
+| Larkin & Voss CPAs | accounting firm | 100% (25/25) | 15% (10/65) | 77% (69/90) | `runs/cpa/SCORECARD.md` |
+| Brightwater Builders | general contractor | 100% (27/27) | 16% (10/63) | 69% (62/90) | `runs/gc/SCORECARD.md` |
+| Fieldstone Talent | recruiting agency | 84% (21/25) | 6% (4/65) | 78% (70/90) | `runs/rec/SCORECARD.md` |
+
+As with Meridian, these are measurements on invented inboxes, with no before/after comparison.
+`test/firms.test.ts` also holds each instrument to Meridian's bar: both size floors, deadlines code
+can reproduce, and, under a perfect judgment, every ordinary message landing where its labels say.
+A firm is re-scored with:
+
+```bash
+pnpm --filter @builds/sift score --firm law
+```
+
 ## The numbers
 
 Run 2, 2026-09-23, on all 91 messages at the lines the sweep chose on the ordinary subset (act

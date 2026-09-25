@@ -2,8 +2,15 @@
  * Buys one judgment per message, commits every answer, sweeps the lines on the ordinary subset and
  * writes the dated scorecard.
  *
- *   pnpm --filter @builds/sift score           # live, needs SIFT_TYPESAFE_API_KEY or TYPESAFE_API_KEY
- *   pnpm --filter @builds/sift score --replay  # recompute from the committed run artifact
+ *   pnpm --filter @builds/sift score                   # Meridian, live: needs SIFT_TYPESAFE_API_KEY or TYPESAFE_API_KEY
+ *   pnpm --filter @builds/sift score --replay          # Meridian, recomputed from the committed run artifact
+ *   pnpm --filter @builds/sift score --firm law        # another firm, live
+ *   pnpm --filter @builds/sift score --firm law --replay
+ *
+ * Meridian writes `SCORECARD.md` and `runs/run.json` and `runs/sweep.json`, as it always has. Every
+ * other firm writes `runs/<firm>/SCORECARD.md`, `run.json` and `sweep.json`, and its entry in
+ * `runs/served.json`, which is what the deploy serves: the recorded scores and clocks only, and the
+ * lines the sweep chose.
  *
  * This is **outside the CI gate** and always will be: it needs a vendor key, and a gate that cannot
  * run without one is a gate that will not run.
@@ -12,19 +19,30 @@ import { existsSync, mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { fileURLToPath } from "node:url";
 import { InMemorySpendCounter } from "@builds/shared";
 import { hasTypesafeKey } from "../src/env";
-import { loadInstrument } from "../src/fixtures/load";
+import { firmById } from "../src/fixtures";
+import { loadInstrument, MEASURED_FIRM_ID } from "../src/fixtures/load";
 import type { Judgment } from "../src/jev";
-import { DECLARED_THRESHOLDS, DEFAULT_THRESHOLDS, withDeclared } from "../src/policy";
+import { DECLARED_THRESHOLDS, DEFAULT_THRESHOLDS, withDeclared, type Thresholds } from "../src/policy";
 import { createSift, liveJudge, SPEND_CAP_CENTS } from "../src/run";
 import { bestPoint, runMeta, scoreRun, sweep } from "../src/score";
-import { renderScorecard, renderSweepArtifact, type PriorRun } from "../src/scorecard";
+import { renderScorecard, renderSweepArtifact, servedEntry, type PriorRun } from "../src/scorecard";
 
 const replay = process.argv.includes("--replay");
-const runsDir = fileURLToPath(new URL("../runs/", import.meta.url));
+const flag = process.argv.indexOf("--firm");
+const firmId = flag >= 0 ? process.argv[flag + 1] ?? "" : MEASURED_FIRM_ID;
+const meridian = firmId === MEASURED_FIRM_ID;
+const baseFirm = firmById(firmId);
+if (baseFirm.id !== firmId) {
+  console.error(`no firm ${firmId}`);
+  process.exit(1);
+}
+const rootDir = fileURLToPath(new URL("../", import.meta.url));
+const runsDir = fileURLToPath(new URL(meridian ? "../runs/" : `../runs/${firmId}/`, import.meta.url));
+const rel = meridian ? "runs/" : `runs/${firmId}/`;
 mkdirSync(runsDir, { recursive: true });
 const RUN_PATH = `${runsDir}run.json`;
 
-const instrument = loadInstrument();
+const instrument = loadInstrument(firmId);
 type Recorded = Judgment & { elapsedMs: number };
 let judgments: Record<string, Recorded>;
 let runDate: string;
@@ -41,7 +59,7 @@ if (replay) {
     process.exit(1);
   }
   const counter = new InMemorySpendCounter();
-  const sift = createSift({ instrument, judge: liveJudge(counter, SPEND_CAP_CENTS) });
+  const sift = createSift({ instrument, firm: baseFirm, judge: liveJudge(counter, SPEND_CAP_CENTS) });
   judgments = {};
   console.log(`judging ${instrument.inbox.length} messages...`);
   for (const message of instrument.inbox) {
@@ -55,10 +73,10 @@ if (replay) {
   console.log(`\nspent ${(await counter.spentCents()).toFixed(3)} cents of a ${SPEND_CAP_CENTS} cent cap`);
 }
 
-const { firm } = createSift({ instrument, judge: async () => { throw new Error("scoring never judges"); } });
+const { firm } = createSift({ instrument, firm: baseFirm, judge: async () => { throw new Error("scoring never judges"); } });
 const points = sweep(instrument.inbox, judgments, firm, instrument, DECLARED_THRESHOLDS);
 const chosen = bestPoint(points);
-const thresholds = chosen ? withDeclared({ act: chosen.act, review: chosen.review, clockAct: chosen.clockAct }) : DEFAULT_THRESHOLDS;
+const thresholds: Thresholds = chosen ? withDeclared({ act: chosen.act, review: chosen.review, clockAct: chosen.clockAct }) : DEFAULT_THRESHOLDS;
 writeFileSync(`${runsDir}sweep.json`, renderSweepArtifact(points, chosen));
 
 const figures = scoreRun(instrument.inbox, judgments, firm, instrument, thresholds);
@@ -67,7 +85,7 @@ const figures = scoreRun(instrument.inbox, judgments, firm, instrument, threshol
  * Earlier runs on the same instrument, kept and recomputed: each is replayed and re-swept exactly as
  * the current one is, so its headline cannot drift from its own judgments.
  */
-const PRIOR: readonly { file: string; label: string; change: string }[] = [
+const PRIOR: readonly { file: string; label: string; change: string }[] = !meridian ? [] : [
   { file: "run-1.json", label: "run 1", change: "Class question criteria were generic, not written from the labelling rules as the PRD requires. Rewritten from the rules committed before run 1, then rerun." },
 ];
 const history: PriorRun[] = PRIOR.filter((p) => existsSync(`${runsDir}${p.file}`)).map((p) => {
@@ -77,14 +95,24 @@ const history: PriorRun[] = PRIOR.filter((p) => existsSync(`${runsDir}${p.file}`
   return { label: p.label, date: prior.date, change: p.change, thresholds: lines, artifact: `runs/${p.file}`, headline: scoreRun(instrument.inbox, prior.judgments, firm, instrument, lines).headline };
 });
 const meta = runMeta(Object.values(judgments));
-writeFileSync(fileURLToPath(new URL("../SCORECARD.md", import.meta.url)), renderScorecard({
+writeFileSync(meridian ? `${rootDir}SCORECARD.md` : `${runsDir}SCORECARD.md`, renderScorecard({
   date: runDate, thresholds, declared: DECLARED_THRESHOLDS, figures, meta, sweep: points,
   counts: { total: instrument.inbox.length, clocked: instrument.inbox.filter((m) => m.clocked).length, hard: instrument.inbox.filter((m) => m.hard).length },
-  runArtifact: "runs/run.json", sweepArtifact: "runs/sweep.json", history,
+  runArtifact: `${rel}run.json`, sweepArtifact: `${rel}sweep.json`, history,
+  ...(meridian ? {} : { firm: `${firm.firm}, ${firm.label.toLowerCase()}`, instrumentPath: `fixtures/${firmId}/inbox.jsonl` }),
 }));
+
+if (!meridian) {
+  // What the deploy serves: scores, clocks and the model name only. Token counts and costs stay here.
+  const servedPath = `${rootDir}runs/served.json`;
+  const served = JSON.parse(readFileSync(servedPath, "utf8")) as Record<string, unknown>;
+  served[firmId] = servedEntry(runDate, judgments, thresholds);
+  const ordered = Object.fromEntries(Object.keys(served).sort().map((k) => [k, served[k]]));
+  writeFileSync(servedPath, `${JSON.stringify(ordered, null, 2)}\n`);
+}
 
 const h = figures.headline;
 console.log(`\nswept ${points.length} combinations on the ordinary subset`);
 if (chosen) console.log(`chosen: act ${chosen.act}, review ${chosen.review}, clock ${chosen.clockAct}`);
 console.log(`caught ${h.caught.count}/${h.caught.n} clocks; ${h.falseAlarms.count}/${h.falseAlarms.n} false alarms; ${h.automated.count}/${h.automated.n} automated`);
-console.log("wrote SCORECARD.md, runs/run.json, runs/sweep.json");
+console.log(meridian ? "wrote SCORECARD.md, runs/run.json, runs/sweep.json" : `wrote ${rel}SCORECARD.md, ${rel}run.json, ${rel}sweep.json and runs/served.json`);

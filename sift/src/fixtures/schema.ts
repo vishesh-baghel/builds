@@ -56,11 +56,30 @@ export interface Contact {
   readonly role: string;
 }
 
+/**
+ * One tracked item with a due date in one of the firm's logs: an RFI, a submittal, a docketed
+ * deadline, a work order, a claim. A message that names an open one inherits its due date, and that
+ * log row is what corroborates the clock.
+ */
+export interface LogRow {
+  readonly number: string;
+  readonly project: string;
+  /** The topic class this kind of item belongs to. */
+  readonly topic: string;
+  /** The log's name, as a reason string says it: "RFI log", "docket". */
+  readonly log: string;
+  /** The deadline's kind, as the deadline list shows it: "RFI response", "Filing deadline". */
+  readonly kind: string;
+  readonly subject: string;
+  readonly received: string;
+  readonly due: string;
+  readonly status: "open" | "closed";
+}
+
 /** The firm's systems of record: what code joins a message against. */
 export interface Sor {
   readonly projects: readonly Project[];
-  readonly rfis: readonly RfiRow[];
-  readonly submittals: readonly SubmittalRow[];
+  readonly logs: readonly LogRow[];
   readonly contacts: readonly Contact[];
 }
 
@@ -116,6 +135,7 @@ export const PROJECT_COLUMNS = ["code", "name", "aliases", "permits", "client", 
 export const RFI_COLUMNS = ["number", "project", "subject", "received", "due", "status"] as const;
 export const SUBMITTAL_COLUMNS = ["number", "project", "description", "received", "review_due", "status"] as const;
 export const CONTACT_COLUMNS = ["name", "email", "org", "project", "role"] as const;
+export const LOG_COLUMNS = ["number", "project", "topic", "log", "kind", "subject", "received", "due", "status"] as const;
 
 type Row<C extends readonly string[]> = Readonly<Record<C[number], string>>;
 
@@ -157,6 +177,32 @@ export function parseSubmittal(r: Row<typeof SUBMITTAL_COLUMNS>, where: string):
     status: requireOneOf(s, where, "status", r.status, ["open", "in review", "approved"] as const),
   };
 }
+
+export function parseLog(r: Row<typeof LOG_COLUMNS>, where: string): LogRow {
+  const s = "log.csv";
+  return {
+    number: requireText(s, where, "number", r.number),
+    project: requireText(s, where, "project", r.project),
+    topic: requireText(s, where, "topic", r.topic),
+    log: requireText(s, where, "log", r.log),
+    kind: requireText(s, where, "kind", r.kind),
+    subject: requireText(s, where, "subject", r.subject),
+    received: requireDay(s, where, "received", r.received),
+    due: requireDay(s, where, "due", r.due),
+    status: requireOneOf(s, where, "status", r.status, ["open", "closed"] as const),
+  };
+}
+
+/** Meridian's two logs predate the generic one and stay as authored; these read them into it. */
+export const rfiToLog = (r: RfiRow): LogRow => ({
+  number: r.number, project: r.project, topic: "rfi", log: "RFI log", kind: "RFI response",
+  subject: r.subject, received: r.received, due: r.due, status: r.status === "open" ? "open" : "closed",
+});
+
+export const submittalToLog = (s: SubmittalRow): LogRow => ({
+  number: s.number, project: s.project, topic: "submittal", log: "submittal log", kind: "Submittal review",
+  subject: s.description, received: s.received, due: s.reviewDue, status: s.status === "approved" ? "closed" : "open",
+});
 
 export function parseContact(r: Row<typeof CONTACT_COLUMNS>, where: string): Contact {
   const s = "contacts.csv";

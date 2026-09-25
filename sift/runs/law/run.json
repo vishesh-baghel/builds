@@ -1,0 +1,1805 @@
+{
+  "date": "2026-09-25",
+  "judgments": {
+    "l001": {
+      "scores": {
+        "court": 0.93,
+        "discovery": 0.02,
+        "opposing": 0.11,
+        "client": 0.22,
+        "intake": 0.08,
+        "billing": 0.03,
+        "noise": 0.01,
+        "internal": 0.06
+      },
+      "clock": 0.98,
+      "usage": {
+        "input_tokens": 1359,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0057078,
+      "elapsedMs": 320.49453900000003
+    },
+    "l002": {
+      "scores": {
+        "court": 0.03,
+        "discovery": 0.99,
+        "opposing": 0.14,
+        "client": 0.17,
+        "intake": 0.04,
+        "billing": 0.03,
+        "noise": 0.01,
+        "internal": 0.27
+      },
+      "clock": 0.98,
+      "usage": {
+        "input_tokens": 1357,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0056994,
+      "elapsedMs": 303.5722129999999
+    },
+    "l003": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.02,
+        "opposing": 0.04,
+        "client": 0.98,
+        "intake": 0.05,
+        "billing": 0.04,
+        "noise": 0.01,
+        "internal": 0.1
+      },
+      "clock": 0.06,
+      "usage": {
+        "input_tokens": 1324,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055608,
+      "elapsedMs": 102.59649900000022
+    },
+    "l004": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.02,
+        "opposing": 0.02,
+        "client": 0.02,
+        "intake": 0.97,
+        "billing": 0.02,
+        "noise": 0.02,
+        "internal": 0.04
+      },
+      "clock": 0.17,
+      "usage": {
+        "input_tokens": 1327,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055734,
+      "elapsedMs": 261.934432
+    },
+    "l005": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.02,
+        "opposing": 0.05,
+        "client": 0.05,
+        "intake": 0.05,
+        "billing": 0.94,
+        "noise": 0.04,
+        "internal": 0.19
+      },
+      "clock": 0.92,
+      "usage": {
+        "input_tokens": 1331,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055902,
+      "elapsedMs": 104.06065099999978
+    },
+    "l006": {
+      "scores": {
+        "court": 0.03,
+        "discovery": 0.22,
+        "opposing": 0.76,
+        "client": 0.15,
+        "intake": 0.07,
+        "billing": 0.02,
+        "noise": 0.02,
+        "internal": 0.27
+      },
+      "clock": 0.14,
+      "usage": {
+        "input_tokens": 1330,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005586000000000001,
+      "elapsedMs": 104.94980699999996
+    },
+    "l007": {
+      "scores": {
+        "court": 0.01,
+        "discovery": 0.01,
+        "opposing": 0.02,
+        "client": 0.03,
+        "intake": 0.1,
+        "billing": 0.04,
+        "noise": 0.98,
+        "internal": 0.06
+      },
+      "clock": 0.09,
+      "usage": {
+        "input_tokens": 1321,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055482,
+      "elapsedMs": 124.59791199999972
+    },
+    "l008": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.01,
+        "opposing": 0.03,
+        "client": 0.03,
+        "intake": 0.08,
+        "billing": 0.05,
+        "noise": 0.82,
+        "internal": 0.65
+      },
+      "clock": 0.82,
+      "usage": {
+        "input_tokens": 1315,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005523,
+      "elapsedMs": 110.61006399999997
+    },
+    "l009": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.08,
+        "opposing": 0.05,
+        "client": 0.08,
+        "intake": 0.07,
+        "billing": 0.03,
+        "noise": 0.01,
+        "internal": 0.87
+      },
+      "clock": 0.06,
+      "usage": {
+        "input_tokens": 1320,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005544,
+      "elapsedMs": 115.92926799999987
+    },
+    "l010": {
+      "scores": {
+        "court": 0.8,
+        "discovery": 0.02,
+        "opposing": 0.06,
+        "client": 0.19,
+        "intake": 0.06,
+        "billing": 0.03,
+        "noise": 0.02,
+        "internal": 0.2
+      },
+      "clock": 0.98,
+      "usage": {
+        "input_tokens": 1340,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005628,
+      "elapsedMs": 98.49373199999991
+    },
+    "l011": {
+      "scores": {
+        "court": 0.96,
+        "discovery": 0.06,
+        "opposing": 0.07,
+        "client": 0.32,
+        "intake": 0.07,
+        "billing": 0.02,
+        "noise": 0.01,
+        "internal": 0.1
+      },
+      "clock": 0.97,
+      "usage": {
+        "input_tokens": 1436,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0060312000000000004,
+      "elapsedMs": 153.14913099999967
+    },
+    "l012": {
+      "scores": {
+        "court": 0.68,
+        "discovery": 0.04,
+        "opposing": 0.14,
+        "client": 0.28,
+        "intake": 0.1,
+        "billing": 0.02,
+        "noise": 0.01,
+        "internal": 0.22
+      },
+      "clock": 0.3,
+      "usage": {
+        "input_tokens": 1361,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0057162,
+      "elapsedMs": 109.25344300000006
+    },
+    "l013": {
+      "scores": {
+        "court": 0.92,
+        "discovery": 0.02,
+        "opposing": 0.21,
+        "client": 0.26,
+        "intake": 0.08,
+        "billing": 0.03,
+        "noise": 0.01,
+        "internal": 0.09
+      },
+      "clock": 0.36,
+      "usage": {
+        "input_tokens": 1375,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005775,
+      "elapsedMs": 126.09440899999981
+    },
+    "l014": {
+      "scores": {
+        "court": 0.81,
+        "discovery": 0.21,
+        "opposing": 0.13,
+        "client": 0.35,
+        "intake": 0.05,
+        "billing": 0.1,
+        "noise": 0.01,
+        "internal": 0.25
+      },
+      "clock": 0.98,
+      "usage": {
+        "input_tokens": 1375,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005775,
+      "elapsedMs": 146.19964900000014
+    },
+    "l015": {
+      "scores": {
+        "court": 0.82,
+        "discovery": 0.02,
+        "opposing": 0.15,
+        "client": 0.3,
+        "intake": 0.05,
+        "billing": 0.04,
+        "noise": 0.01,
+        "internal": 0.25
+      },
+      "clock": 0.98,
+      "usage": {
+        "input_tokens": 1388,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058296,
+      "elapsedMs": 100.04028999999991
+    },
+    "l016": {
+      "scores": {
+        "court": 0.8,
+        "discovery": 0.02,
+        "opposing": 0.13,
+        "client": 0.21,
+        "intake": 0.06,
+        "billing": 0.03,
+        "noise": 0.01,
+        "internal": 0.29
+      },
+      "clock": 0.96,
+      "usage": {
+        "input_tokens": 1377,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0057834,
+      "elapsedMs": 118.06997700000011
+    },
+    "l017": {
+      "scores": {
+        "court": 0.83,
+        "discovery": 0.02,
+        "opposing": 0.08,
+        "client": 0.21,
+        "intake": 0.05,
+        "billing": 0.03,
+        "noise": 0.01,
+        "internal": 0.13
+      },
+      "clock": 0.18,
+      "usage": {
+        "input_tokens": 1348,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0056616,
+      "elapsedMs": 98.46873000000005
+    },
+    "l018": {
+      "scores": {
+        "court": 0.45,
+        "discovery": 0.02,
+        "opposing": 0.08,
+        "client": 0.12,
+        "intake": 0.04,
+        "billing": 0.14,
+        "noise": 0.02,
+        "internal": 0.34
+      },
+      "clock": 0.98,
+      "usage": {
+        "input_tokens": 1355,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005691000000000001,
+      "elapsedMs": 106.04850800000031
+    },
+    "l019": {
+      "scores": {
+        "court": 0.93,
+        "discovery": 0.02,
+        "opposing": 0.08,
+        "client": 0.22,
+        "intake": 0.07,
+        "billing": 0.02,
+        "noise": 0.01,
+        "internal": 0.09
+      },
+      "clock": 0.48,
+      "usage": {
+        "input_tokens": 1376,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005779200000000001,
+      "elapsedMs": 106.2251110000002
+    },
+    "l020": {
+      "scores": {
+        "court": 0.05,
+        "discovery": 0.98,
+        "opposing": 0.2,
+        "client": 0.11,
+        "intake": 0.05,
+        "billing": 0.04,
+        "noise": 0.02,
+        "internal": 0.57
+      },
+      "clock": 0.61,
+      "usage": {
+        "input_tokens": 1353,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0056826,
+      "elapsedMs": 110.45384800000011
+    },
+    "l021": {
+      "scores": {
+        "court": 0.07,
+        "discovery": 0.96,
+        "opposing": 0.26,
+        "client": 0.12,
+        "intake": 0.06,
+        "billing": 0.03,
+        "noise": 0.01,
+        "internal": 0.34
+      },
+      "clock": 0.46,
+      "usage": {
+        "input_tokens": 1358,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0057036000000000005,
+      "elapsedMs": 125.22725099999934
+    },
+    "l022": {
+      "scores": {
+        "court": 0.03,
+        "discovery": 0.75,
+        "opposing": 0.27,
+        "client": 0.3,
+        "intake": 0.06,
+        "billing": 0.04,
+        "noise": 0.02,
+        "internal": 0.57
+      },
+      "clock": 0.14,
+      "usage": {
+        "input_tokens": 1344,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0056448,
+      "elapsedMs": 110.13930600000003
+    },
+    "l023": {
+      "scores": {
+        "court": 0.05,
+        "discovery": 0.98,
+        "opposing": 0.17,
+        "client": 0.13,
+        "intake": 0.05,
+        "billing": 0.02,
+        "noise": 0.01,
+        "internal": 0.37
+      },
+      "clock": 0.98,
+      "usage": {
+        "input_tokens": 1345,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005649,
+      "elapsedMs": 97.75992300000053
+    },
+    "l024": {
+      "scores": {
+        "court": 0.03,
+        "discovery": 0.97,
+        "opposing": 0.71,
+        "client": 0.21,
+        "intake": 0.03,
+        "billing": 0.02,
+        "noise": 0.02,
+        "internal": 0.61
+      },
+      "clock": 0.95,
+      "usage": {
+        "input_tokens": 1369,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0057498,
+      "elapsedMs": 111.26082200000019
+    },
+    "l025": {
+      "scores": {
+        "court": 0.09,
+        "discovery": 0.96,
+        "opposing": 0.24,
+        "client": 0.1,
+        "intake": 0.06,
+        "billing": 0.03,
+        "noise": 0.02,
+        "internal": 0.36
+      },
+      "clock": 0.49,
+      "usage": {
+        "input_tokens": 1367,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0057414,
+      "elapsedMs": 143.92535899999984
+    },
+    "l026": {
+      "scores": {
+        "court": 0.17,
+        "discovery": 0.97,
+        "opposing": 0.16,
+        "client": 0.16,
+        "intake": 0.05,
+        "billing": 0.03,
+        "noise": 0.01,
+        "internal": 0.19
+      },
+      "clock": 0.98,
+      "usage": {
+        "input_tokens": 1383,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0058086,
+      "elapsedMs": 150.44230700000026
+    },
+    "l027": {
+      "scores": {
+        "court": 0.06,
+        "discovery": 0.96,
+        "opposing": 0.37,
+        "client": 0.16,
+        "intake": 0.06,
+        "billing": 0.03,
+        "noise": 0.01,
+        "internal": 0.28
+      },
+      "clock": 0.28,
+      "usage": {
+        "input_tokens": 1350,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0056700000000000006,
+      "elapsedMs": 109.88384200000019
+    },
+    "l028": {
+      "scores": {
+        "court": 0.04,
+        "discovery": 0.95,
+        "opposing": 0.81,
+        "client": 0.16,
+        "intake": 0.06,
+        "billing": 0.03,
+        "noise": 0.02,
+        "internal": 0.42
+      },
+      "clock": 0.84,
+      "usage": {
+        "input_tokens": 1351,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0056742,
+      "elapsedMs": 106.78995500000019
+    },
+    "l029": {
+      "scores": {
+        "court": 0.05,
+        "discovery": 0.93,
+        "opposing": 0.36,
+        "client": 0.13,
+        "intake": 0.05,
+        "billing": 0.04,
+        "noise": 0.01,
+        "internal": 0.44
+      },
+      "clock": 0.14,
+      "usage": {
+        "input_tokens": 1335,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005607,
+      "elapsedMs": 114.41569300000083
+    },
+    "l030": {
+      "scores": {
+        "court": 0.05,
+        "discovery": 0.87,
+        "opposing": 0.14,
+        "client": 0.8,
+        "intake": 0.11,
+        "billing": 0.03,
+        "noise": 0.02,
+        "internal": 0.84
+      },
+      "clock": 0.42,
+      "usage": {
+        "input_tokens": 1329,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055818000000000005,
+      "elapsedMs": 130.6050070000001
+    },
+    "l031": {
+      "scores": {
+        "court": 0.03,
+        "discovery": 0.03,
+        "opposing": 0.52,
+        "client": 0.23,
+        "intake": 0.06,
+        "billing": 0.03,
+        "noise": 0.02,
+        "internal": 0.81
+      },
+      "clock": 0.93,
+      "usage": {
+        "input_tokens": 1355,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005691000000000001,
+      "elapsedMs": 146.87782999999945
+    },
+    "l032": {
+      "scores": {
+        "court": 0.06,
+        "discovery": 0.02,
+        "opposing": 0.75,
+        "client": 0.25,
+        "intake": 0.06,
+        "billing": 0.04,
+        "noise": 0.02,
+        "internal": 0.6
+      },
+      "clock": 0.88,
+      "usage": {
+        "input_tokens": 1346,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0056532,
+      "elapsedMs": 130.1414220000006
+    },
+    "l033": {
+      "scores": {
+        "court": 0.03,
+        "discovery": 0.18,
+        "opposing": 0.76,
+        "client": 0.08,
+        "intake": 0.07,
+        "billing": 0.03,
+        "noise": 0.02,
+        "internal": 0.2
+      },
+      "clock": 0.15,
+      "usage": {
+        "input_tokens": 1321,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055482,
+      "elapsedMs": 108.25043300000016
+    },
+    "l034": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.02,
+        "opposing": 0.73,
+        "client": 0.04,
+        "intake": 0.15,
+        "billing": 0.05,
+        "noise": 0.02,
+        "internal": 0.07
+      },
+      "clock": 0.24,
+      "usage": {
+        "input_tokens": 1347,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005657400000000001,
+      "elapsedMs": 108.0363239999997
+    },
+    "l035": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.02,
+        "opposing": 0.92,
+        "client": 0.08,
+        "intake": 0.22,
+        "billing": 0.03,
+        "noise": 0.03,
+        "internal": 0.21
+      },
+      "clock": 0.19,
+      "usage": {
+        "input_tokens": 1328,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055776,
+      "elapsedMs": 137.69456400000036
+    },
+    "l036": {
+      "scores": {
+        "court": 0.06,
+        "discovery": 0.02,
+        "opposing": 0.85,
+        "client": 0.14,
+        "intake": 0.09,
+        "billing": 0.02,
+        "noise": 0.02,
+        "internal": 0.33
+      },
+      "clock": 0.51,
+      "usage": {
+        "input_tokens": 1353,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0056826,
+      "elapsedMs": 100.07459299999937
+    },
+    "l037": {
+      "scores": {
+        "court": 0.16,
+        "discovery": 0.03,
+        "opposing": 0.77,
+        "client": 0.11,
+        "intake": 0.04,
+        "billing": 0.03,
+        "noise": 0.02,
+        "internal": 0.39
+      },
+      "clock": 0.97,
+      "usage": {
+        "input_tokens": 1332,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055944,
+      "elapsedMs": 95.12929199999962
+    },
+    "l038": {
+      "scores": {
+        "court": 0.03,
+        "discovery": 0.89,
+        "opposing": 0.65,
+        "client": 0.43,
+        "intake": 0.06,
+        "billing": 0.04,
+        "noise": 0.02,
+        "internal": 0.39
+      },
+      "clock": 0.43,
+      "usage": {
+        "input_tokens": 1335,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005607,
+      "elapsedMs": 123.04152900000008
+    },
+    "l039": {
+      "scores": {
+        "court": 0.03,
+        "discovery": 0.02,
+        "opposing": 0.04,
+        "client": 0.79,
+        "intake": 0.15,
+        "billing": 0.04,
+        "noise": 0.02,
+        "internal": 0.34
+      },
+      "clock": 0.14,
+      "usage": {
+        "input_tokens": 1325,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055650000000000005,
+      "elapsedMs": 92.22664599999916
+    },
+    "l040": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.03,
+        "opposing": 0.17,
+        "client": 0.87,
+        "intake": 0.11,
+        "billing": 0.04,
+        "noise": 0.02,
+        "internal": 0.76
+      },
+      "clock": 0.24,
+      "usage": {
+        "input_tokens": 1325,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055650000000000005,
+      "elapsedMs": 140.16932300000008
+    },
+    "l041": {
+      "scores": {
+        "court": 0.04,
+        "discovery": 0.38,
+        "opposing": 0.07,
+        "client": 0.97,
+        "intake": 0.05,
+        "billing": 0.04,
+        "noise": 0.01,
+        "internal": 0.29
+      },
+      "clock": 0.15,
+      "usage": {
+        "input_tokens": 1319,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005539800000000001,
+      "elapsedMs": 145.07163600000058
+    },
+    "l042": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.02,
+        "opposing": 0.07,
+        "client": 0.54,
+        "intake": 0.06,
+        "billing": 0.56,
+        "noise": 0.02,
+        "internal": 0.69
+      },
+      "clock": 0.32,
+      "usage": {
+        "input_tokens": 1318,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055356,
+      "elapsedMs": 142.3547980000003
+    },
+    "l043": {
+      "scores": {
+        "court": 0.03,
+        "discovery": 0.02,
+        "opposing": 0.06,
+        "client": 0.2,
+        "intake": 0.26,
+        "billing": 0.03,
+        "noise": 0.06,
+        "internal": 0.64
+      },
+      "clock": 0.06,
+      "usage": {
+        "input_tokens": 1318,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055356,
+      "elapsedMs": 108.85193100000015
+    },
+    "l044": {
+      "scores": {
+        "court": 0.03,
+        "discovery": 0.62,
+        "opposing": 0.33,
+        "client": 0.51,
+        "intake": 0.1,
+        "billing": 0.03,
+        "noise": 0.02,
+        "internal": 0.61
+      },
+      "clock": 0.09,
+      "usage": {
+        "input_tokens": 1314,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005518800000000001,
+      "elapsedMs": 116.17489699999987
+    },
+    "l045": {
+      "scores": {
+        "court": 0.27,
+        "discovery": 0.84,
+        "opposing": 0.28,
+        "client": 0.27,
+        "intake": 0.12,
+        "billing": 0.06,
+        "noise": 0.02,
+        "internal": 0.62
+      },
+      "clock": 0.92,
+      "usage": {
+        "input_tokens": 1348,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0056616,
+      "elapsedMs": 102.46384699999999
+    },
+    "l046": {
+      "scores": {
+        "court": 0.9,
+        "discovery": 0.02,
+        "opposing": 0.05,
+        "client": 0.9,
+        "intake": 0.07,
+        "billing": 0.02,
+        "noise": 0.01,
+        "internal": 0.23
+      },
+      "clock": 0.37,
+      "usage": {
+        "input_tokens": 1369,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0057498,
+      "elapsedMs": 97.17263699999967
+    },
+    "l047": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.03,
+        "opposing": 0.03,
+        "client": 0.91,
+        "intake": 0.12,
+        "billing": 0.03,
+        "noise": 0.01,
+        "internal": 0.06
+      },
+      "clock": 0.05,
+      "usage": {
+        "input_tokens": 1328,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055776,
+      "elapsedMs": 148.3285020000003
+    },
+    "l048": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.02,
+        "opposing": 0.07,
+        "client": 0.97,
+        "intake": 0.04,
+        "billing": 0.05,
+        "noise": 0.01,
+        "internal": 0.09
+      },
+      "clock": 0.07,
+      "usage": {
+        "input_tokens": 1316,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055271999999999995,
+      "elapsedMs": 116.20813499999986
+    },
+    "l049": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.02,
+        "opposing": 0.14,
+        "client": 0.76,
+        "intake": 0.05,
+        "billing": 0.06,
+        "noise": 0.02,
+        "internal": 0.57
+      },
+      "clock": 0.67,
+      "usage": {
+        "input_tokens": 1324,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055608,
+      "elapsedMs": 132.7546280000006
+    },
+    "l050": {
+      "scores": {
+        "court": 0.01,
+        "discovery": 0.02,
+        "opposing": 0.02,
+        "client": 0.03,
+        "intake": 0.94,
+        "billing": 0.32,
+        "noise": 0.04,
+        "internal": 0.18
+      },
+      "clock": 0.15,
+      "usage": {
+        "input_tokens": 1333,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055986000000000005,
+      "elapsedMs": 106.64065399999981
+    },
+    "l051": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.01,
+        "opposing": 0.03,
+        "client": 0.03,
+        "intake": 0.97,
+        "billing": 0.02,
+        "noise": 0.05,
+        "internal": 0.82
+      },
+      "clock": 0.76,
+      "usage": {
+        "input_tokens": 1360,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005712000000000001,
+      "elapsedMs": 102.4505679999993
+    },
+    "l052": {
+      "scores": {
+        "court": 0.41,
+        "discovery": 0.02,
+        "opposing": 0.14,
+        "client": 0.09,
+        "intake": 0.85,
+        "billing": 0.03,
+        "noise": 0.02,
+        "internal": 0.24
+      },
+      "clock": 0.97,
+      "usage": {
+        "input_tokens": 1328,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055776,
+      "elapsedMs": 111.38794400000006
+    },
+    "l053": {
+      "scores": {
+        "court": 0.01,
+        "discovery": 0.01,
+        "opposing": 0.03,
+        "client": 0.04,
+        "intake": 0.71,
+        "billing": 0.02,
+        "noise": 0.02,
+        "internal": 0.58
+      },
+      "clock": 0.18,
+      "usage": {
+        "input_tokens": 1323,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055566,
+      "elapsedMs": 95.7418319999997
+    },
+    "l054": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.01,
+        "opposing": 0.04,
+        "client": 0.05,
+        "intake": 0.91,
+        "billing": 0.05,
+        "noise": 0.02,
+        "internal": 0.06
+      },
+      "clock": 0.91,
+      "usage": {
+        "input_tokens": 1337,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0056154,
+      "elapsedMs": 123.63201500000105
+    },
+    "l055": {
+      "scores": {
+        "court": 0.04,
+        "discovery": 0.01,
+        "opposing": 0.04,
+        "client": 0.05,
+        "intake": 0.94,
+        "billing": 0.04,
+        "noise": 0.02,
+        "internal": 0.1
+      },
+      "clock": 0.98,
+      "usage": {
+        "input_tokens": 1333,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055986000000000005,
+      "elapsedMs": 151.34511600000042
+    },
+    "l056": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.02,
+        "opposing": 0.04,
+        "client": 0.03,
+        "intake": 0.95,
+        "billing": 0.03,
+        "noise": 0.02,
+        "internal": 0.17
+      },
+      "clock": 0.05,
+      "usage": {
+        "input_tokens": 1333,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055986000000000005,
+      "elapsedMs": 123.7829099999999
+    },
+    "l057": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.02,
+        "opposing": 0.05,
+        "client": 0.03,
+        "intake": 0.92,
+        "billing": 0.08,
+        "noise": 0.03,
+        "internal": 0.09
+      },
+      "clock": 0.11,
+      "usage": {
+        "input_tokens": 1331,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055902,
+      "elapsedMs": 124.59476799999902
+    },
+    "l058": {
+      "scores": {
+        "court": 0.01,
+        "discovery": 0.01,
+        "opposing": 0.03,
+        "client": 0.03,
+        "intake": 0.96,
+        "billing": 0.05,
+        "noise": 0.02,
+        "internal": 0.05
+      },
+      "clock": 0.32,
+      "usage": {
+        "input_tokens": 1319,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005539800000000001,
+      "elapsedMs": 124.10015799999928
+    },
+    "l059": {
+      "scores": {
+        "court": 0.03,
+        "discovery": 0.09,
+        "opposing": 0.07,
+        "client": 0.07,
+        "intake": 0.05,
+        "billing": 0.96,
+        "noise": 0.02,
+        "internal": 0.36
+      },
+      "clock": 0.19,
+      "usage": {
+        "input_tokens": 1348,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0056616,
+      "elapsedMs": 189.0218840000016
+    },
+    "l060": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.01,
+        "opposing": 0.02,
+        "client": 0.08,
+        "intake": 0.07,
+        "billing": 0.92,
+        "noise": 0.03,
+        "internal": 0.31
+      },
+      "clock": 0.1,
+      "usage": {
+        "input_tokens": 1320,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005544,
+      "elapsedMs": 90.26313000000118
+    },
+    "l061": {
+      "scores": {
+        "court": 0.01,
+        "discovery": 0.01,
+        "opposing": 0.04,
+        "client": 0.09,
+        "intake": 0.05,
+        "billing": 0.96,
+        "noise": 0.02,
+        "internal": 0.38
+      },
+      "clock": 0.11,
+      "usage": {
+        "input_tokens": 1327,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055734,
+      "elapsedMs": 92.56504700000005
+    },
+    "l062": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.03,
+        "opposing": 0.02,
+        "client": 0.04,
+        "intake": 0.06,
+        "billing": 0.98,
+        "noise": 0.02,
+        "internal": 0.29
+      },
+      "clock": 0.34,
+      "usage": {
+        "input_tokens": 1330,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005586000000000001,
+      "elapsedMs": 119.11604299999999
+    },
+    "l063": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.06,
+        "opposing": 0.12,
+        "client": 0.04,
+        "intake": 0.05,
+        "billing": 0.92,
+        "noise": 0.02,
+        "internal": 0.26
+      },
+      "clock": 0.56,
+      "usage": {
+        "input_tokens": 1334,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0056028,
+      "elapsedMs": 135.3269820000005
+    },
+    "l064": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.02,
+        "opposing": 0.02,
+        "client": 0.04,
+        "intake": 0.04,
+        "billing": 0.98,
+        "noise": 0.01,
+        "internal": 0.12
+      },
+      "clock": 0.07,
+      "usage": {
+        "input_tokens": 1326,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055692,
+      "elapsedMs": 130.7126590000007
+    },
+    "l065": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.02,
+        "opposing": 0.13,
+        "client": 0.06,
+        "intake": 0.06,
+        "billing": 0.94,
+        "noise": 0.03,
+        "internal": 0.24
+      },
+      "clock": 0.96,
+      "usage": {
+        "input_tokens": 1328,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055776,
+      "elapsedMs": 101.5717820000009
+    },
+    "l066": {
+      "scores": {
+        "court": 0.05,
+        "discovery": 0.02,
+        "opposing": 0.03,
+        "client": 0.05,
+        "intake": 0.06,
+        "billing": 0.91,
+        "noise": 0.02,
+        "internal": 0.1
+      },
+      "clock": 0.97,
+      "usage": {
+        "input_tokens": 1360,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005712000000000001,
+      "elapsedMs": 97.75513299999875
+    },
+    "l067": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.02,
+        "opposing": 0.05,
+        "client": 0.1,
+        "intake": 0.1,
+        "billing": 0.9,
+        "noise": 0.04,
+        "internal": 0.31
+      },
+      "clock": 0.11,
+      "usage": {
+        "input_tokens": 1333,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055986000000000005,
+      "elapsedMs": 115.07410799999889
+    },
+    "l068": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.01,
+        "opposing": 0.03,
+        "client": 0.03,
+        "intake": 0.14,
+        "billing": 0.03,
+        "noise": 0.98,
+        "internal": 0.07
+      },
+      "clock": 0.23,
+      "usage": {
+        "input_tokens": 1321,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055482,
+      "elapsedMs": 126.03484600000047
+    },
+    "l069": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.01,
+        "opposing": 0.02,
+        "client": 0.02,
+        "intake": 0.07,
+        "billing": 0.02,
+        "noise": 0.88,
+        "internal": 0.05
+      },
+      "clock": 0.12,
+      "usage": {
+        "input_tokens": 1336,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0056112,
+      "elapsedMs": 97.07020499999999
+    },
+    "l070": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.01,
+        "opposing": 0.02,
+        "client": 0.04,
+        "intake": 0.2,
+        "billing": 0.04,
+        "noise": 0.98,
+        "internal": 0.06
+      },
+      "clock": 0.03,
+      "usage": {
+        "input_tokens": 1330,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005586000000000001,
+      "elapsedMs": 146.06310800000028
+    },
+    "l071": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.02,
+        "opposing": 0.05,
+        "client": 0.05,
+        "intake": 0.46,
+        "billing": 0.11,
+        "noise": 0.94,
+        "internal": 0.2
+      },
+      "clock": 0.1,
+      "usage": {
+        "input_tokens": 1318,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055356,
+      "elapsedMs": 127.0246790000001
+    },
+    "l072": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.02,
+        "opposing": 0.03,
+        "client": 0.03,
+        "intake": 0.1,
+        "billing": 0.03,
+        "noise": 0.98,
+        "internal": 0.06
+      },
+      "clock": 0.04,
+      "usage": {
+        "input_tokens": 1319,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005539800000000001,
+      "elapsedMs": 111.65887099999964
+    },
+    "l073": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.01,
+        "opposing": 0.03,
+        "client": 0.03,
+        "intake": 0.27,
+        "billing": 0.04,
+        "noise": 0.94,
+        "internal": 0.13
+      },
+      "clock": 0.4,
+      "usage": {
+        "input_tokens": 1332,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055944,
+      "elapsedMs": 107.57626999999957
+    },
+    "l074": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.01,
+        "opposing": 0.04,
+        "client": 0.07,
+        "intake": 0.08,
+        "billing": 0.11,
+        "noise": 0.87,
+        "internal": 0.08
+      },
+      "clock": 0.3,
+      "usage": {
+        "input_tokens": 1347,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005657400000000001,
+      "elapsedMs": 118.7448629999999
+    },
+    "l075": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.01,
+        "opposing": 0.02,
+        "client": 0.04,
+        "intake": 0.16,
+        "billing": 0.06,
+        "noise": 0.96,
+        "internal": 0.08
+      },
+      "clock": 0.1,
+      "usage": {
+        "input_tokens": 1358,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0057036000000000005,
+      "elapsedMs": 128.480501
+    },
+    "l076": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.06,
+        "opposing": 0.05,
+        "client": 0.09,
+        "intake": 0.46,
+        "billing": 0.09,
+        "noise": 0.88,
+        "internal": 0.28
+      },
+      "clock": 0.1,
+      "usage": {
+        "input_tokens": 1317,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055314000000000006,
+      "elapsedMs": 92.87531999999919
+    },
+    "l077": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.01,
+        "opposing": 0.02,
+        "client": 0.04,
+        "intake": 0.21,
+        "billing": 0.04,
+        "noise": 0.97,
+        "internal": 0.08
+      },
+      "clock": 0.12,
+      "usage": {
+        "input_tokens": 1324,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055608,
+      "elapsedMs": 114.86355200000071
+    },
+    "l078": {
+      "scores": {
+        "court": 0.05,
+        "discovery": 0.65,
+        "opposing": 0.08,
+        "client": 0.19,
+        "intake": 0.22,
+        "billing": 0.09,
+        "noise": 0.87,
+        "internal": 0.31
+      },
+      "clock": 0.18,
+      "usage": {
+        "input_tokens": 1338,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.005619600000000001,
+      "elapsedMs": 95.0032140000003
+    },
+    "l079": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.01,
+        "opposing": 0.02,
+        "client": 0.04,
+        "intake": 0.07,
+        "billing": 0.12,
+        "noise": 0.96,
+        "internal": 0.21
+      },
+      "clock": 0.45,
+      "usage": {
+        "input_tokens": 1321,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055482,
+      "elapsedMs": 134.84471900000062
+    },
+    "l080": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.01,
+        "opposing": 0.02,
+        "client": 0.03,
+        "intake": 0.33,
+        "billing": 0.22,
+        "noise": 0.87,
+        "internal": 0.2
+      },
+      "clock": 0.08,
+      "usage": {
+        "input_tokens": 1318,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055356,
+      "elapsedMs": 100.23200600000018
+    },
+    "l081": {
+      "scores": {
+        "court": 0.01,
+        "discovery": 0.02,
+        "opposing": 0.03,
+        "client": 0.02,
+        "intake": 0.1,
+        "billing": 0.04,
+        "noise": 0.22,
+        "internal": 0.66
+      },
+      "clock": 0.04,
+      "usage": {
+        "input_tokens": 1321,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055482,
+      "elapsedMs": 98.19343300000037
+    },
+    "l082": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.02,
+        "opposing": 0.04,
+        "client": 0.07,
+        "intake": 0.06,
+        "billing": 0.03,
+        "noise": 0.01,
+        "internal": 0.91
+      },
+      "clock": 0.06,
+      "usage": {
+        "input_tokens": 1317,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055314000000000006,
+      "elapsedMs": 97.6019350000006
+    },
+    "l083": {
+      "scores": {
+        "court": 0.01,
+        "discovery": 0.01,
+        "opposing": 0.02,
+        "client": 0.07,
+        "intake": 0.05,
+        "billing": 0.79,
+        "noise": 0.01,
+        "internal": 0.91
+      },
+      "clock": 0.73,
+      "usage": {
+        "input_tokens": 1318,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055356,
+      "elapsedMs": 142.64941400000134
+    },
+    "l084": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.01,
+        "opposing": 0.07,
+        "client": 0.12,
+        "intake": 0.84,
+        "billing": 0.03,
+        "noise": 0.02,
+        "internal": 0.94
+      },
+      "clock": 0.04,
+      "usage": {
+        "input_tokens": 1325,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055650000000000005,
+      "elapsedMs": 102.07915800000046
+    },
+    "l085": {
+      "scores": {
+        "court": 0.03,
+        "discovery": 0.04,
+        "opposing": 0.25,
+        "client": 0.27,
+        "intake": 0.45,
+        "billing": 0.04,
+        "noise": 0.01,
+        "internal": 0.92
+      },
+      "clock": 0.09,
+      "usage": {
+        "input_tokens": 1326,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055692,
+      "elapsedMs": 102.91491999999926
+    },
+    "l086": {
+      "scores": {
+        "court": 0.57,
+        "discovery": 0.03,
+        "opposing": 0.28,
+        "client": 0.16,
+        "intake": 0.06,
+        "billing": 0.03,
+        "noise": 0.02,
+        "internal": 0.82
+      },
+      "clock": 0.92,
+      "usage": {
+        "input_tokens": 1367,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0057414,
+      "elapsedMs": 118.21235800000068
+    },
+    "l087": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.47,
+        "opposing": 0.07,
+        "client": 0.12,
+        "intake": 0.11,
+        "billing": 0.05,
+        "noise": 0.02,
+        "internal": 0.95
+      },
+      "clock": 0.7,
+      "usage": {
+        "input_tokens": 1336,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0056112,
+      "elapsedMs": 101.22113800000079
+    },
+    "l088": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.02,
+        "opposing": 0.08,
+        "client": 0.04,
+        "intake": 0.93,
+        "billing": 0.03,
+        "noise": 0.03,
+        "internal": 0.86
+      },
+      "clock": 0.38,
+      "usage": {
+        "input_tokens": 1327,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0055734,
+      "elapsedMs": 109.22057599999971
+    },
+    "l089": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.95,
+        "opposing": 0.71,
+        "client": 0.09,
+        "intake": 0.09,
+        "billing": 0.04,
+        "noise": 0.02,
+        "internal": 0.33
+      },
+      "clock": 0.9,
+      "usage": {
+        "input_tokens": 1341,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0056322,
+      "elapsedMs": 121.86010100000021
+    },
+    "l090": {
+      "scores": {
+        "court": 0.02,
+        "discovery": 0.02,
+        "opposing": 0.86,
+        "client": 0.11,
+        "intake": 0.22,
+        "billing": 0.03,
+        "noise": 0.02,
+        "internal": 0.6
+      },
+      "clock": 0.07,
+      "usage": {
+        "input_tokens": 1354,
+        "output_tokens": 156
+      },
+      "model": "jev-1.13.0",
+      "costCents": 0.0056868,
+      "elapsedMs": 113.60590700000103
+    }
+  }
+}

@@ -3,7 +3,8 @@ import type { Judgment } from "./jev";
 import type { Thresholds } from "./policy";
 import { decidePlan, type Plan } from "./stages/decide";
 import type { Facts } from "./stages/extract";
-import { DATES_ARE_NOT_CLOCKS, deadlinePriority, routeFor } from "./stages/route";
+import { deadlinePriority, routeFor } from "./stages/route";
+import { rulesFor } from "./trades";
 import type { Firm, Message } from "./types";
 
 /**
@@ -20,9 +21,10 @@ import type { Firm, Message } from "./types";
 export function assess(
   firm: Firm, message: Message, judgment: Pick<Judgment, "scores" | "clock">, facts: Facts, sor: Sor, thresholds: Thresholds, asOf: string,
 ): Plan {
+  const rules = rulesFor(firm.id);
   const actFor = (c: string): number => thresholds.actByClass?.[c] ?? thresholds.act;
   // A date in a pitch, in team mail or on a bill is somebody's calendar, not a response clock.
-  const notAClock = DATES_ARE_NOT_CLOCKS.some((c) => (judgment.scores[c] ?? 0) >= actFor(c));
+  const notAClock = rules.datesAreNotClocks.some((c) => (judgment.scores[c] ?? 0) >= actFor(c));
   const corroborated = facts.inLog || (facts.deadline !== null && !notAClock);
 
   const judged: Message = {
@@ -33,7 +35,7 @@ export function assess(
 
   return decidePlan(judged, firm, thresholds, asOf, {
     corroborated,
-    routeOf: (topic) => routeFor(topic, facts, sor, firm.owner, asOf),
+    routeOf: (topic) => routeFor(topic, facts, rules, firm.owner, asOf),
     clockPriority: facts.deadline ? deadlinePriority(facts.deadline.date, asOf) : "high",
   });
 }

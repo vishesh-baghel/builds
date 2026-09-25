@@ -1,0 +1,7650 @@
+{
+  "cpa": {
+    "date": "2026-09-25",
+    "lines": {
+      "act": 0.6,
+      "review": 0.5,
+      "clockAct": 0.5
+    },
+    "judgments": {
+      "c001": {
+        "scores": {
+          "notice": 0.97,
+          "docs": 0.18,
+          "question": 0.8,
+          "payroll": 0.06,
+          "prospect": 0.06,
+          "billing": 0.03,
+          "noise": 0.02,
+          "internal": 0.2
+        },
+        "clock": 0.96,
+        "model": "jev-1.13.0"
+      },
+      "c002": {
+        "scores": {
+          "notice": 0.54,
+          "docs": 0.07,
+          "question": 0.15,
+          "payroll": 0.87,
+          "prospect": 0.03,
+          "billing": 0.04,
+          "noise": 0.05,
+          "internal": 0.16
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "c003": {
+        "scores": {
+          "notice": 0.03,
+          "docs": 0.93,
+          "question": 0.09,
+          "payroll": 0.07,
+          "prospect": 0.05,
+          "billing": 0.08,
+          "noise": 0.02,
+          "internal": 0.4
+        },
+        "clock": 0.12,
+        "model": "jev-1.13.0"
+      },
+      "c004": {
+        "scores": {
+          "notice": 0.28,
+          "docs": 0.04,
+          "question": 0.92,
+          "payroll": 0.03,
+          "prospect": 0.05,
+          "billing": 0.04,
+          "noise": 0.02,
+          "internal": 0.41
+        },
+        "clock": 0.87,
+        "model": "jev-1.13.0"
+      },
+      "c005": {
+        "scores": {
+          "notice": 0.02,
+          "docs": 0.02,
+          "question": 0.04,
+          "payroll": 0.06,
+          "prospect": 0.96,
+          "billing": 0.05,
+          "noise": 0.06,
+          "internal": 0.05
+        },
+        "clock": 0.06,
+        "model": "jev-1.13.0"
+      },
+      "c006": {
+        "scores": {
+          "notice": 0.03,
+          "docs": 0.03,
+          "question": 0.04,
+          "payroll": 0.07,
+          "prospect": 0.04,
+          "billing": 0.85,
+          "noise": 0.02,
+          "internal": 0.17
+        },
+        "clock": 0.07,
+        "model": "jev-1.13.0"
+      },
+      "c007": {
+        "scores": {
+          "notice": 0.02,
+          "docs": 0.03,
+          "question": 0.03,
+          "payroll": 0.05,
+          "prospect": 0.54,
+          "billing": 0.09,
+          "noise": 0.93,
+          "internal": 0.18
+        },
+        "clock": 0.1,
+        "model": "jev-1.13.0"
+      },
+      "c008": {
+        "scores": {
+          "notice": 0.03,
+          "docs": 0.07,
+          "question": 0.06,
+          "payroll": 0.91,
+          "prospect": 0.04,
+          "billing": 0.06,
+          "noise": 0.01,
+          "internal": 0.95
+        },
+        "clock": 0.66,
+        "model": "jev-1.13.0"
+      },
+      "c009": {
+        "scores": {
+          "notice": 0.03,
+          "docs": 0.02,
+          "question": 0.73,
+          "payroll": 0.03,
+          "prospect": 0.09,
+          "billing": 0.06,
+          "noise": 0.03,
+          "internal": 0.29
+        },
+        "clock": 0.21,
+        "model": "jev-1.13.0"
+      },
+      "c010": {
+        "scores": {
+          "notice": 0.19,
+          "docs": 0.03,
+          "question": 0.05,
+          "payroll": 0.04,
+          "prospect": 0.05,
+          "billing": 0.06,
+          "noise": 0.05,
+          "internal": 0.24
+        },
+        "clock": 0.2,
+        "model": "jev-1.13.0"
+      },
+      "c011": {
+        "scores": {
+          "notice": 0.9,
+          "docs": 0.17,
+          "question": 0.57,
+          "payroll": 0.06,
+          "prospect": 0.03,
+          "billing": 0.04,
+          "noise": 0.02,
+          "internal": 0.81
+        },
+        "clock": 0.89,
+        "model": "jev-1.13.0"
+      },
+      "c012": {
+        "scores": {
+          "notice": 0.86,
+          "docs": 0.05,
+          "question": 0.68,
+          "payroll": 0.02,
+          "prospect": 0.03,
+          "billing": 0.04,
+          "noise": 0.03,
+          "internal": 0.7
+        },
+        "clock": 0.73,
+        "model": "jev-1.13.0"
+      },
+      "c013": {
+        "scores": {
+          "notice": 0.57,
+          "docs": 0.6,
+          "question": 0.36,
+          "payroll": 0.03,
+          "prospect": 0.04,
+          "billing": 0.04,
+          "noise": 0.02,
+          "internal": 0.71
+        },
+        "clock": 0.34,
+        "model": "jev-1.13.0"
+      },
+      "c014": {
+        "scores": {
+          "notice": 0.86,
+          "docs": 0.04,
+          "question": 0.1,
+          "payroll": 0.04,
+          "prospect": 0.04,
+          "billing": 0.04,
+          "noise": 0.02,
+          "internal": 0.55
+        },
+        "clock": 0.97,
+        "model": "jev-1.13.0"
+      },
+      "c015": {
+        "scores": {
+          "notice": 0.92,
+          "docs": 0.5,
+          "question": 0.56,
+          "payroll": 0.76,
+          "prospect": 0.03,
+          "billing": 0.05,
+          "noise": 0.02,
+          "internal": 0.11
+        },
+        "clock": 0.95,
+        "model": "jev-1.13.0"
+      },
+      "c016": {
+        "scores": {
+          "notice": 0.92,
+          "docs": 0.1,
+          "question": 0.88,
+          "payroll": 0.03,
+          "prospect": 0.07,
+          "billing": 0.06,
+          "noise": 0.03,
+          "internal": 0.54
+        },
+        "clock": 0.96,
+        "model": "jev-1.13.0"
+      },
+      "c017": {
+        "scores": {
+          "notice": 0.78,
+          "docs": 0.64,
+          "question": 0.07,
+          "payroll": 0.79,
+          "prospect": 0.04,
+          "billing": 0.05,
+          "noise": 0.02,
+          "internal": 0.86
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "c018": {
+        "scores": {
+          "notice": 0.26,
+          "docs": 0.05,
+          "question": 0.16,
+          "payroll": 0.03,
+          "prospect": 0.05,
+          "billing": 0.05,
+          "noise": 0.03,
+          "internal": 0.52
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "c019": {
+        "scores": {
+          "notice": 0.93,
+          "docs": 0.08,
+          "question": 0.26,
+          "payroll": 0.16,
+          "prospect": 0.03,
+          "billing": 0.04,
+          "noise": 0.02,
+          "internal": 0.68
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "c020": {
+        "scores": {
+          "notice": 0.86,
+          "docs": 0.03,
+          "question": 0.08,
+          "payroll": 0.03,
+          "prospect": 0.03,
+          "billing": 0.04,
+          "noise": 0.03,
+          "internal": 0.43
+        },
+        "clock": 0.68,
+        "model": "jev-1.13.0"
+      },
+      "c021": {
+        "scores": {
+          "notice": 0.37,
+          "docs": 0.04,
+          "question": 0.47,
+          "payroll": 0.61,
+          "prospect": 0.04,
+          "billing": 0.05,
+          "noise": 0.02,
+          "internal": 0.22
+        },
+        "clock": 0.06,
+        "model": "jev-1.13.0"
+      },
+      "c022": {
+        "scores": {
+          "notice": 0.88,
+          "docs": 0.14,
+          "question": 0.39,
+          "payroll": 0.03,
+          "prospect": 0.03,
+          "billing": 0.03,
+          "noise": 0.02,
+          "internal": 0.49
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "c023": {
+        "scores": {
+          "notice": 0.64,
+          "docs": 0.09,
+          "question": 0.63,
+          "payroll": 0.04,
+          "prospect": 0.03,
+          "billing": 0.82,
+          "noise": 0.02,
+          "internal": 0.38
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "c024": {
+        "scores": {
+          "notice": 0.61,
+          "docs": 0.06,
+          "question": 0.18,
+          "payroll": 0.9,
+          "prospect": 0.03,
+          "billing": 0.04,
+          "noise": 0.03,
+          "internal": 0.17
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "c025": {
+        "scores": {
+          "notice": 0.76,
+          "docs": 0.54,
+          "question": 0.61,
+          "payroll": 0.03,
+          "prospect": 0.04,
+          "billing": 0.06,
+          "noise": 0.03,
+          "internal": 0.28
+        },
+        "clock": 0.95,
+        "model": "jev-1.13.0"
+      },
+      "c026": {
+        "scores": {
+          "notice": 0.74,
+          "docs": 0.11,
+          "question": 0.17,
+          "payroll": 0.9,
+          "prospect": 0.09,
+          "billing": 0.04,
+          "noise": 0.04,
+          "internal": 0.6
+        },
+        "clock": 0.96,
+        "model": "jev-1.13.0"
+      },
+      "c027": {
+        "scores": {
+          "notice": 0.15,
+          "docs": 0.04,
+          "question": 0.1,
+          "payroll": 0.92,
+          "prospect": 0.04,
+          "billing": 0.09,
+          "noise": 0.03,
+          "internal": 0.32
+        },
+        "clock": 0.97,
+        "model": "jev-1.13.0"
+      },
+      "c028": {
+        "scores": {
+          "notice": 0.43,
+          "docs": 0.06,
+          "question": 0.07,
+          "payroll": 0.62,
+          "prospect": 0.03,
+          "billing": 0.04,
+          "noise": 0.03,
+          "internal": 0.68
+        },
+        "clock": 0.97,
+        "model": "jev-1.13.0"
+      },
+      "c029": {
+        "scores": {
+          "notice": 0.02,
+          "docs": 0.14,
+          "question": 0.03,
+          "payroll": 0.75,
+          "prospect": 0.04,
+          "billing": 0.05,
+          "noise": 0.02,
+          "internal": 0.67
+        },
+        "clock": 0.25,
+        "model": "jev-1.13.0"
+      },
+      "c030": {
+        "scores": {
+          "notice": 0.07,
+          "docs": 0.03,
+          "question": 0.1,
+          "payroll": 0.64,
+          "prospect": 0.04,
+          "billing": 0.07,
+          "noise": 0.03,
+          "internal": 0.88
+        },
+        "clock": 0.69,
+        "model": "jev-1.13.0"
+      },
+      "c031": {
+        "scores": {
+          "notice": 0.16,
+          "docs": 0.28,
+          "question": 0.07,
+          "payroll": 0.67,
+          "prospect": 0.08,
+          "billing": 0.04,
+          "noise": 0.02,
+          "internal": 0.76
+        },
+        "clock": 0.94,
+        "model": "jev-1.13.0"
+      },
+      "c032": {
+        "scores": {
+          "notice": 0.02,
+          "docs": 0.87,
+          "question": 0.21,
+          "payroll": 0.67,
+          "prospect": 0.05,
+          "billing": 0.04,
+          "noise": 0.02,
+          "internal": 0.06
+        },
+        "clock": 0.16,
+        "model": "jev-1.13.0"
+      },
+      "c033": {
+        "scores": {
+          "notice": 0.03,
+          "docs": 0.03,
+          "question": 0.16,
+          "payroll": 0.8,
+          "prospect": 0.03,
+          "billing": 0.04,
+          "noise": 0.02,
+          "internal": 0.65
+        },
+        "clock": 0.26,
+        "model": "jev-1.13.0"
+      },
+      "c034": {
+        "scores": {
+          "notice": 0.04,
+          "docs": 0.92,
+          "question": 0.18,
+          "payroll": 0.05,
+          "prospect": 0.06,
+          "billing": 0.07,
+          "noise": 0.02,
+          "internal": 0.43
+        },
+        "clock": 0.26,
+        "model": "jev-1.13.0"
+      },
+      "c035": {
+        "scores": {
+          "notice": 0.03,
+          "docs": 0.79,
+          "question": 0.19,
+          "payroll": 0.05,
+          "prospect": 0.06,
+          "billing": 0.08,
+          "noise": 0.02,
+          "internal": 0.78
+        },
+        "clock": 0.1,
+        "model": "jev-1.13.0"
+      },
+      "c036": {
+        "scores": {
+          "notice": 0.03,
+          "docs": 0.61,
+          "question": 0.17,
+          "payroll": 0.03,
+          "prospect": 0.03,
+          "billing": 0.05,
+          "noise": 0.01,
+          "internal": 0.84
+        },
+        "clock": 0.4,
+        "model": "jev-1.13.0"
+      },
+      "c037": {
+        "scores": {
+          "notice": 0.03,
+          "docs": 0.86,
+          "question": 0.06,
+          "payroll": 0.04,
+          "prospect": 0.13,
+          "billing": 0.09,
+          "noise": 0.02,
+          "internal": 0.41
+        },
+        "clock": 0.31,
+        "model": "jev-1.13.0"
+      },
+      "c038": {
+        "scores": {
+          "notice": 0.04,
+          "docs": 0.86,
+          "question": 0.17,
+          "payroll": 0.03,
+          "prospect": 0.06,
+          "billing": 0.07,
+          "noise": 0.03,
+          "internal": 0.42
+        },
+        "clock": 0.12,
+        "model": "jev-1.13.0"
+      },
+      "c039": {
+        "scores": {
+          "notice": 0.04,
+          "docs": 0.95,
+          "question": 0.51,
+          "payroll": 0.03,
+          "prospect": 0.06,
+          "billing": 0.05,
+          "noise": 0.02,
+          "internal": 0.36
+        },
+        "clock": 0.22,
+        "model": "jev-1.13.0"
+      },
+      "c040": {
+        "scores": {
+          "notice": 0.02,
+          "docs": 0.95,
+          "question": 0.07,
+          "payroll": 0.04,
+          "prospect": 0.04,
+          "billing": 0.05,
+          "noise": 0.02,
+          "internal": 0.18
+        },
+        "clock": 0.26,
+        "model": "jev-1.13.0"
+      },
+      "c041": {
+        "scores": {
+          "notice": 0.03,
+          "docs": 0.93,
+          "question": 0.89,
+          "payroll": 0.03,
+          "prospect": 0.06,
+          "billing": 0.03,
+          "noise": 0.02,
+          "internal": 0.25
+        },
+        "clock": 0.14,
+        "model": "jev-1.13.0"
+      },
+      "c042": {
+        "scores": {
+          "notice": 0.03,
+          "docs": 0.7,
+          "question": 0.03,
+          "payroll": 0.04,
+          "prospect": 0.05,
+          "billing": 0.11,
+          "noise": 0.02,
+          "internal": 0.77
+        },
+        "clock": 0.47,
+        "model": "jev-1.13.0"
+      },
+      "c043": {
+        "scores": {
+          "notice": 0.09,
+          "docs": 0.03,
+          "question": 0.75,
+          "payroll": 0.05,
+          "prospect": 0.33,
+          "billing": 0.06,
+          "noise": 0.03,
+          "internal": 0.73
+        },
+        "clock": 0.27,
+        "model": "jev-1.13.0"
+      },
+      "c044": {
+        "scores": {
+          "notice": 0.03,
+          "docs": 0.03,
+          "question": 0.87,
+          "payroll": 0.03,
+          "prospect": 0.14,
+          "billing": 0.05,
+          "noise": 0.02,
+          "internal": 0.2
+        },
+        "clock": 0.08,
+        "model": "jev-1.13.0"
+      },
+      "c045": {
+        "scores": {
+          "notice": 0.03,
+          "docs": 0.04,
+          "question": 0.75,
+          "payroll": 0.03,
+          "prospect": 0.03,
+          "billing": 0.05,
+          "noise": 0.02,
+          "internal": 0.6
+        },
+        "clock": 0.36,
+        "model": "jev-1.13.0"
+      },
+      "c046": {
+        "scores": {
+          "notice": 0.06,
+          "docs": 0.05,
+          "question": 0.74,
+          "payroll": 0.05,
+          "prospect": 0.08,
+          "billing": 0.05,
+          "noise": 0.02,
+          "internal": 0.66
+        },
+        "clock": 0.93,
+        "model": "jev-1.13.0"
+      },
+      "c047": {
+        "scores": {
+          "notice": 0.16,
+          "docs": 0.12,
+          "question": 0.93,
+          "payroll": 0.07,
+          "prospect": 0.05,
+          "billing": 0.06,
+          "noise": 0.02,
+          "internal": 0.18
+        },
+        "clock": 0.53,
+        "model": "jev-1.13.0"
+      },
+      "c048": {
+        "scores": {
+          "notice": 0.07,
+          "docs": 0.04,
+          "question": 0.72,
+          "payroll": 0.04,
+          "prospect": 0.06,
+          "billing": 0.05,
+          "noise": 0.02,
+          "internal": 0.63
+        },
+        "clock": 0.31,
+        "model": "jev-1.13.0"
+      },
+      "c049": {
+        "scores": {
+          "notice": 0.02,
+          "docs": 0.03,
+          "question": 0.49,
+          "payroll": 0.04,
+          "prospect": 0.23,
+          "billing": 0.07,
+          "noise": 0.03,
+          "internal": 0.1
+        },
+        "clock": 0.87,
+        "model": "jev-1.13.0"
+      },
+      "c050": {
+        "scores": {
+          "notice": 0.06,
+          "docs": 0.62,
+          "question": 0.9,
+          "payroll": 0.03,
+          "prospect": 0.04,
+          "billing": 0.07,
+          "noise": 0.02,
+          "internal": 0.47
+        },
+        "clock": 0.68,
+        "model": "jev-1.13.0"
+      },
+      "c051": {
+        "scores": {
+          "notice": 0.02,
+          "docs": 0.03,
+          "question": 0.06,
+          "payroll": 0.07,
+          "prospect": 0.46,
+          "billing": 0.1,
+          "noise": 0.04,
+          "internal": 0.33
+        },
+        "clock": 0.12,
+        "model": "jev-1.13.0"
+      },
+      "c052": {
+        "scores": {
+          "notice": 0.02,
+          "docs": 0.03,
+          "question": 0.05,
+          "payroll": 0.07,
+          "prospect": 0.96,
+          "billing": 0.08,
+          "noise": 0.07,
+          "internal": 0.7
+        },
+        "clock": 0.03,
+        "model": "jev-1.13.0"
+      },
+      "c053": {
+        "scores": {
+          "notice": 0.02,
+          "docs": 0.02,
+          "question": 0.06,
+          "payroll": 0.82,
+          "prospect": 0.94,
+          "billing": 0.05,
+          "noise": 0.03,
+          "internal": 0.05
+        },
+        "clock": 0.06,
+        "model": "jev-1.13.0"
+      },
+      "c054": {
+        "scores": {
+          "notice": 0.03,
+          "docs": 0.04,
+          "question": 0.11,
+          "payroll": 0.05,
+          "prospect": 0.96,
+          "billing": 0.07,
+          "noise": 0.05,
+          "internal": 0.07
+        },
+        "clock": 0.8,
+        "model": "jev-1.13.0"
+      },
+      "c055": {
+        "scores": {
+          "notice": 0.02,
+          "docs": 0.02,
+          "question": 0.06,
+          "payroll": 0.05,
+          "prospect": 0.96,
+          "billing": 0.05,
+          "noise": 0.04,
+          "internal": 0.04
+        },
+        "clock": 0.09,
+        "model": "jev-1.13.0"
+      },
+      "c056": {
+        "scores": {
+          "notice": 0.02,
+          "docs": 0.03,
+          "question": 0.05,
+          "payroll": 0.17,
+          "prospect": 0.94,
+          "billing": 0.06,
+          "noise": 0.05,
+          "internal": 0.23
+        },
+        "clock": 0.04,
+        "model": "jev-1.13.0"
+      },
+      "c057": {
+        "scores": {
+          "notice": 0.88,
+          "docs": 0.04,
+          "question": 0.57,
+          "payroll": 0.06,
+          "prospect": 0.85,
+          "billing": 0.05,
+          "noise": 0.04,
+          "internal": 0.16
+        },
+        "clock": 0.79,
+        "model": "jev-1.13.0"
+      },
+      "c058": {
+        "scores": {
+          "notice": 0.02,
+          "docs": 0.02,
+          "question": 0.07,
+          "payroll": 0.42,
+          "prospect": 0.95,
+          "billing": 0.04,
+          "noise": 0.06,
+          "internal": 0.08
+        },
+        "clock": 0.07,
+        "model": "jev-1.13.0"
+      },
+      "c059": {
+        "scores": {
+          "notice": 0.02,
+          "docs": 0.02,
+          "question": 0.06,
+          "payroll": 0.03,
+          "prospect": 0.96,
+          "billing": 0.04,
+          "noise": 0.03,
+          "internal": 0.04
+        },
+        "clock": 0.07,
+        "model": "jev-1.13.0"
+      },
+      "c060": {
+        "scores": {
+          "notice": 0.02,
+          "docs": 0.03,
+          "question": 0.02,
+          "payroll": 0.03,
+          "prospect": 0.03,
+          "billing": 0.94,
+          "noise": 0.02,
+          "internal": 0.47
+        },
+        "clock": 0.06,
+        "model": "jev-1.13.0"
+      },
+      "c061": {
+        "scores": {
+          "notice": 0.03,
+          "docs": 0.07,
+          "question": 0.05,
+          "payroll": 0.03,
+          "prospect": 0.04,
+          "billing": 0.81,
+          "noise": 0.02,
+          "internal": 0.27
+        },
+        "clock": 0.08,
+        "model": "jev-1.13.0"
+      },
+      "c062": {
+        "scores": {
+          "notice": 0.03,
+          "docs": 0.02,
+          "question": 0.13,
+          "payroll": 0.03,
+          "prospect": 0.22,
+          "billing": 0.8,
+          "noise": 0.03,
+          "internal": 0.22
+        },
+        "clock": 0.18,
+        "model": "jev-1.13.0"
+      },
+      "c063": {
+        "scores": {
+          "notice": 0.02,
+          "docs": 0.04,
+          "question": 0.03,
+          "payroll": 0.04,
+          "prospect": 0.03,
+          "billing": 0.89,
+          "noise": 0.02,
+          "internal": 0.17
+        },
+        "clock": 0.07,
+        "model": "jev-1.13.0"
+      },
+      "c064": {
+        "scores": {
+          "notice": 0.05,
+          "docs": 0.04,
+          "question": 0.04,
+          "payroll": 0.05,
+          "prospect": 0.06,
+          "billing": 0.85,
+          "noise": 0.02,
+          "internal": 0.16
+        },
+        "clock": 0.81,
+        "model": "jev-1.13.0"
+      },
+      "c065": {
+        "scores": {
+          "notice": 0.01,
+          "docs": 0.03,
+          "question": 0.02,
+          "payroll": 0.02,
+          "prospect": 0.03,
+          "billing": 0.92,
+          "noise": 0.02,
+          "internal": 0.47
+        },
+        "clock": 0.21,
+        "model": "jev-1.13.0"
+      },
+      "c066": {
+        "scores": {
+          "notice": 0.15,
+          "docs": 0.03,
+          "question": 0.04,
+          "payroll": 0.04,
+          "prospect": 0.1,
+          "billing": 0.07,
+          "noise": 0.8,
+          "internal": 0.32
+        },
+        "clock": 0.72,
+        "model": "jev-1.13.0"
+      },
+      "c067": {
+        "scores": {
+          "notice": 0.03,
+          "docs": 0.02,
+          "question": 0.07,
+          "payroll": 0.04,
+          "prospect": 0.19,
+          "billing": 0.05,
+          "noise": 0.95,
+          "internal": 0.07
+        },
+        "clock": 0.05,
+        "model": "jev-1.13.0"
+      },
+      "c068": {
+        "scores": {
+          "notice": 0.27,
+          "docs": 0.03,
+          "question": 0.12,
+          "payroll": 0.44,
+          "prospect": 0.06,
+          "billing": 0.06,
+          "noise": 0.15,
+          "internal": 0.2
+        },
+        "clock": 0.93,
+        "model": "jev-1.13.0"
+      },
+      "c069": {
+        "scores": {
+          "notice": 0.02,
+          "docs": 0.02,
+          "question": 0.02,
+          "payroll": 0.02,
+          "prospect": 0.06,
+          "billing": 0.12,
+          "noise": 0.93,
+          "internal": 0.07
+        },
+        "clock": 0.18,
+        "model": "jev-1.13.0"
+      },
+      "c070": {
+        "scores": {
+          "notice": 0.02,
+          "docs": 0.02,
+          "question": 0.04,
+          "payroll": 0.04,
+          "prospect": 0.34,
+          "billing": 0.06,
+          "noise": 0.71,
+          "internal": 0.19
+        },
+        "clock": 0.08,
+        "model": "jev-1.13.0"
+      },
+      "c071": {
+        "scores": {
+          "notice": 0.02,
+          "docs": 0.02,
+          "question": 0.04,
+          "payroll": 0.36,
+          "prospect": 0.09,
+          "billing": 0.07,
+          "noise": 0.97,
+          "internal": 0.1
+        },
+        "clock": 0.03,
+        "model": "jev-1.13.0"
+      },
+      "c072": {
+        "scores": {
+          "notice": 0.02,
+          "docs": 0.08,
+          "question": 0.04,
+          "payroll": 0.07,
+          "prospect": 0.12,
+          "billing": 0.07,
+          "noise": 0.96,
+          "internal": 0.11
+        },
+        "clock": 0.14,
+        "model": "jev-1.13.0"
+      },
+      "c073": {
+        "scores": {
+          "notice": 0.02,
+          "docs": 0.03,
+          "question": 0.05,
+          "payroll": 0.04,
+          "prospect": 0.47,
+          "billing": 0.07,
+          "noise": 0.68,
+          "internal": 0.35
+        },
+        "clock": 0.16,
+        "model": "jev-1.13.0"
+      },
+      "c074": {
+        "scores": {
+          "notice": 0.02,
+          "docs": 0.02,
+          "question": 0.04,
+          "payroll": 0.05,
+          "prospect": 0.1,
+          "billing": 0.08,
+          "noise": 0.97,
+          "internal": 0.05
+        },
+        "clock": 0.04,
+        "model": "jev-1.13.0"
+      },
+      "c075": {
+        "scores": {
+          "notice": 0.01,
+          "docs": 0.03,
+          "question": 0.03,
+          "payroll": 0.04,
+          "prospect": 0.57,
+          "billing": 0.1,
+          "noise": 0.6,
+          "internal": 0.17
+        },
+        "clock": 0.38,
+        "model": "jev-1.13.0"
+      },
+      "c076": {
+        "scores": {
+          "notice": 0.01,
+          "docs": 0.02,
+          "question": 0.03,
+          "payroll": 0.03,
+          "prospect": 0.04,
+          "billing": 0.05,
+          "noise": 0.86,
+          "internal": 0.18
+        },
+        "clock": 0.2,
+        "model": "jev-1.13.0"
+      },
+      "c077": {
+        "scores": {
+          "notice": 0.02,
+          "docs": 0.03,
+          "question": 0.03,
+          "payroll": 0.05,
+          "prospect": 0.09,
+          "billing": 0.08,
+          "noise": 0.97,
+          "internal": 0.1
+        },
+        "clock": 0.03,
+        "model": "jev-1.13.0"
+      },
+      "c078": {
+        "scores": {
+          "notice": 0.02,
+          "docs": 0.02,
+          "question": 0.02,
+          "payroll": 0.04,
+          "prospect": 0.13,
+          "billing": 0.05,
+          "noise": 0.79,
+          "internal": 0.11
+        },
+        "clock": 0.23,
+        "model": "jev-1.13.0"
+      },
+      "c079": {
+        "scores": {
+          "notice": 0.05,
+          "docs": 0.03,
+          "question": 0.11,
+          "payroll": 0.04,
+          "prospect": 0.19,
+          "billing": 0.08,
+          "noise": 0.92,
+          "internal": 0.28
+        },
+        "clock": 0.14,
+        "model": "jev-1.13.0"
+      },
+      "c080": {
+        "scores": {
+          "notice": 0.02,
+          "docs": 0.11,
+          "question": 0.07,
+          "payroll": 0.03,
+          "prospect": 0.13,
+          "billing": 0.07,
+          "noise": 0.91,
+          "internal": 0.28
+        },
+        "clock": 0.42,
+        "model": "jev-1.13.0"
+      },
+      "c081": {
+        "scores": {
+          "notice": 0.02,
+          "docs": 0.03,
+          "question": 0.03,
+          "payroll": 0.05,
+          "prospect": 0.08,
+          "billing": 0.07,
+          "noise": 0.97,
+          "internal": 0.08
+        },
+        "clock": 0.06,
+        "model": "jev-1.13.0"
+      },
+      "c082": {
+        "scores": {
+          "notice": 0.03,
+          "docs": 0.02,
+          "question": 0.07,
+          "payroll": 0.56,
+          "prospect": 0.28,
+          "billing": 0.05,
+          "noise": 0.69,
+          "internal": 0.22
+        },
+        "clock": 0.09,
+        "model": "jev-1.13.0"
+      },
+      "c083": {
+        "scores": {
+          "notice": 0.02,
+          "docs": 0.02,
+          "question": 0.02,
+          "payroll": 0.04,
+          "prospect": 0.05,
+          "billing": 0.08,
+          "noise": 0.92,
+          "internal": 0.05
+        },
+        "clock": 0.17,
+        "model": "jev-1.13.0"
+      },
+      "c084": {
+        "scores": {
+          "notice": 0.05,
+          "docs": 0.05,
+          "question": 0.08,
+          "payroll": 0.05,
+          "prospect": 0.04,
+          "billing": 0.05,
+          "noise": 0.01,
+          "internal": 0.91
+        },
+        "clock": 0.27,
+        "model": "jev-1.13.0"
+      },
+      "c085": {
+        "scores": {
+          "notice": 0.04,
+          "docs": 0.03,
+          "question": 0.14,
+          "payroll": 0.03,
+          "prospect": 0.11,
+          "billing": 0.08,
+          "noise": 0.02,
+          "internal": 0.96
+        },
+        "clock": 0.17,
+        "model": "jev-1.13.0"
+      },
+      "c086": {
+        "scores": {
+          "notice": 0.02,
+          "docs": 0.03,
+          "question": 0.03,
+          "payroll": 0.04,
+          "prospect": 0.04,
+          "billing": 0.07,
+          "noise": 0.01,
+          "internal": 0.87
+        },
+        "clock": 0.05,
+        "model": "jev-1.13.0"
+      },
+      "c087": {
+        "scores": {
+          "notice": 0.03,
+          "docs": 0.53,
+          "question": 0.04,
+          "payroll": 0.03,
+          "prospect": 0.04,
+          "billing": 0.07,
+          "noise": 0.02,
+          "internal": 0.85
+        },
+        "clock": 0.07,
+        "model": "jev-1.13.0"
+      },
+      "c088": {
+        "scores": {
+          "notice": 0.68,
+          "docs": 0.12,
+          "question": 0.37,
+          "payroll": 0.04,
+          "prospect": 0.04,
+          "billing": 0.04,
+          "noise": 0.02,
+          "internal": 0.93
+        },
+        "clock": 0.61,
+        "model": "jev-1.13.0"
+      },
+      "c089": {
+        "scores": {
+          "notice": 0.05,
+          "docs": 0.05,
+          "question": 0.07,
+          "payroll": 0.05,
+          "prospect": 0.05,
+          "billing": 0.07,
+          "noise": 0.02,
+          "internal": 0.86
+        },
+        "clock": 0.93,
+        "model": "jev-1.13.0"
+      },
+      "c090": {
+        "scores": {
+          "notice": 0.03,
+          "docs": 0.32,
+          "question": 0.17,
+          "payroll": 0.03,
+          "prospect": 0.04,
+          "billing": 0.06,
+          "noise": 0.02,
+          "internal": 0.82
+        },
+        "clock": 0.33,
+        "model": "jev-1.13.0"
+      }
+    }
+  },
+  "gc": {
+    "date": "2026-09-25",
+    "lines": {
+      "act": 0.5,
+      "review": 0.4,
+      "clockAct": 0.7
+    },
+    "judgments": {
+      "g001": {
+        "scores": {
+          "co": 0.05,
+          "bid": 0.06,
+          "inspection": 0.02,
+          "sub": 0.92,
+          "owner": 0.04,
+          "invoice": 0.04,
+          "noise": 0.02,
+          "internal": 0.09
+        },
+        "clock": 0.95,
+        "model": "jev-1.13.0"
+      },
+      "g002": {
+        "scores": {
+          "co": 0.05,
+          "bid": 0.04,
+          "inspection": 0.86,
+          "sub": 0.11,
+          "owner": 0.2,
+          "invoice": 0.03,
+          "noise": 0.03,
+          "internal": 0.27
+        },
+        "clock": 0.97,
+        "model": "jev-1.13.0"
+      },
+      "g003": {
+        "scores": {
+          "co": 0.95,
+          "bid": 0.04,
+          "inspection": 0.31,
+          "sub": 0.32,
+          "owner": 0.67,
+          "invoice": 0.05,
+          "noise": 0.05,
+          "internal": 0.37
+        },
+        "clock": 0.79,
+        "model": "jev-1.13.0"
+      },
+      "g004": {
+        "scores": {
+          "co": 0.03,
+          "bid": 0.78,
+          "inspection": 0.02,
+          "sub": 0.23,
+          "owner": 0.07,
+          "invoice": 0.04,
+          "noise": 0.12,
+          "internal": 0.29
+        },
+        "clock": 0.77,
+        "model": "jev-1.13.0"
+      },
+      "g005": {
+        "scores": {
+          "co": 0.04,
+          "bid": 0.04,
+          "inspection": 0.02,
+          "sub": 0.77,
+          "owner": 0.11,
+          "invoice": 0.89,
+          "noise": 0.02,
+          "internal": 0.34
+        },
+        "clock": 0.89,
+        "model": "jev-1.13.0"
+      },
+      "g006": {
+        "scores": {
+          "co": 0.19,
+          "bid": 0.05,
+          "inspection": 0.03,
+          "sub": 0.33,
+          "owner": 0.09,
+          "invoice": 0.04,
+          "noise": 0.02,
+          "internal": 0.81
+        },
+        "clock": 0.18,
+        "model": "jev-1.13.0"
+      },
+      "g007": {
+        "scores": {
+          "co": 0.04,
+          "bid": 0.05,
+          "inspection": 0.11,
+          "sub": 0.16,
+          "owner": 0.57,
+          "invoice": 0.04,
+          "noise": 0.02,
+          "internal": 0.49
+        },
+        "clock": 0.42,
+        "model": "jev-1.13.0"
+      },
+      "g008": {
+        "scores": {
+          "co": 0.62,
+          "bid": 0.05,
+          "inspection": 0.02,
+          "sub": 0.05,
+          "owner": 0.05,
+          "invoice": 0.03,
+          "noise": 0.98,
+          "internal": 0.08
+        },
+        "clock": 0.03,
+        "model": "jev-1.13.0"
+      },
+      "g009": {
+        "scores": {
+          "co": 0.07,
+          "bid": 0.04,
+          "inspection": 0.86,
+          "sub": 0.04,
+          "owner": 0.14,
+          "invoice": 0.03,
+          "noise": 0.02,
+          "internal": 0.11
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "g010": {
+        "scores": {
+          "co": 0.07,
+          "bid": 0.06,
+          "inspection": 0.03,
+          "sub": 0.69,
+          "owner": 0.19,
+          "invoice": 0.04,
+          "noise": 0.03,
+          "internal": 0.66
+        },
+        "clock": 0.18,
+        "model": "jev-1.13.0"
+      },
+      "g011": {
+        "scores": {
+          "co": 0.96,
+          "bid": 0.04,
+          "inspection": 0.02,
+          "sub": 0.31,
+          "owner": 0.17,
+          "invoice": 0.09,
+          "noise": 0.03,
+          "internal": 0.6
+        },
+        "clock": 0.15,
+        "model": "jev-1.13.0"
+      },
+      "g012": {
+        "scores": {
+          "co": 0.83,
+          "bid": 0.15,
+          "inspection": 0.02,
+          "sub": 0.23,
+          "owner": 0.48,
+          "invoice": 0.04,
+          "noise": 0.05,
+          "internal": 0.26
+        },
+        "clock": 0.07,
+        "model": "jev-1.13.0"
+      },
+      "g013": {
+        "scores": {
+          "co": 0.94,
+          "bid": 0.05,
+          "inspection": 0.02,
+          "sub": 0.43,
+          "owner": 0.14,
+          "invoice": 0.09,
+          "noise": 0.04,
+          "internal": 0.37
+        },
+        "clock": 0.11,
+        "model": "jev-1.13.0"
+      },
+      "g014": {
+        "scores": {
+          "co": 0.97,
+          "bid": 0.03,
+          "inspection": 0.02,
+          "sub": 0.19,
+          "owner": 0.32,
+          "invoice": 0.05,
+          "noise": 0.03,
+          "internal": 0.72
+        },
+        "clock": 0.1,
+        "model": "jev-1.13.0"
+      },
+      "g015": {
+        "scores": {
+          "co": 0.95,
+          "bid": 0.06,
+          "inspection": 0.02,
+          "sub": 0.4,
+          "owner": 0.42,
+          "invoice": 0.05,
+          "noise": 0.05,
+          "internal": 0.64
+        },
+        "clock": 0.55,
+        "model": "jev-1.13.0"
+      },
+      "g016": {
+        "scores": {
+          "co": 0.94,
+          "bid": 0.06,
+          "inspection": 0.02,
+          "sub": 0.24,
+          "owner": 0.42,
+          "invoice": 0.04,
+          "noise": 0.03,
+          "internal": 0.37
+        },
+        "clock": 0.97,
+        "model": "jev-1.13.0"
+      },
+      "g017": {
+        "scores": {
+          "co": 0.95,
+          "bid": 0.04,
+          "inspection": 0.02,
+          "sub": 0.2,
+          "owner": 0.1,
+          "invoice": 0.22,
+          "noise": 0.02,
+          "internal": 0.88
+        },
+        "clock": 0.12,
+        "model": "jev-1.13.0"
+      },
+      "g018": {
+        "scores": {
+          "co": 0.85,
+          "bid": 0.04,
+          "inspection": 0.06,
+          "sub": 0.37,
+          "owner": 0.43,
+          "invoice": 0.11,
+          "noise": 0.03,
+          "internal": 0.47
+        },
+        "clock": 0.96,
+        "model": "jev-1.13.0"
+      },
+      "g019": {
+        "scores": {
+          "co": 0.95,
+          "bid": 0.04,
+          "inspection": 0.05,
+          "sub": 0.57,
+          "owner": 0.25,
+          "invoice": 0.04,
+          "noise": 0.03,
+          "internal": 0.77
+        },
+        "clock": 0.41,
+        "model": "jev-1.13.0"
+      },
+      "g020": {
+        "scores": {
+          "co": 0.95,
+          "bid": 0.04,
+          "inspection": 0.02,
+          "sub": 0.09,
+          "owner": 0.78,
+          "invoice": 0.04,
+          "noise": 0.03,
+          "internal": 0.21
+        },
+        "clock": 0.06,
+        "model": "jev-1.13.0"
+      },
+      "g021": {
+        "scores": {
+          "co": 0.89,
+          "bid": 0.03,
+          "inspection": 0.02,
+          "sub": 0.59,
+          "owner": 0.3,
+          "invoice": 0.12,
+          "noise": 0.04,
+          "internal": 0.48
+        },
+        "clock": 0.08,
+        "model": "jev-1.13.0"
+      },
+      "g022": {
+        "scores": {
+          "co": 0.05,
+          "bid": 0.97,
+          "inspection": 0.07,
+          "sub": 0.07,
+          "owner": 0.18,
+          "invoice": 0.03,
+          "noise": 0.04,
+          "internal": 0.09
+        },
+        "clock": 0.96,
+        "model": "jev-1.13.0"
+      },
+      "g023": {
+        "scores": {
+          "co": 0.07,
+          "bid": 0.95,
+          "inspection": 0.03,
+          "sub": 0.09,
+          "owner": 0.18,
+          "invoice": 0.03,
+          "noise": 0.03,
+          "internal": 0.31
+        },
+        "clock": 0.95,
+        "model": "jev-1.13.0"
+      },
+      "g024": {
+        "scores": {
+          "co": 0.09,
+          "bid": 0.92,
+          "inspection": 0.03,
+          "sub": 0.12,
+          "owner": 0.17,
+          "invoice": 0.04,
+          "noise": 0.03,
+          "internal": 0.4
+        },
+        "clock": 0.44,
+        "model": "jev-1.13.0"
+      },
+      "g025": {
+        "scores": {
+          "co": 0.09,
+          "bid": 0.69,
+          "inspection": 0.03,
+          "sub": 0.27,
+          "owner": 0.11,
+          "invoice": 0.12,
+          "noise": 0.1,
+          "internal": 0.63
+        },
+        "clock": 0.04,
+        "model": "jev-1.13.0"
+      },
+      "g026": {
+        "scores": {
+          "co": 0.1,
+          "bid": 0.85,
+          "inspection": 0.02,
+          "sub": 0.33,
+          "owner": 0.12,
+          "invoice": 0.05,
+          "noise": 0.16,
+          "internal": 0.38
+        },
+        "clock": 0.49,
+        "model": "jev-1.13.0"
+      },
+      "g027": {
+        "scores": {
+          "co": 0.06,
+          "bid": 0.83,
+          "inspection": 0.02,
+          "sub": 0.16,
+          "owner": 0.23,
+          "invoice": 0.04,
+          "noise": 0.07,
+          "internal": 0.23
+        },
+        "clock": 0.21,
+        "model": "jev-1.13.0"
+      },
+      "g028": {
+        "scores": {
+          "co": 0.05,
+          "bid": 0.95,
+          "inspection": 0.03,
+          "sub": 0.17,
+          "owner": 0.11,
+          "invoice": 0.03,
+          "noise": 0.06,
+          "internal": 0.53
+        },
+        "clock": 0.87,
+        "model": "jev-1.13.0"
+      },
+      "g029": {
+        "scores": {
+          "co": 0.07,
+          "bid": 0.12,
+          "inspection": 0.01,
+          "sub": 0.06,
+          "owner": 0.04,
+          "invoice": 0.03,
+          "noise": 0.96,
+          "internal": 0.07
+        },
+        "clock": 0.33,
+        "model": "jev-1.13.0"
+      },
+      "g030": {
+        "scores": {
+          "co": 0.04,
+          "bid": 0.82,
+          "inspection": 0.02,
+          "sub": 0.38,
+          "owner": 0.11,
+          "invoice": 0.08,
+          "noise": 0.09,
+          "internal": 0.23
+        },
+        "clock": 0.12,
+        "model": "jev-1.13.0"
+      },
+      "g031": {
+        "scores": {
+          "co": 0.05,
+          "bid": 0.68,
+          "inspection": 0.02,
+          "sub": 0.23,
+          "owner": 0.18,
+          "invoice": 0.03,
+          "noise": 0.16,
+          "internal": 0.35
+        },
+        "clock": 0.27,
+        "model": "jev-1.13.0"
+      },
+      "g032": {
+        "scores": {
+          "co": 0.04,
+          "bid": 0.97,
+          "inspection": 0.02,
+          "sub": 0.08,
+          "owner": 0.29,
+          "invoice": 0.02,
+          "noise": 0.04,
+          "internal": 0.11
+        },
+        "clock": 0.87,
+        "model": "jev-1.13.0"
+      },
+      "g033": {
+        "scores": {
+          "co": 0.05,
+          "bid": 0.04,
+          "inspection": 0.93,
+          "sub": 0.09,
+          "owner": 0.2,
+          "invoice": 0.03,
+          "noise": 0.02,
+          "internal": 0.35
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "g034": {
+        "scores": {
+          "co": 0.04,
+          "bid": 0.04,
+          "inspection": 0.9,
+          "sub": 0.12,
+          "owner": 0.18,
+          "invoice": 0.03,
+          "noise": 0.02,
+          "internal": 0.35
+        },
+        "clock": 0.15,
+        "model": "jev-1.13.0"
+      },
+      "g035": {
+        "scores": {
+          "co": 0.06,
+          "bid": 0.04,
+          "inspection": 0.08,
+          "sub": 0.3,
+          "owner": 0.22,
+          "invoice": 0.05,
+          "noise": 0.02,
+          "internal": 0.65
+        },
+        "clock": 0.22,
+        "model": "jev-1.13.0"
+      },
+      "g036": {
+        "scores": {
+          "co": 0.06,
+          "bid": 0.05,
+          "inspection": 0.92,
+          "sub": 0.31,
+          "owner": 0.14,
+          "invoice": 0.03,
+          "noise": 0.03,
+          "internal": 0.42
+        },
+        "clock": 0.94,
+        "model": "jev-1.13.0"
+      },
+      "g037": {
+        "scores": {
+          "co": 0.07,
+          "bid": 0.04,
+          "inspection": 0.52,
+          "sub": 0.43,
+          "owner": 0.21,
+          "invoice": 0.06,
+          "noise": 0.02,
+          "internal": 0.62
+        },
+        "clock": 0.14,
+        "model": "jev-1.13.0"
+      },
+      "g038": {
+        "scores": {
+          "co": 0.04,
+          "bid": 0.03,
+          "inspection": 0.93,
+          "sub": 0.05,
+          "owner": 0.16,
+          "invoice": 0.03,
+          "noise": 0.02,
+          "internal": 0.18
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "g039": {
+        "scores": {
+          "co": 0.06,
+          "bid": 0.03,
+          "inspection": 0.73,
+          "sub": 0.14,
+          "owner": 0.18,
+          "invoice": 0.03,
+          "noise": 0.02,
+          "internal": 0.65
+        },
+        "clock": 0.97,
+        "model": "jev-1.13.0"
+      },
+      "g040": {
+        "scores": {
+          "co": 0.05,
+          "bid": 0.06,
+          "inspection": 0.9,
+          "sub": 0.17,
+          "owner": 0.2,
+          "invoice": 0.03,
+          "noise": 0.03,
+          "internal": 0.31
+        },
+        "clock": 0.33,
+        "model": "jev-1.13.0"
+      },
+      "g041": {
+        "scores": {
+          "co": 0.4,
+          "bid": 0.12,
+          "inspection": 0.96,
+          "sub": 0.06,
+          "owner": 0.54,
+          "invoice": 0.04,
+          "noise": 0.04,
+          "internal": 0.81
+        },
+        "clock": 0.96,
+        "model": "jev-1.13.0"
+      },
+      "g042": {
+        "scores": {
+          "co": 0.17,
+          "bid": 0.08,
+          "inspection": 0.02,
+          "sub": 0.86,
+          "owner": 0.2,
+          "invoice": 0.05,
+          "noise": 0.03,
+          "internal": 0.34
+        },
+        "clock": 0.89,
+        "model": "jev-1.13.0"
+      },
+      "g043": {
+        "scores": {
+          "co": 0.05,
+          "bid": 0.06,
+          "inspection": 0.23,
+          "sub": 0.59,
+          "owner": 0.18,
+          "invoice": 0.04,
+          "noise": 0.02,
+          "internal": 0.78
+        },
+        "clock": 0.52,
+        "model": "jev-1.13.0"
+      },
+      "g044": {
+        "scores": {
+          "co": 0.05,
+          "bid": 0.06,
+          "inspection": 0.03,
+          "sub": 0.76,
+          "owner": 0.25,
+          "invoice": 0.03,
+          "noise": 0.04,
+          "internal": 0.25
+        },
+        "clock": 0.17,
+        "model": "jev-1.13.0"
+      },
+      "g045": {
+        "scores": {
+          "co": 0.06,
+          "bid": 0.03,
+          "inspection": 0.02,
+          "sub": 0.4,
+          "owner": 0.1,
+          "invoice": 0.12,
+          "noise": 0.02,
+          "internal": 0.71
+        },
+        "clock": 0.54,
+        "model": "jev-1.13.0"
+      },
+      "g046": {
+        "scores": {
+          "co": 0.06,
+          "bid": 0.03,
+          "inspection": 0.02,
+          "sub": 0.57,
+          "owner": 0.17,
+          "invoice": 0.1,
+          "noise": 0.03,
+          "internal": 0.24
+        },
+        "clock": 0.37,
+        "model": "jev-1.13.0"
+      },
+      "g047": {
+        "scores": {
+          "co": 0.06,
+          "bid": 0.04,
+          "inspection": 0.03,
+          "sub": 0.81,
+          "owner": 0.17,
+          "invoice": 0.14,
+          "noise": 0.02,
+          "internal": 0.3
+        },
+        "clock": 0.19,
+        "model": "jev-1.13.0"
+      },
+      "g048": {
+        "scores": {
+          "co": 0.06,
+          "bid": 0.04,
+          "inspection": 0.02,
+          "sub": 0.94,
+          "owner": 0.09,
+          "invoice": 0.19,
+          "noise": 0.03,
+          "internal": 0.13
+        },
+        "clock": 0.97,
+        "model": "jev-1.13.0"
+      },
+      "g049": {
+        "scores": {
+          "co": 0.11,
+          "bid": 0.05,
+          "inspection": 0.02,
+          "sub": 0.78,
+          "owner": 0.13,
+          "invoice": 0.05,
+          "noise": 0.02,
+          "internal": 0.62
+        },
+        "clock": 0.13,
+        "model": "jev-1.13.0"
+      },
+      "g050": {
+        "scores": {
+          "co": 0.19,
+          "bid": 0.23,
+          "inspection": 0.02,
+          "sub": 0.8,
+          "owner": 0.15,
+          "invoice": 0.07,
+          "noise": 0.09,
+          "internal": 0.26
+        },
+        "clock": 0.9,
+        "model": "jev-1.13.0"
+      },
+      "g051": {
+        "scores": {
+          "co": 0.08,
+          "bid": 0.13,
+          "inspection": 0.03,
+          "sub": 0.81,
+          "owner": 0.15,
+          "invoice": 0.04,
+          "noise": 0.09,
+          "internal": 0.41
+        },
+        "clock": 0.35,
+        "model": "jev-1.13.0"
+      },
+      "g052": {
+        "scores": {
+          "co": 0.06,
+          "bid": 0.04,
+          "inspection": 0.07,
+          "sub": 0.32,
+          "owner": 0.57,
+          "invoice": 0.15,
+          "noise": 0.02,
+          "internal": 0.58
+        },
+        "clock": 0.12,
+        "model": "jev-1.13.0"
+      },
+      "g053": {
+        "scores": {
+          "co": 0.09,
+          "bid": 0.08,
+          "inspection": 0.03,
+          "sub": 0.1,
+          "owner": 0.49,
+          "invoice": 0.04,
+          "noise": 0.04,
+          "internal": 0.65
+        },
+        "clock": 0.07,
+        "model": "jev-1.13.0"
+      },
+      "g054": {
+        "scores": {
+          "co": 0.09,
+          "bid": 0.05,
+          "inspection": 0.21,
+          "sub": 0.15,
+          "owner": 0.21,
+          "invoice": 0.06,
+          "noise": 0.02,
+          "internal": 0.7
+        },
+        "clock": 0.16,
+        "model": "jev-1.13.0"
+      },
+      "g055": {
+        "scores": {
+          "co": 0.05,
+          "bid": 0.04,
+          "inspection": 0.35,
+          "sub": 0.28,
+          "owner": 0.5,
+          "invoice": 0.55,
+          "noise": 0.02,
+          "internal": 0.71
+        },
+        "clock": 0.9,
+        "model": "jev-1.13.0"
+      },
+      "g056": {
+        "scores": {
+          "co": 0.05,
+          "bid": 0.06,
+          "inspection": 0.08,
+          "sub": 0.41,
+          "owner": 0.35,
+          "invoice": 0.05,
+          "noise": 0.02,
+          "internal": 0.45
+        },
+        "clock": 0.19,
+        "model": "jev-1.13.0"
+      },
+      "g057": {
+        "scores": {
+          "co": 0.08,
+          "bid": 0.06,
+          "inspection": 0.05,
+          "sub": 0.24,
+          "owner": 0.68,
+          "invoice": 0.04,
+          "noise": 0.03,
+          "internal": 0.42
+        },
+        "clock": 0.11,
+        "model": "jev-1.13.0"
+      },
+      "g058": {
+        "scores": {
+          "co": 0.11,
+          "bid": 0.08,
+          "inspection": 0.04,
+          "sub": 0.1,
+          "owner": 0.74,
+          "invoice": 0.04,
+          "noise": 0.03,
+          "internal": 0.45
+        },
+        "clock": 0.51,
+        "model": "jev-1.13.0"
+      },
+      "g059": {
+        "scores": {
+          "co": 0.07,
+          "bid": 0.04,
+          "inspection": 0.07,
+          "sub": 0.28,
+          "owner": 0.27,
+          "invoice": 0.07,
+          "noise": 0.02,
+          "internal": 0.74
+        },
+        "clock": 0.09,
+        "model": "jev-1.13.0"
+      },
+      "g060": {
+        "scores": {
+          "co": 0.12,
+          "bid": 0.04,
+          "inspection": 0.07,
+          "sub": 0.26,
+          "owner": 0.79,
+          "invoice": 0.04,
+          "noise": 0.02,
+          "internal": 0.26
+        },
+        "clock": 0.97,
+        "model": "jev-1.13.0"
+      },
+      "g061": {
+        "scores": {
+          "co": 0.05,
+          "bid": 0.03,
+          "inspection": 0.02,
+          "sub": 0.4,
+          "owner": 0.49,
+          "invoice": 0.27,
+          "noise": 0.02,
+          "internal": 0.55
+        },
+        "clock": 0.96,
+        "model": "jev-1.13.0"
+      },
+      "g062": {
+        "scores": {
+          "co": 0.05,
+          "bid": 0.06,
+          "inspection": 0.02,
+          "sub": 0.8,
+          "owner": 0.13,
+          "invoice": 0.92,
+          "noise": 0.03,
+          "internal": 0.3
+        },
+        "clock": 0.67,
+        "model": "jev-1.13.0"
+      },
+      "g063": {
+        "scores": {
+          "co": 0.06,
+          "bid": 0.03,
+          "inspection": 0.03,
+          "sub": 0.51,
+          "owner": 0.22,
+          "invoice": 0.51,
+          "noise": 0.03,
+          "internal": 0.48
+        },
+        "clock": 0.25,
+        "model": "jev-1.13.0"
+      },
+      "g064": {
+        "scores": {
+          "co": 0.05,
+          "bid": 0.05,
+          "inspection": 0.02,
+          "sub": 0.73,
+          "owner": 0.16,
+          "invoice": 0.9,
+          "noise": 0.03,
+          "internal": 0.37
+        },
+        "clock": 0.17,
+        "model": "jev-1.13.0"
+      },
+      "g065": {
+        "scores": {
+          "co": 0.06,
+          "bid": 0.04,
+          "inspection": 0.02,
+          "sub": 0.51,
+          "owner": 0.13,
+          "invoice": 0.78,
+          "noise": 0.02,
+          "internal": 0.32
+        },
+        "clock": 0.72,
+        "model": "jev-1.13.0"
+      },
+      "g066": {
+        "scores": {
+          "co": 0.04,
+          "bid": 0.06,
+          "inspection": 0.02,
+          "sub": 0.23,
+          "owner": 0.07,
+          "invoice": 0.94,
+          "noise": 0.08,
+          "internal": 0.19
+        },
+        "clock": 0.96,
+        "model": "jev-1.13.0"
+      },
+      "g067": {
+        "scores": {
+          "co": 0.02,
+          "bid": 0.05,
+          "inspection": 0.02,
+          "sub": 0.05,
+          "owner": 0.07,
+          "invoice": 0.04,
+          "noise": 0.97,
+          "internal": 0.1
+        },
+        "clock": 0.05,
+        "model": "jev-1.13.0"
+      },
+      "g068": {
+        "scores": {
+          "co": 0.06,
+          "bid": 0.03,
+          "inspection": 0.02,
+          "sub": 0.61,
+          "owner": 0.09,
+          "invoice": 0.4,
+          "noise": 0.02,
+          "internal": 0.62
+        },
+        "clock": 0.09,
+        "model": "jev-1.13.0"
+      },
+      "g069": {
+        "scores": {
+          "co": 0.09,
+          "bid": 0.04,
+          "inspection": 0.04,
+          "sub": 0.4,
+          "owner": 0.15,
+          "invoice": 0.33,
+          "noise": 0.03,
+          "internal": 0.19
+        },
+        "clock": 0.35,
+        "model": "jev-1.13.0"
+      },
+      "g070": {
+        "scores": {
+          "co": 0.06,
+          "bid": 0.05,
+          "inspection": 0.19,
+          "sub": 0.77,
+          "owner": 0.19,
+          "invoice": 0.9,
+          "noise": 0.02,
+          "internal": 0.32
+        },
+        "clock": 0.17,
+        "model": "jev-1.13.0"
+      },
+      "g071": {
+        "scores": {
+          "co": 0.03,
+          "bid": 0.09,
+          "inspection": 0.02,
+          "sub": 0.12,
+          "owner": 0.04,
+          "invoice": 0.03,
+          "noise": 0.97,
+          "internal": 0.09
+        },
+        "clock": 0.04,
+        "model": "jev-1.13.0"
+      },
+      "g072": {
+        "scores": {
+          "co": 0.03,
+          "bid": 0.06,
+          "inspection": 0.01,
+          "sub": 0.08,
+          "owner": 0.04,
+          "invoice": 0.04,
+          "noise": 0.96,
+          "internal": 0.2
+        },
+        "clock": 0.32,
+        "model": "jev-1.13.0"
+      },
+      "g073": {
+        "scores": {
+          "co": 0.04,
+          "bid": 0.06,
+          "inspection": 0.02,
+          "sub": 0.07,
+          "owner": 0.06,
+          "invoice": 0.03,
+          "noise": 0.96,
+          "internal": 0.19
+        },
+        "clock": 0.04,
+        "model": "jev-1.13.0"
+      },
+      "g074": {
+        "scores": {
+          "co": 0.07,
+          "bid": 0.05,
+          "inspection": 0.02,
+          "sub": 0.07,
+          "owner": 0.06,
+          "invoice": 0.03,
+          "noise": 0.93,
+          "internal": 0.19
+        },
+        "clock": 0.09,
+        "model": "jev-1.13.0"
+      },
+      "g075": {
+        "scores": {
+          "co": 0.1,
+          "bid": 0.28,
+          "inspection": 0.02,
+          "sub": 0.09,
+          "owner": 0.05,
+          "invoice": 0.04,
+          "noise": 0.97,
+          "internal": 0.1
+        },
+        "clock": 0.02,
+        "model": "jev-1.13.0"
+      },
+      "g076": {
+        "scores": {
+          "co": 0.05,
+          "bid": 0.05,
+          "inspection": 0.02,
+          "sub": 0.05,
+          "owner": 0.04,
+          "invoice": 0.05,
+          "noise": 0.88,
+          "internal": 0.1
+        },
+        "clock": 0.86,
+        "model": "jev-1.13.0"
+      },
+      "g077": {
+        "scores": {
+          "co": 0.05,
+          "bid": 0.08,
+          "inspection": 0.03,
+          "sub": 0.07,
+          "owner": 0.12,
+          "invoice": 0.03,
+          "noise": 0.97,
+          "internal": 0.16
+        },
+        "clock": 0.06,
+        "model": "jev-1.13.0"
+      },
+      "g078": {
+        "scores": {
+          "co": 0.09,
+          "bid": 0.04,
+          "inspection": 0.07,
+          "sub": 0.06,
+          "owner": 0.05,
+          "invoice": 0.04,
+          "noise": 0.89,
+          "internal": 0.08
+        },
+        "clock": 0.9,
+        "model": "jev-1.13.0"
+      },
+      "g079": {
+        "scores": {
+          "co": 0.14,
+          "bid": 0.06,
+          "inspection": 0.09,
+          "sub": 0.09,
+          "owner": 0.07,
+          "invoice": 0.04,
+          "noise": 0.97,
+          "internal": 0.1
+        },
+        "clock": 0.13,
+        "model": "jev-1.13.0"
+      },
+      "g080": {
+        "scores": {
+          "co": 0.07,
+          "bid": 0.04,
+          "inspection": 0.08,
+          "sub": 0.09,
+          "owner": 0.04,
+          "invoice": 0.03,
+          "noise": 0.96,
+          "internal": 0.09
+        },
+        "clock": 0.12,
+        "model": "jev-1.13.0"
+      },
+      "g081": {
+        "scores": {
+          "co": 0.04,
+          "bid": 0.04,
+          "inspection": 0.01,
+          "sub": 0.07,
+          "owner": 0.05,
+          "invoice": 0.03,
+          "noise": 0.87,
+          "internal": 0.33
+        },
+        "clock": 0.06,
+        "model": "jev-1.13.0"
+      },
+      "g082": {
+        "scores": {
+          "co": 0.06,
+          "bid": 0.1,
+          "inspection": 0.02,
+          "sub": 0.09,
+          "owner": 0.08,
+          "invoice": 0.03,
+          "noise": 0.91,
+          "internal": 0.26
+        },
+        "clock": 0.03,
+        "model": "jev-1.13.0"
+      },
+      "g083": {
+        "scores": {
+          "co": 0.05,
+          "bid": 0.03,
+          "inspection": 0.03,
+          "sub": 0.08,
+          "owner": 0.07,
+          "invoice": 0.03,
+          "noise": 0.02,
+          "internal": 0.9
+        },
+        "clock": 0.12,
+        "model": "jev-1.13.0"
+      },
+      "g084": {
+        "scores": {
+          "co": 0.06,
+          "bid": 0.04,
+          "inspection": 0.02,
+          "sub": 0.39,
+          "owner": 0.09,
+          "invoice": 0.49,
+          "noise": 0.02,
+          "internal": 0.75
+        },
+        "clock": 0.89,
+        "model": "jev-1.13.0"
+      },
+      "g085": {
+        "scores": {
+          "co": 0.09,
+          "bid": 0.5,
+          "inspection": 0.03,
+          "sub": 0.11,
+          "owner": 0.13,
+          "invoice": 0.04,
+          "noise": 0.02,
+          "internal": 0.87
+        },
+        "clock": 0.1,
+        "model": "jev-1.13.0"
+      },
+      "g086": {
+        "scores": {
+          "co": 0.05,
+          "bid": 0.05,
+          "inspection": 0.07,
+          "sub": 0.18,
+          "owner": 0.27,
+          "invoice": 0.04,
+          "noise": 0.01,
+          "internal": 0.91
+        },
+        "clock": 0.18,
+        "model": "jev-1.13.0"
+      },
+      "g087": {
+        "scores": {
+          "co": 0.04,
+          "bid": 0.04,
+          "inspection": 0.02,
+          "sub": 0.16,
+          "owner": 0.06,
+          "invoice": 0.04,
+          "noise": 0.02,
+          "internal": 0.89
+        },
+        "clock": 0.06,
+        "model": "jev-1.13.0"
+      },
+      "g088": {
+        "scores": {
+          "co": 0.06,
+          "bid": 0.04,
+          "inspection": 0.96,
+          "sub": 0.04,
+          "owner": 0.09,
+          "invoice": 0.03,
+          "noise": 0.02,
+          "internal": 0.81
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "g089": {
+        "scores": {
+          "co": 0.92,
+          "bid": 0.06,
+          "inspection": 0.02,
+          "sub": 0.31,
+          "owner": 0.12,
+          "invoice": 0.05,
+          "noise": 0.02,
+          "internal": 0.85
+        },
+        "clock": 0.1,
+        "model": "jev-1.13.0"
+      },
+      "g090": {
+        "scores": {
+          "co": 0.06,
+          "bid": 0.06,
+          "inspection": 0.17,
+          "sub": 0.13,
+          "owner": 0.31,
+          "invoice": 0.04,
+          "noise": 0.02,
+          "internal": 0.91
+        },
+        "clock": 0.45,
+        "model": "jev-1.13.0"
+      }
+    }
+  },
+  "law": {
+    "date": "2026-09-25",
+    "lines": {
+      "act": 0.65,
+      "review": 0.5,
+      "clockAct": 0.6
+    },
+    "judgments": {
+      "l001": {
+        "scores": {
+          "court": 0.93,
+          "discovery": 0.02,
+          "opposing": 0.11,
+          "client": 0.22,
+          "intake": 0.08,
+          "billing": 0.03,
+          "noise": 0.01,
+          "internal": 0.06
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "l002": {
+        "scores": {
+          "court": 0.03,
+          "discovery": 0.99,
+          "opposing": 0.14,
+          "client": 0.17,
+          "intake": 0.04,
+          "billing": 0.03,
+          "noise": 0.01,
+          "internal": 0.27
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "l003": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.02,
+          "opposing": 0.04,
+          "client": 0.98,
+          "intake": 0.05,
+          "billing": 0.04,
+          "noise": 0.01,
+          "internal": 0.1
+        },
+        "clock": 0.06,
+        "model": "jev-1.13.0"
+      },
+      "l004": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.02,
+          "opposing": 0.02,
+          "client": 0.02,
+          "intake": 0.97,
+          "billing": 0.02,
+          "noise": 0.02,
+          "internal": 0.04
+        },
+        "clock": 0.17,
+        "model": "jev-1.13.0"
+      },
+      "l005": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.02,
+          "opposing": 0.05,
+          "client": 0.05,
+          "intake": 0.05,
+          "billing": 0.94,
+          "noise": 0.04,
+          "internal": 0.19
+        },
+        "clock": 0.92,
+        "model": "jev-1.13.0"
+      },
+      "l006": {
+        "scores": {
+          "court": 0.03,
+          "discovery": 0.22,
+          "opposing": 0.76,
+          "client": 0.15,
+          "intake": 0.07,
+          "billing": 0.02,
+          "noise": 0.02,
+          "internal": 0.27
+        },
+        "clock": 0.14,
+        "model": "jev-1.13.0"
+      },
+      "l007": {
+        "scores": {
+          "court": 0.01,
+          "discovery": 0.01,
+          "opposing": 0.02,
+          "client": 0.03,
+          "intake": 0.1,
+          "billing": 0.04,
+          "noise": 0.98,
+          "internal": 0.06
+        },
+        "clock": 0.09,
+        "model": "jev-1.13.0"
+      },
+      "l008": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.01,
+          "opposing": 0.03,
+          "client": 0.03,
+          "intake": 0.08,
+          "billing": 0.05,
+          "noise": 0.82,
+          "internal": 0.65
+        },
+        "clock": 0.82,
+        "model": "jev-1.13.0"
+      },
+      "l009": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.08,
+          "opposing": 0.05,
+          "client": 0.08,
+          "intake": 0.07,
+          "billing": 0.03,
+          "noise": 0.01,
+          "internal": 0.87
+        },
+        "clock": 0.06,
+        "model": "jev-1.13.0"
+      },
+      "l010": {
+        "scores": {
+          "court": 0.8,
+          "discovery": 0.02,
+          "opposing": 0.06,
+          "client": 0.19,
+          "intake": 0.06,
+          "billing": 0.03,
+          "noise": 0.02,
+          "internal": 0.2
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "l011": {
+        "scores": {
+          "court": 0.96,
+          "discovery": 0.06,
+          "opposing": 0.07,
+          "client": 0.32,
+          "intake": 0.07,
+          "billing": 0.02,
+          "noise": 0.01,
+          "internal": 0.1
+        },
+        "clock": 0.97,
+        "model": "jev-1.13.0"
+      },
+      "l012": {
+        "scores": {
+          "court": 0.68,
+          "discovery": 0.04,
+          "opposing": 0.14,
+          "client": 0.28,
+          "intake": 0.1,
+          "billing": 0.02,
+          "noise": 0.01,
+          "internal": 0.22
+        },
+        "clock": 0.3,
+        "model": "jev-1.13.0"
+      },
+      "l013": {
+        "scores": {
+          "court": 0.92,
+          "discovery": 0.02,
+          "opposing": 0.21,
+          "client": 0.26,
+          "intake": 0.08,
+          "billing": 0.03,
+          "noise": 0.01,
+          "internal": 0.09
+        },
+        "clock": 0.36,
+        "model": "jev-1.13.0"
+      },
+      "l014": {
+        "scores": {
+          "court": 0.81,
+          "discovery": 0.21,
+          "opposing": 0.13,
+          "client": 0.35,
+          "intake": 0.05,
+          "billing": 0.1,
+          "noise": 0.01,
+          "internal": 0.25
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "l015": {
+        "scores": {
+          "court": 0.82,
+          "discovery": 0.02,
+          "opposing": 0.15,
+          "client": 0.3,
+          "intake": 0.05,
+          "billing": 0.04,
+          "noise": 0.01,
+          "internal": 0.25
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "l016": {
+        "scores": {
+          "court": 0.8,
+          "discovery": 0.02,
+          "opposing": 0.13,
+          "client": 0.21,
+          "intake": 0.06,
+          "billing": 0.03,
+          "noise": 0.01,
+          "internal": 0.29
+        },
+        "clock": 0.96,
+        "model": "jev-1.13.0"
+      },
+      "l017": {
+        "scores": {
+          "court": 0.83,
+          "discovery": 0.02,
+          "opposing": 0.08,
+          "client": 0.21,
+          "intake": 0.05,
+          "billing": 0.03,
+          "noise": 0.01,
+          "internal": 0.13
+        },
+        "clock": 0.18,
+        "model": "jev-1.13.0"
+      },
+      "l018": {
+        "scores": {
+          "court": 0.45,
+          "discovery": 0.02,
+          "opposing": 0.08,
+          "client": 0.12,
+          "intake": 0.04,
+          "billing": 0.14,
+          "noise": 0.02,
+          "internal": 0.34
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "l019": {
+        "scores": {
+          "court": 0.93,
+          "discovery": 0.02,
+          "opposing": 0.08,
+          "client": 0.22,
+          "intake": 0.07,
+          "billing": 0.02,
+          "noise": 0.01,
+          "internal": 0.09
+        },
+        "clock": 0.48,
+        "model": "jev-1.13.0"
+      },
+      "l020": {
+        "scores": {
+          "court": 0.05,
+          "discovery": 0.98,
+          "opposing": 0.2,
+          "client": 0.11,
+          "intake": 0.05,
+          "billing": 0.04,
+          "noise": 0.02,
+          "internal": 0.57
+        },
+        "clock": 0.61,
+        "model": "jev-1.13.0"
+      },
+      "l021": {
+        "scores": {
+          "court": 0.07,
+          "discovery": 0.96,
+          "opposing": 0.26,
+          "client": 0.12,
+          "intake": 0.06,
+          "billing": 0.03,
+          "noise": 0.01,
+          "internal": 0.34
+        },
+        "clock": 0.46,
+        "model": "jev-1.13.0"
+      },
+      "l022": {
+        "scores": {
+          "court": 0.03,
+          "discovery": 0.75,
+          "opposing": 0.27,
+          "client": 0.3,
+          "intake": 0.06,
+          "billing": 0.04,
+          "noise": 0.02,
+          "internal": 0.57
+        },
+        "clock": 0.14,
+        "model": "jev-1.13.0"
+      },
+      "l023": {
+        "scores": {
+          "court": 0.05,
+          "discovery": 0.98,
+          "opposing": 0.17,
+          "client": 0.13,
+          "intake": 0.05,
+          "billing": 0.02,
+          "noise": 0.01,
+          "internal": 0.37
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "l024": {
+        "scores": {
+          "court": 0.03,
+          "discovery": 0.97,
+          "opposing": 0.71,
+          "client": 0.21,
+          "intake": 0.03,
+          "billing": 0.02,
+          "noise": 0.02,
+          "internal": 0.61
+        },
+        "clock": 0.95,
+        "model": "jev-1.13.0"
+      },
+      "l025": {
+        "scores": {
+          "court": 0.09,
+          "discovery": 0.96,
+          "opposing": 0.24,
+          "client": 0.1,
+          "intake": 0.06,
+          "billing": 0.03,
+          "noise": 0.02,
+          "internal": 0.36
+        },
+        "clock": 0.49,
+        "model": "jev-1.13.0"
+      },
+      "l026": {
+        "scores": {
+          "court": 0.17,
+          "discovery": 0.97,
+          "opposing": 0.16,
+          "client": 0.16,
+          "intake": 0.05,
+          "billing": 0.03,
+          "noise": 0.01,
+          "internal": 0.19
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "l027": {
+        "scores": {
+          "court": 0.06,
+          "discovery": 0.96,
+          "opposing": 0.37,
+          "client": 0.16,
+          "intake": 0.06,
+          "billing": 0.03,
+          "noise": 0.01,
+          "internal": 0.28
+        },
+        "clock": 0.28,
+        "model": "jev-1.13.0"
+      },
+      "l028": {
+        "scores": {
+          "court": 0.04,
+          "discovery": 0.95,
+          "opposing": 0.81,
+          "client": 0.16,
+          "intake": 0.06,
+          "billing": 0.03,
+          "noise": 0.02,
+          "internal": 0.42
+        },
+        "clock": 0.84,
+        "model": "jev-1.13.0"
+      },
+      "l029": {
+        "scores": {
+          "court": 0.05,
+          "discovery": 0.93,
+          "opposing": 0.36,
+          "client": 0.13,
+          "intake": 0.05,
+          "billing": 0.04,
+          "noise": 0.01,
+          "internal": 0.44
+        },
+        "clock": 0.14,
+        "model": "jev-1.13.0"
+      },
+      "l030": {
+        "scores": {
+          "court": 0.05,
+          "discovery": 0.87,
+          "opposing": 0.14,
+          "client": 0.8,
+          "intake": 0.11,
+          "billing": 0.03,
+          "noise": 0.02,
+          "internal": 0.84
+        },
+        "clock": 0.42,
+        "model": "jev-1.13.0"
+      },
+      "l031": {
+        "scores": {
+          "court": 0.03,
+          "discovery": 0.03,
+          "opposing": 0.52,
+          "client": 0.23,
+          "intake": 0.06,
+          "billing": 0.03,
+          "noise": 0.02,
+          "internal": 0.81
+        },
+        "clock": 0.93,
+        "model": "jev-1.13.0"
+      },
+      "l032": {
+        "scores": {
+          "court": 0.06,
+          "discovery": 0.02,
+          "opposing": 0.75,
+          "client": 0.25,
+          "intake": 0.06,
+          "billing": 0.04,
+          "noise": 0.02,
+          "internal": 0.6
+        },
+        "clock": 0.88,
+        "model": "jev-1.13.0"
+      },
+      "l033": {
+        "scores": {
+          "court": 0.03,
+          "discovery": 0.18,
+          "opposing": 0.76,
+          "client": 0.08,
+          "intake": 0.07,
+          "billing": 0.03,
+          "noise": 0.02,
+          "internal": 0.2
+        },
+        "clock": 0.15,
+        "model": "jev-1.13.0"
+      },
+      "l034": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.02,
+          "opposing": 0.73,
+          "client": 0.04,
+          "intake": 0.15,
+          "billing": 0.05,
+          "noise": 0.02,
+          "internal": 0.07
+        },
+        "clock": 0.24,
+        "model": "jev-1.13.0"
+      },
+      "l035": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.02,
+          "opposing": 0.92,
+          "client": 0.08,
+          "intake": 0.22,
+          "billing": 0.03,
+          "noise": 0.03,
+          "internal": 0.21
+        },
+        "clock": 0.19,
+        "model": "jev-1.13.0"
+      },
+      "l036": {
+        "scores": {
+          "court": 0.06,
+          "discovery": 0.02,
+          "opposing": 0.85,
+          "client": 0.14,
+          "intake": 0.09,
+          "billing": 0.02,
+          "noise": 0.02,
+          "internal": 0.33
+        },
+        "clock": 0.51,
+        "model": "jev-1.13.0"
+      },
+      "l037": {
+        "scores": {
+          "court": 0.16,
+          "discovery": 0.03,
+          "opposing": 0.77,
+          "client": 0.11,
+          "intake": 0.04,
+          "billing": 0.03,
+          "noise": 0.02,
+          "internal": 0.39
+        },
+        "clock": 0.97,
+        "model": "jev-1.13.0"
+      },
+      "l038": {
+        "scores": {
+          "court": 0.03,
+          "discovery": 0.89,
+          "opposing": 0.65,
+          "client": 0.43,
+          "intake": 0.06,
+          "billing": 0.04,
+          "noise": 0.02,
+          "internal": 0.39
+        },
+        "clock": 0.43,
+        "model": "jev-1.13.0"
+      },
+      "l039": {
+        "scores": {
+          "court": 0.03,
+          "discovery": 0.02,
+          "opposing": 0.04,
+          "client": 0.79,
+          "intake": 0.15,
+          "billing": 0.04,
+          "noise": 0.02,
+          "internal": 0.34
+        },
+        "clock": 0.14,
+        "model": "jev-1.13.0"
+      },
+      "l040": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.03,
+          "opposing": 0.17,
+          "client": 0.87,
+          "intake": 0.11,
+          "billing": 0.04,
+          "noise": 0.02,
+          "internal": 0.76
+        },
+        "clock": 0.24,
+        "model": "jev-1.13.0"
+      },
+      "l041": {
+        "scores": {
+          "court": 0.04,
+          "discovery": 0.38,
+          "opposing": 0.07,
+          "client": 0.97,
+          "intake": 0.05,
+          "billing": 0.04,
+          "noise": 0.01,
+          "internal": 0.29
+        },
+        "clock": 0.15,
+        "model": "jev-1.13.0"
+      },
+      "l042": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.02,
+          "opposing": 0.07,
+          "client": 0.54,
+          "intake": 0.06,
+          "billing": 0.56,
+          "noise": 0.02,
+          "internal": 0.69
+        },
+        "clock": 0.32,
+        "model": "jev-1.13.0"
+      },
+      "l043": {
+        "scores": {
+          "court": 0.03,
+          "discovery": 0.02,
+          "opposing": 0.06,
+          "client": 0.2,
+          "intake": 0.26,
+          "billing": 0.03,
+          "noise": 0.06,
+          "internal": 0.64
+        },
+        "clock": 0.06,
+        "model": "jev-1.13.0"
+      },
+      "l044": {
+        "scores": {
+          "court": 0.03,
+          "discovery": 0.62,
+          "opposing": 0.33,
+          "client": 0.51,
+          "intake": 0.1,
+          "billing": 0.03,
+          "noise": 0.02,
+          "internal": 0.61
+        },
+        "clock": 0.09,
+        "model": "jev-1.13.0"
+      },
+      "l045": {
+        "scores": {
+          "court": 0.27,
+          "discovery": 0.84,
+          "opposing": 0.28,
+          "client": 0.27,
+          "intake": 0.12,
+          "billing": 0.06,
+          "noise": 0.02,
+          "internal": 0.62
+        },
+        "clock": 0.92,
+        "model": "jev-1.13.0"
+      },
+      "l046": {
+        "scores": {
+          "court": 0.9,
+          "discovery": 0.02,
+          "opposing": 0.05,
+          "client": 0.9,
+          "intake": 0.07,
+          "billing": 0.02,
+          "noise": 0.01,
+          "internal": 0.23
+        },
+        "clock": 0.37,
+        "model": "jev-1.13.0"
+      },
+      "l047": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.03,
+          "opposing": 0.03,
+          "client": 0.91,
+          "intake": 0.12,
+          "billing": 0.03,
+          "noise": 0.01,
+          "internal": 0.06
+        },
+        "clock": 0.05,
+        "model": "jev-1.13.0"
+      },
+      "l048": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.02,
+          "opposing": 0.07,
+          "client": 0.97,
+          "intake": 0.04,
+          "billing": 0.05,
+          "noise": 0.01,
+          "internal": 0.09
+        },
+        "clock": 0.07,
+        "model": "jev-1.13.0"
+      },
+      "l049": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.02,
+          "opposing": 0.14,
+          "client": 0.76,
+          "intake": 0.05,
+          "billing": 0.06,
+          "noise": 0.02,
+          "internal": 0.57
+        },
+        "clock": 0.67,
+        "model": "jev-1.13.0"
+      },
+      "l050": {
+        "scores": {
+          "court": 0.01,
+          "discovery": 0.02,
+          "opposing": 0.02,
+          "client": 0.03,
+          "intake": 0.94,
+          "billing": 0.32,
+          "noise": 0.04,
+          "internal": 0.18
+        },
+        "clock": 0.15,
+        "model": "jev-1.13.0"
+      },
+      "l051": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.01,
+          "opposing": 0.03,
+          "client": 0.03,
+          "intake": 0.97,
+          "billing": 0.02,
+          "noise": 0.05,
+          "internal": 0.82
+        },
+        "clock": 0.76,
+        "model": "jev-1.13.0"
+      },
+      "l052": {
+        "scores": {
+          "court": 0.41,
+          "discovery": 0.02,
+          "opposing": 0.14,
+          "client": 0.09,
+          "intake": 0.85,
+          "billing": 0.03,
+          "noise": 0.02,
+          "internal": 0.24
+        },
+        "clock": 0.97,
+        "model": "jev-1.13.0"
+      },
+      "l053": {
+        "scores": {
+          "court": 0.01,
+          "discovery": 0.01,
+          "opposing": 0.03,
+          "client": 0.04,
+          "intake": 0.71,
+          "billing": 0.02,
+          "noise": 0.02,
+          "internal": 0.58
+        },
+        "clock": 0.18,
+        "model": "jev-1.13.0"
+      },
+      "l054": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.01,
+          "opposing": 0.04,
+          "client": 0.05,
+          "intake": 0.91,
+          "billing": 0.05,
+          "noise": 0.02,
+          "internal": 0.06
+        },
+        "clock": 0.91,
+        "model": "jev-1.13.0"
+      },
+      "l055": {
+        "scores": {
+          "court": 0.04,
+          "discovery": 0.01,
+          "opposing": 0.04,
+          "client": 0.05,
+          "intake": 0.94,
+          "billing": 0.04,
+          "noise": 0.02,
+          "internal": 0.1
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "l056": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.02,
+          "opposing": 0.04,
+          "client": 0.03,
+          "intake": 0.95,
+          "billing": 0.03,
+          "noise": 0.02,
+          "internal": 0.17
+        },
+        "clock": 0.05,
+        "model": "jev-1.13.0"
+      },
+      "l057": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.02,
+          "opposing": 0.05,
+          "client": 0.03,
+          "intake": 0.92,
+          "billing": 0.08,
+          "noise": 0.03,
+          "internal": 0.09
+        },
+        "clock": 0.11,
+        "model": "jev-1.13.0"
+      },
+      "l058": {
+        "scores": {
+          "court": 0.01,
+          "discovery": 0.01,
+          "opposing": 0.03,
+          "client": 0.03,
+          "intake": 0.96,
+          "billing": 0.05,
+          "noise": 0.02,
+          "internal": 0.05
+        },
+        "clock": 0.32,
+        "model": "jev-1.13.0"
+      },
+      "l059": {
+        "scores": {
+          "court": 0.03,
+          "discovery": 0.09,
+          "opposing": 0.07,
+          "client": 0.07,
+          "intake": 0.05,
+          "billing": 0.96,
+          "noise": 0.02,
+          "internal": 0.36
+        },
+        "clock": 0.19,
+        "model": "jev-1.13.0"
+      },
+      "l060": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.01,
+          "opposing": 0.02,
+          "client": 0.08,
+          "intake": 0.07,
+          "billing": 0.92,
+          "noise": 0.03,
+          "internal": 0.31
+        },
+        "clock": 0.1,
+        "model": "jev-1.13.0"
+      },
+      "l061": {
+        "scores": {
+          "court": 0.01,
+          "discovery": 0.01,
+          "opposing": 0.04,
+          "client": 0.09,
+          "intake": 0.05,
+          "billing": 0.96,
+          "noise": 0.02,
+          "internal": 0.38
+        },
+        "clock": 0.11,
+        "model": "jev-1.13.0"
+      },
+      "l062": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.03,
+          "opposing": 0.02,
+          "client": 0.04,
+          "intake": 0.06,
+          "billing": 0.98,
+          "noise": 0.02,
+          "internal": 0.29
+        },
+        "clock": 0.34,
+        "model": "jev-1.13.0"
+      },
+      "l063": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.06,
+          "opposing": 0.12,
+          "client": 0.04,
+          "intake": 0.05,
+          "billing": 0.92,
+          "noise": 0.02,
+          "internal": 0.26
+        },
+        "clock": 0.56,
+        "model": "jev-1.13.0"
+      },
+      "l064": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.02,
+          "opposing": 0.02,
+          "client": 0.04,
+          "intake": 0.04,
+          "billing": 0.98,
+          "noise": 0.01,
+          "internal": 0.12
+        },
+        "clock": 0.07,
+        "model": "jev-1.13.0"
+      },
+      "l065": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.02,
+          "opposing": 0.13,
+          "client": 0.06,
+          "intake": 0.06,
+          "billing": 0.94,
+          "noise": 0.03,
+          "internal": 0.24
+        },
+        "clock": 0.96,
+        "model": "jev-1.13.0"
+      },
+      "l066": {
+        "scores": {
+          "court": 0.05,
+          "discovery": 0.02,
+          "opposing": 0.03,
+          "client": 0.05,
+          "intake": 0.06,
+          "billing": 0.91,
+          "noise": 0.02,
+          "internal": 0.1
+        },
+        "clock": 0.97,
+        "model": "jev-1.13.0"
+      },
+      "l067": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.02,
+          "opposing": 0.05,
+          "client": 0.1,
+          "intake": 0.1,
+          "billing": 0.9,
+          "noise": 0.04,
+          "internal": 0.31
+        },
+        "clock": 0.11,
+        "model": "jev-1.13.0"
+      },
+      "l068": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.01,
+          "opposing": 0.03,
+          "client": 0.03,
+          "intake": 0.14,
+          "billing": 0.03,
+          "noise": 0.98,
+          "internal": 0.07
+        },
+        "clock": 0.23,
+        "model": "jev-1.13.0"
+      },
+      "l069": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.01,
+          "opposing": 0.02,
+          "client": 0.02,
+          "intake": 0.07,
+          "billing": 0.02,
+          "noise": 0.88,
+          "internal": 0.05
+        },
+        "clock": 0.12,
+        "model": "jev-1.13.0"
+      },
+      "l070": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.01,
+          "opposing": 0.02,
+          "client": 0.04,
+          "intake": 0.2,
+          "billing": 0.04,
+          "noise": 0.98,
+          "internal": 0.06
+        },
+        "clock": 0.03,
+        "model": "jev-1.13.0"
+      },
+      "l071": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.02,
+          "opposing": 0.05,
+          "client": 0.05,
+          "intake": 0.46,
+          "billing": 0.11,
+          "noise": 0.94,
+          "internal": 0.2
+        },
+        "clock": 0.1,
+        "model": "jev-1.13.0"
+      },
+      "l072": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.02,
+          "opposing": 0.03,
+          "client": 0.03,
+          "intake": 0.1,
+          "billing": 0.03,
+          "noise": 0.98,
+          "internal": 0.06
+        },
+        "clock": 0.04,
+        "model": "jev-1.13.0"
+      },
+      "l073": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.01,
+          "opposing": 0.03,
+          "client": 0.03,
+          "intake": 0.27,
+          "billing": 0.04,
+          "noise": 0.94,
+          "internal": 0.13
+        },
+        "clock": 0.4,
+        "model": "jev-1.13.0"
+      },
+      "l074": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.01,
+          "opposing": 0.04,
+          "client": 0.07,
+          "intake": 0.08,
+          "billing": 0.11,
+          "noise": 0.87,
+          "internal": 0.08
+        },
+        "clock": 0.3,
+        "model": "jev-1.13.0"
+      },
+      "l075": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.01,
+          "opposing": 0.02,
+          "client": 0.04,
+          "intake": 0.16,
+          "billing": 0.06,
+          "noise": 0.96,
+          "internal": 0.08
+        },
+        "clock": 0.1,
+        "model": "jev-1.13.0"
+      },
+      "l076": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.06,
+          "opposing": 0.05,
+          "client": 0.09,
+          "intake": 0.46,
+          "billing": 0.09,
+          "noise": 0.88,
+          "internal": 0.28
+        },
+        "clock": 0.1,
+        "model": "jev-1.13.0"
+      },
+      "l077": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.01,
+          "opposing": 0.02,
+          "client": 0.04,
+          "intake": 0.21,
+          "billing": 0.04,
+          "noise": 0.97,
+          "internal": 0.08
+        },
+        "clock": 0.12,
+        "model": "jev-1.13.0"
+      },
+      "l078": {
+        "scores": {
+          "court": 0.05,
+          "discovery": 0.65,
+          "opposing": 0.08,
+          "client": 0.19,
+          "intake": 0.22,
+          "billing": 0.09,
+          "noise": 0.87,
+          "internal": 0.31
+        },
+        "clock": 0.18,
+        "model": "jev-1.13.0"
+      },
+      "l079": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.01,
+          "opposing": 0.02,
+          "client": 0.04,
+          "intake": 0.07,
+          "billing": 0.12,
+          "noise": 0.96,
+          "internal": 0.21
+        },
+        "clock": 0.45,
+        "model": "jev-1.13.0"
+      },
+      "l080": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.01,
+          "opposing": 0.02,
+          "client": 0.03,
+          "intake": 0.33,
+          "billing": 0.22,
+          "noise": 0.87,
+          "internal": 0.2
+        },
+        "clock": 0.08,
+        "model": "jev-1.13.0"
+      },
+      "l081": {
+        "scores": {
+          "court": 0.01,
+          "discovery": 0.02,
+          "opposing": 0.03,
+          "client": 0.02,
+          "intake": 0.1,
+          "billing": 0.04,
+          "noise": 0.22,
+          "internal": 0.66
+        },
+        "clock": 0.04,
+        "model": "jev-1.13.0"
+      },
+      "l082": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.02,
+          "opposing": 0.04,
+          "client": 0.07,
+          "intake": 0.06,
+          "billing": 0.03,
+          "noise": 0.01,
+          "internal": 0.91
+        },
+        "clock": 0.06,
+        "model": "jev-1.13.0"
+      },
+      "l083": {
+        "scores": {
+          "court": 0.01,
+          "discovery": 0.01,
+          "opposing": 0.02,
+          "client": 0.07,
+          "intake": 0.05,
+          "billing": 0.79,
+          "noise": 0.01,
+          "internal": 0.91
+        },
+        "clock": 0.73,
+        "model": "jev-1.13.0"
+      },
+      "l084": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.01,
+          "opposing": 0.07,
+          "client": 0.12,
+          "intake": 0.84,
+          "billing": 0.03,
+          "noise": 0.02,
+          "internal": 0.94
+        },
+        "clock": 0.04,
+        "model": "jev-1.13.0"
+      },
+      "l085": {
+        "scores": {
+          "court": 0.03,
+          "discovery": 0.04,
+          "opposing": 0.25,
+          "client": 0.27,
+          "intake": 0.45,
+          "billing": 0.04,
+          "noise": 0.01,
+          "internal": 0.92
+        },
+        "clock": 0.09,
+        "model": "jev-1.13.0"
+      },
+      "l086": {
+        "scores": {
+          "court": 0.57,
+          "discovery": 0.03,
+          "opposing": 0.28,
+          "client": 0.16,
+          "intake": 0.06,
+          "billing": 0.03,
+          "noise": 0.02,
+          "internal": 0.82
+        },
+        "clock": 0.92,
+        "model": "jev-1.13.0"
+      },
+      "l087": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.47,
+          "opposing": 0.07,
+          "client": 0.12,
+          "intake": 0.11,
+          "billing": 0.05,
+          "noise": 0.02,
+          "internal": 0.95
+        },
+        "clock": 0.7,
+        "model": "jev-1.13.0"
+      },
+      "l088": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.02,
+          "opposing": 0.08,
+          "client": 0.04,
+          "intake": 0.93,
+          "billing": 0.03,
+          "noise": 0.03,
+          "internal": 0.86
+        },
+        "clock": 0.38,
+        "model": "jev-1.13.0"
+      },
+      "l089": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.95,
+          "opposing": 0.71,
+          "client": 0.09,
+          "intake": 0.09,
+          "billing": 0.04,
+          "noise": 0.02,
+          "internal": 0.33
+        },
+        "clock": 0.9,
+        "model": "jev-1.13.0"
+      },
+      "l090": {
+        "scores": {
+          "court": 0.02,
+          "discovery": 0.02,
+          "opposing": 0.86,
+          "client": 0.11,
+          "intake": 0.22,
+          "billing": 0.03,
+          "noise": 0.02,
+          "internal": 0.6
+        },
+        "clock": 0.07,
+        "model": "jev-1.13.0"
+      }
+    }
+  },
+  "med": {
+    "date": "2026-09-25",
+    "lines": {
+      "act": 0.55,
+      "review": 0.5,
+      "clockAct": 0.4
+    },
+    "judgments": {
+      "d001": {
+        "scores": {
+          "claim": 0.98,
+          "lab": 0.06,
+          "appt": 0.02,
+          "records": 0.04,
+          "patient": 0.14,
+          "vendor": 0.03,
+          "noise": 0.02,
+          "internal": 0.04
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "d002": {
+        "scores": {
+          "claim": 0.04,
+          "lab": 0.68,
+          "appt": 0.05,
+          "records": 0.03,
+          "patient": 0.09,
+          "vendor": 0.03,
+          "noise": 0.02,
+          "internal": 0.5
+        },
+        "clock": 0.52,
+        "model": "jev-1.13.0"
+      },
+      "d003": {
+        "scores": {
+          "claim": 0.02,
+          "lab": 0.03,
+          "appt": 0.97,
+          "records": 0.02,
+          "patient": 0.12,
+          "vendor": 0.02,
+          "noise": 0.01,
+          "internal": 0.03
+        },
+        "clock": 0.05,
+        "model": "jev-1.13.0"
+      },
+      "d004": {
+        "scores": {
+          "claim": 0.05,
+          "lab": 0.1,
+          "appt": 0.04,
+          "records": 0.97,
+          "patient": 0.04,
+          "vendor": 0.02,
+          "noise": 0.03,
+          "internal": 0.08
+        },
+        "clock": 0.83,
+        "model": "jev-1.13.0"
+      },
+      "d005": {
+        "scores": {
+          "claim": 0.94,
+          "lab": 0.05,
+          "appt": 0.02,
+          "records": 0.04,
+          "patient": 0.98,
+          "vendor": 0.05,
+          "noise": 0.02,
+          "internal": 0.03
+        },
+        "clock": 0.07,
+        "model": "jev-1.13.0"
+      },
+      "d006": {
+        "scores": {
+          "claim": 0.03,
+          "lab": 0.13,
+          "appt": 0.02,
+          "records": 0.02,
+          "patient": 0.05,
+          "vendor": 0.9,
+          "noise": 0.03,
+          "internal": 0.08
+        },
+        "clock": 0.95,
+        "model": "jev-1.13.0"
+      },
+      "d007": {
+        "scores": {
+          "claim": 0.01,
+          "lab": 0.04,
+          "appt": 0.03,
+          "records": 0.02,
+          "patient": 0.02,
+          "vendor": 0.02,
+          "noise": 0.98,
+          "internal": 0.04
+        },
+        "clock": 0.02,
+        "model": "jev-1.13.0"
+      },
+      "d008": {
+        "scores": {
+          "claim": 0.02,
+          "lab": 0.05,
+          "appt": 0.02,
+          "records": 0.03,
+          "patient": 0.03,
+          "vendor": 0.03,
+          "noise": 0.06,
+          "internal": 0.82
+        },
+        "clock": 0.94,
+        "model": "jev-1.13.0"
+      },
+      "d009": {
+        "scores": {
+          "claim": 0.02,
+          "lab": 0.05,
+          "appt": 0.02,
+          "records": 0.02,
+          "patient": 0.03,
+          "vendor": 0.03,
+          "noise": 0.02,
+          "internal": 0.86
+        },
+        "clock": 0.04,
+        "model": "jev-1.13.0"
+      },
+      "d010": {
+        "scores": {
+          "claim": 0.02,
+          "lab": 0.03,
+          "appt": 0.98,
+          "records": 0.03,
+          "patient": 0.33,
+          "vendor": 0.02,
+          "noise": 0.01,
+          "internal": 0.03
+        },
+        "clock": 0.07,
+        "model": "jev-1.13.0"
+      },
+      "d011": {
+        "scores": {
+          "claim": 0.98,
+          "lab": 0.06,
+          "appt": 0.03,
+          "records": 0.11,
+          "patient": 0.09,
+          "vendor": 0.03,
+          "noise": 0.03,
+          "internal": 0.12
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "d012": {
+        "scores": {
+          "claim": 0.95,
+          "lab": 0.05,
+          "appt": 0.04,
+          "records": 0.13,
+          "patient": 0.04,
+          "vendor": 0.03,
+          "noise": 0.03,
+          "internal": 0.07
+        },
+        "clock": 0.92,
+        "model": "jev-1.13.0"
+      },
+      "d013": {
+        "scores": {
+          "claim": 0.97,
+          "lab": 0.05,
+          "appt": 0.02,
+          "records": 0.03,
+          "patient": 0.11,
+          "vendor": 0.03,
+          "noise": 0.02,
+          "internal": 0.13
+        },
+        "clock": 0.13,
+        "model": "jev-1.13.0"
+      },
+      "d014": {
+        "scores": {
+          "claim": 0.98,
+          "lab": 0.04,
+          "appt": 0.02,
+          "records": 0.03,
+          "patient": 0.12,
+          "vendor": 0.05,
+          "noise": 0.02,
+          "internal": 0.06
+        },
+        "clock": 0.07,
+        "model": "jev-1.13.0"
+      },
+      "d015": {
+        "scores": {
+          "claim": 0.97,
+          "lab": 0.03,
+          "appt": 0.01,
+          "records": 0.02,
+          "patient": 0.03,
+          "vendor": 0.03,
+          "noise": 0.02,
+          "internal": 0.04
+        },
+        "clock": 0.96,
+        "model": "jev-1.13.0"
+      },
+      "d016": {
+        "scores": {
+          "claim": 0.98,
+          "lab": 0.03,
+          "appt": 0.02,
+          "records": 0.05,
+          "patient": 0.95,
+          "vendor": 0.04,
+          "noise": 0.02,
+          "internal": 0.17
+        },
+        "clock": 0.97,
+        "model": "jev-1.13.0"
+      },
+      "d017": {
+        "scores": {
+          "claim": 0.97,
+          "lab": 0.05,
+          "appt": 0.01,
+          "records": 0.02,
+          "patient": 0.07,
+          "vendor": 0.05,
+          "noise": 0.03,
+          "internal": 0.13
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "d018": {
+        "scores": {
+          "claim": 0.96,
+          "lab": 0.05,
+          "appt": 0.04,
+          "records": 0.03,
+          "patient": 0.06,
+          "vendor": 0.03,
+          "noise": 0.02,
+          "internal": 0.08
+        },
+        "clock": 0.88,
+        "model": "jev-1.13.0"
+      },
+      "d019": {
+        "scores": {
+          "claim": 0.95,
+          "lab": 0.1,
+          "appt": 0.03,
+          "records": 0.13,
+          "patient": 0.12,
+          "vendor": 0.04,
+          "noise": 0.04,
+          "internal": 0.21
+        },
+        "clock": 0.16,
+        "model": "jev-1.13.0"
+      },
+      "d020": {
+        "scores": {
+          "claim": 0.96,
+          "lab": 0.05,
+          "appt": 0.02,
+          "records": 0.03,
+          "patient": 0.09,
+          "vendor": 0.03,
+          "noise": 0.02,
+          "internal": 0.06
+        },
+        "clock": 0.11,
+        "model": "jev-1.13.0"
+      },
+      "d021": {
+        "scores": {
+          "claim": 0.9,
+          "lab": 0.05,
+          "appt": 0.02,
+          "records": 0.07,
+          "patient": 0.07,
+          "vendor": 0.03,
+          "noise": 0.04,
+          "internal": 0.13
+        },
+        "clock": 0.11,
+        "model": "jev-1.13.0"
+      },
+      "d022": {
+        "scores": {
+          "claim": 0.07,
+          "lab": 0.04,
+          "appt": 0.27,
+          "records": 0.04,
+          "patient": 0.04,
+          "vendor": 0.04,
+          "noise": 0.98,
+          "internal": 0.06
+        },
+        "clock": 0.44,
+        "model": "jev-1.13.0"
+      },
+      "d023": {
+        "scores": {
+          "claim": 0.98,
+          "lab": 0.05,
+          "appt": 0.02,
+          "records": 0.04,
+          "patient": 0.14,
+          "vendor": 0.04,
+          "noise": 0.02,
+          "internal": 0.09
+        },
+        "clock": 0.67,
+        "model": "jev-1.13.0"
+      },
+      "d024": {
+        "scores": {
+          "claim": 0.95,
+          "lab": 0.05,
+          "appt": 0.02,
+          "records": 0.41,
+          "patient": 0.05,
+          "vendor": 0.03,
+          "noise": 0.04,
+          "internal": 0.05
+        },
+        "clock": 0.97,
+        "model": "jev-1.13.0"
+      },
+      "d025": {
+        "scores": {
+          "claim": 0.97,
+          "lab": 0.06,
+          "appt": 0.03,
+          "records": 0.41,
+          "patient": 0.79,
+          "vendor": 0.03,
+          "noise": 0.02,
+          "internal": 0.03
+        },
+        "clock": 0.95,
+        "model": "jev-1.13.0"
+      },
+      "d026": {
+        "scores": {
+          "claim": 0.03,
+          "lab": 0.72,
+          "appt": 0.02,
+          "records": 0.03,
+          "patient": 0.04,
+          "vendor": 0.03,
+          "noise": 0.02,
+          "internal": 0.4
+        },
+        "clock": 0.06,
+        "model": "jev-1.13.0"
+      },
+      "d027": {
+        "scores": {
+          "claim": 0.04,
+          "lab": 0.69,
+          "appt": 0.16,
+          "records": 0.03,
+          "patient": 0.05,
+          "vendor": 0.03,
+          "noise": 0.02,
+          "internal": 0.51
+        },
+        "clock": 0.42,
+        "model": "jev-1.13.0"
+      },
+      "d028": {
+        "scores": {
+          "claim": 0.05,
+          "lab": 0.81,
+          "appt": 0.03,
+          "records": 0.04,
+          "patient": 0.06,
+          "vendor": 0.04,
+          "noise": 0.03,
+          "internal": 0.15
+        },
+        "clock": 0.14,
+        "model": "jev-1.13.0"
+      },
+      "d029": {
+        "scores": {
+          "claim": 0.03,
+          "lab": 0.69,
+          "appt": 0.03,
+          "records": 0.03,
+          "patient": 0.04,
+          "vendor": 0.04,
+          "noise": 0.03,
+          "internal": 0.52
+        },
+        "clock": 0.11,
+        "model": "jev-1.13.0"
+      },
+      "d030": {
+        "scores": {
+          "claim": 0.04,
+          "lab": 0.82,
+          "appt": 0.05,
+          "records": 0.03,
+          "patient": 0.06,
+          "vendor": 0.04,
+          "noise": 0.02,
+          "internal": 0.33
+        },
+        "clock": 0.1,
+        "model": "jev-1.13.0"
+      },
+      "d031": {
+        "scores": {
+          "claim": 0.02,
+          "lab": 0.48,
+          "appt": 0.02,
+          "records": 0.02,
+          "patient": 0.02,
+          "vendor": 0.03,
+          "noise": 0.03,
+          "internal": 0.56
+        },
+        "clock": 0.17,
+        "model": "jev-1.13.0"
+      },
+      "d032": {
+        "scores": {
+          "claim": 0.08,
+          "lab": 0.83,
+          "appt": 0.02,
+          "records": 0.02,
+          "patient": 0.03,
+          "vendor": 0.03,
+          "noise": 0.03,
+          "internal": 0.26
+        },
+        "clock": 0.09,
+        "model": "jev-1.13.0"
+      },
+      "d033": {
+        "scores": {
+          "claim": 0.04,
+          "lab": 0.85,
+          "appt": 0.08,
+          "records": 0.04,
+          "patient": 0.05,
+          "vendor": 0.04,
+          "noise": 0.03,
+          "internal": 0.15
+        },
+        "clock": 0.25,
+        "model": "jev-1.13.0"
+      },
+      "d034": {
+        "scores": {
+          "claim": 0.04,
+          "lab": 0.44,
+          "appt": 0.02,
+          "records": 0.03,
+          "patient": 0.05,
+          "vendor": 0.03,
+          "noise": 0.02,
+          "internal": 0.81
+        },
+        "clock": 0.04,
+        "model": "jev-1.13.0"
+      },
+      "d035": {
+        "scores": {
+          "claim": 0.07,
+          "lab": 0.32,
+          "appt": 0.04,
+          "records": 0.13,
+          "patient": 0.05,
+          "vendor": 0.03,
+          "noise": 0.02,
+          "internal": 0.85
+        },
+        "clock": 0.05,
+        "model": "jev-1.13.0"
+      },
+      "d036": {
+        "scores": {
+          "claim": 0.06,
+          "lab": 0.56,
+          "appt": 0.03,
+          "records": 0.03,
+          "patient": 0.06,
+          "vendor": 0.04,
+          "noise": 0.02,
+          "internal": 0.58
+        },
+        "clock": 0.12,
+        "model": "jev-1.13.0"
+      },
+      "d037": {
+        "scores": {
+          "claim": 0.11,
+          "lab": 0.13,
+          "appt": 0.02,
+          "records": 0.03,
+          "patient": 0.1,
+          "vendor": 0.65,
+          "noise": 0.04,
+          "internal": 0.15
+        },
+        "clock": 0.92,
+        "model": "jev-1.13.0"
+      },
+      "d038": {
+        "scores": {
+          "claim": 0.02,
+          "lab": 0.04,
+          "appt": 0.98,
+          "records": 0.02,
+          "patient": 0.08,
+          "vendor": 0.02,
+          "noise": 0.01,
+          "internal": 0.03
+        },
+        "clock": 0.04,
+        "model": "jev-1.13.0"
+      },
+      "d039": {
+        "scores": {
+          "claim": 0.02,
+          "lab": 0.03,
+          "appt": 0.98,
+          "records": 0.03,
+          "patient": 0.1,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.03
+        },
+        "clock": 0.05,
+        "model": "jev-1.13.0"
+      },
+      "d040": {
+        "scores": {
+          "claim": 0.04,
+          "lab": 0.03,
+          "appt": 0.98,
+          "records": 0.03,
+          "patient": 0.04,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.08
+        },
+        "clock": 0.04,
+        "model": "jev-1.13.0"
+      },
+      "d041": {
+        "scores": {
+          "claim": 0.03,
+          "lab": 0.05,
+          "appt": 0.97,
+          "records": 0.13,
+          "patient": 0.05,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.04
+        },
+        "clock": 0.2,
+        "model": "jev-1.13.0"
+      },
+      "d042": {
+        "scores": {
+          "claim": 0.1,
+          "lab": 0.1,
+          "appt": 0.39,
+          "records": 0.08,
+          "patient": 0.17,
+          "vendor": 0.06,
+          "noise": 0.04,
+          "internal": 0.3
+        },
+        "clock": 0.14,
+        "model": "jev-1.13.0"
+      },
+      "d043": {
+        "scores": {
+          "claim": 0.02,
+          "lab": 0.03,
+          "appt": 0.85,
+          "records": 0.02,
+          "patient": 0.04,
+          "vendor": 0.02,
+          "noise": 0.01,
+          "internal": 0.03
+        },
+        "clock": 0.11,
+        "model": "jev-1.13.0"
+      },
+      "d044": {
+        "scores": {
+          "claim": 0.06,
+          "lab": 0.04,
+          "appt": 0.91,
+          "records": 0.03,
+          "patient": 0.85,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.04
+        },
+        "clock": 0.04,
+        "model": "jev-1.13.0"
+      },
+      "d045": {
+        "scores": {
+          "claim": 0.02,
+          "lab": 0.04,
+          "appt": 0.96,
+          "records": 0.02,
+          "patient": 0.12,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.04
+        },
+        "clock": 0.08,
+        "model": "jev-1.13.0"
+      },
+      "d046": {
+        "scores": {
+          "claim": 0.03,
+          "lab": 0.04,
+          "appt": 0.03,
+          "records": 0.97,
+          "patient": 0.08,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.03
+        },
+        "clock": 0.27,
+        "model": "jev-1.13.0"
+      },
+      "d047": {
+        "scores": {
+          "claim": 0.07,
+          "lab": 0.08,
+          "appt": 0.02,
+          "records": 0.97,
+          "patient": 0.06,
+          "vendor": 0.02,
+          "noise": 0.04,
+          "internal": 0.08
+        },
+        "clock": 0.95,
+        "model": "jev-1.13.0"
+      },
+      "d048": {
+        "scores": {
+          "claim": 0.05,
+          "lab": 0.07,
+          "appt": 0.03,
+          "records": 0.97,
+          "patient": 0.22,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.04
+        },
+        "clock": 0.66,
+        "model": "jev-1.13.0"
+      },
+      "d049": {
+        "scores": {
+          "claim": 0.06,
+          "lab": 0.05,
+          "appt": 0.02,
+          "records": 0.97,
+          "patient": 0.03,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.05
+        },
+        "clock": 0.97,
+        "model": "jev-1.13.0"
+      },
+      "d050": {
+        "scores": {
+          "claim": 0.08,
+          "lab": 0.08,
+          "appt": 0.04,
+          "records": 0.95,
+          "patient": 0.04,
+          "vendor": 0.03,
+          "noise": 0.04,
+          "internal": 0.14
+        },
+        "clock": 0.06,
+        "model": "jev-1.13.0"
+      },
+      "d051": {
+        "scores": {
+          "claim": 0.08,
+          "lab": 0.25,
+          "appt": 0.04,
+          "records": 0.81,
+          "patient": 0.1,
+          "vendor": 0.04,
+          "noise": 0.03,
+          "internal": 0.71
+        },
+        "clock": 0.58,
+        "model": "jev-1.13.0"
+      },
+      "d052": {
+        "scores": {
+          "claim": 0.04,
+          "lab": 0.06,
+          "appt": 0.02,
+          "records": 0.98,
+          "patient": 0.08,
+          "vendor": 0.02,
+          "noise": 0.01,
+          "internal": 0.03
+        },
+        "clock": 0.95,
+        "model": "jev-1.13.0"
+      },
+      "d053": {
+        "scores": {
+          "claim": 0.04,
+          "lab": 0.04,
+          "appt": 0.08,
+          "records": 0.97,
+          "patient": 0.29,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.1
+        },
+        "clock": 0.08,
+        "model": "jev-1.13.0"
+      },
+      "d054": {
+        "scores": {
+          "claim": 0.04,
+          "lab": 0.05,
+          "appt": 0.03,
+          "records": 0.23,
+          "patient": 0.07,
+          "vendor": 0.03,
+          "noise": 0.98,
+          "internal": 0.13
+        },
+        "clock": 0.78,
+        "model": "jev-1.13.0"
+      },
+      "d055": {
+        "scores": {
+          "claim": 0.02,
+          "lab": 0.04,
+          "appt": 0.28,
+          "records": 0.03,
+          "patient": 0.97,
+          "vendor": 0.02,
+          "noise": 0.01,
+          "internal": 0.03
+        },
+        "clock": 0.04,
+        "model": "jev-1.13.0"
+      },
+      "d056": {
+        "scores": {
+          "claim": 0.05,
+          "lab": 0.04,
+          "appt": 0.02,
+          "records": 0.02,
+          "patient": 0.98,
+          "vendor": 0.03,
+          "noise": 0.02,
+          "internal": 0.03
+        },
+        "clock": 0.06,
+        "model": "jev-1.13.0"
+      },
+      "d057": {
+        "scores": {
+          "claim": 0.15,
+          "lab": 0.04,
+          "appt": 0.02,
+          "records": 0.02,
+          "patient": 0.97,
+          "vendor": 0.03,
+          "noise": 0.01,
+          "internal": 0.06
+        },
+        "clock": 0.3,
+        "model": "jev-1.13.0"
+      },
+      "d058": {
+        "scores": {
+          "claim": 0.02,
+          "lab": 0.09,
+          "appt": 0.06,
+          "records": 0.03,
+          "patient": 0.02,
+          "vendor": 0.03,
+          "noise": 0.97,
+          "internal": 0.13
+        },
+        "clock": 0.08,
+        "model": "jev-1.13.0"
+      },
+      "d059": {
+        "scores": {
+          "claim": 0.2,
+          "lab": 0.04,
+          "appt": 0.02,
+          "records": 0.26,
+          "patient": 0.91,
+          "vendor": 0.03,
+          "noise": 0.02,
+          "internal": 0.03
+        },
+        "clock": 0.86,
+        "model": "jev-1.13.0"
+      },
+      "d060": {
+        "scores": {
+          "claim": 0.08,
+          "lab": 0.05,
+          "appt": 0.02,
+          "records": 0.04,
+          "patient": 0.97,
+          "vendor": 0.04,
+          "noise": 0.02,
+          "internal": 0.05
+        },
+        "clock": 0.06,
+        "model": "jev-1.13.0"
+      },
+      "d061": {
+        "scores": {
+          "claim": 0.03,
+          "lab": 0.04,
+          "appt": 0.05,
+          "records": 0.02,
+          "patient": 0.86,
+          "vendor": 0.02,
+          "noise": 0.01,
+          "internal": 0.04
+        },
+        "clock": 0.06,
+        "model": "jev-1.13.0"
+      },
+      "d062": {
+        "scores": {
+          "claim": 0.03,
+          "lab": 0.07,
+          "appt": 0.18,
+          "records": 0.04,
+          "patient": 0.97,
+          "vendor": 0.02,
+          "noise": 0.01,
+          "internal": 0.03
+        },
+        "clock": 0.06,
+        "model": "jev-1.13.0"
+      },
+      "d063": {
+        "scores": {
+          "claim": 0.06,
+          "lab": 0.11,
+          "appt": 0.02,
+          "records": 0.02,
+          "patient": 0.06,
+          "vendor": 0.87,
+          "noise": 0.03,
+          "internal": 0.09
+        },
+        "clock": 0.12,
+        "model": "jev-1.13.0"
+      },
+      "d064": {
+        "scores": {
+          "claim": 0.05,
+          "lab": 0.1,
+          "appt": 0.01,
+          "records": 0.02,
+          "patient": 0.06,
+          "vendor": 0.94,
+          "noise": 0.02,
+          "internal": 0.15
+        },
+        "clock": 0.97,
+        "model": "jev-1.13.0"
+      },
+      "d065": {
+        "scores": {
+          "claim": 0.03,
+          "lab": 0.04,
+          "appt": 0.02,
+          "records": 0.02,
+          "patient": 0.09,
+          "vendor": 0.76,
+          "noise": 0.03,
+          "internal": 0.13
+        },
+        "clock": 0.06,
+        "model": "jev-1.13.0"
+      },
+      "d066": {
+        "scores": {
+          "claim": 0.02,
+          "lab": 0.04,
+          "appt": 0.02,
+          "records": 0.02,
+          "patient": 0.02,
+          "vendor": 0.05,
+          "noise": 0.97,
+          "internal": 0.12
+        },
+        "clock": 0.12,
+        "model": "jev-1.13.0"
+      },
+      "d067": {
+        "scores": {
+          "claim": 0.07,
+          "lab": 0.09,
+          "appt": 0.01,
+          "records": 0.02,
+          "patient": 0.08,
+          "vendor": 0.25,
+          "noise": 0.03,
+          "internal": 0.15
+        },
+        "clock": 0.31,
+        "model": "jev-1.13.0"
+      },
+      "d068": {
+        "scores": {
+          "claim": 0.02,
+          "lab": 0.09,
+          "appt": 0.1,
+          "records": 0.02,
+          "patient": 0.02,
+          "vendor": 0.03,
+          "noise": 0.97,
+          "internal": 0.08
+        },
+        "clock": 0.31,
+        "model": "jev-1.13.0"
+      },
+      "d069": {
+        "scores": {
+          "claim": 0.03,
+          "lab": 0.05,
+          "appt": 0.01,
+          "records": 0.04,
+          "patient": 0.04,
+          "vendor": 0.93,
+          "noise": 0.03,
+          "internal": 0.11
+        },
+        "clock": 0.12,
+        "model": "jev-1.13.0"
+      },
+      "d070": {
+        "scores": {
+          "claim": 0.04,
+          "lab": 0.07,
+          "appt": 0.02,
+          "records": 0.02,
+          "patient": 0.04,
+          "vendor": 0.91,
+          "noise": 0.03,
+          "internal": 0.17
+        },
+        "clock": 0.11,
+        "model": "jev-1.13.0"
+      },
+      "d071": {
+        "scores": {
+          "claim": 0.02,
+          "lab": 0.05,
+          "appt": 0.03,
+          "records": 0.02,
+          "patient": 0.02,
+          "vendor": 0.02,
+          "noise": 0.93,
+          "internal": 0.27
+        },
+        "clock": 0.11,
+        "model": "jev-1.13.0"
+      },
+      "d072": {
+        "scores": {
+          "claim": 0.02,
+          "lab": 0.03,
+          "appt": 0.43,
+          "records": 0.02,
+          "patient": 0.02,
+          "vendor": 0.02,
+          "noise": 0.98,
+          "internal": 0.05
+        },
+        "clock": 0.1,
+        "model": "jev-1.13.0"
+      },
+      "d073": {
+        "scores": {
+          "claim": 0.04,
+          "lab": 0.06,
+          "appt": 0.02,
+          "records": 0.03,
+          "patient": 0.02,
+          "vendor": 0.03,
+          "noise": 0.95,
+          "internal": 0.07
+        },
+        "clock": 0.03,
+        "model": "jev-1.13.0"
+      },
+      "d074": {
+        "scores": {
+          "claim": 0.02,
+          "lab": 0.03,
+          "appt": 0.07,
+          "records": 0.03,
+          "patient": 0.02,
+          "vendor": 0.03,
+          "noise": 0.97,
+          "internal": 0.06
+        },
+        "clock": 0.07,
+        "model": "jev-1.13.0"
+      },
+      "d075": {
+        "scores": {
+          "claim": 0.02,
+          "lab": 0.04,
+          "appt": 0.02,
+          "records": 0.02,
+          "patient": 0.02,
+          "vendor": 0.02,
+          "noise": 0.97,
+          "internal": 0.12
+        },
+        "clock": 0.11,
+        "model": "jev-1.13.0"
+      },
+      "d076": {
+        "scores": {
+          "claim": 0.02,
+          "lab": 0.04,
+          "appt": 0.02,
+          "records": 0.03,
+          "patient": 0.03,
+          "vendor": 0.03,
+          "noise": 0.98,
+          "internal": 0.07
+        },
+        "clock": 0.08,
+        "model": "jev-1.13.0"
+      },
+      "d077": {
+        "scores": {
+          "claim": 0.02,
+          "lab": 0.04,
+          "appt": 0.02,
+          "records": 0.03,
+          "patient": 0.01,
+          "vendor": 0.02,
+          "noise": 0.95,
+          "internal": 0.06
+        },
+        "clock": 0.03,
+        "model": "jev-1.13.0"
+      },
+      "d078": {
+        "scores": {
+          "claim": 0.02,
+          "lab": 0.04,
+          "appt": 0.02,
+          "records": 0.03,
+          "patient": 0.02,
+          "vendor": 0.05,
+          "noise": 0.98,
+          "internal": 0.06
+        },
+        "clock": 0.03,
+        "model": "jev-1.13.0"
+      },
+      "d079": {
+        "scores": {
+          "claim": 0.01,
+          "lab": 0.05,
+          "appt": 0.01,
+          "records": 0.02,
+          "patient": 0.02,
+          "vendor": 0.05,
+          "noise": 0.96,
+          "internal": 0.22
+        },
+        "clock": 0.3,
+        "model": "jev-1.13.0"
+      },
+      "d080": {
+        "scores": {
+          "claim": 0.04,
+          "lab": 0.04,
+          "appt": 0.06,
+          "records": 0.03,
+          "patient": 0.03,
+          "vendor": 0.03,
+          "noise": 0.98,
+          "internal": 0.08
+        },
+        "clock": 0.09,
+        "model": "jev-1.13.0"
+      },
+      "d081": {
+        "scores": {
+          "claim": 0.06,
+          "lab": 0.04,
+          "appt": 0.02,
+          "records": 0.04,
+          "patient": 0.02,
+          "vendor": 0.03,
+          "noise": 0.84,
+          "internal": 0.15
+        },
+        "clock": 0.95,
+        "model": "jev-1.13.0"
+      },
+      "d082": {
+        "scores": {
+          "claim": 0.02,
+          "lab": 0.05,
+          "appt": 0.02,
+          "records": 0.02,
+          "patient": 0.02,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.98
+        },
+        "clock": 0.06,
+        "model": "jev-1.13.0"
+      },
+      "d083": {
+        "scores": {
+          "claim": 0.03,
+          "lab": 0.04,
+          "appt": 0.21,
+          "records": 0.03,
+          "patient": 0.05,
+          "vendor": 0.02,
+          "noise": 0.01,
+          "internal": 0.9
+        },
+        "clock": 0.06,
+        "model": "jev-1.13.0"
+      },
+      "d084": {
+        "scores": {
+          "claim": 0.97,
+          "lab": 0.06,
+          "appt": 0.03,
+          "records": 0.26,
+          "patient": 0.06,
+          "vendor": 0.03,
+          "noise": 0.03,
+          "internal": 0.81
+        },
+        "clock": 0.88,
+        "model": "jev-1.13.0"
+      },
+      "d085": {
+        "scores": {
+          "claim": 0.03,
+          "lab": 0.22,
+          "appt": 0.03,
+          "records": 0.03,
+          "patient": 0.03,
+          "vendor": 0.03,
+          "noise": 0.01,
+          "internal": 0.91
+        },
+        "clock": 0.22,
+        "model": "jev-1.13.0"
+      },
+      "d086": {
+        "scores": {
+          "claim": 0.02,
+          "lab": 0.04,
+          "appt": 0.07,
+          "records": 0.02,
+          "patient": 0.03,
+          "vendor": 0.02,
+          "noise": 0.01,
+          "internal": 0.9
+        },
+        "clock": 0.04,
+        "model": "jev-1.13.0"
+      },
+      "d087": {
+        "scores": {
+          "claim": 0.02,
+          "lab": 0.04,
+          "appt": 0.02,
+          "records": 0.02,
+          "patient": 0.02,
+          "vendor": 0.02,
+          "noise": 0.08,
+          "internal": 0.95
+        },
+        "clock": 0.92,
+        "model": "jev-1.13.0"
+      },
+      "d088": {
+        "scores": {
+          "claim": 0.36,
+          "lab": 0.05,
+          "appt": 0.02,
+          "records": 0.04,
+          "patient": 0.02,
+          "vendor": 0.06,
+          "noise": 0.02,
+          "internal": 0.88
+        },
+        "clock": 0.16,
+        "model": "jev-1.13.0"
+      },
+      "d089": {
+        "scores": {
+          "claim": 0.02,
+          "lab": 0.03,
+          "appt": 0.11,
+          "records": 0.02,
+          "patient": 0.03,
+          "vendor": 0.02,
+          "noise": 0.01,
+          "internal": 0.93
+        },
+        "clock": 0.04,
+        "model": "jev-1.13.0"
+      },
+      "d090": {
+        "scores": {
+          "claim": 0.04,
+          "lab": 0.06,
+          "appt": 0.03,
+          "records": 0.97,
+          "patient": 0.17,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.03
+        },
+        "clock": 0.09,
+        "model": "jev-1.13.0"
+      }
+    }
+  },
+  "prop": {
+    "date": "2026-09-25",
+    "lines": {
+      "act": 0.65,
+      "review": 0.5,
+      "clockAct": 0.7
+    },
+    "judgments": {
+      "p001": {
+        "scores": {
+          "maint": 0.85,
+          "code": 0.78,
+          "lease": 0.2,
+          "complaint": 0.05,
+          "payment": 0.03,
+          "vendor": 0.02,
+          "noise": 0.03,
+          "internal": 0.14
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "p002": {
+        "scores": {
+          "maint": 0.98,
+          "code": 0.02,
+          "lease": 0.11,
+          "complaint": 0.88,
+          "payment": 0.02,
+          "vendor": 0.03,
+          "noise": 0.02,
+          "internal": 0.28
+        },
+        "clock": 0.35,
+        "model": "jev-1.13.0"
+      },
+      "p003": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.01,
+          "lease": 0.97,
+          "complaint": 0.02,
+          "payment": 0.8,
+          "vendor": 0.03,
+          "noise": 0.02,
+          "internal": 0.06
+        },
+        "clock": 0.82,
+        "model": "jev-1.13.0"
+      },
+      "p004": {
+        "scores": {
+          "maint": 0.05,
+          "code": 0.18,
+          "lease": 0.12,
+          "complaint": 0.03,
+          "payment": 0.83,
+          "vendor": 0.07,
+          "noise": 0.03,
+          "internal": 0.41
+        },
+        "clock": 0.95,
+        "model": "jev-1.13.0"
+      },
+      "p005": {
+        "scores": {
+          "maint": 0.1,
+          "code": 0.02,
+          "lease": 0.1,
+          "complaint": 0.03,
+          "payment": 0.06,
+          "vendor": 0.87,
+          "noise": 0.03,
+          "internal": 0.4
+        },
+        "clock": 0.93,
+        "model": "jev-1.13.0"
+      },
+      "p006": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.02,
+          "lease": 0.09,
+          "complaint": 0.02,
+          "payment": 0.98,
+          "vendor": 0.04,
+          "noise": 0.02,
+          "internal": 0.11
+        },
+        "clock": 0.85,
+        "model": "jev-1.13.0"
+      },
+      "p007": {
+        "scores": {
+          "maint": 0.04,
+          "code": 0.01,
+          "lease": 0.16,
+          "complaint": 0.02,
+          "payment": 0.05,
+          "vendor": 0.03,
+          "noise": 0.98,
+          "internal": 0.07
+        },
+        "clock": 0.12,
+        "model": "jev-1.13.0"
+      },
+      "p008": {
+        "scores": {
+          "maint": 0.05,
+          "code": 0.02,
+          "lease": 0.23,
+          "complaint": 0.98,
+          "payment": 0.03,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.09
+        },
+        "clock": 0.07,
+        "model": "jev-1.13.0"
+      },
+      "p009": {
+        "scores": {
+          "maint": 0.03,
+          "code": 0.03,
+          "lease": 0.38,
+          "complaint": 0.02,
+          "payment": 0.04,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.68
+        },
+        "clock": 0.39,
+        "model": "jev-1.13.0"
+      },
+      "p010": {
+        "scores": {
+          "maint": 0.08,
+          "code": 0.22,
+          "lease": 0.19,
+          "complaint": 0.02,
+          "payment": 0.03,
+          "vendor": 0.06,
+          "noise": 0.16,
+          "internal": 0.17
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "p011": {
+        "scores": {
+          "maint": 0.96,
+          "code": 0.02,
+          "lease": 0.1,
+          "complaint": 0.79,
+          "payment": 0.02,
+          "vendor": 0.04,
+          "noise": 0.02,
+          "internal": 0.14
+        },
+        "clock": 0.1,
+        "model": "jev-1.13.0"
+      },
+      "p012": {
+        "scores": {
+          "maint": 0.85,
+          "code": 0.02,
+          "lease": 0.06,
+          "complaint": 0.07,
+          "payment": 0.02,
+          "vendor": 0.05,
+          "noise": 0.02,
+          "internal": 0.79
+        },
+        "clock": 0.07,
+        "model": "jev-1.13.0"
+      },
+      "p013": {
+        "scores": {
+          "maint": 0.86,
+          "code": 0.02,
+          "lease": 0.07,
+          "complaint": 0.15,
+          "payment": 0.02,
+          "vendor": 0.04,
+          "noise": 0.02,
+          "internal": 0.09
+        },
+        "clock": 0.09,
+        "model": "jev-1.13.0"
+      },
+      "p014": {
+        "scores": {
+          "maint": 0.98,
+          "code": 0.02,
+          "lease": 0.06,
+          "complaint": 0.73,
+          "payment": 0.02,
+          "vendor": 0.04,
+          "noise": 0.02,
+          "internal": 0.35
+        },
+        "clock": 0.21,
+        "model": "jev-1.13.0"
+      },
+      "p015": {
+        "scores": {
+          "maint": 0.7,
+          "code": 0.03,
+          "lease": 0.09,
+          "complaint": 0.03,
+          "payment": 0.03,
+          "vendor": 0.1,
+          "noise": 0.07,
+          "internal": 0.67
+        },
+        "clock": 0.52,
+        "model": "jev-1.13.0"
+      },
+      "p016": {
+        "scores": {
+          "maint": 0.74,
+          "code": 0.02,
+          "lease": 0.15,
+          "complaint": 0.03,
+          "payment": 0.03,
+          "vendor": 0.06,
+          "noise": 0.02,
+          "internal": 0.7
+        },
+        "clock": 0.42,
+        "model": "jev-1.13.0"
+      },
+      "p017": {
+        "scores": {
+          "maint": 0.96,
+          "code": 0.02,
+          "lease": 0.12,
+          "complaint": 0.95,
+          "payment": 0.04,
+          "vendor": 0.05,
+          "noise": 0.02,
+          "internal": 0.16
+        },
+        "clock": 0.22,
+        "model": "jev-1.13.0"
+      },
+      "p018": {
+        "scores": {
+          "maint": 0.08,
+          "code": 0.02,
+          "lease": 0.22,
+          "complaint": 0.98,
+          "payment": 0.03,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.15
+        },
+        "clock": 0.11,
+        "model": "jev-1.13.0"
+      },
+      "p019": {
+        "scores": {
+          "maint": 0.05,
+          "code": 0.02,
+          "lease": 0.52,
+          "complaint": 0.95,
+          "payment": 0.03,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.11
+        },
+        "clock": 0.04,
+        "model": "jev-1.13.0"
+      },
+      "p020": {
+        "scores": {
+          "maint": 0.08,
+          "code": 0.03,
+          "lease": 0.23,
+          "complaint": 0.96,
+          "payment": 0.02,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.2
+        },
+        "clock": 0.06,
+        "model": "jev-1.13.0"
+      },
+      "p021": {
+        "scores": {
+          "maint": 0.05,
+          "code": 0.02,
+          "lease": 0.25,
+          "complaint": 0.96,
+          "payment": 0.03,
+          "vendor": 0.02,
+          "noise": 0.01,
+          "internal": 0.1
+        },
+        "clock": 0.04,
+        "model": "jev-1.13.0"
+      },
+      "p022": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.01,
+          "lease": 0.92,
+          "complaint": 0.02,
+          "payment": 0.06,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.05
+        },
+        "clock": 0.07,
+        "model": "jev-1.13.0"
+      },
+      "p023": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.02,
+          "lease": 0.96,
+          "complaint": 0.02,
+          "payment": 0.07,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.1
+        },
+        "clock": 0.75,
+        "model": "jev-1.13.0"
+      },
+      "p024": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.02,
+          "lease": 0.93,
+          "complaint": 0.02,
+          "payment": 0.3,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.07
+        },
+        "clock": 0.11,
+        "model": "jev-1.13.0"
+      },
+      "p025": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.02,
+          "lease": 0.95,
+          "complaint": 0.02,
+          "payment": 0.25,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.07
+        },
+        "clock": 0.24,
+        "model": "jev-1.13.0"
+      },
+      "p026": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.02,
+          "lease": 0.97,
+          "complaint": 0.03,
+          "payment": 0.1,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.07
+        },
+        "clock": 0.22,
+        "model": "jev-1.13.0"
+      },
+      "p027": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.02,
+          "lease": 0.95,
+          "complaint": 0.02,
+          "payment": 0.14,
+          "vendor": 0.03,
+          "noise": 0.03,
+          "internal": 0.34
+        },
+        "clock": 0.49,
+        "model": "jev-1.13.0"
+      },
+      "p028": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.32,
+          "lease": 0.54,
+          "complaint": 0.02,
+          "payment": 0.48,
+          "vendor": 0.05,
+          "noise": 0.16,
+          "internal": 0.44
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "p029": {
+        "scores": {
+          "maint": 0.07,
+          "code": 0.93,
+          "lease": 0.16,
+          "complaint": 0.1,
+          "payment": 0.31,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.17
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "p030": {
+        "scores": {
+          "maint": 0.07,
+          "code": 0.33,
+          "lease": 0.31,
+          "complaint": 0.03,
+          "payment": 0.04,
+          "vendor": 0.03,
+          "noise": 0.03,
+          "internal": 0.77
+        },
+        "clock": 0.97,
+        "model": "jev-1.13.0"
+      },
+      "p031": {
+        "scores": {
+          "maint": 0.22,
+          "code": 0.53,
+          "lease": 0.13,
+          "complaint": 0.29,
+          "payment": 0.03,
+          "vendor": 0.03,
+          "noise": 0.02,
+          "internal": 0.48
+        },
+        "clock": 0.07,
+        "model": "jev-1.13.0"
+      },
+      "p032": {
+        "scores": {
+          "maint": 0.79,
+          "code": 0.26,
+          "lease": 0.16,
+          "complaint": 0.81,
+          "payment": 0.03,
+          "vendor": 0.04,
+          "noise": 0.03,
+          "internal": 0.54
+        },
+        "clock": 0.97,
+        "model": "jev-1.13.0"
+      },
+      "p033": {
+        "scores": {
+          "maint": 0.05,
+          "code": 0.67,
+          "lease": 0.12,
+          "complaint": 0.02,
+          "payment": 0.03,
+          "vendor": 0.03,
+          "noise": 0.03,
+          "internal": 0.43
+        },
+        "clock": 0.06,
+        "model": "jev-1.13.0"
+      },
+      "p034": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.02,
+          "lease": 0.07,
+          "complaint": 0.05,
+          "payment": 0.98,
+          "vendor": 0.04,
+          "noise": 0.02,
+          "internal": 0.58
+        },
+        "clock": 0.21,
+        "model": "jev-1.13.0"
+      },
+      "p035": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.02,
+          "lease": 0.08,
+          "complaint": 0.03,
+          "payment": 0.98,
+          "vendor": 0.04,
+          "noise": 0.02,
+          "internal": 0.09
+        },
+        "clock": 0.46,
+        "model": "jev-1.13.0"
+      },
+      "p036": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.03,
+          "lease": 0.52,
+          "complaint": 0.04,
+          "payment": 0.87,
+          "vendor": 0.05,
+          "noise": 0.03,
+          "internal": 0.58
+        },
+        "clock": 0.11,
+        "model": "jev-1.13.0"
+      },
+      "p037": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.02,
+          "lease": 0.1,
+          "complaint": 0.02,
+          "payment": 0.96,
+          "vendor": 0.03,
+          "noise": 0.02,
+          "internal": 0.53
+        },
+        "clock": 0.17,
+        "model": "jev-1.13.0"
+      },
+      "p038": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.08,
+          "lease": 0.13,
+          "complaint": 0.02,
+          "payment": 0.96,
+          "vendor": 0.07,
+          "noise": 0.02,
+          "internal": 0.47
+        },
+        "clock": 0.13,
+        "model": "jev-1.13.0"
+      },
+      "p039": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.02,
+          "lease": 0.08,
+          "complaint": 0.8,
+          "payment": 0.97,
+          "vendor": 0.04,
+          "noise": 0.02,
+          "internal": 0.1
+        },
+        "clock": 0.17,
+        "model": "jev-1.13.0"
+      },
+      "p040": {
+        "scores": {
+          "maint": 0.04,
+          "code": 0.02,
+          "lease": 0.1,
+          "complaint": 0.02,
+          "payment": 0.07,
+          "vendor": 0.85,
+          "noise": 0.04,
+          "internal": 0.3
+        },
+        "clock": 0.9,
+        "model": "jev-1.13.0"
+      },
+      "p041": {
+        "scores": {
+          "maint": 0.03,
+          "code": 0.08,
+          "lease": 0.1,
+          "complaint": 0.02,
+          "payment": 0.49,
+          "vendor": 0.29,
+          "noise": 0.05,
+          "internal": 0.14
+        },
+        "clock": 0.97,
+        "model": "jev-1.13.0"
+      },
+      "p042": {
+        "scores": {
+          "maint": 0.52,
+          "code": 0.02,
+          "lease": 0.1,
+          "complaint": 0.05,
+          "payment": 0.04,
+          "vendor": 0.9,
+          "noise": 0.1,
+          "internal": 0.38
+        },
+        "clock": 0.65,
+        "model": "jev-1.13.0"
+      },
+      "p043": {
+        "scores": {
+          "maint": 0.03,
+          "code": 0.03,
+          "lease": 0.08,
+          "complaint": 0.03,
+          "payment": 0.6,
+          "vendor": 0.42,
+          "noise": 0.07,
+          "internal": 0.21
+        },
+        "clock": 0.5,
+        "model": "jev-1.13.0"
+      },
+      "p044": {
+        "scores": {
+          "maint": 0.14,
+          "code": 0.02,
+          "lease": 0.12,
+          "complaint": 0.07,
+          "payment": 0.05,
+          "vendor": 0.76,
+          "noise": 0.05,
+          "internal": 0.32
+        },
+        "clock": 0.13,
+        "model": "jev-1.13.0"
+      },
+      "p045": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.02,
+          "lease": 0.11,
+          "complaint": 0.02,
+          "payment": 0.92,
+          "vendor": 0.05,
+          "noise": 0.97,
+          "internal": 0.09
+        },
+        "clock": 0.46,
+        "model": "jev-1.13.0"
+      },
+      "p046": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.03,
+          "lease": 0.38,
+          "complaint": 0.03,
+          "payment": 0.17,
+          "vendor": 0.06,
+          "noise": 0.95,
+          "internal": 0.09
+        },
+        "clock": 0.44,
+        "model": "jev-1.13.0"
+      },
+      "p047": {
+        "scores": {
+          "maint": 0.03,
+          "code": 0.03,
+          "lease": 0.33,
+          "complaint": 0.03,
+          "payment": 0.09,
+          "vendor": 0.16,
+          "noise": 0.9,
+          "internal": 0.2
+        },
+        "clock": 0.07,
+        "model": "jev-1.13.0"
+      },
+      "p048": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.02,
+          "lease": 0.53,
+          "complaint": 0.03,
+          "payment": 0.07,
+          "vendor": 0.04,
+          "noise": 0.97,
+          "internal": 0.1
+        },
+        "clock": 0.04,
+        "model": "jev-1.13.0"
+      },
+      "p049": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.02,
+          "lease": 0.21,
+          "complaint": 0.02,
+          "payment": 0.24,
+          "vendor": 0.04,
+          "noise": 0.97,
+          "internal": 0.11
+        },
+        "clock": 0.03,
+        "model": "jev-1.13.0"
+      },
+      "p050": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.03,
+          "lease": 0.25,
+          "complaint": 0.04,
+          "payment": 0.06,
+          "vendor": 0.03,
+          "noise": 0.83,
+          "internal": 0.22
+        },
+        "clock": 0.07,
+        "model": "jev-1.13.0"
+      },
+      "p051": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.01,
+          "lease": 0.33,
+          "complaint": 0.02,
+          "payment": 0.05,
+          "vendor": 0.04,
+          "noise": 0.89,
+          "internal": 0.34
+        },
+        "clock": 0.04,
+        "model": "jev-1.13.0"
+      },
+      "p052": {
+        "scores": {
+          "maint": 0.06,
+          "code": 0.02,
+          "lease": 0.45,
+          "complaint": 0.03,
+          "payment": 0.08,
+          "vendor": 0.15,
+          "noise": 0.93,
+          "internal": 0.21
+        },
+        "clock": 0.08,
+        "model": "jev-1.13.0"
+      },
+      "p053": {
+        "scores": {
+          "maint": 0.08,
+          "code": 0.03,
+          "lease": 0.1,
+          "complaint": 0.02,
+          "payment": 0.08,
+          "vendor": 0.08,
+          "noise": 0.84,
+          "internal": 0.23
+        },
+        "clock": 0.05,
+        "model": "jev-1.13.0"
+      },
+      "p054": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.01,
+          "lease": 0.16,
+          "complaint": 0.02,
+          "payment": 0.12,
+          "vendor": 0.03,
+          "noise": 0.93,
+          "internal": 0.08
+        },
+        "clock": 0.09,
+        "model": "jev-1.13.0"
+      },
+      "p055": {
+        "scores": {
+          "maint": 0.06,
+          "code": 0.03,
+          "lease": 0.11,
+          "complaint": 0.03,
+          "payment": 0.08,
+          "vendor": 0.05,
+          "noise": 0.98,
+          "internal": 0.05
+        },
+        "clock": 0.08,
+        "model": "jev-1.13.0"
+      },
+      "p056": {
+        "scores": {
+          "maint": 0.04,
+          "code": 0.01,
+          "lease": 0.72,
+          "complaint": 0.02,
+          "payment": 0.08,
+          "vendor": 0.04,
+          "noise": 0.98,
+          "internal": 0.12
+        },
+        "clock": 0.05,
+        "model": "jev-1.13.0"
+      },
+      "p057": {
+        "scores": {
+          "maint": 0.05,
+          "code": 0.02,
+          "lease": 0.07,
+          "complaint": 0.03,
+          "payment": 0.05,
+          "vendor": 0.06,
+          "noise": 0.96,
+          "internal": 0.11
+        },
+        "clock": 0.03,
+        "model": "jev-1.13.0"
+      },
+      "p058": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.03,
+          "lease": 0.66,
+          "complaint": 0.04,
+          "payment": 0.43,
+          "vendor": 0.07,
+          "noise": 0.9,
+          "internal": 0.09
+        },
+        "clock": 0.87,
+        "model": "jev-1.13.0"
+      },
+      "p059": {
+        "scores": {
+          "maint": 0.06,
+          "code": 0.02,
+          "lease": 0.19,
+          "complaint": 0.05,
+          "payment": 0.19,
+          "vendor": 0.06,
+          "noise": 0.93,
+          "internal": 0.22
+        },
+        "clock": 0.03,
+        "model": "jev-1.13.0"
+      },
+      "p060": {
+        "scores": {
+          "maint": 0.15,
+          "code": 0.03,
+          "lease": 0.09,
+          "complaint": 0.02,
+          "payment": 0.05,
+          "vendor": 0.06,
+          "noise": 0.93,
+          "internal": 0.16
+        },
+        "clock": 0.1,
+        "model": "jev-1.13.0"
+      },
+      "p061": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.02,
+          "lease": 0.26,
+          "complaint": 0.02,
+          "payment": 0.95,
+          "vendor": 0.06,
+          "noise": 0.92,
+          "internal": 0.22
+        },
+        "clock": 0.03,
+        "model": "jev-1.13.0"
+      },
+      "p062": {
+        "scores": {
+          "maint": 0.03,
+          "code": 0.03,
+          "lease": 0.13,
+          "complaint": 0.03,
+          "payment": 0.68,
+          "vendor": 0.08,
+          "noise": 0.02,
+          "internal": 0.78
+        },
+        "clock": 0.41,
+        "model": "jev-1.13.0"
+      },
+      "p063": {
+        "scores": {
+          "maint": 0.06,
+          "code": 0.02,
+          "lease": 0.08,
+          "complaint": 0.03,
+          "payment": 0.04,
+          "vendor": 0.02,
+          "noise": 0.01,
+          "internal": 0.91
+        },
+        "clock": 0.04,
+        "model": "jev-1.13.0"
+      },
+      "p064": {
+        "scores": {
+          "maint": 0.82,
+          "code": 0.02,
+          "lease": 0.59,
+          "complaint": 0.03,
+          "payment": 0.03,
+          "vendor": 0.02,
+          "noise": 0.04,
+          "internal": 0.91
+        },
+        "clock": 0.27,
+        "model": "jev-1.13.0"
+      },
+      "p065": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.02,
+          "lease": 0.21,
+          "complaint": 0.02,
+          "payment": 0.38,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.93
+        },
+        "clock": 0.15,
+        "model": "jev-1.13.0"
+      },
+      "p066": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.01,
+          "lease": 0.85,
+          "complaint": 0.02,
+          "payment": 0.3,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.92
+        },
+        "clock": 0.13,
+        "model": "jev-1.13.0"
+      },
+      "p067": {
+        "scores": {
+          "maint": 0.14,
+          "code": 0.02,
+          "lease": 0.1,
+          "complaint": 0.69,
+          "payment": 0.03,
+          "vendor": 0.03,
+          "noise": 0.02,
+          "internal": 0.84
+        },
+        "clock": 0.04,
+        "model": "jev-1.13.0"
+      },
+      "p068": {
+        "scores": {
+          "maint": 0.42,
+          "code": 0.01,
+          "lease": 0.06,
+          "complaint": 0.03,
+          "payment": 0.03,
+          "vendor": 0.06,
+          "noise": 0.02,
+          "internal": 0.21
+        },
+        "clock": 0.07,
+        "model": "jev-1.13.0"
+      },
+      "p069": {
+        "scores": {
+          "maint": 0.95,
+          "code": 0.02,
+          "lease": 0.1,
+          "complaint": 0.33,
+          "payment": 0.02,
+          "vendor": 0.03,
+          "noise": 0.02,
+          "internal": 0.12
+        },
+        "clock": 0.1,
+        "model": "jev-1.13.0"
+      },
+      "p070": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.02,
+          "lease": 0.93,
+          "complaint": 0.18,
+          "payment": 0.24,
+          "vendor": 0.02,
+          "noise": 0.01,
+          "internal": 0.05
+        },
+        "clock": 0.64,
+        "model": "jev-1.13.0"
+      },
+      "p071": {
+        "scores": {
+          "maint": 0.03,
+          "code": 0.02,
+          "lease": 0.08,
+          "complaint": 0.04,
+          "payment": 0.98,
+          "vendor": 0.05,
+          "noise": 0.02,
+          "internal": 0.23
+        },
+        "clock": 0.89,
+        "model": "jev-1.13.0"
+      },
+      "p072": {
+        "scores": {
+          "maint": 0.08,
+          "code": 0.03,
+          "lease": 0.35,
+          "complaint": 0.95,
+          "payment": 0.04,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.22
+        },
+        "clock": 0.37,
+        "model": "jev-1.13.0"
+      },
+      "p073": {
+        "scores": {
+          "maint": 0.16,
+          "code": 0.65,
+          "lease": 0.29,
+          "complaint": 0.09,
+          "payment": 0.03,
+          "vendor": 0.03,
+          "noise": 0.03,
+          "internal": 0.29
+        },
+        "clock": 0.97,
+        "model": "jev-1.13.0"
+      },
+      "p074": {
+        "scores": {
+          "maint": 0.91,
+          "code": 0.98,
+          "lease": 0.14,
+          "complaint": 0.03,
+          "payment": 0.04,
+          "vendor": 0.03,
+          "noise": 0.02,
+          "internal": 0.57
+        },
+        "clock": 0.95,
+        "model": "jev-1.13.0"
+      },
+      "p075": {
+        "scores": {
+          "maint": 0.03,
+          "code": 0.03,
+          "lease": 0.3,
+          "complaint": 0.03,
+          "payment": 0.81,
+          "vendor": 0.08,
+          "noise": 0.04,
+          "internal": 0.28
+        },
+        "clock": 0.97,
+        "model": "jev-1.13.0"
+      },
+      "p076": {
+        "scores": {
+          "maint": 0.94,
+          "code": 0.93,
+          "lease": 0.16,
+          "complaint": 0.77,
+          "payment": 0.03,
+          "vendor": 0.03,
+          "noise": 0.02,
+          "internal": 0.73
+        },
+        "clock": 0.97,
+        "model": "jev-1.13.0"
+      },
+      "p077": {
+        "scores": {
+          "maint": 0.42,
+          "code": 0.2,
+          "lease": 0.11,
+          "complaint": 0.03,
+          "payment": 0.05,
+          "vendor": 0.81,
+          "noise": 0.1,
+          "internal": 0.5
+        },
+        "clock": 0.96,
+        "model": "jev-1.13.0"
+      },
+      "p078": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.01,
+          "lease": 0.95,
+          "complaint": 0.02,
+          "payment": 0.14,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.05
+        },
+        "clock": 0.6,
+        "model": "jev-1.13.0"
+      },
+      "p079": {
+        "scores": {
+          "maint": 0.92,
+          "code": 0.77,
+          "lease": 0.46,
+          "complaint": 0.14,
+          "payment": 0.92,
+          "vendor": 0.03,
+          "noise": 0.02,
+          "internal": 0.75
+        },
+        "clock": 0.97,
+        "model": "jev-1.13.0"
+      },
+      "p080": {
+        "scores": {
+          "maint": 0.97,
+          "code": 0.01,
+          "lease": 0.12,
+          "complaint": 0.2,
+          "payment": 0.97,
+          "vendor": 0.04,
+          "noise": 0.02,
+          "internal": 0.09
+        },
+        "clock": 0.47,
+        "model": "jev-1.13.0"
+      },
+      "p081": {
+        "scores": {
+          "maint": 0.93,
+          "code": 0.03,
+          "lease": 0.06,
+          "complaint": 0.31,
+          "payment": 0.02,
+          "vendor": 0.03,
+          "noise": 0.02,
+          "internal": 0.07
+        },
+        "clock": 0.08,
+        "model": "jev-1.13.0"
+      },
+      "p082": {
+        "scores": {
+          "maint": 0.07,
+          "code": 0.02,
+          "lease": 0.13,
+          "complaint": 0.95,
+          "payment": 0.02,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.22
+        },
+        "clock": 0.04,
+        "model": "jev-1.13.0"
+      },
+      "p083": {
+        "scores": {
+          "maint": 0.18,
+          "code": 0.02,
+          "lease": 0.06,
+          "complaint": 0.03,
+          "payment": 0.04,
+          "vendor": 0.83,
+          "noise": 0.08,
+          "internal": 0.23
+        },
+        "clock": 0.4,
+        "model": "jev-1.13.0"
+      },
+      "p084": {
+        "scores": {
+          "maint": 0.36,
+          "code": 0.02,
+          "lease": 0.95,
+          "complaint": 0.88,
+          "payment": 0.85,
+          "vendor": 0.05,
+          "noise": 0.02,
+          "internal": 0.19
+        },
+        "clock": 0.31,
+        "model": "jev-1.13.0"
+      },
+      "p085": {
+        "scores": {
+          "maint": 0.03,
+          "code": 0.01,
+          "lease": 0.52,
+          "complaint": 0.03,
+          "payment": 0.27,
+          "vendor": 0.02,
+          "noise": 0.01,
+          "internal": 0.89
+        },
+        "clock": 0.65,
+        "model": "jev-1.13.0"
+      },
+      "p086": {
+        "scores": {
+          "maint": 0.04,
+          "code": 0.02,
+          "lease": 0.1,
+          "complaint": 0.03,
+          "payment": 0.23,
+          "vendor": 0.84,
+          "noise": 0.04,
+          "internal": 0.43
+        },
+        "clock": 0.29,
+        "model": "jev-1.13.0"
+      },
+      "p087": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.72,
+          "lease": 0.09,
+          "complaint": 0.02,
+          "payment": 0.27,
+          "vendor": 0.02,
+          "noise": 0.05,
+          "internal": 0.27
+        },
+        "clock": 0.93,
+        "model": "jev-1.13.0"
+      },
+      "p088": {
+        "scores": {
+          "maint": 0.96,
+          "code": 0.02,
+          "lease": 0.09,
+          "complaint": 0.8,
+          "payment": 0.03,
+          "vendor": 0.04,
+          "noise": 0.02,
+          "internal": 0.58
+        },
+        "clock": 0.08,
+        "model": "jev-1.13.0"
+      },
+      "p089": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.02,
+          "lease": 0.96,
+          "complaint": 0.04,
+          "payment": 0.47,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.05
+        },
+        "clock": 0.08,
+        "model": "jev-1.13.0"
+      },
+      "p090": {
+        "scores": {
+          "maint": 0.97,
+          "code": 0.02,
+          "lease": 0.17,
+          "complaint": 0.86,
+          "payment": 0.02,
+          "vendor": 0.03,
+          "noise": 0.02,
+          "internal": 0.14
+        },
+        "clock": 0.29,
+        "model": "jev-1.13.0"
+      },
+      "p091": {
+        "scores": {
+          "maint": 0.89,
+          "code": 0.02,
+          "lease": 0.16,
+          "complaint": 0.73,
+          "payment": 0.05,
+          "vendor": 0.03,
+          "noise": 0.02,
+          "internal": 0.91
+        },
+        "clock": 0.51,
+        "model": "jev-1.13.0"
+      },
+      "p092": {
+        "scores": {
+          "maint": 0.02,
+          "code": 0.02,
+          "lease": 0.18,
+          "complaint": 0.02,
+          "payment": 0.92,
+          "vendor": 0.02,
+          "noise": 0.02,
+          "internal": 0.64
+        },
+        "clock": 0.12,
+        "model": "jev-1.13.0"
+      }
+    }
+  },
+  "rec": {
+    "date": "2026-09-25",
+    "lines": {
+      "act": 0.6,
+      "review": 0.5,
+      "clockAct": 0.7
+    },
+    "judgments": {
+      "r001": {
+        "scores": {
+          "offer": 0.98,
+          "candidate": 0.89,
+          "client": 0.16,
+          "scheduling": 0.03,
+          "onboarding": 0.06,
+          "billing": 0.05,
+          "noise": 0.03,
+          "internal": 0.2
+        },
+        "clock": 0.77,
+        "model": "jev-1.13.0"
+      },
+      "r002": {
+        "scores": {
+          "offer": 0.27,
+          "candidate": 0.04,
+          "client": 0.53,
+          "scheduling": 0.09,
+          "onboarding": 0.1,
+          "billing": 0.05,
+          "noise": 0.04,
+          "internal": 0.78
+        },
+        "clock": 0.08,
+        "model": "jev-1.13.0"
+      },
+      "r003": {
+        "scores": {
+          "offer": 0.13,
+          "candidate": 0.9,
+          "client": 0.08,
+          "scheduling": 0.02,
+          "onboarding": 0.98,
+          "billing": 0.03,
+          "noise": 0.02,
+          "internal": 0.19
+        },
+        "clock": 0.83,
+        "model": "jev-1.13.0"
+      },
+      "r004": {
+        "scores": {
+          "offer": 0.13,
+          "candidate": 0.03,
+          "client": 0.78,
+          "scheduling": 0.04,
+          "onboarding": 0.25,
+          "billing": 0.36,
+          "noise": 0.05,
+          "internal": 0.34
+        },
+        "clock": 0.06,
+        "model": "jev-1.13.0"
+      },
+      "r005": {
+        "scores": {
+          "offer": 0.08,
+          "candidate": 0.03,
+          "client": 0.18,
+          "scheduling": 0.02,
+          "onboarding": 0.18,
+          "billing": 0.96,
+          "noise": 0.03,
+          "internal": 0.28
+        },
+        "clock": 0.13,
+        "model": "jev-1.13.0"
+      },
+      "r006": {
+        "scores": {
+          "offer": 0.1,
+          "candidate": 0.61,
+          "client": 0.4,
+          "scheduling": 0.95,
+          "onboarding": 0.16,
+          "billing": 0.04,
+          "noise": 0.04,
+          "internal": 0.38
+        },
+        "clock": 0.08,
+        "model": "jev-1.13.0"
+      },
+      "r007": {
+        "scores": {
+          "offer": 0.05,
+          "candidate": 0.02,
+          "client": 0.04,
+          "scheduling": 0.14,
+          "onboarding": 0.08,
+          "billing": 0.04,
+          "noise": 0.98,
+          "internal": 0.08
+        },
+        "clock": 0.14,
+        "model": "jev-1.13.0"
+      },
+      "r008": {
+        "scores": {
+          "offer": 0.43,
+          "candidate": 0.88,
+          "client": 0.07,
+          "scheduling": 0.19,
+          "onboarding": 0.3,
+          "billing": 0.06,
+          "noise": 0.02,
+          "internal": 0.17
+        },
+        "clock": 0.07,
+        "model": "jev-1.13.0"
+      },
+      "r009": {
+        "scores": {
+          "offer": 0.1,
+          "candidate": 0.02,
+          "client": 0.09,
+          "scheduling": 0.11,
+          "onboarding": 0.19,
+          "billing": 0.04,
+          "noise": 0.02,
+          "internal": 0.9
+        },
+        "clock": 0.11,
+        "model": "jev-1.13.0"
+      },
+      "r010": {
+        "scores": {
+          "offer": 0.37,
+          "candidate": 0.04,
+          "client": 0.1,
+          "scheduling": 0.09,
+          "onboarding": 0.77,
+          "billing": 0.1,
+          "noise": 0.04,
+          "internal": 0.57
+        },
+        "clock": 0.28,
+        "model": "jev-1.13.0"
+      },
+      "r011": {
+        "scores": {
+          "offer": 0.97,
+          "candidate": 0.03,
+          "client": 0.17,
+          "scheduling": 0.04,
+          "onboarding": 0.27,
+          "billing": 0.05,
+          "noise": 0.02,
+          "internal": 0.83
+        },
+        "clock": 0.78,
+        "model": "jev-1.13.0"
+      },
+      "r012": {
+        "scores": {
+          "offer": 0.97,
+          "candidate": 0.05,
+          "client": 0.37,
+          "scheduling": 0.05,
+          "onboarding": 0.1,
+          "billing": 0.06,
+          "noise": 0.03,
+          "internal": 0.82
+        },
+        "clock": 0.75,
+        "model": "jev-1.13.0"
+      },
+      "r013": {
+        "scores": {
+          "offer": 0.98,
+          "candidate": 0.91,
+          "client": 0.14,
+          "scheduling": 0.03,
+          "onboarding": 0.56,
+          "billing": 0.07,
+          "noise": 0.02,
+          "internal": 0.21
+        },
+        "clock": 0.33,
+        "model": "jev-1.13.0"
+      },
+      "r014": {
+        "scores": {
+          "offer": 0.98,
+          "candidate": 0.88,
+          "client": 0.16,
+          "scheduling": 0.03,
+          "onboarding": 0.09,
+          "billing": 0.05,
+          "noise": 0.02,
+          "internal": 0.25
+        },
+        "clock": 0.37,
+        "model": "jev-1.13.0"
+      },
+      "r015": {
+        "scores": {
+          "offer": 0.97,
+          "candidate": 0.05,
+          "client": 0.24,
+          "scheduling": 0.05,
+          "onboarding": 0.33,
+          "billing": 0.06,
+          "noise": 0.02,
+          "internal": 0.88
+        },
+        "clock": 0.6,
+        "model": "jev-1.13.0"
+      },
+      "r016": {
+        "scores": {
+          "offer": 0.94,
+          "candidate": 0.56,
+          "client": 0.51,
+          "scheduling": 0.02,
+          "onboarding": 0.4,
+          "billing": 0.03,
+          "noise": 0.03,
+          "internal": 0.42
+        },
+        "clock": 0.08,
+        "model": "jev-1.13.0"
+      },
+      "r017": {
+        "scores": {
+          "offer": 0.98,
+          "candidate": 0.03,
+          "client": 0.33,
+          "scheduling": 0.05,
+          "onboarding": 0.08,
+          "billing": 0.05,
+          "noise": 0.05,
+          "internal": 0.77
+        },
+        "clock": 0.68,
+        "model": "jev-1.13.0"
+      },
+      "r018": {
+        "scores": {
+          "offer": 0.8,
+          "candidate": 0.04,
+          "client": 0.19,
+          "scheduling": 0.03,
+          "onboarding": 0.74,
+          "billing": 0.05,
+          "noise": 0.03,
+          "internal": 0.67
+        },
+        "clock": 0.28,
+        "model": "jev-1.13.0"
+      },
+      "r019": {
+        "scores": {
+          "offer": 0.77,
+          "candidate": 0.95,
+          "client": 0.1,
+          "scheduling": 0.03,
+          "onboarding": 0.94,
+          "billing": 0.06,
+          "noise": 0.02,
+          "internal": 0.13
+        },
+        "clock": 0.22,
+        "model": "jev-1.13.0"
+      },
+      "r020": {
+        "scores": {
+          "offer": 0.88,
+          "candidate": 0.61,
+          "client": 0.07,
+          "scheduling": 0.26,
+          "onboarding": 0.12,
+          "billing": 0.08,
+          "noise": 0.04,
+          "internal": 0.68
+        },
+        "clock": 0.06,
+        "model": "jev-1.13.0"
+      },
+      "r021": {
+        "scores": {
+          "offer": 0.95,
+          "candidate": 0.05,
+          "client": 0.21,
+          "scheduling": 0.06,
+          "onboarding": 0.13,
+          "billing": 0.05,
+          "noise": 0.03,
+          "internal": 0.58
+        },
+        "clock": 0.07,
+        "model": "jev-1.13.0"
+      },
+      "r022": {
+        "scores": {
+          "offer": 0.86,
+          "candidate": 0.04,
+          "client": 0.15,
+          "scheduling": 0.02,
+          "onboarding": 0.57,
+          "billing": 0.04,
+          "noise": 0.02,
+          "internal": 0.91
+        },
+        "clock": 0.95,
+        "model": "jev-1.13.0"
+      },
+      "r023": {
+        "scores": {
+          "offer": 0.24,
+          "candidate": 0.3,
+          "client": 0.47,
+          "scheduling": 0.04,
+          "onboarding": 0.09,
+          "billing": 0.04,
+          "noise": 0.05,
+          "internal": 0.49
+        },
+        "clock": 0.04,
+        "model": "jev-1.13.0"
+      },
+      "r024": {
+        "scores": {
+          "offer": 0.41,
+          "candidate": 0.91,
+          "client": 0.16,
+          "scheduling": 0.19,
+          "onboarding": 0.1,
+          "billing": 0.04,
+          "noise": 0.03,
+          "internal": 0.13
+        },
+        "clock": 0.06,
+        "model": "jev-1.13.0"
+      },
+      "r025": {
+        "scores": {
+          "offer": 0.03,
+          "candidate": 0.91,
+          "client": 0.07,
+          "scheduling": 0.08,
+          "onboarding": 0.08,
+          "billing": 0.05,
+          "noise": 0.04,
+          "internal": 0.07
+        },
+        "clock": 0.04,
+        "model": "jev-1.13.0"
+      },
+      "r026": {
+        "scores": {
+          "offer": 0.4,
+          "candidate": 0.84,
+          "client": 0.16,
+          "scheduling": 0.05,
+          "onboarding": 0.8,
+          "billing": 0.04,
+          "noise": 0.03,
+          "internal": 0.27
+        },
+        "clock": 0.13,
+        "model": "jev-1.13.0"
+      },
+      "r027": {
+        "scores": {
+          "offer": 0.72,
+          "candidate": 0.89,
+          "client": 0.14,
+          "scheduling": 0.07,
+          "onboarding": 0.12,
+          "billing": 0.04,
+          "noise": 0.03,
+          "internal": 0.11
+        },
+        "clock": 0.4,
+        "model": "jev-1.13.0"
+      },
+      "r028": {
+        "scores": {
+          "offer": 0.96,
+          "candidate": 0.91,
+          "client": 0.14,
+          "scheduling": 0.09,
+          "onboarding": 0.1,
+          "billing": 0.05,
+          "noise": 0.03,
+          "internal": 0.17
+        },
+        "clock": 0.62,
+        "model": "jev-1.13.0"
+      },
+      "r029": {
+        "scores": {
+          "offer": 0.04,
+          "candidate": 0.04,
+          "client": 0.59,
+          "scheduling": 0.06,
+          "onboarding": 0.1,
+          "billing": 0.03,
+          "noise": 0.06,
+          "internal": 0.53
+        },
+        "clock": 0.1,
+        "model": "jev-1.13.0"
+      },
+      "r030": {
+        "scores": {
+          "offer": 0.12,
+          "candidate": 0.09,
+          "client": 0.6,
+          "scheduling": 0.39,
+          "onboarding": 0.25,
+          "billing": 0.05,
+          "noise": 0.04,
+          "internal": 0.62
+        },
+        "clock": 0.71,
+        "model": "jev-1.13.0"
+      },
+      "r031": {
+        "scores": {
+          "offer": 0.05,
+          "candidate": 0.04,
+          "client": 0.74,
+          "scheduling": 0.11,
+          "onboarding": 0.13,
+          "billing": 0.04,
+          "noise": 0.04,
+          "internal": 0.73
+        },
+        "clock": 0.62,
+        "model": "jev-1.13.0"
+      },
+      "r032": {
+        "scores": {
+          "offer": 0.08,
+          "candidate": 0.05,
+          "client": 0.67,
+          "scheduling": 0.9,
+          "onboarding": 0.13,
+          "billing": 0.05,
+          "noise": 0.04,
+          "internal": 0.73
+        },
+        "clock": 0.81,
+        "model": "jev-1.13.0"
+      },
+      "r033": {
+        "scores": {
+          "offer": 0.04,
+          "candidate": 0.03,
+          "client": 0.63,
+          "scheduling": 0.06,
+          "onboarding": 0.13,
+          "billing": 0.04,
+          "noise": 0.05,
+          "internal": 0.74
+        },
+        "clock": 0.09,
+        "model": "jev-1.13.0"
+      },
+      "r034": {
+        "scores": {
+          "offer": 0.11,
+          "candidate": 0.03,
+          "client": 0.47,
+          "scheduling": 0.1,
+          "onboarding": 0.32,
+          "billing": 0.05,
+          "noise": 0.05,
+          "internal": 0.76
+        },
+        "clock": 0.26,
+        "model": "jev-1.13.0"
+      },
+      "r035": {
+        "scores": {
+          "offer": 0.08,
+          "candidate": 0.02,
+          "client": 0.63,
+          "scheduling": 0.07,
+          "onboarding": 0.11,
+          "billing": 0.06,
+          "noise": 0.05,
+          "internal": 0.77
+        },
+        "clock": 0.2,
+        "model": "jev-1.13.0"
+      },
+      "r036": {
+        "scores": {
+          "offer": 0.87,
+          "candidate": 0.05,
+          "client": 0.26,
+          "scheduling": 0.04,
+          "onboarding": 0.61,
+          "billing": 0.05,
+          "noise": 0.03,
+          "internal": 0.66
+        },
+        "clock": 0.95,
+        "model": "jev-1.13.0"
+      },
+      "r037": {
+        "scores": {
+          "offer": 0.42,
+          "candidate": 0.04,
+          "client": 0.62,
+          "scheduling": 0.1,
+          "onboarding": 0.37,
+          "billing": 0.05,
+          "noise": 0.05,
+          "internal": 0.76
+        },
+        "clock": 0.7,
+        "model": "jev-1.13.0"
+      },
+      "r038": {
+        "scores": {
+          "offer": 0.54,
+          "candidate": 0.23,
+          "client": 0.33,
+          "scheduling": 0.04,
+          "onboarding": 0.11,
+          "billing": 0.04,
+          "noise": 0.04,
+          "internal": 0.72
+        },
+        "clock": 0.05,
+        "model": "jev-1.13.0"
+      },
+      "r039": {
+        "scores": {
+          "offer": 0.04,
+          "candidate": 0.04,
+          "client": 0.46,
+          "scheduling": 0.97,
+          "onboarding": 0.07,
+          "billing": 0.03,
+          "noise": 0.04,
+          "internal": 0.72
+        },
+        "clock": 0.15,
+        "model": "jev-1.13.0"
+      },
+      "r040": {
+        "scores": {
+          "offer": 0.05,
+          "candidate": 0.84,
+          "client": 0.43,
+          "scheduling": 0.95,
+          "onboarding": 0.08,
+          "billing": 0.03,
+          "noise": 0.03,
+          "internal": 0.2
+        },
+        "clock": 0.05,
+        "model": "jev-1.13.0"
+      },
+      "r041": {
+        "scores": {
+          "offer": 0.04,
+          "candidate": 0.26,
+          "client": 0.38,
+          "scheduling": 0.96,
+          "onboarding": 0.25,
+          "billing": 0.03,
+          "noise": 0.05,
+          "internal": 0.45
+        },
+        "clock": 0.08,
+        "model": "jev-1.13.0"
+      },
+      "r042": {
+        "scores": {
+          "offer": 0.08,
+          "candidate": 0.04,
+          "client": 0.49,
+          "scheduling": 0.94,
+          "onboarding": 0.09,
+          "billing": 0.03,
+          "noise": 0.04,
+          "internal": 0.72
+        },
+        "clock": 0.65,
+        "model": "jev-1.13.0"
+      },
+      "r043": {
+        "scores": {
+          "offer": 0.04,
+          "candidate": 0.06,
+          "client": 0.62,
+          "scheduling": 0.97,
+          "onboarding": 0.05,
+          "billing": 0.03,
+          "noise": 0.03,
+          "internal": 0.78
+        },
+        "clock": 0.07,
+        "model": "jev-1.13.0"
+      },
+      "r044": {
+        "scores": {
+          "offer": 0.07,
+          "candidate": 0.18,
+          "client": 0.14,
+          "scheduling": 0.96,
+          "onboarding": 0.16,
+          "billing": 0.04,
+          "noise": 0.03,
+          "internal": 0.54
+        },
+        "clock": 0.18,
+        "model": "jev-1.13.0"
+      },
+      "r045": {
+        "scores": {
+          "offer": 0.04,
+          "candidate": 0.79,
+          "client": 0.23,
+          "scheduling": 0.97,
+          "onboarding": 0.08,
+          "billing": 0.03,
+          "noise": 0.02,
+          "internal": 0.2
+        },
+        "clock": 0.09,
+        "model": "jev-1.13.0"
+      },
+      "r046": {
+        "scores": {
+          "offer": 0.04,
+          "candidate": 0.05,
+          "client": 0.4,
+          "scheduling": 0.97,
+          "onboarding": 0.06,
+          "billing": 0.04,
+          "noise": 0.04,
+          "internal": 0.76
+        },
+        "clock": 0.62,
+        "model": "jev-1.13.0"
+      },
+      "r047": {
+        "scores": {
+          "offer": 0.04,
+          "candidate": 0.49,
+          "client": 0.16,
+          "scheduling": 0.67,
+          "onboarding": 0.3,
+          "billing": 0.03,
+          "noise": 0.02,
+          "internal": 0.63
+        },
+        "clock": 0.84,
+        "model": "jev-1.13.0"
+      },
+      "r048": {
+        "scores": {
+          "offer": 0.18,
+          "candidate": 0.84,
+          "client": 0.14,
+          "scheduling": 0.06,
+          "onboarding": 0.94,
+          "billing": 0.05,
+          "noise": 0.02,
+          "internal": 0.19
+        },
+        "clock": 0.62,
+        "model": "jev-1.13.0"
+      },
+      "r049": {
+        "scores": {
+          "offer": 0.13,
+          "candidate": 0.09,
+          "client": 0.11,
+          "scheduling": 0.03,
+          "onboarding": 0.97,
+          "billing": 0.04,
+          "noise": 0.02,
+          "internal": 0.68
+        },
+        "clock": 0.07,
+        "model": "jev-1.13.0"
+      },
+      "r050": {
+        "scores": {
+          "offer": 0.07,
+          "candidate": 0.04,
+          "client": 0.15,
+          "scheduling": 0.1,
+          "onboarding": 0.64,
+          "billing": 0.05,
+          "noise": 0.09,
+          "internal": 0.6
+        },
+        "clock": 0.05,
+        "model": "jev-1.13.0"
+      },
+      "r051": {
+        "scores": {
+          "offer": 0.34,
+          "candidate": 0.73,
+          "client": 0.15,
+          "scheduling": 0.03,
+          "onboarding": 0.93,
+          "billing": 0.06,
+          "noise": 0.02,
+          "internal": 0.3
+        },
+        "clock": 0.14,
+        "model": "jev-1.13.0"
+      },
+      "r052": {
+        "scores": {
+          "offer": 0.25,
+          "candidate": 0.05,
+          "client": 0.12,
+          "scheduling": 0.19,
+          "onboarding": 0.92,
+          "billing": 0.03,
+          "noise": 0.04,
+          "internal": 0.54
+        },
+        "clock": 0.95,
+        "model": "jev-1.13.0"
+      },
+      "r053": {
+        "scores": {
+          "offer": 0.17,
+          "candidate": 0.11,
+          "client": 0.18,
+          "scheduling": 0.04,
+          "onboarding": 0.95,
+          "billing": 0.03,
+          "noise": 0.02,
+          "internal": 0.68
+        },
+        "clock": 0.93,
+        "model": "jev-1.13.0"
+      },
+      "r054": {
+        "scores": {
+          "offer": 0.16,
+          "candidate": 0.86,
+          "client": 0.1,
+          "scheduling": 0.03,
+          "onboarding": 0.97,
+          "billing": 0.04,
+          "noise": 0.02,
+          "internal": 0.29
+        },
+        "clock": 0.32,
+        "model": "jev-1.13.0"
+      },
+      "r055": {
+        "scores": {
+          "offer": 0.14,
+          "candidate": 0.49,
+          "client": 0.32,
+          "scheduling": 0.02,
+          "onboarding": 0.93,
+          "billing": 0.03,
+          "noise": 0.02,
+          "internal": 0.57
+        },
+        "clock": 0.24,
+        "model": "jev-1.13.0"
+      },
+      "r056": {
+        "scores": {
+          "offer": 0.07,
+          "candidate": 0.05,
+          "client": 0.12,
+          "scheduling": 0.03,
+          "onboarding": 0.97,
+          "billing": 0.03,
+          "noise": 0.02,
+          "internal": 0.6
+        },
+        "clock": 0.73,
+        "model": "jev-1.13.0"
+      },
+      "r057": {
+        "scores": {
+          "offer": 0.24,
+          "candidate": 0.07,
+          "client": 0.16,
+          "scheduling": 0.06,
+          "onboarding": 0.83,
+          "billing": 0.06,
+          "noise": 0.04,
+          "internal": 0.37
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "r058": {
+        "scores": {
+          "offer": 0.06,
+          "candidate": 0.02,
+          "client": 0.05,
+          "scheduling": 0.04,
+          "onboarding": 0.16,
+          "billing": 0.77,
+          "noise": 0.03,
+          "internal": 0.12
+        },
+        "clock": 0.98,
+        "model": "jev-1.13.0"
+      },
+      "r059": {
+        "scores": {
+          "offer": 0.07,
+          "candidate": 0.02,
+          "client": 0.06,
+          "scheduling": 0.03,
+          "onboarding": 0.13,
+          "billing": 0.95,
+          "noise": 0.02,
+          "internal": 0.4
+        },
+        "clock": 0.15,
+        "model": "jev-1.13.0"
+      },
+      "r060": {
+        "scores": {
+          "offer": 0.06,
+          "candidate": 0.02,
+          "client": 0.03,
+          "scheduling": 0.02,
+          "onboarding": 0.17,
+          "billing": 0.9,
+          "noise": 0.02,
+          "internal": 0.56
+        },
+        "clock": 0.13,
+        "model": "jev-1.13.0"
+      },
+      "r061": {
+        "scores": {
+          "offer": 0.15,
+          "candidate": 0.03,
+          "client": 0.49,
+          "scheduling": 0.09,
+          "onboarding": 0.2,
+          "billing": 0.74,
+          "noise": 0.04,
+          "internal": 0.26
+        },
+        "clock": 0.97,
+        "model": "jev-1.13.0"
+      },
+      "r062": {
+        "scores": {
+          "offer": 0.34,
+          "candidate": 0.04,
+          "client": 0.52,
+          "scheduling": 0.03,
+          "onboarding": 0.17,
+          "billing": 0.88,
+          "noise": 0.05,
+          "internal": 0.37
+        },
+        "clock": 0.24,
+        "model": "jev-1.13.0"
+      },
+      "r063": {
+        "scores": {
+          "offer": 0.04,
+          "candidate": 0.02,
+          "client": 0.07,
+          "scheduling": 0.03,
+          "onboarding": 0.09,
+          "billing": 0.06,
+          "noise": 0.1,
+          "internal": 0.15
+        },
+        "clock": 0.97,
+        "model": "jev-1.13.0"
+      },
+      "r064": {
+        "scores": {
+          "offer": 0.05,
+          "candidate": 0.02,
+          "client": 0.05,
+          "scheduling": 0.04,
+          "onboarding": 0.61,
+          "billing": 0.25,
+          "noise": 0.03,
+          "internal": 0.26
+        },
+        "clock": 0.91,
+        "model": "jev-1.13.0"
+      },
+      "r065": {
+        "scores": {
+          "offer": 0.06,
+          "candidate": 0.03,
+          "client": 0.1,
+          "scheduling": 0.03,
+          "onboarding": 0.21,
+          "billing": 0.84,
+          "noise": 0.03,
+          "internal": 0.32
+        },
+        "clock": 0.26,
+        "model": "jev-1.13.0"
+      },
+      "r066": {
+        "scores": {
+          "offer": 0.6,
+          "candidate": 0.03,
+          "client": 0.77,
+          "scheduling": 0.08,
+          "onboarding": 0.22,
+          "billing": 0.72,
+          "noise": 0.02,
+          "internal": 0.22
+        },
+        "clock": 0.96,
+        "model": "jev-1.13.0"
+      },
+      "r067": {
+        "scores": {
+          "offer": 0.09,
+          "candidate": 0.05,
+          "client": 0.41,
+          "scheduling": 0.94,
+          "onboarding": 0.64,
+          "billing": 0.87,
+          "noise": 0.02,
+          "internal": 0.36
+        },
+        "clock": 0.29,
+        "model": "jev-1.13.0"
+      },
+      "r068": {
+        "scores": {
+          "offer": 0.04,
+          "candidate": 0.03,
+          "client": 0.06,
+          "scheduling": 0.53,
+          "onboarding": 0.07,
+          "billing": 0.04,
+          "noise": 0.95,
+          "internal": 0.1
+        },
+        "clock": 0.03,
+        "model": "jev-1.13.0"
+      },
+      "r069": {
+        "scores": {
+          "offer": 0.06,
+          "candidate": 0.02,
+          "client": 0.05,
+          "scheduling": 0.05,
+          "onboarding": 0.06,
+          "billing": 0.04,
+          "noise": 0.8,
+          "internal": 0.18
+        },
+        "clock": 0.21,
+        "model": "jev-1.13.0"
+      },
+      "r070": {
+        "scores": {
+          "offer": 0.04,
+          "candidate": 0.02,
+          "client": 0.03,
+          "scheduling": 0.04,
+          "onboarding": 0.14,
+          "billing": 0.06,
+          "noise": 0.88,
+          "internal": 0.09
+        },
+        "clock": 0.79,
+        "model": "jev-1.13.0"
+      },
+      "r071": {
+        "scores": {
+          "offer": 0.07,
+          "candidate": 0.03,
+          "client": 0.1,
+          "scheduling": 0.07,
+          "onboarding": 0.12,
+          "billing": 0.3,
+          "noise": 0.95,
+          "internal": 0.13
+        },
+        "clock": 0.03,
+        "model": "jev-1.13.0"
+      },
+      "r072": {
+        "scores": {
+          "offer": 0.04,
+          "candidate": 0.02,
+          "client": 0.04,
+          "scheduling": 0.04,
+          "onboarding": 0.1,
+          "billing": 0.03,
+          "noise": 0.93,
+          "internal": 0.12
+        },
+        "clock": 0.26,
+        "model": "jev-1.13.0"
+      },
+      "r073": {
+        "scores": {
+          "offer": 0.05,
+          "candidate": 0.02,
+          "client": 0.1,
+          "scheduling": 0.13,
+          "onboarding": 0.11,
+          "billing": 0.04,
+          "noise": 0.97,
+          "internal": 0.13
+        },
+        "clock": 0.04,
+        "model": "jev-1.13.0"
+      },
+      "r074": {
+        "scores": {
+          "offer": 0.1,
+          "candidate": 0.02,
+          "client": 0.05,
+          "scheduling": 0.03,
+          "onboarding": 0.09,
+          "billing": 0.04,
+          "noise": 0.82,
+          "internal": 0.2
+        },
+        "clock": 0.03,
+        "model": "jev-1.13.0"
+      },
+      "r075": {
+        "scores": {
+          "offer": 0.06,
+          "candidate": 0.03,
+          "client": 0.12,
+          "scheduling": 0.1,
+          "onboarding": 0.28,
+          "billing": 0.07,
+          "noise": 0.91,
+          "internal": 0.2
+        },
+        "clock": 0.02,
+        "model": "jev-1.13.0"
+      },
+      "r076": {
+        "scores": {
+          "offer": 0.06,
+          "candidate": 0.02,
+          "client": 0.09,
+          "scheduling": 0.04,
+          "onboarding": 0.52,
+          "billing": 0.05,
+          "noise": 0.96,
+          "internal": 0.15
+        },
+        "clock": 0.2,
+        "model": "jev-1.13.0"
+      },
+      "r077": {
+        "scores": {
+          "offer": 0.06,
+          "candidate": 0.03,
+          "client": 0.13,
+          "scheduling": 0.06,
+          "onboarding": 0.07,
+          "billing": 0.05,
+          "noise": 0.82,
+          "internal": 0.22
+        },
+        "clock": 0.03,
+        "model": "jev-1.13.0"
+      },
+      "r078": {
+        "scores": {
+          "offer": 0.09,
+          "candidate": 0.06,
+          "client": 0.06,
+          "scheduling": 0.04,
+          "onboarding": 0.09,
+          "billing": 0.04,
+          "noise": 0.81,
+          "internal": 0.16
+        },
+        "clock": 0.36,
+        "model": "jev-1.13.0"
+      },
+      "r079": {
+        "scores": {
+          "offer": 0.04,
+          "candidate": 0.02,
+          "client": 0.04,
+          "scheduling": 0.05,
+          "onboarding": 0.07,
+          "billing": 0.03,
+          "noise": 0.97,
+          "internal": 0.06
+        },
+        "clock": 0.02,
+        "model": "jev-1.13.0"
+      },
+      "r080": {
+        "scores": {
+          "offer": 0.05,
+          "candidate": 0.02,
+          "client": 0.1,
+          "scheduling": 0.1,
+          "onboarding": 0.09,
+          "billing": 0.05,
+          "noise": 0.94,
+          "internal": 0.14
+        },
+        "clock": 0.02,
+        "model": "jev-1.13.0"
+      },
+      "r081": {
+        "scores": {
+          "offer": 0.06,
+          "candidate": 0.02,
+          "client": 0.05,
+          "scheduling": 0.04,
+          "onboarding": 0.07,
+          "billing": 0.04,
+          "noise": 0.96,
+          "internal": 0.13
+        },
+        "clock": 0.05,
+        "model": "jev-1.13.0"
+      },
+      "r082": {
+        "scores": {
+          "offer": 0.18,
+          "candidate": 0.03,
+          "client": 0.05,
+          "scheduling": 0.06,
+          "onboarding": 0.14,
+          "billing": 0.04,
+          "noise": 0.92,
+          "internal": 0.22
+        },
+        "clock": 0.05,
+        "model": "jev-1.13.0"
+      },
+      "r083": {
+        "scores": {
+          "offer": 0.04,
+          "candidate": 0.03,
+          "client": 0.11,
+          "scheduling": 0.6,
+          "onboarding": 0.06,
+          "billing": 0.04,
+          "noise": 0.95,
+          "internal": 0.16
+        },
+        "clock": 0.02,
+        "model": "jev-1.13.0"
+      },
+      "r084": {
+        "scores": {
+          "offer": 0.77,
+          "candidate": 0.05,
+          "client": 0.24,
+          "scheduling": 0.26,
+          "onboarding": 0.22,
+          "billing": 0.14,
+          "noise": 0.05,
+          "internal": 0.78
+        },
+        "clock": 0.11,
+        "model": "jev-1.13.0"
+      },
+      "r085": {
+        "scores": {
+          "offer": 0.04,
+          "candidate": 0.03,
+          "client": 0.08,
+          "scheduling": 0.4,
+          "onboarding": 0.13,
+          "billing": 0.03,
+          "noise": 0.02,
+          "internal": 0.93
+        },
+        "clock": 0.18,
+        "model": "jev-1.13.0"
+      },
+      "r086": {
+        "scores": {
+          "offer": 0.15,
+          "candidate": 0.02,
+          "client": 0.13,
+          "scheduling": 0.05,
+          "onboarding": 0.2,
+          "billing": 0.71,
+          "noise": 0.02,
+          "internal": 0.82
+        },
+        "clock": 0.21,
+        "model": "jev-1.13.0"
+      },
+      "r087": {
+        "scores": {
+          "offer": 0.19,
+          "candidate": 0.02,
+          "client": 0.1,
+          "scheduling": 0.04,
+          "onboarding": 0.26,
+          "billing": 0.58,
+          "noise": 0.03,
+          "internal": 0.76
+        },
+        "clock": 0.08,
+        "model": "jev-1.13.0"
+      },
+      "r088": {
+        "scores": {
+          "offer": 0.04,
+          "candidate": 0.06,
+          "client": 0.17,
+          "scheduling": 0.63,
+          "onboarding": 0.12,
+          "billing": 0.03,
+          "noise": 0.03,
+          "internal": 0.78
+        },
+        "clock": 0.56,
+        "model": "jev-1.13.0"
+      },
+      "r089": {
+        "scores": {
+          "offer": 0.08,
+          "candidate": 0.04,
+          "client": 0.72,
+          "scheduling": 0.11,
+          "onboarding": 0.12,
+          "billing": 0.06,
+          "noise": 0.14,
+          "internal": 0.8
+        },
+        "clock": 0.05,
+        "model": "jev-1.13.0"
+      },
+      "r090": {
+        "scores": {
+          "offer": 0.21,
+          "candidate": 0.03,
+          "client": 0.18,
+          "scheduling": 0.03,
+          "onboarding": 0.81,
+          "billing": 0.77,
+          "noise": 0.02,
+          "internal": 0.85
+        },
+        "clock": 0.64,
+        "model": "jev-1.13.0"
+      }
+    }
+  }
+}

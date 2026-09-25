@@ -31,7 +31,7 @@ export function draftFor(firm: Firm, message: Message, topic: string): Draft | n
     return { topic, to: message.from, body: `Thank you for ${rfiNo ?? "the RFI"} on ${projName}. It is logged against the project; a response is due ${due ? nice(due) : "per the RFI log"}. ${project?.coordinator ?? "The coordinator"} will confirm which governs.` };
   }
   if (topic === "submittal") {
-    const reviewDue = subNo ? SUB_LOG[subNo]!.reviewDue : null;
+    const reviewDue = subNo ? SUB_LOG[subNo]!.due : null;
     return { topic, to: message.from, body: `Received ${subNo ?? "the submittal"} for ${projName}. It is in the submittal log; review is due back ${reviewDue ? nice(reviewDue) : "per the log"}. ${project?.reviewer ?? "The reviewing architect"} has it.` };
   }
   const nextWhat = project?.next.what ?? "the next milestone";
