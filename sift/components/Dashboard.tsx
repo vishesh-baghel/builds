@@ -460,7 +460,7 @@ function How({ firm }: { firm: Firm }) {
       <P h="Check the firm's own records">Code matches the message to {firm.sourcesLong} and reads what is scheduled. That is where priority comes from, not from the tone of the email. Two near-identical messages can land at different urgencies because of what the records say.</P>
       <P h="Route, then stop">Each topic above the line goes to the person who owns it, so one message can reach two people. Every deadline goes to {firm.owner}. Anything uncertain goes to Needs a decision with the reasons attached. Sift never sends mail, never writes to a record, never invents a date.</P>
       <P h="The autonomy slider">It sets where the line sits. Left, Sift checks almost everything with you and flags faint deadlines. Right, it acts on its own more often. Moving it never asks the model again; every page on this dashboard re-sorts instantly.</P>
-      <p style={{ margin: 0, fontSize: ".8125rem", color: "var(--color-ink-3)" }}>A self-built experiment on synthetic data. Every firm, person, project and message here is invented, and the probabilities shown are illustrative. Switch the firm in the sidebar to see the same system read a different trade's mail.</p>
+      <p style={{ margin: 0, fontSize: ".8125rem", color: "var(--color-ink-3)" }}>A self-built experiment on synthetic data. Every firm, person, project and message here is invented. {firm.measured ? `The probabilities shown are the model's recorded judgments from the run on ${firm.measured.runDate}.` : "The probabilities shown are illustrative until this firm's instrument is scored."} Switch the firm to see the same system read a different trade's mail.</p>
     </div>
   );
 }
