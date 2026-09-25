@@ -111,18 +111,18 @@ export function Dashboard({ firms, measuredLines }: { firms: readonly Firm[]; me
   const view = useMemo(() => deriveView(firm, th, handSecs, lookupSecs), [firm, th, handSecs, lookupSecs]);
 
   const open = (id: string) => { setPage("inbox"); setOpenId(id); };
-  const dialLabel = measuring ? "measured setting" : dial <= 0.01 ? "check everything" : dial >= 0.99 ? "hands off" : `${Math.round(dial * 100)}%`;
+  const dialLabel = measuring ? "tested setting" : dial <= 0.01 ? "check everything" : dial >= 0.99 ? "hands off" : `${Math.round(dial * 100)}%`;
   const counts: Record<string, number | undefined> = { inbox: view.navCounts.inbox, deadlines: view.navCounts.deadlines, decide: view.navCounts.decide };
 
   const TITLES: Record<PageId, readonly [string, string]> = {
-    overview: [`Monday morning at ${firm.firm}`, `${firm.messages.length} messages from ${view.span.workingDays} working ${view.span.workingDays === 1 ? "day" : "days"} in the shared inbox. Sorted at ${measuring ? "the measured setting" : "the current autonomy setting"}.`],
-    inbox: ["Inbox", "As it arrived, newest first. Click a row to see what Sift did and why."],
-    deadlines: ["Deadlines", "Every clock Sift found in this inbox, and the ones it did not."],
-    people: ["People", "One lane per person. A message with two topics appears in two lanes."],
-    decide: ["Needs a decision", "Where Sift was not sure enough to act. Reasons attached."],
-    autonomy: ["Autonomy", "One slider sets how much Sift does before asking."],
+    overview: [`Monday morning at ${firm.firm}`, `${firm.messages.length} messages from ${view.span.workingDays} working ${view.span.workingDays === 1 ? "day" : "days"} in the shared inbox, sorted before anyone opened it.`],
+    inbox: ["Inbox", "Every message, newest first. Click one to see what Sift did with it and why."],
+    deadlines: ["Deadlines", "Every deadline in this inbox: the ones Sift caught, the ones it missed, and its false alarms."],
+    people: ["People", "What each person receives. A message about two things reaches both people who own them."],
+    decide: ["Needs a decision", "The messages Sift was not sure about. Each one says what is unclear, so a person can decide quickly."],
+    autonomy: ["Autonomy", "One slider sets how much Sift handles on its own and how much it checks with you first."],
     savings: ["Savings", `Time and effort on this inbox, by hand versus with Sift, over ${view.span.workingDays} working ${view.span.workingDays === 1 ? "day" : "days"}.`],
-    how: ["How it works", `The same system, reading ${firm.firm}'s mail.`],
+    how: ["How it works", `What Sift does with each message in ${firm.firm}'s inbox, step by step.`],
   };
 
   const dialInput = (id: string) => (
@@ -167,16 +167,16 @@ export function Dashboard({ firms, measuredLines }: { firms: readonly Firm[]; me
           {dialInput("dial")}
           {status && (
             <p style={{ margin: ".75rem 0 0", fontSize: ".6875rem", color: "var(--color-ink-3)", lineHeight: 1.45 }}>
-              {status.live ? "Live judging on: opening a message asks the model once." : "Live judging off: messages show their recorded judgment."}
-              {" "}Spent {status.spentCents.toFixed(3)} of {status.capCents} cents this month{status.persistent ? "" : " on this instance"}; {status.liveCallsToday} of {status.ceiling} live judgments in the last 24 hours.
+              {status.live ? "Live mode on: opening a message has the AI read it fresh, once." : "Live mode off: each message shows the answers recorded in testing."}
+              {" "}Hard spending cap: {status.spentCents.toFixed(3)} of {status.capCents} cents used this month{status.persistent ? "" : " on this server"}; {status.liveCallsToday} of {status.ceiling} live reads used in the last 24 hours.
             </p>
           )}
           {firm.measured && liveHere.length > 0 && (
             <p style={{ margin: ".5rem 0 0", fontSize: ".6875rem", color: "var(--color-warn)", lineHeight: 1.45 }}>
-              {liveHere.length} {liveHere.length === 1 ? "message was" : "messages were"} re-judged live this visit, so this page may differ from the published figures, which use the recorded run.
+              {liveHere.length} {liveHere.length === 1 ? "message was" : "messages were"} read live this visit, so this page may differ from the tested results.
             </p>
           )}
-          <p style={{ margin: ".75rem 0 0", fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: ".07em", textTransform: "uppercase", color: "var(--color-warn)" }}>{firm.measured ? `synthetic data · recorded model judgments, ${firm.measured.runDate} · nothing is sent` : "synthetic data · probabilities illustrative · nothing is sent"}</p>
+          <p style={{ margin: ".75rem 0 0", fontFamily: "var(--font-mono)", fontSize: 10, letterSpacing: ".07em", textTransform: "uppercase", color: "var(--color-warn)" }}>{firm.measured ? `invented data · AI answers recorded ${firm.measured.runDate} · no email is sent` : "invented data · illustrative AI answers · no email is sent"}</p>
         </div>
       </aside>
 
@@ -186,7 +186,7 @@ export function Dashboard({ firms, measuredLines }: { firms: readonly Firm[]; me
           <span style={{ fontSize: ".8125rem", color: "var(--color-ink-3)" }}>{TITLES[page][1]}</span>
         </header>
 
-        {page === "overview" && <Overview view={view} firm={firm} open={open} />}
+        {page === "overview" && <Overview view={view} firm={firm} open={open} measuring={measuring} />}
         {page === "inbox" && <Inbox view={view} firm={firm} openId={openId} setOpenId={setOpenId} results={results} />}
         {page === "deadlines" && <Deadlines view={view} open={open} />}
         {page === "people" && <People view={view} open={open} />}
@@ -205,27 +205,39 @@ function Avatar({ initials, bg = "var(--color-accent-soft)", fg = "var(--color-a
   return <span style={{ width: size, height: size, borderRadius: "50%", display: "flex", alignItems: "center", justifyContent: "center", fontFamily: "var(--font-mono)", fontSize: ".625rem", fontWeight: 500, background: bg, color: fg, flex: "none" }}>{initials}</span>;
 }
 
-function Overview({ view, firm, open }: { view: V; firm: Firm; open: (id: string) => void }) {
+function Overview({ view, firm, open, measuring }: { view: V; firm: Firm; open: (id: string) => void; measuring: boolean }) {
   const s = view.score;
   return (
     <>
+      <p style={{ margin: "0 0 1.5rem", color: "var(--color-ink-2)", lineHeight: 1.55 }}>
+        Sift reads a firm's shared inbox, checks each message against {firm.sourcesLong}, and sends it to the person who owns it.
+        Every deadline goes to {firm.owner}, including the ones buried in routine-looking mail. Anything Sift is unsure about waits for a person, with the reason attached.
+        It never sends email, never changes a record and never deletes anything.
+      </p>
       <div style={{ display: "grid", gap: "1rem", gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,12rem),1fr))" }}>
         <div style={card}>
           <div style={mono()}>deadlines caught</div>
           <div style={{ ...bigNum, color: "var(--color-accent)" }}>{s.caught} of {s.clockedN}</div>
-          <p style={{ margin: ".5rem 0 0", fontSize: ".8125rem", color: "var(--color-ink-3)" }}>{s.disguised} of them read like routine mail.</p>
+          <p style={{ margin: ".5rem 0 0", fontSize: ".8125rem", color: "var(--color-ink-3)" }}>{s.disguised} of them were hidden in routine-looking mail.</p>
         </div>
         <div style={card}>
           <div style={mono()}>false alarms</div>
           <div style={{ ...bigNum, color: "var(--color-neg)" }}>{s.falseAlarms}</div>
-          <p style={{ margin: ".5rem 0 0", fontSize: ".8125rem", color: "var(--color-ink-3)" }}>on {s.unclockedN} messages with no deadline. Always shown next to the catch count.</p>
+          <p style={{ margin: ".5rem 0 0", fontSize: ".8125rem", color: "var(--color-ink-3)" }}>of the {s.unclockedN} messages with no deadline were flagged as having one.</p>
         </div>
         <div style={card}>
           <div style={mono()}>sorted without you</div>
           <div style={{ ...bigNum, color: "var(--color-ink)" }}>{s.automated} <span style={{ fontSize: "1.125rem", color: "var(--color-ink-3)", fontWeight: 500 }}>/ {s.total}</span></div>
-          <p style={{ margin: ".5rem 0 0", fontSize: ".8125rem", color: "var(--color-ink-3)" }}>{s.escalated} need a person's call.</p>
+          <p style={{ margin: ".5rem 0 0", fontSize: ".8125rem", color: "var(--color-ink-3)" }}>{s.escalated} need a person to decide.</p>
         </div>
       </div>
+      <p style={{ margin: ".75rem 0 0", fontSize: ".75rem", color: "var(--color-ink-3)" }}>
+        {firm.measured
+          ? measuring
+            ? "These are the tested results, at the setting chosen in testing. Move the autonomy slider to see how they change."
+            : "You have moved the autonomy slider, so these numbers show that setting, not the tested results. Autonomy > Tested puts it back."
+          : "An illustrative example: the AI's answers for this firm are made up to show the idea. Architecture firm is the tested example."}
+      </p>
 
       <div style={{ display: "grid", gap: "1.5rem 2rem", gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,20rem),1fr))", marginTop: "2rem", alignItems: "start" }}>
         <section>
@@ -234,7 +246,7 @@ function Overview({ view, firm, open }: { view: V; firm: Firm; open: (id: string
             {view.attention.map((a) => (
               <li key={a.id} style={{ borderBottom: "1px solid var(--color-rule)" }}>
                 <button type="button" onClick={() => open(a.id)} style={{ display: "grid", gridTemplateColumns: "auto minmax(0,1fr) auto", gap: ".75rem", alignItems: "baseline", width: "100%", textAlign: "left", border: 0, background: "transparent", padding: ".625rem .25rem", font: "inherit", cursor: "pointer", minHeight: 44 }}>
-                  <span style={{ ...mono({ fontSize: ".625rem", letterSpacing: ".06em", color: a.isAlert || a.priority === "urgent" ? "var(--color-neg)" : "var(--color-warn)" }), border: "1px solid currentColor", borderRadius: 3, padding: "0 4px" }}>{a.isAlert ? "clock" : PRI[a.priority ?? "normal"]}</span>
+                  <span style={{ ...mono({ fontSize: ".625rem", letterSpacing: ".06em", color: a.isAlert || a.priority === "urgent" ? "var(--color-neg)" : "var(--color-warn)" }), border: "1px solid currentColor", borderRadius: 3, padding: "0 4px" }}>{a.isAlert ? "deadline" : PRI[a.priority ?? "normal"]}</span>
                   <span style={{ minWidth: 0 }}><span style={{ display: "block", color: "var(--color-ink)", fontWeight: 500, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{a.subject}</span><span style={{ display: "block", fontSize: ".8125rem", color: "var(--color-ink-3)" }}>{a.line}</span></span>
                   <span style={{ fontFamily: "var(--font-mono)", fontSize: ".6875rem", color: a.dueSoon ? "var(--color-neg)" : "var(--color-ink-3)", whiteSpace: "nowrap" }}>{a.due}</span>
                 </button>
@@ -271,11 +283,11 @@ function Inbox({ view, firm, openId, setOpenId, results }: { view: V; firm: Firm
       {checked.length > 0 && (
         <label style={{ display: "flex", alignItems: "center", gap: ".5rem", margin: "0 0 .75rem", fontSize: ".8125rem", color: "var(--color-ink-2)", cursor: "pointer" }}>
           <input type="checkbox" checked={onlyDiff} onChange={(e) => setOnlyDiff(e.target.checked)} style={{ accentColor: "var(--color-accent)" }} />
-          Show only where Sift and the answer key differ ({diffCount} of {checked.length} at this setting)
+          Show only messages where Sift got something wrong ({diffCount} of {checked.length} at this setting)
         </label>
       )}
       <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1.1fr) minmax(0,2fr) minmax(0,1.3fr) 5.5rem 6rem", gap: ".75rem", padding: "0 .75rem .5rem", borderBottom: "1px solid var(--color-rule-2)", ...mono() }}>
-        <span>from</span><span>subject</span><span>goes to</span><span>priority</span><span style={{ textAlign: "right" }}>received</span>
+        <span>from</span><span>subject</span><span>sent to</span><span>priority</span><span style={{ textAlign: "right" }}>received</span>
       </div>
       <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
         {rows.map((m) => {
@@ -287,7 +299,7 @@ function Inbox({ view, firm, openId, setOpenId, results }: { view: V; firm: Firm
                 <span style={{ fontSize: ".875rem", color: "var(--color-ink-2)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", minWidth: 0 }}>{m.fromName}</span>
                 <span style={{ minWidth: 0, fontSize: ".9375rem", color: "var(--color-ink)", fontWeight: 500, overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap" }}>{m.subject}</span>
                 <span style={{ fontSize: ".8125rem", color: "var(--color-ink-2)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", minWidth: 0 }}>{m.routeShort}</span>
-                <span style={{ fontFamily: "var(--font-mono)", fontSize: ".625rem", letterSpacing: ".05em", textTransform: "uppercase", color: m.clockFlagged ? "var(--color-neg)" : m.priority ? priColor(m.priority) : "var(--color-warn)", whiteSpace: "nowrap" }}>{m.clockFlagged ? `clock ${m.priority ? PRI[m.priority] : ""}` : m.priority ? PRI[m.priority] : "person"}</span>
+                <span style={{ fontFamily: "var(--font-mono)", fontSize: ".625rem", letterSpacing: ".05em", textTransform: "uppercase", color: m.clockFlagged ? "var(--color-neg)" : m.priority ? priColor(m.priority) : "var(--color-warn)", whiteSpace: "nowrap" }}>{m.clockFlagged ? `due ${m.priority ? PRI[m.priority] : ""}` : m.priority ? PRI[m.priority] : "unclear"}</span>
                 <span style={{ textAlign: "right", fontFamily: "var(--font-mono)", fontSize: ".6875rem", color: "var(--color-ink-3)", whiteSpace: "nowrap" }}>{m.when}</span>
               </button>
               {isOpen && <ReadView row={m} measured={firm.measured ?? null} live={results[`${firm.id}/${m.id}`] ?? null} />}
@@ -295,7 +307,7 @@ function Inbox({ view, firm, openId, setOpenId, results }: { view: V; firm: Firm
           );
         })}
       </ul>
-      {onlyDiff && rows.length === 0 && <p style={{ margin: "1rem 0 0", color: "var(--color-ink-3)" }}>Every message matches its answer key at this setting.</p>}
+      {onlyDiff && rows.length === 0 && <p style={{ margin: "1rem 0 0", color: "var(--color-ink-3)" }}>Sift got every message right at this setting.</p>}
     </>
   );
 }
@@ -314,7 +326,7 @@ function Deadlines({ view, open }: { view: V; open: (id: string) => void }) {
           </li>
         ))}
       </ul>
-      <p style={{ margin: "1rem 0 0", fontSize: ".8125rem", color: "var(--color-ink-3)", maxWidth: "60ch" }}>A deadline is caught when the clock question clears its line or a record confirms it. Missed and false alarms are listed too; hiding them would make the catch count meaningless.</p>
+      <p style={{ margin: "1rem 0 0", fontSize: ".8125rem", color: "var(--color-ink-3)", maxWidth: "60ch" }}>A deadline counts as caught when Sift is confident enough that one is running, or when the firm's own records confirm it. Missed deadlines and false alarms are listed here too, so you can check the catch count for yourself.</p>
     </>
   );
 }
@@ -333,7 +345,7 @@ function People({ view, open }: { view: V; open: (id: string) => void }) {
             <ul style={{ listStyle: "none", margin: ".75rem 0 0", padding: 0, display: "flex", flexDirection: "column", gap: ".25rem" }}>
               {l.items.map((i) => (
                 <li key={i.id}><button type="button" onClick={() => open(i.id)} style={{ display: "grid", gridTemplateColumns: "auto minmax(0,1fr)", gap: ".5rem", alignItems: "baseline", width: "100%", textAlign: "left", border: 0, background: "transparent", padding: ".25rem 0", cursor: "pointer", font: "inherit", minHeight: 30 }}>
-                  <span style={{ fontFamily: "var(--font-mono)", fontSize: ".5625rem", letterSpacing: ".06em", textTransform: "uppercase", color: i.isAlert ? "var(--color-neg)" : i.unclear ? "var(--color-warn)" : i.priority ? priColor(i.priority) : "var(--color-ink-3)", border: "1px solid currentColor", borderRadius: 3, padding: "0 3px" }}>{i.isAlert ? "clock" : i.unclear ? "?" : PRI[i.priority ?? "normal"]}</span>
+                  <span style={{ fontFamily: "var(--font-mono)", fontSize: ".5625rem", letterSpacing: ".06em", textTransform: "uppercase", color: i.isAlert ? "var(--color-neg)" : i.unclear ? "var(--color-warn)" : i.priority ? priColor(i.priority) : "var(--color-ink-3)", border: "1px solid currentColor", borderRadius: 3, padding: "0 3px" }}>{i.isAlert ? "deadline" : i.unclear ? "?" : PRI[i.priority ?? "normal"]}</span>
                   <span style={{ fontSize: ".875rem", color: "var(--color-ink-2)", overflow: "hidden", textOverflow: "ellipsis", whiteSpace: "nowrap", minWidth: 0 }}>{i.subject}</span>
                 </button></li>
               ))}
@@ -360,7 +372,7 @@ function Decide({ view, open }: { view: V; open: (id: string) => void }) {
           </li>
         ))}
       </ul>
-      <p style={{ margin: "1.25rem 0 0", fontSize: ".8125rem", color: "var(--color-ink-3)", maxWidth: "60ch" }}>Everything here arrives with the message, the matched records and all nine judgments attached. Nobody re-reads the mailbox. Move the autonomy slider left and this list grows; right and it shrinks.</p>
+      <p style={{ margin: "1.25rem 0 0", fontSize: ".8125rem", color: "var(--color-ink-3)", maxWidth: "60ch" }}>Each item comes with the message, the records it matched and Sift's nine answers, so nobody has to go back through the mailbox. Move the autonomy slider left and this list grows; move it right and it shrinks.</p>
     </>
   );
 }
@@ -375,17 +387,17 @@ function Autonomy({ view, firm, setDial, dialLabel, dialInput, measuring, toMeas
       <div style={{ ...card, padding: "1.25rem 1.5rem", background: "var(--color-paper-2)" }}>
         <div style={{ display: "flex", justifyContent: "space-between", gap: "1rem", alignItems: "baseline" }}><label htmlFor="dial2" style={{ fontWeight: 500, color: "var(--color-ink)" }}>How much should Sift do on its own?</label><span style={{ fontFamily: "var(--font-mono)", fontSize: ".75rem", color: "var(--color-accent)" }}>{dialLabel}</span></div>
         {dialInput("dial2")}
-        <div style={{ display: "flex", justifyContent: "space-between", fontSize: ".75rem", color: "var(--color-ink-3)", marginTop: ".125rem" }}><span>Check almost everything with me</span><span>Handle it</span></div>
+        <div style={{ display: "flex", justifyContent: "space-between", fontSize: ".75rem", color: "var(--color-ink-3)", marginTop: ".125rem" }}><span>Check almost everything with me</span><span>Handle it on your own</span></div>
         <div style={{ display: "flex", gap: ".5rem", marginTop: "1rem", flexWrap: "wrap" }}>
-          {firm.measured && <button type="button" onClick={toMeasured} aria-pressed={measuring} style={{ minHeight: 32, padding: "0 .75rem", borderRadius: "var(--radius-md)", border: `1px solid ${measuring ? "var(--color-accent)" : "var(--color-rule-2)"}`, background: measuring ? "var(--color-accent-soft)" : "var(--color-paper)", font: "inherit", fontSize: ".8125rem", cursor: "pointer", color: measuring ? "var(--color-accent)" : "var(--color-ink-2)" }}>Measured</button>}
+          {firm.measured && <button type="button" onClick={toMeasured} aria-pressed={measuring} style={{ minHeight: 32, padding: "0 .75rem", borderRadius: "var(--radius-md)", border: `1px solid ${measuring ? "var(--color-accent)" : "var(--color-rule-2)"}`, background: measuring ? "var(--color-accent-soft)" : "var(--color-paper)", font: "inherit", fontSize: ".8125rem", cursor: "pointer", color: measuring ? "var(--color-accent)" : "var(--color-ink-2)" }}>Tested</button>}
           {preset("Cautious", 0.15)}{preset("Default", 0.6)}{preset("Hands off", 0.95)}
         </div>
-        {firm.measured && <p style={{ margin: ".625rem 0 0", fontSize: ".75rem", color: "var(--color-ink-3)" }}>{measuring ? "These are the lines the sweep chose on the ordinary subset; every number on this page matches the published scorecard." : "Off the measured setting: the numbers on this page are what this setting would do, not the published figures."}</p>}
+        {firm.measured && <p style={{ margin: ".625rem 0 0", fontSize: ".75rem", color: "var(--color-ink-3)" }}>{measuring ? "Tested is the setting chosen by testing Sift on this inbox. Every number here matches the published results." : "You are off the tested setting: the numbers show what this setting would do, not the published results."}</p>}
         <ul style={{ listStyle: "none", margin: "1.25rem 0 0", padding: ".875rem 0 0", borderTop: "1px solid var(--color-rule)", display: "flex", flexDirection: "column", gap: ".375rem", fontSize: ".875rem" }}>
-          <li style={{ display: "flex", gap: ".75rem" }}><span style={{ flex: "none", minWidth: "6.5rem", fontFamily: "var(--font-mono)", fontSize: ".75rem", color: "var(--color-ink)" }}>{th.act.toFixed(2)} and up</span><span>Sift acts: routes and labels on its own</span></li>
-          <li style={{ display: "flex", gap: ".75rem" }}><span style={{ flex: "none", minWidth: "6.5rem", fontFamily: "var(--font-mono)", fontSize: ".75rem", color: "var(--color-ink)" }}>{th.review.toFixed(2)} to {th.act.toFixed(2)}</span><span>Sift asks a person, does nothing</span></li>
-          <li style={{ display: "flex", gap: ".75rem" }}><span style={{ flex: "none", minWidth: "6.5rem", fontFamily: "var(--font-mono)", fontSize: ".75rem", color: "var(--color-ink)" }}>under {th.review.toFixed(2)}</span><span>Ignored</span></li>
-          <li style={{ display: "flex", gap: ".75rem" }}><span style={{ flex: "none", minWidth: "6.5rem", fontFamily: "var(--font-mono)", fontSize: ".75rem", color: "var(--color-neg)" }}>clock at {th.clockAct.toFixed(2)}</span><span>Deadline alert to {firm.owner}, whatever the topic</span></li>
+          <li style={{ display: "flex", gap: ".75rem" }}><span style={{ flex: "none", minWidth: "6.5rem", fontFamily: "var(--font-mono)", fontSize: ".75rem", color: "var(--color-ink)" }}>{th.act.toFixed(2)} and up</span><span>Sure enough: Sift sends it to the right person on its own</span></li>
+          <li style={{ display: "flex", gap: ".75rem" }}><span style={{ flex: "none", minWidth: "6.5rem", fontFamily: "var(--font-mono)", fontSize: ".75rem", color: "var(--color-ink)" }}>{th.review.toFixed(2)} to {th.act.toFixed(2)}</span><span>Not sure: Sift leaves it for a person to decide</span></li>
+          <li style={{ display: "flex", gap: ".75rem" }}><span style={{ flex: "none", minWidth: "6.5rem", fontFamily: "var(--font-mono)", fontSize: ".75rem", color: "var(--color-ink)" }}>under {th.review.toFixed(2)}</span><span>Clearly not this kind of message: no action for it</span></li>
+          <li style={{ display: "flex", gap: ".75rem" }}><span style={{ flex: "none", minWidth: "6.5rem", fontFamily: "var(--font-mono)", fontSize: ".75rem", color: "var(--color-neg)" }}>deadline {th.clockAct.toFixed(2)} and up</span><span>Deadline alert to {firm.owner}, whatever the message is about</span></li>
         </ul>
       </div>
       <div>
@@ -398,7 +410,7 @@ function Autonomy({ view, firm, setDial, dialLabel, dialInput, measuring, toMeas
             </li>
           ))}
         </ul>
-        <p style={{ margin: "1rem 0 0", fontSize: ".8125rem", color: "var(--color-ink-3)", maxWidth: "52ch" }}>Moving the slider never asks the model again. The same nine answers per message are re-decided in code, so trying a setting is free. The clock line moves the other way on purpose: the more you trust Sift, the fainter a deadline it will still flag.</p>
+        <p style={{ margin: "1rem 0 0", fontSize: ".8125rem", color: "var(--color-ink-3)", maxWidth: "52ch" }}>The numbers on the left are Sift's confidence, from 0 to 1, on each of its nine questions about a message. Moving the slider only moves these lines; the AI is not asked again, so trying a setting costs nothing and every page updates instantly. The deadline line moves too: the more you let Sift handle, the surer it must be before it raises a deadline alert, so a cautious setting flags fainter deadlines.</p>
       </div>
     </div>
   );
@@ -413,7 +425,7 @@ function Savings({ view, firm, handSecs, setHandSecs, lookupSecs, setLookupSecs 
   return (
     <div style={{ display: "grid", gap: "1.5rem 2.5rem", gridTemplateColumns: "repeat(auto-fit,minmax(min(100%,20rem),1fr))", alignItems: "start" }}>
       <div>
-        <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 6rem 6rem", gap: ".75rem", padding: "0 .25rem .5rem", borderBottom: "1px solid var(--color-rule-2)", ...mono() }}><span>this inbox, estimated</span><span style={{ textAlign: "right" }}>by hand</span><span style={{ textAlign: "right" }}>with sift</span></div>
+        <div style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 6rem 6rem", gap: ".75rem", padding: "0 .25rem .5rem", borderBottom: "1px solid var(--color-rule-2)", ...mono() }}><span>time on this inbox (estimate)</span><span style={{ textAlign: "right" }}>by hand</span><span style={{ textAlign: "right" }}>with sift</span></div>
         <ul style={{ listStyle: "none", margin: 0, padding: 0 }}>
           {sav.rows.map((r, i) => (
             <li key={i} style={{ display: "grid", gridTemplateColumns: "minmax(0,1fr) 6rem 6rem", gap: ".75rem", padding: ".625rem .25rem", borderBottom: "1px solid var(--color-rule)", alignItems: "baseline" }}>
@@ -440,8 +452,8 @@ function Savings({ view, firm, handSecs, setHandSecs, lookupSecs, setLookupSecs 
         <label style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: "1rem", marginTop: ".75rem", fontSize: ".875rem" }}><span>Seconds to look a message up in {firm.sourcesShort} (estimate)</span>{numInput(lookupSecs, setLookupSecs, 0, 900)}</label>
         <ul style={{ margin: "1.25rem 0 0", padding: ".875rem 0 0 1.1rem", borderTop: "1px solid var(--color-rule)", fontSize: ".8125rem", color: "var(--color-ink-2)", display: "flex", flexDirection: "column", gap: ".375rem" }}>
           <li>With Sift, a person still spends {HUMAN_TIME_ESTIMATE.decideSecondsPerItem} seconds on each item that needs a decision and {HUMAN_TIME_ESTIMATE.acknowledgeSecondsPerAlert} seconds on each deadline alert, plus {HUMAN_TIME_ESTIMATE.glanceSecondsPerWorkingDay} seconds a working day glancing over the sorted list. Every time on this page is an estimate built from these.</li>
-          <li>Deadlines are not priced. One missed {firm.clockExample} costs more than every morning sort in a year, so that column is shown as a count, not a number.</li>
-          <li>No before/after claim is made. This is arithmetic on these {firm.messages.length} invented messages, spread over {view.span.workingDays} working days, at the current setting; the weekly and monthly figures scale the per-day rate, and the two rates above are estimates.</li>
+          <li>Deadlines are not given a time value. One missed {firm.clockExample} can cost more than a year of morning sorting, so deadline alerts are counted, not priced.</li>
+          <li>This is not a measured before-and-after result. It is arithmetic on these {firm.messages.length} invented messages over {view.span.workingDays} working days, at the current setting. The weekly and monthly figures scale up the daily rate, and both rates above are estimates you can change.</li>
         </ul>
       </div>
     </div>
@@ -454,12 +466,15 @@ function How({ firm }: { firm: Firm }) {
   );
   return (
     <div style={{ maxWidth: "40rem", display: "flex", flexDirection: "column", gap: "1.5rem" }}>
-      <P h="The problem">A shared mailbox fills overnight. Someone sorts it by hand every morning, and the one message that started a clock reads exactly like the routine ones around it. Inbox tools sort by sender and keyword. They cannot see {firm.sourcesLong}, which is where urgency actually lives.</P>
-      <P h="Read once">Each message goes to the model one time with nine yes/no questions: eight about what kind of message it is, and one about whether a deadline is running. The answers are raw judgments, shown as bars on every message.</P>
-      <P h="Check the firm's own records">Code matches the message to {firm.sourcesLong} and reads what is scheduled. That is where priority comes from, not from the tone of the email. Two near-identical messages can land at different urgencies because of what the records say.</P>
-      <P h="Route, then stop">Each topic above the line goes to the person who owns it, so one message can reach two people. Every deadline goes to {firm.owner}. Anything uncertain goes to Needs a decision with the reasons attached. Sift never sends mail, never writes to a record, never invents a date.</P>
-      <P h="The autonomy slider">It sets where the line sits. Left, Sift checks almost everything with you and flags faint deadlines. Right, it acts on its own more often. Moving it never asks the model again; every page on this dashboard re-sorts instantly.</P>
-      <p style={{ margin: 0, fontSize: ".8125rem", color: "var(--color-ink-3)" }}>A self-built experiment on synthetic data. Every firm, person, project and message here is invented, and the probabilities shown are illustrative. Switch the firm in the sidebar to see the same system read a different trade's mail.</p>
+      <P h="The problem">A shared mailbox fills overnight and someone sorts it by hand every morning. The message that starts a deadline often reads exactly like the routine ones around it. Rules based on sender and keyword cannot help, because they cannot see {firm.sourcesLong}, and that is where the real urgency lives.</P>
+      <P h="What Sift does">It sorts the whole inbox before anyone opens it. Each message goes to the person who owns it, every deadline goes to {firm.owner}, and anything unclear goes to one short list for a person to decide. Each message shows what Sift did and why, in plain words.</P>
+      <P h="1. Read each message once">The AI reads each message one time and answers nine yes/no questions about it: eight about what kind of message it is, and one about whether a deadline is running. Each answer is a confidence from 0 to 1, shown as a bar when you open the message.</P>
+      <P h="2. Check the firm's own records">Sift then matches the message to {firm.sourcesLong} and reads what is scheduled. Priority comes from those records, not from how urgent the email sounds, so two near-identical messages can get different priorities.</P>
+      <P h="3. Send it on, then stop">Each part of the message goes to the person who owns it, so a message about two things reaches two people. Every deadline goes to {firm.owner}. If a deadline has no date, Sift asks a person to set one rather than guess. Anything uncertain goes to Needs a decision with the reason attached.</P>
+      <P h="What Sift never does">It never sends email, never changes a record, never deletes a message and never invents a date. Messages that need no one, like sales pitches, are labelled and left in place.</P>
+      <P h="You set how much it handles">The autonomy slider sets how sure Sift must be before it acts on its own. Left, it checks almost everything with you and flags even faint deadlines. Right, it handles more by itself. Moving it does not ask the AI again, so every page updates instantly.</P>
+      <P h="Every decision is on the record">Sift keeps a log of every message it read, what it decided and why. Each run has a hard spending cap, and a message is never acted on twice.</P>
+      <p style={{ margin: 0, fontSize: ".8125rem", color: "var(--color-ink-3)" }}>A self-built experiment on invented data. Every firm, person, project and message here is made up. The architecture firm's numbers come from a recorded test run; the other firms are illustrative. Switch the firm in the sidebar to see the same system read a different trade's mail.</p>
     </div>
   );
 }
