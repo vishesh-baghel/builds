@@ -99,7 +99,7 @@ export function Replay() {
         <dl style={{ display: "flex", justifyContent: "flex-end", gap: "1.75rem", margin: 0 }}>
           {([["work orders", `${ordersDone.toLocaleString("en-US")} / ${data.orders.length.toLocaleString("en-US")}`, K.ink], ["sent to a person", String(at(run.human)), K.warn], ["charges blocked", String(at(run.blocked)), K.neg]] as const).map(([k, v, c]) => (
             <div key={k} style={{ paddingLeft: ".75rem", borderLeft: `2px solid ${c === K.ink ? K.rule2 : c}` }}>
-              <dt style={{ fontSize: ".75rem", color: K.ink3 }}>{k}</dt>
+              <dt style={{ fontSize: ".75rem", color: K.ink3, whiteSpace: "nowrap" }}>{k}</dt>
               <dd style={{ margin: 0, fontFamily: F.display, fontWeight: 600, fontSize: "1.375rem", letterSpacing: "-.02em", color: c, fontVariantNumeric: "tabular-nums", whiteSpace: "nowrap" }}>{v}</dd>
             </div>
           ))}
@@ -177,11 +177,11 @@ function Card({ it, n, st, shown, active, fast, order, data }: { it: Item; n: nu
   const basis = shown && st === "invoiced" && invLine ? `Invoice line: ${invLine.description}` : it.code ? `Rate card ${it.code} · ${clauseText(it.clause)}` : clauseText(it.clause);
   const reason = !shown ? "" : st === "person" ? personReason(it, data.thresholds) : st === "rejected" ? "The note doesn't record this as done, so the charge is blocked." : st === "counted" ? `Add ${draftText(it)}, ${money(it.priceCents)}.` : "";
   return (
-    <li style={{ minHeight: 0, display: "flex", flexDirection: "column", justifyContent: "center", gap: ".375rem", padding: "0 .75rem", borderBottom: `1px solid ${K.rule}`, borderLeft: `2px solid ${active ? color : "transparent"}`, background: active ? (st === "rejected" && shown ? K.negSoft : st === "person" && shown ? K.warnSoft : K.accentSoft) : "transparent", transition: fast ? "none" : "background 200ms" }}>
+    <li style={{ minHeight: 0, overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "center", gap: ".375rem", padding: "0 .75rem", borderBottom: `1px solid ${K.rule}`, borderLeft: `2px solid ${active ? color : "transparent"}`, background: active ? (st === "rejected" && shown ? K.negSoft : st === "person" && shown ? K.warnSoft : K.accentSoft) : "transparent", transition: fast ? "none" : "background 200ms" }}>
       <div style={{ display: "flex", alignItems: "baseline", gap: ".625rem", whiteSpace: "nowrap", overflow: "hidden", minWidth: 0 }}>
         <span style={{ fontFamily: F.mono, fontSize: ".6875rem", fontWeight: 500, color, flex: "none" }}>{n}</span>
         <b style={{ color: shown ? K.ink : K.ink3, fontWeight: 500, flex: "none" }}>{labelOf(it)}</b>
-        <span style={{ flex: "none", fontFamily: F.mono, fontSize: ".625rem", letterSpacing: ".06em", textTransform: "uppercase", border: "1px solid currentColor", borderRadius: 3, padding: "0 4px", color, visibility: shown ? "visible" : "hidden" }}>{ST[st][0]}</span>
+        {shown && <span style={{ flex: "none", fontFamily: F.mono, fontSize: ".625rem", letterSpacing: ".06em", textTransform: "uppercase", border: "1px solid currentColor", borderRadius: 3, padding: "0 4px", color }}>{ST[st][0]}</span>}
         <span style={{ fontSize: ".8125rem", color: reason ? color : K.ink3, overflow: "hidden", textOverflow: "ellipsis", minWidth: 0 }}>{reason || basis}</span>
       </div>
       <CheckBars it={it} st={st} t={data.thresholds} shown={shown} animate={!fast} compact />

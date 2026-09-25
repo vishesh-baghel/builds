@@ -20,8 +20,8 @@ export function CheckBars({ it, st, t, shown = true, animate = true, compact = f
   const act = t.evidence / 4;
   const bars: { q: string; v: number | null; fill: string; mark: number | null; markColor: string }[] = [
     { q: shown ? VN[top] : "Billing status", v: it.verdict[top], fill: it.verdict[top] >= 0.55 ? K.accent : K.rule2, mark: null, markColor: K.ink },
-    { q: "Included in the plan", v: it.covered, fill: it.covered >= 0.5 ? K.accent : K.rule2, mark: null, markColor: K.ink },
-    { q: "Note backs up the charge", v: drafted ? 1 - it.unsupported : null, fill: drafted && it.unsupported >= t.unsupported ? K.neg : K.accent, mark: drafted ? 1 - t.unsupported : null, markColor: K.neg },
+    { q: compact ? "In the plan" : "Included in the plan", v: it.covered, fill: it.covered >= 0.5 ? K.accent : K.rule2, mark: null, markColor: K.ink },
+    { q: compact ? "Note backs it up" : "Note backs up the charge", v: drafted ? 1 - it.unsupported : null, fill: drafted && it.unsupported >= t.unsupported ? K.neg : K.accent, mark: drafted ? 1 - t.unsupported : null, markColor: K.neg },
     { q: "Sure it was done", v: it.evidence / 4, fill: it.evidence / 4 >= act ? K.accent : K.warn, mark: act, markColor: K.ink },
   ];
   return (
@@ -29,8 +29,8 @@ export function CheckBars({ it, st, t, shown = true, animate = true, compact = f
       {bars.map((b, k) => (
         <div key={k}>
           <div style={{ display: "flex", justifyContent: "space-between", gap: ".5rem", alignItems: "baseline" }}>
-            <span style={{ fontSize: compact ? ".6875rem" : ".75rem", color: !shown || b.v == null ? K.ink3 : K.ink, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{b.q}</span>
-            <span style={{ fontFamily: F.mono, fontSize: ".6875rem", fontVariantNumeric: "tabular-nums", color: b.fill === K.accent || b.fill === K.neg || b.fill === K.warn ? b.fill : K.ink3, visibility: shown ? "visible" : "hidden" }}>{b.v == null ? "no charge" : pct(b.v)}</span>
+            <span style={{ flex: "1 1 auto", minWidth: 0, fontSize: compact ? ".6875rem" : ".75rem", color: !shown || b.v == null ? K.ink3 : K.ink, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{b.q}</span>
+            <span style={{ flex: "none", whiteSpace: "nowrap", fontFamily: F.mono, fontSize: ".6875rem", fontVariantNumeric: "tabular-nums", color: b.fill === K.accent || b.fill === K.neg || b.fill === K.warn ? b.fill : K.ink3, visibility: shown ? "visible" : "hidden" }}>{b.v == null ? "no charge" : pct(b.v)}</span>
           </div>
           <div style={{ position: "relative", height: compact ? 5 : 6, marginTop: compact ? 2 : 4, borderRadius: 2, background: K.track, overflow: "hidden" }}>
             <span style={{ position: "absolute", top: 0, bottom: 0, left: 0, width: shown && b.v != null ? `${b.v * 100}%` : "0%", background: b.fill, transition: animate ? "width 260ms cubic-bezier(.16,1,.3,1)" : "none" }} />
