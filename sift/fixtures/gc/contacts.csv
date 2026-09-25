@@ -1,0 +1,27 @@
+name,email,org,project,role
+Mike Callahan,mcallahan@brightwaterbuilders.example,Brightwater Builders,,owner
+Erin Walsh,ewalsh@brightwaterbuilders.example,Brightwater Builders,,project manager
+Dave Nunez,dnunez@brightwaterbuilders.example,Brightwater Builders,,superintendent
+Ken Ito,kito@brightwaterbuilders.example,Brightwater Builders,,estimator
+Laura Bell,lbell@brightwaterbuilders.example,Brightwater Builders,,accounts payable
+Sarah Kemp,skemp@cedarridgellc.example,Cedar Ridge LLC,CR,project owner
+Dwayne Fisk,dfisk@summitdrawinspections.example,Summit Draw Inspections,CR,lender inspector
+Janet Liu,jliu@northgatemedical.example,Northgate Medical Partners,FS,project owner
+Rowan Design Studio,ca@rowandesignstudio.example,Rowan Design Studio,FS,architect
+Tom Becker,tbecker@lakeshorecu.example,Lakeshore Community Credit Union,LS,owner representative
+Alicia Moreno,amoreno@harborviewpartners.example,Harbor View Partners,HV,prospective owner
+Gray and Pell Architects,bids@graypellarch.example,Gray and Pell Architects,HV,architect
+Pine Hollow USD Purchasing,purchasing@pinehollowusd.example,Pine Hollow Unified School District,PH,public owner
+Ridgeline Electric,office@ridgelineelectric.example,Ridgeline Electric,CR,subcontractor
+Oakline Framing,ops@oaklineframing.example,Oakline Framing,CR,subcontractor
+Precision Concrete,scheduling@precisionconcrete.example,Precision Concrete,FS,subcontractor
+Hartley Drywall,office@hartleydrywall.example,Hartley Drywall,FS,subcontractor
+Metro Plumbing and Heating,bids@metroplumbing.example,Metro Plumbing and Heating,HV,subcontractor
+Valley Masonry,estimating@valleymasonry.example,Valley Masonry,PH,subcontractor
+Coastline Glass and Storefront,orders@coastlineglass.example,Coastline Glass and Storefront,LS,supplier
+Anvil Lumber,orders@anvillumber.example,Anvil Lumber,CR,supplier
+Bayside Roofing Supply,ar@baysideroofing.example,Bayside Roofing Supply,FS,supplier
+Crestline Equipment Rental,billing@crestlinerental.example,Crestline Equipment Rental,,supplier
+Granite Peak Testing,field@granitepeaktesting.example,Granite Peak Testing,FS,special inspector
+Marlow County Building Department,inspections@marlowcounty.example,Marlow County,,building authority
+City of Easton Building Division,permits@eastonbuilding.example,City of Easton,,building authority

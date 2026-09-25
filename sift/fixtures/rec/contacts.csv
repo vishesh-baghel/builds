@@ -1,0 +1,31 @@
+name,email,org,project,role
+Aisha Bello,abello@fieldstone.example,Fieldstone Talent,,director
+Tom Ferris,tferris@fieldstone.example,Fieldstone Talent,,recruiter
+Nadia Kowalski,nkowalski@fieldstone.example,Fieldstone Talent,,recruiter
+Ben Osei,bosei@fieldstone.example,Fieldstone Talent,,coordinator
+Chloe Grant,cgrant@fieldstone.example,Fieldstone Talent,,accounts
+Greg Lin,glin@corvid.example,Corvid Systems,CVB,hiring manager
+Farah Qureshi,fqureshi@corvid.example,Corvid Systems,CVB,talent partner
+Corvid Accounts Payable,ap@corvid.example,Corvid Systems,CVB,accounts payable
+Priya Shah,pshah@halden.example,Halden Capital,HLA,hiring manager
+Halden People Team,people@halden.example,Halden Capital,HLA,HR
+Halden Capital AP,ap@halden.example,Halden Capital,HLA,accounts payable
+Owen Mercer,omercer@brightwaterlogistics.example,Brightwater Logistics,BWD,hiring manager
+Lydia Park,lpark@pellhamcu.example,Pellham Credit Union,PCU,CFO
+Rosa Delgado,rdelgado@kestrelhealth.example,Kestrel Health,KDO,VP engineering
+Kestrel Health People,people@kestrelhealth.example,Kestrel Health,KDO,HR
+Elena Vasquez,elena.vasquez@mailbox.example,candidate,CVB,candidate
+Daniel Osei-Bonsu,d.oseibonsu@mailbox.example,candidate,CVB,candidate
+Rachel Kim,rachel.kim.dev@mailbox.example,candidate,CVB,candidate
+Chidi Okafor,chidi.okafor@mailbox.example,candidate,CVB,candidate
+Marcus Cole,mcole.work@mailbox.example,candidate,HLA,placed candidate
+Harriet Nwosu,hnwosu@mailbox.example,candidate,PCU,candidate
+Grace Mbeki,grace.mbeki@mailbox.example,candidate,PCU,candidate
+Leah Brennan,lbrennan@mailbox.example,candidate,BWD,candidate
+Tomasz Wojcik,t.wojcik@mailbox.example,candidate,BWD,candidate
+Sven Halvorsen,sven.h@mailbox.example,candidate,KDO,candidate
+Ruth Adebayo,ruth.adebayo@mailbox.example,candidate,KDO,candidate
+Jonah Pierce,jpierce@mailbox.example,candidate,KDO,candidate
+Clearline Screening,noreply@clearlinescreening.example,Clearline Screening,,screening vendor
+Clearline Screening Billing,billing@clearlinescreening.example,Clearline Screening,,screening vendor
+Crewpost Jobs,billing@crewpost.example,Crewpost Jobs,,job board

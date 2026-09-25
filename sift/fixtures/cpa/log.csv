@@ -1,0 +1,17 @@
+number,project,topic,log,kind,subject,received,due,status
+NR-208655,HVD,notice,notice log,Notice response,CP161 late deposit penalty Q1 2026 (abatement requested),2026-08-20,2026-09-19,closed
+NR-208702,FDC,notice,notice log,Notice response,state annual report late filing penalty,2026-08-28,2026-09-24,open
+NR-208731,BRL,notice,notice log,Notice response,state estimated payment mismatch letter TY2025,2026-09-01,2026-10-01,closed
+NR-208790,MNI,notice,notice log,Notice response,CP504 intent to levy on TY2024 Form 1120 balance,2026-09-08,2026-09-28,open
+NR-208814,ALD,notice,notice log,Notice response,CP2501 underreported income TY2024,2026-09-10,2026-10-09,open
+EXT-5518212,FDC,question,filing calendar,Extended return,Form 1065 TY2025 on extension (filed 2026-09-11),2026-03-13,2026-09-15,closed
+EXT-5518230,HVD,question,filing calendar,Extended return,Form 1120-S TY2025 on extension,2026-03-12,2026-10-15,open
+EXT-5518244,MNI,question,filing calendar,Extended return,Form 1120 TY2025 on extension,2026-04-10,2026-10-15,open
+EXT-5518261,BRL,question,filing calendar,Extended return,Form 1040 TY2025 on extension,2026-04-14,2026-10-15,open
+EXT-5518275,ALD,question,filing calendar,Extended return,Form 1040 TY2025 on extension,2026-04-14,2026-10-15,open
+DEP-0916-HVD,HVD,payroll,filing calendar,Payroll tax deposit,semiweekly federal deposit for the 09-11 payroll,2026-09-11,2026-09-16,closed
+DEP-0923-HVD,HVD,payroll,filing calendar,Payroll tax deposit,semiweekly federal deposit for the 09-18 payroll,2026-09-18,2026-09-23,open
+DEP-0930-FDC,FDC,payroll,filing calendar,Payroll tax deposit,semiweekly federal deposit for the 09-25 payroll,2026-09-18,2026-09-30,open
+941-Q3-HVD,HVD,payroll,filing calendar,Quarterly payroll return,Form 941 Q3 2026,2026-09-01,2026-10-31,open
+941-Q3-FDC,FDC,payroll,filing calendar,Quarterly payroll return,Form 941 Q3 2026,2026-09-01,2026-10-31,open
+ES-Q3-ALD,ALD,question,filing calendar,Estimated payment,Q3 2026 estimated tax payment (paid 2026-09-14),2026-06-16,2026-09-15,closed

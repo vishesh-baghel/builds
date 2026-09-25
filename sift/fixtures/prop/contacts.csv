@@ -1,0 +1,46 @@
+name,email,org,project,role
+Grace Whitman,grace@northgatepg.example,Northgate Property Group,,director
+Rosa Kim,rkim@northgatepg.example,Northgate Property Group,,property manager
+Luis Ortega,lortega@northgatepg.example,Northgate Property Group,,maintenance lead
+Hannah Cole,hcole@northgatepg.example,Northgate Property Group,,leasing
+Peter Idowu,pidowu@northgatepg.example,Northgate Property Group,,accounts
+Gordon Pike,gpike@elmcourtholdings.example,Elm Court Holdings LLC,EC,owner
+Alan Frost,afrost@riversidepartners.example,Riverside Partners LP,RV,owner
+Evelyn Castine,evelyn@castinetrust.example,Castine Family Trust,HV,owner
+Ray Dunmore,ray@dunmoreproperties.example,Dunmore Properties LLC,MC,owner
+Anita Desai,anita.desai@mail.example,tenant EC 2A,EC,tenant
+Terrence Brooks,tbrooks@mail.example,tenant EC 4D,EC,tenant
+Oliver Grant,ogrant@mail.example,tenant EC 1C,EC,tenant
+Carla Mendes,cmendes@mail.example,tenant EC 3D,EC,tenant
+Tamara Lewis,tlewis@mail.example,tenant EC 3A,EC,tenant
+Ines Duarte,iduarte@mail.example,tenant EC 3B,EC,tenant
+Jorge Morales,j.morales@mail.example,tenant RV 3B,RV,tenant
+Kim Wong,kwong.family@mail.example,tenant RV 1A,RV,tenant
+Deborah Lin,dlin@mail.example,tenant RV 5A,RV,tenant
+Nadia Haddad,nhaddad@mail.example,tenant RV 2C,RV,tenant
+Eli Novak,enovak@mail.example,tenant RV 4C,RV,tenant
+Marcus Feld,mfeld@mail.example,tenant HV 9,HV,tenant
+Wes Parker,wparker@mail.example,tenant HV 5,HV,tenant
+Rachel Stein,rstein@mail.example,tenant HV 14,HV,tenant
+Sofia Russo,srusso@mail.example,tenant MC 3,MC,tenant
+Ben Okoye,bokoye@mail.example,tenant MC 8,MC,tenant
+Jin Park,jpark@mail.example,tenant MC 2,MC,tenant
+Kofi Mensah,kmensah@mail.example,incoming tenant MC 6,MC,tenant
+Lakemont Code Enforcement,code.enforcement@lakemont.example,City of Lakemont,,authority
+Lakemont Rental Housing Program,rental.housing@lakemont.example,City of Lakemont,,authority
+Lakemont Water Utility,billing@lakemontwater.example,City of Lakemont,,utility
+Lakemont Housing Authority,hqs@lakemontha.example,Lakemont Housing Authority,EC,authority
+Lakemont County Fire Marshal,firemarshal@lakemontcounty.example,Lakemont County,,authority
+Lakemont County Environmental Health,env.health@lakemontcounty.example,Lakemont County,,authority
+Lakemont County Rental Assistance,era@lakemontcounty.example,Lakemont County,,assistance program
+Seabright Community Management,ops@seabrightcm.example,Harbor View HOA,HV,HOA manager
+Riverside HOA Board,board@riversidehoa.example,Riverside HOA,RV,HOA
+Apex Plumbing,ar@apexplumbing.example,Apex Plumbing,,vendor
+Brightline Electric,office@brightlineelectric.example,Brightline Electric,,vendor
+Greenleaf Landscaping,billing@greenleafland.example,Greenleaf Landscaping,HV,vendor
+Keystone Roofing,quotes@keystoneroofing.example,Keystone Roofing,,vendor
+Cedar Pest Control,invoices@cedarpest.example,Cedar Pest Control,,vendor
+Lakemont Flooring,schedule@lakemontflooring.example,Lakemont Flooring,MC,vendor
+Tri-County Boiler,dispatch@tricountyboiler.example,Tri-County Boiler,RV,vendor
+ClearFlow Backflow Testing,billing@clearflowbackflow.example,ClearFlow Backflow Testing,EC,vendor
+Summit Paving,estimates@summitpaving.example,Summit Paving,MC,vendor

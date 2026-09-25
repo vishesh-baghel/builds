@@ -1,0 +1,18 @@
+number,project,topic,log,kind,subject,received,due,status
+WO-2211,EC,maint,work-order log,Repair window,water heater replacement unit 1C,2026-09-08,2026-09-12,closed
+WO-2230,RV,maint,work-order log,Repair window,kitchen sink leak unit 3B,2026-08-28,2026-09-04,closed
+WO-2241,EC,maint,work-order log,Code repair,rear egress light,2026-09-20,2026-09-30,open
+WO-2242,EC,maint,work-order log,Code repair,dumpster enclosure gate,2026-09-20,2026-09-30,open
+WO-2248,MC,maint,work-order log,Make-ready,unit 6 paint and carpet before move-in,2026-09-14,2026-09-30,open
+WO-2250,RV,maint,work-order log,Habitability repair,bathroom ceiling leak unit 5A,2026-09-15,2026-09-29,open
+WO-2253,HV,maint,work-order log,Repair window,garage door spring unit 9,2026-09-18,2026-10-09,open
+WO-2256,RV,maint,work-order log,Repair window,boiler annual service before heating season,2026-09-10,2026-10-03,open
+WO-2259,EC,maint,work-order log,Habitability repair,smoke detector unit 3D,2026-09-19,2026-09-22,open
+CE-26-03902,RV,code,compliance log,Violation cure,handrail at rear stair,2026-08-12,2026-09-11,closed
+CE-26-04471,EC,code,compliance log,Violation cure,rear egress light and dumpster enclosure gate,2026-09-20,2026-09-30,open
+FM-26-0788,RV,code,compliance log,Inspection scheduling,annual fire life-safety inspection,2026-09-16,2026-10-16,open
+HVA-26-031,HV,code,compliance log,HOA cure period,trash containers visible from the street unit 14,2026-09-17,2026-10-02,open
+L26-014,EC,lease,lease calendar,Renewal offer,renewal offer unit 2A,2026-09-01,2026-10-01,open
+L26-017,HV,lease,lease calendar,Renewal offer,renewal offer unit 14,2026-09-01,2026-10-20,open
+L26-021,RV,lease,lease calendar,Notice period end,notice to vacate unit 1A,2026-09-19,2026-10-31,open
+ERA-26-3318,MC,payment,assistance log,Landlord documents,rental assistance application unit 3,2026-09-10,2026-09-30,open

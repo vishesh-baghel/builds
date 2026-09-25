@@ -46,6 +46,35 @@ A message may carry more than one topic, which is why the judgment is one yes/no
 topic class rather than one pick-one question: a multi-topic thread routes to more than one
 person. The instrument is frozen; any later label change goes in `docs/VARIANCE-LOG.md`.
 
+## The other six firms
+
+The dashboard's firm switcher shows seven trades. Each of the other six now carries an instrument
+built the same way as Meridian's, and to the same bar, in `fixtures/<firm>/`: hand-labelled messages
+in `inbox.jsonl`, synthetic systems of record (`projects.csv`, `log.csv`, `contacts.csv`), and a
+README with that firm's labelling rules, per-class counts and known gaps. Each firm's routing,
+priority rules and question criteria are in `src/trades/<firm>.ts`; the extract, route and decide
+code is the same for all seven.
+
+| firm | trade | messages | clocked | hard |
+|---|---|---|---|---|
+| Hale & Marrow LLP | law firm | 90 | 27 | 28 |
+| Northgate Property Group | property management | 92 | 29 | 31 |
+| Cedar Grove Dental | dental practice | 90 | 28 | 28 |
+| Larkin & Voss CPAs | accounting firm | 90 | 25 | 27 |
+| Brightwater Builders | general contractor | 90 | 27 | 25 |
+| Fieldstone Talent | recruiting agency | 90 | 25 | 26 |
+
+**None of the six is scored yet**, so no number is published for them. `test/firms.test.ts` holds
+each one to Meridian's floors and checks that, under a perfect judgment, every ordinary message
+lands where its labels say and only the recorded known gaps disagree. Until a firm has a run, the
+dashboard shows its ten illustrative messages, captioned illustrative. Scoring one buys a judgment
+per message, writes `runs/<firm>/` and the firm's entry in `runs/served.json`, and from then on the
+dashboard serves that firm measured:
+
+```bash
+pnpm --filter @builds/sift score --firm law
+```
+
 ## The numbers
 
 Run 2, 2026-09-23, on all 91 messages at the lines the sweep chose on the ordinary subset (act
