@@ -1,0 +1,4 @@
+# Everything here is render output: the videos, posters and the player page are made by
+# `pnpm --filter @builds/reels render` and are not committed.
+*
+!.gitignore

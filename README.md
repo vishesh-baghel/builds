@@ -13,6 +13,7 @@ number attached.
 ```
 shared/   the spine every build plugs into, pipeline stages, reliability primitives
 <build-name>/   one top-level directory per build, named for the build
+reels/    a fifteen-second motion piece per build, every figure from its committed run
 docs/     the variance log, the build template, the loop runbook
 ```
 

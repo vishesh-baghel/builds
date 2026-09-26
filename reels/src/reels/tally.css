@@ -1,0 +1,154 @@
+/* tally: the note, the four questions, the invoice, the 1,000 orders, the number. */
+
+.tally .glow {
+  left: 0; top: 0; width: 1000px; height: 1000px; margin: -500px 0 0 -500px; border-radius: 50%;
+  background: radial-gradient(circle, oklch(52% .2 256 / .28), transparent 62%);
+}
+.tally .paper-dots {
+  left: 0; top: 0; width: 1920px; height: 1080px;
+  background-image: radial-gradient(circle, oklch(56% .012 256 / .5) 1.1px, transparent 1.7px);
+  background-size: 40px 40px;
+}
+.tally .world { left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
+.tally .note-scene { left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 50% 45%; }
+.tally .note-eyebrow { left: 160px; top: 282px; font-size: 22px; color: var(--on-g-3); }
+.tally .note-line { left: 0; width: 1920px; height: 80px; }
+.tally .glyph-row { left: 0; top: 0; }
+.tally .glyph { font-family: var(--font-mono); font-weight: 500; color: var(--on-g); }
+.tally .cursor {
+  left: 0; top: 0; width: 5px; height: 60px; border-radius: 2px;
+  background: oklch(72% .17 254); box-shadow: 0 0 18px oklch(72% .17 254 / .8);
+}
+.tally .bracket { border-radius: 10px; background: oklch(72% .17 254 / .12); }
+.tally .underline { background: oklch(70% .012 256); transform-origin: 0 50%; border-radius: 2px; }
+.tally .leader { height: 0; border-top: 2px dotted oklch(56% .012 256); transform-origin: 0 50%; }
+.tally .leader.hot { border-top-color: oklch(72% .17 254); }
+.tally .tag { top: -4px; padding-left: 26px; display: flex; flex-direction: column; gap: 6px; white-space: nowrap; }
+.tally .tag > * { position: relative; }
+.tally .tag .tag-dot {
+  position: absolute; left: 0; top: 5px; width: 12px; height: 12px; border-radius: 50%; background: oklch(56% .012 256);
+}
+.tally .tag-status { font-family: var(--font-mono); font-size: 17px; letter-spacing: .14em; text-transform: uppercase; color: var(--on-g-3); }
+.tally .tag-code { font-family: var(--font-mono); font-size: 28px; font-weight: 500; color: var(--on-g-2); letter-spacing: .02em; }
+.tally .tag-found .tag-dot { background: oklch(72% .17 254); box-shadow: 0 0 14px oklch(72% .17 254 / .9); }
+.tally .tag-found .tag-status { color: oklch(72% .17 254); }
+.tally .tag-found .tag-code { color: var(--on-g); }
+
+.tally .checks { left: 160px; top: 380px; width: 1290px; height: 500px; }
+.tally .checks-head { left: 0; top: 0; font-size: 18px; color: var(--on-g-3); }
+.tally .check { left: 0; width: 1290px; height: 90px; }
+.tally .check-label { left: 0; top: 0; font-size: 30px; font-weight: 500; color: var(--on-g-2); white-space: nowrap; }
+.tally .check-value { right: 0; top: -10px; display: flex; align-items: baseline; gap: 18px; white-space: nowrap; }
+.tally .check-value > * { position: relative; }
+.tally .check-word { font-size: 26px; font-weight: 500; color: oklch(72% .17 254); }
+.tally .check-num { font-family: var(--font-display); font-weight: 600; font-size: 42px; letter-spacing: -.02em; color: var(--on-g); min-width: 3.2ch; text-align: right; }
+.tally .check-track { left: 0; top: 56px; width: 1290px; height: 10px; border-radius: 5px; background: oklch(31% .02 260); }
+.tally .check-fill { top: 0; height: 10px; border-radius: 5px; }
+.tally .check-fill.hot { background: oklch(72% .17 254); box-shadow: 0 0 16px oklch(72% .17 254 / .6); }
+.tally .check-fill.cool { background: oklch(70% .012 256 / .7); }
+.tally .check-tick { top: -9px; width: 3px; height: 28px; margin-left: -1px; border-radius: 2px; background: var(--on-g); }
+.tally .check-caption { left: 12px; top: -30px; font-family: var(--font-mono); font-size: 17px; color: var(--on-g-3); white-space: nowrap; }
+
+.tally .stamp {
+  left: 0; top: 0; padding: 16px 24px 14px; border: 4px solid oklch(72% .17 254); border-radius: 8px;
+  display: flex; flex-direction: column; gap: 6px; transform-origin: 50% 50%;
+  background: oklch(22% .016 260 / .85); box-shadow: 0 0 40px oklch(72% .17 254 / .35);
+}
+.tally .stamp > * { position: relative; }
+.tally .stamp-main { font-family: var(--font-mono); font-weight: 500; font-size: 34px; letter-spacing: .14em; text-transform: uppercase; color: oklch(72% .17 254); white-space: nowrap; }
+.tally .stamp-sub { font-family: var(--font-display); font-weight: 600; font-size: 36px; color: var(--on-g); }
+.tally .shock { left: 0; top: 0; width: 100px; height: 100px; margin: -50px 0 0 -50px; border-radius: 50%; border: 3px solid oklch(72% .17 254); }
+
+.tally .invoice {
+  left: 0; top: 0; width: 1000px; height: 740px; border-radius: 18px; transform-origin: 50% 50%;
+  background: oklch(98.5% .004 250); color: oklch(24% .02 258);
+  box-shadow: 0 50px 120px oklch(8% .02 262 / .7), 0 0 0 1px oklch(84% .009 255);
+}
+.tally .inv-eyebrow { left: 56px; top: 52px; font-size: 18px; color: oklch(54% .015 256); }
+.tally .inv-customer { left: 56px; top: 82px; font-family: var(--font-display); font-weight: 600; font-size: 50px; letter-spacing: -.025em; white-space: nowrap; }
+.tally .inv-meta { left: 56px; top: 154px; font-family: var(--font-mono); font-size: 18px; color: oklch(54% .015 256); white-space: nowrap; }
+.tally .inv-rule { left: 56px; top: 206px; width: 888px; height: 1px; background: oklch(84% .009 255); }
+.tally .inv-row { left: 24px; width: 952px; height: 84px; border-radius: 12px; }
+.tally .inv-desc { left: 38px; top: 14px; font-size: 27px; font-weight: 500; white-space: nowrap; }
+.tally .inv-code { left: 38px; top: 52px; font-family: var(--font-mono); font-size: 15px; color: oklch(54% .015 256); white-space: nowrap; letter-spacing: .02em; }
+.tally .inv-amount { right: 32px; top: 20px; font-family: var(--font-display); font-weight: 600; font-size: 32px; letter-spacing: -.01em; }
+.tally .inv-added { background: oklch(94.5% .028 256); }
+.tally .inv-added .inv-amount { color: oklch(52% .2 256); }
+.tally .inv-bullet { left: 12px; top: 29px; width: 14px; height: 14px; border-radius: 50%; background: oklch(72% .17 254); }
+.tally .inv-drafted { right: 190px; top: 28px; font-size: 14px; color: oklch(52% .2 256); }
+.tally .inv-total { left: 56px; top: 0; width: 888px; height: 80px; border-top: 2px solid oklch(24% .02 258); }
+.tally .inv-total-label { left: 0; top: 24px; font-size: 30px; font-weight: 600; }
+.tally .inv-total-amount {
+  right: 0; top: 14px; height: 56px; display: flex; overflow: hidden;
+  font-family: var(--font-display); font-weight: 700; font-size: 48px; line-height: 56px; letter-spacing: -.02em;
+}
+.tally .inv-total-amount > * { position: relative; }
+.tally .odo-col { height: 56px; overflow: hidden; width: .62em; }
+.tally .odo-strip { position: absolute; left: 0; top: 0; display: flex; flex-direction: column; }
+.tally .odo-strip > * { position: relative; }
+.tally .odo-digit { height: 56px; width: .62em; text-align: center; }
+.tally .pill {
+  left: 0; top: 0; width: 952px; height: 72px; padding: 0 32px 0 38px; border-radius: 14px;
+  display: flex; align-items: center; justify-content: space-between; transform-origin: 30% 50%;
+  background: oklch(72% .17 254); color: oklch(16% .014 262);
+  box-shadow: 0 20px 60px oklch(52% .2 256 / .55), 0 0 0 1px oklch(80% .12 254);
+}
+.tally .pill > * { position: relative; white-space: nowrap; }
+.tally .pill-desc { font-size: 28px; font-weight: 600; }
+.tally .pill-amount { font-family: var(--font-display); font-weight: 700; font-size: 32px; }
+
+.tally .grid-cam { left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 0 0; }
+.tally .wave { left: 0; top: 0; overflow: visible; }
+.tally .dot { width: 16px; height: 16px; border-radius: 4px; transform-origin: 50% 50%; }
+.tally .panel { left: 120px; top: 250px; width: 600px; height: 700px; }
+.tally .panel-eyebrow { left: 0; top: 0; font-size: 18px; color: var(--on-g-3); }
+.tally .panel-read { left: -4px; top: 30px; font-family: var(--font-display); font-weight: 600; font-size: 96px; letter-spacing: -.04em; line-height: 1; color: var(--on-g); }
+.tally .found-eyebrow { top: 234px; }
+.tally .legend { left: 0; top: 420px; width: 560px; display: flex; flex-direction: column; gap: 16px; }
+.tally .legend > * { position: relative; }
+.tally .legend-row { display: flex; align-items: center; gap: 16px; height: 34px; }
+.tally .legend-row > * { position: relative; }
+.tally .legend-swatch { width: 16px; height: 16px; border-radius: 4px; flex: none; }
+.tally .legend-label { font-size: 26px; font-weight: 500; color: var(--on-g-2); flex: 1; }
+.tally .legend-n { font-family: var(--font-mono); font-size: 24px; color: var(--on-g); }
+
+.tally .hero-num {
+  left: 0; top: 0; transform-origin: 0 0; white-space: nowrap;
+  font-family: var(--font-display); font-weight: 700; font-size: 240px; letter-spacing: -.05em; line-height: 1;
+}
+.tally .hero-eyebrow { left: 130px; top: 252px; font-size: 20px; color: var(--on-g-3); }
+.tally .hero-of { left: 130px; top: 574px; font-size: 46px; font-weight: 500; color: var(--on-g-2); white-space: nowrap; }
+.tally .hero-pct {
+  right: 130px; top: 382px; font-family: var(--font-display); font-weight: 600; font-size: 132px; letter-spacing: -.04em;
+  line-height: 1; color: oklch(72% .17 254);
+}
+.tally .hero-track { left: 130px; top: 742px; width: 1660px; height: 22px; border-radius: 11px; background: oklch(31% .02 260); }
+.tally .hero-fill { left: 0; top: 0; height: 22px; border-radius: 11px; background: oklch(72% .17 254); box-shadow: 0 0 30px oklch(72% .17 254 / .55); }
+.tally .hero-honest { left: 130px; top: 812px; display: flex; align-items: center; gap: 20px; font-size: 44px; font-weight: 500; color: var(--on-g); white-space: nowrap; }
+.tally .hero-honest > * { position: relative; }
+.tally .honest-dot { width: 16px; height: 16px; border-radius: 50%; background: oklch(70% .17 27); flex: none; }
+.tally .hero-source { left: 130px; top: 952px; font-size: 20px; color: var(--on-g-3); }
+
+.tally .lock-mark {
+  left: 0; top: 270px; width: 1920px; display: flex; justify-content: center;
+  font-weight: 700; font-size: 280px; letter-spacing: -.055em; line-height: 1; color: var(--on-g);
+}
+.tally .lock-mark > * { position: relative; }
+.tally .lock-mask { display: inline-block; overflow: hidden; height: 1.16em; padding: 0 .02em; }
+.tally .lock-ch { position: relative; display: inline-block; }
+.tally .lock-tag { left: 0; top: 660px; width: 1920px; text-align: center; font-size: 46px; font-weight: 500; color: var(--on-g-2); letter-spacing: -.01em; }
+.tally .lock-url { left: 0; top: 736px; width: 1920px; text-align: center; font-family: var(--font-mono); font-size: 28px; color: oklch(72% .17 254); }
+.tally .lock .spine { transform: translateX(-50%); }
+.tally .lock-fine { left: 0; top: 960px; width: 1920px; text-align: center; font-size: 19px; color: var(--on-g-3); }
+.tally .lock { transform-origin: 50% 50%; }
+.tally .lock-halo {
+  left: 460px; top: 40px; width: 1000px; height: 700px; border-radius: 50%; transform-origin: 50% 50%;
+  background: radial-gradient(ellipse at 50% 55%, oklch(52% .2 256 / .38), transparent 62%);
+}
+
+.tally .lock-underline {
+  left: 0; top: 0; z-index: 5; border-radius: 12px; opacity: 0;
+  background: oklch(72% .17 254); box-shadow: 0 0 30px oklch(72% .17 254 / .55);
+}
+.tally .flash { opacity: 0; }
+.tally .black { background: #000; }
