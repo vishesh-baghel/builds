@@ -22,6 +22,17 @@
       "Bash(mkdir:*)"
     ]
   },
+  "extraKnownMarketplaces": {
+    "brag": {
+      "source": {
+        "source": "github",
+        "repo": "latent-spaces/brag"
+      }
+    }
+  },
+  "enabledPlugins": {
+    "brag@brag": true
+  },
   "hooks": {
     "Stop": [
       {

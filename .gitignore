@@ -25,3 +25,7 @@ dist/
 .claude/settings.local.json
 .claude/.build
 .claude/.gate-attempts
+
+# /brag renders (brag plugin, enabled in .claude/settings.json)
+brag-output/
+brag-output-*/
