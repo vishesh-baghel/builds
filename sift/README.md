@@ -1,11 +1,35 @@
 # sift · shared-inbox triage
 
+**[sift.visheshbaghel.com](https://sift.visheshbaghel.com)**
+
 > **Self-built experiment on synthetic data.** Every number below is measured from a synthetic
 > shared inbox and hand-labelled synthetic systems of record, never from a client. No client
 > data, names or results appear here.
 
-Status: **building.** The headless pipeline and the measured number are done; the dashboard runs
-locally on illustrative data; the live deploy is not up yet. Spec: `docs/prds/sift-v1-prd.md`.
+Status: **live.** The measured numbers are done and are the tables below. The site opens all seven
+synthetic firms on their recorded, committed runs, at the lines each firm's sweep chose:
+`runs/run.json` for Meridian, and for the other six `runs/served.json`, which holds the scores and
+clocks from each `runs/<firm>/run.json` and the lines that firm's sweep chose
+(`runs/<firm>/sweep.json`). Switching firms or moving the autonomy dial re-runs, in the browser, the
+decision code the headless pipeline uses, over the answers already on the page, and calls no model.
+The first time a message is opened in a page load, the page asks the server for one fresh judgment
+of that committed message; it replaces the recorded one until the page is reloaded, so that firm's
+figures on the page can then differ from its scorecard. With no key configured, past the
+per-visitor, 24-hour or spend limit, or when the model call fails, the recorded judgment stays,
+behind a notice. The deploy has no persistent store yet, so those limits are held per server
+instance and reset on a cold start (`docs/VARIANCE-LOG.md`).
+
+Still open in the spec, `docs/prds/sift-v1-prd.md`:
+
+- Acceptance criterion 13: audit rows that carry the clock judgment, route, priority and deadline,
+  and a committed audit fixture.
+- 33: a visible spend counter, which the page no longer shows, and the one live call per opened
+  message, both checked against the deployment.
+- 36 and 37: the 24-hour and per-visitor limits, open until the deploy has a persistent store and
+  they are verified against it.
+- 38: one committed fixture driven end to end against the deployment.
+- The sandbox task: the page shows neither the code-templated draft nor the audit rows for a
+  message.
 
 ## The workflow
 
@@ -142,7 +166,7 @@ an estimate, and is never set beside a machine figure.
 | Decision (`decide`) | plain TypeScript, never a model. Routes, priority and deadlines derived from the synthetic systems of record. |
 | Drafting | code-templated from the matched project data; no generative model |
 | Dashboard | Next.js, one pure decision function shared with the pipeline, so moving the autonomy dial never calls the model |
-| Deploy target | Vercel, own project, sift.visheshbaghel.com (not deployed yet) |
+| Deploy target | Vercel, own project, live at [sift.visheshbaghel.com](https://sift.visheshbaghel.com) |
 | System of record | none written to. Synthetic project/RFI/submittal/CRM fixtures, read-only. |
 
 ## Reliability

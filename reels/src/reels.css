@@ -1,0 +1,105 @@
+/* reels: the stage every reel draws on, and the player around it.
+ * The stage is a fixed 1920x1080 canvas scaled as one piece, so a reel is composed once and holds
+ * its layout at any width. Only the player chrome is responsive. */
+
+:root {
+  --font-display: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-body: Inter, ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+  --g-deep: oklch(16% .014 262);
+  --g: oklch(22% .016 260);
+  --g-rule: oklch(31% .02 260);
+  --on-g: oklch(92% .006 256);
+  --on-g-2: oklch(70% .012 256);
+  --on-g-3: oklch(56% .012 256);
+  --g-accent: oklch(72% .17 254);
+}
+
+* { box-sizing: border-box; }
+html, body { margin: 0; background: var(--g-deep); color: var(--on-g); -webkit-font-smoothing: antialiased; }
+body { font-family: var(--font-body); }
+button, input { font: inherit; }
+
+/* ------------------------------------------------------------------ stage */
+
+.stage {
+  position: absolute; left: 0; top: 0; width: 1920px; height: 1080px; overflow: hidden;
+  transform-origin: 0 0; background: var(--g); color: var(--on-g);
+  font-family: var(--font-body); font-variant-numeric: tabular-nums;
+  contain: strict; isolation: isolate;
+}
+.stage * { position: absolute; }
+.stage .word, .stage .ch { position: relative; display: inline-block; }
+.stage .word { white-space: nowrap; }
+.stage .flow, .stage .flow * { position: relative; }
+.glyph { white-space: pre; line-height: 1; }
+.layer { left: 0; top: 0; width: 1920px; height: 1080px; transform-origin: 960px 540px; }
+.center { transform-origin: 50% 50%; }
+.mono { font-family: var(--font-mono); }
+.display { font-family: var(--font-display); letter-spacing: -.03em; }
+.eyebrow { font-family: var(--font-mono); text-transform: uppercase; letter-spacing: .14em; font-weight: 500; white-space: nowrap; }
+.nowrap { white-space: nowrap; }
+
+.vignette {
+  left: 0; top: 0; width: 1920px; height: 1080px; pointer-events: none; z-index: 90;
+  background: radial-gradient(ellipse 75% 70% at 50% 50%, transparent 55%, oklch(10% .02 262 / .55) 100%);
+}
+.grain {
+  left: 0; top: 0; width: 1920px; height: 1080px; pointer-events: none; z-index: 91;
+  opacity: .055; mix-blend-mode: overlay;
+}
+
+/* The six-stage chain that closes every reel. */
+.spine { display: flex; align-items: center; gap: 0; }
+.spine > * { position: relative; }
+.spine-node { display: flex; align-items: center; gap: 12px; }
+.spine-node > * { position: relative; }
+.spine-dot { width: 12px; height: 12px; border-radius: 50%; }
+.spine-label { font-family: var(--font-mono); font-size: 22px; letter-spacing: .06em; font-weight: 500; }
+.spine-link { width: 46px; height: 2px; margin: 0 16px; background: var(--g-rule); transform-origin: 0 50%; }
+
+/* ---------------------------------------------------------------- capture */
+
+body.capture { width: 1920px; height: 1080px; overflow: hidden; }
+
+/* ----------------------------------------------------------------- player */
+
+body.player { min-height: 100dvh; overflow-x: clip; }
+.shell { max-width: 1280px; margin: 0 auto; padding: 16px; display: flex; flex-direction: column; gap: 14px; }
+.bar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 16px; }
+.bar-mark { font-family: var(--font-mono); font-size: 12px; letter-spacing: .12em; text-transform: uppercase; color: var(--on-g-3); }
+.tabs { display: flex; gap: 6px; flex-wrap: wrap; }
+.tab {
+  min-height: 36px; padding: 0 16px; border-radius: 999px; border: 1px solid var(--g-rule);
+  background: transparent; color: var(--on-g-2); font-family: var(--font-display); font-weight: 600; font-size: 16px;
+  letter-spacing: -.01em; cursor: pointer;
+}
+.tab[aria-current="true"] { background: var(--on-g); color: var(--g-deep); border-color: var(--on-g); }
+.frame { width: 100%; min-width: 0; }
+.viewport {
+  position: relative; width: 100%; overflow: hidden; border-radius: 10px; background: var(--g);
+  box-shadow: 0 20px 60px oklch(8% .02 262 / .6);
+}
+.controls { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; }
+.btn {
+  min-height: 36px; padding: 0 14px; border-radius: 6px; border: 1px solid var(--g-rule); background: var(--g);
+  color: var(--on-g); font-family: var(--font-mono); font-size: 13px; letter-spacing: .04em; cursor: pointer;
+}
+.btn.play { min-width: 88px; background: var(--g-accent); color: var(--g-deep); border-color: var(--g-accent); font-weight: 500; }
+.scrub { flex: 1 1 200px; min-width: 0; accent-color: var(--g-accent); }
+.clock { font-family: var(--font-mono); font-size: 13px; color: var(--on-g-2); font-variant-numeric: tabular-nums; min-width: 11ch; }
+.foot { margin: 0; font-size: 13px; line-height: 1.6; color: var(--on-g-3); max-width: 70ch; }
+:where(button, input):focus-visible { outline: 2px solid var(--g-accent); outline-offset: 2px; }
+
+@media (pointer: coarse) {
+  .tab, .btn { min-height: 44px; }
+  .scrub { min-height: 44px; }
+}
+@media (max-width: 480px) {
+  .shell { padding: 12px; }
+  .controls { gap: 8px; }
+  .btn { padding: 0 12px; }
+  .btn.play { min-width: 72px; }
+  .clock { min-width: 0; font-size: 12px; }
+  .scrub { order: 3; flex-basis: 100%; }
+}

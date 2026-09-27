@@ -11,3 +11,5 @@ node_modules
 **/*.tsbuildinfo
 .claude
 .git
+# the reels' render output, never committed but present in a local clone; no build reads it
+reels/out

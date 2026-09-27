@@ -33,6 +33,7 @@ shared/                 the spine every build plugs into
 <build-name>/            one top-level directory per build, named for the build
 docs/prds/              PRDs, one per build that needs one
 docs/VARIANCE-LOG.md    where a build's reality diverged from its plan
+reels/                  a short motion piece per build, drawn from its committed run; not a build
 .claude/skills/         the loop: intake -> plan -> implement -> validate -> PR -> review
 scripts/loop/           the drivers that chain those stages headlessly
 ```

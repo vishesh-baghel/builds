@@ -1,0 +1,227 @@
+/* reckon: the reminder, the replies, the read, the cleave, the run. */
+
+.reckon .glow {
+  left: 0; top: 0; width: 1100px; height: 1100px; margin: -550px 0 0 -550px; border-radius: 50%;
+  background: radial-gradient(circle, oklch(52% .2 256 / .26), transparent 62%);
+}
+.reckon .depth { left: 0; top: 0; width: 1920px; height: 1080px; perspective: 1400px; perspective-origin: 960px 520px; }
+.reckon .depth-cam { left: 0; top: 0; width: 1920px; height: 1080px; transform-style: preserve-3d; transform-origin: 960px 520px -500px; }
+.reckon .mote { left: 960px; top: 520px; width: 6px; height: 6px; margin: -3px 0 0 -3px; border-radius: 50%; background: oklch(84% .06 254); }
+
+/* ------------------------------------------------------------ the reminder */
+
+.reckon .remind {
+  left: 530px; top: 250px; width: 860px; height: 392px; border-radius: 20px; transform-origin: 50% 50%; overflow: hidden;
+  background: linear-gradient(180deg, oklch(29% .03 258), oklch(24.5% .022 260));
+  box-shadow: 0 40px 100px oklch(8% .02 262 / .6), inset 0 0 0 1px oklch(40% .04 256);
+}
+.reckon .remind-bar { left: 0; top: 0; width: 860px; height: 6px; background: oklch(72% .17 254); transform-origin: 0 50%; }
+.reckon .remind-eyebrow { left: 56px; top: 48px; font-size: 22px; color: oklch(72% .17 254); }
+.reckon .remind-customer {
+  left: 56px; top: 88px; font-family: var(--font-display); font-weight: 600; font-size: 70px;
+  letter-spacing: -.025em; white-space: nowrap; color: var(--on-g);
+}
+.reckon .remind-rule { left: 56px; top: 198px; width: 748px; height: 1px; background: oklch(40% .02 260); transform-origin: 0 50%; }
+.reckon .remind-stat { top: 228px; display: flex; flex-direction: column; gap: 6px; }
+.reckon .remind-stat > * { position: relative; }
+.reckon .stat-label { font-size: 21px; color: var(--on-g-3); }
+.reckon .stat-value {
+  font-family: var(--font-display); font-weight: 600; font-size: 66px; letter-spacing: -.02em; line-height: 1.1;
+  color: var(--on-g); white-space: nowrap;
+}
+.reckon .stat-value.warm { color: oklch(80% .14 80); }
+.reckon .remind-sent { left: 530px; top: 684px; font-family: var(--font-mono); font-size: 32px; color: oklch(72% .17 254); white-space: pre; }
+.reckon .caret { left: 0; top: 2px; width: 3px; height: 38px; background: oklch(72% .17 254); }
+
+.reckon .streak {
+  left: 0; top: 0; height: 10px; margin-top: -5px; border-radius: 5px; transform-origin: 0 50%;
+  background: linear-gradient(90deg, oklch(72% .17 254 / 0), oklch(78% .15 254 / .55) 55%, oklch(98% .02 254));
+  box-shadow: 0 0 28px oklch(72% .17 254 / .7);
+}
+.reckon .star {
+  left: 0; top: 0; width: 300px; height: 300px; margin: -150px 0 0 -150px; border-radius: 50%;
+  background: radial-gradient(circle, oklch(99% .01 254) 0 2.5%, oklch(84% .12 254 / .85) 5%, oklch(72% .17 254 / .28) 20%, transparent 58%);
+}
+.reckon .flare { left: 0; top: 0; width: 640px; height: 2px; margin: -1px 0 0 -320px; background: linear-gradient(90deg, transparent, oklch(92% .07 254 / .9), transparent); }
+
+.reckon .headline {
+  left: 0; top: 690px; width: 1920px; display: flex; justify-content: center; gap: .24em;
+  font-family: var(--font-display); font-weight: 600; font-size: 92px; letter-spacing: -.035em; line-height: 1; color: var(--on-g);
+  transform-origin: 960px 50%;
+}
+.reckon .headline > * { position: relative; }
+.reckon .mask { display: inline-block; overflow: hidden; padding: .04em .03em .16em; }
+.reckon .mask > * { position: relative; display: inline-block; }
+
+/* ------------------------------------------------------------- the replies */
+
+.reckon .field { isolation: isolate; }
+.reckon .r-anchor { left: 960px; top: 520px; width: 0; height: 0; }
+.reckon .reply {
+  left: -300px; top: 0; width: 600px; translate: 0 -50%; padding: 30px 34px 30px; border-radius: 20px;
+  display: flex; flex-direction: column; gap: 12px;
+  background: linear-gradient(180deg, oklch(30% .024 259), oklch(25.5% .02 260));
+  box-shadow: 0 30px 80px oklch(8% .02 262 / .55), inset 0 0 0 1px oklch(41% .03 258);
+}
+.reckon .reply > * { position: relative; }
+.reckon .reply-from { font-family: var(--font-mono); font-size: 22px; color: var(--on-g-3); white-space: nowrap; }
+.reckon .reply-body { font-size: 33px; font-weight: 500; line-height: 1.3; color: var(--on-g); }
+.reckon .reply-tags { display: flex; gap: 8px; flex-wrap: wrap; }
+.reckon .reply-tags > * { position: relative; }
+.reckon .reply-tag {
+  font-family: var(--font-mono); font-size: 20px; padding: 5px 12px; border-radius: 7px;
+  color: oklch(72% .17 254); background: oklch(72% .17 254 / .13);
+}
+.reckon .reply-tag.none { color: oklch(80% .14 80); background: oklch(80% .14 80 / .13); }
+
+/* ------------------------------------------------------ the featured reply */
+
+.reckon .half { left: 0; top: 0; width: 1120px; height: 640px; transform-origin: 0 0; }
+.reckon .half-clip { left: 0; top: 0; width: 1120px; height: 640px; }
+.reckon .paper {
+  left: 0; top: 0; width: 1120px; height: 640px; border-radius: 22px; background: oklch(98.5% .004 250);
+  box-shadow: inset 0 0 0 1px oklch(84% .009 255);
+}
+.reckon .fc-from { left: 64px; top: 40px; font-size: 26px; font-weight: 600; color: oklch(24% .02 258); white-space: nowrap; }
+.reckon .fc-subj { right: 64px; top: 44px; font-family: var(--font-mono); font-size: 22px; color: oklch(54% .015 256); white-space: nowrap; }
+.reckon .fc-rule { left: 64px; top: 92px; width: 992px; height: 2px; background: oklch(91% .006 255); }
+.reckon .fc-line {
+  left: 64px; white-space: nowrap; font-size: 58px; font-weight: 500; letter-spacing: -.018em; line-height: 76px;
+  color: oklch(24% .02 258);
+}
+.reckon .fc-line.b { left: auto; right: 64px; text-align: right; }
+.reckon .fc-line > * { position: relative; }
+.reckon .fc-line .hl { border-radius: 4px; }
+.reckon .fc-line .chip { display: inline-block; padding: 0 .12em; margin: 0 -.12em; border-radius: 10px; }
+.reckon .fc-line .pin { display: inline-block; width: 0; height: .9em; }
+.reckon .fc-line .pin > * { position: absolute; }
+.reckon .fc-tag {
+  top: 50%; translate: 0 -50%; padding: 7px 14px; border-radius: 8px; white-space: nowrap;
+  font-family: var(--font-mono); font-size: 22px; font-weight: 500; line-height: 1.2; letter-spacing: .02em;
+  color: oklch(99% .005 256); text-align: left;
+}
+.reckon .fc-tag.partial { left: 22px; background: oklch(52% .2 256); }
+.reckon .fc-tag.dispute { right: 22px; background: oklch(54% .18 27); }
+.reckon .fc-tag.amount {
+  left: 26px; display: flex; flex-direction: column; gap: 2px; padding: 10px 16px 12px; background: oklch(22% .016 260);
+}
+.reckon .fc-tag.amount > * { position: relative; }
+.reckon .amt-value { font-family: var(--font-display); font-weight: 600; font-size: 34px; letter-spacing: -.01em; color: oklch(76% .15 158); }
+.reckon .amt-note { font-size: 18px; color: oklch(70% .012 256); }
+.reckon .fc-foot { left: 64px; top: 570px; font-family: var(--font-mono); font-size: 21px; color: oklch(54% .015 256); white-space: nowrap; }
+.reckon .edge { left: 0; top: 0; height: 8px; margin-top: -4px; transform-origin: 0 50%; }
+.reckon .cut {
+  left: 0; top: 0; height: 6px; margin-top: -3px; border-radius: 3px; transform-origin: 0 50%;
+  background: linear-gradient(90deg, oklch(80% .14 254 / .2), oklch(99% .01 254) 85%, oklch(99% .01 254));
+  box-shadow: 0 0 26px oklch(72% .17 254 / .9), 0 0 6px oklch(99% .01 254);
+}
+.reckon .shock { border-radius: 18px; box-shadow: inset 0 0 0 3px oklch(72% .17 254), 0 0 30px oklch(72% .17 254 / .5); transform-origin: 50% 50%; }
+.reckon .spark { left: 0; top: 0; width: 34px; height: 5px; margin: -2.5px 0 0 -17px; border-radius: 3px; background: oklch(97% .03 254); box-shadow: 0 0 14px oklch(72% .17 254 / .9); }
+.reckon .card-tint { left: 0; top: 0; width: 1120px; height: 640px; border-radius: 22px; background: oklch(72% .17 254); opacity: 0; }
+
+/* ------------------------------------------------------------- the bars */
+
+.reckon .bars { left: 1010px; top: 196px; width: 780px; height: 720px; }
+.reckon .bars-head { left: 0; top: 0; font-size: 20px; color: var(--on-g-3); }
+.reckon .bar-row { left: 0; width: 780px; height: 84px; }
+.reckon .bar-label { left: 0; top: 0; font-family: var(--font-mono); font-size: 26px; font-weight: 500; color: var(--on-g-2); white-space: nowrap; }
+.reckon .bar-status { top: 5px; font-family: var(--font-mono); font-size: 19px; letter-spacing: .12em; text-transform: uppercase; white-space: nowrap; }
+.reckon .bar-val {
+  right: 0; top: -8px; font-family: var(--font-display); font-weight: 600; font-size: 40px; letter-spacing: -.02em;
+  color: var(--on-g); text-align: right;
+}
+.reckon .bar-track { left: 0; top: 50px; width: 780px; height: 12px; border-radius: 6px; background: oklch(31% .02 260); }
+.reckon .bar-band { top: -6px; height: 24px; background: oklch(80% .14 80 / .26); box-shadow: inset 0 0 0 1.5px oklch(82% .14 80 / .6); border-radius: 3px; }
+.reckon .bar-fill { left: 0; top: 0; height: 12px; border-radius: 6px; }
+.reckon .bar-tick { top: -11px; width: 3px; height: 34px; margin-left: -1px; border-radius: 2px; background: var(--on-g); }
+.reckon .bars-key { left: 0; top: 680px; display: flex; gap: 34px; align-items: center; white-space: nowrap; font-family: var(--font-mono); font-size: 19px; color: var(--on-g-3); }
+.reckon .bars-key > * { position: relative; }
+.reckon .key { display: flex; align-items: center; gap: 12px; }
+.reckon .key > * { position: relative; }
+.reckon .key-tick { width: 3px; height: 26px; border-radius: 2px; background: var(--on-g); }
+.reckon .key-band { width: 34px; height: 18px; border-radius: 3px; background: oklch(80% .14 80 / .26); box-shadow: inset 0 0 0 1.5px oklch(82% .14 80 / .6); }
+
+/* ------------------------------------------------------------- the decision */
+
+.reckon .col { top: 372px; display: flex; flex-direction: column; gap: 22px; }
+.reckon .col > * { position: relative; }
+.reckon .col-left { left: 120px; width: 860px; }
+.reckon .col-right { left: 1090px; width: 720px; }
+.reckon .col-eyebrow { font-size: 20px; display: flex; align-items: center; gap: 14px; }
+.reckon .col-eyebrow > * { position: relative; }
+.reckon .dotc { width: 12px; height: 12px; border-radius: 50%; }
+.reckon .effect { display: flex; align-items: baseline; gap: 18px; }
+.reckon .effect > * { position: relative; }
+.reckon .action {
+  flex: none; font-family: var(--font-mono); font-size: 24px; font-weight: 500; padding: 5px 12px; border-radius: 8px;
+  color: oklch(72% .17 254); background: oklch(72% .17 254 / .14); box-shadow: inset 0 0 0 1px oklch(72% .17 254 / .4);
+}
+.reckon .effect-text { font-size: 30px; font-weight: 500; color: var(--on-g); line-height: 1.3; }
+.reckon .effect-text > * { position: relative; display: block; }
+.reckon .ledger { height: 118px; }
+.reckon .ledger-track { left: 0; top: 34px; width: 860px; height: 44px; border-radius: 8px; background: oklch(34% .02 260); overflow: hidden; }
+.reckon .ledger-paid { left: 0; top: 0; height: 44px; background: oklch(76% .15 158); box-shadow: 0 0 30px oklch(76% .15 158 / .5); }
+.reckon .ledger-open { left: 0; top: -2px; font-family: var(--font-mono); font-size: 20px; color: var(--on-g-3); white-space: nowrap; }
+.reckon .ledger-total { right: 0; top: -2px; font-family: var(--font-mono); font-size: 20px; color: var(--on-g-2); white-space: nowrap; }
+.reckon .ledger-a { left: 0; top: 88px; font-size: 24px; font-weight: 600; color: oklch(76% .15 158); white-space: nowrap; }
+.reckon .ledger-b { right: 0; top: 88px; font-size: 24px; font-weight: 500; color: var(--on-g-2); white-space: nowrap; }
+.reckon .quote {
+  font-family: var(--font-display); font-weight: 500; font-size: 42px; letter-spacing: -.02em; line-height: 1.18; color: var(--on-g);
+}
+.reckon .quote > *, .reckon .miss > * { position: relative; display: block; }
+.reckon .flag { padding: 4px 0 4px 22px; display: flex; flex-direction: column; gap: 6px; box-shadow: inset 3px 0 0 oklch(80% .14 80); }
+.reckon .flag > * { position: relative; }
+.reckon .flag-main { font-family: var(--font-mono); font-size: 24px; font-weight: 500; color: oklch(80% .14 80); white-space: nowrap; }
+.reckon .flag-sub { font-size: 26px; color: var(--on-g-2); }
+.reckon .divider { left: 1024px; top: 372px; width: 2px; height: 330px; background: oklch(34% .02 260); transform-origin: 50% 0; }
+.reckon .audit { left: 120px; top: 780px; width: 900px; }
+.reckon .audit-head { left: 0; top: 0; font-size: 19px; color: var(--on-g-3); }
+.reckon .audit-row { left: 0; display: flex; gap: 0; white-space: nowrap; font-family: var(--font-mono); font-size: 22px; line-height: 1; }
+.reckon .audit-row > * { position: relative; }
+.reckon .audit-stage { width: 150px; color: oklch(72% .17 254); }
+.reckon .audit-text { color: var(--on-g-2); }
+.reckon .sent {
+  right: 120px; top: 800px; text-align: right; font-family: var(--font-display); font-weight: 600; font-size: 60px;
+  letter-spacing: -.03em; line-height: 1.08; color: var(--on-g);
+}
+.reckon .sent > * { position: relative; display: block; }
+
+/* ------------------------------------------------------------- the run */
+
+.reckon .nums-head { left: 120px; top: 108px; font-size: 20px; color: var(--on-g-3); }
+.reckon .panel { top: 0; width: 800px; height: 1080px; }
+.reckon .panel-eyebrow { left: 0; top: 178px; font-size: 20px; color: var(--on-g-2); }
+.reckon .wdot { width: 30px; height: 30px; margin: -15px 0 0 -15px; border-radius: 7px; transform-origin: 50% 50%; }
+.reckon .wring { left: -7px; top: -7px; width: 44px; height: 44px; border-radius: 11px; box-shadow: inset 0 0 0 3px oklch(72% .17 254); }
+.reckon .big { left: -8px; top: 372px; display: flex; align-items: baseline; gap: 22px; white-space: nowrap; }
+.reckon .big > * { position: relative; }
+.reckon .big-n { font-family: var(--font-display); font-weight: 700; font-size: 200px; letter-spacing: -.05em; line-height: 1; color: var(--on-g); }
+.reckon .big-of { font-family: var(--font-display); font-weight: 500; font-size: 72px; letter-spacing: -.03em; color: var(--on-g-2); }
+.reckon .big-cap { left: 0; top: 590px; font-size: 30px; font-weight: 500; color: var(--on-g-2); white-space: nowrap; }
+.reckon .err { left: 0; top: 672px; display: flex; align-items: baseline; gap: 22px; white-space: nowrap; }
+.reckon .err > * { position: relative; }
+.reckon .err-n { font-family: var(--font-display); font-weight: 700; font-size: 96px; letter-spacing: -.04em; line-height: 1; }
+.reckon .err-label { font-size: 30px; font-weight: 500; color: var(--on-g-2); }
+.reckon .miss { left: 0; top: 806px; width: 820px; font-size: 32px; font-weight: 500; line-height: 1.3; color: var(--on-g); }
+.reckon .miss-rule { left: 0; top: 788px; height: 4px; border-radius: 2px; background: oklch(70% .17 27); transform-origin: 0 50%; }
+.reckon .nums-foot { left: 120px; top: 962px; font-family: var(--font-mono); font-size: 22px; color: var(--on-g-3); white-space: nowrap; }
+.reckon .nums-foot b { position: relative; font-weight: 500; color: var(--on-g); }
+.reckon .nums-rule { left: 1000px; top: 180px; width: 2px; height: 720px; background: oklch(31% .02 260); transform-origin: 50% 0; }
+
+/* ------------------------------------------------------------- the close */
+
+.reckon .lock { transform-origin: 50% 50%; }
+.reckon .lock-mark {
+  left: 0; top: 262px; width: 1920px; display: flex; justify-content: center;
+  font-weight: 700; font-size: 280px; letter-spacing: -.055em; line-height: 1; color: var(--on-g);
+}
+.reckon .lock-mark > * { position: relative; }
+.reckon .lock-mask { display: inline-block; overflow: hidden; height: 1.16em; padding: 0 .02em; }
+.reckon .lock-ch { position: relative; display: inline-block; }
+.reckon .lock-tag { left: 0; top: 612px; width: 1920px; text-align: center; font-size: 46px; font-weight: 500; color: var(--on-g-2); letter-spacing: -.01em; }
+.reckon .lock-url { left: 0; top: 688px; width: 1920px; text-align: center; font-family: var(--font-mono); font-size: 28px; color: oklch(72% .17 254); }
+.reckon .lock .spine { transform: translateX(-50%); }
+.reckon .lock-fine { left: 0; top: 960px; width: 1920px; text-align: center; font-size: 19px; color: var(--on-g-3); }
+
+.reckon .flash { opacity: 0; mix-blend-mode: screen; }
+.reckon .black { background: #000; }
