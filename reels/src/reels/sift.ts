@@ -520,7 +520,7 @@ export const sift: Reel = {
     const markLetters = [..."s\u0131ft"].map((ch) => el("span", "lock-ch", el("span", "lock-mask", mark), ch));
     const tittle = el("div", "tittle", lock);
     const tittleHand = el("span", "tittle-hand", tittle);
-    const tagline = el("div", "lock-tag", lock, "reads the mail the way the firm would");
+    const tagline = el("div", "lock-tag", lock, "shared-inbox triage");
     const url = el("div", "lock-url", lock, "sift.visheshbaghel.com");
     const chain = spine(lock, 960, 820);
     const fine = el("div", "eyebrow lock-fine", lock,

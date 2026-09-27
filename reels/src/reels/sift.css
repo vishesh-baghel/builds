@@ -235,7 +235,7 @@
   box-shadow: 0 0 30px oklch(80% .14 80 / .6);
 }
 .sift .tittle-hand { left: 18px; top: 5px; width: 4px; height: 15px; border-radius: 2px; background: oklch(80% .14 80); transform-origin: 2px 15px; }
-.sift .lock-tag { left: 0; top: 612px; width: 1920px; text-align: center; font-size: 46px; font-weight: 500; color: var(--on-g-2); letter-spacing: -.01em; }
+.sift .lock-tag { left: 0; top: 612px; width: 1920px; text-align: center; font-size: 46px; font-weight: 500; color: var(--on-g-2); letter-spacing: -.01em; font-variant-numeric: normal; }
 .sift .lock-url { left: 0; top: 688px; width: 1920px; text-align: center; font-family: var(--font-mono); font-size: 28px; color: oklch(72% .17 254); }
 .sift .lock .spine { transform: translateX(-50%); }
 .sift .lock-fine { left: 0; top: 960px; width: 1920px; text-align: center; font-size: 19px; color: var(--on-g-3); }
