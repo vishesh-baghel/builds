@@ -29,3 +29,6 @@ dist/
 # /brag renders (brag plugin, enabled in .claude/settings.json)
 brag-output/
 brag-output-*/
+
+# demo recordings: frames, timelines and rendered videos
+demos/out/
