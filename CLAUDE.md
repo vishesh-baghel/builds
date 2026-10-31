@@ -31,12 +31,21 @@ Git history counts: what is written is written. Keep it out in the first place.
 ```
 shared/                 the spine every build plugs into
 <build-name>/            one top-level directory per build, named for the build
+episodes/<name>/         code from one doodle-monster video; not a build (episodes/README.md)
 docs/prds/              PRDs, one per build that needs one
 docs/VARIANCE-LOG.md    where a build's reality diverged from its plan
 reels/                  a short motion piece per build, drawn from its committed run; not a build
 .claude/skills/         the loop: intake -> plan -> implement -> validate -> PR -> review
 scripts/loop/           the drivers that chain those stages headlessly
 ```
+
+## Episode code is not a build
+
+`episodes/<name>/` holds the TypeScript one doodle-monster video explains, so viewers can run it. Each folder teaches
+one idea, so it does not compose the six stages from `shared`, needs no reliability primitives it doesn't teach, and
+carries no baseline number. It is still a workspace package with `typecheck` and `test` scripts that pass with no
+vendor key, its README links the video, and the claims discipline and house style below apply in full.
+`episodes/README.md` has the layout.
 
 ## Reuse the spine before writing anything new
 
